@@ -1,0 +1,89 @@
+:root {
+  --vp-c-brand-1: #2562eb;
+  --vp-c-brand-2: #1d4ed8;
+  --vp-c-brand-3: #60a5fa;
+  --vp-c-brand-soft: rgba(37, 98, 235, 0.12);
+  --course-accent: #0f766e;
+  --course-warning: #b45309;
+  --course-ink: #111827;
+}
+
+.VPDoc .content {
+  font-size: 16px;
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.course-card {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  padding: 16px;
+  background: var(--vp-c-bg-soft);
+}
+
+.course-card strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--vp-c-text-1);
+}
+
+.lesson-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0 24px;
+}
+
+.lesson-meta span {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 999px;
+  padding: 4px 10px;
+  color: var(--vp-c-text-2);
+  font-size: 13px;
+  background: var(--vp-c-bg-soft);
+}
+
+.ba-callout {
+  border-left: 4px solid var(--course-accent);
+  background: color-mix(in srgb, var(--course-accent) 10%, transparent);
+  padding: 14px 16px;
+  margin: 20px 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.risk-callout {
+  border-left: 4px solid var(--course-warning);
+  background: color-mix(in srgb, var(--course-warning) 10%, transparent);
+  padding: 14px 16px;
+  margin: 20px 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.mermaid {
+  margin: 24px auto;
+  padding: 16px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: var(--vp-c-bg);
+  overflow-x: auto;
+}
+
+.vp-doc table {
+  display: table;
+  width: 100%;
+}
+
+@media (max-width: 720px) {
+  .VPDoc .content {
+    font-size: 15px;
+  }
+
+  .course-card {
+    padding: 14px;
+  }
+}
