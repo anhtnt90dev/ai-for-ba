@@ -103,6 +103,19 @@ const requiredLabHeadings = [
   "## Review rubric"
 ];
 
+const requiredUseCaseHeadings = [
+  "## Project context",
+  "## BA challenge",
+  "## Where AI fits",
+  "## Inputs to prepare",
+  "## BA workflow",
+  "## Diagram",
+  "## Deliverables",
+  "## Prompt to try",
+  "## Review checklist",
+  "## Risks and controls"
+];
+
 const diagramSignatures = new Set();
 const whyBodiesByLocale = { en: [], vi: [] };
 const expertBodiesByLocale = { en: [], vi: [] };
@@ -118,13 +131,18 @@ const enLessons = listDirs("docs/en/lessons");
 const viLessons = listDirs("docs/vi/lessons");
 const enLabs = listDirs("docs/en/labs");
 const viLabs = listDirs("docs/vi/labs");
+const enUseCases = listDirs("docs/en/use-cases").filter((slug) => slug !== "index.md");
+const viUseCases = listDirs("docs/vi/use-cases").filter((slug) => slug !== "index.md");
 
 assertEqual(enLessons.length, 20, "English lesson count");
 assertEqual(viLessons.length, 20, "Vietnamese lesson count");
 assertEqual(enLabs.length, 6, "English lab count");
 assertEqual(viLabs.length, 6, "Vietnamese lab count");
+assertEqual(enUseCases.length, 30, "English use case count");
+assertEqual(viUseCases.length, 30, "Vietnamese use case count");
 assertSameList(viLessons, enLessons, "Lesson slug parity");
 assertSameList(viLabs, enLabs, "Lab slug parity");
+assertSameList(viUseCases, enUseCases, "Use case slug parity");
 
 for (const locale of ["en", "vi"]) {
   for (const slug of listDirs(`docs/${locale}/lessons`)) {
@@ -179,6 +197,33 @@ for (const locale of ["en", "vi"]) {
     }
     assert(content.includes("```mermaid"), `${file} must include a Mermaid diagram`);
   }
+
+  assert(exists(`docs/${locale}/use-cases/index.md`), `docs/${locale}/use-cases/index.md is required`);
+  if (exists(`docs/${locale}/use-cases/index.md`)) {
+    const index = read(`docs/${locale}/use-cases/index.md`);
+    assert(
+      ((index.match(/\]\(\.\/[^)]+\)/g)?.length ?? 0) + (index.match(/href="\.\/[^"]+"/g)?.length ?? 0)) >= 30,
+      `docs/${locale}/use-cases/index.md must link to at least 30 use cases`
+    );
+    assert(index.includes("```mermaid"), `docs/${locale}/use-cases/index.md must include a Mermaid overview diagram`);
+  }
+
+  for (const slug of listDirs(`docs/${locale}/use-cases`)) {
+    const file = `docs/${locale}/use-cases/${slug}/index.md`;
+    assert(exists(file), `${file} is required`);
+    if (!exists(file)) {
+      continue;
+    }
+
+    const content = read(file);
+    for (const heading of requiredUseCaseHeadings) {
+      assert(content.includes(heading), `${file} must include ${heading}`);
+    }
+    assert(wordCount(normalizedText(content)) >= 450, `${file} must contain at least 450 words of practical detail`);
+    assert(content.includes("```mermaid"), `${file} must include a Mermaid workflow diagram`);
+    assert(sectionContent(content, "Deliverables").includes("| --- |"), `${file} must include a structured deliverables table`);
+    assert(sectionContent(content, "Risks and controls").includes("| --- |"), `${file} must include a structured risks and controls table`);
+  }
 }
 
 assert(
@@ -211,6 +256,13 @@ for (const file of [
   "docs/vi/resources/glossary.md"
 ]) {
   assert(exists(file), `${file} is required`);
+}
+
+if (exists("docs/.vitepress/theme/custom.css")) {
+  const css = read("docs/.vitepress/theme/custom.css");
+  for (const selector of [".usecase-grid", ".case-card", ".case-meta", ".ba-workbench-panel"]) {
+    assert(css.includes(selector), `custom.css must include ${selector} for the BA workbench theme`);
+  }
 }
 
 if (exists("README.md")) {

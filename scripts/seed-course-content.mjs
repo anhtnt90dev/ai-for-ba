@@ -772,6 +772,819 @@ const labs = [
   }
 ];
 
+const useCases = [
+  {
+    slug: "stakeholder-discovery-from-messy-notes",
+    group: "Discovery and alignment",
+    domain: "Cross-functional product discovery",
+    en: {
+      title: "Stakeholder Discovery From Messy Notes",
+      project: "A product team starts a customer onboarding improvement project after several fragmented meetings with sales, support, compliance, and operations. Notes are incomplete, stakeholders contradict each other, and the BA must prepare a discovery summary before the next workshop.",
+      challenge: "The BA must preserve nuance while turning raw notes into themes, confirmed facts, conflicts, decisions needed, and requirement candidates. The hard part is avoiding false consensus: sales wants instant activation, compliance requires KYC completion, and support needs clearer document guidance.",
+      aiUse: ["Cluster notes into themes without removing speaker attribution.", "Extract facts, assumptions, contradictions, and implied requirements.", "Generate stakeholder-specific validation questions.", "Prepare a decision-focused workshop agenda."],
+      inputs: ["Meeting notes and transcripts", "Stakeholder role list", "Existing process notes", "Known business goals", "Open questions from prior workshops"],
+      workflow: ["Create a source map with stakeholder names and meeting dates.", "Ask AI to classify each note as fact, opinion, assumption, pain point, requirement candidate, or conflict.", "Review the AI output and restore any missing speaker attribution.", "Convert conflicts into decision questions with named decision owners.", "Draft a workshop agenda that starts with decisions, not topics.", "Publish a synthesis pack with evidence labels and unresolved assumptions."],
+      deliverables: [["Discovery synthesis pack", "Themes, facts, contradictions, assumptions, and quotes with source IDs", "BA", "Every finding has stakeholder attribution"], ["Decision backlog", "Questions that require business decisions before requirements can be finalized", "Product owner", "Each decision has owner and target date"], ["Workshop agenda", "Prioritized validation questions grouped by risk", "BA", "Agenda focuses on conflicts and decision gaps"], ["Requirement candidates", "Early requirement statements with evidence and assumptions", "BA", "No candidate is marked final without validation"]],
+      risks: [["False consensus", "AI may merge conflicting statements into one clean narrative", "Require speaker attribution and a contradiction table"], ["Unsupported requirement", "AI may infer scope that no stakeholder approved", "Mark every inference as assumption to validate"], ["Stakeholder politics", "Minority concerns may disappear in summaries", "Track source role and decision authority"], ["Workshop drift", "Discussion may focus on easy topics", "Rank questions by risk and dependency"]],
+      metric: "The next workshop resolves the highest-risk conflicts and produces named owners for every open decision."
+    },
+    vi: {
+      title: "Discovery stakeholder từ notes lộn xộn",
+      project: "Product team bắt đầu dự án cải thiện customer onboarding sau nhiều buổi họp rời rạc với sales, support, compliance và operations. Notes thiếu, stakeholder nói mâu thuẫn, và BA phải chuẩn bị discovery summary trước workshop tiếp theo.",
+      challenge: "BA phải giữ nuance nhưng vẫn biến raw notes thành theme, confirmed fact, conflict, decision needed và requirement candidate. Phần khó là tránh false consensus: sales muốn activation tức thì, compliance yêu cầu KYC hoàn tất, support cần hướng dẫn upload document rõ hơn.",
+      aiUse: ["Cluster notes thành theme nhưng không xóa speaker attribution.", "Extract fact, assumption, contradiction và implied requirement.", "Sinh câu hỏi validation riêng theo từng stakeholder.", "Chuẩn bị workshop agenda tập trung vào decision."],
+      inputs: ["Meeting notes và transcript", "Danh sách stakeholder role", "Current process notes", "Business goal đã biết", "Open question từ workshop trước"],
+      workflow: ["Tạo source map với tên stakeholder và ngày họp.", "Yêu cầu AI classify từng note thành fact, opinion, assumption, pain point, requirement candidate hoặc conflict.", "Review output AI và khôi phục speaker attribution nếu bị mất.", "Chuyển conflict thành decision question có decision owner.", "Draft workshop agenda bắt đầu bằng decision, không chỉ topic.", "Publish synthesis pack có evidence label và unresolved assumption."],
+      deliverables: [["Discovery synthesis pack", "Theme, fact, contradiction, assumption và quote có source ID", "BA", "Mỗi finding có stakeholder attribution"], ["Decision backlog", "Câu hỏi cần business decision trước khi final requirement", "Product owner", "Mỗi decision có owner và target date"], ["Workshop agenda", "Validation question được ưu tiên theo risk", "BA", "Agenda tập trung vào conflict và decision gap"], ["Requirement candidates", "Requirement statement ban đầu có evidence và assumption", "BA", "Không candidate nào là final nếu chưa validation"]],
+      risks: [["False consensus", "AI có thể merge statement conflict thành narrative sạch", "Bắt buộc có speaker attribution và contradiction table"], ["Unsupported requirement", "AI có thể infer scope chưa ai approve", "Mark mọi inference là assumption cần validate"], ["Stakeholder politics", "Concern ít người nói có thể biến mất trong summary", "Track source role và decision authority"], ["Workshop drift", "Thảo luận có thể đi vào topic dễ", "Rank question theo risk và dependency"]],
+      metric: "Workshop tiếp theo resolve được conflict rủi ro cao nhất và có owner cho mọi open decision."
+    }
+  },
+  {
+    slug: "project-kickoff-scope-framing",
+    group: "Discovery and alignment",
+    domain: "Project initiation",
+    en: {
+      title: "Project Kickoff Scope Framing",
+      project: "A new internal platform project starts with a broad mandate: modernize the request intake experience. Executives expect quick progress, delivery teams need scope boundaries, and operations worries that existing manual exceptions will be ignored.",
+      challenge: "The BA must convert a vague mandate into a shared problem statement, measurable outcomes, scope in, scope out, assumptions, dependencies, and first-release decision criteria. AI can help draft structure, but the BA must stop it from inventing strategy.",
+      aiUse: ["Generate a scope framing canvas from raw kickoff notes.", "Identify missing stakeholders, dependencies, and decision rights.", "Draft measurable outcomes and anti-goals for discussion.", "Create a risk-ranked assumption backlog."],
+      inputs: ["Kickoff notes", "Executive goals", "Current pain points", "Known constraints", "Initial roadmap or budget window"],
+      workflow: ["Summarize the mandate into business outcomes and user outcomes.", "Ask AI to propose scope boundaries and mark assumptions.", "Review each boundary with product, operations, technology, and compliance owners.", "Translate fuzzy goals into measurable success indicators.", "Create a decision log for items that cannot be settled in kickoff.", "Publish a one-page scope framing artifact before solution design starts."],
+      deliverables: [["Scope framing canvas", "Problem statement, outcomes, scope in, scope out, assumptions, and constraints", "BA", "Stakeholders can tell what is not included"], ["Outcome metric table", "Business metric, baseline, target, owner, and measurement source", "Product owner", "At least one metric is measurable before build"], ["Assumption backlog", "Unvalidated assumptions ranked by risk and dependency", "BA", "High-risk assumptions have validation actions"], ["Decision log", "Open decisions, options, impacts, owner, and due date", "Sponsor", "No major scope item lacks owner"]],
+      risks: [["Mandate becomes solution", "The team may jump to features before agreeing on outcomes", "Separate problem, outcome, and solution sections"], ["Scope creep", "Everything related to intake may be pulled into release one", "Define scope out and anti-goals explicitly"], ["Metric theater", "Success measures may sound good but cannot be measured", "Name baseline and data source for every metric"], ["Hidden dependency", "Manual exception processes may block launch", "Use AI to ask dependency discovery questions"]],
+      metric: "The project kickoff produces a signed scope frame that delivery, product, and operations can use for prioritization."
+    },
+    vi: {
+      title: "Framing scope cho project kickoff",
+      project: "Một dự án internal platform bắt đầu với mandate rất rộng: hiện đại hóa trải nghiệm request intake. Executive muốn tiến độ nhanh, delivery team cần boundary rõ, operations lo các manual exception hiện tại bị bỏ qua.",
+      challenge: "BA phải chuyển mandate mơ hồ thành problem statement chung, outcome đo được, scope in, scope out, assumption, dependency và decision criteria cho release đầu. AI có thể giúp draft structure, nhưng BA phải ngăn AI tự bịa strategy.",
+      aiUse: ["Tạo scope framing canvas từ kickoff notes.", "Identify missing stakeholder, dependency và decision right.", "Draft measurable outcome và anti-goal để thảo luận.", "Tạo assumption backlog được rank theo risk."],
+      inputs: ["Kickoff notes", "Executive goals", "Pain point hiện tại", "Known constraints", "Roadmap hoặc budget window ban đầu"],
+      workflow: ["Summarize mandate thành business outcome và user outcome.", "Yêu cầu AI đề xuất scope boundary và mark assumption.", "Review từng boundary với owner product, operations, technology và compliance.", "Chuyển goal mơ hồ thành success indicator đo được.", "Tạo decision log cho item chưa thể chốt trong kickoff.", "Publish scope framing artifact một trang trước khi solution design bắt đầu."],
+      deliverables: [["Scope framing canvas", "Problem statement, outcome, scope in, scope out, assumption và constraint", "BA", "Stakeholder hiểu rõ phần không included"], ["Outcome metric table", "Business metric, baseline, target, owner và measurement source", "Product owner", "Ít nhất một metric đo được trước build"], ["Assumption backlog", "Assumption chưa validate được rank theo risk và dependency", "BA", "High-risk assumption có validation action"], ["Decision log", "Open decision, option, impact, owner và due date", "Sponsor", "Không major scope item nào thiếu owner"]],
+      risks: [["Mandate biến thành solution", "Team có thể nhảy vào feature trước khi thống nhất outcome", "Tách problem, outcome và solution section"], ["Scope creep", "Mọi thứ liên quan intake có thể bị kéo vào release one", "Định nghĩa scope out và anti-goal explicit"], ["Metric theater", "Success measure nghe hay nhưng không đo được", "Ghi baseline và data source cho từng metric"], ["Hidden dependency", "Manual exception process có thể block launch", "Dùng AI để sinh dependency discovery question"]],
+      metric: "Kickoff tạo được scope frame đã agreed để delivery, product và operations dùng cho prioritization."
+    }
+  },
+  {
+    slug: "current-state-process-mapping",
+    group: "Discovery and alignment",
+    domain: "Operations analysis",
+    en: {
+      title: "Current-State Process Mapping",
+      project: "An operations team wants to reduce request turnaround time, but the current process lives across emails, spreadsheets, ticket comments, and tribal knowledge. Different teams describe the same process differently.",
+      challenge: "The BA must build a current-state process that shows actors, systems, decisions, queues, exception paths, handoffs, and pain points. AI can transform text into draft diagrams, but the BA must validate operational reality with people doing the work.",
+      aiUse: ["Extract process steps from interviews and SOPs.", "Generate candidate flowcharts and swimlane diagrams.", "Identify missing decision rules and exception paths.", "Compare process descriptions across stakeholder groups."],
+      inputs: ["SOPs", "Interview notes", "Ticket samples", "Spreadsheet trackers", "System screenshots"],
+      workflow: ["Create source IDs for every process description.", "Ask AI to list steps, actors, systems, decisions, inputs, outputs, and exceptions.", "Generate a draft flowchart and swimlane view.", "Review the diagram with frontline users and mark corrections.", "Separate current-state facts from improvement ideas.", "Publish a validated process map with pain points and rule gaps."],
+      deliverables: [["Current-state process map", "Steps, decisions, actors, systems, queues, and exception paths", "BA", "Frontline users confirm it matches reality"], ["Rule gap register", "Missing thresholds, approval rules, routing rules, and ownership gaps", "Operations owner", "Every gap has owner and next action"], ["Pain point heatmap", "Delay, rework, handoff, and user-friction points", "BA", "Pain points are linked to process steps"], ["Future-state questions", "Questions needed before redesign", "Product owner", "Questions are prioritized by impact"]],
+      risks: [["Idealized process", "Stakeholders may describe policy rather than actual work", "Use ticket samples and frontline validation"], ["Exception blindness", "Rare cases can drive most effort", "Ask AI for exception categories and validate volume"], ["Diagram overconfidence", "A neat diagram may hide uncertainty", "Label unvalidated steps and assumptions"], ["Solution bias", "Improvement ideas may mix with current-state facts", "Separate current-state and future-state artifacts"]],
+      metric: "The validated process map identifies delay points and decision gaps that can be prioritized for redesign."
+    },
+    vi: {
+      title: "Mapping current-state process",
+      project: "Operations team muốn giảm turnaround time của request, nhưng current process nằm rải rác trong email, spreadsheet, ticket comment và tribal knowledge. Các team mô tả cùng một process theo cách khác nhau.",
+      challenge: "BA phải xây current-state process thể hiện actor, system, decision, queue, exception path, handoff và pain point. AI có thể biến text thành diagram draft, nhưng BA phải validate operational reality với người làm việc thật.",
+      aiUse: ["Extract process step từ interview và SOP.", "Generate candidate flowchart và swimlane diagram.", "Identify missing decision rule và exception path.", "So sánh mô tả process giữa các stakeholder group."],
+      inputs: ["SOP", "Interview notes", "Ticket sample", "Spreadsheet tracker", "System screenshot"],
+      workflow: ["Tạo source ID cho mọi process description.", "Yêu cầu AI list step, actor, system, decision, input, output và exception.", "Generate draft flowchart và swimlane view.", "Review diagram với frontline user và mark correction.", "Tách current-state fact khỏi improvement idea.", "Publish process map đã validate kèm pain point và rule gap."],
+      deliverables: [["Current-state process map", "Step, decision, actor, system, queue và exception path", "BA", "Frontline user confirm đúng reality"], ["Rule gap register", "Threshold, approval rule, routing rule và ownership gap còn thiếu", "Operations owner", "Mỗi gap có owner và next action"], ["Pain point heatmap", "Delay, rework, handoff và user-friction point", "BA", "Pain point link tới process step"], ["Future-state questions", "Question cần có trước redesign", "Product owner", "Question prioritized theo impact"]],
+      risks: [["Idealized process", "Stakeholder có thể mô tả policy thay vì actual work", "Dùng ticket sample và frontline validation"], ["Exception blindness", "Case hiếm có thể tạo nhiều effort nhất", "Yêu cầu AI đề xuất exception category và validate volume"], ["Diagram overconfidence", "Diagram gọn có thể che uncertainty", "Label step và assumption chưa validate"], ["Solution bias", "Improvement idea có thể lẫn với current-state fact", "Tách current-state và future-state artifact"]],
+      metric: "Process map đã validate chỉ ra delay point và decision gap để ưu tiên redesign."
+    }
+  },
+  {
+    slug: "legacy-modernization-gap-analysis",
+    group: "Discovery and alignment",
+    domain: "Legacy system modernization",
+    en: {
+      title: "Legacy Modernization Gap Analysis",
+      project: "A company replaces a legacy back-office system with a modern web platform. The legacy system has undocumented rules, batch jobs, manual overrides, and reports that business users still depend on.",
+      challenge: "The BA must discover functional gaps between current behavior and target capability without blindly cloning the legacy system. AI can mine documents and transcripts, but the BA must distinguish business-critical rules from obsolete workaround behavior.",
+      aiUse: ["Compare legacy feature lists with target epics.", "Extract hidden rules from SOPs and user interviews.", "Classify gaps as must-keep, redesign, retire, or investigate.", "Generate migration questions for business and technical owners."],
+      inputs: ["Legacy screen inventory", "SOPs and user guides", "Report list", "Target-state epics", "Interview transcripts"],
+      workflow: ["Create a capability map for current and target systems.", "Ask AI to identify missing rules, reports, roles, and integrations.", "Classify each gap by business impact and modernization intent.", "Validate must-keep rules with process owners.", "Mark obsolete workarounds separately from real requirements.", "Produce a gap decision board for scope and migration planning."],
+      deliverables: [["Gap analysis matrix", "Current behavior, target behavior, gap type, impact, and decision", "BA", "Every high-impact gap has disposition"], ["Rule inventory", "Hidden business rules and source evidence", "BA", "Rules have owner and validation status"], ["Report dependency list", "Reports, consumers, purpose, and replacement path", "Product owner", "Critical reports have migration plan"], ["Modernization decision board", "Keep, redesign, retire, investigate decisions", "Sponsor", "Decisions are approved before build"]],
+      risks: [["Legacy cloning", "The team may rebuild obsolete workarounds", "Classify each behavior by business value and current relevance"], ["Rule loss", "Undocumented rules may disappear during migration", "Extract rules from SOPs, tickets, and interviews"], ["Report surprise", "Users may rely on reports not listed in scope", "Inventory reports and consumers early"], ["Decision delay", "Unclear gaps can block sprint planning", "Use decision board with owner and due date"]],
+      metric: "Migration scope separates must-keep behavior from redesign and retire decisions with evidence."
+    },
+    vi: {
+      title: "Gap analysis cho legacy modernization",
+      project: "Công ty thay thế hệ thống back-office legacy bằng web platform hiện đại. Legacy system có rule không document, batch job, manual override và report mà business user vẫn phụ thuộc.",
+      challenge: "BA phải phát hiện functional gap giữa current behavior và target capability mà không clone legacy một cách mù quáng. AI có thể mine document và transcript, nhưng BA phải tách business-critical rule khỏi workaround đã lỗi thời.",
+      aiUse: ["So sánh legacy feature list với target epic.", "Extract hidden rule từ SOP và user interview.", "Classify gap thành must-keep, redesign, retire hoặc investigate.", "Generate migration question cho business và technical owner."],
+      inputs: ["Legacy screen inventory", "SOP và user guide", "Report list", "Target-state epic", "Interview transcript"],
+      workflow: ["Tạo capability map cho current và target system.", "Yêu cầu AI identify missing rule, report, role và integration.", "Classify từng gap theo business impact và modernization intent.", "Validate must-keep rule với process owner.", "Mark obsolete workaround riêng khỏi real requirement.", "Produce gap decision board cho scope và migration planning."],
+      deliverables: [["Gap analysis matrix", "Current behavior, target behavior, gap type, impact và decision", "BA", "Mọi high-impact gap có disposition"], ["Rule inventory", "Hidden business rule và source evidence", "BA", "Rule có owner và validation status"], ["Report dependency list", "Report, consumer, purpose và replacement path", "Product owner", "Critical report có migration plan"], ["Modernization decision board", "Keep, redesign, retire, investigate decision", "Sponsor", "Decision approved trước build"]],
+      risks: [["Legacy cloning", "Team có thể rebuild workaround đã obsolete", "Classify từng behavior theo business value và current relevance"], ["Rule loss", "Rule không document có thể biến mất khi migration", "Extract rule từ SOP, ticket và interview"], ["Report surprise", "User có thể phụ thuộc report không nằm trong scope", "Inventory report và consumer sớm"], ["Decision delay", "Gap chưa rõ có thể block sprint planning", "Dùng decision board có owner và due date"]],
+      metric: "Migration scope tách rõ behavior phải giữ, redesign và retire dựa trên evidence."
+    }
+  },
+  {
+    slug: "market-competitor-research-synthesis",
+    group: "Discovery and alignment",
+    domain: "Product strategy",
+    en: {
+      title: "Market and Competitor Research Synthesis",
+      project: "A SaaS team explores whether to add workflow automation features. Product leadership collects competitor pages, analyst reports, customer feedback, and sales notes, then asks the BA to synthesize implications for the roadmap.",
+      challenge: "The BA must turn broad market signals into product-relevant hypotheses, capability themes, customer segments, differentiation options, and validation questions. AI can summarize sources quickly, but it can also blur evidence quality and overstate weak market claims.",
+      aiUse: ["Summarize competitor capabilities by source.", "Cluster customer pains and market claims into capability themes.", "Separate observed evidence from analyst opinion and sales anecdote.", "Generate roadmap hypotheses and validation experiments."],
+      inputs: ["Competitor pages", "Analyst notes", "Win-loss notes", "Customer feedback", "Current product capability map"],
+      workflow: ["Create a source inventory with evidence type and freshness.", "Ask AI to summarize each source separately before synthesis.", "Cluster capabilities by user problem, not competitor feature name.", "Map themes to current product gaps and strategic options.", "Identify claims that require customer validation.", "Produce a decision memo for roadmap discussion."],
+      deliverables: [["Research synthesis memo", "Themes, evidence strength, sources, and product implications", "BA", "Each claim is tied to source type"], ["Capability comparison", "Competitor capability, user problem, current product support, and gap", "Product manager", "Comparison avoids feature-name copying"], ["Hypothesis backlog", "Roadmap hypotheses, evidence needed, and validation method", "Product owner", "High-value hypotheses have experiment plan"], ["Decision memo", "Options, trade-offs, risks, and recommendation", "Product leadership", "Recommendation separates evidence from assumption"]],
+      risks: [["Source overreach", "AI may treat marketing copy as proven capability", "Label source type and evidence strength"], ["Copycat roadmap", "Team may copy competitor features without user problem fit", "Map every theme to target segment and user outcome"], ["Confirmation bias", "Leadership may prefer evidence supporting an existing idea", "Include disconfirming signals and open risks"], ["Stale research", "Competitor pages and reports change quickly", "Record source date and freshness confidence"]],
+      metric: "Roadmap discussion uses validated hypotheses and evidence strength instead of generic competitor feature lists."
+    },
+    vi: {
+      title: "Synthesis market và competitor research",
+      project: "Một SaaS team cân nhắc thêm workflow automation feature. Product leadership gom competitor page, analyst report, customer feedback và sales note, rồi yêu cầu BA synthesize implication cho roadmap.",
+      challenge: "BA phải biến market signal rộng thành product-relevant hypothesis, capability theme, customer segment, differentiation option và validation question. AI summarize source nhanh, nhưng cũng có thể làm mờ evidence quality và overstate market claim yếu.",
+      aiUse: ["Summarize competitor capability theo source.", "Cluster customer pain và market claim thành capability theme.", "Tách observed evidence khỏi analyst opinion và sales anecdote.", "Generate roadmap hypothesis và validation experiment."],
+      inputs: ["Competitor page", "Analyst notes", "Win-loss notes", "Customer feedback", "Current product capability map"],
+      workflow: ["Tạo source inventory có evidence type và freshness.", "Yêu cầu AI summarize từng source riêng trước khi synthesis.", "Cluster capability theo user problem, không theo feature name của competitor.", "Map theme với current product gap và strategic option.", "Identify claim cần customer validation.", "Produce decision memo cho roadmap discussion."],
+      deliverables: [["Research synthesis memo", "Theme, evidence strength, source và product implication", "BA", "Mỗi claim gắn với source type"], ["Capability comparison", "Competitor capability, user problem, current product support và gap", "Product manager", "Comparison tránh copy feature name"], ["Hypothesis backlog", "Roadmap hypothesis, evidence needed và validation method", "Product owner", "High-value hypothesis có experiment plan"], ["Decision memo", "Option, trade-off, risk và recommendation", "Product leadership", "Recommendation tách evidence khỏi assumption"]],
+      risks: [["Source overreach", "AI có thể xem marketing copy là capability đã chứng minh", "Label source type và evidence strength"], ["Copycat roadmap", "Team có thể copy competitor feature không fit user problem", "Map mọi theme tới target segment và user outcome"], ["Confirmation bias", "Leadership có thể thích evidence ủng hộ idea sẵn có", "Include disconfirming signal và open risk"], ["Stale research", "Competitor page và report thay đổi nhanh", "Record source date và freshness confidence"]],
+      metric: "Roadmap discussion dùng validated hypothesis và evidence strength thay vì competitor feature list chung chung."
+    }
+  },
+  {
+    slug: "user-story-splitting-for-sprint",
+    group: "Requirements and backlog",
+    domain: "Agile delivery",
+    en: {
+      title: "User Story Splitting for Sprint Readiness",
+      project: "A delivery squad receives a large feature idea: allow business customers to manage billing contacts and notification preferences. The product owner wants it in the next sprint, but developers cannot estimate it because scope and rules are mixed.",
+      challenge: "The BA must split the feature into user-goal-based stories with clear boundaries, dependencies, acceptance criteria, negative cases, and release order. AI can propose story splits, but the BA must validate business value and technical dependency with the squad.",
+      aiUse: ["Generate split options by actor, workflow step, rule variation, and data boundary.", "Draft Given-When-Then acceptance criteria for each candidate story.", "Suggest dependency and release sequencing risks.", "Identify negative, permission, and audit scenarios."],
+      inputs: ["Feature idea", "Actor and permission model", "Current billing process", "Known business rules", "Technical dependency notes"],
+      workflow: ["Ask AI to propose multiple splitting strategies and explain trade-offs.", "Reject splits based only on UI components if they do not deliver user value.", "Map each story to one user goal and one testable outcome.", "Add acceptance criteria, negative cases, audit expectations, and permissions.", "Review sequence with developers and QA.", "Publish sprint-ready stories with dependencies and open decisions."],
+      deliverables: [["Story split map", "Candidate stories grouped by actor, goal, dependency, and release order", "BA", "Each story has independent user value"], ["Acceptance criteria set", "Given-When-Then criteria with positive, negative, and boundary cases", "BA and QA", "QA can design tests without guessing"], ["Dependency notes", "Technical, data, policy, and workflow dependencies", "Tech lead", "Dependencies are visible before sprint planning"], ["Open decision list", "Unresolved rules and owners", "Product owner", "No story enters sprint with hidden business rule gaps"]],
+      risks: [["Component slicing", "Stories may align to UI pieces instead of user outcomes", "Evaluate each split by user goal and release value"], ["Overloaded story", "One story may contain multiple actors or rule sets", "Limit each story to one actor goal and clear outcome"], ["Missing negative cases", "Happy-path stories may pass while real users fail", "Require permission, boundary, and error scenarios"], ["Unestimated dependency", "Hidden integration work may disrupt sprint", "Review dependencies with engineering before commitment"]],
+      metric: "Sprint planning receives stories that QA and developers can estimate, test, and release in meaningful increments."
+    },
+    vi: {
+      title: "Split user story cho sprint readiness",
+      project: "Một delivery squad nhận feature idea lớn: cho phép business customer quản lý billing contact và notification preference. Product owner muốn đưa vào sprint tới, nhưng developer không estimate được vì scope và rule đang trộn lẫn.",
+      challenge: "BA phải split feature thành story theo user goal, có boundary, dependency, acceptance criteria, negative case và release order rõ. AI có thể đề xuất story split, nhưng BA phải validate business value và technical dependency với squad.",
+      aiUse: ["Generate split option theo actor, workflow step, rule variation và data boundary.", "Draft Given-When-Then acceptance criteria cho từng candidate story.", "Suggest dependency và release sequencing risk.", "Identify negative, permission và audit scenario."],
+      inputs: ["Feature idea", "Actor và permission model", "Current billing process", "Known business rule", "Technical dependency notes"],
+      workflow: ["Yêu cầu AI đề xuất nhiều splitting strategy và giải thích trade-off.", "Reject split chỉ dựa vào UI component nếu không deliver user value.", "Map mỗi story với một user goal và một testable outcome.", "Thêm acceptance criteria, negative case, audit expectation và permission.", "Review sequence với developer và QA.", "Publish story sprint-ready có dependency và open decision."],
+      deliverables: [["Story split map", "Candidate story group theo actor, goal, dependency và release order", "BA", "Mỗi story có user value độc lập"], ["Acceptance criteria set", "Given-When-Then criteria có positive, negative và boundary case", "BA và QA", "QA design test không phải đoán"], ["Dependency notes", "Technical, data, policy và workflow dependency", "Tech lead", "Dependency visible trước sprint planning"], ["Open decision list", "Rule chưa resolve và owner", "Product owner", "Không story nào vào sprint với hidden business rule gap"]],
+      risks: [["Component slicing", "Story có thể align theo UI piece thay vì user outcome", "Evaluate từng split theo user goal và release value"], ["Overloaded story", "Một story có nhiều actor hoặc rule set", "Giới hạn mỗi story vào một actor goal và outcome rõ"], ["Missing negative cases", "Happy-path story pass nhưng user thật fail", "Yêu cầu permission, boundary và error scenario"], ["Unestimated dependency", "Integration work ẩn có thể disrupt sprint", "Review dependency với engineering trước commitment"]],
+      metric: "Sprint planning nhận story mà QA và developer có thể estimate, test và release theo increment có ý nghĩa."
+    }
+  },
+  {
+    slug: "acceptance-criteria-edge-cases",
+    group: "Requirements and backlog",
+    domain: "Requirements quality",
+    en: {
+      title: "Acceptance Criteria and Edge Case Expansion",
+      project: "A team is preparing a feature for account limit changes. The initial requirement says admins can update limits, but it does not define thresholds, approval rules, notification behavior, audit, or what happens when requests fail.",
+      challenge: "The BA must turn a simple requirement into testable acceptance criteria with positive, negative, boundary, permission, audit, and recovery scenarios. AI can expand edge cases, but the BA must keep only those supported by policy and stakeholder decisions.",
+      aiUse: ["Generate edge-case categories from a requirement draft.", "Draft Given-When-Then criteria across positive and negative paths.", "Identify missing business rules and policy dependencies.", "Create QA review questions and traceability links."],
+      inputs: ["Requirement draft", "Policy thresholds", "Admin role matrix", "Audit requirements", "System error behavior notes"],
+      workflow: ["Ask AI to list observable behaviors and missing rules.", "Generate criteria by scenario type: positive, negative, boundary, permission, audit, and failure recovery.", "Remove criteria that invent policy values or unsupported thresholds.", "Add source IDs and decision owners for every rule.", "Review with QA for testability and with product for business intent.", "Publish criteria with trace links to requirement and source evidence."],
+      deliverables: [["Acceptance criteria matrix", "Scenario, Given-When-Then, source, owner, and test type", "BA", "Every material rule is observable"], ["Edge case register", "Boundary, permission, error, audit, and concurrency cases", "QA", "Critical edge cases have test coverage"], ["Clarification questions", "Missing thresholds, roles, and exception rules", "Product owner", "Questions have owner and due date"], ["Trace links", "Requirement to source to criteria to test", "BA", "Criteria can be traced to evidence"]],
+      risks: [["Invented thresholds", "AI may create limits that policy never approved", "Require source IDs for every numeric rule"], ["Criteria overload", "Too many low-value cases can slow refinement", "Prioritize by risk, frequency, and failure cost"], ["Untestable wording", "Criteria may still use vague terms", "Use observable state, actor, input, and expected result"], ["Missing audit", "Admin changes may lack compliance evidence", "Add audit and permission criteria explicitly"]],
+      metric: "QA can convert acceptance criteria into test cases without asking for hidden business rules."
+    },
+    vi: {
+      title: "Mở rộng acceptance criteria và edge case",
+      project: "Team chuẩn bị feature thay đổi account limit. Requirement ban đầu nói admin có thể update limit, nhưng chưa định nghĩa threshold, approval rule, notification behavior, audit hoặc điều gì xảy ra khi request fail.",
+      challenge: "BA phải biến requirement đơn giản thành acceptance criteria test được với positive, negative, boundary, permission, audit và recovery scenario. AI có thể expand edge case, nhưng BA chỉ giữ phần được policy và stakeholder decision support.",
+      aiUse: ["Generate edge-case category từ requirement draft.", "Draft Given-When-Then criteria qua positive và negative path.", "Identify missing business rule và policy dependency.", "Tạo QA review question và traceability link."],
+      inputs: ["Requirement draft", "Policy threshold", "Admin role matrix", "Audit requirement", "System error behavior notes"],
+      workflow: ["Yêu cầu AI list observable behavior và missing rule.", "Generate criteria theo scenario type: positive, negative, boundary, permission, audit và failure recovery.", "Remove criteria tự invent policy value hoặc threshold unsupported.", "Thêm source ID và decision owner cho mọi rule.", "Review với QA về testability và product về business intent.", "Publish criteria có trace link tới requirement và source evidence."],
+      deliverables: [["Acceptance criteria matrix", "Scenario, Given-When-Then, source, owner và test type", "BA", "Mọi material rule observable"], ["Edge case register", "Boundary, permission, error, audit và concurrency case", "QA", "Critical edge case có test coverage"], ["Clarification questions", "Threshold, role và exception rule còn thiếu", "Product owner", "Question có owner và due date"], ["Trace links", "Requirement tới source tới criteria tới test", "BA", "Criteria trace được tới evidence"]],
+      risks: [["Invented thresholds", "AI có thể tạo limit policy chưa approve", "Bắt buộc source ID cho mọi numeric rule"], ["Criteria overload", "Quá nhiều low-value case làm chậm refinement", "Prioritize theo risk, frequency và failure cost"], ["Untestable wording", "Criteria vẫn có thể dùng từ mơ hồ", "Dùng observable state, actor, input và expected result"], ["Missing audit", "Admin change có thể thiếu compliance evidence", "Thêm audit và permission criteria explicit"]],
+      metric: "QA có thể chuyển acceptance criteria thành test case mà không phải hỏi hidden business rule."
+    }
+  },
+  {
+    slug: "brd-srs-drafting-review",
+    group: "Requirements and backlog",
+    domain: "Formal requirements documentation",
+    en: {
+      title: "BRD and SRS Drafting Review",
+      project: "A regulated project requires a BRD and SRS for a customer data consent module. Stakeholders expect formal documentation, but the source material is spread across policy notes, discovery workshops, legal comments, and architecture constraints.",
+      challenge: "The BA must use AI to speed drafting without allowing AI to invent decisions, policy, or system behavior. The document must keep evidence, versioning, assumptions, open decisions, and approval checkpoints visible.",
+      aiUse: ["Create a document outline from source inventory.", "Draft sections only from supplied evidence.", "Review for contradictions, missing rules, and unsupported claims.", "Generate executive summary, requirement tables, and decision log entries."],
+      inputs: ["Policy notes", "Workshop outputs", "Legal review comments", "Architecture constraints", "Existing consent flows"],
+      workflow: ["Build a source map and decision log before drafting.", "Ask AI to create an outline with evidence required per section.", "Draft one section at a time and require unsupported claims to be labeled.", "Run an AI critique pass for ambiguity, conflict, and missing NFRs.", "Validate decision-heavy sections with legal, product, and architecture owners.", "Publish the BRD or SRS with assumptions and open decisions intact."],
+      deliverables: [["BRD or SRS outline", "Sections, purpose, evidence source, and approval owner", "BA", "No section lacks evidence expectation"], ["Requirement table", "Requirement ID, statement, source, assumption, owner, priority, and testability", "BA", "Requirements are traceable"], ["Decision log", "Policy and scope decisions with options and impacts", "Product owner", "Open decisions are not hidden"], ["Review findings", "Ambiguity, conflict, NFR gap, unsupported claim, and fix", "BA and reviewers", "Findings are resolved or assigned"]],
+      risks: [["Polished invention", "AI can produce convincing text not supported by sources", "Draft from source IDs and label unsupported claims"], ["Approval confusion", "Readers may treat draft text as approved policy", "Use version status and approval checkpoints"], ["Document bloat", "AI may add generic sections that dilute key decisions", "Keep sections tied to project decisions and compliance needs"], ["Lost assumptions", "Cleaning the document can hide uncertainty", "Keep assumptions and open decisions visible"]],
+      metric: "The BRD or SRS is faster to draft but still traceable, reviewable, and approved through the correct owners."
+    },
+    vi: {
+      title: "Draft và review BRD/SRS",
+      project: "Một dự án regulated cần BRD và SRS cho customer data consent module. Stakeholder muốn formal documentation, nhưng source material nằm rải rác trong policy note, discovery workshop, legal comment và architecture constraint.",
+      challenge: "BA phải dùng AI để draft nhanh hơn nhưng không cho AI invent decision, policy hoặc system behavior. Document phải giữ evidence, versioning, assumption, open decision và approval checkpoint visible.",
+      aiUse: ["Tạo document outline từ source inventory.", "Draft section chỉ từ supplied evidence.", "Review contradiction, missing rule và unsupported claim.", "Generate executive summary, requirement table và decision log entry."],
+      inputs: ["Policy notes", "Workshop outputs", "Legal review comments", "Architecture constraints", "Existing consent flows"],
+      workflow: ["Build source map và decision log trước khi drafting.", "Yêu cầu AI tạo outline kèm evidence required cho từng section.", "Draft từng section và bắt unsupported claim được label.", "Chạy AI critique pass cho ambiguity, conflict và missing NFR.", "Validate section nhiều decision với legal, product và architecture owner.", "Publish BRD hoặc SRS với assumption và open decision còn nguyên."],
+      deliverables: [["BRD hoặc SRS outline", "Section, purpose, evidence source và approval owner", "BA", "Không section nào thiếu evidence expectation"], ["Requirement table", "Requirement ID, statement, source, assumption, owner, priority và testability", "BA", "Requirement traceable"], ["Decision log", "Policy và scope decision với option và impact", "Product owner", "Open decision không bị giấu"], ["Review findings", "Ambiguity, conflict, NFR gap, unsupported claim và fix", "BA và reviewer", "Finding được resolve hoặc assigned"]],
+      risks: [["Polished invention", "AI có thể tạo text thuyết phục nhưng không có source support", "Draft từ source ID và label unsupported claim"], ["Approval confusion", "Reader có thể xem draft text là approved policy", "Dùng version status và approval checkpoint"], ["Document bloat", "AI có thể thêm section generic làm loãng decision chính", "Giữ section gắn với project decision và compliance need"], ["Lost assumptions", "Làm document sạch quá có thể che uncertainty", "Giữ assumption và open decision visible"]],
+      metric: "BRD hoặc SRS được draft nhanh hơn nhưng vẫn traceable, reviewable và approved bởi đúng owner."
+    }
+  },
+  {
+    slug: "nfr-risk-workshop",
+    group: "Requirements and backlog",
+    domain: "Quality attributes",
+    en: {
+      title: "NFR and Risk Workshop Preparation",
+      project: "A team is building a self-service customer portal. Functional scope is clear, but performance, availability, security, accessibility, audit, and support expectations are not documented before architecture decisions.",
+      challenge: "The BA must prepare an NFR workshop that helps stakeholders make quality trade-offs explicit. AI can propose NFR categories and scenarios, but the BA must translate them into measurable thresholds and business risks.",
+      aiUse: ["Generate NFR elicitation questions by quality attribute.", "Create risk scenarios and user impact statements.", "Draft measurable candidate thresholds for discussion.", "Map NFRs to acceptance criteria and monitoring signals."],
+      inputs: ["Feature scope", "User segments", "Business criticality", "Compliance constraints", "Current system performance notes"],
+      workflow: ["Ask AI to propose NFR categories relevant to the product context.", "Convert generic attributes into risk scenarios and user harm.", "Prepare workshop questions that force trade-off decisions.", "Draft candidate thresholds and mark them as assumptions.", "Validate thresholds with business, architecture, security, and support owners.", "Publish NFR decisions with acceptance and monitoring implications."],
+      deliverables: [["NFR workshop pack", "Quality attributes, risk scenarios, and decision questions", "BA", "Stakeholders discuss trade-offs"], ["NFR requirement table", "Attribute, scenario, threshold, owner, and measurement method", "BA", "Every NFR is measurable"], ["Risk register", "Risk, impact, likelihood, mitigation, and owner", "Project manager", "High risks have controls"], ["Monitoring map", "NFR to operational signal and alert owner", "Operations owner", "Critical NFRs have monitoring path"]],
+      risks: [["Vague NFRs", "Fast, secure, and reliable are not testable", "Use measurable thresholds and scenarios"], ["Late quality decisions", "Architecture may be chosen before NFRs are known", "Run workshop before design lock"], ["Stakeholder avoidance", "Teams may avoid trade-offs because they are uncomfortable", "Frame NFRs as business risk decisions"], ["Monitoring gap", "A requirement may pass test but fail in production", "Map NFRs to operational metrics"]],
+      metric: "Quality attributes become measurable requirements and design inputs before architecture is committed."
+    },
+    vi: {
+      title: "Chuẩn bị workshop NFR và risk",
+      project: "Team đang xây customer portal self-service. Functional scope đã rõ, nhưng performance, availability, security, accessibility, audit và support expectation chưa được document trước architecture decision.",
+      challenge: "BA phải chuẩn bị NFR workshop giúp stakeholder làm rõ quality trade-off. AI có thể đề xuất NFR category và scenario, nhưng BA phải dịch chúng thành threshold đo được và business risk.",
+      aiUse: ["Generate NFR elicitation question theo quality attribute.", "Tạo risk scenario và user impact statement.", "Draft measurable candidate threshold để discussion.", "Map NFR với acceptance criteria và monitoring signal."],
+      inputs: ["Feature scope", "User segment", "Business criticality", "Compliance constraint", "Current system performance notes"],
+      workflow: ["Yêu cầu AI đề xuất NFR category relevant với product context.", "Chuyển generic attribute thành risk scenario và user harm.", "Chuẩn bị workshop question buộc quyết định trade-off.", "Draft candidate threshold và mark là assumption.", "Validate threshold với business, architecture, security và support owner.", "Publish NFR decision kèm acceptance và monitoring implication."],
+      deliverables: [["NFR workshop pack", "Quality attribute, risk scenario và decision question", "BA", "Stakeholder thảo luận trade-off"], ["NFR requirement table", "Attribute, scenario, threshold, owner và measurement method", "BA", "Mọi NFR đo được"], ["Risk register", "Risk, impact, likelihood, mitigation và owner", "Project manager", "High risk có control"], ["Monitoring map", "NFR tới operational signal và alert owner", "Operations owner", "Critical NFR có monitoring path"]],
+      risks: [["Vague NFRs", "Fast, secure và reliable không test được", "Dùng measurable threshold và scenario"], ["Late quality decisions", "Architecture có thể được chọn trước khi biết NFR", "Chạy workshop trước design lock"], ["Stakeholder avoidance", "Team có thể né trade-off vì khó chịu", "Frame NFR như business risk decision"], ["Monitoring gap", "Requirement pass test nhưng fail production", "Map NFR với operational metric"]],
+      metric: "Quality attribute trở thành requirement đo được và design input trước khi commit architecture."
+    }
+  },
+  {
+    slug: "traceability-matrix-for-release",
+    group: "Requirements and backlog",
+    domain: "Release governance",
+    en: {
+      title: "Traceability Matrix for Release Readiness",
+      project: "A release includes changes across onboarding, notifications, permissions, reporting, and support workflows. Stakeholders ask whether all approved requirements are covered by development and testing before go-live.",
+      challenge: "The BA must create a traceability matrix that links business goals, requirements, decisions, source evidence, stories, acceptance criteria, test cases, defects, and release sign-off. AI can reconcile artifacts, but the BA must verify links and unresolved gaps.",
+      aiUse: ["Extract requirement IDs and acceptance criteria from backlog items.", "Match requirements to source decisions and test cases.", "Identify orphan requirements, untested criteria, and unresolved defects.", "Create a release readiness summary for stakeholders."],
+      inputs: ["BRD or requirement list", "Decision log", "Jira or backlog export", "Test case list", "Defect list"],
+      workflow: ["Normalize IDs across requirements, stories, tests, and defects.", "Ask AI to propose trace links and confidence for each link.", "Manually verify high-risk or low-confidence links.", "Identify gaps: no story, no test, open defect, missing decision, or scope conflict.", "Review readiness with product, QA, engineering, and operations.", "Publish release traceability and sign-off exceptions."],
+      deliverables: [["Traceability matrix", "Goal, requirement, source, story, acceptance criteria, test, defect, and status", "BA", "Every approved requirement has coverage status"], ["Gap report", "Missing stories, missing tests, open defects, and unresolved decisions", "BA and QA", "Gaps are assigned or accepted"], ["Release readiness summary", "Coverage, exceptions, risks, and sign-off recommendation", "Product owner", "Stakeholders can make go-live decision"], ["Change impact notes", "Requirements affected by late changes or defects", "BA", "Impact is visible before release"]],
+      risks: [["False match", "AI may link artifacts with similar words but different meaning", "Verify material links manually"], ["Coverage illusion", "A requirement may have a test that does not cover the rule", "Check test intent, not only ID match"], ["Late exception hiding", "Open defects may be minimized in summaries", "Keep exceptions explicit with owner and decision"], ["Matrix overload", "Too much detail can hide release risks", "Add summary by risk and readiness status"]],
+      metric: "Release sign-off is based on visible coverage and accepted exceptions, not scattered artifact confidence."
+    },
+    vi: {
+      title: "Traceability matrix cho release readiness",
+      project: "Một release gồm thay đổi ở onboarding, notification, permission, reporting và support workflow. Stakeholder hỏi liệu mọi approved requirement đã được cover bởi development và testing trước go-live chưa.",
+      challenge: "BA phải tạo traceability matrix link business goal, requirement, decision, source evidence, story, acceptance criteria, test case, defect và release sign-off. AI có thể reconcile artifact, nhưng BA phải verify link và unresolved gap.",
+      aiUse: ["Extract requirement ID và acceptance criteria từ backlog item.", "Match requirement với source decision và test case.", "Identify orphan requirement, untested criteria và unresolved defect.", "Tạo release readiness summary cho stakeholder."],
+      inputs: ["BRD hoặc requirement list", "Decision log", "Jira hoặc backlog export", "Test case list", "Defect list"],
+      workflow: ["Normalize ID qua requirement, story, test và defect.", "Yêu cầu AI propose trace link và confidence cho từng link.", "Verify thủ công link high-risk hoặc low-confidence.", "Identify gap: no story, no test, open defect, missing decision hoặc scope conflict.", "Review readiness với product, QA, engineering và operations.", "Publish release traceability và sign-off exception."],
+      deliverables: [["Traceability matrix", "Goal, requirement, source, story, acceptance criteria, test, defect và status", "BA", "Mọi approved requirement có coverage status"], ["Gap report", "Missing story, missing test, open defect và unresolved decision", "BA và QA", "Gap được assigned hoặc accepted"], ["Release readiness summary", "Coverage, exception, risk và sign-off recommendation", "Product owner", "Stakeholder có thể ra go-live decision"], ["Change impact notes", "Requirement bị ảnh hưởng bởi late change hoặc defect", "BA", "Impact visible trước release"]],
+      risks: [["False match", "AI có thể link artifact có wording giống nhưng meaning khác", "Verify material link thủ công"], ["Coverage illusion", "Requirement có test nhưng test không cover rule", "Check test intent, không chỉ ID match"], ["Late exception hiding", "Open defect có thể bị minimize trong summary", "Giữ exception explicit có owner và decision"], ["Matrix overload", "Quá nhiều detail có thể che release risk", "Thêm summary theo risk và readiness status"]],
+      metric: "Release sign-off dựa trên coverage và accepted exception visible, không dựa vào artifact rời rạc."
+    }
+  },
+  {
+    slug: "defect-triage-root-cause",
+    group: "Delivery and QA",
+    domain: "Defect management",
+    en: {
+      title: "Defect Triage and Root-Cause Analysis",
+      project: "During UAT, users report many defects across search, export, role permissions, and notifications. Some are true defects, some are unclear requirements, and others are training or data issues.",
+      challenge: "The BA must help triage defects quickly without letting AI oversimplify root cause. The goal is to classify issues, connect them to requirements and tests, identify requirement gaps, and prepare decision options for product and delivery leads.",
+      aiUse: ["Cluster defect descriptions by symptom and affected workflow.", "Map defects to requirements, acceptance criteria, and test evidence.", "Separate bug, requirement gap, data issue, training issue, and change request.", "Draft triage notes and stakeholder questions."],
+      inputs: ["Defect export", "Requirement list", "Acceptance criteria", "Test evidence", "UAT notes"],
+      workflow: ["Normalize defect descriptions and remove duplicates carefully.", "Ask AI to classify issues with confidence and evidence.", "Review high-severity and ambiguous classifications manually.", "Map each defect to requirement, test, or missing requirement.", "Identify patterns that point to root cause.", "Prepare triage board updates with recommendation and owner."],
+      deliverables: [["Defect classification board", "Defect, category, severity, evidence, requirement link, and owner", "BA and QA", "Every UAT issue has triage status"], ["Root-cause summary", "Requirement gap, build defect, data issue, training issue, or change request patterns", "BA", "Patterns are supported by evidence"], ["Decision options", "Fix now, defer, clarify, train, or raise change request", "Product owner", "Each option has impact"], ["Requirement improvement list", "Missing or unclear requirements revealed by defects", "BA", "Backlog is updated with root cause"]],
+      risks: [["Misclassification", "AI may label requirement gaps as bugs", "Review by requirement evidence and test intent"], ["Duplicate confusion", "Similar defects may hide different causes", "Cluster but keep source details"], ["Severity inflation", "Users may report impact inconsistently", "Use business impact rubric"], ["Blame framing", "Root cause can become political", "Frame findings around process and evidence"]],
+      metric: "Triage decisions become faster while root causes remain evidence-based and actionable."
+    },
+    vi: {
+      title: "Triage defect và root-cause analysis",
+      project: "Trong UAT, user report nhiều defect ở search, export, role permission và notification. Một số là bug thật, một số là requirement chưa rõ, số khác là training hoặc data issue.",
+      challenge: "BA phải hỗ trợ triage defect nhanh nhưng không để AI oversimplify root cause. Mục tiêu là classify issue, connect với requirement và test, identify requirement gap và chuẩn bị decision option cho product và delivery lead.",
+      aiUse: ["Cluster defect description theo symptom và affected workflow.", "Map defect với requirement, acceptance criteria và test evidence.", "Tách bug, requirement gap, data issue, training issue và change request.", "Draft triage note và stakeholder question."],
+      inputs: ["Defect export", "Requirement list", "Acceptance criteria", "Test evidence", "UAT notes"],
+      workflow: ["Normalize defect description và remove duplicate cẩn thận.", "Yêu cầu AI classify issue có confidence và evidence.", "Review thủ công high-severity và ambiguous classification.", "Map từng defect tới requirement, test hoặc missing requirement.", "Identify pattern chỉ ra root cause.", "Chuẩn bị triage board update có recommendation và owner."],
+      deliverables: [["Defect classification board", "Defect, category, severity, evidence, requirement link và owner", "BA và QA", "Mọi UAT issue có triage status"], ["Root-cause summary", "Pattern requirement gap, build defect, data issue, training issue hoặc change request", "BA", "Pattern được evidence support"], ["Decision options", "Fix now, defer, clarify, train hoặc raise change request", "Product owner", "Mỗi option có impact"], ["Requirement improvement list", "Requirement thiếu hoặc chưa rõ lộ ra từ defect", "BA", "Backlog được update theo root cause"]],
+      risks: [["Misclassification", "AI có thể label requirement gap thành bug", "Review bằng requirement evidence và test intent"], ["Duplicate confusion", "Defect giống nhau có thể có cause khác", "Cluster nhưng giữ source detail"], ["Severity inflation", "User report impact không đồng nhất", "Dùng business impact rubric"], ["Blame framing", "Root cause có thể trở thành political", "Frame finding quanh process và evidence"]],
+      metric: "Triage decision nhanh hơn nhưng root cause vẫn evidence-based và actionable."
+    }
+  },
+  {
+    slug: "test-scenario-generation",
+    group: "Delivery and QA",
+    domain: "QA collaboration",
+    en: {
+      title: "Test Scenario Generation From Requirements",
+      project: "A QA team receives a set of user stories for a permissions-heavy admin module. Time is short, and testers need scenario coverage for roles, data states, negative paths, audit, and regression risk.",
+      challenge: "The BA must help QA generate scenarios without allowing AI to invent rules. The best output links each scenario to requirement evidence, acceptance criteria, and risk priority so QA can focus on coverage that matters.",
+      aiUse: ["Generate scenario categories from acceptance criteria.", "Create positive, negative, boundary, permission, audit, and regression cases.", "Identify missing criteria before QA starts execution.", "Prioritize scenarios by risk and business impact."],
+      inputs: ["User stories", "Acceptance criteria", "Role matrix", "Data state definitions", "Prior defect history"],
+      workflow: ["Ask AI to extract rules from requirements and list missing rules separately.", "Generate test scenarios with source requirement IDs.", "Label each scenario by type and risk level.", "Review unsupported scenarios with BA and QA before adding them.", "Map scenarios to test data needs and expected results.", "Update acceptance criteria if scenario generation reveals gaps."],
+      deliverables: [["Scenario coverage matrix", "Requirement, scenario, type, risk, test data, and expected result", "QA and BA", "Every high-risk rule has scenario coverage"], ["Missing criteria list", "Rules needed before testing can be complete", "BA", "Gaps become clarification questions"], ["Test data plan", "Data states and roles needed for execution", "QA", "Critical data is available before test run"], ["Regression focus list", "Areas likely affected by change", "Tech lead and QA", "Regression scope is risk-based"]],
+      risks: [["Invented tests", "AI may create scenarios for rules that do not exist", "Require source IDs and assumption labels"], ["Coverage overload", "Too many scenarios can distract from critical risk", "Rank by business impact and failure cost"], ["Missing data setup", "Good scenarios fail because test data is unavailable", "Add test data requirements early"], ["BA-QA disconnect", "QA may test behavior BA did not intend", "Review scenario matrix together"]],
+      metric: "QA receives scenario coverage that is traceable, prioritized, and aligned to business rules."
+    },
+    vi: {
+      title: "Sinh test scenario từ requirements",
+      project: "QA team nhận bộ user story cho admin module nặng về permission. Thời gian ngắn, tester cần scenario coverage cho role, data state, negative path, audit và regression risk.",
+      challenge: "BA phải hỗ trợ QA generate scenario mà không để AI invent rule. Output tốt nhất link từng scenario tới requirement evidence, acceptance criteria và risk priority để QA focus coverage quan trọng.",
+      aiUse: ["Generate scenario category từ acceptance criteria.", "Tạo positive, negative, boundary, permission, audit và regression case.", "Identify missing criteria trước khi QA execute.", "Prioritize scenario theo risk và business impact."],
+      inputs: ["User stories", "Acceptance criteria", "Role matrix", "Data state definitions", "Prior defect history"],
+      workflow: ["Yêu cầu AI extract rule từ requirement và list missing rule riêng.", "Generate test scenario có source requirement ID.", "Label từng scenario theo type và risk level.", "Review unsupported scenario với BA và QA trước khi thêm.", "Map scenario với test data need và expected result.", "Update acceptance criteria nếu scenario generation làm lộ gap."],
+      deliverables: [["Scenario coverage matrix", "Requirement, scenario, type, risk, test data và expected result", "QA và BA", "Mọi high-risk rule có scenario coverage"], ["Missing criteria list", "Rule cần có trước khi testing complete", "BA", "Gap trở thành clarification question"], ["Test data plan", "Data state và role cần cho execution", "QA", "Critical data available trước test run"], ["Regression focus list", "Area có khả năng affected bởi change", "Tech lead và QA", "Regression scope risk-based"]],
+      risks: [["Invented tests", "AI có thể tạo scenario cho rule không tồn tại", "Bắt buộc source ID và assumption label"], ["Coverage overload", "Quá nhiều scenario làm loãng critical risk", "Rank theo business impact và failure cost"], ["Missing data setup", "Scenario tốt fail vì test data chưa có", "Thêm test data requirement sớm"], ["BA-QA disconnect", "QA có thể test behavior BA không intended", "Review scenario matrix cùng nhau"]],
+      metric: "QA nhận scenario coverage traceable, prioritized và aligned với business rule."
+    }
+  },
+  {
+    slug: "change-impact-analysis",
+    group: "Delivery and QA",
+    domain: "Change control",
+    en: {
+      title: "Change Impact Analysis",
+      project: "Mid-sprint, compliance changes a rule for document retention. The change affects onboarding forms, storage, notifications, audit logs, reporting, and support scripts. The team needs impact clarity before accepting the change.",
+      challenge: "The BA must analyze impact across requirements, processes, systems, data, tests, users, and release scope. AI can search for related artifacts, but the BA must confirm dependency meaning and decision impact.",
+      aiUse: ["Search requirement and process artifacts for affected concepts.", "Draft an impact matrix across business, data, system, test, and operations areas.", "Generate questions for compliance, architecture, QA, and support.", "Summarize options for accept, defer, or split release."],
+      inputs: ["Change request", "Requirement repository", "Process diagrams", "Data model notes", "Test cases and release plan"],
+      workflow: ["Restate the change and identify exact policy rule difference.", "Ask AI to find potentially affected artifacts and rank confidence.", "Verify high-impact links manually with artifact owners.", "Map impact to scope, data, integration, test, training, and operations.", "Prepare options with timeline, risk, and dependency implications.", "Record the decision and update affected artifacts."],
+      deliverables: [["Impact matrix", "Artifact, affected area, change needed, risk, owner, and effort signal", "BA", "Impacts cover business and technical areas"], ["Decision options", "Accept now, defer, split, or reject with trade-offs", "Product owner", "Options include risk and release impact"], ["Artifact update list", "Requirements, tests, diagrams, scripts, and reports to update", "BA and QA", "No affected artifact lacks owner"], ["Stakeholder questions", "Questions for compliance, architecture, support, and QA", "BA", "Open questions are decision-focused"]],
+      risks: [["Keyword-only impact", "AI may miss semantic dependencies or flag irrelevant matches", "Verify meaning, not only word match"], ["Hidden operational impact", "Support and training changes may be forgotten", "Include operations and customer communication"], ["Decision pressure", "Team may accept change without release trade-off", "Present options and consequences"], ["Traceability drift", "Changed artifacts may not stay aligned", "Update traceability matrix after decision"]],
+      metric: "The team accepts, defers, or splits the change with visible impact and artifact owners."
+    },
+    vi: {
+      title: "Change impact analysis",
+      project: "Giữa sprint, compliance thay đổi rule về document retention. Change ảnh hưởng onboarding form, storage, notification, audit log, reporting và support script. Team cần clarity về impact trước khi accept change.",
+      challenge: "BA phải phân tích impact qua requirement, process, system, data, test, user và release scope. AI có thể search artifact liên quan, nhưng BA phải confirm dependency meaning và decision impact.",
+      aiUse: ["Search requirement và process artifact cho concept affected.", "Draft impact matrix qua business, data, system, test và operations area.", "Generate question cho compliance, architecture, QA và support.", "Summarize option accept, defer hoặc split release."],
+      inputs: ["Change request", "Requirement repository", "Process diagrams", "Data model notes", "Test cases và release plan"],
+      workflow: ["Restate change và identify policy rule difference chính xác.", "Yêu cầu AI tìm artifact có thể affected và rank confidence.", "Verify thủ công high-impact link với artifact owner.", "Map impact tới scope, data, integration, test, training và operations.", "Prepare option có timeline, risk và dependency implication.", "Record decision và update affected artifact."],
+      deliverables: [["Impact matrix", "Artifact, affected area, change needed, risk, owner và effort signal", "BA", "Impact cover business và technical area"], ["Decision options", "Accept now, defer, split hoặc reject với trade-off", "Product owner", "Option gồm risk và release impact"], ["Artifact update list", "Requirement, test, diagram, script và report cần update", "BA và QA", "Không affected artifact nào thiếu owner"], ["Stakeholder questions", "Question cho compliance, architecture, support và QA", "BA", "Open question tập trung decision"]],
+      risks: [["Keyword-only impact", "AI có thể miss semantic dependency hoặc flag match irrelevant", "Verify meaning, không chỉ word match"], ["Hidden operational impact", "Support và training change có thể bị quên", "Include operations và customer communication"], ["Decision pressure", "Team có thể accept change mà chưa trade-off release", "Present option và consequence"], ["Traceability drift", "Artifact changed có thể lệch nhau", "Update traceability matrix sau decision"]],
+      metric: "Team accept, defer hoặc split change với impact và artifact owner visible."
+    }
+  },
+  {
+    slug: "release-readiness-check",
+    group: "Delivery and QA",
+    domain: "Release management",
+    en: {
+      title: "Release Readiness Check",
+      project: "A customer-facing release is close to go-live. Development is mostly complete, but there are open defects, unresolved support process questions, incomplete training notes, and uncertainty about rollback communication.",
+      challenge: "The BA must help create a release readiness view that integrates requirements, test results, defects, operational readiness, training, communication, rollback, and business sign-off. AI can summarize status but cannot make the go-live decision.",
+      aiUse: ["Summarize readiness evidence from multiple project artifacts.", "Identify missing operational, training, and support readiness items.", "Create a go-live risk summary and exception list.", "Draft stakeholder-specific sign-off questions."],
+      inputs: ["Release scope", "Traceability matrix", "Test summary", "Defect list", "Operations and support readiness notes"],
+      workflow: ["Collect readiness evidence from delivery, QA, support, operations, and product.", "Ask AI to organize evidence by readiness dimension.", "Identify exceptions and classify by go-live risk.", "Verify defect and test status with QA and engineering.", "Create decision options: go, go with exceptions, delay, or partial rollout.", "Publish a readiness brief for the sign-off meeting."],
+      deliverables: [["Readiness dashboard", "Scope, testing, defects, operations, training, communication, and rollback status", "BA", "Every dimension has status and owner"], ["Exception register", "Open issue, risk, decision needed, owner, and due date", "Project manager", "No exception lacks decision path"], ["Go-live decision brief", "Options, risks, mitigations, and recommendation", "Product owner", "Decision makers can compare trade-offs"], ["Support readiness checklist", "Known issues, scripts, escalation, and customer communication", "Support lead", "Support can handle launch questions"]],
+      risks: [["Green status bias", "Teams may report optimistic status without evidence", "Ask for source evidence and owner confirmation"], ["Operational blind spot", "Training and support may be incomplete even when code is ready", "Include non-technical readiness dimensions"], ["Exception ambiguity", "Open issues may lack go-live decision", "Assign decision owner and accepted-risk status"], ["Rollback confusion", "Users may be affected if rollback plan is unclear", "Include rollback and communication requirements"]],
+      metric: "The go-live meeting uses a shared evidence-based readiness brief instead of fragmented status updates."
+    },
+    vi: {
+      title: "Kiểm tra release readiness",
+      project: "Một customer-facing release gần go-live. Development gần xong, nhưng vẫn có open defect, support process question chưa resolve, training note chưa đủ và uncertainty về rollback communication.",
+      challenge: "BA phải giúp tạo release readiness view tích hợp requirement, test result, defect, operational readiness, training, communication, rollback và business sign-off. AI có thể summarize status nhưng không được ra go-live decision.",
+      aiUse: ["Summarize readiness evidence từ nhiều project artifact.", "Identify missing operational, training và support readiness item.", "Tạo go-live risk summary và exception list.", "Draft sign-off question riêng cho stakeholder."],
+      inputs: ["Release scope", "Traceability matrix", "Test summary", "Defect list", "Operations và support readiness notes"],
+      workflow: ["Collect readiness evidence từ delivery, QA, support, operations và product.", "Yêu cầu AI organize evidence theo readiness dimension.", "Identify exception và classify theo go-live risk.", "Verify defect và test status với QA và engineering.", "Tạo decision option: go, go with exceptions, delay hoặc partial rollout.", "Publish readiness brief cho sign-off meeting."],
+      deliverables: [["Readiness dashboard", "Scope, testing, defects, operations, training, communication và rollback status", "BA", "Mỗi dimension có status và owner"], ["Exception register", "Open issue, risk, decision needed, owner và due date", "Project manager", "Không exception nào thiếu decision path"], ["Go-live decision brief", "Option, risk, mitigation và recommendation", "Product owner", "Decision maker so sánh được trade-off"], ["Support readiness checklist", "Known issue, script, escalation và customer communication", "Support lead", "Support xử lý được launch question"]],
+      risks: [["Green status bias", "Team có thể report optimistic status không có evidence", "Yêu cầu source evidence và owner confirmation"], ["Operational blind spot", "Training và support có thể chưa xong dù code ready", "Include non-technical readiness dimension"], ["Exception ambiguity", "Open issue có thể thiếu go-live decision", "Assign decision owner và accepted-risk status"], ["Rollback confusion", "User có thể bị ảnh hưởng nếu rollback plan mơ hồ", "Include rollback và communication requirement"]],
+      metric: "Go-live meeting dùng readiness brief chung dựa trên evidence thay vì status update rời rạc."
+    }
+  },
+  {
+    slug: "production-incident-requirement-feedback",
+    group: "Delivery and QA",
+    domain: "Continuous improvement",
+    en: {
+      title: "Production Incident to Requirement Feedback",
+      project: "After launch, customers report that notification preferences behave unexpectedly when account ownership changes. Support tickets show confusion, engineering sees no defect in code, and product suspects the requirement missed an ownership scenario.",
+      challenge: "The BA must convert production signals into requirement learning. AI can summarize incidents and tickets, but the BA must separate defect, requirement gap, UX confusion, data issue, and training need before changing backlog scope.",
+      aiUse: ["Cluster incidents by user journey and symptom.", "Map incidents to requirements, criteria, and release decisions.", "Identify missing scenarios and ambiguous wording.", "Draft backlog updates and stakeholder validation questions."],
+      inputs: ["Incident report", "Support tickets", "Release requirements", "Audit logs", "User journey notes"],
+      workflow: ["Collect incident evidence and preserve customer examples.", "Ask AI to cluster symptoms and map them to original requirements.", "Review whether behavior matches requirement, test, and user expectation.", "Classify each finding as defect, requirement gap, UX confusion, data issue, or training need.", "Draft backlog changes with impact and evidence.", "Update lessons learned and prevention checklist."],
+      deliverables: [["Incident synthesis", "Symptoms, affected users, evidence, and journey step", "BA", "Patterns are source-backed"], ["Requirement gap analysis", "Original requirement, missing scenario, impact, and proposed update", "BA", "Gaps are actionable"], ["Backlog update pack", "Story, acceptance criteria, test notes, and priority", "Product owner", "Updates include evidence and severity"], ["Prevention checklist", "Questions to ask in future refinement", "BA practice", "Learning feeds future analysis"]],
+      risks: [["Ticket summary bias", "AI may flatten customer-specific context", "Keep representative examples and source IDs"], ["Wrong category", "Requirement gap may be treated as code defect", "Compare actual behavior to approved requirement"], ["Overreaction", "A rare issue may trigger too much scope", "Use frequency, severity, and user impact"], ["Lost learning", "Fix may happen without improving BA process", "Add prevention questions to refinement checklist"]],
+      metric: "Production incidents become evidence-backed backlog improvements and better future requirement questions."
+    },
+    vi: {
+      title: "Từ production incident đến feedback requirement",
+      project: "Sau launch, customer report notification preference hoạt động bất ngờ khi account ownership thay đổi. Support ticket cho thấy confusion, engineering thấy code không defect, product nghi requirement miss ownership scenario.",
+      challenge: "BA phải chuyển production signal thành requirement learning. AI có thể summarize incident và ticket, nhưng BA phải tách defect, requirement gap, UX confusion, data issue và training need trước khi đổi backlog scope.",
+      aiUse: ["Cluster incident theo user journey và symptom.", "Map incident với requirement, criteria và release decision.", "Identify missing scenario và ambiguous wording.", "Draft backlog update và stakeholder validation question."],
+      inputs: ["Incident report", "Support tickets", "Release requirements", "Audit logs", "User journey notes"],
+      workflow: ["Collect incident evidence và giữ customer example.", "Yêu cầu AI cluster symptom và map tới original requirement.", "Review behavior có match requirement, test và user expectation không.", "Classify từng finding là defect, requirement gap, UX confusion, data issue hoặc training need.", "Draft backlog change có impact và evidence.", "Update lessons learned và prevention checklist."],
+      deliverables: [["Incident synthesis", "Symptom, affected user, evidence và journey step", "BA", "Pattern source-backed"], ["Requirement gap analysis", "Original requirement, missing scenario, impact và proposed update", "BA", "Gap actionable"], ["Backlog update pack", "Story, acceptance criteria, test note và priority", "Product owner", "Update gồm evidence và severity"], ["Prevention checklist", "Question cần hỏi trong refinement tương lai", "BA practice", "Learning đi vào future analysis"]],
+      risks: [["Ticket summary bias", "AI có thể flatten customer-specific context", "Giữ representative example và source ID"], ["Wrong category", "Requirement gap có thể bị xem là code defect", "So sánh actual behavior với approved requirement"], ["Overreaction", "Issue hiếm có thể kéo scope quá lớn", "Dùng frequency, severity và user impact"], ["Lost learning", "Fix xảy ra nhưng BA process không cải thiện", "Thêm prevention question vào refinement checklist"]],
+      metric: "Production incident trở thành backlog improvement có evidence và câu hỏi requirement tốt hơn trong tương lai."
+    }
+  },
+  {
+    slug: "rag-policy-assistant-requirements",
+    group: "AI-enabled product use cases",
+    domain: "Knowledge assistant",
+    en: {
+      title: "RAG Policy Assistant Requirements",
+      project: "HR wants an internal assistant that answers employee policy questions using approved documents. Users include employees, managers, and HR advisors, each with different access levels and escalation paths.",
+      challenge: "The BA must specify a RAG assistant beyond chatbot UX: source authority, freshness, permissions, citation behavior, conflict handling, fallback, evaluation, and operational ownership.",
+      aiUse: ["Inventory authoritative knowledge sources and metadata needs.", "Draft retrieval and answer requirements.", "Generate fallback scenarios for weak or conflicting evidence.", "Create evaluation cases for retrieval quality and answer grounding."],
+      inputs: ["Policy repository", "Legacy handbook", "Role access rules", "HR escalation process", "Common employee questions"],
+      workflow: ["Define approved sources, owners, effective dates, and access rules.", "Ask AI to draft a knowledge contract and identify source conflicts.", "Specify answer behavior: citation, confidence, refusal, and escalation.", "Create evaluation questions for common, edge, and conflict cases.", "Review privacy and access controls with security and HR.", "Publish requirements with retrieval metrics and monitoring events."],
+      deliverables: [["Knowledge contract", "Sources, owner, authority, freshness, metadata, and access", "BA and HR owner", "Every source has authority status"], ["RAG requirement set", "Retrieval, citation, fallback, conflict, and permission requirements", "BA", "Requirements cover retrieval and generation"], ["Evaluation case set", "Question, expected source, expected answer behavior, and risk", "QA and BA", "Evaluation covers common and edge cases"], ["Operational playbook", "Fallback, escalation, correction capture, and monitoring", "HR operations", "Assistant has owner after launch"]],
+      risks: [["Stale policy", "Assistant may cite old documents", "Require effective date metadata and source priority"], ["Access leakage", "Manager-only content may appear to employees", "Permission-aware retrieval and security tests"], ["Citation theater", "Answer may cite a source that does not support the claim", "Evaluate claim-source support"], ["No fallback", "Assistant may invent when evidence is weak", "Require refusal and escalation behavior"]],
+      metric: "The assistant answers only from trusted sources, cites evidence, respects access, and escalates safely."
+    },
+    vi: {
+      title: "Requirement cho RAG policy assistant",
+      project: "HR muốn internal assistant trả lời câu hỏi policy của employee bằng approved documents. User gồm employee, manager và HR advisor, mỗi nhóm có access level và escalation path khác nhau.",
+      challenge: "BA phải đặc tả RAG assistant vượt khỏi chatbot UX: source authority, freshness, permission, citation behavior, conflict handling, fallback, evaluation và operational ownership.",
+      aiUse: ["Inventory authoritative knowledge source và metadata need.", "Draft retrieval và answer requirement.", "Generate fallback scenario cho evidence yếu hoặc conflict.", "Tạo evaluation case cho retrieval quality và answer grounding."],
+      inputs: ["Policy repository", "Legacy handbook", "Role access rules", "HR escalation process", "Common employee questions"],
+      workflow: ["Define approved source, owner, effective date và access rule.", "Yêu cầu AI draft knowledge contract và identify source conflict.", "Specify answer behavior: citation, confidence, refusal và escalation.", "Tạo evaluation question cho common, edge và conflict case.", "Review privacy và access control với security và HR.", "Publish requirement có retrieval metric và monitoring event."],
+      deliverables: [["Knowledge contract", "Source, owner, authority, freshness, metadata và access", "BA và HR owner", "Mọi source có authority status"], ["RAG requirement set", "Retrieval, citation, fallback, conflict và permission requirement", "BA", "Requirement cover retrieval và generation"], ["Evaluation case set", "Question, expected source, expected answer behavior và risk", "QA và BA", "Evaluation cover common và edge case"], ["Operational playbook", "Fallback, escalation, correction capture và monitoring", "HR operations", "Assistant có owner sau launch"]],
+      risks: [["Stale policy", "Assistant có thể cite document cũ", "Yêu cầu effective date metadata và source priority"], ["Access leakage", "Content manager-only có thể hiện cho employee", "Permission-aware retrieval và security test"], ["Citation theater", "Answer có thể cite source không support claim", "Evaluate claim-source support"], ["No fallback", "Assistant có thể invent khi evidence yếu", "Yêu cầu refusal và escalation behavior"]],
+      metric: "Assistant chỉ trả lời từ trusted source, cite evidence, respect access và escalate an toàn."
+    }
+  },
+  {
+    slug: "ai-ticket-triage-specification",
+    group: "AI-enabled product use cases",
+    domain: "Support automation",
+    en: {
+      title: "AI Ticket Triage Specification",
+      project: "A support organization wants AI to classify incoming tickets by category, urgency, product area, and routing queue. Incorrect routing increases SLA breaches and customer frustration.",
+      challenge: "The BA must specify probabilistic triage behavior, confidence thresholds, human review, correction capture, training data constraints, metrics, and operational monitoring. The feature is not just a classifier; it is a support workflow change.",
+      aiUse: ["Draft label taxonomy and routing requirements.", "Generate confidence and human review scenarios.", "Create evaluation cases for category precision and high-risk routing.", "Identify operational metrics and correction feedback loop."],
+      inputs: ["Historical ticket data", "Support category taxonomy", "SLA rules", "Queue ownership", "Escalation policy"],
+      workflow: ["Define allowed labels, queue owners, and routing consequences.", "Ask AI to identify ambiguous categories and required training examples.", "Specify model output contract and confidence threshold behavior.", "Design human review queue for low-confidence or high-impact tickets.", "Create evaluation set and acceptance thresholds.", "Define correction capture and monitoring metrics after launch."],
+      deliverables: [["Triage taxonomy", "Category, definition, examples, owner, and SLA impact", "Support operations", "Labels are mutually understandable"], ["AI output contract", "Required fields, confidence, explanation, and fallback", "BA", "Output can drive workflow safely"], ["Evaluation plan", "Test cases, expected labels, precision target, and high-risk focus", "QA and data team", "Metrics reflect business risk"], ["Operational workflow", "Human review, correction capture, and monitoring events", "Support lead", "Corrections improve future quality"]],
+      risks: [["Ambiguous taxonomy", "Model cannot classify cleanly if humans disagree", "Define labels with examples and owner decisions"], ["Low-confidence automation", "Tickets may route incorrectly without review", "Use confidence threshold and human queue"], ["Feedback loss", "Corrections may not be captured", "Specify reason codes and correction events"], ["Metric mismatch", "Overall accuracy may hide high-risk category errors", "Measure precision for priority categories"]],
+      metric: "Ticket routing improves SLA performance while low-confidence and high-risk cases receive human review."
+    },
+    vi: {
+      title: "Đặc tả AI ticket triage",
+      project: "Support organization muốn AI classify incoming ticket theo category, urgency, product area và routing queue. Routing sai làm tăng SLA breach và customer frustration.",
+      challenge: "BA phải đặc tả probabilistic triage behavior, confidence threshold, human review, correction capture, training data constraint, metric và operational monitoring. Feature này không chỉ là classifier; nó là thay đổi support workflow.",
+      aiUse: ["Draft label taxonomy và routing requirement.", "Generate confidence và human review scenario.", "Tạo evaluation case cho category precision và high-risk routing.", "Identify operational metric và correction feedback loop."],
+      inputs: ["Historical ticket data", "Support category taxonomy", "SLA rules", "Queue ownership", "Escalation policy"],
+      workflow: ["Define allowed label, queue owner và routing consequence.", "Yêu cầu AI identify ambiguous category và training example cần có.", "Specify model output contract và confidence threshold behavior.", "Design human review queue cho low-confidence hoặc high-impact ticket.", "Tạo evaluation set và acceptance threshold.", "Define correction capture và monitoring metric sau launch."],
+      deliverables: [["Triage taxonomy", "Category, definition, example, owner và SLA impact", "Support operations", "Label mutually understandable"], ["AI output contract", "Required field, confidence, explanation và fallback", "BA", "Output drive workflow an toàn"], ["Evaluation plan", "Test case, expected label, precision target và high-risk focus", "QA và data team", "Metric reflect business risk"], ["Operational workflow", "Human review, correction capture và monitoring event", "Support lead", "Correction cải thiện future quality"]],
+      risks: [["Ambiguous taxonomy", "Model không classify sạch nếu human chưa thống nhất", "Define label có example và owner decision"], ["Low-confidence automation", "Ticket route sai nếu không review", "Dùng confidence threshold và human queue"], ["Feedback loss", "Correction có thể không được capture", "Specify reason code và correction event"], ["Metric mismatch", "Overall accuracy che lỗi category high-risk", "Measure precision cho priority category"]],
+      metric: "Ticket routing cải thiện SLA trong khi case low-confidence và high-risk được human review."
+    }
+  },
+  {
+    slug: "ai-document-ocr-intake",
+    group: "AI-enabled product use cases",
+    domain: "Document automation",
+    en: {
+      title: "AI Document OCR Intake",
+      project: "An onboarding process requires customers to upload identity and compliance documents. Operations spends time reading PDFs, extracting fields, detecting missing pages, and asking customers to resubmit unclear documents.",
+      challenge: "The BA must specify AI-assisted document extraction and validation while protecting against OCR errors, missing evidence, privacy issues, and incorrect automated rejection. Human review and fallback are essential.",
+      aiUse: ["Identify document types, required fields, and validation rules.", "Draft extraction output schema and confidence behavior.", "Generate exception scenarios for missing, unreadable, or inconsistent documents.", "Create human review and audit requirements."],
+      inputs: ["Document type list", "Field validation rules", "Compliance policy", "Sample documents", "Operations exception logs"],
+      workflow: ["Inventory document types and required fields with source policy.", "Ask AI to draft extraction schema and validation scenarios.", "Define confidence thresholds per field and per document.", "Specify review triggers for low confidence, mismatch, missing page, or regulated decision.", "Design customer messaging for resubmission without exposing sensitive logic.", "Create evaluation set with real-world document variation."],
+      deliverables: [["Extraction schema", "Document type, field, format, confidence, and source rule", "BA and data team", "Schema covers required fields"], ["Validation rule matrix", "Rule, evidence, pass condition, failure condition, and review trigger", "Compliance owner", "Rules are source-backed"], ["Human review workflow", "Trigger, reviewer action, SLA, audit, and correction capture", "Operations", "Review queue is operational"], ["Evaluation set", "Document samples, expected extraction, and error categories", "QA and data team", "Test cases cover messy documents"]],
+      risks: [["OCR error", "Incorrect field extraction can create wrong decisions", "Use field confidence and human review for material fields"], ["Automated rejection harm", "Customers may be rejected because AI misread a document", "Require fallback and manual review before high-impact rejection"], ["Privacy exposure", "Documents contain sensitive data", "Specify retention, access, masking, and audit"], ["Unrealistic samples", "Clean test documents may not match production", "Use varied samples with blur, rotation, and missing pages"]],
+      metric: "Document handling becomes faster while sensitive decisions remain reviewable and evidence-backed."
+    },
+    vi: {
+      title: "AI OCR cho document intake",
+      project: "Quy trình onboarding yêu cầu customer upload identity và compliance document. Operations mất thời gian đọc PDF, extract field, detect missing page và yêu cầu customer resubmit document không rõ.",
+      challenge: "BA phải đặc tả AI-assisted document extraction và validation đồng thời bảo vệ khỏi OCR error, missing evidence, privacy issue và automated rejection sai. Human review và fallback là essential.",
+      aiUse: ["Identify document type, required field và validation rule.", "Draft extraction output schema và confidence behavior.", "Generate exception scenario cho document missing, unreadable hoặc inconsistent.", "Tạo human review và audit requirement."],
+      inputs: ["Document type list", "Field validation rules", "Compliance policy", "Sample documents", "Operations exception logs"],
+      workflow: ["Inventory document type và required field có source policy.", "Yêu cầu AI draft extraction schema và validation scenario.", "Define confidence threshold theo field và document.", "Specify review trigger cho low confidence, mismatch, missing page hoặc regulated decision.", "Design customer messaging cho resubmission không expose sensitive logic.", "Tạo evaluation set có real-world document variation."],
+      deliverables: [["Extraction schema", "Document type, field, format, confidence và source rule", "BA và data team", "Schema cover required field"], ["Validation rule matrix", "Rule, evidence, pass condition, failure condition và review trigger", "Compliance owner", "Rule source-backed"], ["Human review workflow", "Trigger, reviewer action, SLA, audit và correction capture", "Operations", "Review queue operational"], ["Evaluation set", "Document sample, expected extraction và error category", "QA và data team", "Test case cover messy document"]],
+      risks: [["OCR error", "Extract field sai có thể tạo decision sai", "Dùng field confidence và human review cho material field"], ["Automated rejection harm", "Customer có thể bị reject vì AI đọc sai document", "Yêu cầu fallback và manual review trước high-impact rejection"], ["Privacy exposure", "Document chứa sensitive data", "Specify retention, access, masking và audit"], ["Unrealistic samples", "Clean test document không giống production", "Dùng sample đa dạng có blur, rotation và missing page"]],
+      metric: "Document handling nhanh hơn trong khi sensitive decision vẫn reviewable và evidence-backed."
+    }
+  },
+  {
+    slug: "ai-recommendation-explanation",
+    group: "AI-enabled product use cases",
+    domain: "Decision support",
+    en: {
+      title: "AI Recommendation Explanation",
+      project: "A B2B platform recommends next-best actions to account managers. Stakeholders want the system to suggest outreach actions, but sales leaders worry users will distrust opaque recommendations.",
+      challenge: "The BA must specify recommendation behavior, explanation requirements, user controls, feedback capture, evaluation metrics, and boundaries between decision support and automated decisioning.",
+      aiUse: ["Draft recommendation output contract and explanation fields.", "Generate user trust and override scenarios.", "Identify data inputs, prohibited signals, and fairness concerns.", "Create acceptance criteria for feedback and monitoring."],
+      inputs: ["Business goal", "User journey", "Candidate data signals", "Sales playbook", "Risk and compliance constraints"],
+      workflow: ["Define the user decision the recommendation supports.", "Ask AI to separate recommendation, explanation, confidence, and user action.", "Specify allowed data signals and prohibited sensitive attributes.", "Design feedback actions such as accept, dismiss, edit, and reason code.", "Create evaluation metrics for usefulness, accuracy, adoption, and harm.", "Review decision ownership and user messaging with stakeholders."],
+      deliverables: [["Recommendation canvas", "Goal, user, trigger, input signals, output, and action", "BA", "Decision support boundary is clear"], ["Explanation requirements", "Why shown, evidence, confidence, and uncertainty language", "Product owner", "Users can understand recommendation rationale"], ["Feedback design", "Accept, reject, edit, reason codes, and correction loop", "UX and BA", "Feedback is captured for learning"], ["Evaluation plan", "Offline and live metrics, adoption, override, and harm signals", "Data team", "Quality is measured after launch"]],
+      risks: [["Opaque recommendation", "Users may ignore or misuse suggestions", "Require explanation and uncertainty language"], ["Automation creep", "Decision support may become automated decisioning", "Define user control and approval boundary"], ["Sensitive signal use", "Model may use inappropriate attributes", "List prohibited data and review fairness"], ["Feedback gap", "The team may not learn from overrides", "Capture reason codes and monitor patterns"]],
+      metric: "Users understand recommendations, retain decision control, and provide feedback that improves the product."
+    },
+    vi: {
+      title: "Giải thích AI recommendation",
+      project: "Một B2B platform recommend next-best action cho account manager. Stakeholder muốn system suggest outreach action, nhưng sales leader lo user không trust recommendation opaque.",
+      challenge: "BA phải đặc tả recommendation behavior, explanation requirement, user control, feedback capture, evaluation metric và boundary giữa decision support và automated decisioning.",
+      aiUse: ["Draft recommendation output contract và explanation field.", "Generate user trust và override scenario.", "Identify data input, prohibited signal và fairness concern.", "Tạo acceptance criteria cho feedback và monitoring."],
+      inputs: ["Business goal", "User journey", "Candidate data signals", "Sales playbook", "Risk và compliance constraints"],
+      workflow: ["Define user decision mà recommendation support.", "Yêu cầu AI tách recommendation, explanation, confidence và user action.", "Specify allowed data signal và prohibited sensitive attribute.", "Design feedback action như accept, dismiss, edit và reason code.", "Tạo evaluation metric cho usefulness, accuracy, adoption và harm.", "Review decision ownership và user messaging với stakeholder."],
+      deliverables: [["Recommendation canvas", "Goal, user, trigger, input signal, output và action", "BA", "Decision support boundary rõ"], ["Explanation requirements", "Why shown, evidence, confidence và uncertainty language", "Product owner", "User hiểu rationale của recommendation"], ["Feedback design", "Accept, reject, edit, reason code và correction loop", "UX và BA", "Feedback được capture để learning"], ["Evaluation plan", "Offline và live metric, adoption, override và harm signal", "Data team", "Quality được đo sau launch"]],
+      risks: [["Opaque recommendation", "User có thể ignore hoặc misuse suggestion", "Yêu cầu explanation và uncertainty language"], ["Automation creep", "Decision support có thể biến thành automated decisioning", "Define user control và approval boundary"], ["Sensitive signal use", "Model có thể dùng attribute không phù hợp", "List prohibited data và review fairness"], ["Feedback gap", "Team không học được từ override", "Capture reason code và monitor pattern"]],
+      metric: "User hiểu recommendation, giữ quyền decision và cung cấp feedback cải thiện product."
+    }
+  },
+  {
+    slug: "ai-chatbot-human-handoff",
+    group: "AI-enabled product use cases",
+    domain: "Customer support",
+    en: {
+      title: "AI Chatbot Human Handoff",
+      project: "A customer support team wants a chatbot to answer common questions and hand off complex cases to agents. The business wants fewer tickets, but customer experience cannot degrade when the bot is uncertain.",
+      challenge: "The BA must specify supported intents, knowledge sources, refusal behavior, handoff triggers, transcript transfer, agent context, SLA, and monitoring. Handoff is a workflow requirement, not a fallback note.",
+      aiUse: ["Draft intent catalog and unsupported intent behavior.", "Generate handoff trigger scenarios.", "Create agent context and transcript requirements.", "Design quality monitoring metrics for containment and customer harm."],
+      inputs: ["Support intent list", "FAQ and policy sources", "Escalation process", "Agent workflow", "Customer satisfaction data"],
+      workflow: ["Define supported and unsupported intents with source evidence.", "Ask AI to generate handoff triggers such as low confidence, repeated failure, sentiment, risk, or regulated topic.", "Specify what context transfers to the human agent.", "Design user messaging that is honest and helpful.", "Create monitoring metrics for containment, handoff quality, and repeat contact.", "Review failure scenarios with support agents before launch."],
+      deliverables: [["Intent catalog", "Intent, source, answer behavior, unsupported behavior, and owner", "BA and support", "Intent boundaries are clear"], ["Handoff rule matrix", "Trigger, user message, agent queue, SLA, and context transfer", "Support lead", "Every trigger has workflow path"], ["Agent context package", "Conversation summary, user goal, attempted answer, and source references", "BA", "Agent receives useful context"], ["Monitoring dashboard spec", "Containment, fallback, repeat contact, CSAT, and escalation patterns", "Operations", "Quality is monitored beyond volume reduction"]],
+      risks: [["Poor handoff", "Customers repeat information and lose trust", "Transfer transcript, summary, and source context"], ["Over-containment", "Business may optimize for fewer tickets at customer expense", "Measure repeat contact and satisfaction"], ["Unsupported intent invention", "Bot may answer topics outside scope", "Define refusal and escalation behavior"], ["Agent workflow burden", "Handoff may create extra work for agents", "Design agent context package with support input"]],
+      metric: "The chatbot reduces simple workload while complex or risky cases reach humans with context and accountability."
+    },
+    vi: {
+      title: "AI chatbot và human handoff",
+      project: "Customer support team muốn chatbot trả lời câu hỏi phổ biến và hand off case phức tạp cho agent. Business muốn giảm ticket, nhưng customer experience không được giảm khi bot uncertain.",
+      challenge: "BA phải đặc tả supported intent, knowledge source, refusal behavior, handoff trigger, transcript transfer, agent context, SLA và monitoring. Handoff là workflow requirement, không phải fallback note.",
+      aiUse: ["Draft intent catalog và unsupported intent behavior.", "Generate handoff trigger scenario.", "Tạo agent context và transcript requirement.", "Design quality monitoring metric cho containment và customer harm."],
+      inputs: ["Support intent list", "FAQ và policy sources", "Escalation process", "Agent workflow", "Customer satisfaction data"],
+      workflow: ["Define supported và unsupported intent có source evidence.", "Yêu cầu AI generate handoff trigger như low confidence, repeated failure, sentiment, risk hoặc regulated topic.", "Specify context nào transfer cho human agent.", "Design user messaging trung thực và hữu ích.", "Tạo monitoring metric cho containment, handoff quality và repeat contact.", "Review failure scenario với support agent trước launch."],
+      deliverables: [["Intent catalog", "Intent, source, answer behavior, unsupported behavior và owner", "BA và support", "Intent boundary rõ"], ["Handoff rule matrix", "Trigger, user message, agent queue, SLA và context transfer", "Support lead", "Mọi trigger có workflow path"], ["Agent context package", "Conversation summary, user goal, attempted answer và source reference", "BA", "Agent nhận context hữu ích"], ["Monitoring dashboard spec", "Containment, fallback, repeat contact, CSAT và escalation pattern", "Operations", "Quality được monitor beyond volume reduction"]],
+      risks: [["Poor handoff", "Customer phải lặp lại thông tin và mất trust", "Transfer transcript, summary và source context"], ["Over-containment", "Business có thể optimize fewer tickets làm hại customer", "Measure repeat contact và satisfaction"], ["Unsupported intent invention", "Bot có thể answer topic ngoài scope", "Define refusal và escalation behavior"], ["Agent workflow burden", "Handoff có thể tạo thêm work cho agent", "Design agent context package với support input"]],
+      metric: "Chatbot giảm workload đơn giản trong khi case phức tạp hoặc risky tới human có context và accountability."
+    }
+  },
+  {
+    slug: "loan-origination-journey",
+    group: "Domain project scenarios",
+    domain: "Banking and lending",
+    en: {
+      title: "Loan Origination Journey Modernization",
+      project: "A bank modernizes loan origination for small business customers. The project covers eligibility, document upload, risk assessment, approval workflow, customer notifications, and audit evidence.",
+      challenge: "The BA must coordinate regulated requirements across customer experience, credit policy, compliance, operations, and technology. AI can accelerate analysis, but every rule must be source-backed and every automated decision must have review and audit controls.",
+      aiUse: ["Map the end-to-end customer and operations journey.", "Extract credit policy rules and document requirements.", "Generate exception scenarios for manual review and escalation.", "Draft traceable requirements for eligibility, notifications, and audit."],
+      inputs: ["Credit policy", "Loan application forms", "Operations SOP", "Regulatory guidance", "Customer complaint themes"],
+      workflow: ["Build a journey map across customer, system, credit analyst, and operations roles.", "Ask AI to extract policy rules and required documents with source IDs.", "Identify decision points that need human review or audit.", "Draft requirements for eligibility checks, document intake, status visibility, and notifications.", "Review policy and compliance claims with accountable owners.", "Create acceptance criteria and traceability for regulated decisions."],
+      deliverables: [["Loan journey map", "Customer steps, system steps, credit review, exceptions, and status messages", "BA", "All actors and handoffs are visible"], ["Policy rule matrix", "Rule, source, threshold, decision owner, and automation eligibility", "Credit policy owner", "Rules are source-backed"], ["Exception workflow", "Manual review trigger, queue, SLA, and customer communication", "Operations", "Risky cases have human path"], ["Audit requirement set", "Evidence captured, retention, reviewer, and decision trace", "Compliance", "Auditors can reconstruct decisions"]],
+      risks: [["Regulatory misinterpretation", "AI may paraphrase policy incorrectly", "Use exact source references and compliance validation"], ["Unfair automation", "Eligibility rules may affect customers materially", "Define human review and appeal path"], ["Document friction", "Customers may fail due to unclear upload requirements", "Specify guidance, status, and resubmission flow"], ["Audit gap", "Decisions may not be explainable later", "Capture evidence, source, and reviewer"]],
+      metric: "The modernized loan journey is faster for customers while credit decisions remain explainable and compliant."
+    },
+    vi: {
+      title: "Modernize journey loan origination",
+      project: "Ngân hàng modernize loan origination cho small business customer. Project cover eligibility, document upload, risk assessment, approval workflow, customer notification và audit evidence.",
+      challenge: "BA phải coordinate requirement regulated qua customer experience, credit policy, compliance, operations và technology. AI tăng tốc analysis, nhưng mọi rule phải source-backed và mọi automated decision phải có review và audit control.",
+      aiUse: ["Map end-to-end customer và operations journey.", "Extract credit policy rule và document requirement.", "Generate exception scenario cho manual review và escalation.", "Draft traceable requirement cho eligibility, notification và audit."],
+      inputs: ["Credit policy", "Loan application forms", "Operations SOP", "Regulatory guidance", "Customer complaint themes"],
+      workflow: ["Build journey map qua customer, system, credit analyst và operations role.", "Yêu cầu AI extract policy rule và required document có source ID.", "Identify decision point cần human review hoặc audit.", "Draft requirement cho eligibility check, document intake, status visibility và notification.", "Review policy và compliance claim với accountable owner.", "Tạo acceptance criteria và traceability cho regulated decision."],
+      deliverables: [["Loan journey map", "Customer step, system step, credit review, exception và status message", "BA", "Mọi actor và handoff visible"], ["Policy rule matrix", "Rule, source, threshold, decision owner và automation eligibility", "Credit policy owner", "Rule source-backed"], ["Exception workflow", "Manual review trigger, queue, SLA và customer communication", "Operations", "Case risky có human path"], ["Audit requirement set", "Evidence captured, retention, reviewer và decision trace", "Compliance", "Auditor reconstruct được decision"]],
+      risks: [["Regulatory misinterpretation", "AI có thể paraphrase policy sai", "Dùng exact source reference và compliance validation"], ["Unfair automation", "Eligibility rule ảnh hưởng material tới customer", "Define human review và appeal path"], ["Document friction", "Customer fail vì upload requirement không rõ", "Specify guidance, status và resubmission flow"], ["Audit gap", "Decision có thể không explainable sau này", "Capture evidence, source và reviewer"]],
+      metric: "Loan journey mới nhanh hơn cho customer trong khi credit decision vẫn explainable và compliant."
+    }
+  },
+  {
+    slug: "insurance-claim-intake",
+    group: "Domain project scenarios",
+    domain: "Insurance",
+    en: {
+      title: "Insurance Claim Intake Automation",
+      project: "An insurer wants to digitize claim intake for property claims. Customers submit claim details, photos, invoices, and incident descriptions, while claims handlers need triage, missing information detection, and fraud risk cues.",
+      challenge: "The BA must specify an intake flow that improves speed without making unsupported claim decisions. AI can summarize claim narratives and detect missing documents, but coverage decisions and fraud escalation need clear controls.",
+      aiUse: ["Extract claim facts from customer narratives and attachments.", "Identify missing information and document gaps.", "Generate triage categories and escalation triggers.", "Draft handler summary with evidence and uncertainty labels."],
+      inputs: ["Claim forms", "Coverage policy", "Document checklist", "Fraud indicators", "Claims handler workflow"],
+      workflow: ["Map customer submission and handler triage journey.", "Ask AI to draft extraction fields and missing information rules.", "Specify confidence behavior for extracted facts and document completeness.", "Define triage categories, fraud risk cues, and human review triggers.", "Design customer follow-up messages for missing evidence.", "Create evaluation cases for typical, incomplete, and suspicious claims."],
+      deliverables: [["Claim intake flow", "Customer steps, document upload, triage, review, and follow-up", "BA", "Journey covers incomplete submissions"], ["Extraction and summary schema", "Claim facts, source evidence, confidence, and uncertainty", "Claims operations", "Handler sees evidence labels"], ["Missing information rules", "Required document, condition, customer message, and SLA", "Claims owner", "Requests are specific and fair"], ["Escalation matrix", "Trigger, risk level, queue, reviewer, and audit record", "Risk owner", "Suspicious cases have controlled path"]],
+      risks: [["Unsupported denial", "AI may imply claim outcome before handler review", "Separate intake support from coverage decision"], ["Evidence mismatch", "Photos or invoices may not support claim narrative", "Require source-linked fact extraction"], ["Customer frustration", "Generic missing-info messages create repeat contact", "Generate specific, policy-backed requests"], ["Fraud overflagging", "False positives can harm customer trust", "Use human review and reason codes"]],
+      metric: "Claim intake becomes faster and clearer while coverage and fraud decisions remain human-governed."
+    },
+    vi: {
+      title: "Automation insurance claim intake",
+      project: "Insurer muốn digitize claim intake cho property claim. Customer submit claim detail, photo, invoice và incident description, trong khi claims handler cần triage, detect missing information và fraud risk cue.",
+      challenge: "BA phải đặc tả intake flow cải thiện speed nhưng không tạo unsupported claim decision. AI có thể summarize claim narrative và detect missing document, nhưng coverage decision và fraud escalation cần control rõ.",
+      aiUse: ["Extract claim fact từ customer narrative và attachment.", "Identify missing information và document gap.", "Generate triage category và escalation trigger.", "Draft handler summary có evidence và uncertainty label."],
+      inputs: ["Claim forms", "Coverage policy", "Document checklist", "Fraud indicators", "Claims handler workflow"],
+      workflow: ["Map customer submission và handler triage journey.", "Yêu cầu AI draft extraction field và missing information rule.", "Specify confidence behavior cho extracted fact và document completeness.", "Define triage category, fraud risk cue và human review trigger.", "Design customer follow-up message cho missing evidence.", "Tạo evaluation case cho typical, incomplete và suspicious claim."],
+      deliverables: [["Claim intake flow", "Customer step, document upload, triage, review và follow-up", "BA", "Journey cover incomplete submission"], ["Extraction and summary schema", "Claim fact, source evidence, confidence và uncertainty", "Claims operations", "Handler thấy evidence label"], ["Missing information rules", "Required document, condition, customer message và SLA", "Claims owner", "Request specific và fair"], ["Escalation matrix", "Trigger, risk level, queue, reviewer và audit record", "Risk owner", "Suspicious case có controlled path"]],
+      risks: [["Unsupported denial", "AI có thể imply claim outcome trước handler review", "Tách intake support khỏi coverage decision"], ["Evidence mismatch", "Photo hoặc invoice có thể không support claim narrative", "Yêu cầu source-linked fact extraction"], ["Customer frustration", "Missing-info message generic tạo repeat contact", "Generate request specific và policy-backed"], ["Fraud overflagging", "False positive làm hại customer trust", "Dùng human review và reason code"]],
+      metric: "Claim intake nhanh và rõ hơn trong khi coverage và fraud decision vẫn human-governed."
+    }
+  },
+  {
+    slug: "ecommerce-return-refund",
+    group: "Domain project scenarios",
+    domain: "E-commerce",
+    en: {
+      title: "E-commerce Return and Refund Flow",
+      project: "An e-commerce platform redesigns return and refund flows to reduce support contacts. The project includes eligibility checks, return reason capture, shipping label generation, refund timing, and exception handling.",
+      challenge: "The BA must define business rules that vary by product type, order status, region, promotion, payment method, and fraud risk. AI can expand scenarios, but policy decisions must remain traceable.",
+      aiUse: ["Generate return scenarios from policy and order states.", "Identify edge cases across payment, shipping, promotion, and inventory.", "Draft customer messaging and support scripts.", "Create rule matrix and acceptance criteria."],
+      inputs: ["Return policy", "Order state model", "Payment rules", "Shipping carrier rules", "Support ticket themes"],
+      workflow: ["Map order and return states from purchase to refund completion.", "Ask AI to generate scenario combinations and missing rules.", "Create eligibility matrix by product, region, payment, and time window.", "Review high-impact exceptions with finance, fraud, logistics, and customer support.", "Draft acceptance criteria for customer and support experiences.", "Prepare rollout support scripts and monitoring metrics."],
+      deliverables: [["Return eligibility matrix", "Condition, rule, source, customer message, and exception path", "BA", "Eligibility rules are testable"], ["State transition diagram", "Order, return, refund, exception, and cancellation states", "BA and engineering", "State changes are explicit"], ["Support script pack", "Customer explanation, exception handling, and escalation", "Support lead", "Agents can explain outcomes"], ["Acceptance criteria set", "Positive, negative, boundary, and fraud-risk cases", "BA and QA", "Key scenarios are covered"]],
+      risks: [["Policy conflict", "Regional or promotion rules may conflict with generic policy", "Use source hierarchy and conflict resolution"], ["Refund timing ambiguity", "Customers may not know when money returns", "Specify status messages and payment-method timing"], ["Fraud loophole", "Overly simple rules can be exploited", "Include fraud review triggers"], ["Inventory mismatch", "Return acceptance may not align with inventory process", "Review logistics and warehouse states"]],
+      metric: "Customers can complete eligible returns with fewer support contacts and clearer refund expectations."
+    },
+    vi: {
+      title: "Flow return và refund e-commerce",
+      project: "E-commerce platform redesign return và refund flow để giảm support contact. Project gồm eligibility check, return reason capture, shipping label generation, refund timing và exception handling.",
+      challenge: "BA phải define business rule thay đổi theo product type, order status, region, promotion, payment method và fraud risk. AI có thể expand scenario, nhưng policy decision phải traceable.",
+      aiUse: ["Generate return scenario từ policy và order state.", "Identify edge case qua payment, shipping, promotion và inventory.", "Draft customer messaging và support script.", "Tạo rule matrix và acceptance criteria."],
+      inputs: ["Return policy", "Order state model", "Payment rules", "Shipping carrier rules", "Support ticket themes"],
+      workflow: ["Map order và return state từ purchase tới refund completion.", "Yêu cầu AI generate scenario combination và missing rule.", "Tạo eligibility matrix theo product, region, payment và time window.", "Review high-impact exception với finance, fraud, logistics và customer support.", "Draft acceptance criteria cho customer và support experience.", "Prepare rollout support script và monitoring metric."],
+      deliverables: [["Return eligibility matrix", "Condition, rule, source, customer message và exception path", "BA", "Eligibility rule testable"], ["State transition diagram", "Order, return, refund, exception và cancellation state", "BA và engineering", "State change explicit"], ["Support script pack", "Customer explanation, exception handling và escalation", "Support lead", "Agent explain được outcome"], ["Acceptance criteria set", "Positive, negative, boundary và fraud-risk case", "BA và QA", "Key scenario covered"]],
+      risks: [["Policy conflict", "Regional hoặc promotion rule có thể conflict generic policy", "Dùng source hierarchy và conflict resolution"], ["Refund timing ambiguity", "Customer không biết khi nào tiền về", "Specify status message và timing theo payment method"], ["Fraud loophole", "Rule quá đơn giản có thể bị exploit", "Include fraud review trigger"], ["Inventory mismatch", "Return acceptance có thể không align inventory process", "Review logistics và warehouse state"]],
+      metric: "Customer hoàn thành eligible return với ít support contact hơn và refund expectation rõ hơn."
+    }
+  },
+  {
+    slug: "healthcare-appointment-intake",
+    group: "Domain project scenarios",
+    domain: "Healthcare operations",
+    en: {
+      title: "Healthcare Appointment Intake",
+      project: "A clinic network wants to improve appointment intake and routing. Patients submit symptoms, preferred times, insurance information, and referral details before scheduling.",
+      challenge: "The BA must specify intake support without turning AI into a medical decision maker. The system can structure information and route requests, but clinical triage, emergency guidance, privacy, and consent require strict boundaries.",
+      aiUse: ["Structure patient-provided information into intake fields.", "Detect missing insurance, referral, or scheduling information.", "Generate routing suggestions with uncertainty labels.", "Draft safe messaging and escalation triggers."],
+      inputs: ["Scheduling workflow", "Insurance and referral rules", "Privacy requirements", "Clinic specialty list", "Current intake forms"],
+      workflow: ["Define what the assistant may and may not infer from patient text.", "Ask AI to map intake fields and missing information prompts.", "Specify routing suggestions as administrative support, not diagnosis.", "Add emergency and clinical escalation messaging approved by clinical owners.", "Design privacy, consent, and data retention requirements.", "Create evaluation cases with incomplete, urgent, and sensitive scenarios."],
+      deliverables: [["Intake field schema", "Field, source, validation, sensitivity, and required status", "BA", "Fields are privacy reviewed"], ["Routing rule matrix", "Administrative routing cues, confidence, fallback, and owner", "Clinic operations", "Routing avoids clinical diagnosis"], ["Safe messaging set", "Missing info, urgent warning, privacy notice, and escalation", "Clinical owner", "Messages are approved"], ["Evaluation cases", "Incomplete, urgent, routine, and sensitive examples", "QA and clinical reviewer", "Safety cases are tested"]],
+      risks: [["Clinical overreach", "AI may appear to diagnose or triage clinically", "Limit scope to intake and approved escalation"], ["Privacy violation", "Health data is sensitive and regulated", "Specify consent, retention, access, and audit"], ["Unsafe delay", "Urgent symptoms may be treated as normal scheduling", "Use approved emergency messaging and escalation"], ["Insurance confusion", "Incorrect routing can delay care", "Validate insurance and referral rules"]],
+      metric: "Appointment intake becomes clearer and faster while clinical decisions remain outside AI scope."
+    },
+    vi: {
+      title: "Healthcare appointment intake",
+      project: "Một clinic network muốn cải thiện appointment intake và routing. Patient submit symptom, preferred time, insurance information và referral detail trước scheduling.",
+      challenge: "BA phải đặc tả intake support mà không biến AI thành medical decision maker. System có thể structure information và route request, nhưng clinical triage, emergency guidance, privacy và consent cần boundary nghiêm ngặt.",
+      aiUse: ["Structure patient-provided information thành intake field.", "Detect missing insurance, referral hoặc scheduling information.", "Generate routing suggestion có uncertainty label.", "Draft safe messaging và escalation trigger."],
+      inputs: ["Scheduling workflow", "Insurance và referral rules", "Privacy requirements", "Clinic specialty list", "Current intake forms"],
+      workflow: ["Define assistant được và không được infer gì từ patient text.", "Yêu cầu AI map intake field và missing information prompt.", "Specify routing suggestion như administrative support, không phải diagnosis.", "Thêm emergency và clinical escalation messaging approved bởi clinical owner.", "Design privacy, consent và data retention requirement.", "Tạo evaluation case với incomplete, urgent và sensitive scenario."],
+      deliverables: [["Intake field schema", "Field, source, validation, sensitivity và required status", "BA", "Field được privacy review"], ["Routing rule matrix", "Administrative routing cue, confidence, fallback và owner", "Clinic operations", "Routing tránh clinical diagnosis"], ["Safe messaging set", "Missing info, urgent warning, privacy notice và escalation", "Clinical owner", "Message approved"], ["Evaluation cases", "Incomplete, urgent, routine và sensitive example", "QA và clinical reviewer", "Safety case được test"]],
+      risks: [["Clinical overreach", "AI có thể trông như diagnose hoặc clinical triage", "Limit scope vào intake và approved escalation"], ["Privacy violation", "Health data sensitive và regulated", "Specify consent, retention, access và audit"], ["Unsafe delay", "Urgent symptom có thể bị xử như normal scheduling", "Dùng approved emergency messaging và escalation"], ["Insurance confusion", "Routing sai có thể delay care", "Validate insurance và referral rule"]],
+      metric: "Appointment intake rõ và nhanh hơn trong khi clinical decision nằm ngoài scope AI."
+    }
+  },
+  {
+    slug: "hr-employee-service-portal",
+    group: "Domain project scenarios",
+    domain: "HR service delivery",
+    en: {
+      title: "HR Employee Service Portal",
+      project: "HR wants a portal where employees can request letters, ask policy questions, update personal information, and track case status. Current requests are handled through email and shared mailboxes.",
+      challenge: "The BA must define service catalog, request forms, approval rules, privacy boundaries, knowledge search, case status, and escalation. AI can improve self-service, but HR policy answers and personal data changes need controls.",
+      aiUse: ["Cluster historical HR emails into service categories.", "Draft request forms and required fields.", "Generate policy assistant requirements with source and fallback rules.", "Identify privacy and role-based access scenarios."],
+      inputs: ["HR mailbox samples", "Policy documents", "Service catalog drafts", "Approval rules", "Employee data privacy policy"],
+      workflow: ["Analyze historical requests and cluster service categories.", "Ask AI to propose request form fields and missing rules per service.", "Define service catalog with eligibility, SLA, owner, and required evidence.", "Specify policy-answering behavior with citations and fallback to HR.", "Review personal data changes for privacy and approval needs.", "Publish service portal requirements and support transition plan."],
+      deliverables: [["Service catalog", "Service, eligibility, fields, SLA, owner, and escalation", "HR operations", "Employees know where to go"], ["Request form specification", "Field, validation, evidence, permission, and status messages", "BA", "Forms reduce back-and-forth"], ["Policy assistant rules", "Source, citation, fallback, and conflict behavior", "HR policy owner", "Answers are grounded"], ["Privacy matrix", "Employee data, role access, audit, and approval", "Security and HR", "Sensitive data is protected"]],
+      risks: [["Mailbox pattern bias", "Historical emails reflect current confusion, not ideal service design", "Validate service catalog with HR owners"], ["Policy hallucination", "Assistant may answer from stale or wrong policy", "Use RAG source controls and citations"], ["Privacy exposure", "Employee data changes are sensitive", "Define access, audit, and approval"], ["Poor adoption", "Employees may continue emailing HR", "Add status visibility and clear service routing"]],
+      metric: "Employees can complete common HR requests through structured self-service with clear status and privacy controls."
+    },
+    vi: {
+      title: "HR employee service portal",
+      project: "HR muốn portal để employee request letter, hỏi policy, update personal information và track case status. Hiện request xử lý qua email và shared mailbox.",
+      challenge: "BA phải define service catalog, request form, approval rule, privacy boundary, knowledge search, case status và escalation. AI có thể cải thiện self-service, nhưng HR policy answer và personal data change cần control.",
+      aiUse: ["Cluster historical HR email thành service category.", "Draft request form và required field.", "Generate policy assistant requirement có source và fallback rule.", "Identify privacy và role-based access scenario."],
+      inputs: ["HR mailbox samples", "Policy documents", "Service catalog drafts", "Approval rules", "Employee data privacy policy"],
+      workflow: ["Analyze historical request và cluster service category.", "Yêu cầu AI propose request form field và missing rule theo service.", "Define service catalog có eligibility, SLA, owner và required evidence.", "Specify policy-answering behavior có citation và fallback tới HR.", "Review personal data change cho privacy và approval need.", "Publish service portal requirement và support transition plan."],
+      deliverables: [["Service catalog", "Service, eligibility, field, SLA, owner và escalation", "HR operations", "Employee biết đi đâu"], ["Request form specification", "Field, validation, evidence, permission và status message", "BA", "Form giảm back-and-forth"], ["Policy assistant rules", "Source, citation, fallback và conflict behavior", "HR policy owner", "Answer grounded"], ["Privacy matrix", "Employee data, role access, audit và approval", "Security và HR", "Sensitive data protected"]],
+      risks: [["Mailbox pattern bias", "Historical email phản ánh confusion hiện tại, không phải ideal service design", "Validate service catalog với HR owner"], ["Policy hallucination", "Assistant có thể answer từ stale hoặc wrong policy", "Dùng RAG source control và citation"], ["Privacy exposure", "Employee data change sensitive", "Define access, audit và approval"], ["Poor adoption", "Employee có thể tiếp tục email HR", "Thêm status visibility và clear service routing"]],
+      metric: "Employee hoàn thành common HR request qua structured self-service có status rõ và privacy control."
+    }
+  },
+  {
+    slug: "finance-reconciliation-exception",
+    group: "Domain project scenarios",
+    domain: "Finance operations",
+    en: {
+      title: "Finance Reconciliation Exception Workflow",
+      project: "A finance operations team reconciles payments, invoices, and ledger entries. Exceptions are handled manually through spreadsheets, emails, and analyst judgment, causing delays and audit concerns.",
+      challenge: "The BA must specify an exception workflow that classifies mismatch types, captures evidence, routes work, supports analyst decisions, and preserves auditability. AI can suggest matches or categories, but finance approval remains human-owned.",
+      aiUse: ["Cluster exception types and recurring mismatch patterns.", "Draft analyst work queue requirements.", "Generate evidence capture and decision reason codes.", "Create human review and audit trail requirements."],
+      inputs: ["Exception logs", "Reconciliation rules", "Invoice and payment data definitions", "Audit requirements", "Analyst SOPs"],
+      workflow: ["Analyze exception history and classify mismatch categories.", "Ask AI to propose routing rules and decision support fields.", "Define evidence needed for each exception type.", "Specify analyst actions: match, split, escalate, write off, or request information.", "Design audit trail, approval, and segregation-of-duty requirements.", "Create metrics for aging, resolution, override, and repeat exception patterns."],
+      deliverables: [["Exception taxonomy", "Mismatch type, example, root cause, owner, and priority", "Finance operations", "Analysts share common language"], ["Work queue specification", "Routing, priority, SLA, status, and assignment rules", "BA", "Exceptions move predictably"], ["Decision reason codes", "Allowed actions, evidence, approval, and audit need", "Finance controller", "Decisions are explainable"], ["Monitoring metrics", "Aging, resolution, repeat exception, and override trends", "Operations lead", "Process health is visible"]],
+      risks: [["Automated finance decision", "AI suggestions may be treated as approval", "Keep analyst approval and audit trail"], ["Poor taxonomy", "Categories may not match real analyst work", "Validate with exception samples"], ["Audit weakness", "Reason for resolution may be missing", "Require evidence and reason codes"], ["Segregation issue", "Same user may create and approve adjustments", "Define role controls and approvals"]],
+      metric: "Exception resolution becomes faster while finance decisions remain controlled and auditable."
+    },
+    vi: {
+      title: "Workflow finance reconciliation exception",
+      project: "Finance operations team reconcile payment, invoice và ledger entry. Exception xử lý thủ công qua spreadsheet, email và analyst judgment, gây delay và audit concern.",
+      challenge: "BA phải đặc tả exception workflow classify mismatch type, capture evidence, route work, support analyst decision và giữ auditability. AI có thể suggest match hoặc category, nhưng finance approval vẫn do human own.",
+      aiUse: ["Cluster exception type và recurring mismatch pattern.", "Draft analyst work queue requirement.", "Generate evidence capture và decision reason code.", "Tạo human review và audit trail requirement."],
+      inputs: ["Exception logs", "Reconciliation rules", "Invoice và payment data definitions", "Audit requirements", "Analyst SOPs"],
+      workflow: ["Analyze exception history và classify mismatch category.", "Yêu cầu AI propose routing rule và decision support field.", "Define evidence needed cho từng exception type.", "Specify analyst action: match, split, escalate, write off hoặc request information.", "Design audit trail, approval và segregation-of-duty requirement.", "Tạo metric cho aging, resolution, override và repeat exception pattern."],
+      deliverables: [["Exception taxonomy", "Mismatch type, example, root cause, owner và priority", "Finance operations", "Analyst có common language"], ["Work queue specification", "Routing, priority, SLA, status và assignment rule", "BA", "Exception move predictably"], ["Decision reason codes", "Allowed action, evidence, approval và audit need", "Finance controller", "Decision explainable"], ["Monitoring metrics", "Aging, resolution, repeat exception và override trend", "Operations lead", "Process health visible"]],
+      risks: [["Automated finance decision", "AI suggestion có thể bị xem là approval", "Giữ analyst approval và audit trail"], ["Poor taxonomy", "Category có thể không match work thật của analyst", "Validate với exception sample"], ["Audit weakness", "Reason resolution có thể missing", "Yêu cầu evidence và reason code"], ["Segregation issue", "Cùng user có thể create và approve adjustment", "Define role control và approval"]],
+      metric: "Exception resolution nhanh hơn trong khi finance decision vẫn controlled và auditable."
+    }
+  },
+  {
+    slug: "vendor-selection-ai-tool",
+    group: "Governance and adoption",
+    domain: "Vendor evaluation",
+    en: {
+      title: "Vendor Selection for an AI Tool",
+      project: "A BA practice evaluates AI tools for requirements drafting, meeting synthesis, document review, and internal knowledge search. Vendors promise productivity gains, but compliance and IT worry about data leakage and governance.",
+      challenge: "The BA lead must define evaluation criteria that cover use-case fit, data handling, security, audit, model behavior, integrations, admin controls, cost, and adoption support. AI can help compare vendor claims, but claims must be verified.",
+      aiUse: ["Build a vendor scorecard from BA use cases and risk tiers.", "Extract vendor claims and map them to required evidence.", "Generate demo scripts and validation questions.", "Draft pilot success metrics and governance gates."],
+      inputs: ["BA use-case portfolio", "Security requirements", "Vendor documentation", "Procurement criteria", "Compliance policy"],
+      workflow: ["Define approved BA use cases and prohibited data before vendor demos.", "Ask AI to create a weighted scorecard by value and risk.", "Map vendor claims to evidence required: documentation, demo, contract, or security review.", "Create scenario-based demo scripts using real BA workflows.", "Run pilot evaluation with quality, cycle time, and risk metrics.", "Prepare recommendation with conditions and rollout controls."],
+      deliverables: [["Vendor scorecard", "Criteria, weight, evidence, score, and risk notes", "BA lead and procurement", "Scores are evidence-based"], ["Demo script", "BA workflows, test data, expected outputs, and failure checks", "BA lead", "Demo tests real work"], ["Security and governance checklist", "Data, retention, audit, admin, access, and compliance controls", "IT and compliance", "Risks are reviewed"], ["Pilot success plan", "Metrics, participants, use cases, quality gates, and decision criteria", "Sponsor", "Pilot can produce decision"]],
+      risks: [["Vendor-led scope", "Demo may shape requirements before BA defines needs", "Start from BA use cases and risk tiers"], ["Unverified claims", "Marketing statements may not reflect product capability", "Require evidence type for each claim"], ["Data leakage", "Tools may process confidential data unsafely", "Review data handling and approved-use policy"], ["Adoption theater", "Users may try tool without quality improvement", "Measure artifact quality and rework, not only usage"]],
+      metric: "Vendor selection is driven by BA workflow value, verified controls, and pilot evidence."
+    },
+    vi: {
+      title: "Chọn vendor cho AI tool",
+      project: "Một BA practice evaluate AI tool cho requirements drafting, meeting synthesis, document review và internal knowledge search. Vendor promise productivity gain, nhưng compliance và IT lo data leakage và governance.",
+      challenge: "BA lead phải define evaluation criteria cover use-case fit, data handling, security, audit, model behavior, integration, admin control, cost và adoption support. AI có thể hỗ trợ compare vendor claim, nhưng claim phải verify.",
+      aiUse: ["Build vendor scorecard từ BA use case và risk tier.", "Extract vendor claim và map với required evidence.", "Generate demo script và validation question.", "Draft pilot success metric và governance gate."],
+      inputs: ["BA use-case portfolio", "Security requirements", "Vendor documentation", "Procurement criteria", "Compliance policy"],
+      workflow: ["Define approved BA use case và prohibited data trước vendor demo.", "Yêu cầu AI tạo weighted scorecard theo value và risk.", "Map vendor claim tới evidence required: documentation, demo, contract hoặc security review.", "Tạo scenario-based demo script dùng workflow BA thật.", "Run pilot evaluation với quality, cycle time và risk metric.", "Prepare recommendation có condition và rollout control."],
+      deliverables: [["Vendor scorecard", "Criteria, weight, evidence, score và risk note", "BA lead và procurement", "Score evidence-based"], ["Demo script", "BA workflow, test data, expected output và failure check", "BA lead", "Demo test real work"], ["Security and governance checklist", "Data, retention, audit, admin, access và compliance control", "IT và compliance", "Risk được review"], ["Pilot success plan", "Metric, participant, use case, quality gate và decision criteria", "Sponsor", "Pilot tạo được decision"]],
+      risks: [["Vendor-led scope", "Demo có thể shape requirement trước khi BA define need", "Start từ BA use case và risk tier"], ["Unverified claims", "Marketing statement có thể không reflect capability thật", "Require evidence type cho từng claim"], ["Data leakage", "Tool có thể process confidential data không an toàn", "Review data handling và approved-use policy"], ["Adoption theater", "User có thể thử tool nhưng quality không cải thiện", "Measure artifact quality và rework, không chỉ usage"]],
+      metric: "Vendor selection được drive bởi BA workflow value, verified control và pilot evidence."
+    }
+  },
+  {
+    slug: "data-privacy-ai-assessment",
+    group: "Governance and adoption",
+    domain: "Privacy and compliance",
+    en: {
+      title: "Data Privacy Assessment for AI Use",
+      project: "A project team wants to use AI to summarize customer interviews, analyze support tickets, and draft requirements. The data includes customer names, account details, complaints, and potentially sensitive information.",
+      challenge: "The BA must help define what data can be used with AI, what must be redacted, which tools are approved, and what review controls are required. AI productivity cannot come at the cost of privacy or trust.",
+      aiUse: ["Classify BA data types by sensitivity and approved use.", "Generate redaction checklist and safe prompt patterns.", "Draft risk-tiered AI usage rules.", "Create review questions for legal, security, and project owners."],
+      inputs: ["Data inventory", "Privacy policy", "Approved tool list", "Project artifacts", "Customer data examples"],
+      workflow: ["Inventory data types used in BA work and where they appear.", "Ask AI to propose sensitivity categories, then validate with privacy owners.", "Define prohibited data, redaction rules, approved tools, and storage expectations.", "Create safe prompt patterns for low-risk drafting and review tasks.", "Set review gates for sensitive or customer-identifiable data.", "Publish a project AI data-use checklist."],
+      deliverables: [["AI data-use matrix", "Data type, sensitivity, allowed tool, redaction, and approval need", "BA and privacy owner", "Teams know what is allowed"], ["Redaction checklist", "Fields to remove, transform, mask, or avoid", "BA", "Sensitive data is handled consistently"], ["Risk-tier policy", "Low, medium, and high-risk AI tasks with controls", "Compliance", "Controls match sensitivity"], ["Safe prompt guide", "Approved prompt patterns and prohibited examples", "BA lead", "BAs can work safely"]],
+      risks: [["PII leakage", "Customer data may be sent to unapproved tools", "Use approved tools and redaction rules"], ["Over-redaction", "Removing too much context can reduce analysis quality", "Balance privacy with source-safe summaries"], ["Policy ambiguity", "Teams may interpret rules differently", "Create examples of allowed and prohibited use"], ["Shadow AI use", "People may bypass controls if guidance is impractical", "Provide usable safe workflows"]],
+      metric: "BA teams use AI with clear data boundaries, approved tools, and practical privacy controls."
+    },
+    vi: {
+      title: "Assessment data privacy cho AI use",
+      project: "Project team muốn dùng AI summarize customer interview, analyze support ticket và draft requirement. Data có customer name, account detail, complaint và thông tin có thể sensitive.",
+      challenge: "BA phải giúp define data nào được dùng với AI, data nào phải redact, tool nào approved và review control nào required. Productivity từ AI không được đánh đổi privacy hoặc trust.",
+      aiUse: ["Classify BA data type theo sensitivity và approved use.", "Generate redaction checklist và safe prompt pattern.", "Draft AI usage rule theo risk tier.", "Tạo review question cho legal, security và project owner."],
+      inputs: ["Data inventory", "Privacy policy", "Approved tool list", "Project artifacts", "Customer data examples"],
+      workflow: ["Inventory data type dùng trong BA work và nơi chúng xuất hiện.", "Yêu cầu AI propose sensitivity category, sau đó validate với privacy owner.", "Define prohibited data, redaction rule, approved tool và storage expectation.", "Tạo safe prompt pattern cho low-risk drafting và review task.", "Set review gate cho sensitive hoặc customer-identifiable data.", "Publish project AI data-use checklist."],
+      deliverables: [["AI data-use matrix", "Data type, sensitivity, allowed tool, redaction và approval need", "BA và privacy owner", "Team biết điều gì allowed"], ["Redaction checklist", "Field cần remove, transform, mask hoặc avoid", "BA", "Sensitive data được xử lý consistent"], ["Risk-tier policy", "Low, medium và high-risk AI task với control", "Compliance", "Control match sensitivity"], ["Safe prompt guide", "Approved prompt pattern và prohibited example", "BA lead", "BA làm việc an toàn"]],
+      risks: [["PII leakage", "Customer data có thể gửi vào unapproved tool", "Dùng approved tool và redaction rule"], ["Over-redaction", "Remove quá nhiều context làm giảm analysis quality", "Balance privacy với source-safe summary"], ["Policy ambiguity", "Team có thể interpret rule khác nhau", "Tạo example allowed và prohibited use"], ["Shadow AI use", "Người dùng có thể bypass control nếu guidance không practical", "Cung cấp workflow an toàn usable"]],
+      metric: "BA team dùng AI với data boundary rõ, approved tool và privacy control thực tế."
+    }
+  },
+  {
+    slug: "ba-ai-adoption-playbook",
+    group: "Governance and adoption",
+    domain: "BA practice leadership",
+    en: {
+      title: "BA AI Adoption Playbook",
+      project: "A BA manager wants to scale AI use across a 20-person BA practice. Some BAs are advanced, some are skeptical, and there is no shared standard for prompts, data handling, review, or artifact quality.",
+      challenge: "The BA lead must turn AI enthusiasm into a managed capability with use-case tiers, training, prompt library, quality gates, governance, measurement, and coaching. Adoption must improve BA quality, not just activity.",
+      aiUse: ["Inventory BA workflows and classify AI use cases by value and risk.", "Generate standard prompt patterns and review rubrics.", "Draft training paths by skill level.", "Create adoption metrics beyond tool usage."],
+      inputs: ["BA workflow list", "Current artifacts", "Tool policy", "Quality pain points", "Team skill assessment"],
+      workflow: ["Map BA workflows where AI can support drafting, synthesis, review, and analysis.", "Classify use cases into low, medium, and high-risk tiers.", "Create approved prompt patterns with context and evidence rules.", "Define quality gates for AI-assisted artifacts.", "Pilot with selected BAs and measure quality, cycle time, and rework.", "Scale through coaching, playbooks, and community review rituals."],
+      deliverables: [["Use-case portfolio", "Workflow, value, risk, allowed data, approved tool, and review need", "BA lead", "Use cases are risk-tiered"], ["Prompt and context library", "Reusable prompts, input checklist, output schema, and review rubric", "BA practice", "BAs reuse shared standards"], ["Training plan", "Foundation, practitioner, reviewer, and lead modules", "BA manager", "Training matches skill level"], ["Adoption scorecard", "Usage, artifact quality, cycle time, defects, and rework", "Sponsor", "Success is quality-based"]],
+      risks: [["Tool-first adoption", "Teams may focus on features instead of work quality", "Start from BA workflows and problems"], ["Inconsistent artifacts", "Each BA may create different standards", "Use shared prompt library and rubrics"], ["Unsafe data use", "People may paste sensitive data into AI tools", "Define approved tools and data rules"], ["No quality proof", "Adoption may look successful but not improve outcomes", "Measure defects, rework, and stakeholder confidence"]],
+      metric: "The BA practice adopts AI through shared patterns, review gates, and measurable quality improvement."
+    },
+    vi: {
+      title: "Playbook adoption AI cho BA team",
+      project: "BA manager muốn scale AI use trong BA practice 20 người. Một số BA advanced, một số skeptical, và chưa có shared standard cho prompt, data handling, review hoặc artifact quality.",
+      challenge: "BA lead phải biến AI enthusiasm thành managed capability có use-case tier, training, prompt library, quality gate, governance, measurement và coaching. Adoption phải cải thiện BA quality, không chỉ tăng activity.",
+      aiUse: ["Inventory BA workflow và classify AI use case theo value và risk.", "Generate standard prompt pattern và review rubric.", "Draft training path theo skill level.", "Tạo adoption metric beyond tool usage."],
+      inputs: ["BA workflow list", "Current artifacts", "Tool policy", "Quality pain points", "Team skill assessment"],
+      workflow: ["Map BA workflow nơi AI support drafting, synthesis, review và analysis.", "Classify use case thành low, medium và high-risk tier.", "Tạo approved prompt pattern có context và evidence rule.", "Define quality gate cho AI-assisted artifact.", "Pilot với BA được chọn và measure quality, cycle time và rework.", "Scale qua coaching, playbook và community review ritual."],
+      deliverables: [["Use-case portfolio", "Workflow, value, risk, allowed data, approved tool và review need", "BA lead", "Use case risk-tiered"], ["Prompt and context library", "Reusable prompt, input checklist, output schema và review rubric", "BA practice", "BA reuse shared standard"], ["Training plan", "Foundation, practitioner, reviewer và lead module", "BA manager", "Training match skill level"], ["Adoption scorecard", "Usage, artifact quality, cycle time, defect và rework", "Sponsor", "Success quality-based"]],
+      risks: [["Tool-first adoption", "Team focus tool feature thay vì work quality", "Start từ BA workflow và problem"], ["Inconsistent artifacts", "Mỗi BA có thể tạo standard khác nhau", "Dùng shared prompt library và rubric"], ["Unsafe data use", "Người dùng có thể paste sensitive data vào AI tool", "Define approved tool và data rule"], ["No quality proof", "Adoption nhìn thành công nhưng không cải thiện outcome", "Measure defect, rework và stakeholder confidence"]],
+      metric: "BA practice adopt AI bằng shared pattern, review gate và quality improvement đo được."
+    }
+  },
+  {
+    slug: "portfolio-use-case-prioritization",
+    group: "Governance and adoption",
+    domain: "Portfolio management",
+    en: {
+      title: "AI Use Case Portfolio Prioritization",
+      project: "Leadership has a long list of AI ideas: meeting summaries, requirements drafting, policy assistant, ticket triage, document extraction, sales recommendations, and customer chatbot. The team needs a rational way to prioritize.",
+      challenge: "The BA lead must compare ideas by business value, feasibility, data readiness, risk, user impact, governance cost, and measurement clarity. AI can structure the portfolio, but prioritization remains a business decision.",
+      aiUse: ["Classify ideas by AI pattern and problem type.", "Generate value-risk-feasibility scoring criteria.", "Identify missing data, controls, and evaluation needs.", "Draft pilot roadmap options and decision memo."],
+      inputs: ["AI idea backlog", "Business goals", "Data readiness notes", "Risk policy", "Delivery capacity"],
+      workflow: ["Normalize each idea into problem, user, decision, outcome, and AI pattern.", "Ask AI to score each idea using transparent criteria and evidence gaps.", "Review scores with business, technology, data, security, and operations stakeholders.", "Separate quick wins from high-risk strategic bets.", "Define pilots with success metrics, controls, and owners.", "Publish a portfolio roadmap with rationale and rejected ideas."],
+      deliverables: [["Use-case scoring matrix", "Idea, value, feasibility, data readiness, risk, governance cost, and score", "BA lead", "Scores are explainable"], ["AI pattern classification", "GenAI, RAG, predictive AI, rules automation, or hybrid", "BA", "Solution category fits problem"], ["Pilot roadmap", "Use case, phase, owner, metric, control, and decision gate", "Sponsor", "Pilots can be evaluated"], ["Decision memo", "Recommendation, trade-offs, rejected ideas, and evidence gaps", "Leadership", "Portfolio choices are explicit"]],
+      risks: [["Hype prioritization", "Ideas may win because they sound innovative", "Use transparent scoring and evidence gaps"], ["Data readiness blind spot", "High-value ideas may fail without usable data", "Score data availability and ownership"], ["Risk underestimation", "Customer-facing AI may need more controls", "Include governance cost and harm potential"], ["Pilot sprawl", "Too many pilots dilute learning", "Limit pilots and define decision gates"]],
+      metric: "Leadership funds AI pilots based on value, feasibility, data readiness, and risk, not hype."
+    },
+    vi: {
+      title: "Prioritize portfolio AI use case",
+      project: "Leadership có list dài AI idea: meeting summary, requirements drafting, policy assistant, ticket triage, document extraction, sales recommendation và customer chatbot. Team cần cách prioritize hợp lý.",
+      challenge: "BA lead phải compare idea theo business value, feasibility, data readiness, risk, user impact, governance cost và measurement clarity. AI có thể structure portfolio, nhưng prioritization vẫn là business decision.",
+      aiUse: ["Classify idea theo AI pattern và problem type.", "Generate value-risk-feasibility scoring criteria.", "Identify missing data, control và evaluation need.", "Draft pilot roadmap option và decision memo."],
+      inputs: ["AI idea backlog", "Business goals", "Data readiness notes", "Risk policy", "Delivery capacity"],
+      workflow: ["Normalize từng idea thành problem, user, decision, outcome và AI pattern.", "Yêu cầu AI score từng idea bằng criteria transparent và evidence gap.", "Review score với business, technology, data, security và operations stakeholder.", "Tách quick win khỏi high-risk strategic bet.", "Define pilot có success metric, control và owner.", "Publish portfolio roadmap có rationale và rejected idea."],
+      deliverables: [["Use-case scoring matrix", "Idea, value, feasibility, data readiness, risk, governance cost và score", "BA lead", "Score explainable"], ["AI pattern classification", "GenAI, RAG, predictive AI, rules automation hoặc hybrid", "BA", "Solution category fit problem"], ["Pilot roadmap", "Use case, phase, owner, metric, control và decision gate", "Sponsor", "Pilot evaluate được"], ["Decision memo", "Recommendation, trade-off, rejected idea và evidence gap", "Leadership", "Portfolio choice explicit"]],
+      risks: [["Hype prioritization", "Idea thắng vì nghe innovative", "Dùng transparent scoring và evidence gap"], ["Data readiness blind spot", "Idea high-value có thể fail vì thiếu usable data", "Score data availability và ownership"], ["Risk underestimation", "Customer-facing AI cần nhiều control hơn", "Include governance cost và harm potential"], ["Pilot sprawl", "Quá nhiều pilot làm loãng learning", "Limit pilot và define decision gate"]],
+      metric: "Leadership fund AI pilot dựa trên value, feasibility, data readiness và risk, không phải hype."
+    }
+  }
+];
+
 const lessonUpgrades = {
   "ai-landscape-for-ba": {
     en: {
@@ -1637,6 +2450,195 @@ ${list(rubric)}
 `;
 }
 
+function useCaseDiagram(useCase, locale) {
+  const item = useCase[locale];
+  const sourceLabel = locale === "en" ? "Project sources" : "Source dự án";
+  const aiLabel = locale === "en" ? "AI-assisted analysis" : "AI-assisted analysis";
+  const reviewLabel = locale === "en" ? "BA validation" : "BA validation";
+  const decisionLabel = locale === "en" ? "Stakeholder decision" : "Stakeholder decision";
+  const artifactLabel = locale === "en" ? "Delivery artifact" : "Artifact triển khai";
+
+  return `flowchart LR
+    A["${sourceLabel}"] --> B["${aiLabel}"]
+    B --> C["${item.title}"]
+    C --> D["${reviewLabel}"]
+    D --> E{"${decisionLabel}"}
+    E -->|Approved| F["${artifactLabel}"]
+    E -->|Needs evidence| G["Open questions"]
+    G --> A`;
+}
+
+function useCasePage(useCase, locale) {
+  const item = useCase[locale];
+  const deliverableHeaders =
+    locale === "en"
+      ? ["Deliverable", "What it contains", "Owner", "Done signal"]
+      : ["Deliverable", "Nội dung", "Owner", "Done signal"];
+  const riskHeaders =
+    locale === "en"
+      ? ["Risk", "Why it matters", "BA control"]
+      : ["Rủi ro", "Vì sao quan trọng", "Control của BA"];
+  const isEn = locale === "en";
+  const prompt = isEn
+    ? `Act as a senior AI-aware Business Analyst. Help me apply the "${item.title}" use case to my project. First ask for source evidence and constraints. Then create a structured analysis with project context, assumptions, AI-fit boundary, workflow steps, deliverables, risks, controls, open questions, and stakeholder decisions. Do not invent policy, thresholds, or approvals.`
+    : `Hãy đóng vai senior Business Analyst hiểu AI. Hỗ trợ tôi áp dụng use case "${item.title}" vào dự án. Trước hết hỏi source evidence và constraint. Sau đó tạo structured analysis gồm project context, assumption, AI-fit boundary, workflow step, deliverable, risk, control, open question và stakeholder decision. Không tự bịa policy, threshold hoặc approval.`;
+  const contextFrame = isEn
+    ? "In a real delivery environment, this work usually appears under time pressure: stakeholders want clarity, delivery needs a backlog, QA needs testable behavior, and operations needs a process that can survive exceptions. The BA uses AI here to accelerate analysis and synthesis, but the BA remains accountable for evidence, business meaning, stakeholder decisioning, and artifact quality."
+    : "Trong môi trường delivery thật, tình huống này thường xuất hiện dưới áp lực thời gian: stakeholder cần clarity, delivery cần backlog, QA cần behavior test được, operations cần process chịu được exception. BA dùng AI để tăng tốc analysis và synthesis, nhưng BA vẫn chịu trách nhiệm về evidence, business meaning, stakeholder decisioning và artifact quality.";
+  const challengeFrame = isEn
+    ? "The practical difficulty is that AI can make early material look more complete than it is. A strong BA keeps the output reviewable by separating source-backed facts, assumptions, unsupported claims, decision gaps, and recommended next actions. The objective is not to make the document longer; it is to make the project decision clearer and safer."
+    : "Khó khăn thực tế là AI có thể làm material ban đầu trông hoàn chỉnh hơn mức thật sự. BA giỏi giữ output ở trạng thái reviewable bằng cách tách source-backed fact, assumption, unsupported claim, decision gap và recommended next action. Mục tiêu không phải làm document dài hơn; mục tiêu là làm project decision rõ hơn và an toàn hơn.";
+  const aiFitFrame = isEn
+    ? "AI is useful in this use case when it is constrained to analysis support, pattern detection, structured drafting, and critique. It should not approve scope, invent policy, decide business trade-offs, or replace accountable stakeholder judgment."
+    : "AI hữu ích trong use case này khi được giới hạn vào analysis support, pattern detection, structured drafting và critique. AI không được approve scope, invent policy, quyết định business trade-off hoặc thay thế judgment của stakeholder chịu trách nhiệm.";
+  const inputFrame = isEn
+    ? "A BA should label these inputs before using AI: source owner, source date, approval status, sensitivity level, and whether the source is fact, opinion, policy, draft, or historical evidence. This preparation prevents the model from treating every input as equally current and authoritative."
+    : "BA nên label các input này trước khi dùng AI: source owner, source date, approval status, sensitivity level, và source đó là fact, opinion, policy, draft hay historical evidence. Việc chuẩn bị này ngăn model xem mọi input đều current và authoritative như nhau.";
+  const workflowFrame = isEn
+    ? "The workflow works best as a staged AI collaboration: first organize the evidence, then ask for analysis, then create the artifact, then run a critique pass. The BA should keep a visible decision log throughout the process so that AI-generated suggestions do not silently become approved scope."
+    : "Workflow hiệu quả nhất khi dùng AI theo từng stage: trước hết organize evidence, sau đó yêu cầu analysis, tiếp theo tạo artifact, rồi chạy critique pass. BA nên giữ decision log visible xuyên suốt để suggestion do AI sinh ra không âm thầm trở thành approved scope.";
+  const deliverableFrame = isEn
+    ? "These deliverables should be treated as BA-owned artifacts. AI can draft them, but the BA must validate source support, stakeholder meaning, traceability, and whether the artifact is ready for handoff."
+    : "Các deliverable này nên được xem là artifact do BA own. AI có thể draft, nhưng BA phải validate source support, stakeholder meaning, traceability và artifact đã sẵn sàng handoff hay chưa.";
+  const riskFrame = isEn
+    ? "The key control is to make uncertainty visible. If evidence is weak, the output should create a validation question or decision item, not a final requirement. If the artifact influences delivery, release, compliance, customer experience, or operational workload, the BA should require explicit human review before handoff."
+    : "Control quan trọng nhất là làm uncertainty visible. Nếu evidence yếu, output nên tạo validation question hoặc decision item, không phải final requirement. Nếu artifact ảnh hưởng delivery, release, compliance, customer experience hoặc operational workload, BA nên yêu cầu human review explicit trước khi handoff.";
+  const checklist = isEn
+    ? [
+        "Every AI-produced statement is tied to a source, assumption, or validation question.",
+        "The BA has separated drafting assistance from business approval.",
+        "Workflow steps identify the human owner for decisions, review, and exceptions.",
+        "Deliverables are traceable to project inputs and can be reviewed by QA, product, or operations.",
+        "Risk controls are practical enough to be used in a real project meeting.",
+        `Success metric: ${item.metric}`
+      ]
+    : [
+        "Mọi statement do AI hỗ trợ đều gắn với source, assumption hoặc validation question.",
+        "BA đã tách drafting assistance khỏi business approval.",
+        "Workflow step có human owner cho decision, review và exception.",
+        "Deliverable trace được về project input và review được bởi QA, product hoặc operations.",
+        "Risk control đủ thực tế để dùng trong meeting dự án thật.",
+        `Success metric: ${item.metric}`
+      ];
+
+  return `---
+title: ${yamlString(item.title)}
+description: ${yamlString(item.challenge)}
+---
+
+# ${item.title}
+
+<div class="case-meta">
+  <span>${useCase.group}</span>
+  <span>${useCase.domain}</span>
+  <span>${isEn ? "Project use case" : "Use case dự án"}</span>
+</div>
+
+## Project context
+
+${item.project} ${contextFrame}
+
+## BA challenge
+
+${item.challenge} ${challengeFrame}
+
+## Where AI fits
+
+<div class="ba-workbench-panel">
+${aiFitFrame}
+</div>
+
+${list(item.aiUse)}
+
+## Inputs to prepare
+
+${list(item.inputs)}
+
+${inputFrame}
+
+## BA workflow
+
+${numbered(item.workflow)}
+
+${workflowFrame}
+
+## Diagram
+
+\`\`\`mermaid
+${useCaseDiagram(useCase, locale)}
+\`\`\`
+
+## Deliverables
+
+${artifactTable(deliverableHeaders, item.deliverables)}
+
+${deliverableFrame}
+
+## Prompt to try
+
+\`\`\`text
+${prompt}
+\`\`\`
+
+## Review checklist
+
+${list(checklist)}
+
+## Risks and controls
+
+${artifactTable(riskHeaders, item.risks)}
+
+${riskFrame}
+`;
+}
+
+function useCaseIndex(locale) {
+  const isEn = locale === "en";
+  const intro = isEn
+    ? "A practical library of project use cases showing how software Business Analysts can apply AI across discovery, requirements, delivery, AI-enabled products, domain workflows, and governance."
+    : "Thư viện use case thực tế trong dự án, giúp software Business Analyst áp dụng AI vào discovery, requirements, delivery, AI-enabled product, domain workflow và governance.";
+  const groups = [...new Set(useCases.map((useCase) => useCase.group))];
+  const cards = groups
+    .map((group) => {
+      const groupCards = useCases
+        .filter((useCase) => useCase.group === group)
+        .map((useCase) => {
+          const item = useCase[locale];
+          return `<a class="case-card" href="./${useCase.slug}/"><span>${useCase.domain}</span><strong>${item.title}</strong><em>${item.metric}</em></a>`;
+        })
+        .join("\n");
+      return `<section class="usecase-section"><h2>${group}</h2><div class="usecase-grid">\n${groupCards}\n</div></section>`;
+    })
+    .join("\n");
+
+  return `---
+title: ${yamlString(isEn ? "Project Use Cases" : "Use case thực tế trong dự án")}
+description: ${yamlString(intro)}
+---
+
+# ${isEn ? "Project Use Cases" : "Use case thực tế trong dự án"}
+
+${intro}
+
+<div class="ba-workbench-panel">
+${isEn ? "Use these pages as working playbooks. Pick a use case close to your project, copy the prompt, prepare source evidence, and adapt the deliverables to your team." : "Hãy dùng các trang này như playbook làm việc. Chọn use case gần với dự án của bạn, dùng prompt, chuẩn bị source evidence và điều chỉnh deliverable theo team."}
+</div>
+
+## Use case map
+
+\`\`\`mermaid
+flowchart LR
+    A["Discovery"] --> B["Requirements"]
+    B --> C["Delivery and QA"]
+    C --> D["AI-enabled products"]
+    D --> E["Domain scenarios"]
+    E --> F["Governance"]
+\`\`\`
+
+${cards}
+`;
+}
+
 function homePage(locale) {
   const isEn = locale === "en";
   const title = "AI for Business Analysts";
@@ -1658,6 +2660,7 @@ ${intro}
 
 <div class="course-grid">
 ${sectionCards}
+<div class="course-card"><strong>${isEn ? "Project Use Cases" : "Use case thực tế trong dự án"}</strong>${isEn ? "30 detailed scenarios showing how to apply AI in real software projects." : "30 tình huống chi tiết giúp áp dụng AI vào dự án phần mềm thật."}</div>
 </div>
 
 ## Learning path
@@ -1685,7 +2688,8 @@ flowchart LR
 1. Read lessons 01-05 for AI foundations.
 2. Practice lessons 06-17 to improve BA workflow and artifacts.
 3. Study lessons 18-20 for AI-enabled product requirements and BA leadership.
-4. Use the labs and resource library on your real backlog.
+4. Use the project use cases to adapt AI workflows to real delivery situations.
+5. Use the labs and resource library on your real backlog.
 `;
 }
 
@@ -1861,6 +2865,7 @@ A bilingual, artifact-driven course for software Business Analysts who need to u
 - Every lesson now has a lesson-specific BA relevance section, expert AI review note, and bad-vs-better practice examples.
 - Lessons include mistakes to avoid and actions to apply tomorrow.
 - Labs include input samples, exercise steps, expected deliverables, and review rubrics.
+- The site includes 30 detailed project use cases across discovery, requirements, delivery, AI products, domain workflows, and governance.
 - Resources are upgraded into practical playbooks for prompts, quality review, AI feature specification, RAG, and governance.
 
 ## Learning Path
@@ -1889,6 +2894,17 @@ ${syllabusRows}
 4. Process and sequence diagrams
 5. RAG assistant requirements
 6. BA team AI adoption roadmap
+
+## Project Use Cases
+
+The use case library includes 30 detailed, bilingual project scenarios with context, BA challenge, AI-fit boundary, workflow, diagram, deliverables, prompts, review checklist, and risk controls.
+
+- Discovery and alignment
+- Requirements and backlog
+- Delivery and QA
+- AI-enabled product use cases
+- Domain project scenarios
+- Governance and adoption
 
 ## Local Preview
 
@@ -1921,6 +2937,14 @@ for (const lab of labs) {
   write(`docs/vi/labs/${lab.slug}/index.md`, labPage(lab, "vi"));
 }
 
+write("docs/en/use-cases/index.md", useCaseIndex("en"));
+write("docs/vi/use-cases/index.md", useCaseIndex("vi"));
+
+for (const useCase of useCases) {
+  write(`docs/en/use-cases/${useCase.slug}/index.md`, useCasePage(useCase, "en"));
+  write(`docs/vi/use-cases/${useCase.slug}/index.md`, useCasePage(useCase, "vi"));
+}
+
 write("docs/en/resources/index.md", resourceIndex("en"));
 write("docs/en/resources/prompt-library.md", promptLibrary("en"));
 write("docs/en/resources/checklists.md", checklists("en"));
@@ -1931,4 +2955,4 @@ write("docs/vi/resources/checklists.md", checklists("vi"));
 write("docs/vi/resources/glossary.md", glossary("vi"));
 write("README.md", readme());
 
-console.log("Seeded deeper AI for BA course content.");
+console.log("Seeded deeper AI for BA course content with project use cases.");

@@ -35,6 +35,39 @@ const labs = [
   ["AI Adoption Roadmap", "ai-adoption-roadmap", "Roadmap adoption AI"]
 ];
 
+const useCases = [
+  ["Stakeholder Discovery From Messy Notes", "stakeholder-discovery-from-messy-notes", "Discovery stakeholder từ notes lộn xộn"],
+  ["Project Kickoff Scope Framing", "project-kickoff-scope-framing", "Framing scope cho project kickoff"],
+  ["Current-State Process Mapping", "current-state-process-mapping", "Mapping current-state process"],
+  ["Legacy Modernization Gap Analysis", "legacy-modernization-gap-analysis", "Gap analysis cho legacy modernization"],
+  ["Market and Competitor Research Synthesis", "market-competitor-research-synthesis", "Synthesis market và competitor research"],
+  ["User Story Splitting for Sprint Readiness", "user-story-splitting-for-sprint", "Split user story cho sprint readiness"],
+  ["Acceptance Criteria and Edge Case Expansion", "acceptance-criteria-edge-cases", "Mở rộng acceptance criteria và edge case"],
+  ["BRD and SRS Drafting Review", "brd-srs-drafting-review", "Draft và review BRD/SRS"],
+  ["NFR and Risk Workshop Preparation", "nfr-risk-workshop", "Chuẩn bị workshop NFR và risk"],
+  ["Traceability Matrix for Release Readiness", "traceability-matrix-for-release", "Traceability matrix cho release readiness"],
+  ["Defect Triage and Root-Cause Analysis", "defect-triage-root-cause", "Triage defect và root-cause analysis"],
+  ["Test Scenario Generation From Requirements", "test-scenario-generation", "Sinh test scenario từ requirements"],
+  ["Change Impact Analysis", "change-impact-analysis", "Change impact analysis"],
+  ["Release Readiness Check", "release-readiness-check", "Kiểm tra release readiness"],
+  ["Production Incident to Requirement Feedback", "production-incident-requirement-feedback", "Từ production incident đến feedback requirement"],
+  ["RAG Policy Assistant Requirements", "rag-policy-assistant-requirements", "Requirement cho RAG policy assistant"],
+  ["AI Ticket Triage Specification", "ai-ticket-triage-specification", "Đặc tả AI ticket triage"],
+  ["AI Document OCR Intake", "ai-document-ocr-intake", "AI OCR cho document intake"],
+  ["AI Recommendation Explanation", "ai-recommendation-explanation", "Giải thích AI recommendation"],
+  ["AI Chatbot Human Handoff", "ai-chatbot-human-handoff", "AI chatbot và human handoff"],
+  ["Loan Origination Journey Modernization", "loan-origination-journey", "Modernize journey loan origination"],
+  ["Insurance Claim Intake Automation", "insurance-claim-intake", "Automation insurance claim intake"],
+  ["E-commerce Return and Refund Flow", "ecommerce-return-refund", "Flow return và refund e-commerce"],
+  ["Healthcare Appointment Intake", "healthcare-appointment-intake", "Healthcare appointment intake"],
+  ["HR Employee Service Portal", "hr-employee-service-portal", "HR employee service portal"],
+  ["Finance Reconciliation Exception Workflow", "finance-reconciliation-exception", "Workflow finance reconciliation exception"],
+  ["Vendor Selection for an AI Tool", "vendor-selection-ai-tool", "Chọn vendor cho AI tool"],
+  ["Data Privacy Assessment for AI Use", "data-privacy-ai-assessment", "Assessment data privacy cho AI use"],
+  ["BA AI Adoption Playbook", "ba-ai-adoption-playbook", "Playbook adoption AI cho BA team"],
+  ["AI Use Case Portfolio Prioritization", "portfolio-use-case-prioritization", "Prioritize portfolio AI use case"]
+];
+
 function lessonItems(locale: "en" | "vi") {
   return lessons.map(([enTitle, slug, viTitle], index) => ({
     text: `${String(index + 1).padStart(2, "0")}. ${locale === "en" ? enTitle : viTitle}`,
@@ -49,11 +82,18 @@ function labItems(locale: "en" | "vi") {
   }));
 }
 
+function useCaseItems(locale: "en" | "vi") {
+  return useCases.map(([enTitle, slug, viTitle], index) => ({
+    text: `${String(index + 1).padStart(2, "0")}. ${locale === "en" ? enTitle : viTitle}`,
+    link: `/${locale}/use-cases/${slug}/`
+  }));
+}
+
 function sidebar(locale: "en" | "vi") {
   const labels =
     locale === "en"
-      ? { start: "Start", lessons: "Lessons", labs: "Labs", resources: "Resources" }
-      : { start: "Bắt đầu", lessons: "Bài học", labs: "Thực hành", resources: "Tài nguyên" };
+      ? { start: "Start", lessons: "Lessons", labs: "Labs", useCases: "Project Use Cases", resources: "Resources" }
+      : { start: "Bắt đầu", lessons: "Bài học", labs: "Thực hành", useCases: "Use case dự án", resources: "Tài nguyên" };
 
   return [
     {
@@ -67,6 +107,14 @@ function sidebar(locale: "en" | "vi") {
     {
       text: labels.labs,
       items: labItems(locale)
+    },
+    {
+      text: labels.useCases,
+      collapsed: true,
+      items: [
+        { text: locale === "en" ? "Use Case Library" : "Thư viện use case", link: `/${locale}/use-cases/` },
+        ...useCaseItems(locale)
+      ]
     },
     {
       text: labels.resources,
@@ -102,6 +150,13 @@ export default withMermaid(
       nav: [
         { text: "English", link: "/en/" },
         { text: "Tiếng Việt", link: "/vi/" },
+        {
+          text: "Use Cases",
+          items: [
+            { text: "English Use Cases", link: "/en/use-cases/" },
+            { text: "Use case tiếng Việt", link: "/vi/use-cases/" }
+          ]
+        },
         {
           text: "Resources",
           items: [

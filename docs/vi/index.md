@@ -15,6 +15,7 @@ Learning path song ngữ chuyên sâu cho software Business Analyst muốn dùng
 <div class="course-card"><strong>Artifact phân tích và diagramming</strong>Bài học riêng biệt với diagram, artifact, prompt và review control.</div>
 <div class="course-card"><strong>Xây dựng sản phẩm có AI dưới góc nhìn BA</strong>Bài học riêng biệt với diagram, artifact, prompt và review control.</div>
 <div class="course-card"><strong>BA lead và expert track</strong>Bài học riêng biệt với diagram, artifact, prompt và review control.</div>
+<div class="course-card"><strong>Use case thực tế trong dự án</strong>30 tình huống chi tiết giúp áp dụng AI vào dự án phần mềm thật.</div>
 </div>
 
 ## Learning path
@@ -42,4 +43,5 @@ flowchart LR
 1. Read lessons 01-05 for AI foundations.
 2. Practice lessons 06-17 to improve BA workflow and artifacts.
 3. Study lessons 18-20 for AI-enabled product requirements and BA leadership.
-4. Use the labs and resource library on your real backlog.
+4. Use the project use cases to adapt AI workflows to real delivery situations.
+5. Use the labs and resource library on your real backlog.
