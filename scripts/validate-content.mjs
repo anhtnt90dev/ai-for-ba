@@ -41,6 +41,42 @@ function assertSameList(actual, expected, message) {
   );
 }
 
+function extractMermaidBlocks(content) {
+  return [...content.matchAll(/```mermaid\s+([\s\S]*?)```/g)].map((match) => match[1].trim());
+}
+
+function sectionContent(content, heading) {
+  const escapedHeading = heading.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const sectionMatch = content.match(new RegExp(`^## ${escapedHeading}\\s*\\n([\\s\\S]*?)(?=^## |$)`, "m"));
+  return sectionMatch?.[1]?.trim() ?? "";
+}
+
+function containsArtifactStructure(markdown) {
+  return markdown.includes("| --- |") || (markdown.match(/^- /gm)?.length ?? 0) >= 4;
+}
+
+const requiredLessonHeadings = [
+  "## Learning outcomes",
+  "## Why this matters for BA work",
+  "## Mental model or core concept",
+  "## Practical BA example",
+  "## Diagram",
+  "## BA artifact",
+  "## AI collaboration prompt",
+  "## Mistakes to avoid",
+  "## Apply this tomorrow",
+  "## What a BA should remember"
+];
+
+const requiredLabHeadings = [
+  "## Scenario",
+  "## Input sample",
+  "## Exercise steps",
+  "## Deliverables",
+  "## Review rubric"
+];
+
+const diagramSignatures = new Set();
 const failures = [];
 
 assert(exists("README.md"), "README.md is required");
@@ -70,10 +106,24 @@ for (const locale of ["en", "vi"]) {
     }
 
     const content = read(file);
-    assert(content.includes("## Learning outcomes"), `${file} must include learning outcomes`);
-    assert(content.includes("```mermaid"), `${file} must include a Mermaid diagram`);
-    assert(content.includes("## What a BA should remember"), `${file} must include BA memory summary`);
-    assert(content.includes("## Practical BA example"), `${file} must include a practical BA example`);
+    for (const heading of requiredLessonHeadings) {
+      assert(content.includes(heading), `${file} must include ${heading}`);
+    }
+
+    const mermaidBlocks = extractMermaidBlocks(content);
+    assert(mermaidBlocks.length > 0, `${file} must include a Mermaid diagram`);
+    for (const block of mermaidBlocks) {
+      const usesOldGenericDiagram =
+        block.includes("Business goal") &&
+        block.includes("Source context") &&
+        block.includes("AI analysis") &&
+        block.includes("Validated artifact");
+      assert(!usesOldGenericDiagram, `${file} must not use the old generic review-loop diagram`);
+      diagramSignatures.add(block.replace(/\s+/g, " "));
+    }
+
+    const artifact = sectionContent(content, "BA artifact");
+    assert(containsArtifactStructure(artifact), `${file} must include a structured BA artifact`);
   }
 
   for (const slug of listDirs(`docs/${locale}/labs`)) {
@@ -84,11 +134,17 @@ for (const locale of ["en", "vi"]) {
     }
 
     const content = read(file);
-    assert(content.includes("## Scenario"), `${file} must include a scenario`);
-    assert(content.includes("## Deliverables"), `${file} must include deliverables`);
+    for (const heading of requiredLabHeadings) {
+      assert(content.includes(heading), `${file} must include ${heading}`);
+    }
     assert(content.includes("```mermaid"), `${file} must include a Mermaid diagram`);
   }
 }
+
+assert(
+  diagramSignatures.size >= 30,
+  `Lesson diagrams must be diverse across locales: expected at least 30 unique diagrams, got ${diagramSignatures.size}`
+);
 
 for (const file of [
   "docs/en/resources/index.md",
