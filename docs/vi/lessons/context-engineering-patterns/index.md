@@ -1,6 +1,6 @@
 ---
 title: "Context engineering patterns"
-description: "Đi xa hơn prompting bằng thiết kế context lặp lại được: role, source, task, constraint, output và review criteria."
+description: "AI work tốt không phải một prompt thông minh; đó là context package tái sử dụng được với goal, source, constraint và review criteria."
 ---
 
 # Context engineering patterns
@@ -13,55 +13,73 @@ description: "Đi xa hơn prompting bằng thiết kế context lặp lại đư
 
 ## Learning outcomes
 
-- Giải thích context engineering patterns bằng ngôn ngữ business.
-- Áp dụng concept vào workflow BA thực tế.
-- Dùng output AI như draft có evidence, không xem là sự thật tự động.
-- Xác định câu hỏi review BA phải hỏi trước khi chia sẻ artifact.
+- Xây context package cho task BA lặp lại.
+- Định nghĩa output contract cho AI-assisted analysis.
+- Giảm hallucination bằng cách kiểm soát source và review rule.
 
 ## Why this matters for BA work
 
-AI thay đổi cách tạo ra artifact phân tích, nhưng không thay thế trách nhiệm của BA về clarity, evidence và decision.
-
 <div class="ba-callout">
-Đi xa hơn prompting bằng thiết kế context lặp lại được: role, source, task, constraint, output và review criteria.
+AI work tốt không phải một prompt thông minh; đó là context package tái sử dụng được với goal, source, constraint và review criteria.
 </div>
 
-## Core concept
+Business Analyst đứng giữa problem framing, ý nghĩa từ stakeholder, constraint triển khai và product decision. Trong công việc có AI, vị trí này quan trọng hơn vì ngôn ngữ chưa rõ có thể tạo false certainty rất nhanh. Bài này đưa ra một control thực tế để áp dụng trước khi output AI trở thành scope, backlog hoặc delivery commitment.
 
-Pattern hữu ích cho BA là controlled collaboration: cung cấp business context cho model, yêu cầu structured output, bắt buộc có evidence, rồi review theo goal, rule, risk và decision của stakeholder.
+## Mental model or core concept
+
+Prompting là instruction nhìn thấy; context engineering là operating design đầy đủ xung quanh nó. Với BA, context package nên gồm business goal, user, scope, source, constraint, artifact format, quality bar và câu hỏi AI phải hỏi trước khi draft.
 
 ## Practical BA example
 
-BA nhận output kém vì prompt chỉ ghi 'write requirements'. Context package tốt hơn gồm product goal, user, source excerpt, constraint, format và quality rubric.
+Hai BA nhờ AI review requirement. Một người viết 'find gaps'; người kia cung cấp product goal, stakeholder role, source ID, NFR checklist, output column, severity level và evidence rule. BA thứ hai nhận được artifact review dùng được.
 
 ## Diagram
 
 ```mermaid
-flowchart LR
-    A["Business goal"] --> B["Source context"]
-    B --> C["AI analysis"]
-    C --> D{"BA review"}
-    D -->|"Revise"| B
-    D -->|"Approve"| E["Artifact đã validate"]
-    E --> F["Context engineering patterns"]
+flowchart TD
+    A["Role"] --> H["Context package"]
+    B["Business goal"] --> H
+    C["User + scope"] --> H
+    D["Source IDs"] --> H
+    E["Constraint"] --> H
+    F["Output contract"] --> H
+    G["Quality bar"] --> H
+    H --> I["AI output review được"]
 ```
 
-## BA workflow
+## BA artifact
 
-1. Đóng khung business question trước khi mở AI tool.
-2. Cung cấp source context và constraint rõ ràng.
-3. Yêu cầu structured output có mapping về source.
-4. Chạy critique pass để tìm ambiguity, gap, risk và testability.
-5. Chuyển kết quả thành artifact mà team có thể inspect và cùng chịu ownership.
+### BA Context Package
 
-## Prompt hoặc template
+| Component | Cần đưa vào | Vì sao quan trọng | Ví dụ |
+| --- | --- | --- | --- |
+| Role | Perspective và expertise mong muốn. | Định hình lens review. | Senior BA cho fintech onboarding. |
+| Source | Document, note, ID, freshness. | Kiểm soát grounding. | SRS v0.8, policy P-12, workshop notes. |
+| Task | Analysis job cụ thể. | Tránh summary quá rộng. | Find ambiguity và NFR gap. |
+| Output contract | Column, format, quality bar. | Làm output review được. | Table có evidence và question. |
+
+## AI collaboration prompt
 
 ```text
-Dùng cấu trúc này: Role, Business Goal, Source Context, Task, Constraint, Output Format, Quality Bar, Questions Before Drafting.
+Dùng context package này: Role, Business Goal, Users, Scope, Source IDs, Constraints, Task, Output Format, Quality Bar và Questions Before Drafting. Hỏi clarification question trước nếu thiếu component bắt buộc.
 ```
+
+## Mistakes to avoid
+
+- Gọi instruction một dòng là prompt engineering.
+- Bỏ output format.
+- Không cung cấp source ID.
+- Không nói rõ quality nghĩa là gì với artifact.
+
+## Apply this tomorrow
+
+1. Tạo context package reusable cho requirement review.
+2. Thêm output column trước khi nhờ AI draft.
+3. Đưa quality bar vào một prompt.
+4. Yêu cầu AI hỏi context còn thiếu trước khi trả lời.
 
 ## What a BA should remember
 
-- AI là bộ tăng tốc reasoning, không phải decision owner.
-- Mọi claim quan trọng phải grounded vào source context hoặc stakeholder confirmation.
-- BA giỏi giữ review loop rõ ràng: draft, critique, revise, validate.
+- Context engineering làm AI work lặp lại được.
+- Output format là một phần của requirement.
+- Prompt thiếu source và review rule thì fragile.

@@ -1,6 +1,6 @@
 ---
 title: "Human review, monitoring và fallback"
-description: "Thiết kế workflow AI trong đó con người review output rủi ro và hệ thống fallback an toàn."
+description: "Sản phẩm AI có trách nhiệm cần path rõ cho uncertainty, escalation, correction và quality monitoring."
 ---
 
 # Human review, monitoring và fallback
@@ -8,60 +8,77 @@ description: "Thiết kế workflow AI trong đó con người review output r�
 <div class="lesson-meta">
   <span>Xây dựng sản phẩm có AI dưới góc nhìn BA</span>
   <span>Software BA</span>
-  <span>Core</span>
+  <span>Advanced</span>
 </div>
 
 ## Learning outcomes
 
-- Giải thích human review, monitoring và fallback bằng ngôn ngữ business.
-- Áp dụng concept vào workflow BA thực tế.
-- Dùng output AI như draft có evidence, không xem là sự thật tự động.
-- Xác định câu hỏi review BA phải hỏi trước khi chia sẻ artifact.
+- Thiết kế human-in-the-loop workflow.
+- Đặc tả fallback và escalation requirement.
+- Định nghĩa monitoring event cho AI quality và risk.
 
 ## Why this matters for BA work
 
-AI thay đổi cách tạo ra artifact phân tích, nhưng không thay thế trách nhiệm của BA về clarity, evidence và decision.
-
 <div class="ba-callout">
-Thiết kế workflow AI trong đó con người review output rủi ro và hệ thống fallback an toàn.
+Sản phẩm AI có trách nhiệm cần path rõ cho uncertainty, escalation, correction và quality monitoring.
 </div>
 
-## Core concept
+Business Analyst đứng giữa problem framing, ý nghĩa từ stakeholder, constraint triển khai và product decision. Trong công việc có AI, vị trí này quan trọng hơn vì ngôn ngữ chưa rõ có thể tạo false certainty rất nhanh. Bài này đưa ra một control thực tế để áp dụng trước khi output AI trở thành scope, backlog hoặc delivery commitment.
 
-Pattern hữu ích cho BA là controlled collaboration: cung cấp business context cho model, yêu cầu structured output, bắt buộc có evidence, rồi review theo goal, rule, risk và decision của stakeholder.
+## Mental model or core concept
+
+Human-in-the-loop không phải lời hứa mơ hồ rằng con người có thể can thiệp. Nó là workflow được thiết kế: trigger condition, reviewer role, queue, SLA, decision option, user messaging, audit, correction capture và monitoring. Fallback phải safe, visible và đo được.
 
 ## Practical BA example
 
-Một AI recommendation engine gợi ý loại khoản vay. Case confidence thấp hoặc nhạy về policy phải route sang human reviewer với reason code và audit trail.
+AI loan document checker flag missing document. Nếu confidence cao, nó suggest next action; nếu confidence thấp hoặc document type regulated, nó route đến reviewer. BA đặc tả queue priority, reason code, reviewer action, customer message và audit trail.
 
 ## Diagram
 
 ```mermaid
-flowchart LR
-    A["Business goal"] --> B["Source context"]
-    B --> C["AI analysis"]
-    C --> D{"BA review"}
-    D -->|"Revise"| B
-    D -->|"Approve"| E["Artifact đã validate"]
-    E --> F["Human review, monitoring và fallback"]
+flowchart TD
+    A["AI output"] --> B{"Risk hoặc confidence thấp?"}
+    B -->|Không| C["Proceed với user action"]
+    B -->|Có| D["Review queue"]
+    D --> E["Human decision"]
+    E --> F["Audit + correction capture"]
+    F --> G["Model quality monitoring"]
+    B -->|Unsupported| H["Fallback message + escalation"]
 ```
 
-## BA workflow
+## BA artifact
 
-1. Đóng khung business question trước khi mở AI tool.
-2. Cung cấp source context và constraint rõ ràng.
-3. Yêu cầu structured output có mapping về source.
-4. Chạy critique pass để tìm ambiguity, gap, risk và testability.
-5. Chuyển kết quả thành artifact mà team có thể inspect và cùng chịu ownership.
+### Human-in-the-Loop Flow Requirements
 
-## Prompt hoặc template
+| Flow part | Requirement | Example | Metric |
+| --- | --- | --- | --- |
+| Trigger | Định nghĩa khi nào human review bắt đầu. | Confidence < 0.8 hoặc regulated document. | Trigger accuracy theo case type. |
+| Reviewer action | Liệt kê allowed decision. | Approve, reject, request info, override. | Review completion SLA. |
+| Fallback | Định nghĩa safe response khi AI không trả lời được. | Show escalation message và create task. | Fallback resolution time. |
+| Monitoring | Capture quality và drift signal. | Track override theo category. | Override rate trend. |
+
+## AI collaboration prompt
 
 ```text
-Thiết kế human-in-the-loop flow. Bao gồm trigger condition, reviewer role, decision option, SLA, audit record, user message, fallback và monitoring event.
+Thiết kế requirement human-in-the-loop và fallback. Bao gồm trigger, reviewer role, queue priority, SLA, allowed decision, user messaging, audit record, correction capture, monitoring event và operational metric.
 ```
+
+## Mistakes to avoid
+
+- Viết 'human can review' mà thiếu workflow detail.
+- Không có SLA cho review queue.
+- Fallback message che giấu uncertainty.
+- Monitoring chỉ uptime, không đo AI quality.
+
+## Apply this tomorrow
+
+1. Định nghĩa một low-confidence trigger.
+2. Viết fallback message trung thực và hữu ích.
+3. Thêm reason code cho human override.
+4. Hỏi operations ai own review queue.
 
 ## What a BA should remember
 
-- AI là bộ tăng tốc reasoning, không phải decision owner.
-- Mọi claim quan trọng phải grounded vào source context hoặc stakeholder confirmation.
-- BA giỏi giữ review loop rõ ràng: draft, critique, revise, validate.
+- Human review là workflow requirement.
+- Fallback là một phần user experience.
+- Monitoring phải gồm quality, không chỉ availability.

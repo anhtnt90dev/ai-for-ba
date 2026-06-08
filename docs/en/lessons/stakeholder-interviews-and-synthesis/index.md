@@ -1,6 +1,6 @@
 ---
 title: "Stakeholder Interviews and Synthesis"
-description: "Turn interview notes into themes, decisions, contradictions, open questions, and requirement candidates."
+description: "AI can summarize interviews quickly, but synthesis requires preserving contradictions, attribution, and decisions."
 ---
 
 # Stakeholder Interviews and Synthesis
@@ -13,55 +13,73 @@ description: "Turn interview notes into themes, decisions, contradictions, open 
 
 ## Learning outcomes
 
-- Explain stakeholder interviews and synthesis in business language.
-- Apply the concept to a realistic BA workflow.
-- Use AI output as draft evidence, not as unchecked truth.
-- Identify the review questions a BA must ask before sharing the artifact.
+- Turn messy notes into themes, facts, contradictions, and requirement candidates.
+- Keep stakeholder attribution instead of flattening nuance.
+- Prepare conflict-resolution questions.
 
 ## Why this matters for BA work
 
-AI changes how analysis work is produced, but it does not remove the BA's accountability for clarity, evidence, and decisions.
-
 <div class="ba-callout">
-Turn interview notes into themes, decisions, contradictions, open questions, and requirement candidates.
+AI can summarize interviews quickly, but synthesis requires preserving contradictions, attribution, and decisions.
 </div>
 
-## Core concept
+Business Analysts sit between problem framing, stakeholder meaning, delivery constraints, and product decisions. In AI work, that position becomes more important because unclear language can create false certainty quickly. This lesson gives you a practical control you can apply before AI output becomes scope, backlog, or delivery commitment.
 
-The useful BA pattern is controlled collaboration: provide the model with business context, ask for structured output, require evidence, then review the result against goals, rules, risks, and stakeholder decisions.
+## Mental model or core concept
+
+Interview synthesis is not the same as summarization. A summary compresses; synthesis compares. BA synthesis should preserve who said what, which statements agree, which conflict, which decisions are implied, and which questions must be resolved before requirements are written.
 
 ## Practical BA example
 
-Three stakeholders describe the same approval flow differently. AI can cluster statements, but the BA must identify decision owners and run a conflict-resolution conversation.
+Sales says discount approval takes one day; finance says exceptions can take five days; operations says VIP requests bypass the queue. AI can cluster notes, but the BA must expose the policy conflict and ask leaders to decide priority and audit rules.
 
 ## Diagram
 
 ```mermaid
 flowchart LR
-    A["Business goal"] --> B["Source context"]
-    B --> C["AI analysis"]
-    C --> D{"BA review"}
-    D -->|"Revise"| B
-    D -->|"Approve"| E["Validated artifact"]
-    E --> F["Stakeholder Interviews and Synthesis"]
+    A["Stakeholder notes"] --> B["Themes"]
+    A --> C["Confirmed facts"]
+    A --> D["Contradictions"]
+    A --> E["Open questions"]
+    B --> F["Requirement candidates"]
+    C --> F
+    D --> G["Decision meeting"]
+    E --> G
 ```
 
-## BA workflow
+## BA artifact
 
-1. Frame the business question before opening the AI tool.
-2. Provide source context and explicit constraints.
-3. Ask for structured output that maps back to the source.
-4. Run a critique pass for ambiguity, gaps, risk, and testability.
-5. Convert the result into an artifact the team can inspect and own.
+### Interview Synthesis Board
 
-## Prompt or template
+| Theme | Confirmed fact | Contradiction | Follow-up question |
+| --- | --- | --- | --- |
+| Approval time | Standard request usually one day. | Finance exception takes up to five days. | Which SLA is promised to customers? |
+| VIP handling | VIP requests are treated differently. | No documented bypass rule. | Who can approve VIP bypass? |
+| Audit | Finance needs exception trace. | Sales uses email approval. | What audit record is mandatory? |
+| Ownership | Managers approve discounts. | No backup owner for absence. | Who owns approval when manager is unavailable? |
+
+## AI collaboration prompt
 
 ```text
-Synthesize these notes into themes, confirmed facts, contradictions, open questions, requirement candidates, and decisions needed. Keep stakeholder attribution.
+Synthesize these interview notes into themes, confirmed facts, contradictions, implied requirements, open questions, and decision owners. Preserve stakeholder attribution and do not merge conflicting statements into a false consensus.
 ```
+
+## Mistakes to avoid
+
+- Producing a pretty summary that hides disagreement.
+- Removing stakeholder attribution.
+- Converting every interview statement into a requirement.
+- Failing to separate current-state facts from desired future-state decisions.
+
+## Apply this tomorrow
+
+1. Add a contradiction column to your interview summary.
+2. Ask AI to identify false consensus in notes.
+3. Tag every requirement candidate with speaker/source.
+4. Schedule decision follow-up for unresolved conflicts.
 
 ## What a BA should remember
 
-- AI is a reasoning accelerator, not a decision owner.
-- Ground every important claim in source context or stakeholder confirmation.
-- A good BA keeps the review loop visible: draft, critique, revise, validate.
+- Synthesis protects nuance.
+- Contradiction is valuable discovery data.
+- Attribution makes requirements defensible.

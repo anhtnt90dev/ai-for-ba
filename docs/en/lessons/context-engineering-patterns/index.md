@@ -1,6 +1,6 @@
 ---
 title: "Context Engineering Patterns"
-description: "Move beyond prompting into repeatable context design: role, source, task, constraints, output, and review criteria."
+description: "Good AI work is not a clever prompt; it is a reusable context package with goals, sources, constraints, and review criteria."
 ---
 
 # Context Engineering Patterns
@@ -13,55 +13,73 @@ description: "Move beyond prompting into repeatable context design: role, source
 
 ## Learning outcomes
 
-- Explain context engineering patterns in business language.
-- Apply the concept to a realistic BA workflow.
-- Use AI output as draft evidence, not as unchecked truth.
-- Identify the review questions a BA must ask before sharing the artifact.
+- Build context packages for repeatable BA tasks.
+- Define output contracts for AI-assisted analysis.
+- Reduce hallucination by controlling source and review rules.
 
 ## Why this matters for BA work
 
-AI changes how analysis work is produced, but it does not remove the BA's accountability for clarity, evidence, and decisions.
-
 <div class="ba-callout">
-Move beyond prompting into repeatable context design: role, source, task, constraints, output, and review criteria.
+Good AI work is not a clever prompt; it is a reusable context package with goals, sources, constraints, and review criteria.
 </div>
 
-## Core concept
+Business Analysts sit between problem framing, stakeholder meaning, delivery constraints, and product decisions. In AI work, that position becomes more important because unclear language can create false certainty quickly. This lesson gives you a practical control you can apply before AI output becomes scope, backlog, or delivery commitment.
 
-The useful BA pattern is controlled collaboration: provide the model with business context, ask for structured output, require evidence, then review the result against goals, rules, risks, and stakeholder decisions.
+## Mental model or core concept
+
+Prompting is the visible instruction; context engineering is the full operating design around it. For BA work, a context package should include business goal, users, scope, sources, constraints, artifact format, quality bar, and questions the AI must ask before drafting.
 
 ## Practical BA example
 
-A BA gets poor AI output because the prompt only says 'write requirements.' A better context package includes product goal, users, source excerpts, constraints, format, and quality rubric.
+Two BAs ask AI to review requirements. One writes 'find gaps'; the other supplies product goal, stakeholder roles, source IDs, NFR checklist, output columns, severity levels, and evidence rules. The second BA gets a usable review artifact.
 
 ## Diagram
 
 ```mermaid
-flowchart LR
-    A["Business goal"] --> B["Source context"]
-    B --> C["AI analysis"]
-    C --> D{"BA review"}
-    D -->|"Revise"| B
-    D -->|"Approve"| E["Validated artifact"]
-    E --> F["Context Engineering Patterns"]
+flowchart TD
+    A["Role"] --> H["Context package"]
+    B["Business goal"] --> H
+    C["Users + scope"] --> H
+    D["Source IDs"] --> H
+    E["Constraints"] --> H
+    F["Output contract"] --> H
+    G["Quality bar"] --> H
+    H --> I["Reviewable AI output"]
 ```
 
-## BA workflow
+## BA artifact
 
-1. Frame the business question before opening the AI tool.
-2. Provide source context and explicit constraints.
-3. Ask for structured output that maps back to the source.
-4. Run a critique pass for ambiguity, gaps, risk, and testability.
-5. Convert the result into an artifact the team can inspect and own.
+### BA Context Package
 
-## Prompt or template
+| Component | What to include | Why it matters | Example |
+| --- | --- | --- | --- |
+| Role | Perspective and expertise expected. | Shapes review lens. | Senior BA for fintech onboarding. |
+| Source | Documents, notes, IDs, freshness. | Controls grounding. | SRS v0.8, policy P-12, workshop notes. |
+| Task | Specific analysis job. | Avoids broad summaries. | Find ambiguity and NFR gaps. |
+| Output contract | Columns, format, quality bar. | Makes output reviewable. | Table with evidence and questions. |
+
+## AI collaboration prompt
 
 ```text
-Use this structure: Role, Business Goal, Source Context, Task, Constraints, Output Format, Quality Bar, Questions Before Drafting.
+Use this context package: Role, Business Goal, Users, Scope, Source IDs, Constraints, Task, Output Format, Quality Bar, and Questions Before Drafting. Ask clarification questions first if any required component is missing.
 ```
+
+## Mistakes to avoid
+
+- Calling a one-line instruction 'prompt engineering'.
+- Skipping output format.
+- Failing to provide source IDs.
+- Not telling AI what quality means for the artifact.
+
+## Apply this tomorrow
+
+1. Create a reusable context package for requirement review.
+2. Add output columns before asking AI to draft.
+3. Include a quality bar in one prompt.
+4. Ask AI what context is missing before it answers.
 
 ## What a BA should remember
 
-- AI is a reasoning accelerator, not a decision owner.
-- Ground every important claim in source context or stakeholder confirmation.
-- A good BA keeps the review loop visible: draft, critique, revise, validate.
+- Context engineering makes AI work repeatable.
+- Output format is part of the requirement.
+- A prompt without source and review rules is fragile.

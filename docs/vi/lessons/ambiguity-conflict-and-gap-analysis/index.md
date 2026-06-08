@@ -1,6 +1,6 @@
 ---
 title: "Phân tích mơ hồ, xung đột và khoảng trống"
-description: "Dùng AI để tìm từ mơ hồ, rule không nhất quán, actor thiếu, edge case thiếu và assumption không được nói rõ."
+description: "AI hữu ích để detect defect trong requirement khi BA cung cấp defect taxonomy và severity rubric rõ."
 ---
 
 # Phân tích mơ hồ, xung đột và khoảng trống
@@ -13,55 +13,75 @@ description: "Dùng AI để tìm từ mơ hồ, rule không nhất quán, actor
 
 ## Learning outcomes
 
-- Giải thích phân tích mơ hồ, xung đột và khoảng trống bằng ngôn ngữ business.
-- Áp dụng concept vào workflow BA thực tế.
-- Dùng output AI như draft có evidence, không xem là sự thật tự động.
-- Xác định câu hỏi review BA phải hỏi trước khi chia sẻ artifact.
+- Detect ambiguity, conflict, missing rule và non-testable language.
+- Dùng severity để ưu tiên clarification.
+- Rewrite requirement yếu thành alternative test được.
 
 ## Why this matters for BA work
 
-AI thay đổi cách tạo ra artifact phân tích, nhưng không thay thế trách nhiệm của BA về clarity, evidence và decision.
-
 <div class="ba-callout">
-Dùng AI để tìm từ mơ hồ, rule không nhất quán, actor thiếu, edge case thiếu và assumption không được nói rõ.
+AI hữu ích để detect defect trong requirement khi BA cung cấp defect taxonomy và severity rubric rõ.
 </div>
 
-## Core concept
+Business Analyst đứng giữa problem framing, ý nghĩa từ stakeholder, constraint triển khai và product decision. Trong công việc có AI, vị trí này quan trọng hơn vì ngôn ngữ chưa rõ có thể tạo false certainty rất nhanh. Bài này đưa ra một control thực tế để áp dụng trước khi output AI trở thành scope, backlog hoặc delivery commitment.
 
-Pattern hữu ích cho BA là controlled collaboration: cung cấp business context cho model, yêu cầu structured output, bắt buộc có evidence, rồi review theo goal, rule, risk và decision của stakeholder.
+## Mental model or core concept
+
+Requirement review tốt hơn khi defect có tên. Ambiguity, conflict, missing actor, missing data, hidden assumption và non-testable wording là các vấn đề khác nhau. AI có thể scan nhanh các category này, nhưng BA phải quyết định severity và hỏi clarification question đúng.
 
 ## Practical BA example
 
-Requirement ghi 'system should notify users quickly.' AI flag 'quickly' là không test được, hỏi SLA, channel, retry, failure, opt-out và audit behavior.
+Requirement ghi: 'The system should notify users quickly when important changes happen.' AI flag quickly, users, important, channel, retry, opt-out, audit và SLA là gap. BA rewrite thành notification scenario đo được.
 
 ## Diagram
 
 ```mermaid
-flowchart LR
-    A["Business goal"] --> B["Source context"]
-    B --> C["AI analysis"]
-    C --> D{"BA review"}
-    D -->|"Revise"| B
-    D -->|"Approve"| E["Artifact đã validate"]
-    E --> F["Phân tích mơ hồ, xung đột và khoảng trống"]
+flowchart TD
+    A["Requirement text"] --> B{"Defect type"}
+    B --> C["Ambiguity"]
+    B --> D["Conflict"]
+    B --> E["Missing rule"]
+    B --> F["Non-testable"]
+    C --> G["Clarification question"]
+    D --> G
+    E --> G
+    F --> G
+    G --> H["Rewrite test được"]
 ```
 
-## BA workflow
+## BA artifact
 
-1. Đóng khung business question trước khi mở AI tool.
-2. Cung cấp source context và constraint rõ ràng.
-3. Yêu cầu structured output có mapping về source.
-4. Chạy critique pass để tìm ambiguity, gap, risk và testability.
-5. Chuyển kết quả thành artifact mà team có thể inspect và cùng chịu ownership.
+### Requirement Defect Taxonomy
 
-## Prompt hoặc template
+| Defect type | Signal | Clarification question | Example rewrite |
+| --- | --- | --- | --- |
+| Ambiguity | Term mơ hồ hoặc actor undefined. | Term hoặc actor chính xác là gì? | Notify account owner within 10 minutes. |
+| Conflict | Hai rule không thể cùng đúng. | Rule nào thắng và khi nào? | VIP SLA overrides standard SLA. |
+| Missing rule | Decision branch thiếu condition. | Business rule nào chọn path này? | Reject if KYC status is expired. |
+| Non-testable | Không có expected result observable. | QA verify success bằng gì? | Email status is logged as sent or failed. |
+
+## AI collaboration prompt
 
 ```text
-Tìm ambiguity, conflict, actor thiếu, data thiếu, edge case thiếu và ngôn ngữ không test được. Trả về mỗi issue với severity và clarification question.
+Review requirement này bằng defect taxonomy. Trả về defect type, severity, affected text, why it matters, clarification question và candidate rewrite test được. Giữ unsupported rewrite với label assumption.
 ```
+
+## Mistakes to avoid
+
+- Nói 'unclear' mà không gọi tên defect.
+- Sửa wording nhưng không sửa business rule gốc.
+- Xem mọi defect cùng severity.
+- Để AI rewrite requirement mà không validate source.
+
+## Apply this tomorrow
+
+1. Chạy taxonomy review trên năm backlog item.
+2. Thêm severity và clarification question cho mỗi finding.
+3. Rewrite một requirement mơ hồ thành language test được.
+4. Nhờ stakeholder approve rewritten rule.
 
 ## What a BA should remember
 
-- AI là bộ tăng tốc reasoning, không phải decision owner.
-- Mọi claim quan trọng phải grounded vào source context hoặc stakeholder confirmation.
-- BA giỏi giữ review loop rõ ràng: draft, critique, revise, validate.
+- Defect có tên làm review nhanh hơn.
+- Clarification question có giá trị như rewrite.
+- AI tìm defect khả nghi; BA confirm business meaning.

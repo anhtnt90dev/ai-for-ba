@@ -1,6 +1,6 @@
 ---
 title: "Token, context và trí nhớ"
-description: "Hiểu vì sao context window, token budget và session memory ảnh hưởng trực tiếp đến chất lượng phân tích với AI."
+description: "Context là bề mặt làm việc của AI analysis; context design kém tạo ra artifact nhìn tự tin nhưng thiếu."
 ---
 
 # Token, context và trí nhớ
@@ -13,55 +13,72 @@ description: "Hiểu vì sao context window, token budget và session memory ả
 
 ## Learning outcomes
 
-- Giải thích token, context và trí nhớ bằng ngôn ngữ business.
-- Áp dụng concept vào workflow BA thực tế.
-- Dùng output AI như draft có evidence, không xem là sự thật tự động.
-- Xác định câu hỏi review BA phải hỏi trước khi chia sẻ artifact.
+- Giải thích token và context limit bằng ngôn ngữ BA.
+- Chuẩn bị requirement dài hoặc transcript dài cho staged AI review.
+- Dùng source map để giảm nguy cơ miss requirement.
 
 ## Why this matters for BA work
 
-AI thay đổi cách tạo ra artifact phân tích, nhưng không thay thế trách nhiệm của BA về clarity, evidence và decision.
-
 <div class="ba-callout">
-Hiểu vì sao context window, token budget và session memory ảnh hưởng trực tiếp đến chất lượng phân tích với AI.
+Context là bề mặt làm việc của AI analysis; context design kém tạo ra artifact nhìn tự tin nhưng thiếu.
 </div>
 
-## Core concept
+Business Analyst đứng giữa problem framing, ý nghĩa từ stakeholder, constraint triển khai và product decision. Trong công việc có AI, vị trí này quan trọng hơn vì ngôn ngữ chưa rõ có thể tạo false certainty rất nhanh. Bài này đưa ra một control thực tế để áp dụng trước khi output AI trở thành scope, backlog hoặc delivery commitment.
 
-Pattern hữu ích cho BA là controlled collaboration: cung cấp business context cho model, yêu cầu structured output, bắt buộc có evidence, rồi review theo goal, rule, risk và decision của stakeholder.
+## Mental model or core concept
+
+Model chỉ làm việc với context nó nhìn thấy. Tài liệu dài, notes rời rạc và lịch sử nhiều meeting cần được cấu trúc thành chunk, source ID, summary và review pass. Context engineering của BA giống chuẩn bị workshop pack: chọn evidence quan trọng, label rõ và review theo thứ tự có kiểm soát.
 
 ## Practical BA example
 
-BA upload một SRS dài và yêu cầu tìm toàn bộ missing requirements. Nếu context thiếu hoặc chunk kém, câu trả lời có thể bỏ sót cả module. Cách làm tốt hơn là tạo section map, source ID và review theo từng giai đoạn.
+Một SRS 70 trang được đưa vào AI với yêu cầu 'find all gaps.' Model trả về list rất trôi chảy nhưng bỏ sót integration requirement ở các trang sau. BA tốt hơn tạo source map, review theo module, rồi yêu cầu AI reconcile conflict giữa module.
 
 ## Diagram
 
 ```mermaid
 flowchart LR
-    A["Business goal"] --> B["Source context"]
-    B --> C["AI analysis"]
-    C --> D{"BA review"}
-    D -->|"Revise"| B
-    D -->|"Approve"| E["Artifact đã validate"]
-    E --> F["Token, context và trí nhớ"]
+    A["Raw sources"] --> B["Source map"]
+    B --> C["Chunk plan"]
+    C --> D["Review từng section"]
+    D --> E["Reconcile cross-section"]
+    E --> F["Requirement findings"]
+    B --> G["Decision log"]
+    G --> E
 ```
 
-## BA workflow
+## BA artifact
 
-1. Đóng khung business question trước khi mở AI tool.
-2. Cung cấp source context và constraint rõ ràng.
-3. Yêu cầu structured output có mapping về source.
-4. Chạy critique pass để tìm ambiguity, gap, risk và testability.
-5. Chuyển kết quả thành artifact mà team có thể inspect và cùng chịu ownership.
+### Context Pack Checklist
 
-## Prompt hoặc template
+| Pack item | Vì sao quan trọng | Hành động BA | Rủi ro nếu thiếu |
+| --- | --- | --- | --- |
+| Source map | Tránh gap vô hình | Liệt kê section, owner và ID. | AI chỉ review phần nổi bật nhất. |
+| Chunk plan | Giữ phân tích focused | Review từng module. | Context dài biến thành summary nông. |
+| Decision log | Giữ commitment của stakeholder | Đưa vào decision có ngày và owner. | AI mở lại scope đã chốt. |
+| Open questions | Tách unknown khỏi fact | Track unresolved item rõ ràng. | Model tự điền chỗ trống bằng guess. |
+
+## AI collaboration prompt
 
 ```text
-Trước hết hãy tạo source map. Liệt kê section, source ID, assumption và open question. Sau đó review từng section để tìm requirement thiếu, mơ hồ, xung đột và không test được.
+Tạo context pack từ các source này. Trả về source ID, summary từng section, decision log, known constraint, unresolved question và thứ tự review đề xuất. Không phân tích requirement cho đến khi context pack hoàn tất.
 ```
+
+## Mistakes to avoid
+
+- Upload mọi thứ rồi hỏi một câu quá rộng.
+- Trộn policy cũ và mới mà không label freshness.
+- Để model summarize mất edge case.
+- Quên đưa vào decision stakeholder đã chốt.
+
+## Apply this tomorrow
+
+1. Tạo source ID cho một tài liệu trước khi dùng AI.
+2. Yêu cầu AI summarize từng section, không summarize cả document một lần.
+3. Label source old, current và draft riêng.
+4. Chạy pass thứ hai để tìm conflict giữa section.
 
 ## What a BA should remember
 
-- AI là bộ tăng tốc reasoning, không phải decision owner.
-- Mọi claim quan trọng phải grounded vào source context hoặc stakeholder confirmation.
-- BA giỏi giữ review loop rõ ràng: draft, critique, revise, validate.
+- Chất lượng AI bị giới hạn bởi context nó thấy.
+- Source map là control của BA, không phải việc hành chính.
+- Staged review tốt hơn một prompt khổng lồ.

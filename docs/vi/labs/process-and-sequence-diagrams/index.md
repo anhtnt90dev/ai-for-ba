@@ -5,49 +5,50 @@ description: "Practical AI lab for Business Analysts."
 
 # Process và sequence diagram
 
-## Mục tiêu
-
-Bạn cần giải thích quy trình approval xuyên hệ thống cho business và engineering stakeholder.
-
 ## Scenario
 
-You are working in a software product team. The team expects a BA-ready artifact that can be reviewed by product, engineering, QA, and operations.
+Bạn cần giải thích approval flow đi qua user, web app, workflow engine, notification service và manager review.
+
+## Input sample
+
+```text
+Process: User submit request. System validate document. Nếu amount cao, manager approve. User nhận result. Missing document trả về user.
+```
 
 ## Diagram
 
 ```mermaid
 flowchart TD
-    A["Raw input"] --> B["AI-assisted analysis"]
-    B --> C["BA review"]
-    C --> D{"Ready for team review?"}
-    D -->|"No"| B
-    D -->|"Yes"| E["Shared artifact"]
+    A["Text process"] --> B["Flowchart"]
+    A --> C["Sequence diagram"]
+    B --> D["Exception review"]
+    C --> D
+    D --> E["Missing rules"]
 ```
 
-## Hướng dẫn
+## Exercise steps
 
-1. Clarify the business goal and target users.
-2. Ask AI to produce a first draft with explicit assumptions.
-3. Review the output for ambiguity, gaps, risks, and evidence.
-4. Revise the artifact until it can be shared with the delivery team.
-5. Capture open questions instead of hiding uncertainty.
+1. Draft process flow.
+2. Draft sequence diagram.
+3. Thêm exception path và ownership.
+4. Liệt kê missing rule và integration assumption.
 
 ## Deliverables
 
 - process flow
 - sequence diagram
-- exception path
+- exception path list
 - ownership note
 
-## Lab prompt
+## AI collaboration prompt
 
 ```text
-Hãy đóng vai senior BA coach. Hỗ trợ tôi hoàn thành lab từng bước. Hỏi câu hỏi làm rõ trước, sau đó tạo artifact với assumption, evidence, risk và open question.
+Hãy đóng vai senior BA coach. Hỗ trợ tôi hoàn thành lab này. Trước hết hỏi source evidence nào đang có. Sau đó hướng dẫn tôi theo từng exercise step. Tạo deliverables dưới dạng structured table. Đánh dấu assumption, unsupported claim và câu hỏi cần stakeholder validation.
 ```
 
 ## Review rubric
 
-- Every recommendation has evidence or is marked as an assumption.
-- Open questions are visible and assigned.
-- The artifact is testable by QA and understandable by stakeholders.
-- Risks are stated in business language, not only technical language.
+- Actor và system được tách rõ.
+- Decision rule explicit.
+- Exception visible.
+- Integration boundary rõ.

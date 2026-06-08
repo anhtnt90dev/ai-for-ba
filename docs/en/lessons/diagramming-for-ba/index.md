@@ -1,6 +1,6 @@
 ---
 title: "Diagramming for BA"
-description: "Create Mermaid diagrams that clarify flows, decisions, dependencies, and system interactions."
+description: "A good diagram changes the conversation; it reveals decisions, boundaries, and gaps that text hides."
 ---
 
 # Diagramming for BA
@@ -13,55 +13,74 @@ description: "Create Mermaid diagrams that clarify flows, decisions, dependencie
 
 ## Learning outcomes
 
-- Explain diagramming for ba in business language.
-- Apply the concept to a realistic BA workflow.
-- Use AI output as draft evidence, not as unchecked truth.
-- Identify the review questions a BA must ask before sharing the artifact.
+- Choose the right diagram type for a BA question.
+- Use AI to draft Mermaid diagrams safely.
+- Review diagrams for missing actors, flows, and exceptions.
 
 ## Why this matters for BA work
 
-AI changes how analysis work is produced, but it does not remove the BA's accountability for clarity, evidence, and decisions.
-
 <div class="ba-callout">
-Create Mermaid diagrams that clarify flows, decisions, dependencies, and system interactions.
+A good diagram changes the conversation; it reveals decisions, boundaries, and gaps that text hides.
 </div>
 
-## Core concept
+Business Analysts sit between problem framing, stakeholder meaning, delivery constraints, and product decisions. In AI work, that position becomes more important because unclear language can create false certainty quickly. This lesson gives you a practical control you can apply before AI output becomes scope, backlog, or delivery commitment.
 
-The useful BA pattern is controlled collaboration: provide the model with business context, ask for structured output, require evidence, then review the result against goals, rules, risks, and stakeholder decisions.
+## Mental model or core concept
+
+Diagrams are thinking tools. Flowcharts clarify process decisions; sequence diagrams clarify system interactions; state diagrams clarify lifecycle; matrices clarify rule combinations. AI can translate text to Mermaid, but the BA must validate system boundaries, actor responsibility, exception paths, and business rules.
 
 ## Practical BA example
 
-A BA uses AI to turn text requirements into a sequence diagram, then reviews actor responsibility, system boundary, failure path, and missing integration.
+A requirement says 'payment is verified before fulfillment.' A sequence diagram reveals missing responsibility between payment gateway, order service, warehouse, and customer notification. The BA then asks who handles payment failure and when inventory is released.
 
 ## Diagram
 
 ```mermaid
-flowchart LR
-    A["Business goal"] --> B["Source context"]
-    B --> C["AI analysis"]
-    C --> D{"BA review"}
-    D -->|"Revise"| B
-    D -->|"Approve"| E["Validated artifact"]
-    E --> F["Diagramming for BA"]
+flowchart TD
+    A["BA question"] --> B{"What must be clarified?"}
+    B --> C["Workflow -> Flowchart"]
+    B --> D["System interaction -> Sequence"]
+    B --> E["Lifecycle -> State"]
+    B --> F["Rule combinations -> Decision table"]
+    C --> G["Review gaps"]
+    D --> G
+    E --> G
+    F --> G
 ```
 
-## BA workflow
+## BA artifact
 
-1. Frame the business question before opening the AI tool.
-2. Provide source context and explicit constraints.
-3. Ask for structured output that maps back to the source.
-4. Run a critique pass for ambiguity, gaps, risk, and testability.
-5. Convert the result into an artifact the team can inspect and own.
+### Diagram Selection Guide
 
-## Prompt or template
+| BA question | Diagram type | Use when | Review focus |
+| --- | --- | --- | --- |
+| How does work flow? | Flowchart | Process and decisions matter. | Actors, decision rules, exceptions. |
+| How do systems interact? | Sequence diagram | APIs/events are involved. | System boundaries and failure messages. |
+| What states can an entity have? | State diagram | Lifecycle matters. | Allowed transitions and triggers. |
+| Which rule applies? | Decision table | Combinations drive outcomes. | Complete and exclusive rules. |
+
+## AI collaboration prompt
 
 ```text
-Convert this requirement into a Mermaid flowchart and sequence diagram. Then list assumptions, missing steps, and business decisions that affect the diagram.
+Choose the best diagram type for this requirement and explain why. Then draft the Mermaid diagram. After the diagram, list missing actors, unclear boundaries, exception paths, and business rules that need validation.
 ```
+
+## Mistakes to avoid
+
+- Using one diagram type for every problem.
+- Letting AI draw a diagram without checking business meaning.
+- Omitting failure paths.
+- Creating diagrams that are pretty but not decision-useful.
+
+## Apply this tomorrow
+
+1. Convert one text-heavy requirement into a Mermaid diagram.
+2. Ask AI which diagram type fits the question.
+3. Review the diagram with a developer for boundary gaps.
+4. Add exception paths before sharing.
 
 ## What a BA should remember
 
-- AI is a reasoning accelerator, not a decision owner.
-- Ground every important claim in source context or stakeholder confirmation.
-- A good BA keeps the review loop visible: draft, critique, revise, validate.
+- Diagrams are analysis, not decoration.
+- The best diagram exposes the next decision.
+- AI draws quickly; BA checks meaning.

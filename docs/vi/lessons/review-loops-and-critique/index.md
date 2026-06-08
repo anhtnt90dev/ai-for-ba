@@ -1,6 +1,6 @@
 ---
 title: "Review loop và critique"
-description: "Dùng AI như drafter, critic, gap finder và counterparty thay vì tin một câu trả lời duy nhất."
+description: "Cách dùng AI mạnh nhất cho BA không chỉ là draft nhanh hơn; đó là tạo critique loop có kỷ luật trước khi artifact đến team."
 ---
 
 # Review loop và critique
@@ -13,55 +13,72 @@ description: "Dùng AI như drafter, critic, gap finder và counterparty thay v�
 
 ## Learning outcomes
 
-- Giải thích review loop và critique bằng ngôn ngữ business.
-- Áp dụng concept vào workflow BA thực tế.
-- Dùng output AI như draft có evidence, không xem là sự thật tự động.
-- Xác định câu hỏi review BA phải hỏi trước khi chia sẻ artifact.
+- Dùng AI như drafter, critic, counterparty và gap finder.
+- Chạy multi-perspective review cho BA artifact.
+- Chuyển critique thành revision ưu tiên.
 
 ## Why this matters for BA work
 
-AI thay đổi cách tạo ra artifact phân tích, nhưng không thay thế trách nhiệm của BA về clarity, evidence và decision.
-
 <div class="ba-callout">
-Dùng AI như drafter, critic, gap finder và counterparty thay vì tin một câu trả lời duy nhất.
+Cách dùng AI mạnh nhất cho BA không chỉ là draft nhanh hơn; đó là tạo critique loop có kỷ luật trước khi artifact đến team.
 </div>
 
-## Core concept
+Business Analyst đứng giữa problem framing, ý nghĩa từ stakeholder, constraint triển khai và product decision. Trong công việc có AI, vị trí này quan trọng hơn vì ngôn ngữ chưa rõ có thể tạo false certainty rất nhanh. Bài này đưa ra một control thực tế để áp dụng trước khi output AI trở thành scope, backlog hoặc delivery commitment.
 
-Pattern hữu ích cho BA là controlled collaboration: cung cấp business context cho model, yêu cầu structured output, bắt buộc có evidence, rồi review theo goal, rule, risk và decision của stakeholder.
+## Mental model or core concept
+
+Output AI một pass rất rủi ro. Review loop làm AI work an toàn hơn: draft, critique, revise, evidence-check và stakeholder-validate. BA có thể yêu cầu AI review từ góc product, QA, engineering, security, operations và user, rồi quyết định finding nào quan trọng.
 
 ## Practical BA example
 
-Sau khi draft feature spec, BA yêu cầu AI phản biện dưới góc QA, developer, security, support và user. Output tốt nhất là risk list và revision plan.
+Một SRS section generated nhìn có vẻ đầy đủ. Critique pass phát hiện thiếu audit logging, error state mơ hồ và support workflow chưa cover. BA chuyển finding thành revision task và validation question thay vì ship first draft.
 
 ## Diagram
 
 ```mermaid
 flowchart LR
-    A["Business goal"] --> B["Source context"]
-    B --> C["AI analysis"]
-    C --> D{"BA review"}
-    D -->|"Revise"| B
-    D -->|"Approve"| E["Artifact đã validate"]
-    E --> F["Review loop và critique"]
+    A["Draft"] --> B["Critique bởi QA"]
+    B --> C["Critique bởi Dev"]
+    C --> D["Critique bởi Ops"]
+    D --> E["Evidence check"]
+    E --> F{"Cần revise?"}
+    F -->|Có| A
+    F -->|Không| G["Stakeholder validation"]
 ```
 
-## BA workflow
+## BA artifact
 
-1. Đóng khung business question trước khi mở AI tool.
-2. Cung cấp source context và constraint rõ ràng.
-3. Yêu cầu structured output có mapping về source.
-4. Chạy critique pass để tìm ambiguity, gap, risk và testability.
-5. Chuyển kết quả thành artifact mà team có thể inspect và cùng chịu ownership.
+### Multi-Perspective Critique Grid
 
-## Prompt hoặc template
+| Perspective | Cần inspect | Finding format | Revision action |
+| --- | --- | --- | --- |
+| QA | Testability, edge case, expected result. | Defect plus test scenario. | Rewrite AC và thêm negative case. |
+| Developer | API, data, integration assumption. | Implementation risk. | Clarify contract hoặc dependency. |
+| Operations | Support, monitoring, failure handling. | Runbook gap. | Thêm support flow và alert rule. |
+| Compliance | Privacy, audit, policy constraint. | Control gap. | Thêm evidence và approval step. |
+
+## AI collaboration prompt
 
 ```text
-Review artifact này từ năm góc nhìn: end user, developer, QA, operations và compliance. Trả về defect, severity, evidence và đề xuất chỉnh sửa.
+Review artifact này từ góc QA, developer, operations, compliance, support và end-user. Trả về finding với severity, evidence, affected section, revision recommendation và validation question. Chưa rewrite; critique trước.
 ```
+
+## Mistakes to avoid
+
+- Yêu cầu AI improve draft mà không diagnose trước.
+- Xem mọi critique finding quan trọng như nhau.
+- Bỏ evidence cho critique.
+- Không giữ revision decision trail.
+
+## Apply this tomorrow
+
+1. Chạy một draft qua QA critique prompt.
+2. Nhờ AI rank finding theo delivery risk.
+3. Chuyển critique thành revision backlog.
+4. Share top three risks với team trước refinement.
 
 ## What a BA should remember
 
-- AI là bộ tăng tốc reasoning, không phải decision owner.
-- Mọi claim quan trọng phải grounded vào source context hoặc stakeholder confirmation.
-- BA giỏi giữ review loop rõ ràng: draft, critique, revise, validate.
+- Critique thường là nơi AI tạo nhiều giá trị BA nhất.
+- Review loop làm uncertainty visible.
+- BA quyết định finding nào trở thành change.

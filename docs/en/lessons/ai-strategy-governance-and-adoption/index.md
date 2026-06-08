@@ -1,6 +1,6 @@
 ---
 title: "AI Strategy, Governance, and Adoption"
-description: "Guide BA teams through AI adoption with governance, measurement, tool selection, and operating model."
+description: "BA leads should scale AI adoption through use-case selection, risk tiers, quality gates, and operating model, not tool enthusiasm."
 ---
 
 # AI Strategy, Governance, and Adoption
@@ -13,55 +13,72 @@ description: "Guide BA teams through AI adoption with governance, measurement, t
 
 ## Learning outcomes
 
-- Explain ai strategy, governance, and adoption in business language.
-- Apply the concept to a realistic BA workflow.
-- Use AI output as draft evidence, not as unchecked truth.
-- Identify the review questions a BA must ask before sharing the artifact.
+- Create an AI adoption roadmap for BA teams.
+- Define governance controls for AI use in analysis work.
+- Measure adoption by quality, cycle time, and risk reduction.
 
 ## Why this matters for BA work
 
-AI changes how analysis work is produced, but it does not remove the BA's accountability for clarity, evidence, and decisions.
-
 <div class="ba-callout">
-Guide BA teams through AI adoption with governance, measurement, tool selection, and operating model.
+BA leads should scale AI adoption through use-case selection, risk tiers, quality gates, and operating model, not tool enthusiasm.
 </div>
 
-## Core concept
+Business Analysts sit between problem framing, stakeholder meaning, delivery constraints, and product decisions. In AI work, that position becomes more important because unclear language can create false certainty quickly. This lesson gives you a practical control you can apply before AI output becomes scope, backlog, or delivery commitment.
 
-The useful BA pattern is controlled collaboration: provide the model with business context, ask for structured output, require evidence, then review the result against goals, rules, risks, and stakeholder decisions.
+## Mental model or core concept
+
+AI adoption fails when it starts with tools instead of operating model. A BA lead should define safe use cases, prohibited data, approved tools, prompt patterns, quality gates, training, review rituals, metrics, and escalation paths. Governance should enable useful work while preventing data leakage and low-quality artifacts.
 
 ## Practical BA example
 
-A BA lead wants every analyst to use AI. Instead of buying tools first, they define safe use cases, data policy, prompt patterns, quality checks, training, and adoption metrics.
+A BA practice wants everyone to use AI. The lead creates risk tiers: low-risk drafting, medium-risk requirement review, high-risk AI product decisions. Each tier has allowed tools, data rules, review gates, and measurement. Adoption becomes managed capability, not random experimentation.
 
 ## Diagram
 
 ```mermaid
-flowchart LR
-    A["Business goal"] --> B["Source context"]
-    B --> C["AI analysis"]
-    C --> D{"BA review"}
-    D -->|"Revise"| B
-    D -->|"Approve"| E["Validated artifact"]
-    E --> F["AI Strategy, Governance, and Adoption"]
+flowchart TD
+    A["Use-case portfolio"] --> B["Risk tiers"]
+    B --> C["Approved tools + data rules"]
+    C --> D["Prompt library + playbooks"]
+    D --> E["Quality gates"]
+    E --> F["Metrics"]
+    F --> G["Adoption roadmap"]
+    B --> H["Escalation path"]
 ```
 
-## BA workflow
+## BA artifact
 
-1. Frame the business question before opening the AI tool.
-2. Provide source context and explicit constraints.
-3. Ask for structured output that maps back to the source.
-4. Run a critique pass for ambiguity, gaps, risk, and testability.
-5. Convert the result into an artifact the team can inspect and own.
+### BA AI Adoption Scorecard
 
-## Prompt or template
+| Dimension | Level 1 | Level 2 | Level 3 |
+| --- | --- | --- | --- |
+| Use cases | Ad hoc personal use. | Approved BA workflows. | Measured portfolio by value and risk. |
+| Governance | No shared rules. | Data and review policy defined. | Risk-tier controls and audit. |
+| Quality | AI output shared directly. | Peer review for AI-assisted artifacts. | Quality gates and rubric metrics. |
+| Capability | Individual tips. | Team prompt library. | Coaching, playbooks, and communities of practice. |
+
+## AI collaboration prompt
 
 ```text
-Create a BA team AI adoption plan with use cases, risk tiers, data rules, approved tools, training, quality gates, metrics, governance roles, and rollout phases.
+Create a BA team AI adoption roadmap. Include use-case portfolio, risk tiers, approved tools, prohibited data, review gates, prompt library, training plan, governance roles, success metrics, rollout phases, and escalation process.
 ```
+
+## Mistakes to avoid
+
+- Buying tools before defining safe use cases.
+- Ignoring confidential data and PII rules.
+- Measuring adoption only by number of users.
+- Letting every BA invent their own quality standard.
+
+## Apply this tomorrow
+
+1. Classify BA AI use cases into risk tiers.
+2. Define one approved workflow and one prohibited use.
+3. Create a quality gate for AI-assisted requirements.
+4. Measure cycle time and defect reduction for one pilot.
 
 ## What a BA should remember
 
-- AI is a reasoning accelerator, not a decision owner.
-- Ground every important claim in source context or stakeholder confirmation.
-- A good BA keeps the review loop visible: draft, critique, revise, validate.
+- Adoption is an operating model.
+- Governance should make good AI use easier.
+- BA leads scale quality through shared patterns and review gates.

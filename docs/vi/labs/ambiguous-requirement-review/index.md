@@ -5,49 +5,49 @@ description: "Practical AI lab for Business Analysts."
 
 # Review requirement mơ hồ
 
-## Mục tiêu
-
-Product owner đưa cho bạn mười requirement mơ hồ. Bạn cần tìm ambiguity, business rule thiếu và ngôn ngữ không test được.
-
 ## Scenario
 
-You are working in a software product team. The team expects a BA-ready artifact that can be reviewed by product, engineering, QA, and operations.
+Product owner đưa requirement mơ hồ trước sprint refinement. Nhiệm vụ của bạn là làm ambiguity visible và chỉ rewrite phần có thể support.
+
+## Input sample
+
+```text
+Requirement excerpt: The system should notify users quickly when important account changes occur and make it easy for admins to manage exceptions.
+```
 
 ## Diagram
 
 ```mermaid
 flowchart TD
-    A["Raw input"] --> B["AI-assisted analysis"]
-    B --> C["BA review"]
-    C --> D{"Ready for team review?"}
-    D -->|"No"| B
-    D -->|"Yes"| E["Shared artifact"]
+    A["Requirement mơ hồ"] --> B["Defect taxonomy"]
+    B --> C["Severity"]
+    C --> D["Clarification question"]
+    D --> E["Rewrite test được"]
 ```
 
-## Hướng dẫn
+## Exercise steps
 
-1. Clarify the business goal and target users.
-2. Ask AI to produce a first draft with explicit assumptions.
-3. Review the output for ambiguity, gaps, risks, and evidence.
-4. Revise the artifact until it can be shared with the delivery team.
-5. Capture open questions instead of hiding uncertainty.
+1. Chạy defect taxonomy.
+2. Phân loại ambiguity, missing rule, conflict và non-testable wording.
+3. Viết clarification question.
+4. Tạo candidate rewrite test được với assumption được label.
 
 ## Deliverables
 
-- issue register
-- clarification question
-- requirement viết lại
-- risk note
+- defect register
+- clarification question list
+- candidate requirement rewrite
+- severity ranking
 
-## Lab prompt
+## AI collaboration prompt
 
 ```text
-Hãy đóng vai senior BA coach. Hỗ trợ tôi hoàn thành lab từng bước. Hỏi câu hỏi làm rõ trước, sau đó tạo artifact với assumption, evidence, risk và open question.
+Hãy đóng vai senior BA coach. Hỗ trợ tôi hoàn thành lab này. Trước hết hỏi source evidence nào đang có. Sau đó hướng dẫn tôi theo từng exercise step. Tạo deliverables dưới dạng structured table. Đánh dấu assumption, unsupported claim và câu hỏi cần stakeholder validation.
 ```
 
 ## Review rubric
 
-- Every recommendation has evidence or is marked as an assumption.
-- Open questions are visible and assigned.
-- The artifact is testable by QA and understandable by stakeholders.
-- Risks are stated in business language, not only technical language.
+- Mỗi issue có defect type.
+- Severity phản ánh business hoặc delivery risk.
+- Rewrite đo được.
+- Assumption không bị giấu.

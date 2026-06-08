@@ -5,49 +5,50 @@ description: "Practical AI lab for Business Analysts."
 
 # Process and Sequence Diagrams
 
-## Objective
-
-You need to explain a cross-system approval process to business and engineering stakeholders.
-
 ## Scenario
 
-You are working in a software product team. The team expects a BA-ready artifact that can be reviewed by product, engineering, QA, and operations.
+You need to explain an approval flow that crosses user, web app, workflow engine, notification service, and manager review.
+
+## Input sample
+
+```text
+Process: User submits request. System validates documents. If amount is high, manager approves. User receives result. Missing documents return to user.
+```
 
 ## Diagram
 
 ```mermaid
 flowchart TD
-    A["Raw input"] --> B["AI-assisted analysis"]
-    B --> C["BA review"]
-    C --> D{"Ready for team review?"}
-    D -->|"No"| B
-    D -->|"Yes"| E["Shared artifact"]
+    A["Text process"] --> B["Flowchart"]
+    A --> C["Sequence diagram"]
+    B --> D["Exception review"]
+    C --> D
+    D --> E["Missing rules"]
 ```
 
-## Instructions
+## Exercise steps
 
-1. Clarify the business goal and target users.
-2. Ask AI to produce a first draft with explicit assumptions.
-3. Review the output for ambiguity, gaps, risks, and evidence.
-4. Revise the artifact until it can be shared with the delivery team.
-5. Capture open questions instead of hiding uncertainty.
+1. Draft a process flow.
+2. Draft a sequence diagram.
+3. Add exception paths and ownership.
+4. List missing rules and integration assumptions.
 
 ## Deliverables
 
 - process flow
 - sequence diagram
-- exception paths
+- exception path list
 - ownership notes
 
-## Lab prompt
+## AI collaboration prompt
 
 ```text
-Act as a senior BA coach. Help me complete this lab step by step. Ask clarifying questions first, then produce the requested artifact with assumptions, evidence, risks, and open questions.
+Act as a senior BA coach. Help me complete this lab. First ask what source evidence is available. Then guide me through the exercise steps. Produce the deliverables in structured tables. Mark assumptions, unsupported claims, and questions for stakeholder validation.
 ```
 
 ## Review rubric
 
-- Every recommendation has evidence or is marked as an assumption.
-- Open questions are visible and assigned.
-- The artifact is testable by QA and understandable by stakeholders.
-- Risks are stated in business language, not only technical language.
+- Actors and systems are separated.
+- Decision rules are explicit.
+- Exceptions are visible.
+- Integration boundaries are clear.

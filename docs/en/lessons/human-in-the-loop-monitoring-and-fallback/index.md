@@ -1,6 +1,6 @@
 ---
 title: "Human Review, Monitoring, and Fallback"
-description: "Design AI workflows where humans review risky outputs and systems fail safely."
+description: "Responsible AI products need explicit paths for uncertainty, escalation, correction, and quality monitoring."
 ---
 
 # Human Review, Monitoring, and Fallback
@@ -8,60 +8,77 @@ description: "Design AI workflows where humans review risky outputs and systems 
 <div class="lesson-meta">
   <span>Building AI-Enabled Products as a BA</span>
   <span>Software BA</span>
-  <span>Core</span>
+  <span>Advanced</span>
 </div>
 
 ## Learning outcomes
 
-- Explain human review, monitoring, and fallback in business language.
-- Apply the concept to a realistic BA workflow.
-- Use AI output as draft evidence, not as unchecked truth.
-- Identify the review questions a BA must ask before sharing the artifact.
+- Design human-in-the-loop workflows.
+- Specify fallback and escalation requirements.
+- Define monitoring events for AI quality and risk.
 
 ## Why this matters for BA work
 
-AI changes how analysis work is produced, but it does not remove the BA's accountability for clarity, evidence, and decisions.
-
 <div class="ba-callout">
-Design AI workflows where humans review risky outputs and systems fail safely.
+Responsible AI products need explicit paths for uncertainty, escalation, correction, and quality monitoring.
 </div>
 
-## Core concept
+Business Analysts sit between problem framing, stakeholder meaning, delivery constraints, and product decisions. In AI work, that position becomes more important because unclear language can create false certainty quickly. This lesson gives you a practical control you can apply before AI output becomes scope, backlog, or delivery commitment.
 
-The useful BA pattern is controlled collaboration: provide the model with business context, ask for structured output, require evidence, then review the result against goals, rules, risks, and stakeholder decisions.
+## Mental model or core concept
+
+Human-in-the-loop is not a vague promise that a person can intervene. It is a designed workflow: trigger conditions, reviewer role, queue, SLA, decision options, user messaging, audit, correction capture, and monitoring. Fallback should be safe, visible, and measurable.
 
 ## Practical BA example
 
-An AI recommendation engine suggests loan categories. Low confidence or policy-sensitive cases must route to a human reviewer with reason codes and audit trail.
+An AI loan document checker flags missing documents. If confidence is high, it suggests next action; if confidence is low or document type is regulated, it routes to a reviewer. The BA specifies queue priority, reason codes, reviewer actions, customer message, and audit trail.
 
 ## Diagram
 
 ```mermaid
-flowchart LR
-    A["Business goal"] --> B["Source context"]
-    B --> C["AI analysis"]
-    C --> D{"BA review"}
-    D -->|"Revise"| B
-    D -->|"Approve"| E["Validated artifact"]
-    E --> F["Human Review, Monitoring, and Fallback"]
+flowchart TD
+    A["AI output"] --> B{"Risk or low confidence?"}
+    B -->|No| C["Proceed with user action"]
+    B -->|Yes| D["Review queue"]
+    D --> E["Human decision"]
+    E --> F["Audit + correction capture"]
+    F --> G["Model quality monitoring"]
+    B -->|Unsupported| H["Fallback message + escalation"]
 ```
 
-## BA workflow
+## BA artifact
 
-1. Frame the business question before opening the AI tool.
-2. Provide source context and explicit constraints.
-3. Ask for structured output that maps back to the source.
-4. Run a critique pass for ambiguity, gaps, risk, and testability.
-5. Convert the result into an artifact the team can inspect and own.
+### Human-in-the-Loop Flow Requirements
 
-## Prompt or template
+| Flow part | Requirement | Example | Metric |
+| --- | --- | --- | --- |
+| Trigger | Define when human review starts. | Confidence < 0.8 or regulated document. | Trigger accuracy by case type. |
+| Reviewer action | List allowed decisions. | Approve, reject, request info, override. | Review completion SLA. |
+| Fallback | Define safe response when AI cannot answer. | Show escalation message and create task. | Fallback resolution time. |
+| Monitoring | Capture quality and drift signals. | Track overrides by category. | Override rate trend. |
+
+## AI collaboration prompt
 
 ```text
-Design a human-in-the-loop flow. Include trigger conditions, reviewer role, decision options, SLA, audit record, user message, fallback, and monitoring events.
+Design the human-in-the-loop and fallback requirements. Include triggers, reviewer role, queue priority, SLA, allowed decisions, user messaging, audit record, correction capture, monitoring events, and operational metrics.
 ```
+
+## Mistakes to avoid
+
+- Writing 'human can review' without workflow details.
+- No SLA for review queues.
+- Fallback message hides uncertainty.
+- Monitoring only uptime, not AI quality.
+
+## Apply this tomorrow
+
+1. Define one low-confidence trigger.
+2. Write a fallback message that is honest and useful.
+3. Add reason codes for human override.
+4. Ask operations who owns the review queue.
 
 ## What a BA should remember
 
-- AI is a reasoning accelerator, not a decision owner.
-- Ground every important claim in source context or stakeholder confirmation.
-- A good BA keeps the review loop visible: draft, critique, revise, validate.
+- Human review is a workflow requirement.
+- Fallback is part of user experience.
+- Monitoring must include quality, not only availability.

@@ -1,6 +1,6 @@
 ---
 title: "BRD, SRS và artifact quyết định"
-description: "Dùng AI để draft và review tài liệu mà không mất ownership về scope, decision và evidence."
+description: "AI có thể draft tài liệu, nhưng giá trị BA nằm ở decision structure, evidence, scope control và reviewability."
 ---
 
 # BRD, SRS và artifact quyết định
@@ -13,55 +13,73 @@ description: "Dùng AI để draft và review tài liệu mà không mất owner
 
 ## Learning outcomes
 
-- Giải thích brd, srs và artifact quyết định bằng ngôn ngữ business.
-- Áp dụng concept vào workflow BA thực tế.
-- Dùng output AI như draft có evidence, không xem là sự thật tự động.
-- Xác định câu hỏi review BA phải hỏi trước khi chia sẻ artifact.
+- Dùng AI structure BRD và SRS mà không mất ownership.
+- Giữ decision, assumption, risk và evidence.
+- Tránh document polish che giấu unresolved scope.
 
 ## Why this matters for BA work
 
-AI thay đổi cách tạo ra artifact phân tích, nhưng không thay thế trách nhiệm của BA về clarity, evidence và decision.
-
 <div class="ba-callout">
-Dùng AI để draft và review tài liệu mà không mất ownership về scope, decision và evidence.
+AI có thể draft tài liệu, nhưng giá trị BA nằm ở decision structure, evidence, scope control và reviewability.
 </div>
 
-## Core concept
+Business Analyst đứng giữa problem framing, ý nghĩa từ stakeholder, constraint triển khai và product decision. Trong công việc có AI, vị trí này quan trọng hơn vì ngôn ngữ chưa rõ có thể tạo false certainty rất nhanh. Bài này đưa ra một control thực tế để áp dụng trước khi output AI trở thành scope, backlog hoặc delivery commitment.
 
-Pattern hữu ích cho BA là controlled collaboration: cung cấp business context cho model, yêu cầu structured output, bắt buộc có evidence, rồi review theo goal, rule, risk và decision của stakeholder.
+## Mental model or core concept
+
+Tài liệu BA không có giá trị vì dài; nó có giá trị vì làm decision inspect được. AI có thể tạo first draft, nhưng BA phải giữ decision log, scope boundary, source evidence, risk, assumption và open question. Tài liệu polished nhưng giấu uncertainty là nguy hiểm.
 
 ## Practical BA example
 
-BA nhờ AI chuyển output workshop thành BRD. Artifact cuối vẫn phải thể hiện decision log, scope boundary, assumption, risk và unresolved question.
+Workshop notes được chuyển thành BRD section. AI draft narrative sạch, nhưng BA bổ sung decision table, item out-of-scope rõ, pricing rule chưa resolve và stakeholder approval status trước khi share.
 
 ## Diagram
 
 ```mermaid
-flowchart LR
-    A["Business goal"] --> B["Source context"]
-    B --> C["AI analysis"]
-    C --> D{"BA review"}
-    D -->|"Revise"| B
-    D -->|"Approve"| E["Artifact đã validate"]
-    E --> F["BRD, SRS và artifact quyết định"]
+flowchart TD
+    A["Workshop notes"] --> B["Decision log"]
+    A --> C["Scope boundary"]
+    A --> D["Assumption"]
+    A --> E["Open question"]
+    B --> F["BRD / SRS section"]
+    C --> F
+    D --> F
+    E --> G["Follow-up plan"]
 ```
 
-## BA workflow
+## BA artifact
 
-1. Đóng khung business question trước khi mở AI tool.
-2. Cung cấp source context và constraint rõ ràng.
-3. Yêu cầu structured output có mapping về source.
-4. Chạy critique pass để tìm ambiguity, gap, risk và testability.
-5. Chuyển kết quả thành artifact mà team có thể inspect và cùng chịu ownership.
+### Decision Artifact Skeleton
 
-## Prompt hoặc template
+| Section | Purpose | AI hỗ trợ gì | BA phải own gì |
+| --- | --- | --- | --- |
+| Business objective | Nêu vì sao work tồn tại. | Summarize workshop notes. | Metric và priority tradeoff. |
+| Scope boundary | Ngăn scope expansion vô tình. | Draft in/out list. | Final scope decision. |
+| Decision log | Cho thấy điều đã chốt. | Format decision. | Owner, date, rationale. |
+| Open questions | Giữ uncertainty visible. | Cluster question. | Resolution path và owner. |
+
+## AI collaboration prompt
 
 ```text
-Draft một phần BRD từ notes này. Bao gồm business objective, scope, stakeholder, assumption, decision, requirement, risk, metric và open question.
+Draft section BRD/SRS từ notes này. Bao gồm objective, scope, stakeholder, decision, assumption, requirement, risk, metric, open question và source evidence. Label mọi inference, và không đưa unresolved item vào final requirement.
 ```
+
+## Mistakes to avoid
+
+- Dùng AI tạo document polished trước khi decision rõ.
+- Giấu assumption trong prose.
+- Trộn current state, future state và open question.
+- Quên scope boundary.
+
+## Apply this tomorrow
+
+1. Thêm decision log vào một document.
+2. Nhờ AI extract assumption từ draft.
+3. Chuyển unresolved item vào open-question table.
+4. Review out-of-scope item với stakeholder.
 
 ## What a BA should remember
 
-- AI là bộ tăng tốc reasoning, không phải decision owner.
-- Mọi claim quan trọng phải grounded vào source context hoặc stakeholder confirmation.
-- BA giỏi giữ review loop rõ ràng: draft, critique, revise, validate.
+- Document nên làm decision visible.
+- Polish không phải clarity.
+- AI draft; BA kiểm soát scope và evidence.

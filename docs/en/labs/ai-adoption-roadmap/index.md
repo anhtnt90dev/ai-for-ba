@@ -5,49 +5,49 @@ description: "Practical AI lab for Business Analysts."
 
 # AI Adoption Roadmap
 
-## Objective
+## Scenario
 
 You are a BA lead planning safe AI adoption for a 20-person BA practice.
 
-## Scenario
+## Input sample
 
-You are working in a software product team. The team expects a BA-ready artifact that can be reviewed by product, engineering, QA, and operations.
+```text
+Current state: some BAs use public AI tools, no shared prompt library, no data policy, managers want productivity gains, compliance worries about confidential data.
+```
 
 ## Diagram
 
 ```mermaid
 flowchart TD
-    A["Raw input"] --> B["AI-assisted analysis"]
-    B --> C["BA review"]
-    C --> D{"Ready for team review?"}
-    D -->|"No"| B
-    D -->|"Yes"| E["Shared artifact"]
+    A["Current state"] --> B["Use-case portfolio"]
+    B --> C["Risk tiers"]
+    C --> D["Training + quality gates"]
+    D --> E["Metrics + rollout"]
 ```
 
-## Instructions
+## Exercise steps
 
-1. Clarify the business goal and target users.
-2. Ask AI to produce a first draft with explicit assumptions.
-3. Review the output for ambiguity, gaps, risks, and evidence.
-4. Revise the artifact until it can be shared with the delivery team.
-5. Capture open questions instead of hiding uncertainty.
+1. Build use-case portfolio by value and risk.
+2. Define risk tiers and data rules.
+3. Create training and quality gates.
+4. Define metrics and rollout phases.
 
 ## Deliverables
 
 - use-case portfolio
-- risk tiers
+- risk-tier policy
 - training plan
-- governance metrics
+- governance scorecard
 
-## Lab prompt
+## AI collaboration prompt
 
 ```text
-Act as a senior BA coach. Help me complete this lab step by step. Ask clarifying questions first, then produce the requested artifact with assumptions, evidence, risks, and open questions.
+Act as a senior BA coach. Help me complete this lab. First ask what source evidence is available. Then guide me through the exercise steps. Produce the deliverables in structured tables. Mark assumptions, unsupported claims, and questions for stakeholder validation.
 ```
 
 ## Review rubric
 
-- Every recommendation has evidence or is marked as an assumption.
-- Open questions are visible and assigned.
-- The artifact is testable by QA and understandable by stakeholders.
-- Risks are stated in business language, not only technical language.
+- Risk controls match use-case sensitivity.
+- Quality gates are practical.
+- Metrics include quality and cycle time.
+- Rollout has owners and phases.

@@ -1,6 +1,6 @@
 ---
 title: "Non-Functional Requirements and Risk"
-description: "Use AI to surface NFR gaps across security, privacy, reliability, accessibility, performance, auditability, and supportability."
+description: "NFRs are business risk requirements, not technical extras."
 ---
 
 # Non-Functional Requirements and Risk
@@ -13,55 +13,72 @@ description: "Use AI to surface NFR gaps across security, privacy, reliability, 
 
 ## Learning outcomes
 
-- Explain non-functional requirements and risk in business language.
-- Apply the concept to a realistic BA workflow.
-- Use AI output as draft evidence, not as unchecked truth.
-- Identify the review questions a BA must ask before sharing the artifact.
+- Use AI to surface NFR gaps across quality attributes.
+- Translate technical risks into business impact.
+- Prioritize NFRs based on usage, data sensitivity, and failure cost.
 
 ## Why this matters for BA work
 
-AI changes how analysis work is produced, but it does not remove the BA's accountability for clarity, evidence, and decisions.
-
 <div class="ba-callout">
-Use AI to surface NFR gaps across security, privacy, reliability, accessibility, performance, auditability, and supportability.
+NFRs are business risk requirements, not technical extras.
 </div>
 
-## Core concept
+Business Analysts sit between problem framing, stakeholder meaning, delivery constraints, and product decisions. In AI work, that position becomes more important because unclear language can create false certainty quickly. This lesson gives you a practical control you can apply before AI output becomes scope, backlog, or delivery commitment.
 
-The useful BA pattern is controlled collaboration: provide the model with business context, ask for structured output, require evidence, then review the result against goals, rules, risks, and stakeholder decisions.
+## Mental model or core concept
+
+NFRs describe how the system must behave under real-world conditions: performance, availability, security, privacy, accessibility, auditability, supportability, and compliance. AI can propose NFR categories, but the BA must tie each requirement to business impact and measurable acceptance criteria.
 
 ## Practical BA example
 
-A payment feature has detailed functional flows but no availability, audit, fraud, privacy, timeout, or support requirements. AI helps generate a risk-driven NFR checklist.
+A payment refund feature has functional steps but no timeout, audit, fraud, data retention, or support requirements. AI creates a risk inventory; the BA turns high-risk gaps into measurable NFRs and acceptance tests.
 
 ## Diagram
 
 ```mermaid
 flowchart LR
-    A["Business goal"] --> B["Source context"]
-    B --> C["AI analysis"]
-    C --> D{"BA review"}
-    D -->|"Revise"| B
-    D -->|"Approve"| E["Validated artifact"]
-    E --> F["Non-Functional Requirements and Risk"]
+    A["Feature"] --> B["Data sensitivity"]
+    A --> C["Usage volume"]
+    A --> D["Failure cost"]
+    B --> E["NFR priority"]
+    C --> E
+    D --> E
+    E --> F["Measurable quality requirement"]
 ```
 
-## BA workflow
+## BA artifact
 
-1. Frame the business question before opening the AI tool.
-2. Provide source context and explicit constraints.
-3. Ask for structured output that maps back to the source.
-4. Run a critique pass for ambiguity, gaps, risk, and testability.
-5. Convert the result into an artifact the team can inspect and own.
+### NFR Risk Matrix
 
-## Prompt or template
+| Quality attribute | Business impact | Requirement example | Acceptance signal |
+| --- | --- | --- | --- |
+| Availability | Refunds blocked during outage. | Refund submission available 99.9% monthly. | Downtime report below threshold. |
+| Privacy | PII exposed in refund notes. | Mask customer PII in support view. | Role-based access test passes. |
+| Auditability | No trace for disputed refund. | Log approver, timestamp, reason, old/new status. | Audit export includes all fields. |
+| Performance | Agent queue grows during peak. | Search refund status under 2 seconds p95. | Load test meets p95 target. |
+
+## AI collaboration prompt
 
 ```text
-Review this feature for NFR gaps. Cover security, privacy, performance, reliability, accessibility, audit, support, data retention, and operational monitoring.
+Review this feature for NFR risk. Cover availability, performance, security, privacy, accessibility, auditability, supportability, compliance, and data retention. For each gap, provide business impact, measurable requirement, acceptance signal, and owner.
 ```
+
+## Mistakes to avoid
+
+- Treating NFRs as developer-only concerns.
+- Writing NFRs without measurable signals.
+- Ignoring privacy and audit until late testing.
+- Failing to connect NFR priority to business risk.
+
+## Apply this tomorrow
+
+1. Pick one feature and ask AI for NFR gaps.
+2. Rewrite one NFR with a measurable acceptance signal.
+3. Review NFR priority with product and engineering.
+4. Add audit and supportability to your checklist.
 
 ## What a BA should remember
 
-- AI is a reasoning accelerator, not a decision owner.
-- Ground every important claim in source context or stakeholder confirmation.
-- A good BA keeps the review loop visible: draft, critique, revise, validate.
+- NFRs are risk controls.
+- Measurable NFRs prevent vague quality debates.
+- BA ownership includes business impact of failure.

@@ -1,6 +1,6 @@
 ---
 title: "Mô hình hóa quy trình với AI"
-description: "Dùng AI để draft process map nhưng BA vẫn kiểm soát decision point, exception và ownership."
+description: "AI có thể draft process flow, nhưng chất lượng BA nằm ở decision, exception, ownership và operational constraint."
 ---
 
 # Mô hình hóa quy trình với AI
@@ -13,55 +13,73 @@ description: "Dùng AI để draft process map nhưng BA vẫn kiểm soát deci
 
 ## Learning outcomes
 
-- Giải thích mô hình hóa quy trình với ai bằng ngôn ngữ business.
-- Áp dụng concept vào workflow BA thực tế.
-- Dùng output AI như draft có evidence, không xem là sự thật tự động.
-- Xác định câu hỏi review BA phải hỏi trước khi chia sẻ artifact.
+- Dùng AI tạo first-pass process map.
+- Bổ sung exception path, role, SLA và control.
+- Review process diagram để tìm ownership và policy decision thiếu.
 
 ## Why this matters for BA work
 
-AI thay đổi cách tạo ra artifact phân tích, nhưng không thay thế trách nhiệm của BA về clarity, evidence và decision.
-
 <div class="ba-callout">
-Dùng AI để draft process map nhưng BA vẫn kiểm soát decision point, exception và ownership.
+AI có thể draft process flow, nhưng chất lượng BA nằm ở decision, exception, ownership và operational constraint.
 </div>
 
-## Core concept
+Business Analyst đứng giữa problem framing, ý nghĩa từ stakeholder, constraint triển khai và product decision. Trong công việc có AI, vị trí này quan trọng hơn vì ngôn ngữ chưa rõ có thể tạo false certainty rất nhanh. Bài này đưa ra một control thực tế để áp dụng trước khi output AI trở thành scope, backlog hoặc delivery commitment.
 
-Pattern hữu ích cho BA là controlled collaboration: cung cấp business context cho model, yêu cầu structured output, bắt buộc có evidence, rồi review theo goal, rule, risk và decision của stakeholder.
+## Mental model or core concept
+
+Process modeling không phải chỉ vẽ box; đó là làm rõ work, decision right, handoff và failure handling. AI có thể chuyển text thành flow, nhưng BA phải challenge draft: ai own từng step, trigger next step là gì, chuyện gì xảy ra khi thiếu data và control nào bắt buộc.
 
 ## Practical BA example
 
-Với quy trình onboarding, AI draft happy path. BA sau đó yêu cầu thêm rejection, missing document, duplicate account, SLA breach và manual override path.
+AI draft onboarding flow sạch: submit document, verify, approve. BA thêm missing-document loop, duplicate customer check, risk review, SLA timer, manual override và customer notification rule. Diagram trở thành decision tool, không phải decoration.
 
 ## Diagram
 
 ```mermaid
-flowchart LR
-    A["Business goal"] --> B["Source context"]
-    B --> C["AI analysis"]
-    C --> D{"BA review"}
-    D -->|"Revise"| B
-    D -->|"Approve"| E["Artifact đã validate"]
-    E --> F["Mô hình hóa quy trình với AI"]
+flowchart TD
+    A["Customer submit request"] --> B{"Document đủ?"}
+    B -->|Không| C["Yêu cầu bổ sung document"]
+    C --> A
+    B -->|Có| D{"Vượt risk threshold?"}
+    D -->|Có| E["Manager review"]
+    D -->|Không| F["Auto approve"]
+    E --> G["Notify customer"]
+    F --> G
 ```
 
-## BA workflow
+## BA artifact
 
-1. Đóng khung business question trước khi mở AI tool.
-2. Cung cấp source context và constraint rõ ràng.
-3. Yêu cầu structured output có mapping về source.
-4. Chạy critique pass để tìm ambiguity, gap, risk và testability.
-5. Chuyển kết quả thành artifact mà team có thể inspect và cùng chịu ownership.
+### Process Review Checklist
 
-## Prompt hoặc template
+| Flow element | Câu hỏi BA | Evidence cần có | Gap thường gặp |
+| --- | --- | --- | --- |
+| Actor | Ai perform hoặc own step? | Role matrix hoặc SOP. | System step không có owner. |
+| Decision | Rule nào chọn branch? | Policy hoặc business rule. | Diamond có condition mơ hồ. |
+| Exception | Khi input invalid thì sao? | Support script và error log. | Chỉ có happy path. |
+| SLA/control | Timing hoặc audit control nào áp dụng? | Operational metric hoặc compliance rule. | Không có escalation hoặc audit. |
+
+## AI collaboration prompt
 
 ```text
-Tạo process model gồm actor, step, decision point, exception, SLA, input, output và policy question chưa rõ. Dùng Mermaid syntax.
+Chuyển process description này thành Mermaid flowchart. Bao gồm actor, decision rule, exception path, SLA, handoff, input, output, control và unresolved policy question. Sau diagram, liệt kê missing ownership hoặc rule gap.
 ```
+
+## Mistakes to avoid
+
+- Chấp nhận diagram AI đầu tiên vì nhìn sạch.
+- Bỏ exception và manual work.
+- Dùng process box không có owner.
+- Vẽ decision nhưng thiếu decision rule.
+
+## Apply this tomorrow
+
+1. Nhờ AI thêm exception path cho một flow hiện có.
+2. Gắn business rule cho từng decision diamond.
+3. Thêm owner label vào process step.
+4. Review diagram với support hoặc operations, không chỉ product.
 
 ## What a BA should remember
 
-- AI là bộ tăng tốc reasoning, không phải decision owner.
-- Mọi claim quan trọng phải grounded vào source context hoặc stakeholder confirmation.
-- BA giỏi giữ review loop rõ ràng: draft, critique, revise, validate.
+- Process diagram hữu ích làm lộ decision và handoff.
+- Exception thường chứa requirement thật.
+- AI draft flow; BA validate operation.

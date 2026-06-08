@@ -1,6 +1,6 @@
 ---
 title: "Review Loops and Critique"
-description: "Use AI as drafter, critic, gap finder, and counterparty instead of trusting a single generated answer."
+description: "The strongest BA use of AI is not drafting faster; it is creating disciplined critique loops before artifacts reach the team."
 ---
 
 # Review Loops and Critique
@@ -13,55 +13,72 @@ description: "Use AI as drafter, critic, gap finder, and counterparty instead of
 
 ## Learning outcomes
 
-- Explain review loops and critique in business language.
-- Apply the concept to a realistic BA workflow.
-- Use AI output as draft evidence, not as unchecked truth.
-- Identify the review questions a BA must ask before sharing the artifact.
+- Use AI as drafter, critic, counterparty, and gap finder.
+- Run multi-perspective reviews for BA artifacts.
+- Convert critique into prioritized revisions.
 
 ## Why this matters for BA work
 
-AI changes how analysis work is produced, but it does not remove the BA's accountability for clarity, evidence, and decisions.
-
 <div class="ba-callout">
-Use AI as drafter, critic, gap finder, and counterparty instead of trusting a single generated answer.
+The strongest BA use of AI is not drafting faster; it is creating disciplined critique loops before artifacts reach the team.
 </div>
 
-## Core concept
+Business Analysts sit between problem framing, stakeholder meaning, delivery constraints, and product decisions. In AI work, that position becomes more important because unclear language can create false certainty quickly. This lesson gives you a practical control you can apply before AI output becomes scope, backlog, or delivery commitment.
 
-The useful BA pattern is controlled collaboration: provide the model with business context, ask for structured output, require evidence, then review the result against goals, rules, risks, and stakeholder decisions.
+## Mental model or core concept
+
+One-pass AI output is risky. A review loop makes AI work safer: draft, critique, revise, evidence-check, and stakeholder-validate. The BA can ask AI to review from product, QA, engineering, security, operations, and user perspectives, then decide which findings matter.
 
 ## Practical BA example
 
-After drafting a feature spec, the BA asks AI to attack it from QA, developer, security, support, and user perspectives. The best output is a risk list and revision plan.
+A generated SRS section looks complete. A critique pass finds that audit logging is missing, error states are vague, and a support workflow is not covered. The BA turns findings into revision tasks and validation questions instead of shipping the first draft.
 
 ## Diagram
 
 ```mermaid
 flowchart LR
-    A["Business goal"] --> B["Source context"]
-    B --> C["AI analysis"]
-    C --> D{"BA review"}
-    D -->|"Revise"| B
-    D -->|"Approve"| E["Validated artifact"]
-    E --> F["Review Loops and Critique"]
+    A["Draft"] --> B["Critique by QA"]
+    B --> C["Critique by Dev"]
+    C --> D["Critique by Ops"]
+    D --> E["Evidence check"]
+    E --> F{"Revision needed?"}
+    F -->|Yes| A
+    F -->|No| G["Stakeholder validation"]
 ```
 
-## BA workflow
+## BA artifact
 
-1. Frame the business question before opening the AI tool.
-2. Provide source context and explicit constraints.
-3. Ask for structured output that maps back to the source.
-4. Run a critique pass for ambiguity, gaps, risk, and testability.
-5. Convert the result into an artifact the team can inspect and own.
+### Multi-Perspective Critique Grid
 
-## Prompt or template
+| Perspective | What to inspect | Finding format | Revision action |
+| --- | --- | --- | --- |
+| QA | Testability, edge cases, expected results. | Defect plus test scenario. | Rewrite AC and add negative case. |
+| Developer | API, data, integration assumptions. | Implementation risk. | Clarify contract or dependency. |
+| Operations | Support, monitoring, failure handling. | Runbook gap. | Add support flow and alert rule. |
+| Compliance | Privacy, audit, policy constraints. | Control gap. | Add evidence and approval step. |
+
+## AI collaboration prompt
 
 ```text
-Review this artifact from five perspectives: end user, developer, QA, operations, and compliance. Return defects, severity, evidence, and proposed revision.
+Review this artifact from QA, developer, operations, compliance, support, and end-user perspectives. Return findings with severity, evidence, affected section, revision recommendation, and validation question. Do not rewrite yet; critique first.
 ```
+
+## Mistakes to avoid
+
+- Asking AI to improve the draft without first diagnosing it.
+- Accepting all critique findings equally.
+- Skipping evidence for critique.
+- Not preserving the revision decision trail.
+
+## Apply this tomorrow
+
+1. Run one draft through a QA critique prompt.
+2. Ask AI to rank findings by delivery risk.
+3. Convert critique into a revision backlog.
+4. Share top three risks with the team before refinement.
 
 ## What a BA should remember
 
-- AI is a reasoning accelerator, not a decision owner.
-- Ground every important claim in source context or stakeholder confirmation.
-- A good BA keeps the review loop visible: draft, critique, revise, validate.
+- Critique is where AI often creates the most BA value.
+- Review loops make uncertainty visible.
+- The BA chooses which critique findings become changes.

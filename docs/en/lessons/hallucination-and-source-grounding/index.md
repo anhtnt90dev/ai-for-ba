@@ -1,6 +1,6 @@
 ---
 title: "Hallucination and Source Grounding"
-description: "Recognize hallucination patterns and design prompts that force answers to stay grounded in source material."
+description: "A BA must design evidence discipline into AI work so plausible text does not become false requirements."
 ---
 
 # Hallucination and Source Grounding
@@ -13,55 +13,70 @@ description: "Recognize hallucination patterns and design prompts that force ans
 
 ## Learning outcomes
 
-- Explain hallucination and source grounding in business language.
-- Apply the concept to a realistic BA workflow.
-- Use AI output as draft evidence, not as unchecked truth.
-- Identify the review questions a BA must ask before sharing the artifact.
+- Recognize common hallucination patterns.
+- Require evidence, citations, and unsupported-claim labels.
+- Design review gates before AI output enters delivery artifacts.
 
 ## Why this matters for BA work
 
-AI changes how analysis work is produced, but it does not remove the BA's accountability for clarity, evidence, and decisions.
-
 <div class="ba-callout">
-Recognize hallucination patterns and design prompts that force answers to stay grounded in source material.
+A BA must design evidence discipline into AI work so plausible text does not become false requirements.
 </div>
 
-## Core concept
+Business Analysts sit between problem framing, stakeholder meaning, delivery constraints, and product decisions. In AI work, that position becomes more important because unclear language can create false certainty quickly. This lesson gives you a practical control you can apply before AI output becomes scope, backlog, or delivery commitment.
 
-The useful BA pattern is controlled collaboration: provide the model with business context, ask for structured output, require evidence, then review the result against goals, rules, risks, and stakeholder decisions.
+## Mental model or core concept
+
+Hallucination is not only a model problem; it is a process problem. If a team accepts AI output without evidence rules, unsupported claims become scope, estimates, and test cases. Grounding means every important statement is tied to a source, stakeholder confirmation, or clearly labeled assumption.
 
 ## Practical BA example
 
-During vendor comparison, AI may confidently invent product capabilities. A BA should require citations, separate evidence from inference, and mark unsupported claims as risks.
+During vendor evaluation, AI says Tool A supports real-time audit export. The vendor page never says that. A BA using grounding rules marks the claim unsupported, asks the vendor directly, and prevents a false requirement from entering the selection scorecard.
 
 ## Diagram
 
 ```mermaid
-flowchart LR
-    A["Business goal"] --> B["Source context"]
-    B --> C["AI analysis"]
-    C --> D{"BA review"}
-    D -->|"Revise"| B
-    D -->|"Approve"| E["Validated artifact"]
-    E --> F["Hallucination and Source Grounding"]
+flowchart BT
+    A["Unsupported claim"] --> B["Reasoned inference"]
+    B --> C["Stakeholder confirmation"]
+    C --> D["Direct source evidence"]
+    D --> E["Requirement-ready fact"]
+    A --> F["Open question, not scope"]
 ```
 
-## BA workflow
+## BA artifact
 
-1. Frame the business question before opening the AI tool.
-2. Provide source context and explicit constraints.
-3. Ask for structured output that maps back to the source.
-4. Run a critique pass for ambiguity, gaps, risk, and testability.
-5. Convert the result into an artifact the team can inspect and own.
+### Evidence Ladder
 
-## Prompt or template
+| Evidence level | Use in BA artifact? | Required label | Example |
+| --- | --- | --- | --- |
+| Direct source | Yes | Source-backed fact | Policy page states 24-hour SLA. |
+| Stakeholder confirmation | Yes | Confirmed decision | Ops manager approves manual override. |
+| Reasoned inference | Maybe | Assumption to validate | High-risk cases likely need audit. |
+| No support | No | Unsupported claim | Vendor capability not documented. |
+
+## AI collaboration prompt
 
 ```text
-Answer only from the supplied sources. For each claim, provide the source ID. If the source does not support the claim, write 'not supported by provided sources'.
+Review this answer against the provided sources. Return a table with claim, evidence level, source ID, confidence, unsupported parts, and validation question. Do not rewrite unsupported claims as facts.
 ```
+
+## Mistakes to avoid
+
+- Accepting confident wording as evidence.
+- Letting AI cite a source that does not actually support the claim.
+- Skipping stakeholder confirmation for inferred rules.
+- Not labeling assumptions in BRD or user stories.
+
+## Apply this tomorrow
+
+1. Add an evidence column to one requirement table.
+2. Ask AI to mark unsupported claims in an existing draft.
+3. Create a list of authoritative sources for one feature.
+4. Use the phrase 'not supported by provided sources' in review prompts.
 
 ## What a BA should remember
 
-- AI is a reasoning accelerator, not a decision owner.
-- Ground every important claim in source context or stakeholder confirmation.
-- A good BA keeps the review loop visible: draft, critique, revise, validate.
+- Grounding protects the team from false clarity.
+- Unsupported claims should become questions, not requirements.
+- Citation quality matters more than answer fluency.

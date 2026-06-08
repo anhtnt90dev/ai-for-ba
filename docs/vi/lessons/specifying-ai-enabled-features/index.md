@@ -1,6 +1,6 @@
 ---
 title: "Đặc tả tính năng có AI"
-description: "Viết requirement cho AI feature có tính xác suất, phụ thuộc dữ liệu và nhạy với chất lượng."
+description: "AI-enabled feature cần requirement cho data, output quality, uncertainty, user control và monitoring."
 ---
 
 # Đặc tả tính năng có AI
@@ -8,60 +8,78 @@ description: "Viết requirement cho AI feature có tính xác suất, phụ thu
 <div class="lesson-meta">
   <span>Xây dựng sản phẩm có AI dưới góc nhìn BA</span>
   <span>Software BA</span>
-  <span>Core</span>
+  <span>Advanced</span>
 </div>
 
 ## Learning outcomes
 
-- Giải thích đặc tả tính năng có ai bằng ngôn ngữ business.
-- Áp dụng concept vào workflow BA thực tế.
-- Dùng output AI như draft có evidence, không xem là sự thật tự động.
-- Xác định câu hỏi review BA phải hỏi trước khi chia sẻ artifact.
+- Viết requirement cho behavior AI có tính xác suất.
+- Đặc tả input, output, confidence, fallback và evaluation.
+- Tránh deterministic acceptance criteria cho system non-deterministic.
 
 ## Why this matters for BA work
 
-AI thay đổi cách tạo ra artifact phân tích, nhưng không thay thế trách nhiệm của BA về clarity, evidence và decision.
-
 <div class="ba-callout">
-Viết requirement cho AI feature có tính xác suất, phụ thuộc dữ liệu và nhạy với chất lượng.
+AI-enabled feature cần requirement cho data, output quality, uncertainty, user control và monitoring.
 </div>
 
-## Core concept
+Business Analyst đứng giữa problem framing, ý nghĩa từ stakeholder, constraint triển khai và product decision. Trong công việc có AI, vị trí này quan trọng hơn vì ngôn ngữ chưa rõ có thể tạo false certainty rất nhanh. Bài này đưa ra một control thực tế để áp dụng trước khi output AI trở thành scope, backlog hoặc delivery commitment.
 
-Pattern hữu ích cho BA là controlled collaboration: cung cấp business context cho model, yêu cầu structured output, bắt buộc có evidence, rồi review theo goal, rule, risk và decision của stakeholder.
+## Mental model or core concept
+
+AI feature không behave như feature deterministic thông thường. BA phải đặc tả model thực hiện task gì, được dùng data nào, output contract ra sao, confidence threshold nào quan trọng, user sửa output thế nào, khi nào human review và quality được monitor sau release ra sao.
 
 ## Practical BA example
 
-Team muốn AI triage assistant. BA đặc tả input source, output class, confidence threshold, escalation path, user correction, audit và quality metric.
+Support triage assistant phân loại ticket thành billing, technical và policy. BA đặc tả training example, output label, confidence threshold, escalation sang human review, correction capture, audit record và evaluation metric như precision cho high-risk category.
 
 ## Diagram
 
 ```mermaid
 flowchart LR
-    A["Business goal"] --> B["Source context"]
-    B --> C["AI analysis"]
-    C --> D{"BA review"}
-    D -->|"Revise"| B
-    D -->|"Approve"| E["Artifact đã validate"]
-    E --> F["Đặc tả tính năng có AI"]
+    A["User goal"] --> B["Allowed inputs"]
+    B --> C["AI task"]
+    C --> D["Output contract"]
+    D --> E{"Confidence threshold"}
+    E -->|High| F["User action"]
+    E -->|Low| G["Human review / fallback"]
+    F --> H["Monitoring"]
+    G --> H
 ```
 
-## BA workflow
+## BA artifact
 
-1. Đóng khung business question trước khi mở AI tool.
-2. Cung cấp source context và constraint rõ ràng.
-3. Yêu cầu structured output có mapping về source.
-4. Chạy critique pass để tìm ambiguity, gap, risk và testability.
-5. Chuyển kết quả thành artifact mà team có thể inspect và cùng chịu ownership.
+### AI Feature Specification Canvas
 
-## Prompt hoặc template
+| Area | Requirement question | Example requirement | Acceptance signal |
+| --- | --- | --- | --- |
+| Model task | AI decide hoặc generate gì? | Classify ticket theo approved category list. | Output category nằm trong defined labels. |
+| Input data | Context nào được phép dùng? | Dùng ticket text, account tier và product area. | Không include restricted PII. |
+| Uncertainty | Dưới confidence threshold thì sao? | Below 0.75 route to human triage. | Low-confidence case vào review queue. |
+| Evaluation | Quality đo thế nào? | Precision for billing category >= 90%. | Evaluation set pass threshold. |
+
+## AI collaboration prompt
 
 ```text
-Đặc tả AI feature này với user goal, model task, input data, output contract, confidence threshold, human review, fallback, safety constraint và evaluation metric.
+Đặc tả AI-enabled feature này bằng: user goal, AI task, allowed input, prohibited input, output contract, confidence threshold, human review trigger, fallback behavior, user correction, audit need, safety constraint, evaluation metric và monitoring event.
 ```
+
+## Mistakes to avoid
+
+- Viết acceptance criteria như thể output AI luôn deterministic.
+- Bỏ qua low-confidence behavior.
+- Không đặc tả correction và feedback loop.
+- Chỉ đo user satisfaction mà thiếu output quality metric.
+
+## Apply this tomorrow
+
+1. Thêm câu hỏi confidence threshold cho một AI feature idea.
+2. Định nghĩa output contract trước UI design.
+3. Viết một fallback scenario.
+4. Hỏi data hoặc engineering evaluation set hiện có.
 
 ## What a BA should remember
 
-- AI là bộ tăng tốc reasoning, không phải decision owner.
-- Mọi claim quan trọng phải grounded vào source context hoặc stakeholder confirmation.
-- BA giỏi giữ review loop rõ ràng: draft, critique, revise, validate.
+- AI requirement phải mô tả uncertainty.
+- Output quality là một phần functional behavior.
+- Human review và fallback là product feature, không phải afterthought.

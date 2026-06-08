@@ -1,23 +1,38 @@
 ---
-title: "Thư viện prompt"
+title: "Prompt playbook"
 ---
 
-# Thư viện prompt
+# Prompt playbook
 
-## Discovery prompt
+## Context package template
 
 ```text
-Hãy đóng vai senior BA. Tạo discovery plan gồm stakeholder, business goal, assumption, câu hỏi interview, risk và decision cần chốt.
+Role:
+Business goal:
+Users and stakeholders:
+Scope in / scope out:
+Source IDs:
+Constraints:
+Task:
+Output format:
+Quality bar:
+Questions before drafting:
 ```
 
 ## Requirement review prompt
 
 ```text
-Review các requirement này để tìm ambiguity, conflict, actor thiếu, data thiếu, NFR gap, edge case và testability. Trả về severity, evidence và clarification question.
+Review requirement được cung cấp bằng taxonomy: ambiguity, conflict, missing actor, missing data, missing business rule, NFR gap, non-testable wording. Trả về bảng gồm issue, severity, evidence, affected text, clarification question và candidate rewrite test được. Không tự bịa policy.
 ```
 
-## AI feature prompt
+## AI feature specification prompt
 
 ```text
-Đặc tả AI-enabled feature này với user goal, data source, model task, output contract, confidence threshold, human review, fallback, monitoring và evaluation metric.
+Đặc tả AI-enabled feature này với user goal, AI task, allowed input, prohibited input, output contract, confidence threshold, human review trigger, fallback behavior, correction capture, audit, monitoring event và evaluation metric.
+```
+
+## RAG assistant prompt
+
+```text
+Tạo RAG knowledge contract: source inventory, authority, freshness, access control, chunking assumption, citation behavior, conflict handling, fallback, retrieval metric, answer-quality metric và test question.
 ```

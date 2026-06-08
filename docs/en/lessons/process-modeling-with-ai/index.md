@@ -1,6 +1,6 @@
 ---
 title: "Process Modeling With AI"
-description: "Use AI to draft process maps while keeping control over decision points, exceptions, and ownership."
+description: "AI can draft process flows, but BA quality comes from decisions, exceptions, ownership, and operational constraints."
 ---
 
 # Process Modeling With AI
@@ -13,55 +13,73 @@ description: "Use AI to draft process maps while keeping control over decision p
 
 ## Learning outcomes
 
-- Explain process modeling with ai in business language.
-- Apply the concept to a realistic BA workflow.
-- Use AI output as draft evidence, not as unchecked truth.
-- Identify the review questions a BA must ask before sharing the artifact.
+- Use AI to create first-pass process maps.
+- Add exception paths, roles, SLAs, and controls.
+- Review process diagrams for missing ownership and policy decisions.
 
 ## Why this matters for BA work
 
-AI changes how analysis work is produced, but it does not remove the BA's accountability for clarity, evidence, and decisions.
-
 <div class="ba-callout">
-Use AI to draft process maps while keeping control over decision points, exceptions, and ownership.
+AI can draft process flows, but BA quality comes from decisions, exceptions, ownership, and operational constraints.
 </div>
 
-## Core concept
+Business Analysts sit between problem framing, stakeholder meaning, delivery constraints, and product decisions. In AI work, that position becomes more important because unclear language can create false certainty quickly. This lesson gives you a practical control you can apply before AI output becomes scope, backlog, or delivery commitment.
 
-The useful BA pattern is controlled collaboration: provide the model with business context, ask for structured output, require evidence, then review the result against goals, rules, risks, and stakeholder decisions.
+## Mental model or core concept
+
+Process modeling is not drawing boxes; it is clarifying work, decision rights, handoffs, and failure handling. AI can convert text into a flow, but the BA should challenge the draft: who owns each step, what triggers the next step, what happens when data is missing, and which controls are required.
 
 ## Practical BA example
 
-For onboarding, AI drafts a happy path. The BA then forces it to add rejection, missing document, duplicate account, SLA breach, and manual override paths.
+AI drafts a clean onboarding flow: submit documents, verify, approve. The BA adds missing-document loop, duplicate customer check, risk review, SLA timer, manual override, and customer notification rules. The diagram becomes a decision tool, not decoration.
 
 ## Diagram
 
 ```mermaid
-flowchart LR
-    A["Business goal"] --> B["Source context"]
-    B --> C["AI analysis"]
-    C --> D{"BA review"}
-    D -->|"Revise"| B
-    D -->|"Approve"| E["Validated artifact"]
-    E --> F["Process Modeling With AI"]
+flowchart TD
+    A["Customer submits request"] --> B{"Documents complete?"}
+    B -->|No| C["Request missing documents"]
+    C --> A
+    B -->|Yes| D{"Risk threshold exceeded?"}
+    D -->|Yes| E["Manager review"]
+    D -->|No| F["Auto approve"]
+    E --> G["Notify customer"]
+    F --> G
 ```
 
-## BA workflow
+## BA artifact
 
-1. Frame the business question before opening the AI tool.
-2. Provide source context and explicit constraints.
-3. Ask for structured output that maps back to the source.
-4. Run a critique pass for ambiguity, gaps, risk, and testability.
-5. Convert the result into an artifact the team can inspect and own.
+### Process Review Checklist
 
-## Prompt or template
+| Flow element | BA review question | Evidence needed | Common gap |
+| --- | --- | --- | --- |
+| Actor | Who performs or owns the step? | Role matrix or SOP. | System step with no owner. |
+| Decision | What rule chooses the branch? | Policy or business rule. | Diamond with vague condition. |
+| Exception | What happens when input is invalid? | Support scripts and error logs. | Happy path only. |
+| SLA/control | What timing or audit control applies? | Operational metric or compliance rule. | No escalation or audit. |
+
+## AI collaboration prompt
 
 ```text
-Create a process model with actors, steps, decision points, exceptions, SLAs, inputs, outputs, and unresolved policy questions. Use Mermaid syntax.
+Convert this process description into a Mermaid flowchart. Include actors, decision rules, exception paths, SLAs, handoffs, inputs, outputs, controls, and unresolved policy questions. After the diagram, list missing ownership or rule gaps.
 ```
+
+## Mistakes to avoid
+
+- Accepting the first AI diagram because it looks clean.
+- Omitting exceptions and manual work.
+- Using process boxes without owners.
+- Drawing decisions without decision rules.
+
+## Apply this tomorrow
+
+1. Ask AI to add exception paths to one existing flow.
+2. Mark every decision diamond with a business rule.
+3. Add owner labels to process steps.
+4. Review the diagram with support or operations, not only product.
 
 ## What a BA should remember
 
-- AI is a reasoning accelerator, not a decision owner.
-- Ground every important claim in source context or stakeholder confirmation.
-- A good BA keeps the review loop visible: draft, critique, revise, validate.
+- A useful process diagram exposes decisions and handoffs.
+- Exceptions often contain the real requirements.
+- AI drafts flow; BA validates operation.

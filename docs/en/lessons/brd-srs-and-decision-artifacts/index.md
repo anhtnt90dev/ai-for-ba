@@ -1,6 +1,6 @@
 ---
 title: "BRD, SRS, and Decision Artifacts"
-description: "Use AI to draft and review documents without losing ownership of scope, decisions, and evidence."
+description: "AI can draft documents, but BA value comes from decision structure, evidence, scope control, and reviewability."
 ---
 
 # BRD, SRS, and Decision Artifacts
@@ -13,55 +13,73 @@ description: "Use AI to draft and review documents without losing ownership of s
 
 ## Learning outcomes
 
-- Explain brd, srs, and decision artifacts in business language.
-- Apply the concept to a realistic BA workflow.
-- Use AI output as draft evidence, not as unchecked truth.
-- Identify the review questions a BA must ask before sharing the artifact.
+- Use AI to structure BRD and SRS sections without losing ownership.
+- Preserve decisions, assumptions, risks, and evidence.
+- Avoid document polish that hides unresolved scope.
 
 ## Why this matters for BA work
 
-AI changes how analysis work is produced, but it does not remove the BA's accountability for clarity, evidence, and decisions.
-
 <div class="ba-callout">
-Use AI to draft and review documents without losing ownership of scope, decisions, and evidence.
+AI can draft documents, but BA value comes from decision structure, evidence, scope control, and reviewability.
 </div>
 
-## Core concept
+Business Analysts sit between problem framing, stakeholder meaning, delivery constraints, and product decisions. In AI work, that position becomes more important because unclear language can create false certainty quickly. This lesson gives you a practical control you can apply before AI output becomes scope, backlog, or delivery commitment.
 
-The useful BA pattern is controlled collaboration: provide the model with business context, ask for structured output, require evidence, then review the result against goals, rules, risks, and stakeholder decisions.
+## Mental model or core concept
+
+A BA document is not valuable because it is long; it is valuable because it makes decisions inspectable. AI can create first drafts, but the BA must maintain decision log, scope boundaries, source evidence, risks, assumptions, and open questions. A polished document with hidden uncertainty is dangerous.
 
 ## Practical BA example
 
-A BA asks AI to convert workshop outputs into a BRD. The final artifact must still show decision log, scope boundaries, assumptions, risks, and unresolved questions.
+Workshop notes become a BRD section. AI drafts a clean narrative, but the BA adds a decision table, explicit out-of-scope items, unresolved pricing rules, and stakeholder approval status before sharing.
 
 ## Diagram
 
 ```mermaid
-flowchart LR
-    A["Business goal"] --> B["Source context"]
-    B --> C["AI analysis"]
-    C --> D{"BA review"}
-    D -->|"Revise"| B
-    D -->|"Approve"| E["Validated artifact"]
-    E --> F["BRD, SRS, and Decision Artifacts"]
+flowchart TD
+    A["Workshop notes"] --> B["Decision log"]
+    A --> C["Scope boundary"]
+    A --> D["Assumptions"]
+    A --> E["Open questions"]
+    B --> F["BRD / SRS section"]
+    C --> F
+    D --> F
+    E --> G["Follow-up plan"]
 ```
 
-## BA workflow
+## BA artifact
 
-1. Frame the business question before opening the AI tool.
-2. Provide source context and explicit constraints.
-3. Ask for structured output that maps back to the source.
-4. Run a critique pass for ambiguity, gaps, risk, and testability.
-5. Convert the result into an artifact the team can inspect and own.
+### Decision Artifact Skeleton
 
-## Prompt or template
+| Section | Purpose | AI can help with | BA must own |
+| --- | --- | --- | --- |
+| Business objective | State why the work exists. | Summarize workshop notes. | Metric and priority tradeoff. |
+| Scope boundary | Prevent accidental expansion. | Draft in/out lists. | Final scope decision. |
+| Decision log | Show what is settled. | Format decisions. | Owner, date, rationale. |
+| Open questions | Keep uncertainty visible. | Cluster questions. | Resolution path and owner. |
+
+## AI collaboration prompt
 
 ```text
-Draft a BRD section using these notes. Include business objective, scope, stakeholders, assumptions, decisions, requirements, risks, metrics, and open questions.
+Draft a BRD/SRS section from these notes. Include objective, scope, stakeholders, decisions, assumptions, requirements, risks, metrics, open questions, and source evidence. Label anything inferred, and keep unresolved items out of final requirements.
 ```
+
+## Mistakes to avoid
+
+- Using AI to create polished documents before decisions are clear.
+- Hiding assumptions in prose.
+- Mixing current state, future state, and open questions.
+- Forgetting scope boundaries.
+
+## Apply this tomorrow
+
+1. Add a decision log to one document.
+2. Ask AI to extract assumptions from your draft.
+3. Move unresolved items into an open-question table.
+4. Review out-of-scope items with stakeholders.
 
 ## What a BA should remember
 
-- AI is a reasoning accelerator, not a decision owner.
-- Ground every important claim in source context or stakeholder confirmation.
-- A good BA keeps the review loop visible: draft, critique, revise, validate.
+- Documents should make decisions visible.
+- Polish is not clarity.
+- AI drafts; BA controls scope and evidence.

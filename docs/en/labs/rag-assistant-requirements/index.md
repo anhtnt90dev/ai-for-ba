@@ -5,32 +5,32 @@ description: "Practical AI lab for Business Analysts."
 
 # RAG Assistant Requirements
 
-## Objective
+## Scenario
 
 Your organization wants a policy assistant that answers from internal documents and cites sources.
 
-## Scenario
+## Input sample
 
-You are working in a software product team. The team expects a BA-ready artifact that can be reviewed by product, engineering, QA, and operations.
+```text
+Sources: HR policy portal, legacy PDF handbook, manager-only procedure, public FAQ. Users: employees and HR advisors.
+```
 
 ## Diagram
 
 ```mermaid
-flowchart TD
-    A["Raw input"] --> B["AI-assisted analysis"]
-    B --> C["BA review"]
-    C --> D{"Ready for team review?"}
-    D -->|"No"| B
-    D -->|"Yes"| E["Shared artifact"]
+flowchart LR
+    A["Source inventory"] --> B["Knowledge contract"]
+    B --> C["RAG requirements"]
+    C --> D["Fallback rules"]
+    D --> E["Evaluation plan"]
 ```
 
-## Instructions
+## Exercise steps
 
-1. Clarify the business goal and target users.
-2. Ask AI to produce a first draft with explicit assumptions.
-3. Review the output for ambiguity, gaps, risks, and evidence.
-4. Revise the artifact until it can be shared with the delivery team.
-5. Capture open questions instead of hiding uncertainty.
+1. Define source authority and freshness.
+2. Specify access control and citation rules.
+3. Write fallback behavior for weak evidence.
+4. Define retrieval and answer-quality evaluation.
 
 ## Deliverables
 
@@ -39,15 +39,15 @@ flowchart TD
 - fallback rules
 - evaluation plan
 
-## Lab prompt
+## AI collaboration prompt
 
 ```text
-Act as a senior BA coach. Help me complete this lab step by step. Ask clarifying questions first, then produce the requested artifact with assumptions, evidence, risks, and open questions.
+Act as a senior BA coach. Help me complete this lab. First ask what source evidence is available. Then guide me through the exercise steps. Produce the deliverables in structured tables. Mark assumptions, unsupported claims, and questions for stakeholder validation.
 ```
 
 ## Review rubric
 
-- Every recommendation has evidence or is marked as an assumption.
-- Open questions are visible and assigned.
-- The artifact is testable by QA and understandable by stakeholders.
-- Risks are stated in business language, not only technical language.
+- Source priority is defined.
+- Access control is testable.
+- Fallback avoids invented answers.
+- Evaluation covers retrieval and generation.

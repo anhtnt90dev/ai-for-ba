@@ -6,16 +6,17 @@
 [![Labs](https://img.shields.io/badge/labs-6-b45309)](#labs)
 [![GitHub Pages](https://img.shields.io/badge/docs-GitHub%20Pages-2562eb)](https://anhtnt90dev.github.io/ai-for-ba/)
 
-A bilingual course for software Business Analysts who need to understand AI, apply AI in daily BA work, and specify AI-enabled products responsibly.
+A bilingual, artifact-driven course for software Business Analysts who need to understand AI, use AI to improve BA work, and specify AI-enabled products responsibly.
 
 > Documentation site: <https://anhtnt90dev.github.io/ai-for-ba/>
 
-## What This Course Teaches
+## What Changed in the Deep Version
 
-This course has two connected tracks:
-
-- **BA uses AI better:** discovery, stakeholder interviews, requirements, user stories, acceptance criteria, diagrams, document review, and structured prompts.
-- **BA specifies AI products better:** RAG, AI assistants, data requirements, confidence thresholds, human-in-the-loop, fallback, monitoring, evaluation, governance, and adoption.
+- Every lesson has its own Mermaid diagram.
+- Every lesson includes a concrete BA artifact: matrix, rubric, canvas, checklist, or specification table.
+- Lessons include mistakes to avoid and actions to apply tomorrow.
+- Labs include input samples, exercise steps, expected deliverables, and review rubrics.
+- Resources are upgraded into practical playbooks for prompts, quality review, AI feature specification, RAG, and governance.
 
 ## Learning Path
 
@@ -63,20 +64,12 @@ AI foundations
 5. RAG assistant requirements
 6. BA team AI adoption roadmap
 
-## Resource Library
-
-- Prompt library for BA work
-- Requirement quality checklist
-- AI-product requirement checklist
-- Governance checklist
-- Glossary for AI and BA terminology
-
 ## Local Preview
 
 ```sh
 npm install
 npm run docs:dev
-npm run docs:build
+npm test
 ```
 
 ## Deployment

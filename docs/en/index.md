@@ -1,45 +1,45 @@
 ---
 title: "AI for Business Analysts"
-description: "A complete learning path for software Business Analysts who need to understand AI, use AI in analysis work, and specify AI-enabled products responsibly."
+description: "A deep bilingual learning path for software Business Analysts who need to use AI responsibly, improve BA artifacts, and specify AI-enabled products with expert judgment."
 ---
 
 # AI for Business Analysts
 
-A complete learning path for software Business Analysts who need to understand AI, use AI in analysis work, and specify AI-enabled products responsibly.
+A deep bilingual learning path for software Business Analysts who need to use AI responsibly, improve BA artifacts, and specify AI-enabled products with expert judgment.
 
 <div class="course-grid">
-<div class="course-card"><strong>AI Foundations for Business Analysts</strong>Core concepts, practical workflows, and BA-ready artifacts.</div>
-<div class="course-card"><strong>AI-Augmented BA Workflow</strong>Core concepts, practical workflows, and BA-ready artifacts.</div>
-<div class="course-card"><strong>AI Collaboration and Context Engineering</strong>Core concepts, practical workflows, and BA-ready artifacts.</div>
-<div class="course-card"><strong>Requirements Engineering With AI</strong>Core concepts, practical workflows, and BA-ready artifacts.</div>
-<div class="course-card"><strong>Analysis Artifacts and Diagramming</strong>Core concepts, practical workflows, and BA-ready artifacts.</div>
-<div class="course-card"><strong>Building AI-Enabled Products as a BA</strong>Core concepts, practical workflows, and BA-ready artifacts.</div>
-<div class="course-card"><strong>BA Lead and Expert Track</strong>Core concepts, practical workflows, and BA-ready artifacts.</div>
+<div class="course-card"><strong>AI Foundations for Business Analysts</strong>Distinct lessons with diagrams, artifacts, prompts, and review controls.</div>
+<div class="course-card"><strong>AI-Augmented BA Workflow</strong>Distinct lessons with diagrams, artifacts, prompts, and review controls.</div>
+<div class="course-card"><strong>AI Collaboration and Context Engineering</strong>Distinct lessons with diagrams, artifacts, prompts, and review controls.</div>
+<div class="course-card"><strong>Requirements Engineering With AI</strong>Distinct lessons with diagrams, artifacts, prompts, and review controls.</div>
+<div class="course-card"><strong>Analysis Artifacts and Diagramming</strong>Distinct lessons with diagrams, artifacts, prompts, and review controls.</div>
+<div class="course-card"><strong>Building AI-Enabled Products as a BA</strong>Distinct lessons with diagrams, artifacts, prompts, and review controls.</div>
+<div class="course-card"><strong>BA Lead and Expert Track</strong>Distinct lessons with diagrams, artifacts, prompts, and review controls.</div>
 </div>
 
 ## Learning path
 
 ```mermaid
 flowchart LR
-    A["AI foundations"] --> B["BA workflow"]
+    A["AI foundations"] --> B["BA workflows"]
     B --> C["Context engineering"]
-    C --> D["Requirements quality"]
+    C --> D["Requirement quality"]
     D --> E["Artifacts and diagrams"]
-    E --> F["AI-enabled products"]
-    F --> G["BA lead governance"]
+    E --> F["AI product requirements"]
+    F --> G["Governance and adoption"]
 ```
 
 ## What you will be able to do
 
-- Explain AI concepts in language stakeholders can understand.
-- Use AI to improve discovery, interviews, requirements, diagrams, and review.
-- Write better prompts by designing context, constraints, evidence, and output format.
-- Specify AI-enabled features with data, quality, fallback, monitoring, and governance requirements.
-- Lead AI adoption in a BA team with practical controls and metrics.
+- Explain AI concepts without hype and without unnecessary ML math.
+- Use AI to improve discovery, synthesis, requirements, diagrams, and review.
+- Build reusable prompt/context patterns for a BA team.
+- Specify AI-enabled features with uncertainty, evaluation, human review, fallback, and monitoring.
+- Lead AI adoption with governance, quality gates, metrics, and operating model.
 
 ## Start here
 
-1. Read lessons 01-05 to build AI foundations.
-2. Practice lessons 06-17 to improve BA workflows and artifacts.
-3. Study lessons 18-20 if you analyze AI products or lead BA adoption.
-4. Use the labs and resource library to apply the methods on real work.
+1. Read lessons 01-05 for AI foundations.
+2. Practice lessons 06-17 to improve BA workflow and artifacts.
+3. Study lessons 18-20 for AI-enabled product requirements and BA leadership.
+4. Use the labs and resource library on your real backlog.

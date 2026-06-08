@@ -1,6 +1,6 @@
 ---
 title: "Mô hình tư duy về LLM"
-description: "Xây dựng mental model thực dụng về cách language model dự đoán, biến đổi, tóm tắt, phân loại và lập luận trên văn bản."
+description: "LLM là engine xử lý và reasoning trên text rất mạnh, nhưng nó không tự biết business rule ẩn nếu bạn không cung cấp hoặc retrieve đúng nguồn."
 ---
 
 # Mô hình tư duy về LLM
@@ -13,55 +13,74 @@ description: "Xây dựng mental model thực dụng về cách language model d
 
 ## Learning outcomes
 
-- Giải thích mô hình tư duy về llm bằng ngôn ngữ business.
-- Áp dụng concept vào workflow BA thực tế.
-- Dùng output AI như draft có evidence, không xem là sự thật tự động.
-- Xác định câu hỏi review BA phải hỏi trước khi chia sẻ artifact.
+- Giải thích hành vi LLM mà không thổi phồng độ chắc chắn.
+- Thiết kế prompt làm lộ assumption và missing context.
+- Review output AI như draft có tính xác suất.
 
 ## Why this matters for BA work
 
-AI thay đổi cách tạo ra artifact phân tích, nhưng không thay thế trách nhiệm của BA về clarity, evidence và decision.
-
 <div class="ba-callout">
-Xây dựng mental model thực dụng về cách language model dự đoán, biến đổi, tóm tắt, phân loại và lập luận trên văn bản.
+LLM là engine xử lý và reasoning trên text rất mạnh, nhưng nó không tự biết business rule ẩn nếu bạn không cung cấp hoặc retrieve đúng nguồn.
 </div>
 
-## Core concept
+Business Analyst đứng giữa problem framing, ý nghĩa từ stakeholder, constraint triển khai và product decision. Trong công việc có AI, vị trí này quan trọng hơn vì ngôn ngữ chưa rõ có thể tạo false certainty rất nhanh. Bài này đưa ra một control thực tế để áp dụng trước khi output AI trở thành scope, backlog hoặc delivery commitment.
 
-Pattern hữu ích cho BA là controlled collaboration: cung cấp business context cho model, yêu cầu structured output, bắt buộc có evidence, rồi review theo goal, rule, risk và decision của stakeholder.
+## Mental model or core concept
+
+LLM biến context thành chuỗi text có khả năng phù hợp tiếp theo. Nó có thể summarize, classify, compare, draft và suy luận pattern, nhưng chất lượng phụ thuộc vào context, instruction, example và review. Với BA, mental model đúng không phải 'AI biết câu trả lời', mà là 'AI đề xuất structured draft từ context được cung cấp, BA validate lại.'
 
 ## Practical BA example
 
-Khi nhờ AI viết acceptance criteria, BA không nên giả định model biết business rule ẩn. Model có thể suy luận pattern, nhưng BA phải cung cấp constraint, ví dụ, edge case và tiêu chí review.
+BA yêu cầu LLM viết acceptance criteria cho 'premium users can export reports.' Model có thể tự bịa format export, limit và permission. Nếu BA cung cấp subscription tier, report type, audit rule và example, model sẽ draft tốt hơn và chỉ ra assumption cần validate.
 
 ## Diagram
 
 ```mermaid
-flowchart LR
-    A["Business goal"] --> B["Source context"]
-    B --> C["AI analysis"]
-    C --> D{"BA review"}
-    D -->|"Revise"| B
-    D -->|"Approve"| E["Artifact đã validate"]
-    E --> F["Mô hình tư duy về LLM"]
+sequenceDiagram
+    participant BA
+    participant Context
+    participant LLM
+    participant Review
+    BA->>Context: Cung cấp goal, source, rule
+    Context->>LLM: Working memory nhìn thấy được
+    LLM->>LLM: Predict và transform text
+    LLM->>Review: Draft + assumption
+    Review->>BA: Validate fact, rule, decision
 ```
 
-## BA workflow
+## BA artifact
 
-1. Đóng khung business question trước khi mở AI tool.
-2. Cung cấp source context và constraint rõ ràng.
-3. Yêu cầu structured output có mapping về source.
-4. Chạy critique pass để tìm ambiguity, gap, risk và testability.
-5. Chuyển kết quả thành artifact mà team có thể inspect và cùng chịu ownership.
+### LLM Output Review Card
 
-## Prompt hoặc template
+| Lens review | Câu hỏi cần hỏi | Pass signal | Risk signal |
+| --- | --- | --- | --- |
+| Context | Model đã nhận business rule thật chưa? | Output cite context được cung cấp. | Output tự bịa policy hoặc threshold. |
+| Assumption | Statement nào là inferred? | Assumption được label rõ. | Assumption bị viết như fact. |
+| Specificity | QA có test được không? | Rule, actor và outcome rõ. | Dùng từ mơ hồ như nhanh, dễ, thông minh. |
+| Decision | Ai phải approve? | Decision owner được nêu rõ. | Câu trả lời AI bị xem như approval. |
+
+## AI collaboration prompt
 
 ```text
-Trước khi trả lời, hãy liệt kê assumption. Đánh dấu từng assumption là explicit, inferred hoặc missing. Không tự bịa policy hoặc system behavior nếu context không cung cấp.
+Trước khi draft, hãy liệt kê missing context và assumption. Sau đó tạo artifact. Cuối draft, thêm bảng review gồm fact có source, assumption suy luận, unsupported claim và câu hỏi cần stakeholder validate.
 ```
+
+## Mistakes to avoid
+
+- Yêu cầu AI đưa final truth thay vì reviewable draft.
+- Không tách model confidence khỏi business approval.
+- Giao task mơ hồ mà thiếu source context hoặc example.
+- Không yêu cầu model reveal assumption.
+
+## Apply this tomorrow
+
+1. Chọn một output AI và đánh dấu fact vs assumption.
+2. Yêu cầu AI rewrite artifact chỉ dựa trên context được cung cấp.
+3. Thêm section 'questions for validation' vào prompt.
+4. Review một output bằng góc nhìn QA hoặc developer trước khi share.
 
 ## What a BA should remember
 
-- AI là bộ tăng tốc reasoning, không phải decision owner.
-- Mọi claim quan trọng phải grounded vào source context hoặc stakeholder confirmation.
-- BA giỏi giữ review loop rõ ràng: draft, critique, revise, validate.
+- LLM sinh text hợp lý, không đảm bảo sự thật.
+- Prompt tốt làm missing context hiện ra.
+- BA sở hữu validation, không phải model.

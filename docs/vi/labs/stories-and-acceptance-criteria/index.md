@@ -5,32 +5,32 @@ description: "Practical AI lab for Business Analysts."
 
 # User story và acceptance criteria
 
-## Mục tiêu
-
-Một ý tưởng feature cần được chuyển thành user story sẵn sàng cho development và acceptance criteria dạng Given-When-Then.
-
 ## Scenario
 
-You are working in a software product team. The team expects a BA-ready artifact that can be reviewed by product, engineering, QA, and operations.
+Một feature idea cần trở thành user story sẵn sàng cho development với acceptance criteria và negative scenario.
+
+## Input sample
+
+```text
+Feature idea: Premium customers can export reports from analytics dashboard.
+```
 
 ## Diagram
 
 ```mermaid
-flowchart TD
-    A["Raw input"] --> B["AI-assisted analysis"]
-    B --> C["BA review"]
-    C --> D{"Ready for team review?"}
-    D -->|"No"| B
-    D -->|"Yes"| E["Shared artifact"]
+flowchart LR
+    A["Feature idea"] --> B["Story map"]
+    B --> C["User stories"]
+    C --> D["Acceptance criteria"]
+    D --> E["Negative tests"]
 ```
 
-## Hướng dẫn
+## Exercise steps
 
-1. Clarify the business goal and target users.
-2. Ask AI to produce a first draft with explicit assumptions.
-3. Review the output for ambiguity, gaps, risks, and evidence.
-4. Revise the artifact until it can be shared with the delivery team.
-5. Capture open questions instead of hiding uncertainty.
+1. Xác định actor, goal và business value.
+2. Tách story theo user goal và permission.
+3. Draft criteria dạng Given-When-Then.
+4. Thêm negative, boundary, audit và permission case.
 
 ## Deliverables
 
@@ -39,15 +39,15 @@ flowchart TD
 - acceptance criteria
 - negative test case
 
-## Lab prompt
+## AI collaboration prompt
 
 ```text
-Hãy đóng vai senior BA coach. Hỗ trợ tôi hoàn thành lab từng bước. Hỏi câu hỏi làm rõ trước, sau đó tạo artifact với assumption, evidence, risk và open question.
+Hãy đóng vai senior BA coach. Hỗ trợ tôi hoàn thành lab này. Trước hết hỏi source evidence nào đang có. Sau đó hướng dẫn tôi theo từng exercise step. Tạo deliverables dưới dạng structured table. Đánh dấu assumption, unsupported claim và câu hỏi cần stakeholder validation.
 ```
 
 ## Review rubric
 
-- Every recommendation has evidence or is marked as an assumption.
-- Open questions are visible and assigned.
-- The artifact is testable by QA and understandable by stakeholders.
-- Risks are stated in business language, not only technical language.
+- Story có business value.
+- Acceptance criteria observable.
+- Có negative case.
+- Permission và audit explicit.

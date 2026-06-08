@@ -1,6 +1,6 @@
 ---
 title: "Diagramming cho BA"
-description: "Tạo Mermaid diagram để làm rõ flow, decision, dependency và system interaction."
+description: "Diagram tốt thay đổi cuộc trao đổi; nó làm lộ decision, boundary và gap mà text che mất."
 ---
 
 # Diagramming cho BA
@@ -13,55 +13,74 @@ description: "Tạo Mermaid diagram để làm rõ flow, decision, dependency v�
 
 ## Learning outcomes
 
-- Giải thích diagramming cho ba bằng ngôn ngữ business.
-- Áp dụng concept vào workflow BA thực tế.
-- Dùng output AI như draft có evidence, không xem là sự thật tự động.
-- Xác định câu hỏi review BA phải hỏi trước khi chia sẻ artifact.
+- Chọn đúng diagram type cho câu hỏi BA.
+- Dùng AI draft Mermaid diagram an toàn.
+- Review diagram để tìm actor, flow và exception thiếu.
 
 ## Why this matters for BA work
 
-AI thay đổi cách tạo ra artifact phân tích, nhưng không thay thế trách nhiệm của BA về clarity, evidence và decision.
-
 <div class="ba-callout">
-Tạo Mermaid diagram để làm rõ flow, decision, dependency và system interaction.
+Diagram tốt thay đổi cuộc trao đổi; nó làm lộ decision, boundary và gap mà text che mất.
 </div>
 
-## Core concept
+Business Analyst đứng giữa problem framing, ý nghĩa từ stakeholder, constraint triển khai và product decision. Trong công việc có AI, vị trí này quan trọng hơn vì ngôn ngữ chưa rõ có thể tạo false certainty rất nhanh. Bài này đưa ra một control thực tế để áp dụng trước khi output AI trở thành scope, backlog hoặc delivery commitment.
 
-Pattern hữu ích cho BA là controlled collaboration: cung cấp business context cho model, yêu cầu structured output, bắt buộc có evidence, rồi review theo goal, rule, risk và decision của stakeholder.
+## Mental model or core concept
+
+Diagram là thinking tool. Flowchart làm rõ process decision; sequence diagram làm rõ system interaction; state diagram làm rõ lifecycle; matrix làm rõ tổ hợp rule. AI có thể chuyển text sang Mermaid, nhưng BA phải validate system boundary, actor responsibility, exception path và business rule.
 
 ## Practical BA example
 
-BA dùng AI chuyển text requirement thành sequence diagram, rồi review responsibility của actor, system boundary, failure path và integration thiếu.
+Requirement ghi 'payment is verified before fulfillment.' Sequence diagram làm lộ responsibility thiếu giữa payment gateway, order service, warehouse và customer notification. BA hỏi tiếp ai handle payment failure và khi nào release inventory.
 
 ## Diagram
 
 ```mermaid
-flowchart LR
-    A["Business goal"] --> B["Source context"]
-    B --> C["AI analysis"]
-    C --> D{"BA review"}
-    D -->|"Revise"| B
-    D -->|"Approve"| E["Artifact đã validate"]
-    E --> F["Diagramming cho BA"]
+flowchart TD
+    A["Câu hỏi BA"] --> B{"Cần clarify gì?"}
+    B --> C["Workflow -> Flowchart"]
+    B --> D["System interaction -> Sequence"]
+    B --> E["Lifecycle -> State"]
+    B --> F["Rule combinations -> Decision table"]
+    C --> G["Review gap"]
+    D --> G
+    E --> G
+    F --> G
 ```
 
-## BA workflow
+## BA artifact
 
-1. Đóng khung business question trước khi mở AI tool.
-2. Cung cấp source context và constraint rõ ràng.
-3. Yêu cầu structured output có mapping về source.
-4. Chạy critique pass để tìm ambiguity, gap, risk và testability.
-5. Chuyển kết quả thành artifact mà team có thể inspect và cùng chịu ownership.
+### Diagram Selection Guide
 
-## Prompt hoặc template
+| Câu hỏi BA | Diagram type | Dùng khi | Review focus |
+| --- | --- | --- | --- |
+| Work flow ra sao? | Flowchart | Process và decision quan trọng. | Actor, decision rule, exception. |
+| System interact ra sao? | Sequence diagram | Có API/event involved. | System boundary và failure message. |
+| Entity có state nào? | State diagram | Lifecycle quan trọng. | Allowed transition và trigger. |
+| Rule nào apply? | Decision table | Tổ hợp rule quyết định outcome. | Rule complete và exclusive. |
+
+## AI collaboration prompt
 
 ```text
-Chuyển requirement này thành Mermaid flowchart và sequence diagram. Sau đó liệt kê assumption, step thiếu và business decision ảnh hưởng đến diagram.
+Chọn diagram type phù hợp nhất cho requirement này và giải thích vì sao. Sau đó draft Mermaid diagram. Sau diagram, liệt kê missing actor, boundary chưa rõ, exception path và business rule cần validate.
 ```
+
+## Mistakes to avoid
+
+- Dùng một diagram type cho mọi problem.
+- Để AI vẽ diagram mà không check business meaning.
+- Bỏ failure path.
+- Tạo diagram đẹp nhưng không giúp decision.
+
+## Apply this tomorrow
+
+1. Chuyển một requirement nhiều text thành Mermaid diagram.
+2. Nhờ AI chọn diagram type phù hợp.
+3. Review diagram với developer để tìm boundary gap.
+4. Thêm exception path trước khi share.
 
 ## What a BA should remember
 
-- AI là bộ tăng tốc reasoning, không phải decision owner.
-- Mọi claim quan trọng phải grounded vào source context hoặc stakeholder confirmation.
-- BA giỏi giữ review loop rõ ràng: draft, critique, revise, validate.
+- Diagram là analysis, không phải decoration.
+- Diagram tốt nhất làm lộ decision tiếp theo.
+- AI vẽ nhanh; BA kiểm tra meaning.

@@ -1,6 +1,6 @@
 ---
 title: "Traceability và testability"
-description: "Kết nối business goal với requirement, acceptance criteria, test scenario và release decision."
+description: "Traceability làm requirement có accountability từ business goal đến test evidence."
 ---
 
 # Traceability và testability
@@ -13,55 +13,71 @@ description: "Kết nối business goal với requirement, acceptance criteria, 
 
 ## Learning outcomes
 
-- Giải thích traceability và testability bằng ngôn ngữ business.
-- Áp dụng concept vào workflow BA thực tế.
-- Dùng output AI như draft có evidence, không xem là sự thật tự động.
-- Xác định câu hỏi review BA phải hỏi trước khi chia sẻ artifact.
+- Xây traceability chain giữa goal, requirement, criteria và test.
+- Dùng AI tìm orphan requirement và weak test link.
+- Cải thiện release decision bằng evidence.
 
 ## Why this matters for BA work
 
-AI thay đổi cách tạo ra artifact phân tích, nhưng không thay thế trách nhiệm của BA về clarity, evidence và decision.
-
 <div class="ba-callout">
-Kết nối business goal với requirement, acceptance criteria, test scenario và release decision.
+Traceability làm requirement có accountability từ business goal đến test evidence.
 </div>
 
-## Core concept
+Business Analyst đứng giữa problem framing, ý nghĩa từ stakeholder, constraint triển khai và product decision. Trong công việc có AI, vị trí này quan trọng hơn vì ngôn ngữ chưa rõ có thể tạo false certainty rất nhanh. Bài này đưa ra một control thực tế để áp dụng trước khi output AI trở thành scope, backlog hoặc delivery commitment.
 
-Pattern hữu ích cho BA là controlled collaboration: cung cấp business context cho model, yêu cầu structured output, bắt buộc có evidence, rồi review theo goal, rule, risk và decision của stakeholder.
+## Mental model or core concept
+
+Traceability nối lý do requirement tồn tại với cách verify nó. AI có thể hỗ trợ tạo matrix và tìm gap, nhưng BA phải quyết định link nào thật. Traceability chain mạnh map business objective, stakeholder need, requirement, acceptance criteria, test scenario, metric và source evidence.
 
 ## Practical BA example
 
-Một release có 80 story nhưng không map rõ với business outcome. BA dùng AI tạo traceability matrix và tìm orphan requirement.
+Một release có 80 story. AI tìm 12 story không link business objective và 8 high-priority objective không có test scenario. BA dùng matrix để clean scope và giảm release risk.
 
 ## Diagram
 
 ```mermaid
 flowchart LR
-    A["Business goal"] --> B["Source context"]
-    B --> C["AI analysis"]
-    C --> D{"BA review"}
-    D -->|"Revise"| B
-    D -->|"Approve"| E["Artifact đã validate"]
-    E --> F["Traceability và testability"]
+    A["Business objective"] --> B["Stakeholder need"]
+    B --> C["Requirement"]
+    C --> D["Acceptance criteria"]
+    D --> E["Test scenario"]
+    E --> F["Metric"]
+    C --> G["Source evidence"]
 ```
 
-## BA workflow
+## BA artifact
 
-1. Đóng khung business question trước khi mở AI tool.
-2. Cung cấp source context và constraint rõ ràng.
-3. Yêu cầu structured output có mapping về source.
-4. Chạy critique pass để tìm ambiguity, gap, risk và testability.
-5. Chuyển kết quả thành artifact mà team có thể inspect và cùng chịu ownership.
+### Traceability Chain
 
-## Prompt hoặc template
+| Link | Question | Example | Gap signal |
+| --- | --- | --- | --- |
+| Objective to need | Giải quyết problem của ai? | Reduce onboarding drop-off for new customers. | Không có stakeholder named. |
+| Need to requirement | System behavior nào support? | Send missing-doc reminder within 24 hours. | Behavior không observable. |
+| Requirement to AC | Done được verify bằng gì? | Given missing doc, then reminder is sent. | Không có failure case. |
+| AC to metric | Impact đo thế nào? | Drop-off rate decreases by 10%. | Không có success metric. |
+
+## AI collaboration prompt
 
 ```text
-Tạo traceability matrix nối business objective, stakeholder need, requirement, acceptance criteria, test scenario, metric và source evidence.
+Tạo traceability matrix từ các artifact này. Bao gồm business objective, stakeholder need, requirement ID, acceptance criteria, test scenario, metric, source evidence và gap. Flag orphan requirement và objective không có test.
 ```
+
+## Mistakes to avoid
+
+- Xem traceability là documentation overhead.
+- Link item máy móc mà không check meaning.
+- Thiếu test scenario cho high-risk requirement.
+- Dùng AI-generated link mà không human review.
+
+## Apply this tomorrow
+
+1. Xây traceability chain cho một epic.
+2. Nhờ AI identify orphan story.
+3. Thêm source evidence cho high-risk requirement.
+4. Review metric alignment với product owner.
 
 ## What a BA should remember
 
-- AI là bộ tăng tốc reasoning, không phải decision owner.
-- Mọi claim quan trọng phải grounded vào source context hoặc stakeholder confirmation.
-- BA giỏi giữ review loop rõ ràng: draft, critique, revise, validate.
+- Traceability là accountability.
+- Testability bắt đầu trước khi QA nhận story.
+- AI draft matrix; BA verify link.

@@ -5,49 +5,49 @@ description: "Practical AI lab for Business Analysts."
 
 # Từ meeting transcript đến requirement
 
-## Mục tiêu
-
-Bạn nhận một transcript stakeholder call lộn xộn về flow onboarding khách hàng mới. Nhiệm vụ là chuyển nó thành requirement candidate có evidence và câu hỏi.
-
 ## Scenario
 
-You are working in a software product team. The team expects a BA-ready artifact that can be reviewed by product, engineering, QA, and operations.
+Bạn nhận một discovery call lộn xộn về customer onboarding. Mục tiêu là chuyển nó thành requirement candidate mà không che giấu uncertainty.
+
+## Input sample
+
+```text
+Transcript excerpt: Sales muốn onboarding tức thì. Compliance nói KYC phải hoàn tất trước activation. Support nói customer thường upload sai document. Product muốn self-service status page.
+```
 
 ## Diagram
 
 ```mermaid
-flowchart TD
-    A["Raw input"] --> B["AI-assisted analysis"]
-    B --> C["BA review"]
-    C --> D{"Ready for team review?"}
-    D -->|"No"| B
-    D -->|"Yes"| E["Shared artifact"]
+flowchart LR
+    A["Transcript"] --> B["Source map"]
+    B --> C["Fact + contradiction"]
+    C --> D["Requirement candidate"]
+    D --> E["Open question + owner"]
 ```
 
-## Hướng dẫn
+## Exercise steps
 
-1. Clarify the business goal and target users.
-2. Ask AI to produce a first draft with explicit assumptions.
-3. Review the output for ambiguity, gaps, risks, and evidence.
-4. Revise the artifact until it can be shared with the delivery team.
-5. Capture open questions instead of hiding uncertainty.
+1. Tạo source map có stakeholder attribution.
+2. Extract fact, assumption, contradiction và decision needed.
+3. Draft requirement candidate có evidence.
+4. Viết open question và gán decision owner.
 
 ## Deliverables
 
 - source map
 - bảng requirement candidate
-- danh sách open question
+- danh sách contradiction
 - decision log
 
-## Lab prompt
+## AI collaboration prompt
 
 ```text
-Hãy đóng vai senior BA coach. Hỗ trợ tôi hoàn thành lab từng bước. Hỏi câu hỏi làm rõ trước, sau đó tạo artifact với assumption, evidence, risk và open question.
+Hãy đóng vai senior BA coach. Hỗ trợ tôi hoàn thành lab này. Trước hết hỏi source evidence nào đang có. Sau đó hướng dẫn tôi theo từng exercise step. Tạo deliverables dưới dạng structured table. Đánh dấu assumption, unsupported claim và câu hỏi cần stakeholder validation.
 ```
 
 ## Review rubric
 
-- Every recommendation has evidence or is marked as an assumption.
-- Open questions are visible and assigned.
-- The artifact is testable by QA and understandable by stakeholders.
-- Risks are stated in business language, not only technical language.
+- Mỗi requirement có source evidence.
+- Contradiction không bị làm mượt thành false agreement.
+- Open question có owner và next action.
+- Không có unsupported AI inference trở thành final scope.

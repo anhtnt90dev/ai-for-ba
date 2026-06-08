@@ -1,6 +1,6 @@
 ---
 title: "Structured Outputs and Reusable Prompts"
-description: "Design prompts that return tables, checklists, JSON-like structures, and reusable BA artifact formats."
+description: "Structured output turns AI from a chat response into a reviewable BA artifact."
 ---
 
 # Structured Outputs and Reusable Prompts
@@ -13,55 +13,73 @@ description: "Design prompts that return tables, checklists, JSON-like structure
 
 ## Learning outcomes
 
-- Explain structured outputs and reusable prompts in business language.
-- Apply the concept to a realistic BA workflow.
-- Use AI output as draft evidence, not as unchecked truth.
-- Identify the review questions a BA must ask before sharing the artifact.
+- Design output tables and schemas for BA tasks.
+- Create reusable prompts for repeated analysis work.
+- Make AI output easier to review, compare, and trace.
 
 ## Why this matters for BA work
 
-AI changes how analysis work is produced, but it does not remove the BA's accountability for clarity, evidence, and decisions.
-
 <div class="ba-callout">
-Design prompts that return tables, checklists, JSON-like structures, and reusable BA artifact formats.
+Structured output turns AI from a chat response into a reviewable BA artifact.
 </div>
 
-## Core concept
+Business Analysts sit between problem framing, stakeholder meaning, delivery constraints, and product decisions. In AI work, that position becomes more important because unclear language can create false certainty quickly. This lesson gives you a practical control you can apply before AI output becomes scope, backlog, or delivery commitment.
 
-The useful BA pattern is controlled collaboration: provide the model with business context, ask for structured output, require evidence, then review the result against goals, rules, risks, and stakeholder decisions.
+## Mental model or core concept
+
+Unstructured answers are hard to verify. Structured output gives the BA columns, IDs, severity levels, source references, and owners. This makes the result inspectable by product, dev, QA, and stakeholders. Reusable prompts should define input, output contract, constraints, and review rules.
 
 ## Practical BA example
 
-Instead of asking for a generic summary, the BA requests a table with requirement ID, actor, business rule, acceptance criteria, source, risk, and open question.
+Instead of asking 'summarize this meeting,' the BA asks for a table with decision, evidence, owner, impacted requirement, risk, and open question. The output can be converted into Jira tasks, decision logs, and follow-up actions.
 
 ## Diagram
 
 ```mermaid
-flowchart LR
-    A["Business goal"] --> B["Source context"]
-    B --> C["AI analysis"]
-    C --> D{"BA review"}
-    D -->|"Revise"| B
-    D -->|"Approve"| E["Validated artifact"]
-    E --> F["Structured Outputs and Reusable Prompts"]
+flowchart TD
+    A["Reusable prompt"] --> B["Input scope"]
+    A --> C["Output schema"]
+    A --> D["Constraints"]
+    A --> E["Review rule"]
+    B --> F["Traceable table"]
+    C --> F
+    D --> F
+    E --> F
 ```
 
-## BA workflow
+## BA artifact
 
-1. Frame the business question before opening the AI tool.
-2. Provide source context and explicit constraints.
-3. Ask for structured output that maps back to the source.
-4. Run a critique pass for ambiguity, gaps, risk, and testability.
-5. Convert the result into an artifact the team can inspect and own.
+### Reusable Prompt Contract
 
-## Prompt or template
+| Contract part | Required content | Why it helps | Example |
+| --- | --- | --- | --- |
+| Input scope | What source is included and excluded. | Avoids hidden context drift. | Use transcript T1 and policy P2 only. |
+| Output columns | Fields the artifact must contain. | Makes review systematic. | ID, issue, severity, evidence, question. |
+| Constraints | Rules AI must follow. | Prevents unsupported content. | Do not invent policy. |
+| Review rule | How output will be judged. | Aligns with BA quality. | Every row needs source or assumption. |
+
+## AI collaboration prompt
 
 ```text
-Return a table with columns: ID, User Goal, Requirement, Acceptance Criteria, Source Evidence, Risk, Open Question, Owner.
+Create a reusable prompt for this BA task. Include purpose, input assumptions, required context, output schema, constraints, quality rubric, and a self-check section. Keep it generic enough to reuse but specific enough to produce reviewable output.
 ```
+
+## Mistakes to avoid
+
+- Using free-form output for tasks that need comparison.
+- Forgetting IDs and source references.
+- Creating prompts that cannot be reused by another BA.
+- Not specifying how severe issues should be ranked.
+
+## Apply this tomorrow
+
+1. Convert one common prompt into a reusable prompt contract.
+2. Add output columns for source, severity, and owner.
+3. Ask AI to self-check against the output schema.
+4. Store the prompt in your team library.
 
 ## What a BA should remember
 
-- AI is a reasoning accelerator, not a decision owner.
-- Ground every important claim in source context or stakeholder confirmation.
-- A good BA keeps the review loop visible: draft, critique, revise, validate.
+- Structure is a quality control.
+- Good prompts define output, not just task.
+- Reusable prompts turn individual skill into team capability.

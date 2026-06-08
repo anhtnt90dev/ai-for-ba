@@ -1,6 +1,6 @@
 ---
 title: "Tokens, Context, and Memory"
-description: "Learn why context windows, token budgets, and session memory shape the quality of AI-assisted analysis."
+description: "Context is the working surface of AI analysis; poor context design creates confident but incomplete BA artifacts."
 ---
 
 # Tokens, Context, and Memory
@@ -13,55 +13,72 @@ description: "Learn why context windows, token budgets, and session memory shape
 
 ## Learning outcomes
 
-- Explain tokens, context, and memory in business language.
-- Apply the concept to a realistic BA workflow.
-- Use AI output as draft evidence, not as unchecked truth.
-- Identify the review questions a BA must ask before sharing the artifact.
+- Explain token and context limits in BA terms.
+- Prepare long requirements or transcripts for staged AI review.
+- Use source maps to reduce missed requirements.
 
 ## Why this matters for BA work
 
-AI changes how analysis work is produced, but it does not remove the BA's accountability for clarity, evidence, and decisions.
-
 <div class="ba-callout">
-Learn why context windows, token budgets, and session memory shape the quality of AI-assisted analysis.
+Context is the working surface of AI analysis; poor context design creates confident but incomplete BA artifacts.
 </div>
 
-## Core concept
+Business Analysts sit between problem framing, stakeholder meaning, delivery constraints, and product decisions. In AI work, that position becomes more important because unclear language can create false certainty quickly. This lesson gives you a practical control you can apply before AI output becomes scope, backlog, or delivery commitment.
 
-The useful BA pattern is controlled collaboration: provide the model with business context, ask for structured output, require evidence, then review the result against goals, rules, risks, and stakeholder decisions.
+## Mental model or core concept
+
+A model only works with the context it can see. Long documents, scattered notes, and multi-meeting histories must be structured into chunks, source IDs, summaries, and review passes. BA context engineering is similar to preparing a workshop pack: decide what evidence matters, label it, and review it in a controlled order.
 
 ## Practical BA example
 
-A BA uploads a long SRS and asks for all missing requirements. If the context is incomplete or poorly chunked, the answer may miss entire modules. Better work starts with section maps, source IDs, and staged review.
+A 70-page SRS is dropped into an AI tool with 'find all gaps.' The model returns a polished list but misses integration requirements in later pages. A better BA creates a source map, reviews per module, then asks AI to reconcile cross-module conflicts.
 
 ## Diagram
 
 ```mermaid
 flowchart LR
-    A["Business goal"] --> B["Source context"]
-    B --> C["AI analysis"]
-    C --> D{"BA review"}
-    D -->|"Revise"| B
-    D -->|"Approve"| E["Validated artifact"]
-    E --> F["Tokens, Context, and Memory"]
+    A["Raw sources"] --> B["Source map"]
+    B --> C["Chunk plan"]
+    C --> D["Section review"]
+    D --> E["Cross-section reconciliation"]
+    E --> F["Requirement findings"]
+    B --> G["Decision log"]
+    G --> E
 ```
 
-## BA workflow
+## BA artifact
 
-1. Frame the business question before opening the AI tool.
-2. Provide source context and explicit constraints.
-3. Ask for structured output that maps back to the source.
-4. Run a critique pass for ambiguity, gaps, risk, and testability.
-5. Convert the result into an artifact the team can inspect and own.
+### Context Pack Checklist
 
-## Prompt or template
+| Pack item | Why it matters | BA action | Failure if missing |
+| --- | --- | --- | --- |
+| Source map | Prevents invisible gaps | List sections, owners, and IDs. | AI reviews only the loudest sections. |
+| Chunk plan | Keeps analysis focused | Review module by module. | Long context becomes shallow summary. |
+| Decision log | Preserves stakeholder commitments | Include dated decisions and owners. | AI reopens already-settled scope. |
+| Open questions | Separates unknowns from facts | Track unresolved items explicitly. | Model fills blanks with guesses. |
+
+## AI collaboration prompt
 
 ```text
-Create a source map first. List sections, source IDs, assumptions, and open questions. Then review one section at a time for missing, ambiguous, conflicting, and non-testable requirements.
+Create a context pack from these sources. Return source IDs, section summaries, decision log, known constraints, unresolved questions, and recommended review order. Do not analyze requirements until the context pack is complete.
 ```
+
+## Mistakes to avoid
+
+- Uploading everything and asking one broad question.
+- Mixing old and new policy without freshness labels.
+- Letting the model summarize away edge cases.
+- Forgetting to include decisions already made by stakeholders.
+
+## Apply this tomorrow
+
+1. Create source IDs for one document before using AI.
+2. Ask AI to summarize per section, not whole document at once.
+3. Mark old, current, and draft sources separately.
+4. Run a second pass for cross-section conflicts.
 
 ## What a BA should remember
 
-- AI is a reasoning accelerator, not a decision owner.
-- Ground every important claim in source context or stakeholder confirmation.
-- A good BA keeps the review loop visible: draft, critique, revise, validate.
+- AI quality is bounded by visible context.
+- Source maps are a BA control, not an admin detail.
+- Staged review beats one giant prompt.

@@ -1,6 +1,6 @@
 ---
 title: "Discovery With AI"
-description: "Use AI to prepare discovery questions, compare hypotheses, and expose unknowns before stakeholder sessions."
+description: "AI can widen discovery, but the BA must still decide what needs validation with real stakeholders."
 ---
 
 # Discovery With AI
@@ -13,55 +13,71 @@ description: "Use AI to prepare discovery questions, compare hypotheses, and exp
 
 ## Learning outcomes
 
-- Explain discovery with ai in business language.
-- Apply the concept to a realistic BA workflow.
-- Use AI output as draft evidence, not as unchecked truth.
-- Identify the review questions a BA must ask before sharing the artifact.
+- Use AI to generate hypotheses and interview plans.
+- Separate assumptions, evidence, and decisions before workshops.
+- Turn AI output into a better discovery agenda.
 
 ## Why this matters for BA work
 
-AI changes how analysis work is produced, but it does not remove the BA's accountability for clarity, evidence, and decisions.
-
 <div class="ba-callout">
-Use AI to prepare discovery questions, compare hypotheses, and expose unknowns before stakeholder sessions.
+AI can widen discovery, but the BA must still decide what needs validation with real stakeholders.
 </div>
 
-## Core concept
+Business Analysts sit between problem framing, stakeholder meaning, delivery constraints, and product decisions. In AI work, that position becomes more important because unclear language can create false certainty quickly. This lesson gives you a practical control you can apply before AI output becomes scope, backlog, or delivery commitment.
 
-The useful BA pattern is controlled collaboration: provide the model with business context, ask for structured output, require evidence, then review the result against goals, rules, risks, and stakeholder decisions.
+## Mental model or core concept
+
+Discovery is about reducing uncertainty, not producing documents. AI helps by proposing actors, constraints, risks, and questions, but its output should become a hypothesis backlog. The BA then validates or rejects those hypotheses with users, data, policy, and stakeholder decisions.
 
 ## Practical BA example
 
-Before a workshop on claim approval automation, the BA asks AI to map actors, decisions, policy constraints, exceptions, and metrics. The output becomes a better interview plan, not the final truth.
+For claim approval automation, AI suggests fraud checks, SLA tiers, escalation paths, and missing document scenarios. The BA converts these into workshop questions and prioritizes the riskiest assumptions: who can override, what policy applies, and what counts as a valid exception.
 
 ## Diagram
 
 ```mermaid
-flowchart LR
-    A["Business goal"] --> B["Source context"]
-    B --> C["AI analysis"]
-    C --> D{"BA review"}
-    D -->|"Revise"| B
-    D -->|"Approve"| E["Validated artifact"]
-    E --> F["Discovery With AI"]
+flowchart TD
+    A["Business problem"] --> B["AI expands hypotheses"]
+    B --> C["BA groups assumptions"]
+    C --> D{"Risky or unknown?"}
+    D -->|Yes| E["Validate in workshop"]
+    D -->|No| F["Defer or document"]
+    E --> G["Decision-ready insight"]
 ```
 
-## BA workflow
+## BA artifact
 
-1. Frame the business question before opening the AI tool.
-2. Provide source context and explicit constraints.
-3. Ask for structured output that maps back to the source.
-4. Run a critique pass for ambiguity, gaps, risk, and testability.
-5. Convert the result into an artifact the team can inspect and own.
+### Discovery Hypothesis Backlog
 
-## Prompt or template
+| Hypothesis | Evidence needed | Validation method | Decision owner |
+| --- | --- | --- | --- |
+| High-value claims need manager review. | Policy threshold and historical claim data. | Policy review plus data sample. | Claims operations lead |
+| Missing documents trigger customer notification. | Current support script and customer journey. | Interview support agents. | Customer service manager |
+| Fraud risk changes SLA. | Fraud rules and compliance constraints. | Compliance workshop. | Risk owner |
+| Manual override must be audited. | Audit policy and regulator expectation. | Security review. | Compliance lead |
+
+## AI collaboration prompt
 
 ```text
-Generate a discovery plan for this business problem. Include stakeholders, questions, assumptions to validate, likely data sources, risks, and decisions the workshop must make.
+Create a discovery hypothesis backlog for this business problem. Include actors, assumptions, evidence needed, validation method, decision owner, risk level, and workshop questions. Do not write final requirements yet.
 ```
+
+## Mistakes to avoid
+
+- Asking AI to write requirements before uncertainty is mapped.
+- Treating generated questions as complete discovery.
+- Ignoring decision owners.
+- Prioritizing easy questions instead of risky assumptions.
+
+## Apply this tomorrow
+
+1. Turn your next workshop agenda into hypotheses.
+2. Ask AI for missing stakeholder groups.
+3. Add evidence needed next to every assumption.
+4. Open the workshop with decisions required, not only topics.
 
 ## What a BA should remember
 
-- AI is a reasoning accelerator, not a decision owner.
-- Ground every important claim in source context or stakeholder confirmation.
-- A good BA keeps the review loop visible: draft, critique, revise, validate.
+- Discovery output is validated learning.
+- AI expands your question space; stakeholders validate it.
+- A good discovery artifact shows what is unknown.

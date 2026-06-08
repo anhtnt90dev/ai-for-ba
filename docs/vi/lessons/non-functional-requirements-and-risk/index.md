@@ -1,6 +1,6 @@
 ---
 title: "Non-functional requirement và rủi ro"
-description: "Dùng AI để phát hiện NFR gap về security, privacy, reliability, accessibility, performance, auditability và supportability."
+description: "NFR là business risk requirement, không phải phần phụ kỹ thuật."
 ---
 
 # Non-functional requirement và rủi ro
@@ -13,55 +13,72 @@ description: "Dùng AI để phát hiện NFR gap về security, privacy, reliab
 
 ## Learning outcomes
 
-- Giải thích non-functional requirement và rủi ro bằng ngôn ngữ business.
-- Áp dụng concept vào workflow BA thực tế.
-- Dùng output AI như draft có evidence, không xem là sự thật tự động.
-- Xác định câu hỏi review BA phải hỏi trước khi chia sẻ artifact.
+- Dùng AI surface NFR gap theo quality attribute.
+- Dịch technical risk thành business impact.
+- Ưu tiên NFR theo usage, data sensitivity và failure cost.
 
 ## Why this matters for BA work
 
-AI thay đổi cách tạo ra artifact phân tích, nhưng không thay thế trách nhiệm của BA về clarity, evidence và decision.
-
 <div class="ba-callout">
-Dùng AI để phát hiện NFR gap về security, privacy, reliability, accessibility, performance, auditability và supportability.
+NFR là business risk requirement, không phải phần phụ kỹ thuật.
 </div>
 
-## Core concept
+Business Analyst đứng giữa problem framing, ý nghĩa từ stakeholder, constraint triển khai và product decision. Trong công việc có AI, vị trí này quan trọng hơn vì ngôn ngữ chưa rõ có thể tạo false certainty rất nhanh. Bài này đưa ra một control thực tế để áp dụng trước khi output AI trở thành scope, backlog hoặc delivery commitment.
 
-Pattern hữu ích cho BA là controlled collaboration: cung cấp business context cho model, yêu cầu structured output, bắt buộc có evidence, rồi review theo goal, rule, risk và decision của stakeholder.
+## Mental model or core concept
+
+NFR mô tả hệ thống phải behave ra sao trong điều kiện thực tế: performance, availability, security, privacy, accessibility, auditability, supportability và compliance. AI có thể đề xuất category NFR, nhưng BA phải gắn mỗi requirement với business impact và measurable acceptance criteria.
 
 ## Practical BA example
 
-Một payment feature có functional flow chi tiết nhưng thiếu availability, audit, fraud, privacy, timeout và support requirement. AI hỗ trợ tạo NFR checklist theo risk.
+Refund feature có functional step nhưng thiếu timeout, audit, fraud, data retention và support requirement. AI tạo risk inventory; BA chuyển high-risk gap thành NFR đo được và acceptance test.
 
 ## Diagram
 
 ```mermaid
 flowchart LR
-    A["Business goal"] --> B["Source context"]
-    B --> C["AI analysis"]
-    C --> D{"BA review"}
-    D -->|"Revise"| B
-    D -->|"Approve"| E["Artifact đã validate"]
-    E --> F["Non-functional requirement và rủi ro"]
+    A["Feature"] --> B["Data sensitivity"]
+    A --> C["Usage volume"]
+    A --> D["Failure cost"]
+    B --> E["NFR priority"]
+    C --> E
+    D --> E
+    E --> F["Quality requirement đo được"]
 ```
 
-## BA workflow
+## BA artifact
 
-1. Đóng khung business question trước khi mở AI tool.
-2. Cung cấp source context và constraint rõ ràng.
-3. Yêu cầu structured output có mapping về source.
-4. Chạy critique pass để tìm ambiguity, gap, risk và testability.
-5. Chuyển kết quả thành artifact mà team có thể inspect và cùng chịu ownership.
+### NFR Risk Matrix
 
-## Prompt hoặc template
+| Quality attribute | Business impact | Requirement example | Acceptance signal |
+| --- | --- | --- | --- |
+| Availability | Refund bị block khi outage. | Refund submission available 99.9% monthly. | Downtime report dưới threshold. |
+| Privacy | PII lộ trong refund note. | Mask customer PII trong support view. | Role-based access test pass. |
+| Auditability | Không có trace cho disputed refund. | Log approver, timestamp, reason, old/new status. | Audit export có đủ field. |
+| Performance | Agent queue tăng khi peak. | Search refund status dưới 2 giây p95. | Load test đạt p95 target. |
+
+## AI collaboration prompt
 
 ```text
-Review feature này để tìm NFR gap. Bao gồm security, privacy, performance, reliability, accessibility, audit, support, data retention và operational monitoring.
+Review feature này cho NFR risk. Cover availability, performance, security, privacy, accessibility, auditability, supportability, compliance và data retention. Với mỗi gap, đưa business impact, measurable requirement, acceptance signal và owner.
 ```
+
+## Mistakes to avoid
+
+- Xem NFR là chuyện riêng của developer.
+- Viết NFR không có measurable signal.
+- Bỏ privacy và audit đến late testing.
+- Không nối priority NFR với business risk.
+
+## Apply this tomorrow
+
+1. Chọn một feature và nhờ AI tìm NFR gap.
+2. Rewrite một NFR với acceptance signal đo được.
+3. Review priority NFR với product và engineering.
+4. Thêm audit và supportability vào checklist.
 
 ## What a BA should remember
 
-- AI là bộ tăng tốc reasoning, không phải decision owner.
-- Mọi claim quan trọng phải grounded vào source context hoặc stakeholder confirmation.
-- BA giỏi giữ review loop rõ ràng: draft, critique, revise, validate.
+- NFR là risk control.
+- NFR đo được giúp tránh tranh luận quality mơ hồ.
+- Ownership của BA bao gồm business impact khi failure.

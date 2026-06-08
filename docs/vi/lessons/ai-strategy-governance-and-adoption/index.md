@@ -1,6 +1,6 @@
 ---
 title: "AI strategy, governance và adoption"
-description: "Dẫn dắt BA team adoption AI bằng governance, measurement, tool selection và operating model."
+description: "BA lead nên scale AI adoption bằng use-case selection, risk tier, quality gate và operating model, không phải tool enthusiasm."
 ---
 
 # AI strategy, governance và adoption
@@ -13,55 +13,72 @@ description: "Dẫn dắt BA team adoption AI bằng governance, measurement, to
 
 ## Learning outcomes
 
-- Giải thích ai strategy, governance và adoption bằng ngôn ngữ business.
-- Áp dụng concept vào workflow BA thực tế.
-- Dùng output AI như draft có evidence, không xem là sự thật tự động.
-- Xác định câu hỏi review BA phải hỏi trước khi chia sẻ artifact.
+- Tạo AI adoption roadmap cho BA team.
+- Định nghĩa governance control cho việc dùng AI trong analysis work.
+- Đo adoption bằng quality, cycle time và risk reduction.
 
 ## Why this matters for BA work
 
-AI thay đổi cách tạo ra artifact phân tích, nhưng không thay thế trách nhiệm của BA về clarity, evidence và decision.
-
 <div class="ba-callout">
-Dẫn dắt BA team adoption AI bằng governance, measurement, tool selection và operating model.
+BA lead nên scale AI adoption bằng use-case selection, risk tier, quality gate và operating model, không phải tool enthusiasm.
 </div>
 
-## Core concept
+Business Analyst đứng giữa problem framing, ý nghĩa từ stakeholder, constraint triển khai và product decision. Trong công việc có AI, vị trí này quan trọng hơn vì ngôn ngữ chưa rõ có thể tạo false certainty rất nhanh. Bài này đưa ra một control thực tế để áp dụng trước khi output AI trở thành scope, backlog hoặc delivery commitment.
 
-Pattern hữu ích cho BA là controlled collaboration: cung cấp business context cho model, yêu cầu structured output, bắt buộc có evidence, rồi review theo goal, rule, risk và decision của stakeholder.
+## Mental model or core concept
+
+AI adoption fail khi bắt đầu bằng tool thay vì operating model. BA lead nên định nghĩa safe use case, prohibited data, approved tool, prompt pattern, quality gate, training, review ritual, metric và escalation path. Governance phải enable work hữu ích đồng thời ngăn data leakage và artifact chất lượng thấp.
 
 ## Practical BA example
 
-BA lead muốn mọi analyst dùng AI. Thay vì mua tool trước, họ định nghĩa use case an toàn, data policy, prompt pattern, quality check, training và adoption metric.
+Một BA practice muốn mọi người dùng AI. Lead tạo risk tier: low-risk drafting, medium-risk requirement review, high-risk AI product decisions. Mỗi tier có allowed tool, data rule, review gate và measurement. Adoption trở thành managed capability, không phải random experimentation.
 
 ## Diagram
 
 ```mermaid
-flowchart LR
-    A["Business goal"] --> B["Source context"]
-    B --> C["AI analysis"]
-    C --> D{"BA review"}
-    D -->|"Revise"| B
-    D -->|"Approve"| E["Artifact đã validate"]
-    E --> F["AI strategy, governance và adoption"]
+flowchart TD
+    A["Use-case portfolio"] --> B["Risk tiers"]
+    B --> C["Approved tools + data rules"]
+    C --> D["Prompt library + playbook"]
+    D --> E["Quality gates"]
+    E --> F["Metrics"]
+    F --> G["Adoption roadmap"]
+    B --> H["Escalation path"]
 ```
 
-## BA workflow
+## BA artifact
 
-1. Đóng khung business question trước khi mở AI tool.
-2. Cung cấp source context và constraint rõ ràng.
-3. Yêu cầu structured output có mapping về source.
-4. Chạy critique pass để tìm ambiguity, gap, risk và testability.
-5. Chuyển kết quả thành artifact mà team có thể inspect và cùng chịu ownership.
+### BA AI Adoption Scorecard
 
-## Prompt hoặc template
+| Dimension | Level 1 | Level 2 | Level 3 |
+| --- | --- | --- | --- |
+| Use cases | Ad hoc personal use. | Approved BA workflows. | Measured portfolio theo value và risk. |
+| Governance | Không có shared rule. | Data và review policy defined. | Risk-tier control và audit. |
+| Quality | AI output share trực tiếp. | Peer review cho AI-assisted artifact. | Quality gate và rubric metric. |
+| Capability | Tip cá nhân. | Team prompt library. | Coaching, playbook và community of practice. |
+
+## AI collaboration prompt
 
 ```text
-Tạo AI adoption plan cho BA team gồm use case, risk tier, data rule, approved tool, training, quality gate, metric, governance role và rollout phase.
+Tạo BA team AI adoption roadmap. Bao gồm use-case portfolio, risk tier, approved tool, prohibited data, review gate, prompt library, training plan, governance role, success metric, rollout phase và escalation process.
 ```
+
+## Mistakes to avoid
+
+- Mua tool trước khi định nghĩa safe use case.
+- Bỏ qua confidential data và PII rule.
+- Đo adoption chỉ bằng số user.
+- Để mỗi BA tự invent quality standard.
+
+## Apply this tomorrow
+
+1. Phân loại BA AI use case theo risk tier.
+2. Định nghĩa một approved workflow và một prohibited use.
+3. Tạo quality gate cho AI-assisted requirement.
+4. Đo cycle time và defect reduction cho một pilot.
 
 ## What a BA should remember
 
-- AI là bộ tăng tốc reasoning, không phải decision owner.
-- Mọi claim quan trọng phải grounded vào source context hoặc stakeholder confirmation.
-- BA giỏi giữ review loop rõ ràng: draft, critique, revise, validate.
+- Adoption là operating model.
+- Governance nên làm good AI use dễ hơn.
+- BA lead scale quality bằng shared pattern và review gate.

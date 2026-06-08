@@ -1,6 +1,6 @@
 ---
 title: "Structured output và prompt tái sử dụng"
-description: "Thiết kế prompt trả về table, checklist, cấu trúc gần JSON và format artifact BA có thể tái sử dụng."
+description: "Structured output biến AI từ chat response thành BA artifact có thể review."
 ---
 
 # Structured output và prompt tái sử dụng
@@ -13,55 +13,73 @@ description: "Thiết kế prompt trả về table, checklist, cấu trúc gần
 
 ## Learning outcomes
 
-- Giải thích structured output và prompt tái sử dụng bằng ngôn ngữ business.
-- Áp dụng concept vào workflow BA thực tế.
-- Dùng output AI như draft có evidence, không xem là sự thật tự động.
-- Xác định câu hỏi review BA phải hỏi trước khi chia sẻ artifact.
+- Thiết kế output table và schema cho task BA.
+- Tạo reusable prompt cho work phân tích lặp lại.
+- Làm output AI dễ review, compare và trace hơn.
 
 ## Why this matters for BA work
 
-AI thay đổi cách tạo ra artifact phân tích, nhưng không thay thế trách nhiệm của BA về clarity, evidence và decision.
-
 <div class="ba-callout">
-Thiết kế prompt trả về table, checklist, cấu trúc gần JSON và format artifact BA có thể tái sử dụng.
+Structured output biến AI từ chat response thành BA artifact có thể review.
 </div>
 
-## Core concept
+Business Analyst đứng giữa problem framing, ý nghĩa từ stakeholder, constraint triển khai và product decision. Trong công việc có AI, vị trí này quan trọng hơn vì ngôn ngữ chưa rõ có thể tạo false certainty rất nhanh. Bài này đưa ra một control thực tế để áp dụng trước khi output AI trở thành scope, backlog hoặc delivery commitment.
 
-Pattern hữu ích cho BA là controlled collaboration: cung cấp business context cho model, yêu cầu structured output, bắt buộc có evidence, rồi review theo goal, rule, risk và decision của stakeholder.
+## Mental model or core concept
+
+Answer không cấu trúc rất khó verify. Structured output cho BA column, ID, severity level, source reference và owner. Nhờ vậy product, dev, QA và stakeholder có thể inspect. Reusable prompt nên định nghĩa input, output contract, constraint và review rule.
 
 ## Practical BA example
 
-Thay vì yêu cầu summary chung chung, BA yêu cầu bảng gồm requirement ID, actor, business rule, acceptance criteria, source, risk và open question.
+Thay vì hỏi 'summarize meeting này', BA yêu cầu bảng gồm decision, evidence, owner, impacted requirement, risk và open question. Output có thể chuyển thành Jira task, decision log và follow-up action.
 
 ## Diagram
 
 ```mermaid
-flowchart LR
-    A["Business goal"] --> B["Source context"]
-    B --> C["AI analysis"]
-    C --> D{"BA review"}
-    D -->|"Revise"| B
-    D -->|"Approve"| E["Artifact đã validate"]
-    E --> F["Structured output và prompt tái sử dụng"]
+flowchart TD
+    A["Reusable prompt"] --> B["Input scope"]
+    A --> C["Output schema"]
+    A --> D["Constraint"]
+    A --> E["Review rule"]
+    B --> F["Traceable table"]
+    C --> F
+    D --> F
+    E --> F
 ```
 
-## BA workflow
+## BA artifact
 
-1. Đóng khung business question trước khi mở AI tool.
-2. Cung cấp source context và constraint rõ ràng.
-3. Yêu cầu structured output có mapping về source.
-4. Chạy critique pass để tìm ambiguity, gap, risk và testability.
-5. Chuyển kết quả thành artifact mà team có thể inspect và cùng chịu ownership.
+### Reusable Prompt Contract
 
-## Prompt hoặc template
+| Contract part | Content bắt buộc | Vì sao hữu ích | Ví dụ |
+| --- | --- | --- | --- |
+| Input scope | Source nào included và excluded. | Tránh context drift ẩn. | Chỉ dùng transcript T1 và policy P2. |
+| Output columns | Field artifact phải có. | Làm review systematic. | ID, issue, severity, evidence, question. |
+| Constraints | Rule AI phải tuân thủ. | Ngăn unsupported content. | Không tự bịa policy. |
+| Review rule | Cách đánh giá output. | Align với BA quality. | Mỗi row cần source hoặc assumption. |
+
+## AI collaboration prompt
 
 ```text
-Trả về bảng với các cột: ID, User Goal, Requirement, Acceptance Criteria, Source Evidence, Risk, Open Question, Owner.
+Tạo reusable prompt cho BA task này. Bao gồm purpose, input assumption, required context, output schema, constraint, quality rubric và self-check section. Giữ đủ generic để reuse nhưng đủ specific để output review được.
 ```
+
+## Mistakes to avoid
+
+- Dùng free-form output cho task cần comparison.
+- Quên ID và source reference.
+- Tạo prompt mà BA khác không reuse được.
+- Không định nghĩa cách rank severity.
+
+## Apply this tomorrow
+
+1. Chuyển một prompt thường dùng thành reusable prompt contract.
+2. Thêm output column source, severity và owner.
+3. Yêu cầu AI self-check theo output schema.
+4. Lưu prompt vào team library.
 
 ## What a BA should remember
 
-- AI là bộ tăng tốc reasoning, không phải decision owner.
-- Mọi claim quan trọng phải grounded vào source context hoặc stakeholder confirmation.
-- BA giỏi giữ review loop rõ ràng: draft, critique, revise, validate.
+- Structure là quality control.
+- Prompt tốt định nghĩa output, không chỉ task.
+- Reusable prompt biến kỹ năng cá nhân thành capability của team.

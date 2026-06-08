@@ -1,6 +1,6 @@
 ---
 title: "User Stories and Acceptance Criteria"
-description: "Use AI to draft stories and acceptance criteria while preserving business intent, edge cases, and testability."
+description: "AI can draft stories fast, but the BA must preserve business rules, negative paths, permissions, and testability."
 ---
 
 # User Stories and Acceptance Criteria
@@ -13,55 +13,71 @@ description: "Use AI to draft stories and acceptance criteria while preserving b
 
 ## Learning outcomes
 
-- Explain user stories and acceptance criteria in business language.
-- Apply the concept to a realistic BA workflow.
-- Use AI output as draft evidence, not as unchecked truth.
-- Identify the review questions a BA must ask before sharing the artifact.
+- Transform vague requests into testable user stories.
+- Use AI to generate edge cases without losing business intent.
+- Write acceptance criteria that development and QA can inspect.
 
 ## Why this matters for BA work
 
-AI changes how analysis work is produced, but it does not remove the BA's accountability for clarity, evidence, and decisions.
-
 <div class="ba-callout">
-Use AI to draft stories and acceptance criteria while preserving business intent, edge cases, and testability.
+AI can draft stories fast, but the BA must preserve business rules, negative paths, permissions, and testability.
 </div>
 
-## Core concept
+Business Analysts sit between problem framing, stakeholder meaning, delivery constraints, and product decisions. In AI work, that position becomes more important because unclear language can create false certainty quickly. This lesson gives you a practical control you can apply before AI output becomes scope, backlog, or delivery commitment.
 
-The useful BA pattern is controlled collaboration: provide the model with business context, ask for structured output, require evidence, then review the result against goals, rules, risks, and stakeholder decisions.
+## Mental model or core concept
+
+A user story captures actor, goal, and value; acceptance criteria define observable conditions of done. AI is useful for expansion: alternative paths, validation rules, permissions, and negative cases. The BA must prevent generic criteria by providing business rules and asking for testable scenarios.
 
 ## Practical BA example
 
-A vague request says, 'Users can update profiles.' The BA uses AI to split actor goals, editable fields, validation, permissions, audit, error handling, and acceptance criteria.
+The request 'users can update profiles' becomes multiple stories: edit contact info, verify email change, restrict sensitive fields, audit admin changes, and handle failed validation. AI helps draft scenarios, but the BA validates rules with product, security, and support.
 
 ## Diagram
 
 ```mermaid
 flowchart LR
-    A["Business goal"] --> B["Source context"]
-    B --> C["AI analysis"]
-    C --> D{"BA review"}
-    D -->|"Revise"| B
-    D -->|"Approve"| E["Validated artifact"]
-    E --> F["User Stories and Acceptance Criteria"]
+    A["Vague request"] --> B["Actor + goal + value"]
+    B --> C["Business rules"]
+    C --> D["User stories"]
+    D --> E["Acceptance criteria"]
+    E --> F["Negative + boundary cases"]
+    F --> G["Development-ready story"]
 ```
 
-## BA workflow
+## BA artifact
 
-1. Frame the business question before opening the AI tool.
-2. Provide source context and explicit constraints.
-3. Ask for structured output that maps back to the source.
-4. Run a critique pass for ambiguity, gaps, risk, and testability.
-5. Convert the result into an artifact the team can inspect and own.
+### Story Quality Rubric
 
-## Prompt or template
+| Criterion | Good signal | Weak signal | BA action |
+| --- | --- | --- | --- |
+| Actor and value | Actor and business value are explicit. | Story only says system shall. | Rewrite from user goal. |
+| Business rule | Rules and thresholds are named. | Rule hidden in vague wording. | Add rule source or open question. |
+| Acceptance criteria | Given-When-Then covers success and failure. | Only happy path exists. | Add negative and boundary cases. |
+| Testability | QA can verify expected result. | Uses subjective terms. | Replace vague terms with observable outcomes. |
+
+## AI collaboration prompt
 
 ```text
-Convert this requirement into user stories and Given-When-Then acceptance criteria. Include negative cases, permissions, audit needs, and unresolved questions.
+Convert this request into user stories and Given-When-Then acceptance criteria. Include actor, goal, business value, business rules, permissions, negative cases, boundary cases, audit needs, and unresolved questions. Flag any criteria that are not testable.
 ```
+
+## Mistakes to avoid
+
+- Generating many stories without business value.
+- Writing acceptance criteria that repeat the story.
+- Missing permissions and audit.
+- Ignoring negative paths because the happy path looks simple.
+
+## Apply this tomorrow
+
+1. Pick one vague story and ask AI for missing business rules.
+2. Add two negative acceptance criteria.
+3. Ask QA to review testability before refinement.
+4. Tag each criterion with source or assumption.
 
 ## What a BA should remember
 
-- AI is a reasoning accelerator, not a decision owner.
-- Ground every important claim in source context or stakeholder confirmation.
-- A good BA keeps the review loop visible: draft, critique, revise, validate.
+- AI can expand scenarios, but BA owns business intent.
+- Acceptance criteria are a contract for behavior.
+- Negative paths are where hidden requirements surface.

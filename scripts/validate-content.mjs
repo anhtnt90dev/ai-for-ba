@@ -46,9 +46,16 @@ function extractMermaidBlocks(content) {
 }
 
 function sectionContent(content, heading) {
-  const escapedHeading = heading.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const sectionMatch = content.match(new RegExp(`^## ${escapedHeading}\\s*\\n([\\s\\S]*?)(?=^## |$)`, "m"));
-  return sectionMatch?.[1]?.trim() ?? "";
+  const headingLine = `## ${heading}`;
+  const headingIndex = content.indexOf(headingLine);
+  if (headingIndex === -1) {
+    return "";
+  }
+
+  const contentStart = content.indexOf("\n", headingIndex) + 1;
+  const rest = content.slice(contentStart);
+  const nextHeadingIndex = rest.search(/\n## /);
+  return (nextHeadingIndex === -1 ? rest : rest.slice(0, nextHeadingIndex)).trim();
 }
 
 function containsArtifactStructure(markdown) {

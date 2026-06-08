@@ -1,6 +1,6 @@
 ---
 title: "Discovery với AI"
-description: "Dùng AI để chuẩn bị câu hỏi discovery, so sánh hypothesis và làm lộ unknown trước khi gặp stakeholder."
+description: "AI có thể mở rộng discovery, nhưng BA vẫn phải quyết định điều gì cần validate với stakeholder thật."
 ---
 
 # Discovery với AI
@@ -13,55 +13,71 @@ description: "Dùng AI để chuẩn bị câu hỏi discovery, so sánh hypothe
 
 ## Learning outcomes
 
-- Giải thích discovery với ai bằng ngôn ngữ business.
-- Áp dụng concept vào workflow BA thực tế.
-- Dùng output AI như draft có evidence, không xem là sự thật tự động.
-- Xác định câu hỏi review BA phải hỏi trước khi chia sẻ artifact.
+- Dùng AI tạo hypothesis và interview plan.
+- Tách assumption, evidence và decision trước workshop.
+- Biến output AI thành discovery agenda tốt hơn.
 
 ## Why this matters for BA work
 
-AI thay đổi cách tạo ra artifact phân tích, nhưng không thay thế trách nhiệm của BA về clarity, evidence và decision.
-
 <div class="ba-callout">
-Dùng AI để chuẩn bị câu hỏi discovery, so sánh hypothesis và làm lộ unknown trước khi gặp stakeholder.
+AI có thể mở rộng discovery, nhưng BA vẫn phải quyết định điều gì cần validate với stakeholder thật.
 </div>
 
-## Core concept
+Business Analyst đứng giữa problem framing, ý nghĩa từ stakeholder, constraint triển khai và product decision. Trong công việc có AI, vị trí này quan trọng hơn vì ngôn ngữ chưa rõ có thể tạo false certainty rất nhanh. Bài này đưa ra một control thực tế để áp dụng trước khi output AI trở thành scope, backlog hoặc delivery commitment.
 
-Pattern hữu ích cho BA là controlled collaboration: cung cấp business context cho model, yêu cầu structured output, bắt buộc có evidence, rồi review theo goal, rule, risk và decision của stakeholder.
+## Mental model or core concept
+
+Discovery là giảm uncertainty, không phải tạo tài liệu cho đủ. AI hỗ trợ đề xuất actor, constraint, risk và question, nhưng output nên trở thành hypothesis backlog. BA sau đó validate hoặc reject hypothesis bằng user, data, policy và stakeholder decision.
 
 ## Practical BA example
 
-Trước workshop về automation phê duyệt claim, BA nhờ AI map actor, decision, policy constraint, exception và metric. Output trở thành interview plan tốt hơn, không phải sự thật cuối cùng.
+Với claim approval automation, AI gợi ý fraud check, SLA tier, escalation path và missing document scenario. BA chuyển chúng thành workshop question và ưu tiên assumption rủi ro nhất: ai được override, policy nào áp dụng và exception hợp lệ là gì.
 
 ## Diagram
 
 ```mermaid
-flowchart LR
-    A["Business goal"] --> B["Source context"]
-    B --> C["AI analysis"]
-    C --> D{"BA review"}
-    D -->|"Revise"| B
-    D -->|"Approve"| E["Artifact đã validate"]
-    E --> F["Discovery với AI"]
+flowchart TD
+    A["Business problem"] --> B["AI mở rộng hypothesis"]
+    B --> C["BA group assumption"]
+    C --> D{"Rủi ro hoặc chưa biết?"}
+    D -->|Có| E["Validate trong workshop"]
+    D -->|Không| F["Defer hoặc document"]
+    E --> G["Insight sẵn sàng cho decision"]
 ```
 
-## BA workflow
+## BA artifact
 
-1. Đóng khung business question trước khi mở AI tool.
-2. Cung cấp source context và constraint rõ ràng.
-3. Yêu cầu structured output có mapping về source.
-4. Chạy critique pass để tìm ambiguity, gap, risk và testability.
-5. Chuyển kết quả thành artifact mà team có thể inspect và cùng chịu ownership.
+### Discovery Hypothesis Backlog
 
-## Prompt hoặc template
+| Hypothesis | Evidence cần có | Cách validate | Decision owner |
+| --- | --- | --- | --- |
+| Claim giá trị cao cần manager review. | Policy threshold và historical claim data. | Review policy và data sample. | Claims operations lead |
+| Missing document trigger customer notification. | Support script hiện tại và customer journey. | Interview support agent. | Customer service manager |
+| Fraud risk thay đổi SLA. | Fraud rule và compliance constraint. | Compliance workshop. | Risk owner |
+| Manual override phải audit. | Audit policy và regulator expectation. | Security review. | Compliance lead |
+
+## AI collaboration prompt
 
 ```text
-Tạo discovery plan cho business problem này. Bao gồm stakeholder, câu hỏi, assumption cần validate, source dữ liệu, risk và decision workshop phải chốt.
+Tạo discovery hypothesis backlog cho business problem này. Bao gồm actor, assumption, evidence needed, validation method, decision owner, risk level và workshop question. Chưa viết final requirement.
 ```
+
+## Mistakes to avoid
+
+- Yêu cầu AI viết requirement trước khi map uncertainty.
+- Xem generated question là discovery đầy đủ.
+- Bỏ qua decision owner.
+- Ưu tiên câu hỏi dễ thay vì assumption rủi ro.
+
+## Apply this tomorrow
+
+1. Chuyển agenda workshop tiếp theo thành hypothesis.
+2. Nhờ AI tìm stakeholder group còn thiếu.
+3. Thêm evidence needed cạnh mỗi assumption.
+4. Mở workshop bằng decisions required, không chỉ topic.
 
 ## What a BA should remember
 
-- AI là bộ tăng tốc reasoning, không phải decision owner.
-- Mọi claim quan trọng phải grounded vào source context hoặc stakeholder confirmation.
-- BA giỏi giữ review loop rõ ràng: draft, critique, revise, validate.
+- Discovery output là validated learning.
+- AI mở rộng question space; stakeholder validate nó.
+- Artifact discovery tốt cho thấy điều gì chưa biết.
