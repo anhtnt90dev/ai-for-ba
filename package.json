@@ -1,0 +1,19 @@
+{
+  "name": "ai-for-ba",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Bilingual AI literacy and AI-enabled product analysis course for software Business Analysts.",
+  "type": "module",
+  "scripts": {
+    "docs:dev": "vitepress dev docs --host 127.0.0.1",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs --host 127.0.0.1",
+    "validate": "node scripts/validate-content.mjs",
+    "test": "npm run validate && npm run docs:build"
+  },
+  "devDependencies": {
+    "mermaid": "^11.14.0",
+    "vitepress": "^1.6.4",
+    "vitepress-plugin-mermaid": "^2.0.17"
+  }
+}
