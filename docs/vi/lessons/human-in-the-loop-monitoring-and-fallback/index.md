@@ -23,7 +23,7 @@ description: "Sản phẩm AI có trách nhiệm cần path rõ cho uncertainty,
 Sản phẩm AI có trách nhiệm cần path rõ cho uncertainty, escalation, correction và quality monitoring.
 </div>
 
-Business Analyst đứng giữa problem framing, ý nghĩa từ stakeholder, constraint triển khai và product decision. Trong công việc có AI, vị trí này quan trọng hơn vì ngôn ngữ chưa rõ có thể tạo false certainty rất nhanh. Bài này đưa ra một control thực tế để áp dụng trước khi output AI trở thành scope, backlog hoặc delivery commitment.
+Bài này quan trọng vì human review thường được viết như safeguard mơ hồ, rồi fail khi operation cần queue, SLA, decision right và audit trail thật. AI product cần fallback và monitoring được thiết kế. BA phải đặc tả điều gì xảy ra khi confidence thấp, risk cao hoặc evidence thiếu.
 
 ## Mental model or core concept
 
@@ -56,6 +56,18 @@ flowchart TD
 | Reviewer action | Liệt kê allowed decision. | Approve, reject, request info, override. | Review completion SLA. |
 | Fallback | Định nghĩa safe response khi AI không trả lời được. | Show escalation message và create task. | Fallback resolution time. |
 | Monitoring | Capture quality và drift signal. | Track override theo category. | Override rate trend. |
+
+## AI expert note
+
+Human-in-the-loop là operating workflow, không phải slogan. Requirement chuyên gia định nghĩa trigger condition, reviewer role, allowed action, escalation, user messaging, correction capture, quality monitoring và accountability. Fallback thành công khi giữ được user trust và business safety, không phải khi che giấu AI đã fail.
+
+## Bad vs better example
+
+| Cách làm yếu | Vì sao fail | Cách làm BA tốt hơn |
+| --- | --- | --- |
+| Viết rằng human can review AI output | Không có trigger, queue, role, SLA hoặc decision authority. | Đặc tả review trigger, routing, reviewer action, SLA, audit record và owner. |
+| Dùng fallback message nghe quá tự tin | User không hiểu uncertainty hoặc next safe action. | Giải thích limitation, cung cấp next step an toàn và route sang support hoặc manual process. |
+| Chỉ monitor uptime và latency | System có thể available nhưng output vẫn low-quality hoặc risky. | Track override rate, unsupported query, error category, drift signal và review outcome. |
 
 ## AI collaboration prompt
 

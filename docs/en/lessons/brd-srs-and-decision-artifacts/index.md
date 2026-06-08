@@ -23,7 +23,7 @@ description: "AI can draft documents, but BA value comes from decision structure
 AI can draft documents, but BA value comes from decision structure, evidence, scope control, and reviewability.
 </div>
 
-Business Analysts sit between problem framing, stakeholder meaning, delivery constraints, and product decisions. In AI work, that position becomes more important because unclear language can create false certainty quickly. This lesson gives you a practical control you can apply before AI output becomes scope, backlog, or delivery commitment.
+This lesson matters because AI can draft BRD and SRS sections quickly, but formal documents are not just text. They are records of decisions, scope boundaries, evidence, ownership, and change control. A BA must ensure AI-assisted documents preserve decision logic instead of producing polished pages that hide unresolved commitments.
 
 ## Mental model or core concept
 
@@ -57,6 +57,18 @@ flowchart TD
 | Scope boundary | Prevent accidental expansion. | Draft in/out lists. | Final scope decision. |
 | Decision log | Show what is settled. | Format decisions. | Owner, date, rationale. |
 | Open questions | Keep uncertainty visible. | Cluster questions. | Resolution path and owner. |
+
+## AI expert note
+
+Expert BA documentation separates narrative from decision artifacts. AI is useful for drafting, summarizing, and reorganizing, but it should not decide scope, acceptance, or policy. BRD and SRS outputs should include decision log references, source evidence, version history, open issues, and explicit approval checkpoints.
+
+## Bad vs better example
+
+| Weak pattern | Why it fails | Stronger BA pattern |
+| --- | --- | --- |
+| Ask AI to create a complete BRD from notes | The draft may invent decisions and make unresolved areas look approved. | Generate a document skeleton plus decision gaps, evidence map, and open approval items. |
+| Use polished wording to resolve stakeholder conflict | Good prose can mask disagreement instead of escalating it. | Represent conflicts explicitly with options, impact, owner, and decision date. |
+| Remove assumptions to make the document cleaner | Stakeholders lose visibility into what still needs validation. | Keep assumptions, dependencies, and open questions in governed sections. |
 
 ## AI collaboration prompt
 

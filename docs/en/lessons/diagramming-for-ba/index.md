@@ -23,7 +23,7 @@ description: "A good diagram changes the conversation; it reveals decisions, bou
 A good diagram changes the conversation; it reveals decisions, boundaries, and gaps that text hides.
 </div>
 
-Business Analysts sit between problem framing, stakeholder meaning, delivery constraints, and product decisions. In AI work, that position becomes more important because unclear language can create false certainty quickly. This lesson gives you a practical control you can apply before AI output becomes scope, backlog, or delivery commitment.
+This lesson matters because diagrams expose reasoning that prose can hide. AI can create flowcharts, sequence diagrams, and state models quickly, but a diagram is valuable only when it reveals missing actors, unclear rules, system boundaries, and exception paths. The BA must use diagrams as analysis instruments, not visual decoration.
 
 ## Mental model or core concept
 
@@ -58,6 +58,18 @@ flowchart TD
 | How do systems interact? | Sequence diagram | APIs/events are involved. | System boundaries and failure messages. |
 | What states can an entity have? | State diagram | Lifecycle matters. | Allowed transitions and triggers. |
 | Which rule applies? | Decision table | Combinations drive outcomes. | Complete and exclusive rules. |
+
+## AI expert note
+
+AI-generated diagrams should be reviewed like requirements. Expert BAs check notation fit, actor-system separation, decision labels, data movement, error paths, and whether the diagram answers a stakeholder question. Diagramming is especially powerful when the BA asks AI to generate competing views and then reconciles their differences.
+
+## Bad vs better example
+
+| Weak pattern | Why it fails | Stronger BA pattern |
+| --- | --- | --- |
+| Generate one diagram and add it to the document | A single view may hide timing, data, or responsibility issues. | Create process, sequence, and state views when the problem crosses workflow and systems. |
+| Accept diagram labels that are vague | Decision diamonds like valid or approved do not define business rules. | Replace vague labels with rule source, threshold, owner, or open question. |
+| Use diagrams only for presentation | The team misses the chance to find defects before build. | Run diagram review sessions to identify gaps, exceptions, and ownership issues. |
 
 ## AI collaboration prompt
 

@@ -23,7 +23,7 @@ description: "AI can summarize interviews quickly, but synthesis requires preser
 AI can summarize interviews quickly, but synthesis requires preserving contradictions, attribution, and decisions.
 </div>
 
-Business Analysts sit between problem framing, stakeholder meaning, delivery constraints, and product decisions. In AI work, that position becomes more important because unclear language can create false certainty quickly. This lesson gives you a practical control you can apply before AI output becomes scope, backlog, or delivery commitment.
+This lesson matters because AI can summarize interviews quickly, but speed can flatten disagreement, source attribution, and political nuance. For BA work, the important output is not a neat summary; it is a reliable synthesis that preserves who said what, where stakeholders conflict, which decision is missing, and what evidence still needs validation.
 
 ## Mental model or core concept
 
@@ -57,6 +57,18 @@ flowchart LR
 | VIP handling | VIP requests are treated differently. | No documented bypass rule. | Who can approve VIP bypass? |
 | Audit | Finance needs exception trace. | Sales uses email approval. | What audit record is mandatory? |
 | Ownership | Managers approve discounts. | No backup owner for absence. | Who owns approval when manager is unavailable? |
+
+## AI expert note
+
+Interview synthesis should treat transcripts as evidence, not objective truth. AI can cluster themes and detect contradictions, but the BA must preserve attribution, role context, emotion, and decision authority. Expert practice is to separate quote-backed facts, interpreted needs, conflicts, and follow-up questions before drafting any requirement.
+
+## Bad vs better example
+
+| Weak pattern | Why it fails | Stronger BA pattern |
+| --- | --- | --- |
+| Ask AI for a clean summary of all interviews | A clean summary can erase contradictions and minority but critical concerns. | Request themes with speaker attribution, conflict points, evidence strength, and follow-up questions. |
+| Merge similar stakeholder statements into one need | Different roles may use the same words for different operational problems. | Keep role, context, scenario, and decision impact attached to each synthesized need. |
+| Treat transcript sentiment as priority | Emotion signals importance but does not prove business value or feasibility. | Combine sentiment with frequency, risk, revenue, compliance, and decision ownership. |
 
 ## AI collaboration prompt
 

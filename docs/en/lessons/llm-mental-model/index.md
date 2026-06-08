@@ -23,7 +23,7 @@ description: "LLMs are powerful text reasoning engines, but they do not know you
 LLMs are powerful text reasoning engines, but they do not know your hidden business rules unless you provide or retrieve them.
 </div>
 
-Business Analysts sit between problem framing, stakeholder meaning, delivery constraints, and product decisions. In AI work, that position becomes more important because unclear language can create false certainty quickly. This lesson gives you a practical control you can apply before AI output becomes scope, backlog, or delivery commitment.
+This lesson matters because LLM output often sounds complete before it is actually governed, sourced, or testable. BAs who understand the mental model can use AI as a structured drafting and critique partner without confusing fluent text with business approval. That keeps requirements reviewable and prevents hidden assumptions from entering delivery artifacts.
 
 ## Mental model or core concept
 
@@ -58,6 +58,18 @@ sequenceDiagram
 | Assumption | Which statements are inferred? | Assumptions are labeled. | Assumptions are hidden as facts. |
 | Specificity | Can QA test the output? | Rules, actors, and outcomes are explicit. | Uses vague words like fast, easy, smart. |
 | Decision | Who must approve this? | Decision owner is named. | AI answer is treated as approval. |
+
+## AI expert note
+
+An LLM is a probabilistic system with strong language patterning, not an authoritative requirements engine. The BA must manage context, examples, constraints, and review criteria. Expert use means asking for assumptions, evidence labels, counterexamples, and testability checks, then treating the answer as a candidate artifact awaiting human validation.
+
+## Bad vs better example
+
+| Weak pattern | Why it fails | Stronger BA pattern |
+| --- | --- | --- |
+| Ask the model for final acceptance criteria from a one-line idea | The model will fill missing policy, permissions, and edge cases with plausible inventions. | Provide rules, actors, constraints, examples, and require assumptions to be listed separately. |
+| Use confidence language from the model as approval | Model confidence is not stakeholder confirmation or regulatory evidence. | Route material claims to source review or decision owners before publishing. |
+| Share a polished AI draft without review markings | Stakeholders cannot see what is fact, inference, or unsupported text. | Add a review table for source-backed facts, assumptions, open questions, and owner decisions. |
 
 ## AI collaboration prompt
 

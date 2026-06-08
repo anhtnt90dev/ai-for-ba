@@ -23,7 +23,7 @@ description: "AI có thể mở rộng discovery, nhưng BA vẫn phải quyết
 AI có thể mở rộng discovery, nhưng BA vẫn phải quyết định điều gì cần validate với stakeholder thật.
 </div>
 
-Business Analyst đứng giữa problem framing, ý nghĩa từ stakeholder, constraint triển khai và product decision. Trong công việc có AI, vị trí này quan trọng hơn vì ngôn ngữ chưa rõ có thể tạo false certainty rất nhanh. Bài này đưa ra một control thực tế để áp dụng trước khi output AI trở thành scope, backlog hoặc delivery commitment.
+Bài này quan trọng vì AI có thể làm discovery có vẻ nhanh hơn nhưng âm thầm thay uncertainty bằng completeness tự bịa. Giá trị của BA là biến suggestion của AI thành hypothesis, không phải conclusion. Workflow discovery tốt dùng AI để mở rộng question space, rồi dùng evidence, workshop, interview và data để quyết định điều gì đúng.
 
 ## Mental model or core concept
 
@@ -55,6 +55,18 @@ flowchart TD
 | Missing document trigger customer notification. | Support script hiện tại và customer journey. | Interview support agent. | Customer service manager |
 | Fraud risk thay đổi SLA. | Fraud rule và compliance constraint. | Compliance workshop. | Risk owner |
 | Manual override phải audit. | Audit policy và regulator expectation. | Security review. | Compliance lead |
+
+## AI expert note
+
+AI hữu ích trong discovery vì nó tạo alternative actor, edge case, risk và interview angle rất nhanh. Nguy hiểm là anchoring: khi đã có list trôi chảy, stakeholder có thể ngừng khám phá. BA phải label rõ hypothesis, evidence needed, validation method và decision owner trước khi chuyển bất kỳ phần nào thành requirement.
+
+## Bad vs better example
+
+| Cách làm yếu | Vì sao fail | Cách làm BA tốt hơn |
+| --- | --- | --- |
+| Yêu cầu AI viết requirement từ business problem | Model sẽ biến uncertainty của discovery thành scope quá sớm. | Trước hết yêu cầu hypothesis, assumption, evidence needed và workshop question. |
+| Xem stakeholder list do AI tạo là final | Owner nội bộ, regulator hoặc operational user quan trọng có thể bị thiếu. | Validate actor bằng process map, org role, customer journey và decision right. |
+| Ưu tiên câu hỏi dễ trả lời | Team có thể né assumption rủi ro nhất cho tới lúc delivery. | Rank hypothesis theo business impact, evidence gap và decision urgency. |
 
 ## AI collaboration prompt
 

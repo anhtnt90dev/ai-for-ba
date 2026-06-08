@@ -23,7 +23,7 @@ description: "AI có thể summarize interview rất nhanh, nhưng synthesis th�
 AI có thể summarize interview rất nhanh, nhưng synthesis thật sự phải giữ contradiction, attribution và decision.
 </div>
 
-Business Analyst đứng giữa problem framing, ý nghĩa từ stakeholder, constraint triển khai và product decision. Trong công việc có AI, vị trí này quan trọng hơn vì ngôn ngữ chưa rõ có thể tạo false certainty rất nhanh. Bài này đưa ra một control thực tế để áp dụng trước khi output AI trở thành scope, backlog hoặc delivery commitment.
+Bài này quan trọng vì AI summarize interview rất nhanh, nhưng tốc độ có thể làm phẳng disagreement, source attribution và political nuance. Với BA, output quan trọng không phải summary gọn; đó là synthesis đáng tin giữ được ai nói gì, stakeholder conflict ở đâu, decision nào thiếu và evidence nào còn cần validate.
 
 ## Mental model or core concept
 
@@ -57,6 +57,18 @@ flowchart LR
 | VIP handling | VIP request được xử lý khác. | Không có bypass rule documented. | Ai được approve VIP bypass? |
 | Audit | Finance cần trace exception. | Sales dùng email approval. | Audit record nào bắt buộc? |
 | Ownership | Manager approve discount. | Không có backup owner khi vắng mặt. | Ai owns approval khi manager unavailable? |
+
+## AI expert note
+
+Synthesis interview nên xem transcript là evidence, không phải objective truth. AI có thể cluster theme và detect contradiction, nhưng BA phải giữ attribution, role context, emotion và decision authority. Thực hành chuyên gia là tách quote-backed fact, interpreted need, conflict và follow-up question trước khi draft requirement.
+
+## Bad vs better example
+
+| Cách làm yếu | Vì sao fail | Cách làm BA tốt hơn |
+| --- | --- | --- |
+| Yêu cầu AI tạo clean summary của mọi interview | Summary quá gọn có thể xóa contradiction và concern ít người nói nhưng rất critical. | Yêu cầu theme có speaker attribution, conflict point, evidence strength và follow-up question. |
+| Gộp statement giống nhau thành một need | Role khác nhau có thể dùng cùng từ nhưng nói về operational problem khác. | Giữ role, context, scenario và decision impact gắn với từng synthesized need. |
+| Xem sentiment trong transcript là priority | Emotion báo hiệu importance nhưng không chứng minh business value hoặc feasibility. | Kết hợp sentiment với frequency, risk, revenue, compliance và decision ownership. |
 
 ## AI collaboration prompt
 

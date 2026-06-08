@@ -23,7 +23,7 @@ description: "Traceability làm requirement có accountability từ business goa
 Traceability làm requirement có accountability từ business goal đến test evidence.
 </div>
 
-Business Analyst đứng giữa problem framing, ý nghĩa từ stakeholder, constraint triển khai và product decision. Trong công việc có AI, vị trí này quan trọng hơn vì ngôn ngữ chưa rõ có thể tạo false certainty rất nhanh. Bài này đưa ra một control thực tế để áp dụng trước khi output AI trở thành scope, backlog hoặc delivery commitment.
+Bài này quan trọng vì artifact có AI hỗ trợ có thể nhân lên rất nhanh, khiến team dễ mất chain từ business goal tới requirement, source, decision, test và release evidence. Traceability bảo vệ team khỏi requirement đẹp nhưng chưa chứng minh. Testability biến suggestion AI thành behavior mà delivery team verify được.
 
 ## Mental model or core concept
 
@@ -55,6 +55,18 @@ flowchart LR
 | Need to requirement | System behavior nào support? | Send missing-doc reminder within 24 hours. | Behavior không observable. |
 | Requirement to AC | Done được verify bằng gì? | Given missing doc, then reminder is sent. | Không có failure case. |
 | AC to metric | Impact đo thế nào? | Drop-off rate decreases by 10%. | Không có success metric. |
+
+## AI expert note
+
+Với AI work, traceability nên gồm evidence source, prompt hoặc context package, assumption có model hỗ trợ, reviewer, decision owner và evaluation case. BA chuyên gia xem traceability là risk control, không phải documentation overhead. Requirement không trace hoặc test được thì không nên thành delivery commitment.
+
+## Bad vs better example
+
+| Cách làm yếu | Vì sao fail | Cách làm BA tốt hơn |
+| --- | --- | --- |
+| Giữ draft AI trong chat và copy phần hay vào ticket | Source, assumption và review trail biến mất. | Ghi source ID, prompt context, reviewer, decision owner và artifact version. |
+| Chỉ viết test cho happy path generated behavior | AI feature fail ở edge case, low confidence và unsupported input. | Trace từng requirement tới positive, negative, fallback và monitoring test. |
+| Xem traceability là spreadsheet compliance | Team điền field nhưng không dùng để manage risk. | Dùng trace link trong refinement, QA planning, change impact và release decision. |
 
 ## AI collaboration prompt
 

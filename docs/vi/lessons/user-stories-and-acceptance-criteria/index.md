@@ -23,7 +23,7 @@ description: "AI có thể draft story nhanh, nhưng BA phải giữ business ru
 AI có thể draft story nhanh, nhưng BA phải giữ business rule, negative path, permission và testability.
 </div>
 
-Business Analyst đứng giữa problem framing, ý nghĩa từ stakeholder, constraint triển khai và product decision. Trong công việc có AI, vị trí này quan trọng hơn vì ngôn ngữ chưa rõ có thể tạo false certainty rất nhanh. Bài này đưa ra một control thực tế để áp dụng trước khi output AI trở thành scope, backlog hoặc delivery commitment.
+Bài này quan trọng vì AI có thể tạo rất nhiều story nhanh, nhưng số lượng không phải readiness. BA artifact sẵn sàng cho development cần rõ actor, business value, observable behavior, boundary, negative case, permission và release decision. Nếu BA không kiểm soát structure, story do AI sinh sẽ trở thành backlog noise nhìn hấp dẫn.
 
 ## Mental model or core concept
 
@@ -55,6 +55,18 @@ flowchart LR
 | Business rule | Rule và threshold có tên. | Rule ẩn trong wording mơ hồ. | Thêm source rule hoặc open question. |
 | Acceptance criteria | Given-When-Then cover success và failure. | Chỉ có happy path. | Thêm negative và boundary case. |
 | Testability | QA verify được expected result. | Dùng từ chủ quan. | Thay vague term bằng outcome observable. |
+
+## AI expert note
+
+User story là decision container, không chỉ là sentence template. AI hữu ích để tạo variation, edge case và draft Given-When-Then, nhưng nó thường overgeneralize. BA cần evaluate từng story theo một user goal, outcome test được, rule source explicit và ranh giới rõ với behavior lân cận.
+
+## Bad vs better example
+
+| Cách làm yếu | Vì sao fail | Cách làm BA tốt hơn |
+| --- | --- | --- |
+| Generate mười user story cho feature | Backlog phình to nhưng chưa chứng minh story nào có value hoặc releasable. | Bắt đầu từ user goal, split theo permission, workflow step, exception và business value. |
+| Acceptance criteria ghi system works correctly | QA và developer không quan sát hoặc automate được success mơ hồ. | Viết Given-When-Then có data, state, actor, boundary và expected result. |
+| Bỏ qua negative và permission case | Happy path che giấu production defect và security issue. | Yêu cầu negative, boundary, audit và role-based criteria trước refinement. |
 
 ## AI collaboration prompt
 

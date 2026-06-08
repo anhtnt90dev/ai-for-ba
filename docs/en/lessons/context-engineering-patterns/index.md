@@ -23,7 +23,7 @@ description: "Good AI work is not a clever prompt; it is a reusable context pack
 Good AI work is not a clever prompt; it is a reusable context package with goals, sources, constraints, and review criteria.
 </div>
 
-Business Analysts sit between problem framing, stakeholder meaning, delivery constraints, and product decisions. In AI work, that position becomes more important because unclear language can create false certainty quickly. This lesson gives you a practical control you can apply before AI output becomes scope, backlog, or delivery commitment.
+This lesson matters because one-off prompts do not scale BA quality. Teams need repeatable context patterns that define role, goal, evidence, constraints, output format, review rules, and escalation behavior. Context engineering lets AI work become auditable, teachable, and reusable across projects instead of depending on individual prompt luck.
 
 ## Mental model or core concept
 
@@ -57,6 +57,18 @@ flowchart TD
 | Source | Documents, notes, IDs, freshness. | Controls grounding. | SRS v0.8, policy P-12, workshop notes. |
 | Task | Specific analysis job. | Avoids broad summaries. | Find ambiguity and NFR gaps. |
 | Output contract | Columns, format, quality bar. | Makes output reviewable. | Table with evidence and questions. |
+
+## AI expert note
+
+Context engineering is the BA equivalent of designing a controlled analysis environment. The expert move is to make task boundaries explicit: what sources may be used, what must be ignored, what format is required, what counts as evidence, and what the model must do when information is missing or conflicting.
+
+## Bad vs better example
+
+| Weak pattern | Why it fails | Stronger BA pattern |
+| --- | --- | --- |
+| Write a clever prompt for each new task | Quality depends on individual improvisation and is hard to review. | Create reusable prompt patterns with source rules, output contracts, and review gates. |
+| Give AI role and goal but no evidence rules | The model may blend provided facts with plausible external assumptions. | Specify allowed sources, unsupported-claim labels, and validation questions. |
+| Ask for a complete answer in one step | The model hides missing context while optimizing for fluency. | Use staged prompts: context pack, analysis, artifact draft, critique, and revision. |
 
 ## AI collaboration prompt
 

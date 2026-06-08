@@ -23,7 +23,7 @@ description: "BA lead nên scale AI adoption bằng use-case selection, risk tie
 BA lead nên scale AI adoption bằng use-case selection, risk tier, quality gate và operating model, không phải tool enthusiasm.
 </div>
 
-Business Analyst đứng giữa problem framing, ý nghĩa từ stakeholder, constraint triển khai và product decision. Trong công việc có AI, vị trí này quan trọng hơn vì ngôn ngữ chưa rõ có thể tạo false certainty rất nhanh. Bài này đưa ra một control thực tế để áp dụng trước khi output AI trở thành scope, backlog hoặc delivery commitment.
+Bài này quan trọng vì AI adoption ở scale BA team có thể cải thiện quality và cycle time, nhưng cũng có thể lan truyền artifact inconsistent, data leakage và false confidence. BA lead cần operating model: approved use case, risk tier, tool policy, prompt library, quality gate, training, metric và escalation path.
 
 ## Mental model or core concept
 
@@ -56,6 +56,18 @@ flowchart TD
 | Governance | Không có shared rule. | Data và review policy defined. | Risk-tier control và audit. |
 | Quality | AI output share trực tiếp. | Peer review cho AI-assisted artifact. | Quality gate và rubric metric. |
 | Capability | Tip cá nhân. | Team prompt library. | Coaching, playbook và community of practice. |
+
+## AI expert note
+
+AI governance nên enable high-quality work, không đóng băng experimentation. BA leadership chuyên gia định nghĩa workflow low-risk để tăng productivity, workflow medium-risk có review gate và workflow high-risk cần formal approval. Metric adoption nên đo artifact quality, review defect, cycle time, stakeholder satisfaction và avoided risk, không chỉ tool usage.
+
+## Bad vs better example
+
+| Cách làm yếu | Vì sao fail | Cách làm BA tốt hơn |
+| --- | --- | --- |
+| Roll out tool AI cho mọi BA rồi gọi là adoption | Usage tăng nhưng thiếu standard chung, safety rule và quality evidence. | Tạo workflow theo risk tier, approved tool, training, prompt library và review gate. |
+| Đo success bằng số prompt hoặc số user | Activity không chứng minh requirement tốt hơn hoặc decision an toàn hơn. | Đo cycle time, defect reduction, evidence quality, rework và stakeholder confidence. |
+| Để mỗi project tự invent AI rule | Quality và compliance biến động lớn giữa team. | Thiết lập BA AI operating model có governance role, audit và escalation. |
 
 ## AI collaboration prompt
 

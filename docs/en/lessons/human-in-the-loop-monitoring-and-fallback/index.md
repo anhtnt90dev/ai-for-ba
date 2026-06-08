@@ -23,7 +23,7 @@ description: "Responsible AI products need explicit paths for uncertainty, escal
 Responsible AI products need explicit paths for uncertainty, escalation, correction, and quality monitoring.
 </div>
 
-Business Analysts sit between problem framing, stakeholder meaning, delivery constraints, and product decisions. In AI work, that position becomes more important because unclear language can create false certainty quickly. This lesson gives you a practical control you can apply before AI output becomes scope, backlog, or delivery commitment.
+This lesson matters because human review is often written as a vague safeguard, then fails when operations need a real queue, SLA, decision rights, and audit trail. AI products need designed fallback and monitoring. The BA must specify what happens when confidence is low, risk is high, or evidence is missing.
 
 ## Mental model or core concept
 
@@ -56,6 +56,18 @@ flowchart TD
 | Reviewer action | List allowed decisions. | Approve, reject, request info, override. | Review completion SLA. |
 | Fallback | Define safe response when AI cannot answer. | Show escalation message and create task. | Fallback resolution time. |
 | Monitoring | Capture quality and drift signals. | Track overrides by category. | Override rate trend. |
+
+## AI expert note
+
+Human-in-the-loop is an operating workflow, not a slogan. Expert requirements define trigger conditions, reviewer role, allowed actions, escalation, user messaging, correction capture, quality monitoring, and accountability. A fallback is successful when it preserves user trust and business safety, not when it hides that AI failed.
+
+## Bad vs better example
+
+| Weak pattern | Why it fails | Stronger BA pattern |
+| --- | --- | --- |
+| Write that a human can review AI output | There is no trigger, queue, role, SLA, or decision authority. | Specify review triggers, routing, reviewer actions, SLA, audit record, and owner. |
+| Use fallback messages that sound confident | Users may not understand uncertainty or the next safe action. | Explain limitation, provide safe next step, and route to support or manual process. |
+| Monitor only uptime and latency | The system can be available while producing low-quality or risky outputs. | Track override rate, unsupported queries, error categories, drift signals, and review outcomes. |
 
 ## AI collaboration prompt
 

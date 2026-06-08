@@ -23,7 +23,7 @@ description: "AI can draft stories fast, but the BA must preserve business rules
 AI can draft stories fast, but the BA must preserve business rules, negative paths, permissions, and testability.
 </div>
 
-Business Analysts sit between problem framing, stakeholder meaning, delivery constraints, and product decisions. In AI work, that position becomes more important because unclear language can create false certainty quickly. This lesson gives you a practical control you can apply before AI output becomes scope, backlog, or delivery commitment.
+This lesson matters because AI can produce many stories quickly, but volume is not readiness. Development-ready BA work requires actor clarity, business value, observable behavior, boundaries, negative cases, permissions, and release decisions. If the BA does not control the structure, AI-generated stories become attractive backlog noise.
 
 ## Mental model or core concept
 
@@ -55,6 +55,18 @@ flowchart LR
 | Business rule | Rules and thresholds are named. | Rule hidden in vague wording. | Add rule source or open question. |
 | Acceptance criteria | Given-When-Then covers success and failure. | Only happy path exists. | Add negative and boundary cases. |
 | Testability | QA can verify expected result. | Uses subjective terms. | Replace vague terms with observable outcomes. |
+
+## AI expert note
+
+A user story is a decision container, not just a sentence template. AI is helpful for variation, edge cases, and Given-When-Then drafting, but it tends to overgeneralize. The BA should evaluate each story for one user goal, testable outcome, explicit rule source, and clear split from adjacent behavior.
+
+## Bad vs better example
+
+| Weak pattern | Why it fails | Stronger BA pattern |
+| --- | --- | --- |
+| Generate ten user stories for the feature | The backlog grows without proving which stories are valuable or releasable. | Start from user goals, split by permission, workflow step, exception, and business value. |
+| Accept criteria that say the system works correctly | QA and developers cannot observe or automate vague success. | Write Given-When-Then criteria with data, state, actor, boundary, and expected result. |
+| Ignore negative and permission cases | The happy path hides production defects and security issues. | Require negative, boundary, audit, and role-based acceptance criteria before refinement. |
 
 ## AI collaboration prompt
 

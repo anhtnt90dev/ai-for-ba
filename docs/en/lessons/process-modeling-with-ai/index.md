@@ -23,7 +23,7 @@ description: "AI can draft process flows, but BA quality comes from decisions, e
 AI can draft process flows, but BA quality comes from decisions, exceptions, ownership, and operational constraints.
 </div>
 
-Business Analysts sit between problem framing, stakeholder meaning, delivery constraints, and product decisions. In AI work, that position becomes more important because unclear language can create false certainty quickly. This lesson gives you a practical control you can apply before AI output becomes scope, backlog, or delivery commitment.
+This lesson matters because process models are where hidden requirements usually surface: handoffs, exception paths, timing, ownership, and system boundaries. AI can convert text into diagrams, but the BA must test whether the diagram exposes operational truth. A beautiful flow that misses escalation or manual override is dangerous.
 
 ## Mental model or core concept
 
@@ -57,6 +57,18 @@ flowchart TD
 | Decision | What rule chooses the branch? | Policy or business rule. | Diamond with vague condition. |
 | Exception | What happens when input is invalid? | Support scripts and error logs. | Happy path only. |
 | SLA/control | What timing or audit control applies? | Operational metric or compliance rule. | No escalation or audit. |
+
+## AI expert note
+
+AI-assisted process modeling should be treated as a hypothesis of the workflow. The expert BA asks whether every decision has a rule, every exception has an owner, every system interaction has a boundary, and every loop has a stopping condition. Diagrams should trigger better questions, not decorate requirements.
+
+## Bad vs better example
+
+| Weak pattern | Why it fails | Stronger BA pattern |
+| --- | --- | --- |
+| Ask AI to draw a process from a paragraph and accept it | The generated flow may omit exceptions, ownership, timing, and integration constraints. | Use the diagram as a review object and challenge every decision, handoff, and alternate path. |
+| Model only the happy path | Delivery teams discover queues, retries, and manual work too late. | Add failure, cancellation, timeout, escalation, and override paths. |
+| Mix user actions and system actions in one lane | Responsibility and automation boundaries become unclear. | Separate actors, systems, external services, and human reviewers into distinct lanes. |
 
 ## AI collaboration prompt
 

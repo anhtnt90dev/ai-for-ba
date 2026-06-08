@@ -62,6 +62,24 @@ function containsArtifactStructure(markdown) {
   return markdown.includes("| --- |") || (markdown.match(/^- /gm)?.length ?? 0) >= 4;
 }
 
+function stripHtmlCallouts(markdown) {
+  return markdown.replace(/<div class="ba-callout">[\s\S]*?<\/div>/g, "");
+}
+
+function normalizedText(markdown) {
+  return markdown
+    .replace(/```[\s\S]*?```/g, "")
+    .replace(/<[^>]+>/g, "")
+    .replace(/[|*_`#>-]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
+function wordCount(text) {
+  return text.split(/\s+/).filter(Boolean).length;
+}
+
 const requiredLessonHeadings = [
   "## Learning outcomes",
   "## Why this matters for BA work",
@@ -69,6 +87,8 @@ const requiredLessonHeadings = [
   "## Practical BA example",
   "## Diagram",
   "## BA artifact",
+  "## AI expert note",
+  "## Bad vs better example",
   "## AI collaboration prompt",
   "## Mistakes to avoid",
   "## Apply this tomorrow",
@@ -84,6 +104,8 @@ const requiredLabHeadings = [
 ];
 
 const diagramSignatures = new Set();
+const whyBodiesByLocale = { en: [], vi: [] };
+const expertBodiesByLocale = { en: [], vi: [] };
 const failures = [];
 
 assert(exists("README.md"), "README.md is required");
@@ -131,6 +153,17 @@ for (const locale of ["en", "vi"]) {
 
     const artifact = sectionContent(content, "BA artifact");
     assert(containsArtifactStructure(artifact), `${file} must include a structured BA artifact`);
+
+    const why = normalizedText(stripHtmlCallouts(sectionContent(content, "Why this matters for BA work")));
+    assert(wordCount(why) >= 35, `${file} must include a lesson-specific Why section with at least 35 words`);
+    whyBodiesByLocale[locale].push({ file, body: why });
+
+    const expert = normalizedText(sectionContent(content, "AI expert note"));
+    assert(wordCount(expert) >= 30, `${file} must include a substantive AI expert note with at least 30 words`);
+    expertBodiesByLocale[locale].push({ file, body: expert });
+
+    const badBetter = sectionContent(content, "Bad vs better example");
+    assert(badBetter.includes("| --- |"), `${file} must include a structured Bad vs better example table`);
   }
 
   for (const slug of listDirs(`docs/${locale}/labs`)) {
@@ -152,6 +185,20 @@ assert(
   diagramSignatures.size >= 30,
   `Lesson diagrams must be diverse across locales: expected at least 30 unique diagrams, got ${diagramSignatures.size}`
 );
+
+for (const locale of ["en", "vi"]) {
+  const uniqueWhyBodies = new Set(whyBodiesByLocale[locale].map((item) => item.body));
+  assert(
+    uniqueWhyBodies.size >= 18,
+    `${locale} lessons must have lesson-specific Why sections: expected at least 18 unique bodies, got ${uniqueWhyBodies.size}`
+  );
+
+  const uniqueExpertBodies = new Set(expertBodiesByLocale[locale].map((item) => item.body));
+  assert(
+    uniqueExpertBodies.size >= 18,
+    `${locale} lessons must have lesson-specific AI expert notes: expected at least 18 unique bodies, got ${uniqueExpertBodies.size}`
+  );
+}
 
 for (const file of [
   "docs/en/resources/index.md",

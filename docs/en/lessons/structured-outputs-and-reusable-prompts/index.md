@@ -23,7 +23,7 @@ description: "Structured output turns AI from a chat response into a reviewable 
 Structured output turns AI from a chat response into a reviewable BA artifact.
 </div>
 
-Business Analysts sit between problem framing, stakeholder meaning, delivery constraints, and product decisions. In AI work, that position becomes more important because unclear language can create false certainty quickly. This lesson gives you a practical control you can apply before AI output becomes scope, backlog, or delivery commitment.
+This lesson matters because BA artifacts must be compared, reviewed, traced, and handed off. Free-form AI prose is hard to validate at scale. Structured outputs make missing fields visible, enforce evidence discipline, and let teams reuse prompts for stories, risks, requirements, decisions, and review findings without starting from scratch.
 
 ## Mental model or core concept
 
@@ -57,6 +57,18 @@ flowchart TD
 | Output columns | Fields the artifact must contain. | Makes review systematic. | ID, issue, severity, evidence, question. |
 | Constraints | Rules AI must follow. | Prevents unsupported content. | Do not invent policy. |
 | Review rule | How output will be judged. | Aligns with BA quality. | Every row needs source or assumption. |
+
+## AI expert note
+
+Structured output is a control surface. The schema tells the model what dimensions matter and tells reviewers what must be checked. Expert BAs include source ID, assumption flag, confidence, decision owner, testability, risk level, and next action fields so the output supports governance, not just readability.
+
+## Bad vs better example
+
+| Weak pattern | Why it fails | Stronger BA pattern |
+| --- | --- | --- |
+| Ask AI for a detailed analysis in paragraphs | Important fields like owner, evidence, risk, and action can disappear. | Use tables or JSON-like structures with required columns and explicit missing-value handling. |
+| Reuse a prompt without a quality contract | The same prompt may produce inconsistent artifacts across projects. | Define output schema, acceptance criteria, review rubric, and revision instructions. |
+| Treat structured output as automatically correct | A table can look precise while containing unsupported data. | Validate each row for source support, decision status, and testability. |
 
 ## AI collaboration prompt
 

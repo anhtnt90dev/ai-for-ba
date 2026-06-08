@@ -14,6 +14,7 @@ A bilingual, artifact-driven course for software Business Analysts who need to u
 
 - Every lesson has its own Mermaid diagram.
 - Every lesson includes a concrete BA artifact: matrix, rubric, canvas, checklist, or specification table.
+- Every lesson now has a lesson-specific BA relevance section, expert AI review note, and bad-vs-better practice examples.
 - Lessons include mistakes to avoid and actions to apply tomorrow.
 - Labs include input samples, exercise steps, expected deliverables, and review rubrics.
 - Resources are upgraded into practical playbooks for prompts, quality review, AI feature specification, RAG, and governance.

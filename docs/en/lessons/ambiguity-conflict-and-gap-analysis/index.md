@@ -23,7 +23,7 @@ description: "AI is useful for requirement defect detection when the BA provides
 AI is useful for requirement defect detection when the BA provides a precise defect taxonomy and severity rubric.
 </div>
 
-Business Analysts sit between problem framing, stakeholder meaning, delivery constraints, and product decisions. In AI work, that position becomes more important because unclear language can create false certainty quickly. This lesson gives you a practical control you can apply before AI output becomes scope, backlog, or delivery commitment.
+This lesson matters because ambiguous requirements create the most expensive defects when they survive into design, build, and testing. AI can help scan for vague language and contradictions, but the BA must turn findings into a disciplined defect taxonomy. The goal is not better wording; it is earlier decision clarity.
 
 ## Mental model or core concept
 
@@ -59,6 +59,18 @@ flowchart TD
 | Conflict | Two rules cannot both be true. | Which rule wins and when? | VIP SLA overrides standard SLA. |
 | Missing rule | Decision branch lacks condition. | What business rule selects this path? | Reject if KYC status is expired. |
 | Non-testable | No observable expected result. | How will QA verify success? | Email status is logged as sent or failed. |
+
+## AI expert note
+
+Ambiguity analysis should distinguish missing information, conflicting rules, undefined terms, non-testable adjectives, actor confusion, and decision gaps. AI is strong at pattern detection, but expert BA work assigns severity, evidence, owner, and clarification path. A rewrite without decision support is still an assumption.
+
+## Bad vs better example
+
+| Weak pattern | Why it fails | Stronger BA pattern |
+| --- | --- | --- |
+| Ask AI to make the requirement clearer | The model may smooth over a missing decision instead of exposing it. | Classify the issue type, severity, evidence, and owner before rewriting. |
+| Treat all ambiguity as equal | A vague label and a missing compliance rule carry very different delivery risk. | Rank ambiguity by business impact, test impact, regulatory impact, and dependency. |
+| Accept AI rewrites that add new detail | The rewrite may invent thresholds, actors, or policy. | Only rewrite source-supported parts and mark the rest as clarification questions. |
 
 ## AI collaboration prompt
 

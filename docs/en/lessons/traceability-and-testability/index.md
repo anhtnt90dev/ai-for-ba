@@ -23,7 +23,7 @@ description: "Traceability makes AI-assisted requirements accountable from busin
 Traceability makes AI-assisted requirements accountable from business goal to test evidence.
 </div>
 
-Business Analysts sit between problem framing, stakeholder meaning, delivery constraints, and product decisions. In AI work, that position becomes more important because unclear language can create false certainty quickly. This lesson gives you a practical control you can apply before AI output becomes scope, backlog, or delivery commitment.
+This lesson matters because AI-assisted artifacts can multiply quickly, making it easy to lose the chain from business goal to requirement, source, decision, test, and release evidence. Traceability protects teams from elegant but unproven requirements. Testability turns AI suggestions into behavior that delivery teams can verify.
 
 ## Mental model or core concept
 
@@ -55,6 +55,18 @@ flowchart LR
 | Need to requirement | What system behavior supports it? | Send missing-doc reminder within 24 hours. | Behavior not observable. |
 | Requirement to AC | How is done verified? | Given missing doc, then reminder is sent. | No failure case. |
 | AC to metric | How will impact be measured? | Drop-off rate decreases by 10%. | No success metric. |
+
+## AI expert note
+
+For AI work, traceability should include evidence source, prompt or context package, model-assisted assumption, reviewer, decision owner, and evaluation case. Expert BAs treat traceability as risk control, not documentation overhead. If a requirement cannot be traced or tested, it should not become delivery commitment.
+
+## Bad vs better example
+
+| Weak pattern | Why it fails | Stronger BA pattern |
+| --- | --- | --- |
+| Keep AI drafts in chat and copy useful parts into tickets | The source, assumption, and review trail disappear. | Record source IDs, prompt context, reviewer, decision owner, and artifact version. |
+| Write tests only for happy-path generated behavior | AI features fail in edge cases, low confidence, and unsupported input. | Trace each requirement to positive, negative, fallback, and monitoring tests. |
+| Treat traceability as a compliance spreadsheet | The team fills fields without using them to manage risk. | Use trace links in refinement, QA planning, change impact, and release decisions. |
 
 ## AI collaboration prompt
 

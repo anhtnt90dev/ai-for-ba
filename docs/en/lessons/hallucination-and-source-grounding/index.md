@@ -23,7 +23,7 @@ description: "A BA must design evidence discipline into AI work so plausible tex
 A BA must design evidence discipline into AI work so plausible text does not become false requirements.
 </div>
 
-Business Analysts sit between problem framing, stakeholder meaning, delivery constraints, and product decisions. In AI work, that position becomes more important because unclear language can create false certainty quickly. This lesson gives you a practical control you can apply before AI output becomes scope, backlog, or delivery commitment.
+This lesson matters because a hallucinated sentence can become a requirement, a test case, a vendor score, or an estimate if nobody challenges it early. BA work turns language into commitment. Grounding rules make evidence visible, convert unsupported claims into questions, and prevent confident AI prose from becoming false project certainty.
 
 ## Mental model or core concept
 
@@ -54,6 +54,18 @@ flowchart BT
 | Stakeholder confirmation | Yes | Confirmed decision | Ops manager approves manual override. |
 | Reasoned inference | Maybe | Assumption to validate | High-risk cases likely need audit. |
 | No support | No | Unsupported claim | Vendor capability not documented. |
+
+## AI expert note
+
+The practical control is not simply asking AI to cite sources. The BA must verify that the cited source actually supports the claim, decide which evidence level is acceptable, and require fallback when support is weak. For high-impact requirements, grounding should be part of the artifact format, not an optional review note.
+
+## Bad vs better example
+
+| Weak pattern | Why it fails | Stronger BA pattern |
+| --- | --- | --- |
+| Accept a cited claim without opening the source | The citation may be adjacent, outdated, or unrelated to the specific claim. | Check claim-to-source support and record evidence level in the requirement table. |
+| Rewrite unsupported AI claims into polished requirements | Better wording makes weak evidence harder to detect. | Move unsupported claims into open questions with owner and validation method. |
+| Use the same evidence threshold for all requirements | Low-risk copy and regulated decisions need different controls. | Define evidence levels by risk tier and business impact. |
 
 ## AI collaboration prompt
 

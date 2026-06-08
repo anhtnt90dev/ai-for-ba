@@ -23,7 +23,7 @@ description: "Với BA, RAG không chỉ là UI chatbot; trọng tâm là govern
 Với BA, RAG không chỉ là UI chatbot; trọng tâm là governance tri thức nào hệ thống được phép tin.
 </div>
 
-Business Analyst đứng giữa problem framing, ý nghĩa từ stakeholder, constraint triển khai và product decision. Trong công việc có AI, vị trí này quan trọng hơn vì ngôn ngữ chưa rõ có thể tạo false certainty rất nhanh. Bài này đưa ra một control thực tế để áp dụng trước khi output AI trở thành scope, backlog hoặc delivery commitment.
+Bài này quan trọng vì nhiều tổ chức gọi tính năng là RAG trong khi requirement thật là governance tri thức đáng tin. Nếu BA chỉ đặc tả chat interface, assistant có thể retrieve material cũ, không được phép xem hoặc conflict. Định nghĩa source authority, freshness, permission, citation behavior và fallback mới biến RAG thành capability dùng được.
 
 ## Mental model or core concept
 
@@ -57,6 +57,18 @@ flowchart LR
 | Freshness | Effective date phải visible và source mới được rank cao hơn. | Freshness error dưới 1%. | Policy cũ override rule mới. |
 | Access control | Chỉ retrieve document user được phép xem. | Không leakage cross-role trong test. | Policy manager-only lộ cho employee. |
 | Fallback | Nếu citation không đủ confident, trả lời kèm escalation path. | Fallback được dùng cho unsupported question. | Assistant tự bịa policy. |
+
+## AI expert note
+
+RAG quality thường fail ở retrieval trước khi fail ở generation. Spec BA mạnh phải cover ingestion ownership, metadata, chunking assumption, ranking priority, access control, source conflict handling và retrieval evaluation. Tone của answer là thứ yếu; test chính là hệ thống có tìm đúng evidence cho đúng user hay không.
+
+## Bad vs better example
+
+| Cách làm yếu | Vì sao fail | Cách làm BA tốt hơn |
+| --- | --- | --- |
+| Đặc tả answer phải dùng company document | Câu này không nói document nào approved, current hoặc visible cho từng role. | Tạo knowledge contract gồm source inventory, owner, effective date và access rule. |
+| Chỉ evaluate answer có nghe helpful không | Answer thân thiện vẫn có thể cite nhầm policy hoặc miss source tốt hơn. | Đo retrieval precision, citation support, fallback rate và conflict detection. |
+| Để assistant trả lời khi source conflict | User có thể hành động theo rule sai trong khi hệ thống rất tự tin. | Hiển thị conflict warning, cite cả hai source và route tới owner chịu trách nhiệm. |
 
 ## AI collaboration prompt
 

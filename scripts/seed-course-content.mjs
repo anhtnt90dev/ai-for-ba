@@ -772,6 +772,257 @@ const labs = [
   }
 ];
 
+const lessonUpgrades = {
+  "ai-landscape-for-ba": {
+    en: {
+      why: "This lesson matters because the earliest failure in AI initiatives is usually problem classification, not model selection. If the BA frames a deterministic workflow issue as a GenAI feature, the team inherits avoidable uncertainty, cost, and governance work. Correct classification protects budget, backlog priority, vendor conversations, and stakeholder expectations before architecture starts.",
+      expert: "As an AI reviewer, I would ask the BA to prove the problem type before approving any solution shape. Good AI analysis separates language generation, knowledge retrieval, prediction, orchestration, and decision support. That distinction drives data needs, evaluation metrics, risk controls, UX behavior, and whether the feature should use AI at all.",
+      badBetter: [["Ask for a chatbot because leadership wants AI", "It treats the tool as the requirement and hides the actual decision problem.", "Classify the job as prediction, retrieval, generation, automation, or decision support before naming the solution."], ["Compare AI vendors before defining evidence and data needs", "Vendor demos look convincing even when the business problem is still ambiguous.", "Define outcome metric, data dependency, source authority, and user decision first."], ["Put every idea into the GenAI backlog", "Simple routing and stable policy checks become slower and riskier.", "Use rules, workflow, search, or RAG when they fit better than open-ended generation."]]
+    },
+    vi: {
+      why: "Bài này quan trọng vì thất bại sớm của sáng kiến AI thường nằm ở phân loại problem, không phải chọn model. Nếu BA frame một workflow deterministic thành tính năng GenAI, team sẽ phải gánh uncertainty, cost và governance không cần thiết. Phân loại đúng giúp bảo vệ budget, backlog priority, vendor discussion và expectation trước khi bắt đầu architecture.",
+      expert: "Với góc nhìn chuyên gia AI, tôi sẽ yêu cầu BA chứng minh problem type trước khi duyệt solution shape. Phân tích tốt phải tách language generation, knowledge retrieval, prediction, orchestration và decision support. Sự phân biệt này quyết định data need, evaluation metric, risk control, UX behavior và cả việc có nên dùng AI hay không.",
+      badBetter: [["Yêu cầu chatbot vì lãnh đạo muốn có AI", "Tool bị xem như requirement và problem decision thật bị che khuất.", "Phân loại job là prediction, retrieval, generation, automation hay decision support trước khi gọi tên solution."], ["So sánh vendor AI trước khi định nghĩa evidence và data need", "Demo vendor có thể thuyết phục dù business problem vẫn mơ hồ.", "Chốt outcome metric, data dependency, source authority và user decision trước."], ["Đưa mọi ý tưởng vào backlog GenAI", "Routing đơn giản và policy ổn định trở nên chậm hơn và rủi ro hơn.", "Dùng rule, workflow, search hoặc RAG khi phù hợp hơn open-ended generation."]]
+    }
+  },
+  "llm-mental-model": {
+    en: {
+      why: "This lesson matters because LLM output often sounds complete before it is actually governed, sourced, or testable. BAs who understand the mental model can use AI as a structured drafting and critique partner without confusing fluent text with business approval. That keeps requirements reviewable and prevents hidden assumptions from entering delivery artifacts.",
+      expert: "An LLM is a probabilistic system with strong language patterning, not an authoritative requirements engine. The BA must manage context, examples, constraints, and review criteria. Expert use means asking for assumptions, evidence labels, counterexamples, and testability checks, then treating the answer as a candidate artifact awaiting human validation.",
+      badBetter: [["Ask the model for final acceptance criteria from a one-line idea", "The model will fill missing policy, permissions, and edge cases with plausible inventions.", "Provide rules, actors, constraints, examples, and require assumptions to be listed separately."], ["Use confidence language from the model as approval", "Model confidence is not stakeholder confirmation or regulatory evidence.", "Route material claims to source review or decision owners before publishing."], ["Share a polished AI draft without review markings", "Stakeholders cannot see what is fact, inference, or unsupported text.", "Add a review table for source-backed facts, assumptions, open questions, and owner decisions."]]
+    },
+    vi: {
+      why: "Bài này quan trọng vì output của LLM thường nghe rất hoàn chỉnh trước khi nó thật sự được governance, có source hoặc test được. BA hiểu mental model sẽ dùng AI như partner để draft và critique có cấu trúc, không nhầm text trôi chảy với business approval. Điều này giữ requirement ở trạng thái reviewable và ngăn assumption ẩn đi vào artifact triển khai.",
+      expert: "LLM là hệ thống xác suất có khả năng pattern language rất mạnh, không phải requirement engine có thẩm quyền. BA phải quản lý context, example, constraint và review criteria. Dùng chuyên nghiệp nghĩa là yêu cầu assumption, evidence label, counterexample và testability check, sau đó xem answer như candidate artifact cần human validation.",
+      badBetter: [["Yêu cầu model viết final acceptance criteria từ một idea một dòng", "Model sẽ tự điền policy, permission và edge case còn thiếu bằng invention nghe hợp lý.", "Cung cấp rule, actor, constraint, example và bắt model list assumption riêng."], ["Xem ngôn ngữ tự tin của model là approval", "Model confidence không phải stakeholder confirmation hoặc regulatory evidence.", "Đưa material claim qua source review hoặc decision owner trước khi publish."], ["Share draft AI bóng bẩy nhưng không có dấu review", "Stakeholder không thấy đâu là fact, inference hay unsupported text.", "Thêm bảng review cho source-backed fact, assumption, open question và owner decision."]]
+    }
+  },
+  "tokens-context-and-memory": {
+    en: {
+      why: "This lesson matters because most BA artifacts depend on long histories: transcripts, policies, decisions, exceptions, and prior commitments. AI tools can only reason over the context they can see and retain. A BA who controls source maps and chunking plans reduces missed requirements, stale policy reuse, and shallow summaries that look organized but lose critical detail.",
+      expert: "Expert AI use treats context as an analysis asset. Long-context models still suffer from attention dilution, source conflict, and recency ambiguity. The BA should design review passes, source IDs, chunk purpose, decision logs, and reconciliation steps so that AI output remains traceable rather than becoming an attractive summary of incomplete evidence.",
+      badBetter: [["Upload all documents and ask for all gaps", "The model may summarize broadly and miss late, rare, or cross-document constraints.", "Review by source ID and module, then run a reconciliation pass for conflicts and omissions."], ["Mix old policy, draft notes, and approved decisions without labels", "The model cannot reliably know what is current or authoritative.", "Label source status, effective date, owner, and confidence before analysis."], ["Use chat history as project memory", "Important decisions become inaccessible, reordered, or invisible to other team members.", "Create an explicit context pack with source map, decision log, and open questions."]]
+    },
+    vi: {
+      why: "Bài này quan trọng vì hầu hết artifact BA phụ thuộc vào lịch sử dài: transcript, policy, decision, exception và commitment trước đó. AI chỉ reason được trên context nó nhìn thấy và giữ được. BA kiểm soát source map và chunking plan sẽ giảm miss requirement, dùng nhầm policy cũ và summary nông nhưng nhìn có vẻ gọn.",
+      expert: "Dùng AI ở mức chuyên gia xem context như một analysis asset. Model long-context vẫn có attention dilution, source conflict và recency ambiguity. BA nên thiết kế review pass, source ID, mục đích chunk, decision log và bước reconciliation để output AI traceable thay vì chỉ là summary đẹp của evidence thiếu.",
+      badBetter: [["Upload toàn bộ tài liệu rồi hỏi tất cả gap", "Model có thể summarize rộng và bỏ sót constraint ở phần sau, hiếm gặp hoặc nằm giữa nhiều document.", "Review theo source ID và module, sau đó chạy pass reconcile conflict và omission."], ["Trộn policy cũ, draft note và decision đã approve không label", "Model không thể chắc đâu là current hoặc authoritative.", "Label source status, effective date, owner và confidence trước khi analysis."], ["Dùng chat history như project memory", "Decision quan trọng có thể bị ẩn, đổi thứ tự hoặc người khác không truy cập được.", "Tạo context pack explicit gồm source map, decision log và open question."]]
+    }
+  },
+  "hallucination-and-source-grounding": {
+    en: {
+      why: "This lesson matters because a hallucinated sentence can become a requirement, a test case, a vendor score, or an estimate if nobody challenges it early. BA work turns language into commitment. Grounding rules make evidence visible, convert unsupported claims into questions, and prevent confident AI prose from becoming false project certainty.",
+      expert: "The practical control is not simply asking AI to cite sources. The BA must verify that the cited source actually supports the claim, decide which evidence level is acceptable, and require fallback when support is weak. For high-impact requirements, grounding should be part of the artifact format, not an optional review note.",
+      badBetter: [["Accept a cited claim without opening the source", "The citation may be adjacent, outdated, or unrelated to the specific claim.", "Check claim-to-source support and record evidence level in the requirement table."], ["Rewrite unsupported AI claims into polished requirements", "Better wording makes weak evidence harder to detect.", "Move unsupported claims into open questions with owner and validation method."], ["Use the same evidence threshold for all requirements", "Low-risk copy and regulated decisions need different controls.", "Define evidence levels by risk tier and business impact."]]
+    },
+    vi: {
+      why: "Bài này quan trọng vì một câu hallucination có thể biến thành requirement, test case, vendor score hoặc estimate nếu không bị challenge sớm. Công việc BA biến ngôn ngữ thành commitment. Grounding rule làm evidence visible, chuyển unsupported claim thành question và ngăn AI prose tự tin trở thành false certainty của dự án.",
+      expert: "Control thực tế không chỉ là yêu cầu AI cite source. BA phải kiểm tra source được cite có thật sự support claim không, quyết định evidence level nào chấp nhận được và yêu cầu fallback khi support yếu. Với requirement high-impact, grounding nên là format của artifact, không phải note review tùy chọn.",
+      badBetter: [["Chấp nhận claim có citation mà không mở source", "Citation có thể chỉ liên quan gần, đã cũ hoặc không support đúng claim.", "Kiểm tra claim-to-source support và ghi evidence level trong requirement table."], ["Rewrite unsupported AI claim thành requirement mượt hơn", "Wording tốt làm evidence yếu khó phát hiện hơn.", "Đưa unsupported claim vào open question có owner và validation method."], ["Dùng cùng evidence threshold cho mọi requirement", "Low-risk copy và regulated decision cần control khác nhau.", "Định nghĩa evidence level theo risk tier và business impact."]]
+    }
+  },
+  "embeddings-rag-and-knowledge": {
+    en: {
+      why: "This lesson matters because many organizations call a feature RAG when the real requirement is trusted knowledge governance. If the BA only specifies a chat interface, the assistant may retrieve stale, inaccessible, or conflicting material. Defining source authority, freshness, permissions, citation behavior, and fallback is what turns RAG into a usable business capability.",
+      expert: "RAG quality fails in retrieval before it fails in generation. A strong BA specification covers ingestion ownership, metadata, chunking assumptions, ranking priority, access control, source conflict handling, and retrieval evaluation. Answer tone is secondary; the primary test is whether the system found the right evidence for the right user.",
+      badBetter: [["Specify that answers must use company documents", "The phrase does not define which documents are approved, current, or visible to each role.", "Create a knowledge contract with source inventory, owner, effective date, and access rules."], ["Evaluate only whether answers sound helpful", "A friendly answer can still cite the wrong policy or miss a better source.", "Measure retrieval precision, citation support, fallback rate, and conflict detection."], ["Let the assistant answer when sources conflict", "Users may act on the wrong rule while the system appears confident.", "Show conflict warning, cite both sources, and route to the accountable owner."]]
+    },
+    vi: {
+      why: "Bài này quan trọng vì nhiều tổ chức gọi tính năng là RAG trong khi requirement thật là governance tri thức đáng tin. Nếu BA chỉ đặc tả chat interface, assistant có thể retrieve material cũ, không được phép xem hoặc conflict. Định nghĩa source authority, freshness, permission, citation behavior và fallback mới biến RAG thành capability dùng được.",
+      expert: "RAG quality thường fail ở retrieval trước khi fail ở generation. Spec BA mạnh phải cover ingestion ownership, metadata, chunking assumption, ranking priority, access control, source conflict handling và retrieval evaluation. Tone của answer là thứ yếu; test chính là hệ thống có tìm đúng evidence cho đúng user hay không.",
+      badBetter: [["Đặc tả answer phải dùng company document", "Câu này không nói document nào approved, current hoặc visible cho từng role.", "Tạo knowledge contract gồm source inventory, owner, effective date và access rule."], ["Chỉ evaluate answer có nghe helpful không", "Answer thân thiện vẫn có thể cite nhầm policy hoặc miss source tốt hơn.", "Đo retrieval precision, citation support, fallback rate và conflict detection."], ["Để assistant trả lời khi source conflict", "User có thể hành động theo rule sai trong khi hệ thống rất tự tin.", "Hiển thị conflict warning, cite cả hai source và route tới owner chịu trách nhiệm."]]
+    }
+  },
+  "discovery-with-ai": {
+    en: {
+      why: "This lesson matters because AI can make discovery feel faster while silently replacing uncertainty with invented completeness. The BA's value is to turn AI suggestions into hypotheses, not conclusions. A good discovery workflow uses AI to widen the question space, then uses evidence, workshops, interviews, and data to decide what is true.",
+      expert: "AI is useful in discovery because it can generate alternative actors, edge cases, risks, and interview angles quickly. The danger is anchoring: once a fluent list exists, stakeholders may stop exploring. The BA should explicitly label hypothesis, evidence needed, validation method, and decision owner before converting anything into requirements.",
+      badBetter: [["Ask AI to write requirements from a business problem", "The model will collapse discovery uncertainty into premature scope.", "Ask for hypotheses, assumptions, evidence needed, and workshop questions first."], ["Use AI-generated stakeholder lists as final", "Important internal owners, regulators, or operational users may be absent.", "Validate actors against process maps, org roles, customer journeys, and decision rights."], ["Prioritize questions that are easy to answer", "The team may avoid the riskiest assumptions until delivery.", "Rank hypotheses by business impact, evidence gap, and decision urgency."]]
+    },
+    vi: {
+      why: "Bài này quan trọng vì AI có thể làm discovery có vẻ nhanh hơn nhưng âm thầm thay uncertainty bằng completeness tự bịa. Giá trị của BA là biến suggestion của AI thành hypothesis, không phải conclusion. Workflow discovery tốt dùng AI để mở rộng question space, rồi dùng evidence, workshop, interview và data để quyết định điều gì đúng.",
+      expert: "AI hữu ích trong discovery vì nó tạo alternative actor, edge case, risk và interview angle rất nhanh. Nguy hiểm là anchoring: khi đã có list trôi chảy, stakeholder có thể ngừng khám phá. BA phải label rõ hypothesis, evidence needed, validation method và decision owner trước khi chuyển bất kỳ phần nào thành requirement.",
+      badBetter: [["Yêu cầu AI viết requirement từ business problem", "Model sẽ biến uncertainty của discovery thành scope quá sớm.", "Trước hết yêu cầu hypothesis, assumption, evidence needed và workshop question."], ["Xem stakeholder list do AI tạo là final", "Owner nội bộ, regulator hoặc operational user quan trọng có thể bị thiếu.", "Validate actor bằng process map, org role, customer journey và decision right."], ["Ưu tiên câu hỏi dễ trả lời", "Team có thể né assumption rủi ro nhất cho tới lúc delivery.", "Rank hypothesis theo business impact, evidence gap và decision urgency."]]
+    }
+  },
+  "stakeholder-interviews-and-synthesis": {
+    en: {
+      why: "This lesson matters because AI can summarize interviews quickly, but speed can flatten disagreement, source attribution, and political nuance. For BA work, the important output is not a neat summary; it is a reliable synthesis that preserves who said what, where stakeholders conflict, which decision is missing, and what evidence still needs validation.",
+      expert: "Interview synthesis should treat transcripts as evidence, not objective truth. AI can cluster themes and detect contradictions, but the BA must preserve attribution, role context, emotion, and decision authority. Expert practice is to separate quote-backed facts, interpreted needs, conflicts, and follow-up questions before drafting any requirement.",
+      badBetter: [["Ask AI for a clean summary of all interviews", "A clean summary can erase contradictions and minority but critical concerns.", "Request themes with speaker attribution, conflict points, evidence strength, and follow-up questions."], ["Merge similar stakeholder statements into one need", "Different roles may use the same words for different operational problems.", "Keep role, context, scenario, and decision impact attached to each synthesized need."], ["Treat transcript sentiment as priority", "Emotion signals importance but does not prove business value or feasibility.", "Combine sentiment with frequency, risk, revenue, compliance, and decision ownership."]]
+    },
+    vi: {
+      why: "Bài này quan trọng vì AI summarize interview rất nhanh, nhưng tốc độ có thể làm phẳng disagreement, source attribution và political nuance. Với BA, output quan trọng không phải summary gọn; đó là synthesis đáng tin giữ được ai nói gì, stakeholder conflict ở đâu, decision nào thiếu và evidence nào còn cần validate.",
+      expert: "Synthesis interview nên xem transcript là evidence, không phải objective truth. AI có thể cluster theme và detect contradiction, nhưng BA phải giữ attribution, role context, emotion và decision authority. Thực hành chuyên gia là tách quote-backed fact, interpreted need, conflict và follow-up question trước khi draft requirement.",
+      badBetter: [["Yêu cầu AI tạo clean summary của mọi interview", "Summary quá gọn có thể xóa contradiction và concern ít người nói nhưng rất critical.", "Yêu cầu theme có speaker attribution, conflict point, evidence strength và follow-up question."], ["Gộp statement giống nhau thành một need", "Role khác nhau có thể dùng cùng từ nhưng nói về operational problem khác.", "Giữ role, context, scenario và decision impact gắn với từng synthesized need."], ["Xem sentiment trong transcript là priority", "Emotion báo hiệu importance nhưng không chứng minh business value hoặc feasibility.", "Kết hợp sentiment với frequency, risk, revenue, compliance và decision ownership."]]
+    }
+  },
+  "user-stories-and-acceptance-criteria": {
+    en: {
+      why: "This lesson matters because AI can produce many stories quickly, but volume is not readiness. Development-ready BA work requires actor clarity, business value, observable behavior, boundaries, negative cases, permissions, and release decisions. If the BA does not control the structure, AI-generated stories become attractive backlog noise.",
+      expert: "A user story is a decision container, not just a sentence template. AI is helpful for variation, edge cases, and Given-When-Then drafting, but it tends to overgeneralize. The BA should evaluate each story for one user goal, testable outcome, explicit rule source, and clear split from adjacent behavior.",
+      badBetter: [["Generate ten user stories for the feature", "The backlog grows without proving which stories are valuable or releasable.", "Start from user goals, split by permission, workflow step, exception, and business value."], ["Accept criteria that say the system works correctly", "QA and developers cannot observe or automate vague success.", "Write Given-When-Then criteria with data, state, actor, boundary, and expected result."], ["Ignore negative and permission cases", "The happy path hides production defects and security issues.", "Require negative, boundary, audit, and role-based acceptance criteria before refinement."]]
+    },
+    vi: {
+      why: "Bài này quan trọng vì AI có thể tạo rất nhiều story nhanh, nhưng số lượng không phải readiness. BA artifact sẵn sàng cho development cần rõ actor, business value, observable behavior, boundary, negative case, permission và release decision. Nếu BA không kiểm soát structure, story do AI sinh sẽ trở thành backlog noise nhìn hấp dẫn.",
+      expert: "User story là decision container, không chỉ là sentence template. AI hữu ích để tạo variation, edge case và draft Given-When-Then, nhưng nó thường overgeneralize. BA cần evaluate từng story theo một user goal, outcome test được, rule source explicit và ranh giới rõ với behavior lân cận.",
+      badBetter: [["Generate mười user story cho feature", "Backlog phình to nhưng chưa chứng minh story nào có value hoặc releasable.", "Bắt đầu từ user goal, split theo permission, workflow step, exception và business value."], ["Acceptance criteria ghi system works correctly", "QA và developer không quan sát hoặc automate được success mơ hồ.", "Viết Given-When-Then có data, state, actor, boundary và expected result."], ["Bỏ qua negative và permission case", "Happy path che giấu production defect và security issue.", "Yêu cầu negative, boundary, audit và role-based criteria trước refinement."]]
+    }
+  },
+  "process-modeling-with-ai": {
+    en: {
+      why: "This lesson matters because process models are where hidden requirements usually surface: handoffs, exception paths, timing, ownership, and system boundaries. AI can convert text into diagrams, but the BA must test whether the diagram exposes operational truth. A beautiful flow that misses escalation or manual override is dangerous.",
+      expert: "AI-assisted process modeling should be treated as a hypothesis of the workflow. The expert BA asks whether every decision has a rule, every exception has an owner, every system interaction has a boundary, and every loop has a stopping condition. Diagrams should trigger better questions, not decorate requirements.",
+      badBetter: [["Ask AI to draw a process from a paragraph and accept it", "The generated flow may omit exceptions, ownership, timing, and integration constraints.", "Use the diagram as a review object and challenge every decision, handoff, and alternate path."], ["Model only the happy path", "Delivery teams discover queues, retries, and manual work too late.", "Add failure, cancellation, timeout, escalation, and override paths."], ["Mix user actions and system actions in one lane", "Responsibility and automation boundaries become unclear.", "Separate actors, systems, external services, and human reviewers into distinct lanes."]]
+    },
+    vi: {
+      why: "Bài này quan trọng vì process model là nơi requirement ẩn thường lộ ra: handoff, exception path, timing, ownership và system boundary. AI có thể chuyển text thành diagram, nhưng BA phải kiểm tra diagram có phản ánh operational truth không. Flow đẹp mà miss escalation hoặc manual override sẽ rất nguy hiểm.",
+      expert: "Process modeling với AI nên được xem là hypothesis về workflow. BA chuyên gia sẽ hỏi mỗi decision có rule chưa, mỗi exception có owner chưa, mỗi system interaction có boundary chưa và mỗi loop có stopping condition chưa. Diagram phải kích hoạt câu hỏi tốt hơn, không chỉ trang trí requirement.",
+      badBetter: [["Yêu cầu AI vẽ process từ một đoạn và accept luôn", "Flow sinh ra có thể omit exception, ownership, timing và integration constraint.", "Dùng diagram như review object và challenge từng decision, handoff, alternate path."], ["Chỉ model happy path", "Delivery team phát hiện queue, retry và manual work quá muộn.", "Thêm path failure, cancellation, timeout, escalation và override."], ["Trộn user action và system action trong một lane", "Responsibility và automation boundary trở nên mơ hồ.", "Tách actor, system, external service và human reviewer thành lane riêng."]]
+    }
+  },
+  "context-engineering-patterns": {
+    en: {
+      why: "This lesson matters because one-off prompts do not scale BA quality. Teams need repeatable context patterns that define role, goal, evidence, constraints, output format, review rules, and escalation behavior. Context engineering lets AI work become auditable, teachable, and reusable across projects instead of depending on individual prompt luck.",
+      expert: "Context engineering is the BA equivalent of designing a controlled analysis environment. The expert move is to make task boundaries explicit: what sources may be used, what must be ignored, what format is required, what counts as evidence, and what the model must do when information is missing or conflicting.",
+      badBetter: [["Write a clever prompt for each new task", "Quality depends on individual improvisation and is hard to review.", "Create reusable prompt patterns with source rules, output contracts, and review gates."], ["Give AI role and goal but no evidence rules", "The model may blend provided facts with plausible external assumptions.", "Specify allowed sources, unsupported-claim labels, and validation questions."], ["Ask for a complete answer in one step", "The model hides missing context while optimizing for fluency.", "Use staged prompts: context pack, analysis, artifact draft, critique, and revision."]]
+    },
+    vi: {
+      why: "Bài này quan trọng vì prompt dùng một lần không scale được quality của BA team. Team cần context pattern lặp lại được, định nghĩa role, goal, evidence, constraint, output format, review rule và escalation behavior. Context engineering giúp AI work có thể audit, dạy lại và reuse trên nhiều project thay vì phụ thuộc prompt luck cá nhân.",
+      expert: "Context engineering là cách BA thiết kế môi trường analysis có kiểm soát. Điểm chuyên gia là làm task boundary explicit: source nào được dùng, phần nào phải ignore, format nào bắt buộc, evidence được tính ra sao và model phải làm gì khi information thiếu hoặc conflict.",
+      badBetter: [["Viết prompt thông minh riêng cho từng task", "Quality phụ thuộc improvisation cá nhân và khó review.", "Tạo prompt pattern reusable có source rule, output contract và review gate."], ["Cho AI role và goal nhưng thiếu evidence rule", "Model có thể trộn fact được cung cấp với assumption bên ngoài nghe hợp lý.", "Đặc tả allowed source, unsupported-claim label và validation question."], ["Yêu cầu answer hoàn chỉnh trong một bước", "Model che missing context để tối ưu fluency.", "Dùng staged prompt: context pack, analysis, artifact draft, critique và revision."]]
+    }
+  },
+  "review-loops-and-critique": {
+    en: {
+      why: "This lesson matters because first AI drafts are optimized for fluency, not necessarily for correctness, risk, or delivery readiness. Review loops turn AI from a drafting shortcut into a quality system. BAs can use critique passes to expose ambiguity, missing rules, unsupported claims, test gaps, and stakeholder decisions before artifacts move downstream.",
+      expert: "The most effective AI workflows separate creation from critique. Expert BAs design named review lenses: evidence, testability, risk, stakeholder conflict, operational feasibility, and compliance. Asking the same model to critique its own draft helps, but stronger practice uses explicit rubrics, source checks, and human review for high-risk decisions.",
+      badBetter: [["Accept the first AI draft because it reads well", "Fluency can hide ambiguity, false claims, and untestable wording.", "Run critique passes for evidence, specificity, testability, and risk before sharing."], ["Ask a generic question like what is wrong with this", "The critique may be shallow and miss the BA quality dimensions.", "Use a rubric with required lenses, severity, source reference, and recommended fix."], ["Let review comments remain informal", "The team cannot track whether risks were resolved.", "Convert critique findings into a defect register or decision log with owners."]]
+    },
+    vi: {
+      why: "Bài này quan trọng vì draft AI đầu tiên tối ưu cho fluency, không nhất thiết đúng, ít rủi ro hoặc sẵn sàng delivery. Review loop biến AI từ shortcut draft thành quality system. BA có thể dùng critique pass để lộ ambiguity, missing rule, unsupported claim, test gap và stakeholder decision trước khi artifact đi xuống downstream.",
+      expert: "Workflow AI hiệu quả nhất tách creation khỏi critique. BA chuyên gia thiết kế review lens có tên rõ: evidence, testability, risk, stakeholder conflict, operational feasibility và compliance. Yêu cầu cùng model critique draft của nó có ích, nhưng thực hành mạnh hơn là dùng rubric explicit, source check và human review cho decision high-risk.",
+      badBetter: [["Accept draft AI đầu tiên vì đọc rất mượt", "Fluency có thể che ambiguity, false claim và wording không test được.", "Chạy critique pass cho evidence, specificity, testability và risk trước khi share."], ["Hỏi chung chung what is wrong with this", "Critique có thể nông và miss dimension quality của BA.", "Dùng rubric có required lens, severity, source reference và recommended fix."], ["Để review comment ở dạng informal", "Team không track được risk đã resolve hay chưa.", "Chuyển critique finding thành defect register hoặc decision log có owner."]]
+    }
+  },
+  "structured-outputs-and-reusable-prompts": {
+    en: {
+      why: "This lesson matters because BA artifacts must be compared, reviewed, traced, and handed off. Free-form AI prose is hard to validate at scale. Structured outputs make missing fields visible, enforce evidence discipline, and let teams reuse prompts for stories, risks, requirements, decisions, and review findings without starting from scratch.",
+      expert: "Structured output is a control surface. The schema tells the model what dimensions matter and tells reviewers what must be checked. Expert BAs include source ID, assumption flag, confidence, decision owner, testability, risk level, and next action fields so the output supports governance, not just readability.",
+      badBetter: [["Ask AI for a detailed analysis in paragraphs", "Important fields like owner, evidence, risk, and action can disappear.", "Use tables or JSON-like structures with required columns and explicit missing-value handling."], ["Reuse a prompt without a quality contract", "The same prompt may produce inconsistent artifacts across projects.", "Define output schema, acceptance criteria, review rubric, and revision instructions."], ["Treat structured output as automatically correct", "A table can look precise while containing unsupported data.", "Validate each row for source support, decision status, and testability."]]
+    },
+    vi: {
+      why: "Bài này quan trọng vì artifact BA cần được compare, review, trace và handoff. Prose tự do của AI rất khó validate ở scale. Structured output làm missing field visible, enforce evidence discipline và giúp team reuse prompt cho story, risk, requirement, decision và review finding mà không phải bắt đầu lại.",
+      expert: "Structured output là một control surface. Schema nói cho model biết dimension nào quan trọng và nói cho reviewer biết phải check gì. BA chuyên gia thêm source ID, assumption flag, confidence, decision owner, testability, risk level và next action để output hỗ trợ governance, không chỉ readability.",
+      badBetter: [["Yêu cầu AI phân tích chi tiết bằng paragraph", "Field quan trọng như owner, evidence, risk và action có thể biến mất.", "Dùng table hoặc JSON-like structure với column bắt buộc và cách xử lý missing value rõ."], ["Reuse prompt nhưng không có quality contract", "Cùng prompt có thể tạo artifact inconsistent giữa project.", "Định nghĩa output schema, acceptance criteria, review rubric và revision instruction."], ["Xem structured output là tự động đúng", "Bảng nhìn precise nhưng vẫn có thể chứa data unsupported.", "Validate từng row theo source support, decision status và testability."]]
+    }
+  },
+  "ambiguity-conflict-and-gap-analysis": {
+    en: {
+      why: "This lesson matters because ambiguous requirements create the most expensive defects when they survive into design, build, and testing. AI can help scan for vague language and contradictions, but the BA must turn findings into a disciplined defect taxonomy. The goal is not better wording; it is earlier decision clarity.",
+      expert: "Ambiguity analysis should distinguish missing information, conflicting rules, undefined terms, non-testable adjectives, actor confusion, and decision gaps. AI is strong at pattern detection, but expert BA work assigns severity, evidence, owner, and clarification path. A rewrite without decision support is still an assumption.",
+      badBetter: [["Ask AI to make the requirement clearer", "The model may smooth over a missing decision instead of exposing it.", "Classify the issue type, severity, evidence, and owner before rewriting."], ["Treat all ambiguity as equal", "A vague label and a missing compliance rule carry very different delivery risk.", "Rank ambiguity by business impact, test impact, regulatory impact, and dependency."], ["Accept AI rewrites that add new detail", "The rewrite may invent thresholds, actors, or policy.", "Only rewrite source-supported parts and mark the rest as clarification questions."]]
+    },
+    vi: {
+      why: "Bài này quan trọng vì requirement mơ hồ tạo defect đắt nhất khi sống sót tới design, build và testing. AI có thể scan vague language và contradiction, nhưng BA phải biến finding thành defect taxonomy có kỷ luật. Mục tiêu không phải wording hay hơn; mục tiêu là decision clarity sớm hơn.",
+      expert: "Ambiguity analysis nên tách missing information, conflicting rule, undefined term, non-testable adjective, actor confusion và decision gap. AI mạnh ở pattern detection, nhưng BA chuyên gia gán severity, evidence, owner và clarification path. Rewrite không có decision support vẫn chỉ là assumption.",
+      badBetter: [["Yêu cầu AI làm requirement rõ hơn", "Model có thể làm mượt missing decision thay vì phơi bày nó.", "Classify issue type, severity, evidence và owner trước khi rewrite."], ["Xem mọi ambiguity là như nhau", "Một label mơ hồ và một missing compliance rule có delivery risk rất khác.", "Rank ambiguity theo business impact, test impact, regulatory impact và dependency."], ["Accept rewrite AI có thêm detail mới", "Rewrite có thể tự bịa threshold, actor hoặc policy.", "Chỉ rewrite phần source-supported và mark phần còn lại thành clarification question."]]
+    }
+  },
+  "non-functional-requirements-and-risk": {
+    en: {
+      why: "This lesson matters because AI features often fail in quality attributes that stakeholders do not state explicitly: privacy, latency, reliability, explainability, fairness, auditability, and fallback. BAs must pull these concerns forward. For AI-enabled products, NFRs are not secondary; they define whether the feature can be trusted in real operation.",
+      expert: "AI raises NFR complexity because behavior is probabilistic and data-dependent. Expert BA analysis ties each NFR to risk scenario, user harm, measurement method, threshold, owner, and operational response. Vague goals such as accurate or fast are insufficient; the spec needs measurable evaluation and monitoring commitments.",
+      badBetter: [["Write that AI output must be accurate", "Accuracy is undefined without task, dataset, threshold, and failure cost.", "Specify evaluation cases, target metric, acceptable error, and escalation behavior."], ["Leave privacy to the technical team", "BA decisions about data, users, and workflow shape privacy exposure.", "Define prohibited data, retention, consent, access, and redaction requirements."], ["Add NFRs after feature design is complete", "Controls may become expensive or impossible to retrofit.", "Elicit AI-specific NFRs during discovery and include them in acceptance criteria."]]
+    },
+    vi: {
+      why: "Bài này quan trọng vì AI feature thường fail ở quality attribute mà stakeholder không nói rõ: privacy, latency, reliability, explainability, fairness, auditability và fallback. BA phải kéo các concern này lên sớm. Với product có AI, NFR không phải thứ phụ; nó định nghĩa feature có đáng tin trong operation thật hay không.",
+      expert: "AI làm NFR phức tạp hơn vì behavior có tính xác suất và phụ thuộc data. Phân tích BA chuyên gia gắn từng NFR với risk scenario, user harm, measurement method, threshold, owner và operational response. Mục tiêu mơ hồ như accurate hoặc fast là không đủ; spec cần evaluation và monitoring đo được.",
+      badBetter: [["Viết AI output must be accurate", "Accuracy không có nghĩa nếu thiếu task, dataset, threshold và failure cost.", "Đặc tả evaluation case, target metric, acceptable error và escalation behavior."], ["Để privacy cho technical team", "Decision của BA về data, user và workflow định hình privacy exposure.", "Định nghĩa prohibited data, retention, consent, access và redaction requirement."], ["Thêm NFR sau khi design feature xong", "Control có thể trở nên đắt hoặc không retrofit được.", "Elicit NFR đặc thù AI trong discovery và đưa vào acceptance criteria."]]
+    }
+  },
+  "traceability-and-testability": {
+    en: {
+      why: "This lesson matters because AI-assisted artifacts can multiply quickly, making it easy to lose the chain from business goal to requirement, source, decision, test, and release evidence. Traceability protects teams from elegant but unproven requirements. Testability turns AI suggestions into behavior that delivery teams can verify.",
+      expert: "For AI work, traceability should include evidence source, prompt or context package, model-assisted assumption, reviewer, decision owner, and evaluation case. Expert BAs treat traceability as risk control, not documentation overhead. If a requirement cannot be traced or tested, it should not become delivery commitment.",
+      badBetter: [["Keep AI drafts in chat and copy useful parts into tickets", "The source, assumption, and review trail disappear.", "Record source IDs, prompt context, reviewer, decision owner, and artifact version."], ["Write tests only for happy-path generated behavior", "AI features fail in edge cases, low confidence, and unsupported input.", "Trace each requirement to positive, negative, fallback, and monitoring tests."], ["Treat traceability as a compliance spreadsheet", "The team fills fields without using them to manage risk.", "Use trace links in refinement, QA planning, change impact, and release decisions."]]
+    },
+    vi: {
+      why: "Bài này quan trọng vì artifact có AI hỗ trợ có thể nhân lên rất nhanh, khiến team dễ mất chain từ business goal tới requirement, source, decision, test và release evidence. Traceability bảo vệ team khỏi requirement đẹp nhưng chưa chứng minh. Testability biến suggestion AI thành behavior mà delivery team verify được.",
+      expert: "Với AI work, traceability nên gồm evidence source, prompt hoặc context package, assumption có model hỗ trợ, reviewer, decision owner và evaluation case. BA chuyên gia xem traceability là risk control, không phải documentation overhead. Requirement không trace hoặc test được thì không nên thành delivery commitment.",
+      badBetter: [["Giữ draft AI trong chat và copy phần hay vào ticket", "Source, assumption và review trail biến mất.", "Ghi source ID, prompt context, reviewer, decision owner và artifact version."], ["Chỉ viết test cho happy path generated behavior", "AI feature fail ở edge case, low confidence và unsupported input.", "Trace từng requirement tới positive, negative, fallback và monitoring test."], ["Xem traceability là spreadsheet compliance", "Team điền field nhưng không dùng để manage risk.", "Dùng trace link trong refinement, QA planning, change impact và release decision."]]
+    }
+  },
+  "brd-srs-and-decision-artifacts": {
+    en: {
+      why: "This lesson matters because AI can draft BRD and SRS sections quickly, but formal documents are not just text. They are records of decisions, scope boundaries, evidence, ownership, and change control. A BA must ensure AI-assisted documents preserve decision logic instead of producing polished pages that hide unresolved commitments.",
+      expert: "Expert BA documentation separates narrative from decision artifacts. AI is useful for drafting, summarizing, and reorganizing, but it should not decide scope, acceptance, or policy. BRD and SRS outputs should include decision log references, source evidence, version history, open issues, and explicit approval checkpoints.",
+      badBetter: [["Ask AI to create a complete BRD from notes", "The draft may invent decisions and make unresolved areas look approved.", "Generate a document skeleton plus decision gaps, evidence map, and open approval items."], ["Use polished wording to resolve stakeholder conflict", "Good prose can mask disagreement instead of escalating it.", "Represent conflicts explicitly with options, impact, owner, and decision date."], ["Remove assumptions to make the document cleaner", "Stakeholders lose visibility into what still needs validation.", "Keep assumptions, dependencies, and open questions in governed sections."]]
+    },
+    vi: {
+      why: "Bài này quan trọng vì AI có thể draft BRD và SRS rất nhanh, nhưng formal document không chỉ là text. Nó là record của decision, scope boundary, evidence, ownership và change control. BA phải bảo đảm document có AI hỗ trợ giữ được decision logic thay vì tạo trang bóng bẩy che giấu commitment chưa resolve.",
+      expert: "Documentation BA chuyên gia tách narrative khỏi decision artifact. AI hữu ích cho drafting, summarizing và reorganizing, nhưng không được tự quyết scope, acceptance hoặc policy. Output BRD và SRS nên có decision log reference, source evidence, version history, open issue và approval checkpoint explicit.",
+      badBetter: [["Yêu cầu AI tạo complete BRD từ notes", "Draft có thể invent decision và làm unresolved area trông như đã approve.", "Generate document skeleton kèm decision gap, evidence map và open approval item."], ["Dùng wording bóng bẩy để resolve stakeholder conflict", "Prose tốt có thể che disagreement thay vì escalate.", "Represent conflict explicit với option, impact, owner và decision date."], ["Xóa assumption để document sạch hơn", "Stakeholder mất visibility vào phần còn cần validation.", "Giữ assumption, dependency và open question trong section được governance."]]
+    }
+  },
+  "diagramming-for-ba": {
+    en: {
+      why: "This lesson matters because diagrams expose reasoning that prose can hide. AI can create flowcharts, sequence diagrams, and state models quickly, but a diagram is valuable only when it reveals missing actors, unclear rules, system boundaries, and exception paths. The BA must use diagrams as analysis instruments, not visual decoration.",
+      expert: "AI-generated diagrams should be reviewed like requirements. Expert BAs check notation fit, actor-system separation, decision labels, data movement, error paths, and whether the diagram answers a stakeholder question. Diagramming is especially powerful when the BA asks AI to generate competing views and then reconciles their differences.",
+      badBetter: [["Generate one diagram and add it to the document", "A single view may hide timing, data, or responsibility issues.", "Create process, sequence, and state views when the problem crosses workflow and systems."], ["Accept diagram labels that are vague", "Decision diamonds like valid or approved do not define business rules.", "Replace vague labels with rule source, threshold, owner, or open question."], ["Use diagrams only for presentation", "The team misses the chance to find defects before build.", "Run diagram review sessions to identify gaps, exceptions, and ownership issues."]]
+    },
+    vi: {
+      why: "Bài này quan trọng vì diagram phơi bày reasoning mà prose có thể che giấu. AI có thể tạo flowchart, sequence diagram và state model nhanh, nhưng diagram chỉ có giá trị khi nó làm lộ missing actor, unclear rule, system boundary và exception path. BA phải dùng diagram như analysis instrument, không phải visual decoration.",
+      expert: "Diagram do AI sinh nên được review như requirement. BA chuyên gia check notation fit, tách actor-system, decision label, data movement, error path và diagram có trả lời câu hỏi stakeholder không. Diagramming mạnh nhất khi BA yêu cầu AI tạo nhiều view cạnh tranh rồi reconcile điểm khác nhau.",
+      badBetter: [["Generate một diagram rồi thêm vào document", "Một view duy nhất có thể che timing, data hoặc responsibility issue.", "Tạo process, sequence và state view khi problem đi qua cả workflow và system."], ["Accept label diagram mơ hồ", "Decision diamond như valid hoặc approved không định nghĩa business rule.", "Thay label mơ hồ bằng rule source, threshold, owner hoặc open question."], ["Chỉ dùng diagram để presentation", "Team bỏ lỡ cơ hội tìm defect trước build.", "Chạy diagram review session để identify gap, exception và ownership issue."]]
+    }
+  },
+  "specifying-ai-enabled-features": {
+    en: {
+      why: "This lesson matters because specifying an AI-enabled feature is different from specifying a deterministic screen or workflow. The BA must define task boundary, allowed input, output contract, confidence behavior, evaluation, human review, fallback, monitoring, and user messaging. Without those controls, the feature cannot be tested, trusted, or operated.",
+      expert: "The expert BA treats the model as one component inside a product system. Requirements should cover data flow, prompt or retrieval context, model behavior constraints, evaluation dataset, acceptance thresholds, misuse cases, audit logs, and operational ownership. The user experience must communicate uncertainty honestly without creating unnecessary friction.",
+      badBetter: [["Specify that the AI assistant should answer user questions", "The task boundary, allowed sources, refusal behavior, and quality bar are undefined.", "Define supported intents, source rules, output format, confidence thresholds, and unsupported-question handling."], ["Use demo examples as acceptance criteria", "Demo cases are usually optimistic and do not prove production readiness.", "Create curated evaluation cases covering common, edge, adversarial, and fallback scenarios."], ["Ignore post-launch monitoring", "AI behavior can drift as data, prompts, sources, or user behavior change.", "Specify monitoring events, quality metrics, review cadence, and owner response."]]
+    },
+    vi: {
+      why: "Bài này quan trọng vì đặc tả AI-enabled feature khác với đặc tả screen hoặc workflow deterministic. BA phải định nghĩa task boundary, allowed input, output contract, confidence behavior, evaluation, human review, fallback, monitoring và user messaging. Thiếu các control này thì feature không test, trust hoặc operate được.",
+      expert: "BA chuyên gia xem model là một component trong product system. Requirement nên cover data flow, prompt hoặc retrieval context, model behavior constraint, evaluation dataset, acceptance threshold, misuse case, audit log và operational ownership. UX phải communicate uncertainty trung thực mà không tạo friction không cần thiết.",
+      badBetter: [["Đặc tả AI assistant should answer user questions", "Task boundary, allowed source, refusal behavior và quality bar đều chưa rõ.", "Định nghĩa supported intent, source rule, output format, confidence threshold và unsupported-question handling."], ["Dùng demo example làm acceptance criteria", "Demo case thường optimistic và không chứng minh production readiness.", "Tạo curated evaluation case gồm common, edge, adversarial và fallback scenario."], ["Bỏ qua monitoring sau launch", "AI behavior có thể drift khi data, prompt, source hoặc user behavior thay đổi.", "Đặc tả monitoring event, quality metric, review cadence và owner response."]]
+    }
+  },
+  "human-in-the-loop-monitoring-and-fallback": {
+    en: {
+      why: "This lesson matters because human review is often written as a vague safeguard, then fails when operations need a real queue, SLA, decision rights, and audit trail. AI products need designed fallback and monitoring. The BA must specify what happens when confidence is low, risk is high, or evidence is missing.",
+      expert: "Human-in-the-loop is an operating workflow, not a slogan. Expert requirements define trigger conditions, reviewer role, allowed actions, escalation, user messaging, correction capture, quality monitoring, and accountability. A fallback is successful when it preserves user trust and business safety, not when it hides that AI failed.",
+      badBetter: [["Write that a human can review AI output", "There is no trigger, queue, role, SLA, or decision authority.", "Specify review triggers, routing, reviewer actions, SLA, audit record, and owner."], ["Use fallback messages that sound confident", "Users may not understand uncertainty or the next safe action.", "Explain limitation, provide safe next step, and route to support or manual process."], ["Monitor only uptime and latency", "The system can be available while producing low-quality or risky outputs.", "Track override rate, unsupported queries, error categories, drift signals, and review outcomes."]]
+    },
+    vi: {
+      why: "Bài này quan trọng vì human review thường được viết như safeguard mơ hồ, rồi fail khi operation cần queue, SLA, decision right và audit trail thật. AI product cần fallback và monitoring được thiết kế. BA phải đặc tả điều gì xảy ra khi confidence thấp, risk cao hoặc evidence thiếu.",
+      expert: "Human-in-the-loop là operating workflow, không phải slogan. Requirement chuyên gia định nghĩa trigger condition, reviewer role, allowed action, escalation, user messaging, correction capture, quality monitoring và accountability. Fallback thành công khi giữ được user trust và business safety, không phải khi che giấu AI đã fail.",
+      badBetter: [["Viết rằng human can review AI output", "Không có trigger, queue, role, SLA hoặc decision authority.", "Đặc tả review trigger, routing, reviewer action, SLA, audit record và owner."], ["Dùng fallback message nghe quá tự tin", "User không hiểu uncertainty hoặc next safe action.", "Giải thích limitation, cung cấp next step an toàn và route sang support hoặc manual process."], ["Chỉ monitor uptime và latency", "System có thể available nhưng output vẫn low-quality hoặc risky.", "Track override rate, unsupported query, error category, drift signal và review outcome."]]
+    }
+  },
+  "ai-strategy-governance-and-adoption": {
+    en: {
+      why: "This lesson matters because AI adoption at BA-team scale can improve quality and cycle time, but it can also spread inconsistent artifacts, data leakage, and false confidence. A BA lead needs an operating model: approved use cases, risk tiers, tool policy, prompt library, quality gates, training, metrics, and escalation paths.",
+      expert: "AI governance should enable high-quality work, not freeze experimentation. Expert BA leadership defines low-risk workflows for productivity, medium-risk workflows with review gates, and high-risk workflows requiring formal approval. Adoption metrics should measure artifact quality, review defects, cycle time, stakeholder satisfaction, and avoided risk, not just tool usage.",
+      badBetter: [["Roll out an AI tool to all BAs and call it adoption", "Usage increases without shared standards, safety rules, or quality evidence.", "Create risk-tiered workflows, approved tools, training, prompt library, and review gates."], ["Measure success by number of prompts or users", "Activity does not prove better requirements or safer decisions.", "Measure cycle time, defect reduction, evidence quality, rework, and stakeholder confidence."], ["Let every project invent its own AI rules", "Quality and compliance vary widely across teams.", "Establish a BA AI operating model with governance roles, audits, and escalation."]]
+    },
+    vi: {
+      why: "Bài này quan trọng vì AI adoption ở scale BA team có thể cải thiện quality và cycle time, nhưng cũng có thể lan truyền artifact inconsistent, data leakage và false confidence. BA lead cần operating model: approved use case, risk tier, tool policy, prompt library, quality gate, training, metric và escalation path.",
+      expert: "AI governance nên enable high-quality work, không đóng băng experimentation. BA leadership chuyên gia định nghĩa workflow low-risk để tăng productivity, workflow medium-risk có review gate và workflow high-risk cần formal approval. Metric adoption nên đo artifact quality, review defect, cycle time, stakeholder satisfaction và avoided risk, không chỉ tool usage.",
+      badBetter: [["Roll out tool AI cho mọi BA rồi gọi là adoption", "Usage tăng nhưng thiếu standard chung, safety rule và quality evidence.", "Tạo workflow theo risk tier, approved tool, training, prompt library và review gate."], ["Đo success bằng số prompt hoặc số user", "Activity không chứng minh requirement tốt hơn hoặc decision an toàn hơn.", "Đo cycle time, defect reduction, evidence quality, rework và stakeholder confidence."], ["Để mỗi project tự invent AI rule", "Quality và compliance biến động lớn giữa team.", "Thiết lập BA AI operating model có governance role, audit và escalation."]]
+    }
+  }
+};
+
+function lessonUpgrade(slug, locale) {
+  const upgrade = lessonUpgrades[slug]?.[locale];
+  if (!upgrade) {
+    throw new Error(`Missing lesson upgrade for ${locale}/${slug}`);
+  }
+  return upgrade;
+}
+
 function ensureDir(relativePath) {
   fs.mkdirSync(path.join(root, relativePath), { recursive: true });
 }
@@ -1174,13 +1425,14 @@ function diagram(slug, locale) {
 
 function lessonPage(lesson, locale) {
   const item = lesson[locale];
+  const upgrade = lessonUpgrade(lesson.slug, locale);
   const [enSection, viSection] = sections[lesson.section];
   const section = locale === "en" ? enSection : viSection;
   const level = lesson.section === "lead" ? "Expert" : lesson.section === "products" ? "Advanced" : "Core";
-  const whyContext =
+  const badBetterHeaders =
     locale === "en"
-      ? "Business Analysts sit between problem framing, stakeholder meaning, delivery constraints, and product decisions. In AI work, that position becomes more important because unclear language can create false certainty quickly. This lesson gives you a practical control you can apply before AI output becomes scope, backlog, or delivery commitment."
-      : "Business Analyst đứng giữa problem framing, ý nghĩa từ stakeholder, constraint triển khai và product decision. Trong công việc có AI, vị trí này quan trọng hơn vì ngôn ngữ chưa rõ có thể tạo false certainty rất nhanh. Bài này đưa ra một control thực tế để áp dụng trước khi output AI trở thành scope, backlog hoặc delivery commitment.";
+      ? ["Weak pattern", "Why it fails", "Stronger BA pattern"]
+      : ["Cách làm yếu", "Vì sao fail", "Cách làm BA tốt hơn"];
 
   return `---
 title: ${yamlString(item.title)}
@@ -1205,7 +1457,7 @@ ${list(item.outcomes)}
 ${item.focus}
 </div>
 
-${whyContext}
+${upgrade.why}
 
 ## Mental model or core concept
 
@@ -1226,6 +1478,14 @@ ${diagram(lesson.slug, locale)}
 ### ${item.artifactTitle}
 
 ${artifactTable(item.artifactHeaders, item.artifactRows)}
+
+## AI expert note
+
+${upgrade.expert}
+
+## Bad vs better example
+
+${artifactTable(badBetterHeaders, upgrade.badBetter)}
 
 ## AI collaboration prompt
 
@@ -1598,6 +1858,7 @@ A bilingual, artifact-driven course for software Business Analysts who need to u
 
 - Every lesson has its own Mermaid diagram.
 - Every lesson includes a concrete BA artifact: matrix, rubric, canvas, checklist, or specification table.
+- Every lesson now has a lesson-specific BA relevance section, expert AI review note, and bad-vs-better practice examples.
 - Lessons include mistakes to avoid and actions to apply tomorrow.
 - Labs include input samples, exercise steps, expected deliverables, and review rubrics.
 - Resources are upgraded into practical playbooks for prompts, quality review, AI feature specification, RAG, and governance.

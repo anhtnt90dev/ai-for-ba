@@ -23,7 +23,7 @@ description: "BA leads should scale AI adoption through use-case selection, risk
 BA leads should scale AI adoption through use-case selection, risk tiers, quality gates, and operating model, not tool enthusiasm.
 </div>
 
-Business Analysts sit between problem framing, stakeholder meaning, delivery constraints, and product decisions. In AI work, that position becomes more important because unclear language can create false certainty quickly. This lesson gives you a practical control you can apply before AI output becomes scope, backlog, or delivery commitment.
+This lesson matters because AI adoption at BA-team scale can improve quality and cycle time, but it can also spread inconsistent artifacts, data leakage, and false confidence. A BA lead needs an operating model: approved use cases, risk tiers, tool policy, prompt library, quality gates, training, metrics, and escalation paths.
 
 ## Mental model or core concept
 
@@ -56,6 +56,18 @@ flowchart TD
 | Governance | No shared rules. | Data and review policy defined. | Risk-tier controls and audit. |
 | Quality | AI output shared directly. | Peer review for AI-assisted artifacts. | Quality gates and rubric metrics. |
 | Capability | Individual tips. | Team prompt library. | Coaching, playbooks, and communities of practice. |
+
+## AI expert note
+
+AI governance should enable high-quality work, not freeze experimentation. Expert BA leadership defines low-risk workflows for productivity, medium-risk workflows with review gates, and high-risk workflows requiring formal approval. Adoption metrics should measure artifact quality, review defects, cycle time, stakeholder satisfaction, and avoided risk, not just tool usage.
+
+## Bad vs better example
+
+| Weak pattern | Why it fails | Stronger BA pattern |
+| --- | --- | --- |
+| Roll out an AI tool to all BAs and call it adoption | Usage increases without shared standards, safety rules, or quality evidence. | Create risk-tiered workflows, approved tools, training, prompt library, and review gates. |
+| Measure success by number of prompts or users | Activity does not prove better requirements or safer decisions. | Measure cycle time, defect reduction, evidence quality, rework, and stakeholder confidence. |
+| Let every project invent its own AI rules | Quality and compliance vary widely across teams. | Establish a BA AI operating model with governance roles, audits, and escalation. |
 
 ## AI collaboration prompt
 

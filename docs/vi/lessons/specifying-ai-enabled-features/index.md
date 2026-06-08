@@ -23,7 +23,7 @@ description: "AI-enabled feature cần requirement cho data, output quality, unc
 AI-enabled feature cần requirement cho data, output quality, uncertainty, user control và monitoring.
 </div>
 
-Business Analyst đứng giữa problem framing, ý nghĩa từ stakeholder, constraint triển khai và product decision. Trong công việc có AI, vị trí này quan trọng hơn vì ngôn ngữ chưa rõ có thể tạo false certainty rất nhanh. Bài này đưa ra một control thực tế để áp dụng trước khi output AI trở thành scope, backlog hoặc delivery commitment.
+Bài này quan trọng vì đặc tả AI-enabled feature khác với đặc tả screen hoặc workflow deterministic. BA phải định nghĩa task boundary, allowed input, output contract, confidence behavior, evaluation, human review, fallback, monitoring và user messaging. Thiếu các control này thì feature không test, trust hoặc operate được.
 
 ## Mental model or core concept
 
@@ -57,6 +57,18 @@ flowchart LR
 | Input data | Context nào được phép dùng? | Dùng ticket text, account tier và product area. | Không include restricted PII. |
 | Uncertainty | Dưới confidence threshold thì sao? | Below 0.75 route to human triage. | Low-confidence case vào review queue. |
 | Evaluation | Quality đo thế nào? | Precision for billing category >= 90%. | Evaluation set pass threshold. |
+
+## AI expert note
+
+BA chuyên gia xem model là một component trong product system. Requirement nên cover data flow, prompt hoặc retrieval context, model behavior constraint, evaluation dataset, acceptance threshold, misuse case, audit log và operational ownership. UX phải communicate uncertainty trung thực mà không tạo friction không cần thiết.
+
+## Bad vs better example
+
+| Cách làm yếu | Vì sao fail | Cách làm BA tốt hơn |
+| --- | --- | --- |
+| Đặc tả AI assistant should answer user questions | Task boundary, allowed source, refusal behavior và quality bar đều chưa rõ. | Định nghĩa supported intent, source rule, output format, confidence threshold và unsupported-question handling. |
+| Dùng demo example làm acceptance criteria | Demo case thường optimistic và không chứng minh production readiness. | Tạo curated evaluation case gồm common, edge, adversarial và fallback scenario. |
+| Bỏ qua monitoring sau launch | AI behavior có thể drift khi data, prompt, source hoặc user behavior thay đổi. | Đặc tả monitoring event, quality metric, review cadence và owner response. |
 
 ## AI collaboration prompt
 

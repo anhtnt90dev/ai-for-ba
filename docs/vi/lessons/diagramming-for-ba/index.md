@@ -23,7 +23,7 @@ description: "Diagram tốt thay đổi cuộc trao đổi; nó làm lộ decisi
 Diagram tốt thay đổi cuộc trao đổi; nó làm lộ decision, boundary và gap mà text che mất.
 </div>
 
-Business Analyst đứng giữa problem framing, ý nghĩa từ stakeholder, constraint triển khai và product decision. Trong công việc có AI, vị trí này quan trọng hơn vì ngôn ngữ chưa rõ có thể tạo false certainty rất nhanh. Bài này đưa ra một control thực tế để áp dụng trước khi output AI trở thành scope, backlog hoặc delivery commitment.
+Bài này quan trọng vì diagram phơi bày reasoning mà prose có thể che giấu. AI có thể tạo flowchart, sequence diagram và state model nhanh, nhưng diagram chỉ có giá trị khi nó làm lộ missing actor, unclear rule, system boundary và exception path. BA phải dùng diagram như analysis instrument, không phải visual decoration.
 
 ## Mental model or core concept
 
@@ -58,6 +58,18 @@ flowchart TD
 | System interact ra sao? | Sequence diagram | Có API/event involved. | System boundary và failure message. |
 | Entity có state nào? | State diagram | Lifecycle quan trọng. | Allowed transition và trigger. |
 | Rule nào apply? | Decision table | Tổ hợp rule quyết định outcome. | Rule complete và exclusive. |
+
+## AI expert note
+
+Diagram do AI sinh nên được review như requirement. BA chuyên gia check notation fit, tách actor-system, decision label, data movement, error path và diagram có trả lời câu hỏi stakeholder không. Diagramming mạnh nhất khi BA yêu cầu AI tạo nhiều view cạnh tranh rồi reconcile điểm khác nhau.
+
+## Bad vs better example
+
+| Cách làm yếu | Vì sao fail | Cách làm BA tốt hơn |
+| --- | --- | --- |
+| Generate một diagram rồi thêm vào document | Một view duy nhất có thể che timing, data hoặc responsibility issue. | Tạo process, sequence và state view khi problem đi qua cả workflow và system. |
+| Accept label diagram mơ hồ | Decision diamond như valid hoặc approved không định nghĩa business rule. | Thay label mơ hồ bằng rule source, threshold, owner hoặc open question. |
+| Chỉ dùng diagram để presentation | Team bỏ lỡ cơ hội tìm defect trước build. | Chạy diagram review session để identify gap, exception và ownership issue. |
 
 ## AI collaboration prompt
 

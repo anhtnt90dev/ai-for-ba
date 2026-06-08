@@ -23,7 +23,7 @@ description: "The strongest BA use of AI is not drafting faster; it is creating 
 The strongest BA use of AI is not drafting faster; it is creating disciplined critique loops before artifacts reach the team.
 </div>
 
-Business Analysts sit between problem framing, stakeholder meaning, delivery constraints, and product decisions. In AI work, that position becomes more important because unclear language can create false certainty quickly. This lesson gives you a practical control you can apply before AI output becomes scope, backlog, or delivery commitment.
+This lesson matters because first AI drafts are optimized for fluency, not necessarily for correctness, risk, or delivery readiness. Review loops turn AI from a drafting shortcut into a quality system. BAs can use critique passes to expose ambiguity, missing rules, unsupported claims, test gaps, and stakeholder decisions before artifacts move downstream.
 
 ## Mental model or core concept
 
@@ -56,6 +56,18 @@ flowchart LR
 | Developer | API, data, integration assumptions. | Implementation risk. | Clarify contract or dependency. |
 | Operations | Support, monitoring, failure handling. | Runbook gap. | Add support flow and alert rule. |
 | Compliance | Privacy, audit, policy constraints. | Control gap. | Add evidence and approval step. |
+
+## AI expert note
+
+The most effective AI workflows separate creation from critique. Expert BAs design named review lenses: evidence, testability, risk, stakeholder conflict, operational feasibility, and compliance. Asking the same model to critique its own draft helps, but stronger practice uses explicit rubrics, source checks, and human review for high-risk decisions.
+
+## Bad vs better example
+
+| Weak pattern | Why it fails | Stronger BA pattern |
+| --- | --- | --- |
+| Accept the first AI draft because it reads well | Fluency can hide ambiguity, false claims, and untestable wording. | Run critique passes for evidence, specificity, testability, and risk before sharing. |
+| Ask a generic question like what is wrong with this | The critique may be shallow and miss the BA quality dimensions. | Use a rubric with required lenses, severity, source reference, and recommended fix. |
+| Let review comments remain informal | The team cannot track whether risks were resolved. | Convert critique findings into a defect register or decision log with owners. |
 
 ## AI collaboration prompt
 

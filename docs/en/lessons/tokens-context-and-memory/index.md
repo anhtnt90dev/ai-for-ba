@@ -23,7 +23,7 @@ description: "Context is the working surface of AI analysis; poor context design
 Context is the working surface of AI analysis; poor context design creates confident but incomplete BA artifacts.
 </div>
 
-Business Analysts sit between problem framing, stakeholder meaning, delivery constraints, and product decisions. In AI work, that position becomes more important because unclear language can create false certainty quickly. This lesson gives you a practical control you can apply before AI output becomes scope, backlog, or delivery commitment.
+This lesson matters because most BA artifacts depend on long histories: transcripts, policies, decisions, exceptions, and prior commitments. AI tools can only reason over the context they can see and retain. A BA who controls source maps and chunking plans reduces missed requirements, stale policy reuse, and shallow summaries that look organized but lose critical detail.
 
 ## Mental model or core concept
 
@@ -56,6 +56,18 @@ flowchart LR
 | Chunk plan | Keeps analysis focused | Review module by module. | Long context becomes shallow summary. |
 | Decision log | Preserves stakeholder commitments | Include dated decisions and owners. | AI reopens already-settled scope. |
 | Open questions | Separates unknowns from facts | Track unresolved items explicitly. | Model fills blanks with guesses. |
+
+## AI expert note
+
+Expert AI use treats context as an analysis asset. Long-context models still suffer from attention dilution, source conflict, and recency ambiguity. The BA should design review passes, source IDs, chunk purpose, decision logs, and reconciliation steps so that AI output remains traceable rather than becoming an attractive summary of incomplete evidence.
+
+## Bad vs better example
+
+| Weak pattern | Why it fails | Stronger BA pattern |
+| --- | --- | --- |
+| Upload all documents and ask for all gaps | The model may summarize broadly and miss late, rare, or cross-document constraints. | Review by source ID and module, then run a reconciliation pass for conflicts and omissions. |
+| Mix old policy, draft notes, and approved decisions without labels | The model cannot reliably know what is current or authoritative. | Label source status, effective date, owner, and confidence before analysis. |
+| Use chat history as project memory | Important decisions become inaccessible, reordered, or invisible to other team members. | Create an explicit context pack with source map, decision log, and open questions. |
 
 ## AI collaboration prompt
 

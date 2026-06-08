@@ -23,7 +23,7 @@ description: "AI can widen discovery, but the BA must still decide what needs va
 AI can widen discovery, but the BA must still decide what needs validation with real stakeholders.
 </div>
 
-Business Analysts sit between problem framing, stakeholder meaning, delivery constraints, and product decisions. In AI work, that position becomes more important because unclear language can create false certainty quickly. This lesson gives you a practical control you can apply before AI output becomes scope, backlog, or delivery commitment.
+This lesson matters because AI can make discovery feel faster while silently replacing uncertainty with invented completeness. The BA's value is to turn AI suggestions into hypotheses, not conclusions. A good discovery workflow uses AI to widen the question space, then uses evidence, workshops, interviews, and data to decide what is true.
 
 ## Mental model or core concept
 
@@ -55,6 +55,18 @@ flowchart TD
 | Missing documents trigger customer notification. | Current support script and customer journey. | Interview support agents. | Customer service manager |
 | Fraud risk changes SLA. | Fraud rules and compliance constraints. | Compliance workshop. | Risk owner |
 | Manual override must be audited. | Audit policy and regulator expectation. | Security review. | Compliance lead |
+
+## AI expert note
+
+AI is useful in discovery because it can generate alternative actors, edge cases, risks, and interview angles quickly. The danger is anchoring: once a fluent list exists, stakeholders may stop exploring. The BA should explicitly label hypothesis, evidence needed, validation method, and decision owner before converting anything into requirements.
+
+## Bad vs better example
+
+| Weak pattern | Why it fails | Stronger BA pattern |
+| --- | --- | --- |
+| Ask AI to write requirements from a business problem | The model will collapse discovery uncertainty into premature scope. | Ask for hypotheses, assumptions, evidence needed, and workshop questions first. |
+| Use AI-generated stakeholder lists as final | Important internal owners, regulators, or operational users may be absent. | Validate actors against process maps, org roles, customer journeys, and decision rights. |
+| Prioritize questions that are easy to answer | The team may avoid the riskiest assumptions until delivery. | Rank hypotheses by business impact, evidence gap, and decision urgency. |
 
 ## AI collaboration prompt
 
