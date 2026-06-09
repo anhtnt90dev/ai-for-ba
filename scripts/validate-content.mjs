@@ -188,9 +188,13 @@ assert(pixelQuestComponent.includes("xp"), "PixelQuest must show XP progression"
 assert(pixelQuestComponent.includes("level"), "PixelQuest must show level progression");
 assert(pixelQuestComponent.includes("pixel-agent-hero"), "PixelQuest must render the Pixel Agents character sprite");
 assert(pixelQuestComponent.includes("/assets/pixel-agents/char_"), "PixelQuest must source character sprites from Pixel Agents assets");
-assert(pixelQuestComponent.includes("frameSize = 64"), "PixelQuest must render Pixel Agents sprites at a large enough full-body scale");
+assert(pixelQuestComponent.includes("frameSize = 80"), "PixelQuest must render Pixel Agents sprites at a large enough full-body scale");
 assert(pixelQuestComponent.includes("stepFrame.value % 3"), "PixelQuest must animate with the full-body front-facing Pixel Agents frames");
 assert(pixelQuestComponent.includes('"--agent-y": "0px"'), "PixelQuest must use the front-facing full-body Pixel Agents sprite row");
+assert(pixelQuestComponent.includes("pixel-agent-torso"), "PixelQuest must show a visible full-body torso layer");
+assert(pixelQuestComponent.includes("pixel-agent-legs"), "PixelQuest must show visible character legs");
+assert(pixelQuestComponent.includes("openNearbyQuest"), "PixelQuest must let players enter nearby lessons from the map");
+assert(pixelQuestComponent.includes('event.key === " "'), "PixelQuest must support Space to enter a nearby lesson");
 assert(pixelQuestComponent.includes("landingMode"), "PixelQuest must include a dedicated fullscreen landing mode");
 assert(pixelQuestComponent.includes("questHref"), "PixelQuest landing mode must expose quest nodes as lesson links");
 

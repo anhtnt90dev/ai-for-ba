@@ -34,7 +34,7 @@ const text = computed(() =>
         reward: "Phần thưởng BA nhận được",
         zone: "Vùng",
         controls: "Điều khiển",
-        keyboard: "WASD hoặc phím mũi tên để di chuyển. Click hoặc tap vào map để đi nhanh. Chọn quest, vào bài học, rồi đánh dấu hoàn thành.",
+        keyboard: "WASD hoặc phím mũi tên để di chuyển. Đứng gần ô quest và bấm Space để vào bài học.",
         mentor: "Mentor BA",
         mentorLine: "Mỗi cổng là một quality gate. Bạn chỉ mở được vùng mới khi artifact ở vùng trước đã đủ rõ để team delivery dùng được.",
         fullGame: "Mở trang game đầy đủ",
@@ -60,7 +60,7 @@ const text = computed(() =>
         reward: "BA reward",
         zone: "Zone",
         controls: "Controls",
-        keyboard: "Use WASD or arrow keys to move. Click or tap the map to travel quickly. Select a quest, enter the lesson, then mark it complete.",
+        keyboard: "Use WASD or arrow keys to move. Stand near a quest tile and press Space to enter the lesson.",
         mentor: "BA Mentor",
         mentorLine: "Each gate is a quality gate. You only open the next area when the previous BA artifact is clear enough for delivery teams to use.",
         fullGame: "Open full game page",
@@ -455,9 +455,10 @@ const nextQuest = computed(() => quests.find((quest, index) => !isComplete(quest
 const nextQuestCopy = computed(() => nextQuest.value[props.locale] || nextQuest.value.en);
 const homeMode = computed(() => props.mode === "home");
 const landingMode = computed(() => props.mode === "landing");
+const questInteractionRadius = 8.5;
 const agentSheet = computed(() => withBase(`/assets/pixel-agents/char_${Math.min(5, level.value - 1)}.png`));
 const agentSpriteStyle = computed(() => {
-  const frameSize = 64;
+  const frameSize = 80;
   const frame = isMoving.value ? stepFrame.value % 3 : 1;
   return {
     "--agent-sheet": `url("${agentSheet.value}")`,
@@ -515,18 +516,32 @@ function distanceToQuest(quest) {
   return Math.hypot(playerPosition.value.x - quest.x, playerPosition.value.y - quest.y);
 }
 
-function nearestUnlockedQuest() {
+function selectNearbyQuest() {
+  const nearest = nearestAccessibleQuest();
+  if (nearest && nearest.distance <= questInteractionRadius) {
+    selectedSlug.value = nearest.quest.slug;
+  }
+}
+
+function nearestAccessibleQuest() {
   return quests
     .map((quest, index) => ({ quest, index, distance: distanceToQuest(quest) }))
-    .filter((item) => isUnlocked(item.index))
+    .filter((item) => isQuestAccessible(item.index))
     .sort((a, b) => a.distance - b.distance)[0];
 }
 
-function selectNearbyQuest() {
-  const nearest = nearestUnlockedQuest();
-  if (nearest && nearest.distance <= 8.5) {
-    selectedSlug.value = nearest.quest.slug;
+function openNearbyQuest() {
+  const nearest = nearestAccessibleQuest();
+  if (!nearest || nearest.distance > questInteractionRadius) {
+    selectNearbyQuest();
+    return false;
   }
+
+  selectedSlug.value = nearest.quest.slug;
+  if (typeof window !== "undefined") {
+    window.location.href = lessonHref(nearest.quest.slug);
+  }
+  return true;
 }
 
 function setPlayerPosition(x, y) {
@@ -633,6 +648,12 @@ function handleKeyDown(event) {
   }
 
   const key = event.key.toLowerCase();
+  if (event.key === " " || key === "spacebar") {
+    event.preventDefault();
+    openNearbyQuest();
+    return;
+  }
+
   const step = landingMode.value ? 5 : homeMode.value ? 3.4 : 4;
   const moves = {
     arrowleft: [-step, 0],
@@ -720,7 +741,7 @@ onBeforeUnmount(() => {
             <span>{{ text.nextQuest }}</span>
             <strong>{{ nextQuestCopy.title }}</strong>
           </div>
-          <div class="pixel-control-copy">{{ text.controls }}: WASD</div>
+          <div class="pixel-control-copy">{{ text.controls }}: WASD + Space</div>
         </div>
 
         <div ref="mapRef" class="pixel-map" tabindex="0" aria-label="Pixel Quest lesson map" @click="handleMapClick">
@@ -781,7 +802,11 @@ onBeforeUnmount(() => {
           </a>
 
           <div class="pixel-avatar" :class="avatarClass" :style="{ left: `${playerPosition.x}%`, top: `${playerPosition.y}%` }">
-            <div class="pixel-agent-hero" :style="agentSpriteStyle" aria-hidden="true"></div>
+            <div class="pixel-agent-character" aria-hidden="true">
+              <div class="pixel-agent-hero" :style="agentSpriteStyle"></div>
+              <div class="pixel-agent-torso"></div>
+              <div class="pixel-agent-legs"></div>
+            </div>
           </div>
         </div>
 
@@ -1321,42 +1346,115 @@ onBeforeUnmount(() => {
 .pixel-avatar {
   position: absolute;
   z-index: 10;
-  width: 64px;
-  height: 76px;
-  margin: -68px 0 0 -32px;
-  transition: left 0.12s linear, top 0.12s linear;
+  width: 96px;
+  height: 124px;
+  margin: -112px 0 0 -48px;
+  transition: left 0.12s linear, top 0.12s linear, transform 0.12s linear;
   pointer-events: none;
 }
 
 .pixel-avatar::after {
   position: absolute;
-  left: 11px;
+  left: 18px;
   bottom: 0;
-  width: 42px;
+  width: 60px;
   height: 8px;
   background: rgba(23, 32, 51, 0.22);
   content: "";
 }
 
-.pixel-agent-hero {
+.pixel-agent-character {
   position: relative;
   z-index: 2;
-  display: block;
-  width: 64px;
-  height: 64px;
-  background-image: var(--agent-sheet);
-  background-position: var(--agent-x) var(--agent-y);
-  background-repeat: no-repeat;
-  background-size: 448px 384px;
-  image-rendering: pixelated;
+  width: 96px;
+  height: 118px;
   filter: drop-shadow(3px 3px 0 rgba(39, 49, 79, 0.24));
 }
 
-.face-left .pixel-agent-hero {
+.pixel-agent-hero {
+  position: absolute;
+  top: 0;
+  left: 8px;
+  z-index: 4;
+  display: block;
+  width: 80px;
+  height: 70px;
+  background-image: var(--agent-sheet);
+  background-position: var(--agent-x) var(--agent-y);
+  background-repeat: no-repeat;
+  background-size: 560px 480px;
+  image-rendering: pixelated;
+}
+
+.pixel-agent-torso {
+  position: absolute;
+  top: 62px;
+  left: 31px;
+  z-index: 2;
+  width: 34px;
+  height: 38px;
+  border: 5px solid #2b2024;
+  background:
+    linear-gradient(90deg, #f7f0e3 0 32%, #1f2433 32% 68%, #f7f0e3 68% 100%),
+    #f7f0e3;
+  box-shadow:
+    inset 0 -10px 0 #2867c9,
+    0 4px 0 rgba(39, 49, 79, 0.18);
+}
+
+.pixel-agent-torso::before,
+.pixel-agent-torso::after {
+  position: absolute;
+  top: 4px;
+  width: 12px;
+  height: 32px;
+  border: 4px solid #2b2024;
+  background: #efb792;
+  content: "";
+}
+
+.pixel-agent-torso::before {
+  left: -20px;
+}
+
+.pixel-agent-torso::after {
+  right: -20px;
+}
+
+.pixel-agent-legs {
+  position: absolute;
+  top: 96px;
+  left: 29px;
+  z-index: 1;
+  width: 38px;
+  height: 28px;
+  background:
+    linear-gradient(90deg, #1f4f8f 0 40%, transparent 40% 60%, #1f4f8f 60% 100%);
+}
+
+.pixel-agent-legs::before,
+.pixel-agent-legs::after {
+  position: absolute;
+  bottom: -4px;
+  width: 18px;
+  height: 8px;
+  background: #2b2024;
+  content: "";
+}
+
+.pixel-agent-legs::before {
+  left: -2px;
+}
+
+.pixel-agent-legs::after {
+  right: -2px;
+}
+
+.face-left .pixel-agent-character {
   transform: scaleX(-1);
 }
 
-.is-moving .pixel-agent-hero {
+.is-moving .pixel-agent-character {
   animation: pixel-hop 0.18s steps(2, end) infinite;
 }
 
@@ -1619,8 +1717,8 @@ onBeforeUnmount(() => {
   }
 
   .pixel-avatar {
-    width: 56px;
-    margin-left: -28px;
+    transform: scale(0.82);
+    transform-origin: center bottom;
   }
 
   .pixel-npc small {
