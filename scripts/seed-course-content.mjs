@@ -3743,10 +3743,14 @@ description: ${yamlString(intro)}
 
 ${intro}
 
+<PixelQuest locale="${locale}" mode="home" />
+
+## ${isEn ? "Classic course view" : "Chế độ học truyền thống"}
+
 <div class="course-grid">
 ${sectionCards}
 <div class="course-card"><strong>${isEn ? "Project Use Cases" : "Use case thực tế trong dự án"}</strong>${isEn ? "70+ detailed scenarios, including frontend/UI, backend/API, data integration, QA, and AI product work." : "70+ tình huống chi tiết, gồm frontend/UI, backend/API, data integration, QA và AI product work."}</div>
-<a class="course-card game-entry-card" href="./game/"><strong>${isEn ? "Play Pixel Quest" : "Chơi Pixel Quest"}</strong>${isEn ? "A retro pixel adventure map for learners who want to explore the course as a game." : "Bản đồ phiêu lưu pixel retro cho người học muốn trải nghiệm course như một game."}</a>
+<a class="course-card game-entry-card" href="./game/"><strong>${isEn ? "Open full Pixel Quest" : "Mở Pixel Quest đầy đủ"}</strong>${isEn ? "Use the larger game page when you want more space for the map, quest panel, and movement controls." : "Dùng trang game rộng hơn khi bạn muốn nhiều không gian cho map, quest panel và control di chuyển."}</a>
 </div>
 
 ## Learning path
@@ -3790,7 +3794,7 @@ description: ${yamlString(isEn ? "A retro pixel adventure map for learning AI as
 
 ${isEn ? "Use this optional mode when you want to move through the course like a game. Each quest maps to one theory lesson, and your progress is saved locally in your browser." : "Dùng mode tùy chọn này khi bạn muốn đi qua course như một game. Mỗi quest tương ứng một bài lý thuyết, và tiến độ được lưu local trong browser của bạn."}
 
-<PixelQuest locale="${locale}" />
+<PixelQuest locale="${locale}" mode="page" />
 `;
 }
 
@@ -3967,7 +3971,7 @@ A bilingual, artifact-driven course for software Business Analysts who need to u
 - Every theory lesson explains common BA difficulties, real project application, and what breaks when the capability is missing.
 - Lessons include mistakes to avoid and actions to apply tomorrow.
 - Labs include input samples, exercise steps, expected deliverables, and review rubrics.
-- Pixel Quest game mode lets learners explore the theory lessons through a retro pixel adventure map.
+- Pixel Quest game mode is now embedded on the home page with movement, XP, levels, and Kenney CC0 pixel hero sprites sourced from the public GitHub repository iwenzhou/kenney.
 - The site includes 70+ detailed project use cases across discovery, requirements, frontend/UI, backend/API, data integration, delivery, AI products, domain workflows, and governance.
 - Resources are upgraded into practical playbooks for prompts, quality review, AI feature specification, RAG, and governance.
 

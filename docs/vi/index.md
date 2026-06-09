@@ -7,6 +7,10 @@ description: "Learning path song ngữ chuyên sâu cho software Business Analys
 
 Learning path song ngữ chuyên sâu cho software Business Analyst muốn dùng AI có trách nhiệm, cải thiện artifact BA và đặc tả sản phẩm có AI bằng judgment của chuyên gia.
 
+<PixelQuest locale="vi" mode="home" />
+
+## Chế độ học truyền thống
+
 <div class="course-grid">
 <div class="course-card"><strong>Nền tảng AI cho Business Analyst</strong>Bài học riêng biệt với diagram, artifact, prompt và review control.</div>
 <div class="course-card"><strong>Quy trình BA được tăng cường bởi AI</strong>Bài học riêng biệt với diagram, artifact, prompt và review control.</div>
@@ -16,7 +20,7 @@ Learning path song ngữ chuyên sâu cho software Business Analyst muốn dùng
 <div class="course-card"><strong>Xây dựng sản phẩm có AI dưới góc nhìn BA</strong>Bài học riêng biệt với diagram, artifact, prompt và review control.</div>
 <div class="course-card"><strong>BA lead và expert track</strong>Bài học riêng biệt với diagram, artifact, prompt và review control.</div>
 <div class="course-card"><strong>Use case thực tế trong dự án</strong>70+ tình huống chi tiết, gồm frontend/UI, backend/API, data integration, QA và AI product work.</div>
-<a class="course-card game-entry-card" href="./game/"><strong>Chơi Pixel Quest</strong>Bản đồ phiêu lưu pixel retro cho người học muốn trải nghiệm course như một game.</a>
+<a class="course-card game-entry-card" href="./game/"><strong>Mở Pixel Quest đầy đủ</strong>Dùng trang game rộng hơn khi bạn muốn nhiều không gian cho map, quest panel và control di chuyển.</a>
 </div>
 
 ## Learning path

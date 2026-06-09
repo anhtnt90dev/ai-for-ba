@@ -153,6 +153,10 @@ assert(exists("docs/vi/index.md"), "Vietnamese course home is required");
 assert(exists("docs/en/game/index.md"), "English Pixel Quest game page is required");
 assert(exists("docs/vi/game/index.md"), "Vietnamese Pixel Quest game page is required");
 assert(exists("docs/.vitepress/theme/components/PixelQuest.vue"), "PixelQuest Vue component is required");
+assert(exists("docs/public/assets/pixel-quest/ba-hero-stand.png"), "Pixel Quest must include the open-source pixel hero stand sprite");
+assert(exists("docs/public/assets/pixel-quest/ba-hero-walk-1.png"), "Pixel Quest must include the open-source pixel hero walk frame 1");
+assert(exists("docs/public/assets/pixel-quest/ba-hero-walk-2.png"), "Pixel Quest must include the open-source pixel hero walk frame 2");
+assert(exists("docs/public/assets/pixel-quest/LICENSE-CC0.md"), "Pixel Quest sprite asset license file is required");
 
 const vitePressConfig = read("docs/.vitepress/config.mts");
 const themeIndex = read("docs/.vitepress/theme/index.ts");
@@ -175,6 +179,12 @@ const pixelQuestComponent = exists("docs/.vitepress/theme/components/PixelQuest.
 assert(pixelQuestComponent.includes("localStorage"), "PixelQuest must persist progress with localStorage");
 assert(pixelQuestComponent.includes("pixel-quest"), "PixelQuest must render the pixel quest game shell");
 assert((pixelQuestComponent.match(/slug:/g)?.length ?? 0) >= 20, "PixelQuest must include all 20 lesson quest nodes");
+assert(pixelQuestComponent.includes("playerPosition"), "PixelQuest must support direct player movement");
+assert(pixelQuestComponent.includes("handleKeyDown"), "PixelQuest must support keyboard movement");
+assert(pixelQuestComponent.includes("movePlayer"), "PixelQuest must expose real player movement logic");
+assert(pixelQuestComponent.includes("xp"), "PixelQuest must show XP progression");
+assert(pixelQuestComponent.includes("level"), "PixelQuest must show level progression");
+assert(pixelQuestComponent.includes("kenney-pixel-hero"), "PixelQuest must render the Kenney open-source pixel hero sprite");
 
 const enLessons = listDirs("docs/en/lessons");
 const viLessons = listDirs("docs/vi/lessons");
@@ -197,6 +207,8 @@ const enHome = read("docs/en/index.md");
 const viHome = read("docs/vi/index.md");
 assert(enHome.includes("./game/"), "English home page must link to Pixel Quest game mode");
 assert(viHome.includes("./game/"), "Vietnamese home page must link to Pixel Quest game mode");
+assert(enHome.includes('<PixelQuest locale="en" mode="home" />'), "English home page must embed Pixel Quest as the primary game option");
+assert(viHome.includes('<PixelQuest locale="vi" mode="home" />'), "Vietnamese home page must embed Pixel Quest as the primary game option");
 
 const enGame = exists("docs/en/game/index.md") ? read("docs/en/game/index.md") : "";
 const viGame = exists("docs/vi/game/index.md") ? read("docs/vi/game/index.md") : "";
@@ -358,6 +370,7 @@ if (exists("README.md")) {
     "README.md must link to the GitHub Pages URL"
   );
   assert(readme.includes("AI for Business Analysts"), "README.md must name the course");
+  assert(readme.includes("Kenney") && readme.includes("CC0"), "README.md must credit the Pixel Quest open-source sprite source and CC0 license");
 }
 
 if (failures.length > 0) {
