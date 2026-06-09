@@ -39,7 +39,7 @@ const text = computed(() =>
         mentorLine: "Mỗi cổng là một quality gate. Bạn chỉ mở được vùng mới khi artifact ở vùng trước đã đủ rõ để team delivery dùng được.",
         fullGame: "Mở trang game đầy đủ",
         classicView: "Xem course truyền thống",
-        source: "Sprite nhân vật: Pixel Agents, MIT, từ GitHub repo pixel-agents-hq/pixel-agents."
+        source: "Nhân vật BA pixel được dựng riêng cho course để nhìn rõ trên bản đồ game."
       }
     : {
         kicker: "Retro BA Learning Game",
@@ -65,7 +65,7 @@ const text = computed(() =>
         mentorLine: "Each gate is a quality gate. You only open the next area when the previous BA artifact is clear enough for delivery teams to use.",
         fullGame: "Open full game page",
         classicView: "Classic course view",
-        source: "Hero sprite: Pixel Agents, MIT, from the pixel-agents-hq/pixel-agents GitHub repository."
+        source: "Custom BA pixel avatar designed for clear readability on the game map."
       }
 );
 
@@ -456,16 +456,6 @@ const nextQuestCopy = computed(() => nextQuest.value[props.locale] || nextQuest.
 const homeMode = computed(() => props.mode === "home");
 const landingMode = computed(() => props.mode === "landing");
 const questInteractionRadius = 8.5;
-const agentSheet = computed(() => withBase(`/assets/pixel-agents/char_${Math.min(5, level.value - 1)}.png`));
-const agentSpriteStyle = computed(() => {
-  const frameSize = 80;
-  const frame = isMoving.value ? stepFrame.value % 3 : 1;
-  return {
-    "--agent-sheet": `url("${agentSheet.value}")`,
-    "--agent-x": `-${frame * frameSize}px`,
-    "--agent-y": "0px"
-  };
-});
 const avatarClass = computed(() => ({
   "is-moving": isMoving.value,
   "face-left": playerDirection.value === "left",
@@ -802,10 +792,22 @@ onBeforeUnmount(() => {
           </a>
 
           <div class="pixel-avatar" :class="avatarClass" :style="{ left: `${playerPosition.x}%`, top: `${playerPosition.y}%` }">
-            <div class="pixel-agent-character" aria-hidden="true">
-              <div class="pixel-agent-hero" :style="agentSpriteStyle"></div>
-              <div class="pixel-agent-torso"></div>
-              <div class="pixel-agent-legs"></div>
+            <div class="pixel-ba-agent" aria-hidden="true">
+              <span class="ba-agent-hair"></span>
+              <span class="ba-agent-face">
+                <span class="ba-agent-eye left"></span>
+                <span class="ba-agent-eye right"></span>
+              </span>
+              <span class="ba-agent-neck"></span>
+              <span class="ba-agent-arm left"></span>
+              <span class="ba-agent-arm right"></span>
+              <span class="ba-agent-body"></span>
+              <span class="ba-agent-shirt"></span>
+              <span class="ba-agent-tie"></span>
+              <span class="ba-agent-hand left"></span>
+              <span class="ba-agent-hand right"></span>
+              <span class="ba-agent-legs"></span>
+              <span class="ba-agent-shoes"></span>
             </div>
           </div>
         </div>
@@ -1346,115 +1348,202 @@ onBeforeUnmount(() => {
 .pixel-avatar {
   position: absolute;
   z-index: 10;
-  width: 96px;
-  height: 124px;
-  margin: -112px 0 0 -48px;
+  width: 82px;
+  height: 116px;
+  margin: -104px 0 0 -41px;
   transition: left 0.12s linear, top 0.12s linear, transform 0.12s linear;
   pointer-events: none;
 }
 
 .pixel-avatar::after {
   position: absolute;
-  left: 18px;
+  left: 13px;
   bottom: 0;
-  width: 60px;
+  width: 56px;
   height: 8px;
   background: rgba(23, 32, 51, 0.22);
   content: "";
 }
 
-.pixel-agent-character {
+.pixel-ba-agent {
   position: relative;
   z-index: 2;
-  width: 96px;
-  height: 118px;
+  width: 82px;
+  height: 110px;
   filter: drop-shadow(3px 3px 0 rgba(39, 49, 79, 0.24));
 }
 
-.pixel-agent-hero {
+.ba-agent-hair {
   position: absolute;
-  top: 0;
-  left: 8px;
-  z-index: 4;
-  display: block;
-  width: 80px;
-  height: 70px;
-  background-image: var(--agent-sheet);
-  background-position: var(--agent-x) var(--agent-y);
-  background-repeat: no-repeat;
-  background-size: 560px 480px;
-  image-rendering: pixelated;
+  top: 5px;
+  left: 22px;
+  z-index: 5;
+  width: 38px;
+  height: 20px;
+  border: 4px solid #2a1d20;
+  background:
+    linear-gradient(90deg, #4b2f24 0 18%, #7a4a31 18% 66%, #5c3928 66% 100%);
+  box-shadow:
+    -7px 11px 0 -3px #2a1d20,
+    7px 11px 0 -3px #2a1d20,
+    inset 0 6px 0 rgba(255, 255, 255, 0.12);
 }
 
-.pixel-agent-torso {
+.ba-agent-hair::before {
+  position: absolute;
+  left: 3px;
+  bottom: -8px;
+  width: 30px;
+  height: 8px;
+  background: #4b2f24;
+  content: "";
+}
+
+.ba-agent-face {
+  position: absolute;
+  top: 20px;
+  left: 24px;
+  z-index: 4;
+  width: 34px;
+  height: 31px;
+  border: 4px solid #2a1d20;
+  background: #efb991;
+}
+
+.ba-agent-face::after {
+  position: absolute;
+  left: 11px;
+  bottom: 4px;
+  width: 8px;
+  height: 3px;
+  background: #8b4a3a;
+  content: "";
+}
+
+.ba-agent-eye {
+  position: absolute;
+  top: 10px;
+  width: 5px;
+  height: 5px;
+  background: #1d2439;
+}
+
+.ba-agent-eye.left {
+  left: 6px;
+}
+
+.ba-agent-eye.right {
+  right: 6px;
+}
+
+.ba-agent-neck {
+  position: absolute;
+  top: 49px;
+  left: 35px;
+  z-index: 2;
+  width: 12px;
+  height: 10px;
+  border-right: 3px solid #2a1d20;
+  border-left: 3px solid #2a1d20;
+  background: #efb991;
+}
+
+.ba-agent-body {
+  position: absolute;
+  top: 58px;
+  left: 20px;
+  z-index: 3;
+  width: 42px;
+  height: 37px;
+  border: 4px solid #1e263f;
+  background:
+    linear-gradient(90deg, #1f5a97 0 28%, #f8f2df 28% 72%, #1f5a97 72% 100%);
+}
+
+.ba-agent-shirt {
   position: absolute;
   top: 62px;
-  left: 31px;
-  z-index: 2;
-  width: 34px;
-  height: 38px;
-  border: 5px solid #2b2024;
-  background:
-    linear-gradient(90deg, #f7f0e3 0 32%, #1f2433 32% 68%, #f7f0e3 68% 100%),
-    #f7f0e3;
-  box-shadow:
-    inset 0 -10px 0 #2867c9,
-    0 4px 0 rgba(39, 49, 79, 0.18);
+  left: 33px;
+  z-index: 4;
+  width: 16px;
+  height: 28px;
+  background: #fffaf0;
 }
 
-.pixel-agent-torso::before,
-.pixel-agent-torso::after {
+.ba-agent-tie {
   position: absolute;
-  top: 4px;
+  top: 64px;
+  left: 39px;
+  z-index: 5;
+  width: 4px;
+  height: 26px;
+  background: #c94b54;
+  box-shadow: 0 12px 0 2px #c94b54;
+}
+
+.ba-agent-arm {
+  position: absolute;
+  top: 62px;
+  z-index: 2;
   width: 12px;
   height: 32px;
-  border: 4px solid #2b2024;
-  background: #efb792;
-  content: "";
+  border: 4px solid #1e263f;
+  background: #1f5a97;
 }
 
-.pixel-agent-torso::before {
-  left: -20px;
+.ba-agent-arm.left {
+  left: 7px;
 }
 
-.pixel-agent-torso::after {
-  right: -20px;
+.ba-agent-arm.right {
+  right: 7px;
 }
 
-.pixel-agent-legs {
+.ba-agent-hand {
   position: absolute;
-  top: 96px;
-  left: 29px;
+  top: 88px;
+  z-index: 3;
+  width: 10px;
+  height: 9px;
+  border: 3px solid #2a1d20;
+  background: #efb991;
+}
+
+.ba-agent-hand.left {
+  left: 8px;
+}
+
+.ba-agent-hand.right {
+  right: 8px;
+}
+
+.ba-agent-legs {
+  position: absolute;
+  top: 94px;
+  left: 24px;
   z-index: 1;
-  width: 38px;
-  height: 28px;
+  width: 34px;
+  height: 24px;
   background:
-    linear-gradient(90deg, #1f4f8f 0 40%, transparent 40% 60%, #1f4f8f 60% 100%);
+    linear-gradient(90deg, #23396f 0 42%, transparent 42% 58%, #23396f 58% 100%);
 }
 
-.pixel-agent-legs::before,
-.pixel-agent-legs::after {
+.ba-agent-shoes {
   position: absolute;
-  bottom: -4px;
-  width: 18px;
+  top: 112px;
+  left: 20px;
+  z-index: 2;
+  width: 42px;
   height: 8px;
-  background: #2b2024;
-  content: "";
+  background:
+    linear-gradient(90deg, #232431 0 38%, transparent 38% 62%, #232431 62% 100%);
 }
 
-.pixel-agent-legs::before {
-  left: -2px;
-}
-
-.pixel-agent-legs::after {
-  right: -2px;
-}
-
-.face-left .pixel-agent-character {
+.face-left .pixel-ba-agent {
   transform: scaleX(-1);
 }
 
-.is-moving .pixel-agent-character {
+.is-moving .pixel-ba-agent {
   animation: pixel-hop 0.18s steps(2, end) infinite;
 }
 
