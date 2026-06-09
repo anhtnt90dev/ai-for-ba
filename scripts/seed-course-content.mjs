@@ -3568,14 +3568,49 @@ ${riskFrame}
 `;
 }
 
+function anchorSlug(text) {
+  return text
+    .toLowerCase()
+    .replace(/&/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+const useCaseGroupLabels = {
+  vi: {
+    "Discovery and alignment": "Discovery và alignment",
+    "Requirements and backlog": "Requirements và backlog",
+    "Delivery and QA": "Delivery và QA",
+    "AI-enabled product use cases": "AI-enabled product",
+    "Domain project scenarios": "Tình huống theo domain",
+    "Governance and adoption": "Governance và adoption",
+    "Frontend, UI, and UX": "Frontend, UI và UX",
+    "Backend and API": "Backend và API",
+    "Data and Integration": "Data và Integration",
+    "Cross-functional BA Collaboration": "Collaboration cross-functional của BA"
+  }
+};
+
+function useCaseGroupLabel(group, locale) {
+  return locale === "vi" ? useCaseGroupLabels.vi[group] ?? group : group;
+}
+
 function useCaseIndex(locale) {
   const isEn = locale === "en";
   const intro = isEn
     ? "A practical library of 70+ project use cases showing how software Business Analysts can apply AI across discovery, requirements, frontend/UI, backend/API, data integration, delivery, AI-enabled products, domain workflows, and governance."
     : "Thư viện 70+ use case thực tế trong dự án, giúp software Business Analyst áp dụng AI vào discovery, requirements, frontend/UI, backend/API, data integration, delivery, AI-enabled product, domain workflow và governance.";
   const groups = [...new Set(useCases.map((useCase) => useCase.group))];
+  const groupSummary = groups
+    .map((group) => {
+      const count = useCases.filter((useCase) => useCase.group === group).length;
+      const label = useCaseGroupLabel(group, locale);
+      return `<a class="group-card" href="#${anchorSlug(group)}"><strong>${label}</strong><span>${count} ${isEn ? "use cases" : "use case"}</span></a>`;
+    })
+    .join("\n");
   const cards = groups
     .map((group) => {
+      const label = useCaseGroupLabel(group, locale);
       const groupCards = useCases
         .filter((useCase) => useCase.group === group)
         .map((useCase) => {
@@ -3583,7 +3618,7 @@ function useCaseIndex(locale) {
           return `<a class="case-card" href="./${useCase.slug}/"><span>${useCase.group}</span><strong>${item.title}</strong><small>${useCase.domain}</small><em>${item.metric}</em></a>`;
         })
         .join("\n");
-      return `<section class="usecase-section"><h2>${group}</h2><div class="usecase-grid">\n${groupCards}\n</div></section>`;
+      return `<section class="usecase-section"><h2 id="${anchorSlug(group)}">${label}</h2><div class="usecase-grid">\n${groupCards}\n</div></section>`;
     })
     .join("\n");
 
@@ -3598,6 +3633,12 @@ ${intro}
 
 <div class="ba-workbench-panel">
 ${isEn ? "Use these pages as working playbooks. Pick a use case close to your project, copy the prompt, prepare source evidence, and adapt the deliverables to your team." : "Hãy dùng các trang này như playbook làm việc. Chọn use case gần với dự án của bạn, dùng prompt, chuẩn bị source evidence và điều chỉnh deliverable theo team."}
+</div>
+
+## ${isEn ? "Browse by group" : "Duyệt theo nhóm"}
+
+<div class="usecase-group-summary">
+${groupSummary}
 </div>
 
 ## Use case map

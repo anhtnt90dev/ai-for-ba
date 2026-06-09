@@ -11,6 +11,21 @@ A practical library of 70+ project use cases showing how software Business Analy
 Use these pages as working playbooks. Pick a use case close to your project, copy the prompt, prepare source evidence, and adapt the deliverables to your team.
 </div>
 
+## Browse by group
+
+<div class="usecase-group-summary">
+<a class="group-card" href="#discovery-and-alignment"><strong>Discovery and alignment</strong><span>5 use cases</span></a>
+<a class="group-card" href="#requirements-and-backlog"><strong>Requirements and backlog</strong><span>5 use cases</span></a>
+<a class="group-card" href="#delivery-and-qa"><strong>Delivery and QA</strong><span>5 use cases</span></a>
+<a class="group-card" href="#ai-enabled-product-use-cases"><strong>AI-enabled product use cases</strong><span>5 use cases</span></a>
+<a class="group-card" href="#domain-project-scenarios"><strong>Domain project scenarios</strong><span>6 use cases</span></a>
+<a class="group-card" href="#governance-and-adoption"><strong>Governance and adoption</strong><span>4 use cases</span></a>
+<a class="group-card" href="#frontend-ui-and-ux"><strong>Frontend, UI, and UX</strong><span>13 use cases</span></a>
+<a class="group-card" href="#backend-and-api"><strong>Backend and API</strong><span>12 use cases</span></a>
+<a class="group-card" href="#data-and-integration"><strong>Data and Integration</strong><span>8 use cases</span></a>
+<a class="group-card" href="#cross-functional-ba-collaboration"><strong>Cross-functional BA Collaboration</strong><span>8 use cases</span></a>
+</div>
+
 ## Use case map
 
 ```mermaid
@@ -25,35 +40,35 @@ flowchart LR
     H --> I["Governance"]
 ```
 
-<section class="usecase-section"><h2>Discovery and alignment</h2><div class="usecase-grid">
+<section class="usecase-section"><h2 id="discovery-and-alignment">Discovery and alignment</h2><div class="usecase-grid">
 <a class="case-card" href="./stakeholder-discovery-from-messy-notes/"><span>Discovery and alignment</span><strong>Stakeholder Discovery From Messy Notes</strong><small>Cross-functional product discovery</small><em>The next workshop resolves the highest-risk conflicts and produces named owners for every open decision.</em></a>
 <a class="case-card" href="./project-kickoff-scope-framing/"><span>Discovery and alignment</span><strong>Project Kickoff Scope Framing</strong><small>Project initiation</small><em>The project kickoff produces a signed scope frame that delivery, product, and operations can use for prioritization.</em></a>
 <a class="case-card" href="./current-state-process-mapping/"><span>Discovery and alignment</span><strong>Current-State Process Mapping</strong><small>Operations analysis</small><em>The validated process map identifies delay points and decision gaps that can be prioritized for redesign.</em></a>
 <a class="case-card" href="./legacy-modernization-gap-analysis/"><span>Discovery and alignment</span><strong>Legacy Modernization Gap Analysis</strong><small>Legacy system modernization</small><em>Migration scope separates must-keep behavior from redesign and retire decisions with evidence.</em></a>
 <a class="case-card" href="./market-competitor-research-synthesis/"><span>Discovery and alignment</span><strong>Market and Competitor Research Synthesis</strong><small>Product strategy</small><em>Roadmap discussion uses validated hypotheses and evidence strength instead of generic competitor feature lists.</em></a>
 </div></section>
-<section class="usecase-section"><h2>Requirements and backlog</h2><div class="usecase-grid">
+<section class="usecase-section"><h2 id="requirements-and-backlog">Requirements and backlog</h2><div class="usecase-grid">
 <a class="case-card" href="./user-story-splitting-for-sprint/"><span>Requirements and backlog</span><strong>User Story Splitting for Sprint Readiness</strong><small>Agile delivery</small><em>Sprint planning receives stories that QA and developers can estimate, test, and release in meaningful increments.</em></a>
 <a class="case-card" href="./acceptance-criteria-edge-cases/"><span>Requirements and backlog</span><strong>Acceptance Criteria and Edge Case Expansion</strong><small>Requirements quality</small><em>QA can convert acceptance criteria into test cases without asking for hidden business rules.</em></a>
 <a class="case-card" href="./brd-srs-drafting-review/"><span>Requirements and backlog</span><strong>BRD and SRS Drafting Review</strong><small>Formal requirements documentation</small><em>The BRD or SRS is faster to draft but still traceable, reviewable, and approved through the correct owners.</em></a>
 <a class="case-card" href="./nfr-risk-workshop/"><span>Requirements and backlog</span><strong>NFR and Risk Workshop Preparation</strong><small>Quality attributes</small><em>Quality attributes become measurable requirements and design inputs before architecture is committed.</em></a>
 <a class="case-card" href="./traceability-matrix-for-release/"><span>Requirements and backlog</span><strong>Traceability Matrix for Release Readiness</strong><small>Release governance</small><em>Release sign-off is based on visible coverage and accepted exceptions, not scattered artifact confidence.</em></a>
 </div></section>
-<section class="usecase-section"><h2>Delivery and QA</h2><div class="usecase-grid">
+<section class="usecase-section"><h2 id="delivery-and-qa">Delivery and QA</h2><div class="usecase-grid">
 <a class="case-card" href="./defect-triage-root-cause/"><span>Delivery and QA</span><strong>Defect Triage and Root-Cause Analysis</strong><small>Defect management</small><em>Triage decisions become faster while root causes remain evidence-based and actionable.</em></a>
 <a class="case-card" href="./test-scenario-generation/"><span>Delivery and QA</span><strong>Test Scenario Generation From Requirements</strong><small>QA collaboration</small><em>QA receives scenario coverage that is traceable, prioritized, and aligned to business rules.</em></a>
 <a class="case-card" href="./change-impact-analysis/"><span>Delivery and QA</span><strong>Change Impact Analysis</strong><small>Change control</small><em>The team accepts, defers, or splits the change with visible impact and artifact owners.</em></a>
 <a class="case-card" href="./release-readiness-check/"><span>Delivery and QA</span><strong>Release Readiness Check</strong><small>Release management</small><em>The go-live meeting uses a shared evidence-based readiness brief instead of fragmented status updates.</em></a>
 <a class="case-card" href="./production-incident-requirement-feedback/"><span>Delivery and QA</span><strong>Production Incident to Requirement Feedback</strong><small>Continuous improvement</small><em>Production incidents become evidence-backed backlog improvements and better future requirement questions.</em></a>
 </div></section>
-<section class="usecase-section"><h2>AI-enabled product use cases</h2><div class="usecase-grid">
+<section class="usecase-section"><h2 id="ai-enabled-product-use-cases">AI-enabled product use cases</h2><div class="usecase-grid">
 <a class="case-card" href="./rag-policy-assistant-requirements/"><span>AI-enabled product use cases</span><strong>RAG Policy Assistant Requirements</strong><small>Knowledge assistant</small><em>The assistant answers only from trusted sources, cites evidence, respects access, and escalates safely.</em></a>
 <a class="case-card" href="./ai-ticket-triage-specification/"><span>AI-enabled product use cases</span><strong>AI Ticket Triage Specification</strong><small>Support automation</small><em>Ticket routing improves SLA performance while low-confidence and high-risk cases receive human review.</em></a>
 <a class="case-card" href="./ai-document-ocr-intake/"><span>AI-enabled product use cases</span><strong>AI Document OCR Intake</strong><small>Document automation</small><em>Document handling becomes faster while sensitive decisions remain reviewable and evidence-backed.</em></a>
 <a class="case-card" href="./ai-recommendation-explanation/"><span>AI-enabled product use cases</span><strong>AI Recommendation Explanation</strong><small>Decision support</small><em>Users understand recommendations, retain decision control, and provide feedback that improves the product.</em></a>
 <a class="case-card" href="./ai-chatbot-human-handoff/"><span>AI-enabled product use cases</span><strong>AI Chatbot Human Handoff</strong><small>Customer support</small><em>The chatbot reduces simple workload while complex or risky cases reach humans with context and accountability.</em></a>
 </div></section>
-<section class="usecase-section"><h2>Domain project scenarios</h2><div class="usecase-grid">
+<section class="usecase-section"><h2 id="domain-project-scenarios">Domain project scenarios</h2><div class="usecase-grid">
 <a class="case-card" href="./loan-origination-journey/"><span>Domain project scenarios</span><strong>Loan Origination Journey Modernization</strong><small>Banking and lending</small><em>The modernized loan journey is faster for customers while credit decisions remain explainable and compliant.</em></a>
 <a class="case-card" href="./insurance-claim-intake/"><span>Domain project scenarios</span><strong>Insurance Claim Intake Automation</strong><small>Insurance</small><em>Claim intake becomes faster and clearer while coverage and fraud decisions remain human-governed.</em></a>
 <a class="case-card" href="./ecommerce-return-refund/"><span>Domain project scenarios</span><strong>E-commerce Return and Refund Flow</strong><small>E-commerce</small><em>Customers can complete eligible returns with fewer support contacts and clearer refund expectations.</em></a>
@@ -61,13 +76,13 @@ flowchart LR
 <a class="case-card" href="./hr-employee-service-portal/"><span>Domain project scenarios</span><strong>HR Employee Service Portal</strong><small>HR service delivery</small><em>Employees can complete common HR requests through structured self-service with clear status and privacy controls.</em></a>
 <a class="case-card" href="./finance-reconciliation-exception/"><span>Domain project scenarios</span><strong>Finance Reconciliation Exception Workflow</strong><small>Finance operations</small><em>Exception resolution becomes faster while finance decisions remain controlled and auditable.</em></a>
 </div></section>
-<section class="usecase-section"><h2>Governance and adoption</h2><div class="usecase-grid">
+<section class="usecase-section"><h2 id="governance-and-adoption">Governance and adoption</h2><div class="usecase-grid">
 <a class="case-card" href="./vendor-selection-ai-tool/"><span>Governance and adoption</span><strong>Vendor Selection for an AI Tool</strong><small>Vendor evaluation</small><em>Vendor selection is driven by BA workflow value, verified controls, and pilot evidence.</em></a>
 <a class="case-card" href="./data-privacy-ai-assessment/"><span>Governance and adoption</span><strong>Data Privacy Assessment for AI Use</strong><small>Privacy and compliance</small><em>BA teams use AI with clear data boundaries, approved tools, and practical privacy controls.</em></a>
 <a class="case-card" href="./ba-ai-adoption-playbook/"><span>Governance and adoption</span><strong>BA AI Adoption Playbook</strong><small>BA practice leadership</small><em>The BA practice adopts AI through shared patterns, review gates, and measurable quality improvement.</em></a>
 <a class="case-card" href="./portfolio-use-case-prioritization/"><span>Governance and adoption</span><strong>AI Use Case Portfolio Prioritization</strong><small>Portfolio management</small><em>Leadership funds AI pilots based on value, feasibility, data readiness, and risk, not hype.</em></a>
 </div></section>
-<section class="usecase-section"><h2>Frontend, UI, and UX</h2><div class="usecase-grid">
+<section class="usecase-section"><h2 id="frontend-ui-and-ux">Frontend, UI, and UX</h2><div class="usecase-grid">
 <a class="case-card" href="./figma-design-handoff-requirements/"><span>Frontend, UI, and UX</span><strong>Figma Design Handoff to Requirements</strong><small>Design handoff</small><em>The design handoff becomes a testable UI specification with clear state behavior and backend dependencies.</em></a>
 <a class="case-card" href="./screen-state-behavior-specification/"><span>Frontend, UI, and UX</span><strong>Screen State Behavior Specification</strong><small>Screen behavior</small><em>Frontend, backend, and QA use one shared state behavior matrix for implementation and testing.</em></a>
 <a class="case-card" href="./complex-form-validation-rules/"><span>Frontend, UI, and UX</span><strong>Complex Form Validation Rules</strong><small>Forms and validation</small><em>Form validation is implemented consistently across frontend, backend, and QA with traceable business rules.</em></a>
@@ -82,7 +97,7 @@ flowchart LR
 <a class="case-card" href="./visual-regression-qa-handoff/"><span>Frontend, UI, and UX</span><strong>Visual Regression and UI QA Handoff</strong><small>Visual QA</small><em>Visual QA focuses on user-impacting regressions across critical pages, components, and supported viewports.</em></a>
 <a class="case-card" href="./frontend-permission-visibility-rules/"><span>Frontend, UI, and UX</span><strong>Frontend Permission Visibility Rules</strong><small>Permissioned UI</small><em>Permissioned UI behavior is understandable to users and aligned with backend authorization controls.</em></a>
 </div></section>
-<section class="usecase-section"><h2>Backend and API</h2><div class="usecase-grid">
+<section class="usecase-section"><h2 id="backend-and-api">Backend and API</h2><div class="usecase-grid">
 <a class="case-card" href="./api-contract-requirements/"><span>Backend and API</span><strong>API Contract Requirements</strong><small>API contracts</small><em>Frontend and backend integrate against a contract that is traceable to business behavior.</em></a>
 <a class="case-card" href="./request-response-schema-review/"><span>Backend and API</span><strong>Request and Response Schema Review</strong><small>Schema design</small><em>API schema fields are understandable, testable, and aligned to business concepts.</em></a>
 <a class="case-card" href="./api-error-code-taxonomy/"><span>Backend and API</span><strong>API Error Code and Message Taxonomy</strong><small>Error handling</small><em>API errors become consistent product behavior that frontend, QA, and support can use.</em></a>
@@ -96,7 +111,7 @@ flowchart LR
 <a class="case-card" href="./integration-failure-fallback-behavior/"><span>Backend and API</span><strong>Integration Failure and Fallback Behavior</strong><small>Integration resilience</small><em>Integration failures have defined user, backend, support, and operations behavior before launch.</em></a>
 <a class="case-card" href="./caching-rate-limit-requirements/"><span>Backend and API</span><strong>Caching and Rate Limit Requirements</strong><small>Performance controls</small><em>Caching and rate limits improve performance without hiding freshness or customer impact trade-offs.</em></a>
 </div></section>
-<section class="usecase-section"><h2>Data and Integration</h2><div class="usecase-grid">
+<section class="usecase-section"><h2 id="data-and-integration">Data and Integration</h2><div class="usecase-grid">
 <a class="case-card" href="./data-mapping-transformation-rules/"><span>Data and Integration</span><strong>Data Mapping and Transformation Rules</strong><small>Data mapping</small><em>Integration mapping is driven by business semantics and validated with realistic data cases.</em></a>
 <a class="case-card" href="./entity-lifecycle-state-machine/"><span>Data and Integration</span><strong>Entity Lifecycle and State Machine</strong><small>Entity lifecycle</small><em>Lifecycle behavior is shared across UI, backend, APIs, reporting, and operations.</em></a>
 <a class="case-card" href="./database-field-business-rule-alignment/"><span>Data and Integration</span><strong>Database Field and Business Rule Alignment</strong><small>Data model alignment</small><em>Database fields are tied to business rules before implementation and migration decisions are visible.</em></a>
@@ -106,7 +121,7 @@ flowchart LR
 <a class="case-card" href="./file-upload-download-behavior/"><span>Data and Integration</span><strong>File Upload and Download Behavior</strong><small>Files and documents</small><em>File handling is safe, recoverable, permission-aware, and testable across UI and backend.</em></a>
 <a class="case-card" href="./external-system-integration-mapping/"><span>Data and Integration</span><strong>External System Integration Mapping</strong><small>External integrations</small><em>External integrations have clear data, failure, ownership, and escalation behavior.</em></a>
 </div></section>
-<section class="usecase-section"><h2>Cross-functional BA Collaboration</h2><div class="usecase-grid">
+<section class="usecase-section"><h2 id="cross-functional-ba-collaboration">Cross-functional BA Collaboration</h2><div class="usecase-grid">
 <a class="case-card" href="./ba-developer-refinement-ai/"><span>Cross-functional BA Collaboration</span><strong>BA-Developer Refinement With AI</strong><small>BA and developers</small><em>Refinement meetings spend more time deciding and less time discovering missing requirement basics.</em></a>
 <a class="case-card" href="./ba-qa-test-handoff-ai/"><span>Cross-functional BA Collaboration</span><strong>BA-QA Test Handoff With AI</strong><small>BA and QA</small><em>QA receives source-backed, prioritized scenarios with expected results and test data needs.</em></a>
 <a class="case-card" href="./ba-ux-critique-loop/"><span>Cross-functional BA Collaboration</span><strong>BA-UX Critique Loop</strong><small>BA and UX</small><em>BA and UX reviews produce clearer design decisions without losing user-centered intent.</em></a>

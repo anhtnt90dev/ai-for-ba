@@ -114,6 +114,19 @@ const engineeringUseCases = [
 
 useCases.push(...engineeringUseCases);
 
+const useCaseGroups = [
+  { en: "Discovery and alignment", vi: "Discovery và alignment", items: useCases.slice(0, 5) },
+  { en: "Requirements and backlog", vi: "Requirements và backlog", items: useCases.slice(5, 10) },
+  { en: "Delivery and QA", vi: "Delivery và QA", items: useCases.slice(10, 15) },
+  { en: "AI-enabled product use cases", vi: "AI-enabled product", items: useCases.slice(15, 20) },
+  { en: "Domain project scenarios", vi: "Tình huống theo domain", items: useCases.slice(20, 26) },
+  { en: "Governance and adoption", vi: "Governance và adoption", items: useCases.slice(26, 30) },
+  { en: "Frontend, UI, and UX", vi: "Frontend, UI và UX", items: engineeringUseCases.slice(0, 13) },
+  { en: "Backend and API", vi: "Backend và API", items: engineeringUseCases.slice(13, 25) },
+  { en: "Data and Integration", vi: "Data và Integration", items: engineeringUseCases.slice(25, 33) },
+  { en: "Cross-functional BA Collaboration", vi: "Collaboration cross-functional của BA", items: engineeringUseCases.slice(33, 41) }
+];
+
 function lessonItems(locale: "en" | "vi") {
   return lessons.map(([enTitle, slug, viTitle], index) => ({
     text: `${String(index + 1).padStart(2, "0")}. ${locale === "en" ? enTitle : viTitle}`,
@@ -128,10 +141,14 @@ function labItems(locale: "en" | "vi") {
   }));
 }
 
-function useCaseItems(locale: "en" | "vi") {
-  return useCases.map(([enTitle, slug, viTitle], index) => ({
-    text: `${String(index + 1).padStart(2, "0")}. ${locale === "en" ? enTitle : viTitle}`,
-    link: `/${locale}/use-cases/${slug}/`
+function useCaseGroupItems(locale: "en" | "vi") {
+  return useCaseGroups.map((group) => ({
+    text: `${locale === "en" ? group.en : group.vi} (${group.items.length})`,
+    collapsed: true,
+    items: group.items.map(([enTitle, slug, viTitle]) => ({
+      text: locale === "en" ? enTitle : viTitle,
+      link: `/${locale}/use-cases/${slug}/`
+    }))
   }));
 }
 
@@ -159,7 +176,7 @@ function sidebar(locale: "en" | "vi") {
       collapsed: true,
       items: [
         { text: locale === "en" ? "Use Case Library" : "Thư viện use case", link: `/${locale}/use-cases/` },
-        ...useCaseItems(locale)
+        ...useCaseGroupItems(locale)
       ]
     },
     {

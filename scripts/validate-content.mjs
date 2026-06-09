@@ -80,6 +80,14 @@ function wordCount(text) {
   return text.split(/\s+/).filter(Boolean).length;
 }
 
+function anchorSlug(text) {
+  return text
+    .toLowerCase()
+    .replace(/&/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
 const requiredLessonHeadings = [
   "## Learning outcomes",
   "## Why this matters for BA work",
@@ -116,7 +124,13 @@ const requiredUseCaseHeadings = [
   "## Risks and controls"
 ];
 
-const requiredEngineeringUseCaseGroups = {
+const requiredUseCaseGroups = {
+  "Discovery and alignment": 5,
+  "Requirements and backlog": 5,
+  "Delivery and QA": 5,
+  "AI-enabled product use cases": 5,
+  "Domain project scenarios": 6,
+  "Governance and adoption": 4,
   "Frontend, UI, and UX": 12,
   "Backend and API": 12,
   "Data and Integration": 8,
@@ -133,6 +147,11 @@ assert(exists(".github/workflows/deploy-pages.yml"), "GitHub Pages workflow is r
 assert(exists("docs/.vitepress/config.mts"), "VitePress config is required");
 assert(exists("docs/en/index.md"), "English course home is required");
 assert(exists("docs/vi/index.md"), "Vietnamese course home is required");
+
+const vitePressConfig = read("docs/.vitepress/config.mts");
+assert(vitePressConfig.includes("const useCaseGroups"), "VitePress sidebar must define grouped use case navigation");
+assert(vitePressConfig.includes("function useCaseGroupItems"), "VitePress sidebar must render grouped use case navigation");
+assert(!vitePressConfig.includes("...useCaseItems(locale)"), "VitePress sidebar must not render use cases as one flat list");
 
 const enLessons = listDirs("docs/en/lessons");
 const viLessons = listDirs("docs/vi/lessons");
@@ -213,12 +232,20 @@ for (const locale of ["en", "vi"]) {
       `docs/${locale}/use-cases/index.md must link to at least 70 use cases`
     );
     assert(index.includes("```mermaid"), `docs/${locale}/use-cases/index.md must include a Mermaid overview diagram`);
-    for (const [group, minimumCount] of Object.entries(requiredEngineeringUseCaseGroups)) {
+    assert(
+      index.includes('class="usecase-group-summary"'),
+      `docs/${locale}/use-cases/index.md must include a grouped summary navigation block`
+    );
+    for (const [group, minimumCount] of Object.entries(requiredUseCaseGroups)) {
       const escapedGroup = group.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
       const groupCount = (index.match(new RegExp(`<span>${escapedGroup}</span>`, "g"))?.length ?? 0);
       assert(
         groupCount >= minimumCount,
         `docs/${locale}/use-cases/index.md must include at least ${minimumCount} cards for ${group}, got ${groupCount}`
+      );
+      assert(
+        index.includes(`href="#${anchorSlug(group)}"`),
+        `docs/${locale}/use-cases/index.md must link to the ${group} section from the group summary`
       );
     }
   }

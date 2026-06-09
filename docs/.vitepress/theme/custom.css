@@ -139,6 +139,41 @@
   margin: 32px 0;
 }
 
+.usecase-group-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 10px;
+  margin: 16px 0 28px;
+}
+
+.group-card {
+  display: grid;
+  gap: 4px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  padding: 12px 14px;
+  color: inherit;
+  background: var(--vp-c-bg-soft);
+  text-decoration: none;
+}
+
+.group-card:hover {
+  border-color: var(--course-accent);
+  text-decoration: none;
+}
+
+.group-card strong {
+  color: var(--vp-c-text-1);
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.group-card span {
+  color: var(--vp-c-text-3);
+  font-size: 12px;
+  font-weight: 600;
+}
+
 .usecase-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));

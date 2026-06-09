@@ -11,6 +11,21 @@ Thư viện 70+ use case thực tế trong dự án, giúp software Business Ana
 Hãy dùng các trang này như playbook làm việc. Chọn use case gần với dự án của bạn, dùng prompt, chuẩn bị source evidence và điều chỉnh deliverable theo team.
 </div>
 
+## Duyệt theo nhóm
+
+<div class="usecase-group-summary">
+<a class="group-card" href="#discovery-and-alignment"><strong>Discovery và alignment</strong><span>5 use case</span></a>
+<a class="group-card" href="#requirements-and-backlog"><strong>Requirements và backlog</strong><span>5 use case</span></a>
+<a class="group-card" href="#delivery-and-qa"><strong>Delivery và QA</strong><span>5 use case</span></a>
+<a class="group-card" href="#ai-enabled-product-use-cases"><strong>AI-enabled product</strong><span>5 use case</span></a>
+<a class="group-card" href="#domain-project-scenarios"><strong>Tình huống theo domain</strong><span>6 use case</span></a>
+<a class="group-card" href="#governance-and-adoption"><strong>Governance và adoption</strong><span>4 use case</span></a>
+<a class="group-card" href="#frontend-ui-and-ux"><strong>Frontend, UI và UX</strong><span>13 use case</span></a>
+<a class="group-card" href="#backend-and-api"><strong>Backend và API</strong><span>12 use case</span></a>
+<a class="group-card" href="#data-and-integration"><strong>Data và Integration</strong><span>8 use case</span></a>
+<a class="group-card" href="#cross-functional-ba-collaboration"><strong>Collaboration cross-functional của BA</strong><span>8 use case</span></a>
+</div>
+
 ## Use case map
 
 ```mermaid
@@ -25,35 +40,35 @@ flowchart LR
     H --> I["Governance"]
 ```
 
-<section class="usecase-section"><h2>Discovery and alignment</h2><div class="usecase-grid">
+<section class="usecase-section"><h2 id="discovery-and-alignment">Discovery và alignment</h2><div class="usecase-grid">
 <a class="case-card" href="./stakeholder-discovery-from-messy-notes/"><span>Discovery and alignment</span><strong>Discovery stakeholder từ notes lộn xộn</strong><small>Cross-functional product discovery</small><em>Workshop tiếp theo resolve được conflict rủi ro cao nhất và có owner cho mọi open decision.</em></a>
 <a class="case-card" href="./project-kickoff-scope-framing/"><span>Discovery and alignment</span><strong>Framing scope cho project kickoff</strong><small>Project initiation</small><em>Kickoff tạo được scope frame đã agreed để delivery, product và operations dùng cho prioritization.</em></a>
 <a class="case-card" href="./current-state-process-mapping/"><span>Discovery and alignment</span><strong>Mapping current-state process</strong><small>Operations analysis</small><em>Process map đã validate chỉ ra delay point và decision gap để ưu tiên redesign.</em></a>
 <a class="case-card" href="./legacy-modernization-gap-analysis/"><span>Discovery and alignment</span><strong>Gap analysis cho legacy modernization</strong><small>Legacy system modernization</small><em>Migration scope tách rõ behavior phải giữ, redesign và retire dựa trên evidence.</em></a>
 <a class="case-card" href="./market-competitor-research-synthesis/"><span>Discovery and alignment</span><strong>Synthesis market và competitor research</strong><small>Product strategy</small><em>Roadmap discussion dùng validated hypothesis và evidence strength thay vì competitor feature list chung chung.</em></a>
 </div></section>
-<section class="usecase-section"><h2>Requirements and backlog</h2><div class="usecase-grid">
+<section class="usecase-section"><h2 id="requirements-and-backlog">Requirements và backlog</h2><div class="usecase-grid">
 <a class="case-card" href="./user-story-splitting-for-sprint/"><span>Requirements and backlog</span><strong>Split user story cho sprint readiness</strong><small>Agile delivery</small><em>Sprint planning nhận story mà QA và developer có thể estimate, test và release theo increment có ý nghĩa.</em></a>
 <a class="case-card" href="./acceptance-criteria-edge-cases/"><span>Requirements and backlog</span><strong>Mở rộng acceptance criteria và edge case</strong><small>Requirements quality</small><em>QA có thể chuyển acceptance criteria thành test case mà không phải hỏi hidden business rule.</em></a>
 <a class="case-card" href="./brd-srs-drafting-review/"><span>Requirements and backlog</span><strong>Draft và review BRD/SRS</strong><small>Formal requirements documentation</small><em>BRD hoặc SRS được draft nhanh hơn nhưng vẫn traceable, reviewable và approved bởi đúng owner.</em></a>
 <a class="case-card" href="./nfr-risk-workshop/"><span>Requirements and backlog</span><strong>Chuẩn bị workshop NFR và risk</strong><small>Quality attributes</small><em>Quality attribute trở thành requirement đo được và design input trước khi commit architecture.</em></a>
 <a class="case-card" href="./traceability-matrix-for-release/"><span>Requirements and backlog</span><strong>Traceability matrix cho release readiness</strong><small>Release governance</small><em>Release sign-off dựa trên coverage và accepted exception visible, không dựa vào artifact rời rạc.</em></a>
 </div></section>
-<section class="usecase-section"><h2>Delivery and QA</h2><div class="usecase-grid">
+<section class="usecase-section"><h2 id="delivery-and-qa">Delivery và QA</h2><div class="usecase-grid">
 <a class="case-card" href="./defect-triage-root-cause/"><span>Delivery and QA</span><strong>Triage defect và root-cause analysis</strong><small>Defect management</small><em>Triage decision nhanh hơn nhưng root cause vẫn evidence-based và actionable.</em></a>
 <a class="case-card" href="./test-scenario-generation/"><span>Delivery and QA</span><strong>Sinh test scenario từ requirements</strong><small>QA collaboration</small><em>QA nhận scenario coverage traceable, prioritized và aligned với business rule.</em></a>
 <a class="case-card" href="./change-impact-analysis/"><span>Delivery and QA</span><strong>Change impact analysis</strong><small>Change control</small><em>Team accept, defer hoặc split change với impact và artifact owner visible.</em></a>
 <a class="case-card" href="./release-readiness-check/"><span>Delivery and QA</span><strong>Kiểm tra release readiness</strong><small>Release management</small><em>Go-live meeting dùng readiness brief chung dựa trên evidence thay vì status update rời rạc.</em></a>
 <a class="case-card" href="./production-incident-requirement-feedback/"><span>Delivery and QA</span><strong>Từ production incident đến feedback requirement</strong><small>Continuous improvement</small><em>Production incident trở thành backlog improvement có evidence và câu hỏi requirement tốt hơn trong tương lai.</em></a>
 </div></section>
-<section class="usecase-section"><h2>AI-enabled product use cases</h2><div class="usecase-grid">
+<section class="usecase-section"><h2 id="ai-enabled-product-use-cases">AI-enabled product</h2><div class="usecase-grid">
 <a class="case-card" href="./rag-policy-assistant-requirements/"><span>AI-enabled product use cases</span><strong>Requirement cho RAG policy assistant</strong><small>Knowledge assistant</small><em>Assistant chỉ trả lời từ trusted source, cite evidence, respect access và escalate an toàn.</em></a>
 <a class="case-card" href="./ai-ticket-triage-specification/"><span>AI-enabled product use cases</span><strong>Đặc tả AI ticket triage</strong><small>Support automation</small><em>Ticket routing cải thiện SLA trong khi case low-confidence và high-risk được human review.</em></a>
 <a class="case-card" href="./ai-document-ocr-intake/"><span>AI-enabled product use cases</span><strong>AI OCR cho document intake</strong><small>Document automation</small><em>Document handling nhanh hơn trong khi sensitive decision vẫn reviewable và evidence-backed.</em></a>
 <a class="case-card" href="./ai-recommendation-explanation/"><span>AI-enabled product use cases</span><strong>Giải thích AI recommendation</strong><small>Decision support</small><em>User hiểu recommendation, giữ quyền decision và cung cấp feedback cải thiện product.</em></a>
 <a class="case-card" href="./ai-chatbot-human-handoff/"><span>AI-enabled product use cases</span><strong>AI chatbot và human handoff</strong><small>Customer support</small><em>Chatbot giảm workload đơn giản trong khi case phức tạp hoặc risky tới human có context và accountability.</em></a>
 </div></section>
-<section class="usecase-section"><h2>Domain project scenarios</h2><div class="usecase-grid">
+<section class="usecase-section"><h2 id="domain-project-scenarios">Tình huống theo domain</h2><div class="usecase-grid">
 <a class="case-card" href="./loan-origination-journey/"><span>Domain project scenarios</span><strong>Modernize journey loan origination</strong><small>Banking and lending</small><em>Loan journey mới nhanh hơn cho customer trong khi credit decision vẫn explainable và compliant.</em></a>
 <a class="case-card" href="./insurance-claim-intake/"><span>Domain project scenarios</span><strong>Automation insurance claim intake</strong><small>Insurance</small><em>Claim intake nhanh và rõ hơn trong khi coverage và fraud decision vẫn human-governed.</em></a>
 <a class="case-card" href="./ecommerce-return-refund/"><span>Domain project scenarios</span><strong>Flow return và refund e-commerce</strong><small>E-commerce</small><em>Customer hoàn thành eligible return với ít support contact hơn và refund expectation rõ hơn.</em></a>
@@ -61,13 +76,13 @@ flowchart LR
 <a class="case-card" href="./hr-employee-service-portal/"><span>Domain project scenarios</span><strong>HR employee service portal</strong><small>HR service delivery</small><em>Employee hoàn thành common HR request qua structured self-service có status rõ và privacy control.</em></a>
 <a class="case-card" href="./finance-reconciliation-exception/"><span>Domain project scenarios</span><strong>Workflow finance reconciliation exception</strong><small>Finance operations</small><em>Exception resolution nhanh hơn trong khi finance decision vẫn controlled và auditable.</em></a>
 </div></section>
-<section class="usecase-section"><h2>Governance and adoption</h2><div class="usecase-grid">
+<section class="usecase-section"><h2 id="governance-and-adoption">Governance và adoption</h2><div class="usecase-grid">
 <a class="case-card" href="./vendor-selection-ai-tool/"><span>Governance and adoption</span><strong>Chọn vendor cho AI tool</strong><small>Vendor evaluation</small><em>Vendor selection được drive bởi BA workflow value, verified control và pilot evidence.</em></a>
 <a class="case-card" href="./data-privacy-ai-assessment/"><span>Governance and adoption</span><strong>Assessment data privacy cho AI use</strong><small>Privacy and compliance</small><em>BA team dùng AI với data boundary rõ, approved tool và privacy control thực tế.</em></a>
 <a class="case-card" href="./ba-ai-adoption-playbook/"><span>Governance and adoption</span><strong>Playbook adoption AI cho BA team</strong><small>BA practice leadership</small><em>BA practice adopt AI bằng shared pattern, review gate và quality improvement đo được.</em></a>
 <a class="case-card" href="./portfolio-use-case-prioritization/"><span>Governance and adoption</span><strong>Prioritize portfolio AI use case</strong><small>Portfolio management</small><em>Leadership fund AI pilot dựa trên value, feasibility, data readiness và risk, không phải hype.</em></a>
 </div></section>
-<section class="usecase-section"><h2>Frontend, UI, and UX</h2><div class="usecase-grid">
+<section class="usecase-section"><h2 id="frontend-ui-and-ux">Frontend, UI và UX</h2><div class="usecase-grid">
 <a class="case-card" href="./figma-design-handoff-requirements/"><span>Frontend, UI, and UX</span><strong>Từ Figma handoff đến requirement</strong><small>Design handoff</small><em>Design handoff trở thành UI specification test được, có state behavior và backend dependency rõ.</em></a>
 <a class="case-card" href="./screen-state-behavior-specification/"><span>Frontend, UI, and UX</span><strong>Đặc tả behavior theo screen state</strong><small>Screen behavior</small><em>Frontend, backend và QA dùng chung một state behavior matrix cho implementation và testing.</em></a>
 <a class="case-card" href="./complex-form-validation-rules/"><span>Frontend, UI, and UX</span><strong>Rule validation cho form phức tạp</strong><small>Forms and validation</small><em>Form validation được implement consistent giữa frontend, backend và QA với business rule traceable.</em></a>
@@ -82,7 +97,7 @@ flowchart LR
 <a class="case-card" href="./visual-regression-qa-handoff/"><span>Frontend, UI, and UX</span><strong>Handoff visual regression và UI QA</strong><small>Visual QA</small><em>Visual QA tập trung regression ảnh hưởng user trên critical page, component và supported viewport.</em></a>
 <a class="case-card" href="./frontend-permission-visibility-rules/"><span>Frontend, UI, and UX</span><strong>Rule visibility theo permission trên frontend</strong><small>Permissioned UI</small><em>Permissioned UI behavior dễ hiểu cho user và aligned với backend authorization control.</em></a>
 </div></section>
-<section class="usecase-section"><h2>Backend and API</h2><div class="usecase-grid">
+<section class="usecase-section"><h2 id="backend-and-api">Backend và API</h2><div class="usecase-grid">
 <a class="case-card" href="./api-contract-requirements/"><span>Backend and API</span><strong>Requirement cho API contract</strong><small>API contracts</small><em>Frontend và backend integrate theo contract trace được tới business behavior.</em></a>
 <a class="case-card" href="./request-response-schema-review/"><span>Backend and API</span><strong>Review schema request và response</strong><small>Schema design</small><em>API schema field dễ hiểu, testable và aligned với business concept.</em></a>
 <a class="case-card" href="./api-error-code-taxonomy/"><span>Backend and API</span><strong>Taxonomy error code và message cho API</strong><small>Error handling</small><em>API error trở thành product behavior consistent để frontend, QA và support sử dụng.</em></a>
@@ -96,7 +111,7 @@ flowchart LR
 <a class="case-card" href="./integration-failure-fallback-behavior/"><span>Backend and API</span><strong>Behavior khi integration fail và fallback</strong><small>Integration resilience</small><em>Integration failure có behavior rõ cho user, backend, support và operations trước launch.</em></a>
 <a class="case-card" href="./caching-rate-limit-requirements/"><span>Backend and API</span><strong>Requirement caching và rate limit</strong><small>Performance controls</small><em>Caching và rate limit cải thiện performance mà không che freshness hoặc customer impact trade-off.</em></a>
 </div></section>
-<section class="usecase-section"><h2>Data and Integration</h2><div class="usecase-grid">
+<section class="usecase-section"><h2 id="data-and-integration">Data và Integration</h2><div class="usecase-grid">
 <a class="case-card" href="./data-mapping-transformation-rules/"><span>Data and Integration</span><strong>Rule data mapping và transformation</strong><small>Data mapping</small><em>Integration mapping dựa trên business semantics và validate bằng realistic data case.</em></a>
 <a class="case-card" href="./entity-lifecycle-state-machine/"><span>Data and Integration</span><strong>Entity lifecycle và state machine</strong><small>Entity lifecycle</small><em>Lifecycle behavior shared giữa UI, backend, API, reporting và operations.</em></a>
 <a class="case-card" href="./database-field-business-rule-alignment/"><span>Data and Integration</span><strong>Align database field và business rule</strong><small>Data model alignment</small><em>Database field gắn với business rule trước implementation và migration decision visible.</em></a>
@@ -106,7 +121,7 @@ flowchart LR
 <a class="case-card" href="./file-upload-download-behavior/"><span>Data and Integration</span><strong>Behavior upload và download file</strong><small>Files and documents</small><em>File handling an toàn, recoverable, permission-aware và testable qua UI/backend.</em></a>
 <a class="case-card" href="./external-system-integration-mapping/"><span>Data and Integration</span><strong>Mapping integration với external system</strong><small>External integrations</small><em>External integration có data, failure, ownership và escalation behavior rõ.</em></a>
 </div></section>
-<section class="usecase-section"><h2>Cross-functional BA Collaboration</h2><div class="usecase-grid">
+<section class="usecase-section"><h2 id="cross-functional-ba-collaboration">Collaboration cross-functional của BA</h2><div class="usecase-grid">
 <a class="case-card" href="./ba-developer-refinement-ai/"><span>Cross-functional BA Collaboration</span><strong>Refinement BA-developer với AI</strong><small>BA and developers</small><em>Refinement meeting dành nhiều thời gian decision hơn và ít thời gian phát hiện thiếu requirement cơ bản.</em></a>
 <a class="case-card" href="./ba-qa-test-handoff-ai/"><span>Cross-functional BA Collaboration</span><strong>Handoff test BA-QA với AI</strong><small>BA and QA</small><em>QA nhận scenario source-backed, prioritized, có expected result và test data need.</em></a>
 <a class="case-card" href="./ba-ux-critique-loop/"><span>Cross-functional BA Collaboration</span><strong>Vòng critique BA-UX</strong><small>BA and UX</small><em>Review BA và UX tạo design decision rõ hơn mà không mất user-centered intent.</em></a>
