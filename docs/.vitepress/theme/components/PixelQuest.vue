@@ -457,10 +457,11 @@ const homeMode = computed(() => props.mode === "home");
 const landingMode = computed(() => props.mode === "landing");
 const agentSheet = computed(() => withBase(`/assets/pixel-agents/char_${Math.min(5, level.value - 1)}.png`));
 const agentSpriteStyle = computed(() => {
-  const frame = isMoving.value ? (stepFrame.value % 6) + 1 : 0;
+  const frameSize = 64;
+  const frame = isMoving.value ? stepFrame.value % 3 : 1;
   return {
     "--agent-sheet": `url("${agentSheet.value}")`,
-    "--agent-x": `-${frame * 48}px`,
+    "--agent-x": `-${frame * frameSize}px`,
     "--agent-y": "0px"
   };
 });
@@ -852,6 +853,11 @@ onBeforeUnmount(() => {
   margin-bottom: 52px;
 }
 
+.pixel-quest,
+.pixel-quest * {
+  box-sizing: border-box;
+}
+
 .pixel-quest-landing {
   width: 100vw;
   min-height: calc(100vh - 64px);
@@ -895,12 +901,14 @@ onBeforeUnmount(() => {
   color: var(--pixel-ink);
   font-size: 30px;
   line-height: 1.1;
+  overflow-wrap: break-word;
 }
 
 .pixel-title-copy p {
   max-width: 760px;
   margin: 0;
   color: #34405f;
+  overflow-wrap: break-word;
 }
 
 .pixel-kicker {
@@ -1313,18 +1321,18 @@ onBeforeUnmount(() => {
 .pixel-avatar {
   position: absolute;
   z-index: 10;
-  width: 48px;
-  height: 58px;
-  margin: -50px 0 0 -24px;
+  width: 64px;
+  height: 76px;
+  margin: -68px 0 0 -32px;
   transition: left 0.12s linear, top 0.12s linear;
   pointer-events: none;
 }
 
 .pixel-avatar::after {
   position: absolute;
-  left: 9px;
+  left: 11px;
   bottom: 0;
-  width: 31px;
+  width: 42px;
   height: 8px;
   background: rgba(23, 32, 51, 0.22);
   content: "";
@@ -1334,12 +1342,12 @@ onBeforeUnmount(() => {
   position: relative;
   z-index: 2;
   display: block;
-  width: 48px;
-  height: 48px;
+  width: 64px;
+  height: 64px;
   background-image: var(--agent-sheet);
   background-position: var(--agent-x) var(--agent-y);
   background-repeat: no-repeat;
-  background-size: 336px 288px;
+  background-size: 448px 384px;
   image-rendering: pixelated;
   filter: drop-shadow(3px 3px 0 rgba(39, 49, 79, 0.24));
 }
@@ -1538,8 +1546,21 @@ onBeforeUnmount(() => {
 }
 
 @media (max-width: 760px) {
+  .pixel-quest-landing {
+    width: 100%;
+    max-width: 100vw;
+    margin-left: 0;
+    overflow-x: hidden;
+  }
+
   .pixel-hero {
     grid-template-columns: 1fr;
+  }
+
+  .pixel-quest-landing .pixel-hero {
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+    max-width: 100%;
   }
 
   .pixel-stats {
@@ -1548,6 +1569,8 @@ onBeforeUnmount(() => {
   }
 
   .pixel-layout {
+    width: 100%;
+    max-width: 100%;
     padding: 10px;
   }
 
@@ -1596,8 +1619,8 @@ onBeforeUnmount(() => {
   }
 
   .pixel-avatar {
-    width: 44px;
-    margin-left: -22px;
+    width: 56px;
+    margin-left: -28px;
   }
 
   .pixel-npc small {
