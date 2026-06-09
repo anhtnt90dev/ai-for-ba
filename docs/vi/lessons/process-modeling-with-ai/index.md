@@ -25,6 +25,36 @@ AI có thể draft process flow, nhưng chất lượng BA nằm ở decision, e
 
 Bài này quan trọng vì process model là nơi requirement ẩn thường lộ ra: handoff, exception path, timing, ownership và system boundary. AI có thể chuyển text thành diagram, nhưng BA phải kiểm tra diagram có phản ánh operational truth không. Flow đẹp mà miss escalation hoặc manual override sẽ rất nguy hiểm.
 
+## Common difficulties for BAs
+
+Trong dự án thật, chủ đề này khó vì BA phải biến evidence lộn xộn thành decision mà không để AI che mất uncertainty. Hãy chú ý các friction point này trước khi xem output là sẵn sàng.
+
+| Khó khăn | Vì sao khó trong công việc BA | BA nên xử lý thế nào |
+| --- | --- | --- |
+| Chấp nhận diagram AI đầu tiên vì nhìn sạch. | Khó vì Mô hình hóa quy trình với AI thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
+| Bỏ exception và manual work. | Khó vì Mô hình hóa quy trình với AI thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
+| Dùng process box không có owner. | Khó vì Mô hình hóa quy trình với AI thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
+
+## Where this applies in real projects
+
+Bài này hữu ích khi BA cần chuyển conversation, policy, design hoặc technical input thành artifact chung để team implement và test được.
+
+| Thời điểm trong dự án | Cách áp dụng bài học | Output cụ thể của BA |
+| --- | --- | --- |
+| Discovery | Nhờ AI thêm exception path cho một flow hiện có. | Process Review Checklist: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
+| Refinement | Gắn business rule cho từng decision diamond. | Process Review Checklist: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
+| Delivery | Thêm owner label vào process step. | Process Review Checklist: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
+
+## If this is missing
+
+Nếu thiếu năng lực này, AI vẫn có thể tạo text rất bóng bẩy, nhưng project mất khả năng review. Kết quả thường là rework, assumption ẩn, acceptance criteria yếu hoặc business decision thiếu evidence.
+
+| Nếu thiếu | Ảnh hưởng tới dự án | Cách khôi phục |
+| --- | --- | --- |
+| Yêu cầu AI vẽ process từ một đoạn và accept luôn | Flow sinh ra có thể omit exception, ownership, timing và integration constraint. | Khôi phục bằng pattern tốt hơn: Dùng diagram như review object và challenge từng decision, handoff, alternate path. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
+| Chỉ model happy path | Delivery team phát hiện queue, retry và manual work quá muộn. | Khôi phục bằng pattern tốt hơn: Thêm path failure, cancellation, timeout, escalation và override. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
+| Trộn user action và system action trong một lane | Responsibility và automation boundary trở nên mơ hồ. | Khôi phục bằng pattern tốt hơn: Tách actor, system, external service và human reviewer thành lane riêng. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
+
 ## Mental model or core concept
 
 Process modeling không phải chỉ vẽ box; đó là làm rõ work, decision right, handoff và failure handling. AI có thể chuyển text thành flow, nhưng BA phải challenge draft: ai own từng step, trigger next step là gì, chuyện gì xảy ra khi thiếu data và control nào bắt buộc.

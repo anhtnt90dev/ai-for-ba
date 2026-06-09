@@ -25,6 +25,36 @@ NFR là business risk requirement, không phải phần phụ kỹ thuật.
 
 Bài này quan trọng vì AI feature thường fail ở quality attribute mà stakeholder không nói rõ: privacy, latency, reliability, explainability, fairness, auditability và fallback. BA phải kéo các concern này lên sớm. Với product có AI, NFR không phải thứ phụ; nó định nghĩa feature có đáng tin trong operation thật hay không.
 
+## Common difficulties for BAs
+
+Trong dự án thật, chủ đề này khó vì BA phải biến evidence lộn xộn thành decision mà không để AI che mất uncertainty. Hãy chú ý các friction point này trước khi xem output là sẵn sàng.
+
+| Khó khăn | Vì sao khó trong công việc BA | BA nên xử lý thế nào |
+| --- | --- | --- |
+| Xem NFR là chuyện riêng của developer. | Khó vì Non-functional requirement và rủi ro thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
+| Viết NFR không có measurable signal. | Khó vì Non-functional requirement và rủi ro thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
+| Bỏ privacy và audit đến late testing. | Khó vì Non-functional requirement và rủi ro thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
+
+## Where this applies in real projects
+
+Bài này hữu ích khi BA cần chuyển conversation, policy, design hoặc technical input thành artifact chung để team implement và test được.
+
+| Thời điểm trong dự án | Cách áp dụng bài học | Output cụ thể của BA |
+| --- | --- | --- |
+| Discovery | Chọn một feature và nhờ AI tìm NFR gap. | NFR Risk Matrix: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
+| Refinement | Rewrite một NFR với acceptance signal đo được. | NFR Risk Matrix: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
+| Delivery | Review priority NFR với product và engineering. | NFR Risk Matrix: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
+
+## If this is missing
+
+Nếu thiếu năng lực này, AI vẫn có thể tạo text rất bóng bẩy, nhưng project mất khả năng review. Kết quả thường là rework, assumption ẩn, acceptance criteria yếu hoặc business decision thiếu evidence.
+
+| Nếu thiếu | Ảnh hưởng tới dự án | Cách khôi phục |
+| --- | --- | --- |
+| Viết AI output must be accurate | Accuracy không có nghĩa nếu thiếu task, dataset, threshold và failure cost. | Khôi phục bằng pattern tốt hơn: Đặc tả evaluation case, target metric, acceptable error và escalation behavior. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
+| Để privacy cho technical team | Decision của BA về data, user và workflow định hình privacy exposure. | Khôi phục bằng pattern tốt hơn: Định nghĩa prohibited data, retention, consent, access và redaction requirement. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
+| Thêm NFR sau khi design feature xong | Control có thể trở nên đắt hoặc không retrofit được. | Khôi phục bằng pattern tốt hơn: Elicit NFR đặc thù AI trong discovery và đưa vào acceptance criteria. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
+
 ## Mental model or core concept
 
 NFR mô tả hệ thống phải behave ra sao trong điều kiện thực tế: performance, availability, security, privacy, accessibility, auditability, supportability và compliance. AI có thể đề xuất category NFR, nhưng BA phải gắn mỗi requirement với business impact và measurable acceptance criteria.

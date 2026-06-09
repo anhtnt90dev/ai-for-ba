@@ -25,6 +25,36 @@ LLM là engine xử lý và reasoning trên text rất mạnh, nhưng nó không
 
 Bài này quan trọng vì output của LLM thường nghe rất hoàn chỉnh trước khi nó thật sự được governance, có source hoặc test được. BA hiểu mental model sẽ dùng AI như partner để draft và critique có cấu trúc, không nhầm text trôi chảy với business approval. Điều này giữ requirement ở trạng thái reviewable và ngăn assumption ẩn đi vào artifact triển khai.
 
+## Common difficulties for BAs
+
+Trong dự án thật, chủ đề này khó vì BA phải biến evidence lộn xộn thành decision mà không để AI che mất uncertainty. Hãy chú ý các friction point này trước khi xem output là sẵn sàng.
+
+| Khó khăn | Vì sao khó trong công việc BA | BA nên xử lý thế nào |
+| --- | --- | --- |
+| Yêu cầu AI đưa final truth thay vì reviewable draft. | Khó vì Mô hình tư duy về LLM thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
+| Không tách model confidence khỏi business approval. | Khó vì Mô hình tư duy về LLM thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
+| Giao task mơ hồ mà thiếu source context hoặc example. | Khó vì Mô hình tư duy về LLM thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
+
+## Where this applies in real projects
+
+Bài này hữu ích khi BA cần chuyển conversation, policy, design hoặc technical input thành artifact chung để team implement và test được.
+
+| Thời điểm trong dự án | Cách áp dụng bài học | Output cụ thể của BA |
+| --- | --- | --- |
+| Discovery | Chọn một output AI và đánh dấu fact vs assumption. | LLM Output Review Card: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
+| Refinement | Yêu cầu AI rewrite artifact chỉ dựa trên context được cung cấp. | LLM Output Review Card: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
+| Delivery | Thêm section 'questions for validation' vào prompt. | LLM Output Review Card: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
+
+## If this is missing
+
+Nếu thiếu năng lực này, AI vẫn có thể tạo text rất bóng bẩy, nhưng project mất khả năng review. Kết quả thường là rework, assumption ẩn, acceptance criteria yếu hoặc business decision thiếu evidence.
+
+| Nếu thiếu | Ảnh hưởng tới dự án | Cách khôi phục |
+| --- | --- | --- |
+| Yêu cầu model viết final acceptance criteria từ một idea một dòng | Model sẽ tự điền policy, permission và edge case còn thiếu bằng invention nghe hợp lý. | Khôi phục bằng pattern tốt hơn: Cung cấp rule, actor, constraint, example và bắt model list assumption riêng. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
+| Xem ngôn ngữ tự tin của model là approval | Model confidence không phải stakeholder confirmation hoặc regulatory evidence. | Khôi phục bằng pattern tốt hơn: Đưa material claim qua source review hoặc decision owner trước khi publish. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
+| Share draft AI bóng bẩy nhưng không có dấu review | Stakeholder không thấy đâu là fact, inference hay unsupported text. | Khôi phục bằng pattern tốt hơn: Thêm bảng review cho source-backed fact, assumption, open question và owner decision. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
+
 ## Mental model or core concept
 
 LLM biến context thành chuỗi text có khả năng phù hợp tiếp theo. Nó có thể summarize, classify, compare, draft và suy luận pattern, nhưng chất lượng phụ thuộc vào context, instruction, example và review. Với BA, mental model đúng không phải 'AI biết câu trả lời', mà là 'AI đề xuất structured draft từ context được cung cấp, BA validate lại.'

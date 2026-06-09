@@ -25,6 +25,36 @@ AI có thể draft tài liệu, nhưng giá trị BA nằm ở decision structur
 
 Bài này quan trọng vì AI có thể draft BRD và SRS rất nhanh, nhưng formal document không chỉ là text. Nó là record của decision, scope boundary, evidence, ownership và change control. BA phải bảo đảm document có AI hỗ trợ giữ được decision logic thay vì tạo trang bóng bẩy che giấu commitment chưa resolve.
 
+## Common difficulties for BAs
+
+Trong dự án thật, chủ đề này khó vì BA phải biến evidence lộn xộn thành decision mà không để AI che mất uncertainty. Hãy chú ý các friction point này trước khi xem output là sẵn sàng.
+
+| Khó khăn | Vì sao khó trong công việc BA | BA nên xử lý thế nào |
+| --- | --- | --- |
+| Dùng AI tạo document polished trước khi decision rõ. | Khó vì BRD, SRS và artifact quyết định thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
+| Giấu assumption trong prose. | Khó vì BRD, SRS và artifact quyết định thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
+| Trộn current state, future state và open question. | Khó vì BRD, SRS và artifact quyết định thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
+
+## Where this applies in real projects
+
+Bài này hữu ích khi BA cần chuyển conversation, policy, design hoặc technical input thành artifact chung để team implement và test được.
+
+| Thời điểm trong dự án | Cách áp dụng bài học | Output cụ thể của BA |
+| --- | --- | --- |
+| Discovery | Thêm decision log vào một document. | Decision Artifact Skeleton: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
+| Refinement | Nhờ AI extract assumption từ draft. | Decision Artifact Skeleton: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
+| Delivery | Chuyển unresolved item vào open-question table. | Decision Artifact Skeleton: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
+
+## If this is missing
+
+Nếu thiếu năng lực này, AI vẫn có thể tạo text rất bóng bẩy, nhưng project mất khả năng review. Kết quả thường là rework, assumption ẩn, acceptance criteria yếu hoặc business decision thiếu evidence.
+
+| Nếu thiếu | Ảnh hưởng tới dự án | Cách khôi phục |
+| --- | --- | --- |
+| Yêu cầu AI tạo complete BRD từ notes | Draft có thể invent decision và làm unresolved area trông như đã approve. | Khôi phục bằng pattern tốt hơn: Generate document skeleton kèm decision gap, evidence map và open approval item. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
+| Dùng wording bóng bẩy để resolve stakeholder conflict | Prose tốt có thể che disagreement thay vì escalate. | Khôi phục bằng pattern tốt hơn: Represent conflict explicit với option, impact, owner và decision date. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
+| Xóa assumption để document sạch hơn | Stakeholder mất visibility vào phần còn cần validation. | Khôi phục bằng pattern tốt hơn: Giữ assumption, dependency và open question trong section được governance. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
+
 ## Mental model or core concept
 
 Tài liệu BA không có giá trị vì dài; nó có giá trị vì làm decision inspect được. AI có thể tạo first draft, nhưng BA phải giữ decision log, scope boundary, source evidence, risk, assumption và open question. Tài liệu polished nhưng giấu uncertainty là nguy hiểm.

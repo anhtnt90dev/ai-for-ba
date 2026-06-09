@@ -25,6 +25,36 @@ AI can draft stories fast, but the BA must preserve business rules, negative pat
 
 This lesson matters because AI can produce many stories quickly, but volume is not readiness. Development-ready BA work requires actor clarity, business value, observable behavior, boundaries, negative cases, permissions, and release decisions. If the BA does not control the structure, AI-generated stories become attractive backlog noise.
 
+## Common difficulties for BAs
+
+In real projects, this topic is difficult because the BA must turn messy evidence into decisions without letting AI hide uncertainty. Watch for these friction points before treating the output as ready.
+
+| Difficulty | Why it is hard in BA work | How a BA should handle it |
+| --- | --- | --- |
+| Generating many stories without business value. | This is hard because User Stories and Acceptance Criteria is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
+| Writing acceptance criteria that repeat the story. | This is hard because User Stories and Acceptance Criteria is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
+| Missing permissions and audit. | This is hard because User Stories and Acceptance Criteria is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
+
+## Where this applies in real projects
+
+This lesson is useful when the BA needs to move from conversation, policy, design, or technical input into a shared artifact that the team can implement and test.
+
+| Project moment | How to apply this lesson | Concrete BA output |
+| --- | --- | --- |
+| Discovery | Pick one vague story and ask AI for missing business rules. | Story Quality Rubric: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
+| Refinement | Add two negative acceptance criteria. | Story Quality Rubric: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
+| Delivery | Ask QA to review testability before refinement. | Story Quality Rubric: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
+
+## If this is missing
+
+If this capability is missing, AI may still produce polished text, but the project loses reviewability. The result is usually rework, hidden assumptions, weak acceptance criteria, or business decisions made without enough evidence.
+
+| If missing | Project impact | Recovery action |
+| --- | --- | --- |
+| Generate ten user stories for the feature | The backlog grows without proving which stories are valuable or releasable. | Recover by using the stronger pattern: Start from user goals, split by permission, workflow step, exception, and business value. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
+| Accept criteria that say the system works correctly | QA and developers cannot observe or automate vague success. | Recover by using the stronger pattern: Write Given-When-Then criteria with data, state, actor, boundary, and expected result. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
+| Ignore negative and permission cases | The happy path hides production defects and security issues. | Recover by using the stronger pattern: Require negative, boundary, audit, and role-based acceptance criteria before refinement. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
+
 ## Mental model or core concept
 
 A user story captures actor, goal, and value; acceptance criteria define observable conditions of done. AI is useful for expansion: alternative paths, validation rules, permissions, and negative cases. The BA must prevent generic criteria by providing business rules and asking for testable scenarios.

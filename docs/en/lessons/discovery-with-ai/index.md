@@ -25,6 +25,36 @@ AI can widen discovery, but the BA must still decide what needs validation with 
 
 This lesson matters because AI can make discovery feel faster while silently replacing uncertainty with invented completeness. The BA's value is to turn AI suggestions into hypotheses, not conclusions. A good discovery workflow uses AI to widen the question space, then uses evidence, workshops, interviews, and data to decide what is true.
 
+## Common difficulties for BAs
+
+In real projects, this topic is difficult because the BA must turn messy evidence into decisions without letting AI hide uncertainty. Watch for these friction points before treating the output as ready.
+
+| Difficulty | Why it is hard in BA work | How a BA should handle it |
+| --- | --- | --- |
+| Asking AI to write requirements before uncertainty is mapped. | This is hard because Discovery With AI is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
+| Treating generated questions as complete discovery. | This is hard because Discovery With AI is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
+| Ignoring decision owners. | This is hard because Discovery With AI is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
+
+## Where this applies in real projects
+
+This lesson is useful when the BA needs to move from conversation, policy, design, or technical input into a shared artifact that the team can implement and test.
+
+| Project moment | How to apply this lesson | Concrete BA output |
+| --- | --- | --- |
+| Discovery | Turn your next workshop agenda into hypotheses. | Discovery Hypothesis Backlog: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
+| Refinement | Ask AI for missing stakeholder groups. | Discovery Hypothesis Backlog: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
+| Delivery | Add evidence needed next to every assumption. | Discovery Hypothesis Backlog: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
+
+## If this is missing
+
+If this capability is missing, AI may still produce polished text, but the project loses reviewability. The result is usually rework, hidden assumptions, weak acceptance criteria, or business decisions made without enough evidence.
+
+| If missing | Project impact | Recovery action |
+| --- | --- | --- |
+| Ask AI to write requirements from a business problem | The model will collapse discovery uncertainty into premature scope. | Recover by using the stronger pattern: Ask for hypotheses, assumptions, evidence needed, and workshop questions first. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
+| Use AI-generated stakeholder lists as final | Important internal owners, regulators, or operational users may be absent. | Recover by using the stronger pattern: Validate actors against process maps, org roles, customer journeys, and decision rights. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
+| Prioritize questions that are easy to answer | The team may avoid the riskiest assumptions until delivery. | Recover by using the stronger pattern: Rank hypotheses by business impact, evidence gap, and decision urgency. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
+
 ## Mental model or core concept
 
 Discovery is about reducing uncertainty, not producing documents. AI helps by proposing actors, constraints, risks, and questions, but its output should become a hypothesis backlog. The BA then validates or rejects those hypotheses with users, data, policy, and stakeholder decisions.

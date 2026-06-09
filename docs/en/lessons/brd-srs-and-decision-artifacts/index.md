@@ -25,6 +25,36 @@ AI can draft documents, but BA value comes from decision structure, evidence, sc
 
 This lesson matters because AI can draft BRD and SRS sections quickly, but formal documents are not just text. They are records of decisions, scope boundaries, evidence, ownership, and change control. A BA must ensure AI-assisted documents preserve decision logic instead of producing polished pages that hide unresolved commitments.
 
+## Common difficulties for BAs
+
+In real projects, this topic is difficult because the BA must turn messy evidence into decisions without letting AI hide uncertainty. Watch for these friction points before treating the output as ready.
+
+| Difficulty | Why it is hard in BA work | How a BA should handle it |
+| --- | --- | --- |
+| Using AI to create polished documents before decisions are clear. | This is hard because BRD, SRS, and Decision Artifacts is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
+| Hiding assumptions in prose. | This is hard because BRD, SRS, and Decision Artifacts is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
+| Mixing current state, future state, and open questions. | This is hard because BRD, SRS, and Decision Artifacts is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
+
+## Where this applies in real projects
+
+This lesson is useful when the BA needs to move from conversation, policy, design, or technical input into a shared artifact that the team can implement and test.
+
+| Project moment | How to apply this lesson | Concrete BA output |
+| --- | --- | --- |
+| Discovery | Add a decision log to one document. | Decision Artifact Skeleton: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
+| Refinement | Ask AI to extract assumptions from your draft. | Decision Artifact Skeleton: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
+| Delivery | Move unresolved items into an open-question table. | Decision Artifact Skeleton: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
+
+## If this is missing
+
+If this capability is missing, AI may still produce polished text, but the project loses reviewability. The result is usually rework, hidden assumptions, weak acceptance criteria, or business decisions made without enough evidence.
+
+| If missing | Project impact | Recovery action |
+| --- | --- | --- |
+| Ask AI to create a complete BRD from notes | The draft may invent decisions and make unresolved areas look approved. | Recover by using the stronger pattern: Generate a document skeleton plus decision gaps, evidence map, and open approval items. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
+| Use polished wording to resolve stakeholder conflict | Good prose can mask disagreement instead of escalating it. | Recover by using the stronger pattern: Represent conflicts explicitly with options, impact, owner, and decision date. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
+| Remove assumptions to make the document cleaner | Stakeholders lose visibility into what still needs validation. | Recover by using the stronger pattern: Keep assumptions, dependencies, and open questions in governed sections. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
+
 ## Mental model or core concept
 
 A BA document is not valuable because it is long; it is valuable because it makes decisions inspectable. AI can create first drafts, but the BA must maintain decision log, scope boundaries, source evidence, risks, assumptions, and open questions. A polished document with hidden uncertainty is dangerous.

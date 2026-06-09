@@ -25,6 +25,36 @@ For BA work, RAG is less about chatbot UI and more about governing which knowled
 
 This lesson matters because many organizations call a feature RAG when the real requirement is trusted knowledge governance. If the BA only specifies a chat interface, the assistant may retrieve stale, inaccessible, or conflicting material. Defining source authority, freshness, permissions, citation behavior, and fallback is what turns RAG into a usable business capability.
 
+## Common difficulties for BAs
+
+In real projects, this topic is difficult because the BA must turn messy evidence into decisions without letting AI hide uncertainty. Watch for these friction points before treating the output as ready.
+
+| Difficulty | Why it is hard in BA work | How a BA should handle it |
+| --- | --- | --- |
+| Treating RAG as magic accuracy. | This is hard because Embeddings, RAG, and Product Knowledge is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
+| Ignoring document ownership and freshness. | This is hard because Embeddings, RAG, and Product Knowledge is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
+| Forgetting access control in retrieval. | This is hard because Embeddings, RAG, and Product Knowledge is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
+
+## Where this applies in real projects
+
+This lesson is useful when the BA needs to move from conversation, policy, design, or technical input into a shared artifact that the team can implement and test.
+
+| Project moment | How to apply this lesson | Concrete BA output |
+| --- | --- | --- |
+| Discovery | List authoritative sources for one AI assistant idea. | RAG Knowledge Contract: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
+| Refinement | Define what the assistant must do when two sources conflict. | RAG Knowledge Contract: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
+| Delivery | Write one test question that should trigger fallback. | RAG Knowledge Contract: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
+
+## If this is missing
+
+If this capability is missing, AI may still produce polished text, but the project loses reviewability. The result is usually rework, hidden assumptions, weak acceptance criteria, or business decisions made without enough evidence.
+
+| If missing | Project impact | Recovery action |
+| --- | --- | --- |
+| Specify that answers must use company documents | The phrase does not define which documents are approved, current, or visible to each role. | Recover by using the stronger pattern: Create a knowledge contract with source inventory, owner, effective date, and access rules. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
+| Evaluate only whether answers sound helpful | A friendly answer can still cite the wrong policy or miss a better source. | Recover by using the stronger pattern: Measure retrieval precision, citation support, fallback rate, and conflict detection. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
+| Let the assistant answer when sources conflict | Users may act on the wrong rule while the system appears confident. | Recover by using the stronger pattern: Show conflict warning, cite both sources, and route to the accountable owner. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
+
 ## Mental model or core concept
 
 RAG retrieves source material before the model generates an answer. It improves grounding only when the right sources are indexed, chunked, ranked, permissioned, and cited. A BA specifying RAG must define the knowledge contract: which documents count, how conflicts are resolved, and what the assistant does when evidence is weak.

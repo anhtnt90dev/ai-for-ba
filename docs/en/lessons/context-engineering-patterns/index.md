@@ -25,6 +25,36 @@ Good AI work is not a clever prompt; it is a reusable context package with goals
 
 This lesson matters because one-off prompts do not scale BA quality. Teams need repeatable context patterns that define role, goal, evidence, constraints, output format, review rules, and escalation behavior. Context engineering lets AI work become auditable, teachable, and reusable across projects instead of depending on individual prompt luck.
 
+## Common difficulties for BAs
+
+In real projects, this topic is difficult because the BA must turn messy evidence into decisions without letting AI hide uncertainty. Watch for these friction points before treating the output as ready.
+
+| Difficulty | Why it is hard in BA work | How a BA should handle it |
+| --- | --- | --- |
+| Calling a one-line instruction 'prompt engineering'. | This is hard because Context Engineering Patterns is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
+| Skipping output format. | This is hard because Context Engineering Patterns is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
+| Failing to provide source IDs. | This is hard because Context Engineering Patterns is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
+
+## Where this applies in real projects
+
+This lesson is useful when the BA needs to move from conversation, policy, design, or technical input into a shared artifact that the team can implement and test.
+
+| Project moment | How to apply this lesson | Concrete BA output |
+| --- | --- | --- |
+| Discovery | Create a reusable context package for requirement review. | BA Context Package: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
+| Refinement | Add output columns before asking AI to draft. | BA Context Package: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
+| Delivery | Include a quality bar in one prompt. | BA Context Package: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
+
+## If this is missing
+
+If this capability is missing, AI may still produce polished text, but the project loses reviewability. The result is usually rework, hidden assumptions, weak acceptance criteria, or business decisions made without enough evidence.
+
+| If missing | Project impact | Recovery action |
+| --- | --- | --- |
+| Write a clever prompt for each new task | Quality depends on individual improvisation and is hard to review. | Recover by using the stronger pattern: Create reusable prompt patterns with source rules, output contracts, and review gates. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
+| Give AI role and goal but no evidence rules | The model may blend provided facts with plausible external assumptions. | Recover by using the stronger pattern: Specify allowed sources, unsupported-claim labels, and validation questions. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
+| Ask for a complete answer in one step | The model hides missing context while optimizing for fluency. | Recover by using the stronger pattern: Use staged prompts: context pack, analysis, artifact draft, critique, and revision. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
+
 ## Mental model or core concept
 
 Prompting is the visible instruction; context engineering is the full operating design around it. For BA work, a context package should include business goal, users, scope, sources, constraints, artifact format, quality bar, and questions the AI must ask before drafting.

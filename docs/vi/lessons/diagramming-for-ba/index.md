@@ -25,6 +25,36 @@ Diagram tốt thay đổi cuộc trao đổi; nó làm lộ decision, boundary v
 
 Bài này quan trọng vì diagram phơi bày reasoning mà prose có thể che giấu. AI có thể tạo flowchart, sequence diagram và state model nhanh, nhưng diagram chỉ có giá trị khi nó làm lộ missing actor, unclear rule, system boundary và exception path. BA phải dùng diagram như analysis instrument, không phải visual decoration.
 
+## Common difficulties for BAs
+
+Trong dự án thật, chủ đề này khó vì BA phải biến evidence lộn xộn thành decision mà không để AI che mất uncertainty. Hãy chú ý các friction point này trước khi xem output là sẵn sàng.
+
+| Khó khăn | Vì sao khó trong công việc BA | BA nên xử lý thế nào |
+| --- | --- | --- |
+| Dùng một diagram type cho mọi problem. | Khó vì Diagramming cho BA thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
+| Để AI vẽ diagram mà không check business meaning. | Khó vì Diagramming cho BA thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
+| Bỏ failure path. | Khó vì Diagramming cho BA thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
+
+## Where this applies in real projects
+
+Bài này hữu ích khi BA cần chuyển conversation, policy, design hoặc technical input thành artifact chung để team implement và test được.
+
+| Thời điểm trong dự án | Cách áp dụng bài học | Output cụ thể của BA |
+| --- | --- | --- |
+| Discovery | Chuyển một requirement nhiều text thành Mermaid diagram. | Diagram Selection Guide: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
+| Refinement | Nhờ AI chọn diagram type phù hợp. | Diagram Selection Guide: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
+| Delivery | Review diagram với developer để tìm boundary gap. | Diagram Selection Guide: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
+
+## If this is missing
+
+Nếu thiếu năng lực này, AI vẫn có thể tạo text rất bóng bẩy, nhưng project mất khả năng review. Kết quả thường là rework, assumption ẩn, acceptance criteria yếu hoặc business decision thiếu evidence.
+
+| Nếu thiếu | Ảnh hưởng tới dự án | Cách khôi phục |
+| --- | --- | --- |
+| Generate một diagram rồi thêm vào document | Một view duy nhất có thể che timing, data hoặc responsibility issue. | Khôi phục bằng pattern tốt hơn: Tạo process, sequence và state view khi problem đi qua cả workflow và system. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
+| Accept label diagram mơ hồ | Decision diamond như valid hoặc approved không định nghĩa business rule. | Khôi phục bằng pattern tốt hơn: Thay label mơ hồ bằng rule source, threshold, owner hoặc open question. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
+| Chỉ dùng diagram để presentation | Team bỏ lỡ cơ hội tìm defect trước build. | Khôi phục bằng pattern tốt hơn: Chạy diagram review session để identify gap, exception và ownership issue. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
+
 ## Mental model or core concept
 
 Diagram là thinking tool. Flowchart làm rõ process decision; sequence diagram làm rõ system interaction; state diagram làm rõ lifecycle; matrix làm rõ tổ hợp rule. AI có thể chuyển text sang Mermaid, nhưng BA phải validate system boundary, actor responsibility, exception path và business rule.

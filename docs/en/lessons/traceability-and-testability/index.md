@@ -25,6 +25,36 @@ Traceability makes AI-assisted requirements accountable from business goal to te
 
 This lesson matters because AI-assisted artifacts can multiply quickly, making it easy to lose the chain from business goal to requirement, source, decision, test, and release evidence. Traceability protects teams from elegant but unproven requirements. Testability turns AI suggestions into behavior that delivery teams can verify.
 
+## Common difficulties for BAs
+
+In real projects, this topic is difficult because the BA must turn messy evidence into decisions without letting AI hide uncertainty. Watch for these friction points before treating the output as ready.
+
+| Difficulty | Why it is hard in BA work | How a BA should handle it |
+| --- | --- | --- |
+| Treating traceability as documentation overhead. | This is hard because Traceability and Testability is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
+| Linking items mechanically without checking meaning. | This is hard because Traceability and Testability is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
+| Missing test scenarios for high-risk requirements. | This is hard because Traceability and Testability is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
+
+## Where this applies in real projects
+
+This lesson is useful when the BA needs to move from conversation, policy, design, or technical input into a shared artifact that the team can implement and test.
+
+| Project moment | How to apply this lesson | Concrete BA output |
+| --- | --- | --- |
+| Discovery | Build a traceability chain for one epic. | Traceability Chain: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
+| Refinement | Ask AI to identify orphan stories. | Traceability Chain: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
+| Delivery | Add source evidence to high-risk requirements. | Traceability Chain: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
+
+## If this is missing
+
+If this capability is missing, AI may still produce polished text, but the project loses reviewability. The result is usually rework, hidden assumptions, weak acceptance criteria, or business decisions made without enough evidence.
+
+| If missing | Project impact | Recovery action |
+| --- | --- | --- |
+| Keep AI drafts in chat and copy useful parts into tickets | The source, assumption, and review trail disappear. | Recover by using the stronger pattern: Record source IDs, prompt context, reviewer, decision owner, and artifact version. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
+| Write tests only for happy-path generated behavior | AI features fail in edge cases, low confidence, and unsupported input. | Recover by using the stronger pattern: Trace each requirement to positive, negative, fallback, and monitoring tests. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
+| Treat traceability as a compliance spreadsheet | The team fills fields without using them to manage risk. | Recover by using the stronger pattern: Use trace links in refinement, QA planning, change impact, and release decisions. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
+
 ## Mental model or core concept
 
 Traceability connects why a requirement exists to how it will be verified. AI can help build matrices and identify gaps, but the BA must decide which links are real. A strong traceability chain maps business objective, stakeholder need, requirement, acceptance criteria, test scenario, metric, and source evidence.

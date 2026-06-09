@@ -25,6 +25,36 @@ Với BA, RAG không chỉ là UI chatbot; trọng tâm là governance tri thứ
 
 Bài này quan trọng vì nhiều tổ chức gọi tính năng là RAG trong khi requirement thật là governance tri thức đáng tin. Nếu BA chỉ đặc tả chat interface, assistant có thể retrieve material cũ, không được phép xem hoặc conflict. Định nghĩa source authority, freshness, permission, citation behavior và fallback mới biến RAG thành capability dùng được.
 
+## Common difficulties for BAs
+
+Trong dự án thật, chủ đề này khó vì BA phải biến evidence lộn xộn thành decision mà không để AI che mất uncertainty. Hãy chú ý các friction point này trước khi xem output là sẵn sàng.
+
+| Khó khăn | Vì sao khó trong công việc BA | BA nên xử lý thế nào |
+| --- | --- | --- |
+| Xem RAG là magic accuracy. | Khó vì Embeddings, RAG và product knowledge thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
+| Bỏ qua document ownership và freshness. | Khó vì Embeddings, RAG và product knowledge thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
+| Quên access control trong retrieval. | Khó vì Embeddings, RAG và product knowledge thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
+
+## Where this applies in real projects
+
+Bài này hữu ích khi BA cần chuyển conversation, policy, design hoặc technical input thành artifact chung để team implement và test được.
+
+| Thời điểm trong dự án | Cách áp dụng bài học | Output cụ thể của BA |
+| --- | --- | --- |
+| Discovery | Liệt kê authoritative source cho một AI assistant idea. | RAG Knowledge Contract: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
+| Refinement | Định nghĩa hệ thống làm gì khi hai source conflict. | RAG Knowledge Contract: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
+| Delivery | Viết một test question bắt buộc trigger fallback. | RAG Knowledge Contract: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
+
+## If this is missing
+
+Nếu thiếu năng lực này, AI vẫn có thể tạo text rất bóng bẩy, nhưng project mất khả năng review. Kết quả thường là rework, assumption ẩn, acceptance criteria yếu hoặc business decision thiếu evidence.
+
+| Nếu thiếu | Ảnh hưởng tới dự án | Cách khôi phục |
+| --- | --- | --- |
+| Đặc tả answer phải dùng company document | Câu này không nói document nào approved, current hoặc visible cho từng role. | Khôi phục bằng pattern tốt hơn: Tạo knowledge contract gồm source inventory, owner, effective date và access rule. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
+| Chỉ evaluate answer có nghe helpful không | Answer thân thiện vẫn có thể cite nhầm policy hoặc miss source tốt hơn. | Khôi phục bằng pattern tốt hơn: Đo retrieval precision, citation support, fallback rate và conflict detection. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
+| Để assistant trả lời khi source conflict | User có thể hành động theo rule sai trong khi hệ thống rất tự tin. | Khôi phục bằng pattern tốt hơn: Hiển thị conflict warning, cite cả hai source và route tới owner chịu trách nhiệm. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
+
 ## Mental model or core concept
 
 RAG retrieve tài liệu nguồn trước khi model generate answer. Nó chỉ tăng grounding khi source đúng được index, chunk, rank, permission và cite đúng. BA đặc tả RAG phải định nghĩa knowledge contract: tài liệu nào được tính, conflict xử lý ra sao và assistant làm gì khi evidence yếu.

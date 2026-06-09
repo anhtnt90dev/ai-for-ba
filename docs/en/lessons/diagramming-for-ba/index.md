@@ -25,6 +25,36 @@ A good diagram changes the conversation; it reveals decisions, boundaries, and g
 
 This lesson matters because diagrams expose reasoning that prose can hide. AI can create flowcharts, sequence diagrams, and state models quickly, but a diagram is valuable only when it reveals missing actors, unclear rules, system boundaries, and exception paths. The BA must use diagrams as analysis instruments, not visual decoration.
 
+## Common difficulties for BAs
+
+In real projects, this topic is difficult because the BA must turn messy evidence into decisions without letting AI hide uncertainty. Watch for these friction points before treating the output as ready.
+
+| Difficulty | Why it is hard in BA work | How a BA should handle it |
+| --- | --- | --- |
+| Using one diagram type for every problem. | This is hard because Diagramming for BA is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
+| Letting AI draw a diagram without checking business meaning. | This is hard because Diagramming for BA is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
+| Omitting failure paths. | This is hard because Diagramming for BA is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
+
+## Where this applies in real projects
+
+This lesson is useful when the BA needs to move from conversation, policy, design, or technical input into a shared artifact that the team can implement and test.
+
+| Project moment | How to apply this lesson | Concrete BA output |
+| --- | --- | --- |
+| Discovery | Convert one text-heavy requirement into a Mermaid diagram. | Diagram Selection Guide: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
+| Refinement | Ask AI which diagram type fits the question. | Diagram Selection Guide: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
+| Delivery | Review the diagram with a developer for boundary gaps. | Diagram Selection Guide: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
+
+## If this is missing
+
+If this capability is missing, AI may still produce polished text, but the project loses reviewability. The result is usually rework, hidden assumptions, weak acceptance criteria, or business decisions made without enough evidence.
+
+| If missing | Project impact | Recovery action |
+| --- | --- | --- |
+| Generate one diagram and add it to the document | A single view may hide timing, data, or responsibility issues. | Recover by using the stronger pattern: Create process, sequence, and state views when the problem crosses workflow and systems. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
+| Accept diagram labels that are vague | Decision diamonds like valid or approved do not define business rules. | Recover by using the stronger pattern: Replace vague labels with rule source, threshold, owner, or open question. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
+| Use diagrams only for presentation | The team misses the chance to find defects before build. | Recover by using the stronger pattern: Run diagram review sessions to identify gaps, exceptions, and ownership issues. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
+
 ## Mental model or core concept
 
 Diagrams are thinking tools. Flowcharts clarify process decisions; sequence diagrams clarify system interactions; state diagrams clarify lifecycle; matrices clarify rule combinations. AI can translate text to Mermaid, but the BA must validate system boundaries, actor responsibility, exception paths, and business rules.

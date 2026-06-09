@@ -91,6 +91,9 @@ function anchorSlug(text) {
 const requiredLessonHeadings = [
   "## Learning outcomes",
   "## Why this matters for BA work",
+  "## Common difficulties for BAs",
+  "## Where this applies in real projects",
+  "## If this is missing",
   "## Mental model or core concept",
   "## Practical BA example",
   "## Diagram",
@@ -149,9 +152,15 @@ assert(exists("docs/en/index.md"), "English course home is required");
 assert(exists("docs/vi/index.md"), "Vietnamese course home is required");
 
 const vitePressConfig = read("docs/.vitepress/config.mts");
+const themeCss = read("docs/.vitepress/theme/custom.css");
 assert(vitePressConfig.includes("const useCaseGroups"), "VitePress sidebar must define grouped use case navigation");
 assert(vitePressConfig.includes("function useCaseGroupItems"), "VitePress sidebar must render grouped use case navigation");
 assert(!vitePressConfig.includes("...useCaseItems(locale)"), "VitePress sidebar must not render use cases as one flat list");
+assert(themeCss.includes(".mermaid svg"), "Theme CSS must explicitly center Mermaid SVG diagrams");
+assert(
+  themeCss.includes("justify-content: center") || themeCss.includes("text-align: center"),
+  "Theme CSS must center Mermaid diagrams in their container"
+);
 
 const enLessons = listDirs("docs/en/lessons");
 const viLessons = listDirs("docs/vi/lessons");
@@ -201,6 +210,15 @@ for (const locale of ["en", "vi"]) {
     const why = normalizedText(stripHtmlCallouts(sectionContent(content, "Why this matters for BA work")));
     assert(wordCount(why) >= 35, `${file} must include a lesson-specific Why section with at least 35 words`);
     whyBodiesByLocale[locale].push({ file, body: why });
+
+    const difficulties = normalizedText(sectionContent(content, "Common difficulties for BAs"));
+    assert(wordCount(difficulties) >= 45, `${file} must explain common BA difficulties with at least 45 words`);
+
+    const applications = normalizedText(sectionContent(content, "Where this applies in real projects"));
+    assert(wordCount(applications) >= 45, `${file} must explain practical project applications with at least 45 words`);
+
+    const missing = normalizedText(sectionContent(content, "If this is missing"));
+    assert(wordCount(missing) >= 45, `${file} must explain what goes wrong if the capability is missing`);
 
     const expert = normalizedText(sectionContent(content, "AI expert note"));
     assert(wordCount(expert) >= 30, `${file} must include a substantive AI expert note with at least 30 words`);

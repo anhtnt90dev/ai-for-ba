@@ -3212,9 +3212,62 @@ function diagram(slug, locale) {
   return diagrams[slug];
 }
 
+function lessonPracticalSections(lesson, locale, upgrade) {
+  const item = lesson[locale];
+  const isEn = locale === "en";
+  const difficultyHeaders = isEn
+    ? ["Difficulty", "Why it is hard in BA work", "How a BA should handle it"]
+    : ["Khó khăn", "Vì sao khó trong công việc BA", "BA nên xử lý thế nào"];
+  const applicationHeaders = isEn
+    ? ["Project moment", "How to apply this lesson", "Concrete BA output"]
+    : ["Thời điểm trong dự án", "Cách áp dụng bài học", "Output cụ thể của BA"];
+  const missingHeaders = isEn
+    ? ["If missing", "Project impact", "Recovery action"]
+    : ["Nếu thiếu", "Ảnh hưởng tới dự án", "Cách khôi phục"];
+
+  const difficulties = item.mistakes.slice(0, 3).map((mistake, index) => [
+    mistake,
+    isEn
+      ? `This is hard because ${item.title} is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible.`
+      : `Khó vì ${item.title} thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn.`,
+    isEn
+      ? `Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment.`
+      : `Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment.`
+  ]);
+
+  const applications = item.tomorrow.slice(0, 3).map((action, index) => [
+    isEn ? ["Discovery", "Refinement", "Delivery"][index] ?? "Delivery" : ["Discovery", "Refinement", "Delivery"][index] ?? "Delivery",
+    action,
+    isEn
+      ? `${item.artifactTitle}: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment.`
+      : `${item.artifactTitle}: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment.`
+  ]);
+
+  const missing = upgrade.badBetter.map(([weak, why, better]) => [
+    weak,
+    why,
+    isEn
+      ? `Recover by using the stronger pattern: ${better} Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it.`
+      : `Khôi phục bằng pattern tốt hơn: ${better} Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share.`
+  ]);
+
+  return {
+    difficulties: `${isEn ? "In real projects, this topic is difficult because the BA must turn messy evidence into decisions without letting AI hide uncertainty. Watch for these friction points before treating the output as ready." : "Trong dự án thật, chủ đề này khó vì BA phải biến evidence lộn xộn thành decision mà không để AI che mất uncertainty. Hãy chú ý các friction point này trước khi xem output là sẵn sàng."}
+
+${artifactTable(difficultyHeaders, difficulties)}`,
+    applications: `${isEn ? "This lesson is useful when the BA needs to move from conversation, policy, design, or technical input into a shared artifact that the team can implement and test." : "Bài này hữu ích khi BA cần chuyển conversation, policy, design hoặc technical input thành artifact chung để team implement và test được."}
+
+${artifactTable(applicationHeaders, applications)}`,
+    missing: `${isEn ? "If this capability is missing, AI may still produce polished text, but the project loses reviewability. The result is usually rework, hidden assumptions, weak acceptance criteria, or business decisions made without enough evidence." : "Nếu thiếu năng lực này, AI vẫn có thể tạo text rất bóng bẩy, nhưng project mất khả năng review. Kết quả thường là rework, assumption ẩn, acceptance criteria yếu hoặc business decision thiếu evidence."}
+
+${artifactTable(missingHeaders, missing)}`
+  };
+}
+
 function lessonPage(lesson, locale) {
   const item = lesson[locale];
   const upgrade = lessonUpgrade(lesson.slug, locale);
+  const practical = lessonPracticalSections(lesson, locale, upgrade);
   const [enSection, viSection] = sections[lesson.section];
   const section = locale === "en" ? enSection : viSection;
   const level = lesson.section === "lead" ? "Expert" : lesson.section === "products" ? "Advanced" : "Core";
@@ -3247,6 +3300,18 @@ ${item.focus}
 </div>
 
 ${upgrade.why}
+
+## Common difficulties for BAs
+
+${practical.difficulties}
+
+## Where this applies in real projects
+
+${practical.applications}
+
+## If this is missing
+
+${practical.missing}
 
 ## Mental model or core concept
 
@@ -3883,6 +3948,7 @@ A bilingual, artifact-driven course for software Business Analysts who need to u
 - Every lesson has its own Mermaid diagram.
 - Every lesson includes a concrete BA artifact: matrix, rubric, canvas, checklist, or specification table.
 - Every lesson now has a lesson-specific BA relevance section, expert AI review note, and bad-vs-better practice examples.
+- Every theory lesson explains common BA difficulties, real project application, and what breaks when the capability is missing.
 - Lessons include mistakes to avoid and actions to apply tomorrow.
 - Labs include input samples, exercise steps, expected deliverables, and review rubrics.
 - The site includes 70+ detailed project use cases across discovery, requirements, frontend/UI, backend/API, data integration, delivery, AI products, domain workflows, and governance.
