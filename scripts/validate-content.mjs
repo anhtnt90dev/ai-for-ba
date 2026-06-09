@@ -188,6 +188,8 @@ assert(pixelQuestComponent.includes("xp"), "PixelQuest must show XP progression"
 assert(pixelQuestComponent.includes("level"), "PixelQuest must show level progression");
 assert(pixelQuestComponent.includes("pixel-agent-hero"), "PixelQuest must render the Pixel Agents character sprite");
 assert(pixelQuestComponent.includes("/assets/pixel-agents/char_"), "PixelQuest must source character sprites from Pixel Agents assets");
+assert(pixelQuestComponent.includes("landingMode"), "PixelQuest must include a dedicated fullscreen landing mode");
+assert(pixelQuestComponent.includes("questHref"), "PixelQuest landing mode must expose quest nodes as lesson links");
 
 const enLessons = listDirs("docs/en/lessons");
 const viLessons = listDirs("docs/vi/lessons");
@@ -213,8 +215,9 @@ assert(enHome.includes("./game/"), "English home page must link to Pixel Quest g
 assert(viHome.includes("./game/"), "Vietnamese home page must link to Pixel Quest game mode");
 assert(enHome.includes('<PixelQuest locale="en" mode="home" />'), "English home page must embed Pixel Quest as the primary game option");
 assert(viHome.includes('<PixelQuest locale="vi" mode="home" />'), "Vietnamese home page must embed Pixel Quest as the primary game option");
-assert(rootHome.includes('<PixelQuest locale="vi" mode="home" />'), "Root home page must embed Pixel Quest directly");
-assert(rootHome.includes("./vi/") && rootHome.includes("./en/"), "Root home page must link to both Vietnamese and English course paths");
+assert(rootHome.includes("pageClass: pixel-game-root"), "Root home page must use the fullscreen pixel-game page class");
+assert(rootHome.includes('<PixelQuest locale="vi" mode="landing" />'), "Root home page must embed Pixel Quest in fullscreen landing mode");
+assert(themeCss.includes(".pixel-game-root"), "Theme CSS must include fullscreen root game page styling");
 
 const enGame = exists("docs/en/game/index.md") ? read("docs/en/game/index.md") : "";
 const viGame = exists("docs/vi/game/index.md") ? read("docs/vi/game/index.md") : "";

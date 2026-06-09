@@ -454,6 +454,7 @@ const selectedZone = computed(() => zoneMeta[selectedQuest.value.zone]);
 const nextQuest = computed(() => quests.find((quest, index) => !isComplete(quest.slug) && isUnlocked(index)) || quests[quests.length - 1]);
 const nextQuestCopy = computed(() => nextQuest.value[props.locale] || nextQuest.value.en);
 const homeMode = computed(() => props.mode === "home");
+const landingMode = computed(() => props.mode === "landing");
 const agentSheet = computed(() => withBase(`/assets/pixel-agents/char_${Math.min(5, level.value - 1)}.png`));
 const agentSpriteStyle = computed(() => {
   const frame = isMoving.value ? (stepFrame.value % 6) + 1 : 0;
@@ -481,6 +482,10 @@ function gameHref() {
   return withBase(`/${props.locale}/game/`);
 }
 
+function languageHref(locale) {
+  return withBase(`/${locale}/`);
+}
+
 function isComplete(slug) {
   return completed.value.includes(slug);
 }
@@ -489,8 +494,16 @@ function isUnlocked(index) {
   return index === 0 || isComplete(quests[index - 1].slug) || isComplete(quests[index].slug);
 }
 
+function isQuestAccessible(index) {
+  return landingMode.value || isUnlocked(index);
+}
+
+function questHref(quest, index) {
+  return isQuestAccessible(index) ? lessonHref(quest.slug) : undefined;
+}
+
 function isGateOpen(gate) {
-  return isComplete(quests[gate.afterIndex].slug);
+  return landingMode.value || isComplete(quests[gate.afterIndex].slug);
 }
 
 function clamp(value, min, max) {
@@ -561,6 +574,13 @@ function selectQuest(quest, options = {}) {
   }
 }
 
+function handleQuestNodeClick(quest, index, event) {
+  selectQuest(quest, { jumpToNode: true });
+  if (!landingMode.value || !isQuestAccessible(index)) {
+    event.preventDefault();
+  }
+}
+
 function handleMapClick(event) {
   if (!mapRef.value) {
     return;
@@ -612,7 +632,7 @@ function handleKeyDown(event) {
   }
 
   const key = event.key.toLowerCase();
-  const step = homeMode.value ? 3.4 : 4;
+  const step = landingMode.value ? 5 : homeMode.value ? 3.4 : 4;
   const moves = {
     arrowleft: [-step, 0],
     a: [-step, 0],
@@ -659,13 +679,15 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <section class="pixel-quest" :class="{ 'pixel-quest-home': homeMode }">
+  <section class="pixel-quest" :class="{ 'pixel-quest-home': homeMode, 'pixel-quest-landing': landingMode }">
     <div class="pixel-hero">
       <div class="pixel-title-copy">
         <p class="pixel-kicker">{{ text.kicker }}</p>
         <h2>{{ text.title }}</h2>
         <p>{{ text.subtitle }}</p>
         <div class="pixel-hero-actions">
+          <a v-if="landingMode" class="pixel-button primary" :href="languageHref('vi')">Tiếng Việt</a>
+          <a v-if="landingMode" class="pixel-button subtle" :href="languageHref('en')">English</a>
           <a v-if="homeMode" class="pixel-button primary" :href="gameHref()">{{ text.fullGame }}</a>
           <a v-if="homeMode" class="pixel-button subtle" href="#classic-course-view">{{ text.classicView }}</a>
         </div>
@@ -737,7 +759,7 @@ onBeforeUnmount(() => {
             <small>{{ npc.name[props.locale] || npc.name.en }}</small>
           </div>
 
-          <button
+          <a
             v-for="(quest, index) in quests"
             :key="quest.slug"
             class="quest-node"
@@ -745,17 +767,17 @@ onBeforeUnmount(() => {
               zoneMeta[quest.zone].className,
               {
                 complete: isComplete(quest.slug),
-                locked: !isUnlocked(index),
+                locked: !isQuestAccessible(index),
                 active: selectedQuest.slug === quest.slug
               }
             ]"
             :style="{ left: `${quest.x}%`, top: `${quest.y}%` }"
-            type="button"
+            :href="questHref(quest, index)"
             :aria-label="`${index + 1}. ${questCopy(quest).title}`"
-            @click.stop="selectQuest(quest, { jumpToNode: true })"
+            @click.stop="handleQuestNodeClick(quest, index, $event)"
           >
             <span>{{ index + 1 }}</span>
-          </button>
+          </a>
 
           <div class="pixel-avatar" :class="avatarClass" :style="{ left: `${playerPosition.x}%`, top: `${playerPosition.y}%` }">
             <div class="pixel-agent-hero" :style="agentSpriteStyle" aria-hidden="true"></div>
@@ -781,7 +803,7 @@ onBeforeUnmount(() => {
 
         <div class="quest-zone">{{ text.zone }}: {{ selectedZone.name[props.locale] || selectedZone.name.en }}</div>
         <h3>{{ selectedCopy.title }}</h3>
-        <p class="quest-status">{{ isUnlocked(selectedIndex) ? text.unlocked : text.locked }}</p>
+        <p class="quest-status">{{ isQuestAccessible(selectedIndex) ? text.unlocked : text.locked }}</p>
 
         <h4>{{ text.briefing }}</h4>
         <p>{{ selectedCopy.mission }}</p>
@@ -790,13 +812,13 @@ onBeforeUnmount(() => {
         <p>{{ selectedCopy.reward }}</p>
 
         <div class="quest-actions">
-          <a class="pixel-button primary" :class="{ disabled: !isUnlocked(selectedIndex) }" :href="isUnlocked(selectedIndex) ? lessonHref(selectedQuest.slug) : undefined">
+          <a class="pixel-button primary" :class="{ disabled: !isQuestAccessible(selectedIndex) }" :href="isQuestAccessible(selectedIndex) ? lessonHref(selectedQuest.slug) : undefined">
             {{ text.start }}
           </a>
-          <button class="pixel-button" type="button" :disabled="!isUnlocked(selectedIndex)" @click="toggleComplete(selectedQuest.slug)">
+          <button v-if="!landingMode" class="pixel-button" type="button" :disabled="!isQuestAccessible(selectedIndex)" @click="toggleComplete(selectedQuest.slug)">
             {{ isComplete(selectedQuest.slug) ? text.unmark : text.mark }}
           </button>
-          <button class="pixel-button subtle" type="button" @click="resetProgress">{{ text.reset }}</button>
+          <button v-if="!landingMode" class="pixel-button subtle" type="button" @click="resetProgress">{{ text.reset }}</button>
         </div>
 
         <p class="quest-help">{{ text.keyboard }}</p>
@@ -830,6 +852,18 @@ onBeforeUnmount(() => {
   margin-bottom: 52px;
 }
 
+.pixel-quest-landing {
+  width: 100vw;
+  min-height: calc(100vh - 64px);
+  margin: 0 0 36px;
+  margin-left: calc(50% - 50vw);
+  padding: 16px clamp(12px, 2vw, 28px) 28px;
+  background:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.06) 2px, transparent 2px, transparent 16px),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05) 2px, transparent 2px, transparent 16px),
+    #202642;
+}
+
 .pixel-hero,
 .pixel-layout,
 .quest-panel,
@@ -848,6 +882,12 @@ onBeforeUnmount(() => {
   background:
     linear-gradient(135deg, rgba(75, 185, 199, 0.16), rgba(216, 167, 63, 0.22)),
     var(--pixel-paper);
+}
+
+.pixel-quest-landing .pixel-hero {
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 360px);
+  padding: 16px 18px;
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.28);
 }
 
 .pixel-title-copy h2 {
@@ -928,6 +968,15 @@ onBeforeUnmount(() => {
   background: #e5cf91;
 }
 
+.pixel-quest-landing .pixel-layout {
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 360px);
+  min-height: calc(100vh - 232px);
+  margin-top: 16px;
+  padding: 14px;
+  background: #d9b86d;
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.25);
+}
+
 .pixel-stage {
   min-width: 0;
 }
@@ -972,6 +1021,11 @@ onBeforeUnmount(() => {
   background-size: 32px 32px;
   cursor: crosshair;
   image-rendering: pixelated;
+}
+
+.pixel-quest-landing .pixel-map {
+  height: calc(100vh - 316px);
+  min-height: 520px;
 }
 
 .pixel-map:focus {
@@ -1208,6 +1262,7 @@ onBeforeUnmount(() => {
   cursor: pointer;
   font: inherit;
   font-weight: 900;
+  text-decoration: none;
 }
 
 .quest-node:hover,
@@ -1332,6 +1387,11 @@ onBeforeUnmount(() => {
 .quest-panel {
   padding: 18px;
   background: #fffaf0;
+}
+
+.pixel-quest-landing .quest-panel {
+  max-height: calc(100vh - 280px);
+  overflow: auto;
 }
 
 .mentor-card {
@@ -1463,8 +1523,17 @@ onBeforeUnmount(() => {
     grid-template-columns: minmax(0, 1fr);
   }
 
+  .pixel-quest-landing .pixel-layout {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: auto;
+  }
+
   .quest-panel {
     max-width: none;
+  }
+
+  .pixel-quest-landing .quest-panel {
+    max-height: none;
   }
 }
 
@@ -1491,6 +1560,16 @@ onBeforeUnmount(() => {
   }
 
   .pixel-map {
+    min-height: 500px;
+  }
+
+  .pixel-quest-landing {
+    min-height: auto;
+    padding: 10px 10px 24px;
+  }
+
+  .pixel-quest-landing .pixel-map {
+    height: auto;
     min-height: 500px;
   }
 }

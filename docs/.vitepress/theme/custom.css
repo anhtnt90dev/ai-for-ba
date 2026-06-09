@@ -37,6 +37,25 @@
   max-width: 720px;
 }
 
+.pixel-game-root .VPDoc {
+  padding: 0;
+}
+
+.pixel-game-root .VPDoc .container,
+.pixel-game-root .VPDoc .content,
+.pixel-game-root .VPDoc .content-container,
+.pixel-game-root .vp-doc {
+  max-width: none;
+}
+
+.pixel-game-root .VPDoc .content {
+  padding: 0;
+}
+
+.pixel-game-root .VPDocFooter {
+  display: none;
+}
+
 .course-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));

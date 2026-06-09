@@ -3728,31 +3728,11 @@ function rootPage() {
   return `---
 title: "AI for Business Analysts"
 description: "Trang chủ course AI for Business Analysts với Pixel Quest game mode và lộ trình học song ngữ."
+pageClass: pixel-game-root
+aside: false
 ---
 
-# AI for Business Analysts
-
-Course song ngữ dành cho software Business Analyst muốn hiểu AI, dùng AI tốt hơn trong công việc BA, và đặc tả sản phẩm có AI một cách có trách nhiệm.
-
-<PixelQuest locale="vi" mode="home" />
-
-## Chọn ngôn ngữ / Choose a language
-
-<div class="root-language-actions">
-<a class="course-card game-entry-card" href="./vi/"><strong>Tiếng Việt</strong>Bắt đầu course bằng tiếng Việt với bài học, lab, use case và thư viện prompt.</a>
-<a class="course-card" href="./en/"><strong>English</strong>Start the English learning path with lessons, labs, use cases, and reusable BA resources.</a>
-</div>
-
-## Course map
-
-\`\`\`mermaid
-flowchart LR
-    A["Pixel Quest"] --> B["AI foundations"]
-    B --> C["BA workflow"]
-    C --> D["Requirements quality"]
-    D --> E["Real project use cases"]
-    E --> F["AI product governance"]
-\`\`\`
+<PixelQuest locale="vi" mode="landing" />
 `;
 }
 
@@ -4003,7 +3983,7 @@ A bilingual, artifact-driven course for software Business Analysts who need to u
 - Every theory lesson explains common BA difficulties, real project application, and what breaks when the capability is missing.
 - Lessons include mistakes to avoid and actions to apply tomorrow.
 - Labs include input samples, exercise steps, expected deliverables, and review rubrics.
-- Pixel Quest game mode is now embedded on the root and language home pages with movement, XP, levels, and Pixel Agents MIT character sprites sourced from the public GitHub repository pixel-agents-hq/pixel-agents.
+- Pixel Quest is now the fullscreen root landing experience; learners can click quest nodes to open lessons, with movement, XP, levels, and Pixel Agents MIT character sprites sourced from the public GitHub repository pixel-agents-hq/pixel-agents.
 - The site includes 70+ detailed project use cases across discovery, requirements, frontend/UI, backend/API, data integration, delivery, AI products, domain workflows, and governance.
 - Resources are upgraded into practical playbooks for prompts, quality review, AI feature specification, RAG, and governance.
 
