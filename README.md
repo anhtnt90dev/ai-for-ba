@@ -18,6 +18,7 @@ A bilingual, artifact-driven course for software Business Analysts who need to u
 - Every theory lesson explains common BA difficulties, real project application, and what breaks when the capability is missing.
 - Lessons include mistakes to avoid and actions to apply tomorrow.
 - Labs include input samples, exercise steps, expected deliverables, and review rubrics.
+- Pixel Quest game mode lets learners explore the theory lessons through a retro pixel adventure map.
 - The site includes 70+ detailed project use cases across discovery, requirements, frontend/UI, backend/API, data integration, delivery, AI products, domain workflows, and governance.
 - Resources are upgraded into practical playbooks for prompts, quality review, AI feature specification, RAG, and governance.
 

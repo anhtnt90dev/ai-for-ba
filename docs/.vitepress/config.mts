@@ -161,7 +161,10 @@ function sidebar(locale: "en" | "vi") {
   return [
     {
       text: labels.start,
-      items: [{ text: locale === "en" ? "Course Overview" : "Tổng quan khóa học", link: `/${locale}/` }]
+      items: [
+        { text: locale === "en" ? "Course Overview" : "Tổng quan khóa học", link: `/${locale}/` },
+        { text: locale === "en" ? "Pixel Quest Game" : "Game Pixel Quest", link: `/${locale}/game/` }
+      ]
     },
     {
       text: labels.lessons,
@@ -213,6 +216,13 @@ export default withMermaid(
       nav: [
         { text: "English", link: "/en/" },
         { text: "Tiếng Việt", link: "/vi/" },
+        {
+          text: "Pixel Quest",
+          items: [
+            { text: "Play in English", link: "/en/game/" },
+            { text: "Chơi tiếng Việt", link: "/vi/game/" }
+          ]
+        },
         {
           text: "Use Cases",
           items: [

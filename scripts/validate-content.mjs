@@ -150,17 +150,31 @@ assert(exists(".github/workflows/deploy-pages.yml"), "GitHub Pages workflow is r
 assert(exists("docs/.vitepress/config.mts"), "VitePress config is required");
 assert(exists("docs/en/index.md"), "English course home is required");
 assert(exists("docs/vi/index.md"), "Vietnamese course home is required");
+assert(exists("docs/en/game/index.md"), "English Pixel Quest game page is required");
+assert(exists("docs/vi/game/index.md"), "Vietnamese Pixel Quest game page is required");
+assert(exists("docs/.vitepress/theme/components/PixelQuest.vue"), "PixelQuest Vue component is required");
 
 const vitePressConfig = read("docs/.vitepress/config.mts");
+const themeIndex = read("docs/.vitepress/theme/index.ts");
 const themeCss = read("docs/.vitepress/theme/custom.css");
 assert(vitePressConfig.includes("const useCaseGroups"), "VitePress sidebar must define grouped use case navigation");
 assert(vitePressConfig.includes("function useCaseGroupItems"), "VitePress sidebar must render grouped use case navigation");
 assert(!vitePressConfig.includes("...useCaseItems(locale)"), "VitePress sidebar must not render use cases as one flat list");
+assert(vitePressConfig.includes("/en/game/"), "VitePress nav/sidebar must link to the English Pixel Quest game");
+assert(vitePressConfig.includes("/vi/game/"), "VitePress nav/sidebar must link to the Vietnamese Pixel Quest game");
+assert(themeIndex.includes("PixelQuest"), "VitePress theme must register the PixelQuest component");
 assert(themeCss.includes(".mermaid svg"), "Theme CSS must explicitly center Mermaid SVG diagrams");
 assert(
   themeCss.includes("justify-content: center") || themeCss.includes("text-align: center"),
   "Theme CSS must center Mermaid diagrams in their container"
 );
+
+const pixelQuestComponent = exists("docs/.vitepress/theme/components/PixelQuest.vue")
+  ? read("docs/.vitepress/theme/components/PixelQuest.vue")
+  : "";
+assert(pixelQuestComponent.includes("localStorage"), "PixelQuest must persist progress with localStorage");
+assert(pixelQuestComponent.includes("pixel-quest"), "PixelQuest must render the pixel quest game shell");
+assert((pixelQuestComponent.match(/slug:/g)?.length ?? 0) >= 20, "PixelQuest must include all 20 lesson quest nodes");
 
 const enLessons = listDirs("docs/en/lessons");
 const viLessons = listDirs("docs/vi/lessons");
@@ -178,6 +192,18 @@ assert(viUseCases.length >= 70, `Vietnamese use case count must be at least 70, 
 assertSameList(viLessons, enLessons, "Lesson slug parity");
 assertSameList(viLabs, enLabs, "Lab slug parity");
 assertSameList(viUseCases, enUseCases, "Use case slug parity");
+
+const enHome = read("docs/en/index.md");
+const viHome = read("docs/vi/index.md");
+assert(enHome.includes("./game/"), "English home page must link to Pixel Quest game mode");
+assert(viHome.includes("./game/"), "Vietnamese home page must link to Pixel Quest game mode");
+
+const enGame = exists("docs/en/game/index.md") ? read("docs/en/game/index.md") : "";
+const viGame = exists("docs/vi/game/index.md") ? read("docs/vi/game/index.md") : "";
+assert(enGame.includes('<PixelQuest locale="en"'), "English game page must render PixelQuest in English");
+assert(viGame.includes('<PixelQuest locale="vi"'), "Vietnamese game page must render PixelQuest in Vietnamese");
+assert(enGame.includes("Pixel Quest"), "English game page must describe Pixel Quest");
+assert(viGame.includes("Pixel Quest"), "Vietnamese game page must describe Pixel Quest");
 
 for (const locale of ["en", "vi"]) {
   for (const slug of listDirs(`docs/${locale}/lessons`)) {

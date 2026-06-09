@@ -16,6 +16,7 @@ A deep bilingual learning path for software Business Analysts who need to use AI
 <div class="course-card"><strong>Building AI-Enabled Products as a BA</strong>Distinct lessons with diagrams, artifacts, prompts, and review controls.</div>
 <div class="course-card"><strong>BA Lead and Expert Track</strong>Distinct lessons with diagrams, artifacts, prompts, and review controls.</div>
 <div class="course-card"><strong>Project Use Cases</strong>70+ detailed scenarios, including frontend/UI, backend/API, data integration, QA, and AI product work.</div>
+<a class="course-card game-entry-card" href="./game/"><strong>Play Pixel Quest</strong>A retro pixel adventure map for learners who want to explore the course as a game.</a>
 </div>
 
 ## Learning path
