@@ -63,8 +63,238 @@
     #202642;
 }
 
+.game-lesson-mode .VPNav,
+.game-lesson-mode .VPNavBar {
+  color: #fff8df;
+  background:
+    linear-gradient(180deg, rgba(23, 32, 51, 0.96), rgba(32, 38, 66, 0.96)),
+    #202642;
+  border-bottom: 4px solid #27314f;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.16);
+}
+
+.game-lesson-mode .VPNavBarTitle .title,
+.game-lesson-mode .VPNavBarMenuLink,
+.game-lesson-mode .VPNavBarMenuGroup .button {
+  color: #fff8df;
+  font-family: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-weight: 900;
+}
+
+.game-lesson-mode .VPNavBar .content-body,
+.game-lesson-mode .VPNavBar.has-sidebar .title,
+.game-lesson-mode .VPNavBarTitle.has-sidebar .title {
+  background:
+    linear-gradient(180deg, rgba(23, 32, 51, 0.98), rgba(32, 38, 66, 0.98)),
+    #202642;
+  border-bottom-color: #27314f;
+}
+
+.game-lesson-mode .VPNavBar .divider-line {
+  height: 4px;
+  background: #27314f;
+}
+
+.game-lesson-mode .VPFlyout .button,
+.game-lesson-mode .VPFlyout .text,
+.game-lesson-mode .VPNavBarMenuLink {
+  color: #fff8df;
+  font-family: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-weight: 900;
+}
+
+.game-lesson-mode .VPFlyout.active .text,
+.game-lesson-mode .VPFlyout:hover .text,
+.game-lesson-mode .VPNavBarMenuLink.active,
+.game-lesson-mode .VPNavBarMenuLink:hover {
+  color: #f2c14e;
+}
+
+.game-lesson-mode .VPNavBar .menu + .translations::before,
+.game-lesson-mode .VPNavBar .menu + .appearance::before,
+.game-lesson-mode .VPNavBar .menu + .social-links::before,
+.game-lesson-mode .VPNavBar .translations + .appearance::before,
+.game-lesson-mode .VPNavBar .appearance + .social-links::before {
+  background: rgba(247, 240, 214, 0.28);
+}
+
+.game-lesson-mode .DocSearch-Button {
+  border: 3px solid #27314f;
+  border-radius: 0;
+  height: 40px;
+  color: #fff8df;
+  background: #172033;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.14);
+}
+
+.game-lesson-mode .DocSearch-Button:hover {
+  border-color: #f2c14e;
+  background: #172033;
+}
+
+.game-lesson-mode .DocSearch-Button .DocSearch-Search-Icon,
+.game-lesson-mode .DocSearch-Button .DocSearch-Button-Placeholder,
+.game-lesson-mode .DocSearch-Button .DocSearch-Button-Key,
+.game-lesson-mode .DocSearch-Button .DocSearch-Button-Key:first-child::after {
+  color: #fff8df;
+  font-family: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+.game-lesson-mode .DocSearch-Button .DocSearch-Button-Key {
+  border-color: rgba(247, 240, 214, 0.35);
+  border-radius: 0;
+}
+
+.game-lesson-mode .VPNavScreen {
+  background: #202642;
+}
+
+.game-lesson-mode .VPLocalNav {
+  background:
+    repeating-linear-gradient(90deg, rgba(255, 248, 223, 0.04), rgba(255, 248, 223, 0.04) 2px, transparent 2px, transparent 16px),
+    #172033;
+  border-bottom: 4px solid #27314f;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.14);
+}
+
+.game-lesson-mode .VPLocalNav .menu,
+.game-lesson-mode .VPLocalNavOutlineDropdown button {
+  color: #fff8df;
+  font-family: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-weight: 900;
+}
+
+.game-lesson-mode .VPLocalNav .menu:hover,
+.game-lesson-mode .VPLocalNavOutlineDropdown button:hover,
+.game-lesson-mode .VPLocalNavOutlineDropdown button.open {
+  color: #f2c14e;
+}
+
+.game-lesson-mode .VPLocalNavOutlineDropdown .items {
+  border: 3px solid #27314f;
+  border-radius: 0;
+  background: #27314f;
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.18);
+}
+
+.game-lesson-mode .VPLocalNavOutlineDropdown .header,
+.game-lesson-mode .VPLocalNavOutlineDropdown .outline {
+  background: #172033;
+}
+
+.game-lesson-mode .VPLocalNavOutlineDropdown .top-link {
+  color: #8bcf72;
+  font-family: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-weight: 900;
+}
+
+.game-lesson-mode .VPSidebar {
+  background:
+    repeating-linear-gradient(90deg, rgba(255, 248, 223, 0.05), rgba(255, 248, 223, 0.05) 2px, transparent 2px, transparent 16px),
+    repeating-linear-gradient(0deg, rgba(255, 248, 223, 0.04), rgba(255, 248, 223, 0.04) 2px, transparent 2px, transparent 16px),
+    #202642;
+  border-right: 4px solid #27314f;
+  box-shadow: 6px 0 0 rgba(0, 0, 0, 0.12);
+}
+
+.game-lesson-mode .VPSidebar .curtain {
+  background:
+    linear-gradient(180deg, rgba(23, 32, 51, 0.98), rgba(32, 38, 66, 0.96)),
+    #202642;
+  border-bottom: 4px solid #27314f;
+}
+
+.game-lesson-mode .VPSidebar .nav {
+  font-family: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+.game-lesson-mode .VPSidebar .group + .group {
+  border-top: 3px solid rgba(247, 240, 214, 0.2);
+}
+
+.game-lesson-mode .VPSidebarItem.level-0 {
+  padding-bottom: 18px;
+}
+
+.game-lesson-mode .VPSidebarItem > .item {
+  border-radius: 0;
+}
+
+.game-lesson-mode .VPSidebarItem.level-0 > .item {
+  margin-bottom: 6px;
+  border: 3px solid #27314f;
+  padding: 5px 8px;
+  background: #172033;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.14);
+}
+
+.game-lesson-mode .VPSidebarItem .text {
+  color: rgba(255, 248, 223, 0.78);
+  letter-spacing: 0;
+}
+
+.game-lesson-mode .VPSidebarItem.level-0 > .item > .text,
+.game-lesson-mode .VPSidebarItem.level-0 > .item > .link > .text {
+  color: #fff8df;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.game-lesson-mode .VPSidebarItem.level-1 .text,
+.game-lesson-mode .VPSidebarItem.level-2 .text,
+.game-lesson-mode .VPSidebarItem.level-3 .text,
+.game-lesson-mode .VPSidebarItem.level-4 .text,
+.game-lesson-mode .VPSidebarItem.level-5 .text {
+  color: rgba(255, 248, 223, 0.72);
+  font-size: 13px;
+}
+
+.game-lesson-mode .VPSidebarItem.has-active > .item > .text,
+.game-lesson-mode .VPSidebarItem.has-active > .item > .link > .text,
+.game-lesson-mode .VPSidebarItem.is-active > .item > .link > .text {
+  color: #8bcf72;
+}
+
+.game-lesson-mode .VPSidebarItem.is-link > .item > .link:hover .text,
+.game-lesson-mode .VPSidebarItem.collapsible > .item:hover .text {
+  color: #f2c14e;
+}
+
+.game-lesson-mode .VPSidebarItem .indicator {
+  border-radius: 0;
+}
+
+.game-lesson-mode .VPSidebarItem.is-active > .item > .indicator {
+  background: #8bcf72;
+}
+
+.game-lesson-mode .VPSidebarItem.level-1 .items,
+.game-lesson-mode .VPSidebarItem.level-2 .items,
+.game-lesson-mode .VPSidebarItem.level-3 .items,
+.game-lesson-mode .VPSidebarItem.level-4 .items,
+.game-lesson-mode .VPSidebarItem.level-5 .items {
+  border-left: 2px solid rgba(247, 240, 214, 0.22);
+}
+
+.game-lesson-mode .VPSidebarItem .caret {
+  color: rgba(255, 248, 223, 0.6);
+}
+
+.game-lesson-mode .VPSidebarItem .item:hover .caret,
+.game-lesson-mode .VPSidebarItem .item:hover .caret:hover {
+  color: #f2c14e;
+}
+
 .game-lesson-mode .VPDoc {
   background: transparent;
+}
+
+.game-lesson-mode .VPDoc .container,
+.game-lesson-mode .VPDoc .content,
+.game-lesson-mode .VPDoc .content-container,
+.game-lesson-mode .VPDoc .main {
+  min-width: 0;
 }
 
 .game-lesson-mode .VPDoc .content-container,
@@ -91,6 +321,29 @@
   letter-spacing: 0;
 }
 
+.game-lesson-mode .vp-doc h2 {
+  border-top: 3px solid rgba(39, 49, 79, 0.22);
+  padding-top: 18px;
+}
+
+.game-lesson-mode .vp-doc a {
+  color: #2867c9;
+  font-weight: 900;
+}
+
+.game-lesson-mode .vp-doc div[class*="language-"] {
+  border: 3px solid #27314f;
+  border-radius: 0;
+  box-shadow: 5px 5px 0 rgba(39, 49, 79, 0.16);
+}
+
+.game-lesson-mode .mermaid {
+  border: 3px solid #27314f;
+  border-radius: 0;
+  background: #fffaf0;
+  box-shadow: 5px 5px 0 rgba(39, 49, 79, 0.16);
+}
+
 .game-lesson-mode .vp-doc table {
   display: table;
   width: 100%;
@@ -113,9 +366,36 @@
   box-shadow: 5px 5px 0 rgba(39, 49, 79, 0.16);
 }
 
+.game-lesson-mode .VPDocAsideOutline .content {
+  border-left: 3px solid rgba(247, 240, 214, 0.28);
+  color: #fff8df;
+  font-family: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+.game-lesson-mode .VPDocAsideOutline .outline-title {
+  color: #fff8df;
+  font-weight: 900;
+}
+
+.game-lesson-mode .VPDocAsideOutline .outline-marker {
+  border-radius: 0;
+  background: #8bcf72;
+}
+
+.game-lesson-mode .VPDocOutlineItem .outline-link {
+  color: rgba(255, 248, 223, 0.72);
+  font-size: 12px;
+}
+
+.game-lesson-mode .VPDocOutlineItem .outline-link:hover,
+.game-lesson-mode .VPDocOutlineItem .outline-link.active {
+  color: #f2c14e;
+}
+
 .game-lesson-hud,
 .game-lesson-complete {
   display: grid;
+  box-sizing: border-box;
   gap: 12px;
   align-items: center;
   margin: 0 0 18px;
@@ -211,6 +491,58 @@
 }
 
 @media (max-width: 860px) {
+  .game-lesson-mode .VPDoc {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .game-lesson-mode .VPDoc .content {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .game-lesson-mode .VPContent {
+    overflow-x: hidden;
+  }
+
+  .game-lesson-mode .VPDoc .container,
+  .game-lesson-mode .VPDoc .content,
+  .game-lesson-mode .VPDoc .content-container,
+  .game-lesson-mode .VPDoc .main,
+  .game-lesson-mode .VPDoc .content-container,
+  .game-lesson-mode .vp-doc,
+  .game-lesson-hud,
+  .game-lesson-complete {
+    width: calc(100vw - 36px);
+    max-width: 100%;
+  }
+
+  .game-lesson-hud > *,
+  .game-lesson-complete > *,
+  .game-lesson-stats,
+  .game-lesson-actions {
+    min-width: 0;
+  }
+
+  .game-lesson-mode .vp-doc {
+    overflow-x: auto;
+    padding: 16px;
+  }
+
+  .game-lesson-mode .vp-doc h1 {
+    font-size: 26px;
+    line-height: 1.25;
+  }
+
+  .game-lesson-mode .lesson-meta {
+    flex-wrap: wrap;
+  }
+
+  .game-lesson-mode .lesson-meta span {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
   .game-lesson-hud,
   .game-lesson-complete {
     grid-template-columns: 1fr;
@@ -220,8 +552,18 @@
     justify-content: stretch;
   }
 
+  .game-lesson-button {
+    width: 100%;
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
   .game-lesson-stats {
     flex-wrap: wrap;
+  }
+
+  .game-lesson-stats span {
+    flex: 1 1 120px;
   }
 }
 

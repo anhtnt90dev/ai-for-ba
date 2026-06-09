@@ -162,8 +162,7 @@ function sidebar(locale: "en" | "vi") {
     {
       text: labels.start,
       items: [
-        { text: locale === "en" ? "Course Overview" : "Tổng quan khóa học", link: `/${locale}/` },
-        { text: locale === "en" ? "Pixel Quest Game" : "Game Pixel Quest", link: `/${locale}/game/` }
+        { text: locale === "en" ? "Course Overview" : "Tổng quan khóa học", link: `/${locale}/` }
       ]
     },
     {

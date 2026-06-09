@@ -23,8 +23,11 @@ const completedCount = computed(() => completed.value.length);
 const xp = computed(() => completedCount.value * 120);
 const level = computed(() => Math.min(6, Math.floor(completedCount.value / 4) + 1));
 const isComplete = computed(() => completed.value.includes(slug.value));
-const gameHref = computed(() => withBase(`/${locale.value}/game/`));
-const normalHref = computed(() => withBase(route.path));
+const gameHref = computed(() => withBase("/"));
+const normalHref = computed(() => {
+  const basePath = withBase("/");
+  return route.path.startsWith(basePath) ? route.path : withBase(route.path);
+});
 
 const copy = computed(() =>
   locale.value === "vi"
@@ -35,10 +38,10 @@ const copy = computed(() =>
         level: "Level",
         complete: "Hoàn thành quest +120 XP",
         completed: "Quest đã ghi nhận +120 XP",
-        map: "Quay lại map",
+        map: "Về trang chủ game",
         normal: "Đọc dạng tài liệu thường",
         bottom: "Đọc xong bài này thì ghi nhận hoàn thành để XP trên Pixel Quest tăng.",
-        saved: "Đã lưu tiến độ. Quay lại map để thấy XP và quest tiếp theo."
+        saved: "Đã lưu tiến độ. Về trang chủ game để thấy XP và quest tiếp theo."
       }
     : {
         mode: "Game lesson mode",
@@ -47,10 +50,10 @@ const copy = computed(() =>
         level: "Level",
         complete: "Complete quest +120 XP",
         completed: "Quest recorded +120 XP",
-        map: "Back to map",
+        map: "Back to game home",
         normal: "Read normal docs",
         bottom: "When you finish this lesson, record completion so Pixel Quest XP increases.",
-        saved: "Progress saved. Return to the map to see XP and the next quest."
+        saved: "Progress saved. Return to the game home to see XP and the next quest."
       }
 );
 

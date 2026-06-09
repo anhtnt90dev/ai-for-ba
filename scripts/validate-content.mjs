@@ -169,6 +169,7 @@ assert(vitePressConfig.includes("function useCaseGroupItems"), "VitePress sideba
 assert(!vitePressConfig.includes("...useCaseItems(locale)"), "VitePress sidebar must not render use cases as one flat list");
 assert(vitePressConfig.includes("/en/game/"), "VitePress nav/sidebar must link to the English Pixel Quest game");
 assert(vitePressConfig.includes("/vi/game/"), "VitePress nav/sidebar must link to the Vietnamese Pixel Quest game");
+assert(!vitePressConfig.includes("Pixel Quest Game\" : \"Game Pixel Quest\""), "VitePress lesson sidebar must not duplicate the home game entry");
 assert(themeIndex.includes("PixelQuest"), "VitePress theme must register the PixelQuest component");
 assert(themeIndex.includes("GameLessonChrome"), "VitePress theme must mount the game lesson chrome");
 assert(themeCss.includes(".mermaid svg"), "Theme CSS must explicitly center Mermaid SVG diagrams");
@@ -204,10 +205,15 @@ assert(pixelQuestComponent.includes("landingMode"), "PixelQuest must include a d
 assert(pixelQuestComponent.includes("questHref"), "PixelQuest landing mode must expose quest nodes as lesson links");
 assert(themeCss.includes(".game-lesson-mode"), "Theme CSS must style lesson pages in game mode");
 assert(themeCss.includes(".game-lesson-hud"), "Theme CSS must include the game lesson HUD");
+assert(themeCss.includes(".game-lesson-mode .VPSidebar"), "Theme CSS must style the sidebar in game lesson mode");
+assert(themeCss.includes(".game-lesson-mode .VPNavBar .content-body"), "Theme CSS must style the top nav in game lesson mode");
+assert(themeCss.includes(".game-lesson-mode .VPLocalNav"), "Theme CSS must style the mobile local nav in game lesson mode");
 assert(gameLessonChrome.includes("mode\") === \"game\""), "Game lesson chrome must activate from mode=game");
 assert(gameLessonChrome.includes("markComplete"), "Game lesson chrome must let learners mark a quest complete");
 assert(gameLessonChrome.includes("ai-for-ba-pixel-quest"), "Game lesson chrome must write to the Pixel Quest progress store");
 assert(gameLessonChrome.includes("+120 XP"), "Game lesson chrome must show the XP reward after completion");
+assert(gameLessonChrome.includes('withBase("/")'), "Game lesson chrome map actions must return to the root homepage map");
+assert(gameLessonChrome.includes("route.path.startsWith(basePath)"), "Game lesson chrome must avoid duplicating the VitePress base path in normal doc links");
 
 const enLessons = listDirs("docs/en/lessons");
 const viLessons = listDirs("docs/vi/lessons");
