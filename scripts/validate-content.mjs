@@ -154,6 +154,7 @@ assert(exists("docs/vi/index.md"), "Vietnamese course home is required");
 assert(exists("docs/en/game/index.md"), "English Pixel Quest game page is required");
 assert(exists("docs/vi/game/index.md"), "Vietnamese Pixel Quest game page is required");
 assert(exists("docs/.vitepress/theme/components/PixelQuest.vue"), "PixelQuest Vue component is required");
+assert(exists("docs/.vitepress/theme/components/GameLessonChrome.vue"), "Game lesson chrome component is required");
 for (let index = 0; index <= 5; index += 1) {
   assert(exists(`docs/public/assets/pixel-agents/char_${index}.png`), `Pixel Quest must include Pixel Agents character sprite char_${index}.png`);
 }
@@ -169,6 +170,7 @@ assert(!vitePressConfig.includes("...useCaseItems(locale)"), "VitePress sidebar 
 assert(vitePressConfig.includes("/en/game/"), "VitePress nav/sidebar must link to the English Pixel Quest game");
 assert(vitePressConfig.includes("/vi/game/"), "VitePress nav/sidebar must link to the Vietnamese Pixel Quest game");
 assert(themeIndex.includes("PixelQuest"), "VitePress theme must register the PixelQuest component");
+assert(themeIndex.includes("GameLessonChrome"), "VitePress theme must mount the game lesson chrome");
 assert(themeCss.includes(".mermaid svg"), "Theme CSS must explicitly center Mermaid SVG diagrams");
 assert(
   themeCss.includes("justify-content: center") || themeCss.includes("text-align: center"),
@@ -178,6 +180,9 @@ assert(
 const pixelQuestComponent = exists("docs/.vitepress/theme/components/PixelQuest.vue")
   ? read("docs/.vitepress/theme/components/PixelQuest.vue")
   : "";
+const gameLessonChrome = exists("docs/.vitepress/theme/components/GameLessonChrome.vue")
+  ? read("docs/.vitepress/theme/components/GameLessonChrome.vue")
+  : "";
 assert(pixelQuestComponent.includes("localStorage"), "PixelQuest must persist progress with localStorage");
 assert(pixelQuestComponent.includes("pixel-quest"), "PixelQuest must render the pixel quest game shell");
 assert((pixelQuestComponent.match(/slug:/g)?.length ?? 0) >= 20, "PixelQuest must include all 20 lesson quest nodes");
@@ -186,16 +191,23 @@ assert(pixelQuestComponent.includes("handleKeyDown"), "PixelQuest must support k
 assert(pixelQuestComponent.includes("movePlayer"), "PixelQuest must expose real player movement logic");
 assert(pixelQuestComponent.includes("xp"), "PixelQuest must show XP progression");
 assert(pixelQuestComponent.includes("level"), "PixelQuest must show level progression");
-assert(pixelQuestComponent.includes("pixel-ba-agent"), "PixelQuest must render a custom BA pixel avatar");
-assert(pixelQuestComponent.includes("ba-agent-body"), "PixelQuest must show a readable BA avatar body");
-assert(pixelQuestComponent.includes("ba-agent-tie"), "PixelQuest must show a professional BA avatar outfit");
-assert(pixelQuestComponent.includes("ba-agent-arm"), "PixelQuest must show visible BA avatar arms");
-assert(pixelQuestComponent.includes("ba-agent-legs"), "PixelQuest must show visible BA avatar legs");
-assert(pixelQuestComponent.includes("ba-agent-shoes"), "PixelQuest must show visible BA avatar shoes");
+assert(pixelQuestComponent.includes("pixel-agent-sprite"), "PixelQuest must render the Pixel Agents character sprite");
+assert(pixelQuestComponent.includes("/assets/pixel-agents/char_"), "PixelQuest must source character sprites from Pixel Agents assets");
+assert(pixelQuestComponent.includes("walkFrameSequence"), "PixelQuest must use a real walk frame sequence");
+assert(pixelQuestComponent.includes("directionRows"), "PixelQuest must map sprite rows by movement direction");
+assert(pixelQuestComponent.includes("16 * scale") && pixelQuestComponent.includes("32 * scale"), "PixelQuest must render Pixel Agents 16x32 character frames");
 assert(pixelQuestComponent.includes("openNearbyQuest"), "PixelQuest must let players enter nearby lessons from the map");
 assert(pixelQuestComponent.includes('event.key === " "'), "PixelQuest must support Space to enter a nearby lesson");
+assert(pixelQuestComponent.includes("gameLessonHref"), "PixelQuest must open lessons in game mode from game actions");
+assert(pixelQuestComponent.includes("?mode=game"), "PixelQuest must link game lessons with mode=game");
 assert(pixelQuestComponent.includes("landingMode"), "PixelQuest must include a dedicated fullscreen landing mode");
 assert(pixelQuestComponent.includes("questHref"), "PixelQuest landing mode must expose quest nodes as lesson links");
+assert(themeCss.includes(".game-lesson-mode"), "Theme CSS must style lesson pages in game mode");
+assert(themeCss.includes(".game-lesson-hud"), "Theme CSS must include the game lesson HUD");
+assert(gameLessonChrome.includes("mode\") === \"game\""), "Game lesson chrome must activate from mode=game");
+assert(gameLessonChrome.includes("markComplete"), "Game lesson chrome must let learners mark a quest complete");
+assert(gameLessonChrome.includes("ai-for-ba-pixel-quest"), "Game lesson chrome must write to the Pixel Quest progress store");
+assert(gameLessonChrome.includes("+120 XP"), "Game lesson chrome must show the XP reward after completion");
 
 const enLessons = listDirs("docs/en/lessons");
 const viLessons = listDirs("docs/vi/lessons");

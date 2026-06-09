@@ -24,7 +24,8 @@ const text = computed(() =>
         xpLabel: "XP",
         levelLabel: "Level",
         nextQuest: "Quest kế tiếp",
-        start: "Vào bài học",
+        start: "Vào bài trong game",
+        docLink: "Đọc tài liệu thường",
         mark: "Đánh dấu hoàn thành",
         unmark: "Bỏ hoàn thành",
         locked: "Cổng đang khóa. Hoàn thành quest trước để mở.",
@@ -39,7 +40,7 @@ const text = computed(() =>
         mentorLine: "Mỗi cổng là một quality gate. Bạn chỉ mở được vùng mới khi artifact ở vùng trước đã đủ rõ để team delivery dùng được.",
         fullGame: "Mở trang game đầy đủ",
         classicView: "Xem course truyền thống",
-        source: "Nhân vật BA pixel được dựng riêng cho course để nhìn rõ trên bản đồ game."
+        source: "Sprite nhân vật: Pixel Agents, MIT, từ GitHub repo pixel-agents-hq/pixel-agents."
       }
     : {
         kicker: "Retro BA Learning Game",
@@ -50,7 +51,8 @@ const text = computed(() =>
         xpLabel: "XP",
         levelLabel: "Level",
         nextQuest: "Next quest",
-        start: "Enter lesson",
+        start: "Enter game lesson",
+        docLink: "Read normal docs",
         mark: "Mark complete",
         unmark: "Unmark",
         locked: "Gate is locked. Complete the previous quest to open it.",
@@ -65,7 +67,7 @@ const text = computed(() =>
         mentorLine: "Each gate is a quality gate. You only open the next area when the previous BA artifact is clear enough for delivery teams to use.",
         fullGame: "Open full game page",
         classicView: "Classic course view",
-        source: "Custom BA pixel avatar designed for clear readability on the game map."
+        source: "Hero sprite: Pixel Agents, MIT, from the pixel-agents-hq/pixel-agents GitHub repository."
       }
 );
 
@@ -435,11 +437,11 @@ const npcs = [
 const completed = ref([]);
 const selectedSlug = ref(quests[0].slug);
 const playerPosition = ref({ x: quests[0].x, y: quests[0].y });
-const playerDirection = ref("right");
+const playerDirection = ref("down");
 const isMoving = ref(false);
-const stepFrame = ref(0);
 const mapRef = ref(null);
 let moveTimer;
+let animationFrame;
 
 const storageKey = computed(() => `ai-for-ba-pixel-quest-${props.locale}`);
 const completedCount = computed(() => completed.value.length);
@@ -456,18 +458,46 @@ const nextQuestCopy = computed(() => nextQuest.value[props.locale] || nextQuest.
 const homeMode = computed(() => props.mode === "home");
 const landingMode = computed(() => props.mode === "landing");
 const questInteractionRadius = 8.5;
+const agentSheet = computed(() => withBase(`/assets/pixel-agents/char_${Math.min(5, level.value - 1)}.png`));
+const animationClock = ref(0);
+const walkFrameSequence = [0, 1, 2, 1];
+const directionRows = {
+  down: 0,
+  up: 1,
+  right: 2,
+  left: 2
+};
+const agentSpriteStyle = computed(() => {
+  const scale = 3;
+  const frameWidth = 16 * scale;
+  const frameHeight = 32 * scale;
+  const frame = isMoving.value ? walkFrameSequence[Math.floor(animationClock.value / 150) % walkFrameSequence.length] : 1;
+  const row = directionRows[playerDirection.value] ?? directionRows.down;
+  return {
+    "--agent-sheet": `url("${agentSheet.value}")`,
+    "--agent-x": `-${frame * frameWidth}px`,
+    "--agent-y": `-${row * frameHeight}px`
+  };
+});
 const avatarClass = computed(() => ({
   "is-moving": isMoving.value,
   "face-left": playerDirection.value === "left",
-  "face-right": playerDirection.value !== "left"
+  "direction-up": playerDirection.value === "up",
+  "direction-down": playerDirection.value === "down",
+  "direction-right": playerDirection.value === "right"
 }));
 
 function questCopy(quest) {
   return quest[props.locale] || quest.en;
 }
 
-function lessonHref(slug) {
-  return withBase(`/${props.locale}/lessons/${slug}/`);
+function lessonHref(slug, options = {}) {
+  const href = withBase(`/${props.locale}/lessons/${slug}/`);
+  return options.gameMode ? `${href}?mode=game` : href;
+}
+
+function gameLessonHref(slug) {
+  return lessonHref(slug, { gameMode: true });
 }
 
 function gameHref() {
@@ -491,7 +521,7 @@ function isQuestAccessible(index) {
 }
 
 function questHref(quest, index) {
-  return isQuestAccessible(index) ? lessonHref(quest.slug) : undefined;
+  return isQuestAccessible(index) ? gameLessonHref(quest.slug) : undefined;
 }
 
 function isGateOpen(gate) {
@@ -529,9 +559,17 @@ function openNearbyQuest() {
 
   selectedSlug.value = nearest.quest.slug;
   if (typeof window !== "undefined") {
-    window.location.href = lessonHref(nearest.quest.slug);
+    window.location.href = gameLessonHref(nearest.quest.slug);
   }
   return true;
+}
+
+function setPlayerDirectionFromDelta(dx, dy) {
+  if (Math.abs(dx) >= Math.abs(dy)) {
+    playerDirection.value = dx < 0 ? "left" : "right";
+    return;
+  }
+  playerDirection.value = dy < 0 ? "up" : "down";
 }
 
 function setPlayerPosition(x, y) {
@@ -543,32 +581,23 @@ function setPlayerPosition(x, y) {
 
 function setMoveFeedback() {
   isMoving.value = true;
-  stepFrame.value += 1;
   if (moveTimer) {
     window.clearTimeout(moveTimer);
   }
   moveTimer = window.setTimeout(() => {
     isMoving.value = false;
-  }, 180);
+  }, 320);
 }
 
 function movePlayer(dx, dy) {
-  if (dx < 0) {
-    playerDirection.value = "left";
-  } else if (dx > 0) {
-    playerDirection.value = "right";
-  }
+  setPlayerDirectionFromDelta(dx, dy);
   setPlayerPosition(playerPosition.value.x + dx, playerPosition.value.y + dy);
   setMoveFeedback();
   selectNearbyQuest();
 }
 
 function travelToQuest(quest) {
-  if (quest.x < playerPosition.value.x) {
-    playerDirection.value = "left";
-  } else {
-    playerDirection.value = "right";
-  }
+  setPlayerDirectionFromDelta(quest.x - playerPosition.value.x, quest.y - playerPosition.value.y);
   setPlayerPosition(quest.x, quest.y);
   setMoveFeedback();
 }
@@ -594,11 +623,7 @@ function handleMapClick(event) {
   const rect = mapRef.value.getBoundingClientRect();
   const x = ((event.clientX - rect.left) / rect.width) * 100;
   const y = ((event.clientY - rect.top) / rect.height) * 100;
-  if (x < playerPosition.value.x) {
-    playerDirection.value = "left";
-  } else {
-    playerDirection.value = "right";
-  }
+  setPlayerDirectionFromDelta(x - playerPosition.value.x, y - playerPosition.value.y);
   setPlayerPosition(x, y);
   setMoveFeedback();
   selectNearbyQuest();
@@ -680,12 +705,20 @@ onMounted(() => {
     completed.value = [];
   }
   window.addEventListener("keydown", handleKeyDown);
+  const tick = (timestamp) => {
+    animationClock.value = timestamp;
+    animationFrame = window.requestAnimationFrame(tick);
+  };
+  animationFrame = window.requestAnimationFrame(tick);
 });
 
 onBeforeUnmount(() => {
   window.removeEventListener("keydown", handleKeyDown);
   if (moveTimer) {
     window.clearTimeout(moveTimer);
+  }
+  if (animationFrame) {
+    window.cancelAnimationFrame(animationFrame);
   }
 });
 </script>
@@ -792,23 +825,7 @@ onBeforeUnmount(() => {
           </a>
 
           <div class="pixel-avatar" :class="avatarClass" :style="{ left: `${playerPosition.x}%`, top: `${playerPosition.y}%` }">
-            <div class="pixel-ba-agent" aria-hidden="true">
-              <span class="ba-agent-hair"></span>
-              <span class="ba-agent-face">
-                <span class="ba-agent-eye left"></span>
-                <span class="ba-agent-eye right"></span>
-              </span>
-              <span class="ba-agent-neck"></span>
-              <span class="ba-agent-arm left"></span>
-              <span class="ba-agent-arm right"></span>
-              <span class="ba-agent-body"></span>
-              <span class="ba-agent-shirt"></span>
-              <span class="ba-agent-tie"></span>
-              <span class="ba-agent-hand left"></span>
-              <span class="ba-agent-hand right"></span>
-              <span class="ba-agent-legs"></span>
-              <span class="ba-agent-shoes"></span>
-            </div>
+            <div class="pixel-agent-sprite" :style="agentSpriteStyle" aria-hidden="true"></div>
           </div>
         </div>
 
@@ -840,8 +857,11 @@ onBeforeUnmount(() => {
         <p>{{ selectedCopy.reward }}</p>
 
         <div class="quest-actions">
-          <a class="pixel-button primary" :class="{ disabled: !isQuestAccessible(selectedIndex) }" :href="isQuestAccessible(selectedIndex) ? lessonHref(selectedQuest.slug) : undefined">
+          <a class="pixel-button primary" :class="{ disabled: !isQuestAccessible(selectedIndex) }" :href="isQuestAccessible(selectedIndex) ? gameLessonHref(selectedQuest.slug) : undefined">
             {{ text.start }}
+          </a>
+          <a class="pixel-button subtle" :class="{ disabled: !isQuestAccessible(selectedIndex) }" :href="isQuestAccessible(selectedIndex) ? lessonHref(selectedQuest.slug) : undefined">
+            {{ text.docLink }}
           </a>
           <button v-if="!landingMode" class="pixel-button" type="button" :disabled="!isQuestAccessible(selectedIndex)" @click="toggleComplete(selectedQuest.slug)">
             {{ isComplete(selectedQuest.slug) ? text.unmark : text.mark }}
@@ -1348,202 +1368,43 @@ onBeforeUnmount(() => {
 .pixel-avatar {
   position: absolute;
   z-index: 10;
-  width: 82px;
-  height: 116px;
-  margin: -104px 0 0 -41px;
-  transition: left 0.12s linear, top 0.12s linear, transform 0.12s linear;
+  width: 48px;
+  height: 104px;
+  margin: -96px 0 0 -24px;
+  transition: left 0.16s linear, top 0.16s linear, transform 0.16s linear;
   pointer-events: none;
 }
 
 .pixel-avatar::after {
   position: absolute;
-  left: 13px;
+  left: 7px;
   bottom: 0;
-  width: 56px;
+  width: 34px;
   height: 8px;
   background: rgba(23, 32, 51, 0.22);
   content: "";
 }
 
-.pixel-ba-agent {
-  position: relative;
+.pixel-agent-sprite {
+  position: absolute;
+  left: 0;
+  bottom: 6px;
   z-index: 2;
-  width: 82px;
-  height: 110px;
+  width: 48px;
+  height: 96px;
+  background-image: var(--agent-sheet);
+  background-position: var(--agent-x) var(--agent-y);
+  background-repeat: no-repeat;
+  background-size: 336px 288px;
   filter: drop-shadow(3px 3px 0 rgba(39, 49, 79, 0.24));
+  image-rendering: pixelated;
 }
 
-.ba-agent-hair {
-  position: absolute;
-  top: 5px;
-  left: 22px;
-  z-index: 5;
-  width: 38px;
-  height: 20px;
-  border: 4px solid #2a1d20;
-  background:
-    linear-gradient(90deg, #4b2f24 0 18%, #7a4a31 18% 66%, #5c3928 66% 100%);
-  box-shadow:
-    -7px 11px 0 -3px #2a1d20,
-    7px 11px 0 -3px #2a1d20,
-    inset 0 6px 0 rgba(255, 255, 255, 0.12);
-}
-
-.ba-agent-hair::before {
-  position: absolute;
-  left: 3px;
-  bottom: -8px;
-  width: 30px;
-  height: 8px;
-  background: #4b2f24;
-  content: "";
-}
-
-.ba-agent-face {
-  position: absolute;
-  top: 20px;
-  left: 24px;
-  z-index: 4;
-  width: 34px;
-  height: 31px;
-  border: 4px solid #2a1d20;
-  background: #efb991;
-}
-
-.ba-agent-face::after {
-  position: absolute;
-  left: 11px;
-  bottom: 4px;
-  width: 8px;
-  height: 3px;
-  background: #8b4a3a;
-  content: "";
-}
-
-.ba-agent-eye {
-  position: absolute;
-  top: 10px;
-  width: 5px;
-  height: 5px;
-  background: #1d2439;
-}
-
-.ba-agent-eye.left {
-  left: 6px;
-}
-
-.ba-agent-eye.right {
-  right: 6px;
-}
-
-.ba-agent-neck {
-  position: absolute;
-  top: 49px;
-  left: 35px;
-  z-index: 2;
-  width: 12px;
-  height: 10px;
-  border-right: 3px solid #2a1d20;
-  border-left: 3px solid #2a1d20;
-  background: #efb991;
-}
-
-.ba-agent-body {
-  position: absolute;
-  top: 58px;
-  left: 20px;
-  z-index: 3;
-  width: 42px;
-  height: 37px;
-  border: 4px solid #1e263f;
-  background:
-    linear-gradient(90deg, #1f5a97 0 28%, #f8f2df 28% 72%, #1f5a97 72% 100%);
-}
-
-.ba-agent-shirt {
-  position: absolute;
-  top: 62px;
-  left: 33px;
-  z-index: 4;
-  width: 16px;
-  height: 28px;
-  background: #fffaf0;
-}
-
-.ba-agent-tie {
-  position: absolute;
-  top: 64px;
-  left: 39px;
-  z-index: 5;
-  width: 4px;
-  height: 26px;
-  background: #c94b54;
-  box-shadow: 0 12px 0 2px #c94b54;
-}
-
-.ba-agent-arm {
-  position: absolute;
-  top: 62px;
-  z-index: 2;
-  width: 12px;
-  height: 32px;
-  border: 4px solid #1e263f;
-  background: #1f5a97;
-}
-
-.ba-agent-arm.left {
-  left: 7px;
-}
-
-.ba-agent-arm.right {
-  right: 7px;
-}
-
-.ba-agent-hand {
-  position: absolute;
-  top: 88px;
-  z-index: 3;
-  width: 10px;
-  height: 9px;
-  border: 3px solid #2a1d20;
-  background: #efb991;
-}
-
-.ba-agent-hand.left {
-  left: 8px;
-}
-
-.ba-agent-hand.right {
-  right: 8px;
-}
-
-.ba-agent-legs {
-  position: absolute;
-  top: 94px;
-  left: 24px;
-  z-index: 1;
-  width: 34px;
-  height: 24px;
-  background:
-    linear-gradient(90deg, #23396f 0 42%, transparent 42% 58%, #23396f 58% 100%);
-}
-
-.ba-agent-shoes {
-  position: absolute;
-  top: 112px;
-  left: 20px;
-  z-index: 2;
-  width: 42px;
-  height: 8px;
-  background:
-    linear-gradient(90deg, #232431 0 38%, transparent 38% 62%, #232431 62% 100%);
-}
-
-.face-left .pixel-ba-agent {
+.face-left .pixel-agent-sprite {
   transform: scaleX(-1);
 }
 
-.is-moving .pixel-ba-agent {
+.is-moving .pixel-agent-sprite {
   animation: pixel-hop 0.18s steps(2, end) infinite;
 }
 

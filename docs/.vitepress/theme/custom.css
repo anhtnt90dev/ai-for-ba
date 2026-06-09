@@ -56,6 +56,175 @@
   display: none;
 }
 
+.game-lesson-mode body {
+  background:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.06) 2px, transparent 2px, transparent 16px),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05) 2px, transparent 2px, transparent 16px),
+    #202642;
+}
+
+.game-lesson-mode .VPDoc {
+  background: transparent;
+}
+
+.game-lesson-mode .VPDoc .content-container,
+.game-lesson-mode .vp-doc {
+  max-width: 980px;
+}
+
+.game-lesson-mode .vp-doc {
+  border: 4px solid #27314f;
+  border-radius: 0;
+  padding: 22px;
+  color: #172033;
+  background:
+    linear-gradient(135deg, rgba(75, 185, 199, 0.1), rgba(216, 167, 63, 0.2)),
+    #fff8df;
+  box-shadow: 8px 8px 0 rgba(39, 49, 79, 0.25);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+.game-lesson-mode .vp-doc h1,
+.game-lesson-mode .vp-doc h2,
+.game-lesson-mode .vp-doc h3 {
+  color: #172033;
+  letter-spacing: 0;
+}
+
+.game-lesson-mode .vp-doc table {
+  display: table;
+  width: 100%;
+  border: 3px solid #27314f;
+  background: #fffaf0;
+}
+
+.game-lesson-mode .vp-doc th,
+.game-lesson-mode .vp-doc td {
+  border: 2px solid #27314f;
+}
+
+.game-lesson-mode .ba-callout,
+.game-lesson-mode .ba-workbench-panel,
+.game-lesson-mode .risk-callout {
+  border: 3px solid #27314f;
+  border-radius: 0;
+  color: #172033;
+  background: #f7f0d6;
+  box-shadow: 5px 5px 0 rgba(39, 49, 79, 0.16);
+}
+
+.game-lesson-hud,
+.game-lesson-complete {
+  display: grid;
+  gap: 12px;
+  align-items: center;
+  margin: 0 0 18px;
+  border: 4px solid #27314f;
+  border-radius: 0;
+  padding: 14px;
+  color: #172033;
+  background: #fff8df;
+  box-shadow: 6px 6px 0 rgba(39, 49, 79, 0.22);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+.game-lesson-hud {
+  grid-template-columns: minmax(0, 1fr) auto auto;
+}
+
+.game-lesson-hud span,
+.game-lesson-complete p {
+  color: #4d5874;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.game-lesson-hud strong {
+  display: block;
+  margin-top: 4px;
+  color: #172033;
+  font-size: 16px;
+}
+
+.game-lesson-stats {
+  display: flex;
+  gap: 8px;
+}
+
+.game-lesson-stats span {
+  min-width: 76px;
+  border: 3px solid #27314f;
+  padding: 8px;
+  background: #fffaf0;
+}
+
+.game-lesson-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.game-lesson-complete {
+  grid-template-columns: minmax(0, 1fr) auto auto;
+}
+
+.game-lesson-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  border: 3px solid #27314f;
+  border-radius: 0;
+  padding: 8px 12px;
+  color: #172033;
+  background: #f7f0d6;
+  box-shadow: 4px 4px 0 rgba(39, 49, 79, 0.2);
+  font-size: 12px;
+  font-weight: 900;
+  text-align: center;
+  text-decoration: none;
+}
+
+.game-lesson-button:hover {
+  text-decoration: none;
+}
+
+.game-lesson-button.primary {
+  color: #fff;
+  background: #2867c9;
+}
+
+.game-lesson-button.subtle {
+  background: #e5e8ef;
+}
+
+.game-lesson-button:disabled {
+  cursor: default;
+  filter: grayscale(0.45);
+  opacity: 0.72;
+}
+
+.game-lesson-complete.saved {
+  background: #edf8d8;
+}
+
+@media (max-width: 860px) {
+  .game-lesson-hud,
+  .game-lesson-complete {
+    grid-template-columns: 1fr;
+  }
+
+  .game-lesson-actions {
+    justify-content: stretch;
+  }
+
+  .game-lesson-stats {
+    flex-wrap: wrap;
+  }
+}
+
 .course-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
