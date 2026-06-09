@@ -7,9 +7,7 @@ description: "A deep bilingual learning path for software Business Analysts who 
 
 A deep bilingual learning path for software Business Analysts who need to use AI responsibly, improve BA artifacts, and specify AI-enabled products with expert judgment.
 
-<PixelQuest locale="en" mode="home" />
-
-## Classic course view
+## Course modules
 
 <div class="course-grid">
 <div class="course-card"><strong>AI Foundations for Business Analysts</strong>Distinct lessons with diagrams, artifacts, prompts, and review controls.</div>
@@ -20,7 +18,6 @@ A deep bilingual learning path for software Business Analysts who need to use AI
 <div class="course-card"><strong>Building AI-Enabled Products as a BA</strong>Distinct lessons with diagrams, artifacts, prompts, and review controls.</div>
 <div class="course-card"><strong>BA Lead and Expert Track</strong>Distinct lessons with diagrams, artifacts, prompts, and review controls.</div>
 <div class="course-card"><strong>Project Use Cases</strong>70+ detailed scenarios, including frontend/UI, backend/API, data integration, QA, and AI product work.</div>
-<a class="course-card game-entry-card" href="./game/"><strong>Open full Pixel Quest</strong>Use the larger game page when you want more space for the map, quest panel, and movement controls.</a>
 </div>
 
 ## Learning path

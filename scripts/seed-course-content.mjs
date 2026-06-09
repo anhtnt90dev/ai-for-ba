@@ -3755,14 +3755,11 @@ description: ${yamlString(intro)}
 
 ${intro}
 
-<PixelQuest locale="${locale}" mode="home" />
-
-## ${isEn ? "Classic course view" : "Chế độ học truyền thống"}
+## ${isEn ? "Course modules" : "Các nhóm nội dung"}
 
 <div class="course-grid">
 ${sectionCards}
 <div class="course-card"><strong>${isEn ? "Project Use Cases" : "Use case thực tế trong dự án"}</strong>${isEn ? "70+ detailed scenarios, including frontend/UI, backend/API, data integration, QA, and AI product work." : "70+ tình huống chi tiết, gồm frontend/UI, backend/API, data integration, QA và AI product work."}</div>
-<a class="course-card game-entry-card" href="./game/"><strong>${isEn ? "Open full Pixel Quest" : "Mở Pixel Quest đầy đủ"}</strong>${isEn ? "Use the larger game page when you want more space for the map, quest panel, and movement controls." : "Dùng trang game rộng hơn khi bạn muốn nhiều không gian cho map, quest panel và control di chuyển."}</a>
 </div>
 
 ## Learning path

@@ -24,8 +24,7 @@ const text = computed(() =>
         xpLabel: "XP",
         levelLabel: "Level",
         nextQuest: "Quest kế tiếp",
-        start: "Vào bài trong game",
-        docLink: "Đọc tài liệu thường",
+        start: "Mở bài học",
         mark: "Đánh dấu hoàn thành",
         unmark: "Bỏ hoàn thành",
         locked: "Cổng đang khóa. Hoàn thành quest trước để mở.",
@@ -51,8 +50,7 @@ const text = computed(() =>
         xpLabel: "XP",
         levelLabel: "Level",
         nextQuest: "Next quest",
-        start: "Enter game lesson",
-        docLink: "Read normal docs",
+        start: "Open lesson",
         mark: "Mark complete",
         unmark: "Unmark",
         locked: "Gate is locked. Complete the previous quest to open it.",
@@ -491,13 +489,12 @@ function questCopy(quest) {
   return quest[props.locale] || quest.en;
 }
 
-function lessonHref(slug, options = {}) {
-  const href = withBase(`/${props.locale}/lessons/${slug}/`);
-  return options.gameMode ? `${href}?mode=game` : href;
+function lessonHref(slug) {
+  return withBase(`/${props.locale}/lessons/${slug}/`);
 }
 
 function gameLessonHref(slug) {
-  return lessonHref(slug, { gameMode: true });
+  return lessonHref(slug);
 }
 
 function gameHref() {
@@ -859,9 +856,6 @@ onBeforeUnmount(() => {
         <div class="quest-actions">
           <a class="pixel-button primary" :class="{ disabled: !isQuestAccessible(selectedIndex) }" :href="isQuestAccessible(selectedIndex) ? gameLessonHref(selectedQuest.slug) : undefined">
             {{ text.start }}
-          </a>
-          <a class="pixel-button subtle" :class="{ disabled: !isQuestAccessible(selectedIndex) }" :href="isQuestAccessible(selectedIndex) ? lessonHref(selectedQuest.slug) : undefined">
-            {{ text.docLink }}
           </a>
           <button v-if="!landingMode" class="pixel-button" type="button" :disabled="!isQuestAccessible(selectedIndex)" @click="toggleComplete(selectedQuest.slug)">
             {{ isComplete(selectedQuest.slug) ? text.unmark : text.mark }}

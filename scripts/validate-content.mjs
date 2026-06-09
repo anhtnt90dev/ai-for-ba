@@ -154,7 +154,6 @@ assert(exists("docs/vi/index.md"), "Vietnamese course home is required");
 assert(exists("docs/en/game/index.md"), "English Pixel Quest game page is required");
 assert(exists("docs/vi/game/index.md"), "Vietnamese Pixel Quest game page is required");
 assert(exists("docs/.vitepress/theme/components/PixelQuest.vue"), "PixelQuest Vue component is required");
-assert(exists("docs/.vitepress/theme/components/GameLessonChrome.vue"), "Game lesson chrome component is required");
 for (let index = 0; index <= 5; index += 1) {
   assert(exists(`docs/public/assets/pixel-agents/char_${index}.png`), `Pixel Quest must include Pixel Agents character sprite char_${index}.png`);
 }
@@ -171,7 +170,7 @@ assert(vitePressConfig.includes("/en/game/"), "VitePress nav/sidebar must link t
 assert(vitePressConfig.includes("/vi/game/"), "VitePress nav/sidebar must link to the Vietnamese Pixel Quest game");
 assert(!vitePressConfig.includes("Pixel Quest Game\" : \"Game Pixel Quest\""), "VitePress lesson sidebar must not duplicate the home game entry");
 assert(themeIndex.includes("PixelQuest"), "VitePress theme must register the PixelQuest component");
-assert(themeIndex.includes("GameLessonChrome"), "VitePress theme must mount the game lesson chrome");
+assert(!themeIndex.includes("GameLessonChrome"), "VitePress theme must not mount game lesson chrome on normal lesson pages");
 assert(themeCss.includes(".mermaid svg"), "Theme CSS must explicitly center Mermaid SVG diagrams");
 assert(
   themeCss.includes("justify-content: center") || themeCss.includes("text-align: center"),
@@ -180,9 +179,6 @@ assert(
 
 const pixelQuestComponent = exists("docs/.vitepress/theme/components/PixelQuest.vue")
   ? read("docs/.vitepress/theme/components/PixelQuest.vue")
-  : "";
-const gameLessonChrome = exists("docs/.vitepress/theme/components/GameLessonChrome.vue")
-  ? read("docs/.vitepress/theme/components/GameLessonChrome.vue")
   : "";
 assert(pixelQuestComponent.includes("localStorage"), "PixelQuest must persist progress with localStorage");
 assert(pixelQuestComponent.includes("pixel-quest"), "PixelQuest must render the pixel quest game shell");
@@ -199,21 +195,12 @@ assert(pixelQuestComponent.includes("directionRows"), "PixelQuest must map sprit
 assert(pixelQuestComponent.includes("16 * scale") && pixelQuestComponent.includes("32 * scale"), "PixelQuest must render Pixel Agents 16x32 character frames");
 assert(pixelQuestComponent.includes("openNearbyQuest"), "PixelQuest must let players enter nearby lessons from the map");
 assert(pixelQuestComponent.includes('event.key === " "'), "PixelQuest must support Space to enter a nearby lesson");
-assert(pixelQuestComponent.includes("gameLessonHref"), "PixelQuest must open lessons in game mode from game actions");
-assert(pixelQuestComponent.includes("?mode=game"), "PixelQuest must link game lessons with mode=game");
+assert(pixelQuestComponent.includes("gameLessonHref"), "PixelQuest must open lesson links from game actions");
+assert(!pixelQuestComponent.includes("?mode=game"), "PixelQuest must open normal lesson pages without game-mode query");
 assert(pixelQuestComponent.includes("landingMode"), "PixelQuest must include a dedicated fullscreen landing mode");
 assert(pixelQuestComponent.includes("questHref"), "PixelQuest landing mode must expose quest nodes as lesson links");
-assert(themeCss.includes(".game-lesson-mode"), "Theme CSS must style lesson pages in game mode");
-assert(themeCss.includes(".game-lesson-hud"), "Theme CSS must include the game lesson HUD");
-assert(themeCss.includes(".game-lesson-mode .VPSidebar"), "Theme CSS must style the sidebar in game lesson mode");
-assert(themeCss.includes(".game-lesson-mode .VPNavBar .content-body"), "Theme CSS must style the top nav in game lesson mode");
-assert(themeCss.includes(".game-lesson-mode .VPLocalNav"), "Theme CSS must style the mobile local nav in game lesson mode");
-assert(gameLessonChrome.includes("mode\") === \"game\""), "Game lesson chrome must activate from mode=game");
-assert(gameLessonChrome.includes("markComplete"), "Game lesson chrome must let learners mark a quest complete");
-assert(gameLessonChrome.includes("ai-for-ba-pixel-quest"), "Game lesson chrome must write to the Pixel Quest progress store");
-assert(gameLessonChrome.includes("+120 XP"), "Game lesson chrome must show the XP reward after completion");
-assert(gameLessonChrome.includes('withBase("/")'), "Game lesson chrome map actions must return to the root homepage map");
-assert(gameLessonChrome.includes("route.path.startsWith(basePath)"), "Game lesson chrome must avoid duplicating the VitePress base path in normal doc links");
+assert(!themeCss.includes(".game-lesson-mode"), "Theme CSS must not apply a game theme to normal lesson pages");
+assert(!themeCss.includes(".game-lesson-hud"), "Theme CSS must not include lesson HUD styles");
 
 const enLessons = listDirs("docs/en/lessons");
 const viLessons = listDirs("docs/vi/lessons");
@@ -235,10 +222,10 @@ assertSameList(viUseCases, enUseCases, "Use case slug parity");
 const enHome = read("docs/en/index.md");
 const viHome = read("docs/vi/index.md");
 const rootHome = read("docs/index.md");
-assert(enHome.includes("./game/"), "English home page must link to Pixel Quest game mode");
-assert(viHome.includes("./game/"), "Vietnamese home page must link to Pixel Quest game mode");
-assert(enHome.includes('<PixelQuest locale="en" mode="home" />'), "English home page must embed Pixel Quest as the primary game option");
-assert(viHome.includes('<PixelQuest locale="vi" mode="home" />'), "Vietnamese home page must embed Pixel Quest as the primary game option");
+assert(!enHome.includes("<PixelQuest"), "English course overview must not embed Pixel Quest");
+assert(!viHome.includes("<PixelQuest"), "Vietnamese course overview must not embed Pixel Quest");
+assert(!enHome.includes("./game/"), "English course overview must not include a game card");
+assert(!viHome.includes("./game/"), "Vietnamese course overview must not include a game card");
 assert(rootHome.includes("pageClass: pixel-game-root"), "Root home page must use the fullscreen pixel-game page class");
 assert(rootHome.includes('<PixelQuest locale="vi" mode="landing" />'), "Root home page must embed Pixel Quest in fullscreen landing mode");
 assert(themeCss.includes(".pixel-game-root"), "Theme CSS must include fullscreen root game page styling");
