@@ -15,7 +15,7 @@ Learning path song ngữ chuyên sâu cho software Business Analyst muốn dùng
 <div class="course-card"><strong>Artifact phân tích và diagramming</strong>Bài học riêng biệt với diagram, artifact, prompt và review control.</div>
 <div class="course-card"><strong>Xây dựng sản phẩm có AI dưới góc nhìn BA</strong>Bài học riêng biệt với diagram, artifact, prompt và review control.</div>
 <div class="course-card"><strong>BA lead và expert track</strong>Bài học riêng biệt với diagram, artifact, prompt và review control.</div>
-<div class="course-card"><strong>Use case thực tế trong dự án</strong>30 tình huống chi tiết giúp áp dụng AI vào dự án phần mềm thật.</div>
+<div class="course-card"><strong>Use case thực tế trong dự án</strong>70+ tình huống chi tiết, gồm frontend/UI, backend/API, data integration, QA và AI product work.</div>
 </div>
 
 ## Learning path

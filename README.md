@@ -17,7 +17,7 @@ A bilingual, artifact-driven course for software Business Analysts who need to u
 - Every lesson now has a lesson-specific BA relevance section, expert AI review note, and bad-vs-better practice examples.
 - Lessons include mistakes to avoid and actions to apply tomorrow.
 - Labs include input samples, exercise steps, expected deliverables, and review rubrics.
-- The site includes 30 detailed project use cases across discovery, requirements, delivery, AI products, domain workflows, and governance.
+- The site includes 70+ detailed project use cases across discovery, requirements, frontend/UI, backend/API, data integration, delivery, AI products, domain workflows, and governance.
 - Resources are upgraded into practical playbooks for prompts, quality review, AI feature specification, RAG, and governance.
 
 ## Learning Path
@@ -68,11 +68,14 @@ AI foundations
 
 ## Project Use Cases
 
-The use case library includes 30 detailed, bilingual project scenarios with context, BA challenge, AI-fit boundary, workflow, diagram, deliverables, prompts, review checklist, and risk controls.
+The use case library includes 70+ detailed, bilingual project scenarios with context, BA challenge, AI-fit boundary, workflow, diagram, deliverables, prompts, review checklist, and risk controls.
 
 - Discovery and alignment
 - Requirements and backlog
 - Delivery and QA
+- Frontend, UI, and UX collaboration
+- Backend and API collaboration
+- Data and integration requirements
 - AI-enabled product use cases
 - Domain project scenarios
 - Governance and adoption

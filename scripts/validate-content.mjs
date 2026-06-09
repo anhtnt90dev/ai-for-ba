@@ -116,6 +116,13 @@ const requiredUseCaseHeadings = [
   "## Risks and controls"
 ];
 
+const requiredEngineeringUseCaseGroups = {
+  "Frontend, UI, and UX": 12,
+  "Backend and API": 12,
+  "Data and Integration": 8,
+  "Cross-functional BA Collaboration": 8
+};
+
 const diagramSignatures = new Set();
 const whyBodiesByLocale = { en: [], vi: [] };
 const expertBodiesByLocale = { en: [], vi: [] };
@@ -138,8 +145,8 @@ assertEqual(enLessons.length, 20, "English lesson count");
 assertEqual(viLessons.length, 20, "Vietnamese lesson count");
 assertEqual(enLabs.length, 6, "English lab count");
 assertEqual(viLabs.length, 6, "Vietnamese lab count");
-assertEqual(enUseCases.length, 30, "English use case count");
-assertEqual(viUseCases.length, 30, "Vietnamese use case count");
+assert(enUseCases.length >= 70, `English use case count must be at least 70, got ${enUseCases.length}`);
+assert(viUseCases.length >= 70, `Vietnamese use case count must be at least 70, got ${viUseCases.length}`);
 assertSameList(viLessons, enLessons, "Lesson slug parity");
 assertSameList(viLabs, enLabs, "Lab slug parity");
 assertSameList(viUseCases, enUseCases, "Use case slug parity");
@@ -202,10 +209,18 @@ for (const locale of ["en", "vi"]) {
   if (exists(`docs/${locale}/use-cases/index.md`)) {
     const index = read(`docs/${locale}/use-cases/index.md`);
     assert(
-      ((index.match(/\]\(\.\/[^)]+\)/g)?.length ?? 0) + (index.match(/href="\.\/[^"]+"/g)?.length ?? 0)) >= 30,
-      `docs/${locale}/use-cases/index.md must link to at least 30 use cases`
+      ((index.match(/\]\(\.\/[^)]+\)/g)?.length ?? 0) + (index.match(/href="\.\/[^"]+"/g)?.length ?? 0)) >= 70,
+      `docs/${locale}/use-cases/index.md must link to at least 70 use cases`
     );
     assert(index.includes("```mermaid"), `docs/${locale}/use-cases/index.md must include a Mermaid overview diagram`);
+    for (const [group, minimumCount] of Object.entries(requiredEngineeringUseCaseGroups)) {
+      const escapedGroup = group.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const groupCount = (index.match(new RegExp(`<span>${escapedGroup}</span>`, "g"))?.length ?? 0);
+      assert(
+        groupCount >= minimumCount,
+        `docs/${locale}/use-cases/index.md must include at least ${minimumCount} cards for ${group}, got ${groupCount}`
+      );
+    }
   }
 
   for (const slug of listDirs(`docs/${locale}/use-cases`)) {

@@ -68,6 +68,52 @@ const useCases = [
   ["AI Use Case Portfolio Prioritization", "portfolio-use-case-prioritization", "Prioritize portfolio AI use case"]
 ];
 
+const engineeringUseCases = [
+  ["Figma Design Handoff to Requirements", "figma-design-handoff-requirements", "Từ Figma handoff đến requirement"],
+  ["Screen State Behavior Specification", "screen-state-behavior-specification", "Đặc tả behavior theo screen state"],
+  ["Complex Form Validation Rules", "complex-form-validation-rules", "Rule validation cho form phức tạp"],
+  ["Empty, Loading, and Error State Requirements", "empty-loading-error-state-requirements", "Requirement cho empty, loading và error state"],
+  ["Responsive and Mobile UI Behavior", "responsive-mobile-ui-behavior", "Behavior responsive và mobile UI"],
+  ["Accessibility Acceptance Criteria", "accessibility-acceptance-criteria", "Acceptance criteria cho accessibility"],
+  ["Design System Component Requirements", "design-system-component-requirements", "Requirement cho design system component"],
+  ["UX Microcopy and Error Message Review", "ux-microcopy-error-message-review", "Review microcopy và error message UX"],
+  ["Navigation and User Flow Analysis", "navigation-user-flow-analysis", "Phân tích navigation và user flow"],
+  ["Frontend Analytics Event Requirements", "frontend-analytics-event-requirements", "Requirement cho frontend analytics event"],
+  ["Localization and i18n UI Requirements", "localization-i18n-ui-requirements", "Requirement localization và i18n UI"],
+  ["Visual Regression and UI QA Handoff", "visual-regression-qa-handoff", "Handoff visual regression và UI QA"],
+  ["Frontend Permission Visibility Rules", "frontend-permission-visibility-rules", "Rule visibility theo permission trên frontend"],
+  ["API Contract Requirements", "api-contract-requirements", "Requirement cho API contract"],
+  ["Request and Response Schema Review", "request-response-schema-review", "Review schema request và response"],
+  ["API Error Code and Message Taxonomy", "api-error-code-taxonomy", "Taxonomy error code và message cho API"],
+  ["Authentication, Authorization, and RBAC Rules", "auth-authorization-rbac-rules", "Rule authentication, authorization và RBAC"],
+  ["Idempotency, Retry, and Timeout Behavior", "idempotency-retry-timeout-behavior", "Behavior idempotency, retry và timeout"],
+  ["Webhook and Event-Driven Requirements", "webhook-event-requirements", "Requirement webhook và event-driven"],
+  ["Backend Validation and Business Rules", "backend-validation-business-rules", "Backend validation và business rules"],
+  ["Batch Job and Scheduled Process Requirements", "batch-job-scheduled-process", "Requirement cho batch job và scheduled process"],
+  ["Audit Log and Operational Logging Requirements", "audit-log-operational-logging", "Requirement audit log và operational logging"],
+  ["API Versioning and Backward Compatibility", "api-versioning-compatibility", "API versioning và backward compatibility"],
+  ["Integration Failure and Fallback Behavior", "integration-failure-fallback-behavior", "Behavior khi integration fail và fallback"],
+  ["Caching and Rate Limit Requirements", "caching-rate-limit-requirements", "Requirement caching và rate limit"],
+  ["Data Mapping and Transformation Rules", "data-mapping-transformation-rules", "Rule data mapping và transformation"],
+  ["Entity Lifecycle and State Machine", "entity-lifecycle-state-machine", "Entity lifecycle và state machine"],
+  ["Database Field and Business Rule Alignment", "database-field-business-rule-alignment", "Align database field và business rule"],
+  ["Reporting and Dashboard Metric Definition", "reporting-dashboard-metric-definition", "Định nghĩa metric cho reporting và dashboard"],
+  ["Search, Filter, and Sort Requirements", "search-filter-sort-requirements", "Requirement search, filter và sort"],
+  ["Notification Trigger and Template Rules", "notification-trigger-template-rules", "Rule trigger và template notification"],
+  ["File Upload and Download Behavior", "file-upload-download-behavior", "Behavior upload và download file"],
+  ["External System Integration Mapping", "external-system-integration-mapping", "Mapping integration với external system"],
+  ["BA-Developer Refinement With AI", "ba-developer-refinement-ai", "Refinement BA-developer với AI"],
+  ["BA-QA Test Handoff With AI", "ba-qa-test-handoff-ai", "Handoff test BA-QA với AI"],
+  ["BA-UX Critique Loop", "ba-ux-critique-loop", "Vòng critique BA-UX"],
+  ["BA-Tech Lead NFR Review", "ba-tech-lead-nfr-review", "Review NFR giữa BA và tech lead"],
+  ["Product Trade-off Decision Memo", "product-tradeoff-decision-memo", "Decision memo cho product trade-off"],
+  ["Production Issue to UI/API Requirement Update", "production-issue-ui-api-requirement-update", "Từ production issue đến update requirement UI/API"],
+  ["Frontend-Backend Contract Workshop", "frontend-backend-contract-workshop", "Workshop contract frontend-backend"],
+  ["Design-to-API End-to-End Traceability", "design-to-api-end-to-end-traceability", "Traceability end-to-end từ design đến API"]
+];
+
+useCases.push(...engineeringUseCases);
+
 function lessonItems(locale: "en" | "vi") {
   return lessons.map(([enTitle, slug, viTitle], index) => ({
     text: `${String(index + 1).padStart(2, "0")}. ${locale === "en" ? enTitle : viTitle}`,
