@@ -44,6 +44,13 @@
   margin: 24px 0;
 }
 
+.root-language-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+  margin: 20px 0 28px;
+}
+
 .course-card {
   border: 1px solid var(--vp-c-divider);
   border-radius: 8px;

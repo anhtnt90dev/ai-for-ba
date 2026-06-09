@@ -148,15 +148,17 @@ const failures = [];
 assert(exists("README.md"), "README.md is required");
 assert(exists(".github/workflows/deploy-pages.yml"), "GitHub Pages workflow is required");
 assert(exists("docs/.vitepress/config.mts"), "VitePress config is required");
+assert(exists("docs/index.md"), "Root course home is required");
 assert(exists("docs/en/index.md"), "English course home is required");
 assert(exists("docs/vi/index.md"), "Vietnamese course home is required");
 assert(exists("docs/en/game/index.md"), "English Pixel Quest game page is required");
 assert(exists("docs/vi/game/index.md"), "Vietnamese Pixel Quest game page is required");
 assert(exists("docs/.vitepress/theme/components/PixelQuest.vue"), "PixelQuest Vue component is required");
-assert(exists("docs/public/assets/pixel-quest/ba-hero-stand.png"), "Pixel Quest must include the open-source pixel hero stand sprite");
-assert(exists("docs/public/assets/pixel-quest/ba-hero-walk-1.png"), "Pixel Quest must include the open-source pixel hero walk frame 1");
-assert(exists("docs/public/assets/pixel-quest/ba-hero-walk-2.png"), "Pixel Quest must include the open-source pixel hero walk frame 2");
-assert(exists("docs/public/assets/pixel-quest/LICENSE-CC0.md"), "Pixel Quest sprite asset license file is required");
+for (let index = 0; index <= 5; index += 1) {
+  assert(exists(`docs/public/assets/pixel-agents/char_${index}.png`), `Pixel Quest must include Pixel Agents character sprite char_${index}.png`);
+}
+assert(exists("docs/public/assets/pixel-agents/LICENSE-MIT"), "Pixel Agents sprite asset MIT license file is required");
+assert(exists("docs/public/assets/pixel-agents/SOURCE.md"), "Pixel Agents sprite source note is required");
 
 const vitePressConfig = read("docs/.vitepress/config.mts");
 const themeIndex = read("docs/.vitepress/theme/index.ts");
@@ -184,7 +186,8 @@ assert(pixelQuestComponent.includes("handleKeyDown"), "PixelQuest must support k
 assert(pixelQuestComponent.includes("movePlayer"), "PixelQuest must expose real player movement logic");
 assert(pixelQuestComponent.includes("xp"), "PixelQuest must show XP progression");
 assert(pixelQuestComponent.includes("level"), "PixelQuest must show level progression");
-assert(pixelQuestComponent.includes("kenney-pixel-hero"), "PixelQuest must render the Kenney open-source pixel hero sprite");
+assert(pixelQuestComponent.includes("pixel-agent-hero"), "PixelQuest must render the Pixel Agents character sprite");
+assert(pixelQuestComponent.includes("/assets/pixel-agents/char_"), "PixelQuest must source character sprites from Pixel Agents assets");
 
 const enLessons = listDirs("docs/en/lessons");
 const viLessons = listDirs("docs/vi/lessons");
@@ -205,10 +208,13 @@ assertSameList(viUseCases, enUseCases, "Use case slug parity");
 
 const enHome = read("docs/en/index.md");
 const viHome = read("docs/vi/index.md");
+const rootHome = read("docs/index.md");
 assert(enHome.includes("./game/"), "English home page must link to Pixel Quest game mode");
 assert(viHome.includes("./game/"), "Vietnamese home page must link to Pixel Quest game mode");
 assert(enHome.includes('<PixelQuest locale="en" mode="home" />'), "English home page must embed Pixel Quest as the primary game option");
 assert(viHome.includes('<PixelQuest locale="vi" mode="home" />'), "Vietnamese home page must embed Pixel Quest as the primary game option");
+assert(rootHome.includes('<PixelQuest locale="vi" mode="home" />'), "Root home page must embed Pixel Quest directly");
+assert(rootHome.includes("./vi/") && rootHome.includes("./en/"), "Root home page must link to both Vietnamese and English course paths");
 
 const enGame = exists("docs/en/game/index.md") ? read("docs/en/game/index.md") : "";
 const viGame = exists("docs/vi/game/index.md") ? read("docs/vi/game/index.md") : "";
@@ -370,7 +376,7 @@ if (exists("README.md")) {
     "README.md must link to the GitHub Pages URL"
   );
   assert(readme.includes("AI for Business Analysts"), "README.md must name the course");
-  assert(readme.includes("Kenney") && readme.includes("CC0"), "README.md must credit the Pixel Quest open-source sprite source and CC0 license");
+  assert(readme.includes("pixel-agents-hq/pixel-agents") && readme.includes("MIT"), "README.md must credit the Pixel Agents sprite source and MIT license");
 }
 
 if (failures.length > 0) {

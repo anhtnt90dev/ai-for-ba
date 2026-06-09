@@ -39,7 +39,7 @@ const text = computed(() =>
         mentorLine: "Mỗi cổng là một quality gate. Bạn chỉ mở được vùng mới khi artifact ở vùng trước đã đủ rõ để team delivery dùng được.",
         fullGame: "Mở trang game đầy đủ",
         classicView: "Xem course truyền thống",
-        source: "Sprite nhân vật: Kenney platformer assets, CC0, từ GitHub public repo."
+        source: "Sprite nhân vật: Pixel Agents, MIT, từ GitHub repo pixel-agents-hq/pixel-agents."
       }
     : {
         kicker: "Retro BA Learning Game",
@@ -65,7 +65,7 @@ const text = computed(() =>
         mentorLine: "Each gate is a quality gate. You only open the next area when the previous BA artifact is clear enough for delivery teams to use.",
         fullGame: "Open full game page",
         classicView: "Classic course view",
-        source: "Hero sprite: Kenney platformer assets, CC0, from a public GitHub repository."
+        source: "Hero sprite: Pixel Agents, MIT, from the pixel-agents-hq/pixel-agents GitHub repository."
       }
 );
 
@@ -454,21 +454,20 @@ const selectedZone = computed(() => zoneMeta[selectedQuest.value.zone]);
 const nextQuest = computed(() => quests.find((quest, index) => !isComplete(quest.slug) && isUnlocked(index)) || quests[quests.length - 1]);
 const nextQuestCopy = computed(() => nextQuest.value[props.locale] || nextQuest.value.en);
 const homeMode = computed(() => props.mode === "home");
-const heroSprite = computed(() => {
-  if (!isMoving.value) {
-    return assetPath("ba-hero-stand.png");
-  }
-  return assetPath(stepFrame.value % 2 === 0 ? "ba-hero-walk-1.png" : "ba-hero-walk-2.png");
+const agentSheet = computed(() => withBase(`/assets/pixel-agents/char_${Math.min(5, level.value - 1)}.png`));
+const agentSpriteStyle = computed(() => {
+  const frame = isMoving.value ? (stepFrame.value % 6) + 1 : 0;
+  return {
+    "--agent-sheet": `url("${agentSheet.value}")`,
+    "--agent-x": `-${frame * 48}px`,
+    "--agent-y": "0px"
+  };
 });
 const avatarClass = computed(() => ({
   "is-moving": isMoving.value,
   "face-left": playerDirection.value === "left",
   "face-right": playerDirection.value !== "left"
 }));
-
-function assetPath(file) {
-  return withBase(`/assets/pixel-quest/${file}`);
-}
 
 function questCopy(quest) {
   return quest[props.locale] || quest.en;
@@ -759,7 +758,7 @@ onBeforeUnmount(() => {
           </button>
 
           <div class="pixel-avatar" :class="avatarClass" :style="{ left: `${playerPosition.x}%`, top: `${playerPosition.y}%` }">
-            <img class="kenney-pixel-hero" :src="heroSprite" alt="" loading="eager" />
+            <div class="pixel-agent-hero" :style="agentSpriteStyle" aria-hidden="true"></div>
           </div>
         </div>
 
@@ -1259,38 +1258,42 @@ onBeforeUnmount(() => {
 .pixel-avatar {
   position: absolute;
   z-index: 10;
-  width: 52px;
-  height: 68px;
-  margin: -62px 0 0 -26px;
+  width: 48px;
+  height: 58px;
+  margin: -50px 0 0 -24px;
   transition: left 0.12s linear, top 0.12s linear;
   pointer-events: none;
 }
 
 .pixel-avatar::after {
   position: absolute;
-  left: 12px;
-  bottom: 4px;
-  width: 30px;
+  left: 9px;
+  bottom: 0;
+  width: 31px;
   height: 8px;
   background: rgba(23, 32, 51, 0.22);
   content: "";
 }
 
-.kenney-pixel-hero {
+.pixel-agent-hero {
   position: relative;
   z-index: 2;
   display: block;
-  width: 52px;
-  height: auto;
+  width: 48px;
+  height: 48px;
+  background-image: var(--agent-sheet);
+  background-position: var(--agent-x) var(--agent-y);
+  background-repeat: no-repeat;
+  background-size: 336px 288px;
   image-rendering: pixelated;
-  filter: drop-shadow(3px 3px 0 rgba(39, 49, 79, 0.25));
+  filter: drop-shadow(3px 3px 0 rgba(39, 49, 79, 0.24));
 }
 
-.face-left .kenney-pixel-hero {
+.face-left .pixel-agent-hero {
   transform: scaleX(-1);
 }
 
-.is-moving .kenney-pixel-hero {
+.is-moving .pixel-agent-hero {
   animation: pixel-hop 0.18s steps(2, end) infinite;
 }
 
@@ -1516,10 +1519,6 @@ onBeforeUnmount(() => {
   .pixel-avatar {
     width: 44px;
     margin-left: -22px;
-  }
-
-  .kenney-pixel-hero {
-    width: 44px;
   }
 
   .pixel-npc small {

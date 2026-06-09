@@ -1,23 +1,28 @@
 ---
-layout: home
-
-hero:
-  name: AI for Business Analysts
-  text: A bilingual course for software BAs who need to use AI well and specify AI-enabled products responsibly.
-  tagline: Choose a language to start the learning path.
-  actions:
-    - theme: brand
-      text: English
-      link: /en/
-    - theme: alt
-      text: Tiếng Việt
-      link: /vi/
-
-features:
-  - title: AI literacy for BA work
-    details: Understand LLMs, context, RAG, hallucination, evaluation, and AI limits without unnecessary machine learning math.
-  - title: Practical BA workflows
-    details: Apply AI to discovery, interviews, requirements, user stories, acceptance criteria, diagrams, and review loops.
-  - title: AI product analysis
-    details: Specify AI-enabled features with data requirements, confidence thresholds, human review, fallback, monitoring, and governance.
+title: "AI for Business Analysts"
+description: "Trang chủ course AI for Business Analysts với Pixel Quest game mode và lộ trình học song ngữ."
 ---
+
+# AI for Business Analysts
+
+Course song ngữ dành cho software Business Analyst muốn hiểu AI, dùng AI tốt hơn trong công việc BA, và đặc tả sản phẩm có AI một cách có trách nhiệm.
+
+<PixelQuest locale="vi" mode="home" />
+
+## Chọn ngôn ngữ / Choose a language
+
+<div class="root-language-actions">
+<a class="course-card game-entry-card" href="./vi/"><strong>Tiếng Việt</strong>Bắt đầu course bằng tiếng Việt với bài học, lab, use case và thư viện prompt.</a>
+<a class="course-card" href="./en/"><strong>English</strong>Start the English learning path with lessons, labs, use cases, and reusable BA resources.</a>
+</div>
+
+## Course map
+
+```mermaid
+flowchart LR
+    A["Pixel Quest"] --> B["AI foundations"]
+    B --> C["BA workflow"]
+    C --> D["Requirements quality"]
+    D --> E["Real project use cases"]
+    E --> F["AI product governance"]
+```
