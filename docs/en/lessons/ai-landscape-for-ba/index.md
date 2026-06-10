@@ -11,6 +11,106 @@ description: "A BA does not need to be a machine learning engineer, but must kno
   <span>Core</span>
 </div>
 
+## Story mode: project walkthrough
+
+<div class="story-mode-panel">
+  <p class="story-eyebrow">Story prototype</p>
+  <h3>Maya turns a chatbot request into an AI decision map</h3>
+  <p class="story-intro">A sales director asks for an AI chatbot to approve quotes faster. Maya, the BA, slows the room down for ten minutes and changes the conversation from tool choice to business decision quality.</p>
+  <div class="story-scene-grid">
+<article class="story-scene">
+  <span>Scene 1</span>
+  <b>01</b>
+  <strong>The request sounds simple</strong>
+  <p>The stakeholder says: we need a chatbot. Maya writes the real outcome on the board: reduce quote approval cycle time without increasing margin leakage.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 2</span>
+  <b>02</b>
+  <strong>The pain is not one thing</strong>
+  <p>Approval delay comes from unclear pricing policy, missing risk signals, and managers searching email threads for precedent.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 3</span>
+  <b>03</b>
+  <strong>The AI shape splits</strong>
+  <p>Policy questions need RAG, margin risk needs predictive signals, deterministic thresholds need rules, and explanation text may use GenAI.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 4</span>
+  <b>04</b>
+  <strong>The BA changes the backlog</strong>
+  <p>The first backlog item is no longer build chatbot. It becomes an AI Pattern Fit Matrix with metrics, source authority, review gates, and a non-AI alternative.</p>
+</article>
+  </div>
+  <div class="visual-takeaway-strip">
+<span>Problem shape before model choice</span>
+<span>Workflow evidence before automation</span>
+<span>Metric before demo</span>
+  </div>
+</div>
+
+## Reality check: current facts for BAs
+
+<div class="fact-card-grid">
+<article class="fact-card">
+  <strong>23% + 39%</strong>
+  <span>Agentic AI is moving, but not mature everywhere</span>
+  <p>McKinsey's 2025 survey reports 23% of organizations scaling agents somewhere and 39% experimenting. BA read: define autonomy boundaries before calling a workflow agent-ready.</p>
+  <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai">Source: McKinsey State of AI 2025</a>
+</article>
+<article class="fact-card">
+  <strong>74%</strong>
+  <span>AI is already affecting BA careers</span>
+  <p>IIBA reports 74% of business analysis respondents say AI is positively impacting their careers. BA read: AI literacy is becoming core professional capability, not an optional tool trick.</p>
+  <a href="https://www.iiba.org/business-analysis-blogs/top-5-findings-from-the-2025-global-state-of-business-analysis-report/">Source: IIBA Global State of BA 2025</a>
+</article>
+<article class="fact-card">
+  <strong>21%</strong>
+  <span>Value needs workflow redesign</span>
+  <p>McKinsey reports 21% of organizations using gen AI have fundamentally redesigned at least some workflows. BA read: benefits come from redesigned decisions and handoffs, not prompt volume.</p>
+  <a href="https://www.mckinsey.com/~/media/mckinsey/business%20functions/quantumblack/our%20insights/the%20state%20of%20ai/2025/the-state-of-ai-how-organizations-are-rewiring-to-capture-value_final.pdf">Source: McKinsey State of AI 2025 PDF</a>
+</article>
+</div>
+
+## Visual walkthrough
+
+```mermaid
+flowchart LR
+    A["Stakeholder says: build a chatbot"] --> B["BA reframes: which decision must improve?"]
+    B --> C{"Primary work type"}
+    C --> D["Policy answer: RAG"]
+    C --> E["Risk score: predictive AI"]
+    C --> F["Approval threshold: rules"]
+    C --> G["Explanation draft: GenAI"]
+    D --> H["Pattern Fit Matrix"]
+    E --> H
+    F --> H
+    G --> H
+    H --> I["Backlog with metric, owner, evidence, and fallback"]
+```
+
+## Visual decision map
+
+<div class="visual-ba-map">
+  <h3>What the BA sees in the room</h3>
+<div>
+  <strong>Signal</strong>
+  <span>Everyone names an AI interface before naming the decision.</span>
+  <em>Ask what decision, metric, source, and failure mode the feature must improve.</em>
+</div>
+<div>
+  <strong>Risk</strong>
+  <span>A chatbot could hide policy gaps behind confident text.</span>
+  <em>Separate rules, retrieval, prediction, and generation before estimating.</em>
+</div>
+<div>
+  <strong>Output</strong>
+  <span>The team needs an option map, not a vendor demo.</span>
+  <em>Create pattern fit, data dependency, and anti-pattern notes.</em>
+</div>
+</div>
+
 ## Learning outcomes
 
 - Distinguish predictive AI, GenAI, RAG, agents, copilots, and automation.

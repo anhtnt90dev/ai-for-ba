@@ -11,6 +11,102 @@ description: "Context là bề mặt làm việc của AI analysis; context desi
   <span>Core</span>
 </div>
 
+## Story mode: walkthrough theo dự án
+
+<div class="story-mode-panel">
+  <p class="story-eyebrow">Prototype dạng story</p>
+  <h3>Bản SRS 70 trang đánh lừa một lần review AI</h3>
+  <p class="story-intro">Team upload SRS dài và yêu cầu AI tìm tất cả gap. Câu trả lời tự tin và có cấu trúc, nhưng rule integration bị miss vẫn nằm yên ở trang 54.</p>
+  <div class="story-scene-grid">
+<article class="story-scene">
+  <span>Cảnh 1</span>
+  <b>01</b>
+  <strong>One-shot review nhìn rất hiệu quả</strong>
+  <p>Model trả về gap list gọn gàng chỉ sau vài phút. Team gần như gửi nó đi như discovery output.</p>
+</article>
+<article class="story-scene">
+  <span>Cảnh 2</span>
+  <b>02</b>
+  <strong>Rule ở phần cuối bị bỏ sót</strong>
+  <p>Maya check source coverage và thấy API exception section bị nén thành summary chung chung.</p>
+</article>
+<article class="story-scene">
+  <span>Cảnh 3</span>
+  <b>03</b>
+  <strong>Context trở thành artifact</strong>
+  <p>Cô tạo source ID, module chunk, freshness label và decision log trước khi yêu cầu analysis.</p>
+</article>
+<article class="story-scene">
+  <span>Cảnh 4</span>
+  <b>04</b>
+  <strong>Pass thứ hai tìm ra vấn đề thật</strong>
+  <p>Cross-section reconciliation làm lộ conflict giữa report export rule và integration retry behavior.</p>
+</article>
+  </div>
+  <div class="visual-takeaway-strip">
+<span>Context là artifact</span>
+<span>Coverage quan trọng hơn one-shot speed</span>
+<span>Memory cần source ID</span>
+  </div>
+</div>
+
+## Reality check: số liệu hiện tại cho BA
+
+<div class="fact-card-grid">
+<article class="fact-card">
+  <strong>25%</strong>
+  <span>Team mất thời gian để tìm câu trả lời</span>
+  <p>Atlassian State of Teams 2025 ghi nhận leader và team lãng phí 25% thời gian chỉ để tìm answer. Góc nhìn BA: source map và decision log là productivity control.</p>
+  <a href="https://www.atlassian.com/blog/state-of-teams-2025">Nguồn: Atlassian State of Teams 2025</a>
+</article>
+<article class="fact-card">
+  <strong>13% hiện tại, 34% sắp tới</strong>
+  <span>Tỷ trọng công việc dùng gen AI đang tăng</span>
+  <p>McKinsey workplace report cho biết 13% employee đã dùng gen AI cho hơn 30% daily task, và 34% kỳ vọng sẽ làm vậy trong chưa tới một năm. Góc nhìn BA: context pack tái sử dụng sẽ quan trọng hơn khi usage scale.</p>
+  <a href="https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/superagency-in-the-workplace-empowering-people-to-unlock-ais-full-potential-at-work">Nguồn: McKinsey AI in the Workplace 2025</a>
+</article>
+<article class="fact-card">
+  <strong>9.1 vs 6.3</strong>
+  <span>Expert delivery theo dõi nhiều performance signal hơn</span>
+  <p>PMI ghi nhận nhóm có business acumen cao dùng nhiều yếu tố đo project performance hơn peers. Góc nhìn BA: context pack nên nối requirement với business measure, không chỉ summary text.</p>
+  <a href="https://www.pmi.org/-/media/pmi/documents/public/pdf/learning/thought-leadership/pulse/pulse_of_the_profession_2025-1.pdf">Nguồn: PMI Pulse of the Profession 2025</a>
+</article>
+</div>
+
+## Walkthrough trực quan
+
+```mermaid
+flowchart TD
+    A["SRS dài + meeting notes"] --> B["Source map: ID, owner, date"]
+    B --> C["Chunk plan theo module"]
+    C --> D["AI review focused từng chunk"]
+    D --> E["Coverage check"]
+    E --> F["Cross-section reconciliation"]
+    F --> G["Board gap, conflict, decision và testability"]
+    G --> H["Context pack sẵn sàng delivery"]
+```
+
+## Bản đồ quyết định trực quan
+
+<div class="visual-ba-map">
+  <h3>BA biến long context thành working memory như thế nào</h3>
+<div>
+  <strong>Source map</strong>
+  <span>Mỗi document section có ID, owner, date và authority.</span>
+  <em>Model không thể âm thầm bỏ qua phần ít nổi bật.</em>
+</div>
+<div>
+  <strong>Chunk plan</strong>
+  <span>Mỗi module được review bằng câu hỏi focused.</span>
+  <em>Context dài trở thành work inspect được, không phải summary nông.</em>
+</div>
+<div>
+  <strong>Reconciliation pass</strong>
+  <span>Finding được so sánh giữa module và decision.</span>
+  <em>Conflict lộ ra trước delivery handoff.</em>
+</div>
+</div>
+
 ## Learning outcomes
 
 - Giải thích token và context limit bằng ngôn ngữ BA.

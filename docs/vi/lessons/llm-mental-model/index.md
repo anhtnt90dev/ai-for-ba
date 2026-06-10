@@ -11,6 +11,105 @@ description: "LLM là engine xử lý và reasoning trên text rất mạnh, nh�
   <span>Core</span>
 </div>
 
+## Story mode: walkthrough theo dự án
+
+<div class="story-mode-panel">
+  <p class="story-eyebrow">Prototype dạng story</p>
+  <h3>Một draft AI rất mượt suýt trở thành requirement sai</h3>
+  <p class="story-intro">Maya yêu cầu LLM viết acceptance criteria cho việc premium users export report. Câu trả lời nhìn hữu ích, nhưng âm thầm tự bịa format, limit và permission chưa ai approve.</p>
+  <div class="story-scene-grid">
+<article class="story-scene">
+  <span>Cảnh 1</span>
+  <b>01</b>
+  <strong>Draft nhìn như đã sẵn sàng</strong>
+  <p>LLM viết Given-When-Then rất sạch. Team thấy yên tâm vì wording nghe chuyên nghiệp.</p>
+</article>
+<article class="story-scene">
+  <span>Cảnh 2</span>
+  <b>02</b>
+  <strong>Assumption ẩn bắt đầu lộ ra</strong>
+  <p>Maya highlight export format, file size, subscription tier, audit rule và retention period. Không điều nào có source.</p>
+</article>
+<article class="story-scene">
+  <span>Cảnh 3</span>
+  <b>03</b>
+  <strong>Prompt được đổi lại</strong>
+  <p>Cô cung cấp source rule, example, output schema và instruction yêu cầu label unsupported claim.</p>
+</article>
+<article class="story-scene">
+  <span>Cảnh 4</span>
+  <b>04</b>
+  <strong>Artifact trở nên review được</strong>
+  <p>Draft thứ hai tách fact, assumption và validation question. QA test được, Product approve được decision thật.</p>
+</article>
+  </div>
+  <div class="visual-takeaway-strip">
+<span>Plausible không đồng nghĩa approved</span>
+<span>Label assumption để bảo vệ scope</span>
+<span>Human review là một workflow</span>
+  </div>
+</div>
+
+## Reality check: số liệu hiện tại cho BA
+
+<div class="fact-card-grid">
+<article class="fact-card">
+  <strong>46% vs 33%</strong>
+  <span>Trust gap rất thật trong software team</span>
+  <p>Stack Overflow 2025 ghi nhận số developer không tin độ chính xác của AI cao hơn số người tin. Góc nhìn BA: xem output AI là draft cần evidence, không phải requirement source.</p>
+  <a href="https://survey.stackoverflow.co/2025/ai">Nguồn: Stack Overflow Developer Survey 2025</a>
+</article>
+<article class="fact-card">
+  <strong>27%</strong>
+  <span>Chỉ một phần nhỏ review mọi output gen AI</span>
+  <p>McKinsey ghi nhận 27% tổ chức dùng gen AI review toàn bộ generated content trước khi dùng, trong khi tỷ lệ tương tự chỉ review 20% hoặc ít hơn. Góc nhìn BA: phải đặc tả review gate rõ ràng.</p>
+  <a href="https://www.mckinsey.com/~/media/mckinsey/business%20functions/quantumblack/our%20insights/the%20state%20of%20ai/2025/the-state-of-ai-how-organizations-are-rewiring-to-capture-value_final.pdf">Nguồn: McKinsey State of AI 2025 PDF</a>
+</article>
+<article class="fact-card">
+  <strong>63%</strong>
+  <span>Governance gap vẫn phổ biến</span>
+  <p>IBM 2025 ghi nhận 63% tổ chức thiếu policy governance để quản lý AI hoặc shadow AI. Góc nhìn BA: làm rõ allowed use, data boundary và review ownership.</p>
+  <a href="https://www.ibm.com/reports/data-breach">Nguồn: IBM Cost of a Data Breach 2025</a>
+</article>
+</div>
+
+## Walkthrough trực quan
+
+```mermaid
+sequenceDiagram
+    participant BA as BA
+    participant LLM as Draft từ LLM
+    participant Evidence as Source pack
+    participant Team as Product/QA/Dev
+    BA->>LLM: Draft criteria từ request mơ hồ
+    LLM-->>BA: Criteria mượt nhưng có assumption ẩn
+    BA->>Evidence: Thêm tier, rule, example, source ID
+    BA->>LLM: Redraft và label fact, assumption, unsupported claim
+    LLM-->>BA: Artifact review được
+    BA->>Team: Validate decision trước backlog handoff
+```
+
+## Bản đồ quyết định trực quan
+
+<div class="visual-ba-map">
+  <h3>BA review gì trước khi chia sẻ output AI</h3>
+<div>
+  <strong>Fact</strong>
+  <span>Statement có source, decision owner hoặc rule được cite.</span>
+  <em>Giữ lại nhưng bảo toàn source ID.</em>
+</div>
+<div>
+  <strong>Assumption</strong>
+  <span>Model suy luận điều nghe hợp lý.</span>
+  <em>Label rõ và gắn câu hỏi cần stakeholder validate.</em>
+</div>
+<div>
+  <strong>Unsupported claim</strong>
+  <span>Statement nghe hữu ích nhưng không có evidence.</span>
+  <em>Loại khỏi scope cho tới khi được validate.</em>
+</div>
+</div>
+
 ## Learning outcomes
 
 - Giải thích hành vi LLM mà không thổi phồng độ chắc chắn.

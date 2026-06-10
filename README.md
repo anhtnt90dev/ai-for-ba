@@ -19,6 +19,7 @@ A bilingual, artifact-driven course for software Business Analysts who need to u
 - Every lesson now has a lesson-specific BA relevance section, expert AI review note, and bad-vs-better practice examples.
 - Every theory lesson explains common BA difficulties, real project application, and what breaks when the capability is missing.
 - Every theory lesson includes a senior BA practice pack: stakeholder questions, decision-log entries, Definition of Ready/Done, before/after artifact examples, and manual verification checks.
+- The first three lessons now include a prototype visual-storytelling layer with project scenes, current-fact cards, source links, and decision maps to reduce text-heavy learning.
 - Lessons include mistakes to avoid and actions to apply tomorrow.
 - Labs include input samples, exercise steps, expected deliverables, and review rubrics.
 - The course overview now includes role-based learning paths for new BAs, senior delivery BAs, frontend/UI BAs, backend/API BAs, AI product BAs, and BA leads.
@@ -128,6 +129,7 @@ This project was reviewed for external assets and references. No stock photos, c
 - Pixel Agents character sprites: sourced from <https://github.com/pixel-agents-hq/pixel-agents>, path `webview-ui/public/assets/characters/`, MIT License. Local copies include `docs/public/assets/pixel-agents/LICENSE-MIT` and `docs/public/assets/pixel-agents/SOURCE.md`. Files used: `char_0.png` through `char_5.png`.
 - Upstream note: the Pixel Agents repository README says the characters are based on JIK-A-4, Metro City. This repository relies on the Pixel Agents MIT license and preserves the upstream MIT notice locally.
 - Documentation framework and diagram tooling: VitePress, Mermaid, and vitepress-plugin-mermaid are npm dependencies used to build and render the site. Dependency license metadata is tracked through `package-lock.json`; the current dependency set is permissive (`MIT`, `Apache-2.0`, `BSD`, `ISC`, `CC0-1.0`, `Unlicense`, and `MPL-2.0 OR Apache-2.0`). The transitive `khroma` package omits a license field in the lockfile but ships an MIT license file in its npm package.
+- External research references: the first three lessons cite short factual statistics with links to McKinsey State of AI 2025, McKinsey AI in the Workplace 2025, IIBA Global State of Business Analysis 2025, Stack Overflow Developer Survey 2025, Atlassian State of Teams 2025, IBM Cost of a Data Breach 2025, and PMI Pulse of the Profession 2025. No report text, charts, or proprietary visuals are copied into the repository.
 - Badges: README language, lesson, lab, and GitHub Pages badges use shields.io badge URLs and are not embedded site assets.
 - Repository and site links: GitHub Pages and GitHub repository URLs are project-owned navigation and deployment references.
 

@@ -202,6 +202,12 @@ const requiredUseCaseGroups = {
   "Cross-functional BA Collaboration": 8
 };
 
+const visualStoryLessonSlugs = new Set([
+  "ai-landscape-for-ba",
+  "llm-mental-model",
+  "tokens-context-and-memory"
+]);
+
 const diagramSignatures = new Set();
 const whyBodiesByLocale = { en: [], vi: [] };
 const expertBodiesByLocale = { en: [], vi: [] };
@@ -346,6 +352,14 @@ for (const locale of ["en", "vi"]) {
 
     const mermaidBlocks = extractMermaidBlocks(content);
     assert(mermaidBlocks.length > 0, `${file} must include a Mermaid diagram`);
+    if (visualStoryLessonSlugs.has(slug)) {
+      assert(content.includes('class="story-mode-panel"'), `${file} must include the visual storytelling panel`);
+      assert((content.match(/class="story-scene"/g)?.length ?? 0) >= 4, `${file} must include at least four story scenes`);
+      assert(content.includes('class="fact-card-grid"'), `${file} must include current-fact cards`);
+      assert((content.match(/class="fact-card"/g)?.length ?? 0) >= 3, `${file} must include at least three fact cards`);
+      assert(content.includes('class="visual-ba-map"'), `${file} must include the visual BA decision map`);
+      assert(mermaidBlocks.length >= 2, `${file} must include both story and concept Mermaid diagrams`);
+    }
     for (const block of mermaidBlocks) {
       const usesOldGenericDiagram =
         block.includes("Business goal") &&
@@ -538,7 +552,21 @@ for (const locale of ["en", "vi"]) {
 
 if (exists("docs/.vitepress/theme/custom.css")) {
   const css = read("docs/.vitepress/theme/custom.css");
-  for (const selector of [".usecase-grid", ".case-card", ".case-meta", ".ba-workbench-panel", ".learning-path-grid", ".template-grid", ".usecase-filter-panel", ".case-tags"]) {
+  for (const selector of [
+    ".usecase-grid",
+    ".case-card",
+    ".case-meta",
+    ".ba-workbench-panel",
+    ".learning-path-grid",
+    ".template-grid",
+    ".usecase-filter-panel",
+    ".case-tags",
+    ".story-mode-panel",
+    ".story-scene-grid",
+    ".fact-card-grid",
+    ".visual-ba-map",
+    ".visual-takeaway-strip"
+  ]) {
     assert(css.includes(selector), `custom.css must include ${selector} for the BA workbench theme`);
   }
 }

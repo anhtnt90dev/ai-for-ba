@@ -11,6 +11,105 @@ description: "LLMs are powerful text reasoning engines, but they do not know you
   <span>Core</span>
 </div>
 
+## Story mode: project walkthrough
+
+<div class="story-mode-panel">
+  <p class="story-eyebrow">Story prototype</p>
+  <h3>A polished AI draft almost becomes a false requirement</h3>
+  <p class="story-intro">Maya asks an LLM for acceptance criteria about exporting premium reports. The answer looks useful, but it quietly invents formats, limits, and permissions that nobody approved.</p>
+  <div class="story-scene-grid">
+<article class="story-scene">
+  <span>Scene 1</span>
+  <b>01</b>
+  <strong>The draft looks ready</strong>
+  <p>The LLM writes clean Given-When-Then criteria. The team relaxes because the wording sounds professional.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 2</span>
+  <b>02</b>
+  <strong>The hidden assumptions appear</strong>
+  <p>Maya highlights export format, file size, subscription tier, audit rule, and retention period. None of them came from a source.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 3</span>
+  <b>03</b>
+  <strong>The prompt changes</strong>
+  <p>She gives the model source rules, examples, output schema, and the instruction to label unsupported claims.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 4</span>
+  <b>04</b>
+  <strong>The artifact becomes reviewable</strong>
+  <p>The second draft separates facts, assumptions, and validation questions. QA can test it, and Product can approve real decisions.</p>
+</article>
+  </div>
+  <div class="visual-takeaway-strip">
+<span>Plausible is not approved</span>
+<span>Assumption labels protect scope</span>
+<span>Human review is a workflow</span>
+  </div>
+</div>
+
+## Reality check: current facts for BAs
+
+<div class="fact-card-grid">
+<article class="fact-card">
+  <strong>46% vs 33%</strong>
+  <span>Trust gap is real in software teams</span>
+  <p>Stack Overflow's 2025 survey reports more developers distrust AI accuracy than trust it. BA read: treat AI output as a draft that needs evidence, not as a requirement source.</p>
+  <a href="https://survey.stackoverflow.co/2025/ai">Source: Stack Overflow Developer Survey 2025</a>
+</article>
+<article class="fact-card">
+  <strong>27%</strong>
+  <span>Only a minority review every gen AI output</span>
+  <p>McKinsey reports 27% of organizations using gen AI review all generated content before use, while a similar share review 20% or less. BA read: define review gates explicitly.</p>
+  <a href="https://www.mckinsey.com/~/media/mckinsey/business%20functions/quantumblack/our%20insights/the%20state%20of%20ai/2025/the-state-of-ai-how-organizations-are-rewiring-to-capture-value_final.pdf">Source: McKinsey State of AI 2025 PDF</a>
+</article>
+<article class="fact-card">
+  <strong>63%</strong>
+  <span>Governance gaps are common</span>
+  <p>IBM's 2025 breach report says 63% of organizations lacked AI governance policies for managing AI or shadow AI. BA read: clarify allowed use, data boundaries, and review ownership.</p>
+  <a href="https://www.ibm.com/reports/data-breach">Source: IBM Cost of a Data Breach 2025</a>
+</article>
+</div>
+
+## Visual walkthrough
+
+```mermaid
+sequenceDiagram
+    participant BA as BA
+    participant LLM as LLM draft
+    participant Evidence as Source pack
+    participant Team as Product/QA/Dev
+    BA->>LLM: Draft criteria from vague request
+    LLM-->>BA: Polished criteria with hidden assumptions
+    BA->>Evidence: Add tiers, rules, examples, source IDs
+    BA->>LLM: Redraft and label facts, assumptions, unsupported claims
+    LLM-->>BA: Reviewable artifact
+    BA->>Team: Validate decisions before backlog handoff
+```
+
+## Visual decision map
+
+<div class="visual-ba-map">
+  <h3>What the BA reviews before sharing AI output</h3>
+<div>
+  <strong>Fact</strong>
+  <span>A statement has a source, decision owner, or cited rule.</span>
+  <em>Keep it, but preserve the source ID.</em>
+</div>
+<div>
+  <strong>Assumption</strong>
+  <span>The model inferred something plausible.</span>
+  <em>Label it and assign a stakeholder validation question.</em>
+</div>
+<div>
+  <strong>Unsupported claim</strong>
+  <span>The statement sounds useful but has no evidence.</span>
+  <em>Remove it from scope until validated.</em>
+</div>
+</div>
+
 ## Learning outcomes
 
 - Explain LLM behavior without overselling certainty.

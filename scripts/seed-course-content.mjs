@@ -2951,6 +2951,403 @@ function numbered(items) {
   return items.map((item, index) => `${index + 1}. ${item}`).join("\n");
 }
 
+const lessonVisualStories = {
+  "ai-landscape-for-ba": {
+    en: {
+      eyebrow: "Story prototype",
+      title: "Maya turns a chatbot request into an AI decision map",
+      intro: "A sales director asks for an AI chatbot to approve quotes faster. Maya, the BA, slows the room down for ten minutes and changes the conversation from tool choice to business decision quality.",
+      scenes: [
+        ["Scene 1", "The request sounds simple", "The stakeholder says: we need a chatbot. Maya writes the real outcome on the board: reduce quote approval cycle time without increasing margin leakage."],
+        ["Scene 2", "The pain is not one thing", "Approval delay comes from unclear pricing policy, missing risk signals, and managers searching email threads for precedent."],
+        ["Scene 3", "The AI shape splits", "Policy questions need RAG, margin risk needs predictive signals, deterministic thresholds need rules, and explanation text may use GenAI."],
+        ["Scene 4", "The BA changes the backlog", "The first backlog item is no longer build chatbot. It becomes an AI Pattern Fit Matrix with metrics, source authority, review gates, and a non-AI alternative."]
+      ],
+      mapTitle: "What the BA sees in the room",
+      mapRows: [
+        ["Signal", "Everyone names an AI interface before naming the decision.", "Ask what decision, metric, source, and failure mode the feature must improve."],
+        ["Risk", "A chatbot could hide policy gaps behind confident text.", "Separate rules, retrieval, prediction, and generation before estimating."],
+        ["Output", "The team needs an option map, not a vendor demo.", "Create pattern fit, data dependency, and anti-pattern notes."]
+      ],
+      takeaways: ["Problem shape before model choice", "Workflow evidence before automation", "Metric before demo"],
+      facts: [
+        {
+          value: "23% + 39%",
+          label: "Agentic AI is moving, but not mature everywhere",
+          insight: "McKinsey's 2025 survey reports 23% of organizations scaling agents somewhere and 39% experimenting. BA read: define autonomy boundaries before calling a workflow agent-ready.",
+          source: "McKinsey State of AI 2025",
+          url: "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai"
+        },
+        {
+          value: "74%",
+          label: "AI is already affecting BA careers",
+          insight: "IIBA reports 74% of business analysis respondents say AI is positively impacting their careers. BA read: AI literacy is becoming core professional capability, not an optional tool trick.",
+          source: "IIBA Global State of BA 2025",
+          url: "https://www.iiba.org/business-analysis-blogs/top-5-findings-from-the-2025-global-state-of-business-analysis-report/"
+        },
+        {
+          value: "21%",
+          label: "Value needs workflow redesign",
+          insight: "McKinsey reports 21% of organizations using gen AI have fundamentally redesigned at least some workflows. BA read: benefits come from redesigned decisions and handoffs, not prompt volume.",
+          source: "McKinsey State of AI 2025 PDF",
+          url: "https://www.mckinsey.com/~/media/mckinsey/business%20functions/quantumblack/our%20insights/the%20state%20of%20ai/2025/the-state-of-ai-how-organizations-are-rewiring-to-capture-value_final.pdf"
+        }
+      ],
+      diagram: `flowchart LR
+    A["Stakeholder says: build a chatbot"] --> B["BA reframes: which decision must improve?"]
+    B --> C{"Primary work type"}
+    C --> D["Policy answer: RAG"]
+    C --> E["Risk score: predictive AI"]
+    C --> F["Approval threshold: rules"]
+    C --> G["Explanation draft: GenAI"]
+    D --> H["Pattern Fit Matrix"]
+    E --> H
+    F --> H
+    G --> H
+    H --> I["Backlog with metric, owner, evidence, and fallback"]`
+    },
+    vi: {
+      eyebrow: "Prototype dạng story",
+      title: "Maya biến yêu cầu chatbot thành bản đồ quyết định AI",
+      intro: "Sales director yêu cầu một AI chatbot để duyệt báo giá nhanh hơn. Maya, BA của dự án, kéo cuộc thảo luận chậm lại mười phút và đổi trọng tâm từ chọn tool sang chất lượng quyết định kinh doanh.",
+      scenes: [
+        ["Cảnh 1", "Request nghe rất đơn giản", "Stakeholder nói: chúng ta cần chatbot. Maya viết outcome thật lên bảng: giảm quote approval cycle time mà không làm tăng margin leakage."],
+        ["Cảnh 2", "Pain không chỉ có một điểm", "Approval chậm vì pricing policy chưa rõ, thiếu risk signal và manager phải lục email để tìm precedent."],
+        ["Cảnh 3", "Hình dạng AI được tách ra", "Câu hỏi policy cần RAG, margin risk cần predictive signal, threshold ổn định cần rules, còn đoạn giải thích có thể dùng GenAI."],
+        ["Cảnh 4", "BA đổi lại backlog", "Backlog item đầu tiên không còn là build chatbot. Nó trở thành AI Pattern Fit Matrix có metric, source authority, review gate và non-AI alternative."]
+      ],
+      mapTitle: "Điều BA nhìn thấy trong phòng họp",
+      mapRows: [
+        ["Signal", "Mọi người gọi tên AI interface trước khi gọi tên decision.", "Hỏi decision, metric, source và failure mode mà feature phải cải thiện."],
+        ["Risk", "Chatbot có thể che policy gap bằng câu chữ tự tin.", "Tách rules, retrieval, prediction và generation trước khi estimate."],
+        ["Output", "Team cần option map, không phải vendor demo.", "Tạo pattern fit, data dependency và anti-pattern notes."]
+      ],
+      takeaways: ["Problem shape trước model choice", "Workflow evidence trước automation", "Metric trước demo"],
+      facts: [
+        {
+          value: "23% + 39%",
+          label: "Agentic AI đang dịch chuyển, nhưng chưa mature ở mọi nơi",
+          insight: "McKinsey 2025 ghi nhận 23% tổ chức đang scale AI agent ở đâu đó và 39% đang thử nghiệm. Góc nhìn BA: phải định nghĩa autonomy boundary trước khi gọi workflow là agent-ready.",
+          source: "McKinsey State of AI 2025",
+          url: "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai"
+        },
+        {
+          value: "74%",
+          label: "AI đã tác động trực tiếp tới nghề BA",
+          insight: "IIBA ghi nhận 74% người tham gia khảo sát business analysis nói AI tác động tích cực tới career. Góc nhìn BA: AI literacy đang thành năng lực nghề nghiệp cốt lõi, không còn là mẹo dùng tool.",
+          source: "IIBA Global State of BA 2025",
+          url: "https://www.iiba.org/business-analysis-blogs/top-5-findings-from-the-2025-global-state-of-business-analysis-report/"
+        },
+        {
+          value: "21%",
+          label: "Value cần workflow redesign",
+          insight: "McKinsey ghi nhận 21% tổ chức dùng gen AI đã redesign căn bản ít nhất một số workflow. Góc nhìn BA: benefit đến từ decision và handoff được thiết kế lại, không phải số lượng prompt.",
+          source: "McKinsey State of AI 2025 PDF",
+          url: "https://www.mckinsey.com/~/media/mckinsey/business%20functions/quantumblack/our%20insights/the%20state%20of%20ai/2025/the-state-of-ai-how-organizations-are-rewiring-to-capture-value_final.pdf"
+        }
+      ],
+      diagram: `flowchart LR
+    A["Stakeholder nói: build chatbot"] --> B["BA reframe: decision nào cần cải thiện?"]
+    B --> C{"Loại công việc chính"}
+    C --> D["Trả lời policy: RAG"]
+    C --> E["Risk score: predictive AI"]
+    C --> F["Approval threshold: rules"]
+    C --> G["Draft giải thích: GenAI"]
+    D --> H["Pattern Fit Matrix"]
+    E --> H
+    F --> H
+    G --> H
+    H --> I["Backlog có metric, owner, evidence và fallback"]`
+    }
+  },
+  "llm-mental-model": {
+    en: {
+      eyebrow: "Story prototype",
+      title: "A polished AI draft almost becomes a false requirement",
+      intro: "Maya asks an LLM for acceptance criteria about exporting premium reports. The answer looks useful, but it quietly invents formats, limits, and permissions that nobody approved.",
+      scenes: [
+        ["Scene 1", "The draft looks ready", "The LLM writes clean Given-When-Then criteria. The team relaxes because the wording sounds professional."],
+        ["Scene 2", "The hidden assumptions appear", "Maya highlights export format, file size, subscription tier, audit rule, and retention period. None of them came from a source."],
+        ["Scene 3", "The prompt changes", "She gives the model source rules, examples, output schema, and the instruction to label unsupported claims."],
+        ["Scene 4", "The artifact becomes reviewable", "The second draft separates facts, assumptions, and validation questions. QA can test it, and Product can approve real decisions."]
+      ],
+      mapTitle: "What the BA reviews before sharing AI output",
+      mapRows: [
+        ["Fact", "A statement has a source, decision owner, or cited rule.", "Keep it, but preserve the source ID."],
+        ["Assumption", "The model inferred something plausible.", "Label it and assign a stakeholder validation question."],
+        ["Unsupported claim", "The statement sounds useful but has no evidence.", "Remove it from scope until validated."]
+      ],
+      takeaways: ["Plausible is not approved", "Assumption labels protect scope", "Human review is a workflow"],
+      facts: [
+        {
+          value: "46% vs 33%",
+          label: "Trust gap is real in software teams",
+          insight: "Stack Overflow's 2025 survey reports more developers distrust AI accuracy than trust it. BA read: treat AI output as a draft that needs evidence, not as a requirement source.",
+          source: "Stack Overflow Developer Survey 2025",
+          url: "https://survey.stackoverflow.co/2025/ai"
+        },
+        {
+          value: "27%",
+          label: "Only a minority review every gen AI output",
+          insight: "McKinsey reports 27% of organizations using gen AI review all generated content before use, while a similar share review 20% or less. BA read: define review gates explicitly.",
+          source: "McKinsey State of AI 2025 PDF",
+          url: "https://www.mckinsey.com/~/media/mckinsey/business%20functions/quantumblack/our%20insights/the%20state%20of%20ai/2025/the-state-of-ai-how-organizations-are-rewiring-to-capture-value_final.pdf"
+        },
+        {
+          value: "63%",
+          label: "Governance gaps are common",
+          insight: "IBM's 2025 breach report says 63% of organizations lacked AI governance policies for managing AI or shadow AI. BA read: clarify allowed use, data boundaries, and review ownership.",
+          source: "IBM Cost of a Data Breach 2025",
+          url: "https://www.ibm.com/reports/data-breach"
+        }
+      ],
+      diagram: `sequenceDiagram
+    participant BA as BA
+    participant LLM as LLM draft
+    participant Evidence as Source pack
+    participant Team as Product/QA/Dev
+    BA->>LLM: Draft criteria from vague request
+    LLM-->>BA: Polished criteria with hidden assumptions
+    BA->>Evidence: Add tiers, rules, examples, source IDs
+    BA->>LLM: Redraft and label facts, assumptions, unsupported claims
+    LLM-->>BA: Reviewable artifact
+    BA->>Team: Validate decisions before backlog handoff`
+    },
+    vi: {
+      eyebrow: "Prototype dạng story",
+      title: "Một draft AI rất mượt suýt trở thành requirement sai",
+      intro: "Maya yêu cầu LLM viết acceptance criteria cho việc premium users export report. Câu trả lời nhìn hữu ích, nhưng âm thầm tự bịa format, limit và permission chưa ai approve.",
+      scenes: [
+        ["Cảnh 1", "Draft nhìn như đã sẵn sàng", "LLM viết Given-When-Then rất sạch. Team thấy yên tâm vì wording nghe chuyên nghiệp."],
+        ["Cảnh 2", "Assumption ẩn bắt đầu lộ ra", "Maya highlight export format, file size, subscription tier, audit rule và retention period. Không điều nào có source."],
+        ["Cảnh 3", "Prompt được đổi lại", "Cô cung cấp source rule, example, output schema và instruction yêu cầu label unsupported claim."],
+        ["Cảnh 4", "Artifact trở nên review được", "Draft thứ hai tách fact, assumption và validation question. QA test được, Product approve được decision thật."]
+      ],
+      mapTitle: "BA review gì trước khi chia sẻ output AI",
+      mapRows: [
+        ["Fact", "Statement có source, decision owner hoặc rule được cite.", "Giữ lại nhưng bảo toàn source ID."],
+        ["Assumption", "Model suy luận điều nghe hợp lý.", "Label rõ và gắn câu hỏi cần stakeholder validate."],
+        ["Unsupported claim", "Statement nghe hữu ích nhưng không có evidence.", "Loại khỏi scope cho tới khi được validate."]
+      ],
+      takeaways: ["Plausible không đồng nghĩa approved", "Label assumption để bảo vệ scope", "Human review là một workflow"],
+      facts: [
+        {
+          value: "46% vs 33%",
+          label: "Trust gap rất thật trong software team",
+          insight: "Stack Overflow 2025 ghi nhận số developer không tin độ chính xác của AI cao hơn số người tin. Góc nhìn BA: xem output AI là draft cần evidence, không phải requirement source.",
+          source: "Stack Overflow Developer Survey 2025",
+          url: "https://survey.stackoverflow.co/2025/ai"
+        },
+        {
+          value: "27%",
+          label: "Chỉ một phần nhỏ review mọi output gen AI",
+          insight: "McKinsey ghi nhận 27% tổ chức dùng gen AI review toàn bộ generated content trước khi dùng, trong khi tỷ lệ tương tự chỉ review 20% hoặc ít hơn. Góc nhìn BA: phải đặc tả review gate rõ ràng.",
+          source: "McKinsey State of AI 2025 PDF",
+          url: "https://www.mckinsey.com/~/media/mckinsey/business%20functions/quantumblack/our%20insights/the%20state%20of%20ai/2025/the-state-of-ai-how-organizations-are-rewiring-to-capture-value_final.pdf"
+        },
+        {
+          value: "63%",
+          label: "Governance gap vẫn phổ biến",
+          insight: "IBM 2025 ghi nhận 63% tổ chức thiếu policy governance để quản lý AI hoặc shadow AI. Góc nhìn BA: làm rõ allowed use, data boundary và review ownership.",
+          source: "IBM Cost of a Data Breach 2025",
+          url: "https://www.ibm.com/reports/data-breach"
+        }
+      ],
+      diagram: `sequenceDiagram
+    participant BA as BA
+    participant LLM as Draft từ LLM
+    participant Evidence as Source pack
+    participant Team as Product/QA/Dev
+    BA->>LLM: Draft criteria từ request mơ hồ
+    LLM-->>BA: Criteria mượt nhưng có assumption ẩn
+    BA->>Evidence: Thêm tier, rule, example, source ID
+    BA->>LLM: Redraft và label fact, assumption, unsupported claim
+    LLM-->>BA: Artifact review được
+    BA->>Team: Validate decision trước backlog handoff`
+    }
+  },
+  "tokens-context-and-memory": {
+    en: {
+      eyebrow: "Story prototype",
+      title: "The 70-page SRS that fooled a one-shot AI review",
+      intro: "A team uploads a long SRS and asks AI to find every gap. The answer is confident and organized, but the missed integration rule sits quietly on page 54.",
+      scenes: [
+        ["Scene 1", "The one-shot review feels efficient", "The model returns a polished gap list in minutes. The team almost forwards it as discovery output."],
+        ["Scene 2", "A late-page rule is missing", "Maya checks source coverage and notices the API exception section was compressed into a generic summary."],
+        ["Scene 3", "Context becomes an artifact", "She creates source IDs, module chunks, freshness labels, and a decision log before asking for analysis."],
+        ["Scene 4", "The second pass finds the real issue", "Cross-section reconciliation exposes a conflict between report export rules and integration retry behavior."]
+      ],
+      mapTitle: "How a BA turns long context into working memory",
+      mapRows: [
+        ["Source map", "Every document section has ID, owner, date, and authority.", "The model cannot silently skip the quiet sections."],
+        ["Chunk plan", "Each module is reviewed with a focused question.", "Long context becomes inspectable work, not a shallow summary."],
+        ["Reconciliation pass", "Findings are compared across modules and decisions.", "Conflicts become visible before delivery handoff."]
+      ],
+      takeaways: ["Context is an artifact", "Coverage beats one-shot speed", "Memory needs source IDs"],
+      facts: [
+        {
+          value: "25%",
+          label: "Teams lose time searching for answers",
+          insight: "Atlassian's 2025 State of Teams survey reports leaders and teams waste 25% of their time searching for answers. BA read: source maps and decision logs are productivity controls.",
+          source: "Atlassian State of Teams 2025",
+          url: "https://www.atlassian.com/blog/state-of-teams-2025"
+        },
+        {
+          value: "13% now, 34% soon",
+          label: "Gen AI workload share is rising",
+          insight: "McKinsey's workplace report says 13% of employees already use gen AI for more than 30% of daily tasks, and 34% expect to within less than a year. BA read: reusable context packs will matter more as usage scales.",
+          source: "McKinsey AI in the Workplace 2025",
+          url: "https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/superagency-in-the-workplace-empowering-people-to-unlock-ais-full-potential-at-work"
+        },
+        {
+          value: "9.1 vs 6.3",
+          label: "Expert delivery tracks more performance signals",
+          insight: "PMI reports high business-acumen professionals use more project performance factors than peers. BA read: context packs should connect requirements to business measures, not only text summaries.",
+          source: "PMI Pulse of the Profession 2025",
+          url: "https://www.pmi.org/-/media/pmi/documents/public/pdf/learning/thought-leadership/pulse/pulse_of_the_profession_2025-1.pdf"
+        }
+      ],
+      diagram: `flowchart TD
+    A["Long SRS + meeting notes"] --> B["Source map: IDs, owners, dates"]
+    B --> C["Chunk plan by module"]
+    C --> D["Focused AI review per chunk"]
+    D --> E["Coverage check"]
+    E --> F["Cross-section reconciliation"]
+    F --> G["Gap, conflict, decision, and testability board"]
+    G --> H["Delivery-ready context pack"]`
+    },
+    vi: {
+      eyebrow: "Prototype dạng story",
+      title: "Bản SRS 70 trang đánh lừa một lần review AI",
+      intro: "Team upload SRS dài và yêu cầu AI tìm tất cả gap. Câu trả lời tự tin và có cấu trúc, nhưng rule integration bị miss vẫn nằm yên ở trang 54.",
+      scenes: [
+        ["Cảnh 1", "One-shot review nhìn rất hiệu quả", "Model trả về gap list gọn gàng chỉ sau vài phút. Team gần như gửi nó đi như discovery output."],
+        ["Cảnh 2", "Rule ở phần cuối bị bỏ sót", "Maya check source coverage và thấy API exception section bị nén thành summary chung chung."],
+        ["Cảnh 3", "Context trở thành artifact", "Cô tạo source ID, module chunk, freshness label và decision log trước khi yêu cầu analysis."],
+        ["Cảnh 4", "Pass thứ hai tìm ra vấn đề thật", "Cross-section reconciliation làm lộ conflict giữa report export rule và integration retry behavior."]
+      ],
+      mapTitle: "BA biến long context thành working memory như thế nào",
+      mapRows: [
+        ["Source map", "Mỗi document section có ID, owner, date và authority.", "Model không thể âm thầm bỏ qua phần ít nổi bật."],
+        ["Chunk plan", "Mỗi module được review bằng câu hỏi focused.", "Context dài trở thành work inspect được, không phải summary nông."],
+        ["Reconciliation pass", "Finding được so sánh giữa module và decision.", "Conflict lộ ra trước delivery handoff."]
+      ],
+      takeaways: ["Context là artifact", "Coverage quan trọng hơn one-shot speed", "Memory cần source ID"],
+      facts: [
+        {
+          value: "25%",
+          label: "Team mất thời gian để tìm câu trả lời",
+          insight: "Atlassian State of Teams 2025 ghi nhận leader và team lãng phí 25% thời gian chỉ để tìm answer. Góc nhìn BA: source map và decision log là productivity control.",
+          source: "Atlassian State of Teams 2025",
+          url: "https://www.atlassian.com/blog/state-of-teams-2025"
+        },
+        {
+          value: "13% hiện tại, 34% sắp tới",
+          label: "Tỷ trọng công việc dùng gen AI đang tăng",
+          insight: "McKinsey workplace report cho biết 13% employee đã dùng gen AI cho hơn 30% daily task, và 34% kỳ vọng sẽ làm vậy trong chưa tới một năm. Góc nhìn BA: context pack tái sử dụng sẽ quan trọng hơn khi usage scale.",
+          source: "McKinsey AI in the Workplace 2025",
+          url: "https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/superagency-in-the-workplace-empowering-people-to-unlock-ais-full-potential-at-work"
+        },
+        {
+          value: "9.1 vs 6.3",
+          label: "Expert delivery theo dõi nhiều performance signal hơn",
+          insight: "PMI ghi nhận nhóm có business acumen cao dùng nhiều yếu tố đo project performance hơn peers. Góc nhìn BA: context pack nên nối requirement với business measure, không chỉ summary text.",
+          source: "PMI Pulse of the Profession 2025",
+          url: "https://www.pmi.org/-/media/pmi/documents/public/pdf/learning/thought-leadership/pulse/pulse_of_the_profession_2025-1.pdf"
+        }
+      ],
+      diagram: `flowchart TD
+    A["SRS dài + meeting notes"] --> B["Source map: ID, owner, date"]
+    B --> C["Chunk plan theo module"]
+    C --> D["AI review focused từng chunk"]
+    D --> E["Coverage check"]
+    E --> F["Cross-section reconciliation"]
+    F --> G["Board gap, conflict, decision và testability"]
+    G --> H["Context pack sẵn sàng delivery"]`
+    }
+  }
+};
+
+function lessonStoryVisual(lesson, locale) {
+  const story = lessonVisualStories[lesson.slug]?.[locale];
+  if (!story) {
+    return "";
+  }
+
+  const storyHeading = locale === "en" ? "Story mode: project walkthrough" : "Story mode: walkthrough theo dự án";
+  const factHeading = locale === "en" ? "Reality check: current facts for BAs" : "Reality check: số liệu hiện tại cho BA";
+  const mapHeading = locale === "en" ? "Visual decision map" : "Bản đồ quyết định trực quan";
+  const diagramHeading = locale === "en" ? "Visual walkthrough" : "Walkthrough trực quan";
+  const sourceLabel = locale === "en" ? "Source" : "Nguồn";
+
+  const scenes = story.scenes
+    .map(
+      ([label, title, body], index) => `<article class="story-scene">
+  <span>${label}</span>
+  <b>${String(index + 1).padStart(2, "0")}</b>
+  <strong>${title}</strong>
+  <p>${body}</p>
+</article>`
+    )
+    .join("\n");
+
+  const factCards = story.facts
+    .map(
+      (fact) => `<article class="fact-card">
+  <strong>${fact.value}</strong>
+  <span>${fact.label}</span>
+  <p>${fact.insight}</p>
+  <a href="${fact.url}">${sourceLabel}: ${fact.source}</a>
+</article>`
+    )
+    .join("\n");
+
+  const mapRows = story.mapRows
+    .map(
+      ([label, signal, action]) => `<div>
+  <strong>${label}</strong>
+  <span>${signal}</span>
+  <em>${action}</em>
+</div>`
+    )
+    .join("\n");
+
+  const takeaways = story.takeaways.map((item) => `<span>${item}</span>`).join("\n");
+
+  return `## ${storyHeading}
+
+<div class="story-mode-panel">
+  <p class="story-eyebrow">${story.eyebrow}</p>
+  <h3>${story.title}</h3>
+  <p class="story-intro">${story.intro}</p>
+  <div class="story-scene-grid">
+${scenes}
+  </div>
+  <div class="visual-takeaway-strip">
+${takeaways}
+  </div>
+</div>
+
+## ${factHeading}
+
+<div class="fact-card-grid">
+${factCards}
+</div>
+
+## ${diagramHeading}
+
+\`\`\`mermaid
+${story.diagram}
+\`\`\`
+
+## ${mapHeading}
+
+<div class="visual-ba-map">
+  <h3>${story.mapTitle}</h3>
+${mapRows}
+</div>`;
+}
+
 function diagram(slug, locale) {
   const en = locale === "en";
   const diagrams = {
@@ -3667,6 +4064,7 @@ function lessonPage(lesson, locale) {
   const item = lesson[locale];
   const upgrade = lessonUpgrade(lesson.slug, locale);
   const practical = lessonPracticalSections(lesson, locale, upgrade);
+  const storySection = lessonStoryVisual(lesson, locale);
   const [enSection, viSection] = sections[lesson.section];
   const section = locale === "en" ? enSection : viSection;
   const level = lesson.section === "lead" ? "Expert" : lesson.section === "products" ? "Advanced" : "Core";
@@ -3686,7 +4084,7 @@ description: ${yamlString(item.focus)}
   <span>${section}</span>
   <span>Software BA</span>
   <span>${level}</span>
-</div>
+</div>${storySection ? `\n\n${storySection}` : ""}
 
 ## Learning outcomes
 

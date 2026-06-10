@@ -11,6 +11,106 @@ description: "BA không cần trở thành kỹ sư machine learning, nhưng ph�
   <span>Core</span>
 </div>
 
+## Story mode: walkthrough theo dự án
+
+<div class="story-mode-panel">
+  <p class="story-eyebrow">Prototype dạng story</p>
+  <h3>Maya biến yêu cầu chatbot thành bản đồ quyết định AI</h3>
+  <p class="story-intro">Sales director yêu cầu một AI chatbot để duyệt báo giá nhanh hơn. Maya, BA của dự án, kéo cuộc thảo luận chậm lại mười phút và đổi trọng tâm từ chọn tool sang chất lượng quyết định kinh doanh.</p>
+  <div class="story-scene-grid">
+<article class="story-scene">
+  <span>Cảnh 1</span>
+  <b>01</b>
+  <strong>Request nghe rất đơn giản</strong>
+  <p>Stakeholder nói: chúng ta cần chatbot. Maya viết outcome thật lên bảng: giảm quote approval cycle time mà không làm tăng margin leakage.</p>
+</article>
+<article class="story-scene">
+  <span>Cảnh 2</span>
+  <b>02</b>
+  <strong>Pain không chỉ có một điểm</strong>
+  <p>Approval chậm vì pricing policy chưa rõ, thiếu risk signal và manager phải lục email để tìm precedent.</p>
+</article>
+<article class="story-scene">
+  <span>Cảnh 3</span>
+  <b>03</b>
+  <strong>Hình dạng AI được tách ra</strong>
+  <p>Câu hỏi policy cần RAG, margin risk cần predictive signal, threshold ổn định cần rules, còn đoạn giải thích có thể dùng GenAI.</p>
+</article>
+<article class="story-scene">
+  <span>Cảnh 4</span>
+  <b>04</b>
+  <strong>BA đổi lại backlog</strong>
+  <p>Backlog item đầu tiên không còn là build chatbot. Nó trở thành AI Pattern Fit Matrix có metric, source authority, review gate và non-AI alternative.</p>
+</article>
+  </div>
+  <div class="visual-takeaway-strip">
+<span>Problem shape trước model choice</span>
+<span>Workflow evidence trước automation</span>
+<span>Metric trước demo</span>
+  </div>
+</div>
+
+## Reality check: số liệu hiện tại cho BA
+
+<div class="fact-card-grid">
+<article class="fact-card">
+  <strong>23% + 39%</strong>
+  <span>Agentic AI đang dịch chuyển, nhưng chưa mature ở mọi nơi</span>
+  <p>McKinsey 2025 ghi nhận 23% tổ chức đang scale AI agent ở đâu đó và 39% đang thử nghiệm. Góc nhìn BA: phải định nghĩa autonomy boundary trước khi gọi workflow là agent-ready.</p>
+  <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai">Nguồn: McKinsey State of AI 2025</a>
+</article>
+<article class="fact-card">
+  <strong>74%</strong>
+  <span>AI đã tác động trực tiếp tới nghề BA</span>
+  <p>IIBA ghi nhận 74% người tham gia khảo sát business analysis nói AI tác động tích cực tới career. Góc nhìn BA: AI literacy đang thành năng lực nghề nghiệp cốt lõi, không còn là mẹo dùng tool.</p>
+  <a href="https://www.iiba.org/business-analysis-blogs/top-5-findings-from-the-2025-global-state-of-business-analysis-report/">Nguồn: IIBA Global State of BA 2025</a>
+</article>
+<article class="fact-card">
+  <strong>21%</strong>
+  <span>Value cần workflow redesign</span>
+  <p>McKinsey ghi nhận 21% tổ chức dùng gen AI đã redesign căn bản ít nhất một số workflow. Góc nhìn BA: benefit đến từ decision và handoff được thiết kế lại, không phải số lượng prompt.</p>
+  <a href="https://www.mckinsey.com/~/media/mckinsey/business%20functions/quantumblack/our%20insights/the%20state%20of%20ai/2025/the-state-of-ai-how-organizations-are-rewiring-to-capture-value_final.pdf">Nguồn: McKinsey State of AI 2025 PDF</a>
+</article>
+</div>
+
+## Walkthrough trực quan
+
+```mermaid
+flowchart LR
+    A["Stakeholder nói: build chatbot"] --> B["BA reframe: decision nào cần cải thiện?"]
+    B --> C{"Loại công việc chính"}
+    C --> D["Trả lời policy: RAG"]
+    C --> E["Risk score: predictive AI"]
+    C --> F["Approval threshold: rules"]
+    C --> G["Draft giải thích: GenAI"]
+    D --> H["Pattern Fit Matrix"]
+    E --> H
+    F --> H
+    G --> H
+    H --> I["Backlog có metric, owner, evidence và fallback"]
+```
+
+## Bản đồ quyết định trực quan
+
+<div class="visual-ba-map">
+  <h3>Điều BA nhìn thấy trong phòng họp</h3>
+<div>
+  <strong>Signal</strong>
+  <span>Mọi người gọi tên AI interface trước khi gọi tên decision.</span>
+  <em>Hỏi decision, metric, source và failure mode mà feature phải cải thiện.</em>
+</div>
+<div>
+  <strong>Risk</strong>
+  <span>Chatbot có thể che policy gap bằng câu chữ tự tin.</span>
+  <em>Tách rules, retrieval, prediction và generation trước khi estimate.</em>
+</div>
+<div>
+  <strong>Output</strong>
+  <span>Team cần option map, không phải vendor demo.</span>
+  <em>Tạo pattern fit, data dependency và anti-pattern notes.</em>
+</div>
+</div>
+
 ## Learning outcomes
 
 - Phân biệt predictive AI, GenAI, RAG, agent, copilot và automation.

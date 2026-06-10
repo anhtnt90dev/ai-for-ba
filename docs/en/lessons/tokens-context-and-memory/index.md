@@ -11,6 +11,102 @@ description: "Context is the working surface of AI analysis; poor context design
   <span>Core</span>
 </div>
 
+## Story mode: project walkthrough
+
+<div class="story-mode-panel">
+  <p class="story-eyebrow">Story prototype</p>
+  <h3>The 70-page SRS that fooled a one-shot AI review</h3>
+  <p class="story-intro">A team uploads a long SRS and asks AI to find every gap. The answer is confident and organized, but the missed integration rule sits quietly on page 54.</p>
+  <div class="story-scene-grid">
+<article class="story-scene">
+  <span>Scene 1</span>
+  <b>01</b>
+  <strong>The one-shot review feels efficient</strong>
+  <p>The model returns a polished gap list in minutes. The team almost forwards it as discovery output.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 2</span>
+  <b>02</b>
+  <strong>A late-page rule is missing</strong>
+  <p>Maya checks source coverage and notices the API exception section was compressed into a generic summary.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 3</span>
+  <b>03</b>
+  <strong>Context becomes an artifact</strong>
+  <p>She creates source IDs, module chunks, freshness labels, and a decision log before asking for analysis.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 4</span>
+  <b>04</b>
+  <strong>The second pass finds the real issue</strong>
+  <p>Cross-section reconciliation exposes a conflict between report export rules and integration retry behavior.</p>
+</article>
+  </div>
+  <div class="visual-takeaway-strip">
+<span>Context is an artifact</span>
+<span>Coverage beats one-shot speed</span>
+<span>Memory needs source IDs</span>
+  </div>
+</div>
+
+## Reality check: current facts for BAs
+
+<div class="fact-card-grid">
+<article class="fact-card">
+  <strong>25%</strong>
+  <span>Teams lose time searching for answers</span>
+  <p>Atlassian's 2025 State of Teams survey reports leaders and teams waste 25% of their time searching for answers. BA read: source maps and decision logs are productivity controls.</p>
+  <a href="https://www.atlassian.com/blog/state-of-teams-2025">Source: Atlassian State of Teams 2025</a>
+</article>
+<article class="fact-card">
+  <strong>13% now, 34% soon</strong>
+  <span>Gen AI workload share is rising</span>
+  <p>McKinsey's workplace report says 13% of employees already use gen AI for more than 30% of daily tasks, and 34% expect to within less than a year. BA read: reusable context packs will matter more as usage scales.</p>
+  <a href="https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/superagency-in-the-workplace-empowering-people-to-unlock-ais-full-potential-at-work">Source: McKinsey AI in the Workplace 2025</a>
+</article>
+<article class="fact-card">
+  <strong>9.1 vs 6.3</strong>
+  <span>Expert delivery tracks more performance signals</span>
+  <p>PMI reports high business-acumen professionals use more project performance factors than peers. BA read: context packs should connect requirements to business measures, not only text summaries.</p>
+  <a href="https://www.pmi.org/-/media/pmi/documents/public/pdf/learning/thought-leadership/pulse/pulse_of_the_profession_2025-1.pdf">Source: PMI Pulse of the Profession 2025</a>
+</article>
+</div>
+
+## Visual walkthrough
+
+```mermaid
+flowchart TD
+    A["Long SRS + meeting notes"] --> B["Source map: IDs, owners, dates"]
+    B --> C["Chunk plan by module"]
+    C --> D["Focused AI review per chunk"]
+    D --> E["Coverage check"]
+    E --> F["Cross-section reconciliation"]
+    F --> G["Gap, conflict, decision, and testability board"]
+    G --> H["Delivery-ready context pack"]
+```
+
+## Visual decision map
+
+<div class="visual-ba-map">
+  <h3>How a BA turns long context into working memory</h3>
+<div>
+  <strong>Source map</strong>
+  <span>Every document section has ID, owner, date, and authority.</span>
+  <em>The model cannot silently skip the quiet sections.</em>
+</div>
+<div>
+  <strong>Chunk plan</strong>
+  <span>Each module is reviewed with a focused question.</span>
+  <em>Long context becomes inspectable work, not a shallow summary.</em>
+</div>
+<div>
+  <strong>Reconciliation pass</strong>
+  <span>Findings are compared across modules and decisions.</span>
+  <em>Conflicts become visible before delivery handoff.</em>
+</div>
+</div>
+
 ## Learning outcomes
 
 - Explain token and context limits in BA terms.
