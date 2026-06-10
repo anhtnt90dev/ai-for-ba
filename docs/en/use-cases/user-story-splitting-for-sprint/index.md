@@ -8,6 +8,9 @@ description: "The BA must split the feature into user-goal-based stories with cl
 <div class="case-meta">
   <span>Requirements and backlog</span>
   <span>Agile delivery</span>
+  <span>Refinement</span>
+  <span>Core</span>
+  <span>Story split map</span>
   <span>Project use case</span>
 </div>
 

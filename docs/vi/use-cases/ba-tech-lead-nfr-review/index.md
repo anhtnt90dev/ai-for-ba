@@ -8,6 +8,9 @@ description: "BA phải chuyển technical concern thành NFR decision business-
 <div class="case-meta">
   <span>Cross-functional BA Collaboration</span>
   <span>BA and architecture</span>
+  <span>Cross-functional alignment</span>
+  <span>Practitioner</span>
+  <span>NFR decision table</span>
   <span>Use case dự án</span>
 </div>
 

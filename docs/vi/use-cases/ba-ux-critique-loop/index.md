@@ -8,6 +8,9 @@ description: "BA phải critique design một cách xây dựng, không biến U
 <div class="case-meta">
   <span>Cross-functional BA Collaboration</span>
   <span>BA and UX</span>
+  <span>Cross-functional alignment</span>
+  <span>Practitioner</span>
+  <span>BA-UX critique checklist</span>
   <span>Use case dự án</span>
 </div>
 

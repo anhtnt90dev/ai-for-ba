@@ -8,6 +8,9 @@ description: "BA phải specify permission hiển thị trong UI ra sao mà khô
 <div class="case-meta">
   <span>Frontend, UI, and UX</span>
   <span>Permissioned UI</span>
+  <span>Frontend/UI refinement</span>
+  <span>Practitioner</span>
+  <span>Role-control visibility matrix</span>
   <span>Use case dự án</span>
 </div>
 

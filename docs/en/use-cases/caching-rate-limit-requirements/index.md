@@ -8,6 +8,9 @@ description: "The BA must translate technical controls into business behavior: f
 <div class="case-meta">
   <span>Backend and API</span>
   <span>Performance controls</span>
+  <span>Backend/API refinement</span>
+  <span>Practitioner</span>
+  <span>Freshness requirement matrix</span>
   <span>Project use case</span>
 </div>
 

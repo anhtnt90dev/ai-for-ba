@@ -8,6 +8,9 @@ description: "The BA must define non-happy-path UI states as functional requirem
 <div class="case-meta">
   <span>Frontend, UI, and UX</span>
   <span>UI states</span>
+  <span>Frontend/UI refinement</span>
+  <span>Practitioner</span>
+  <span>UI state matrix</span>
   <span>Project use case</span>
 </div>
 

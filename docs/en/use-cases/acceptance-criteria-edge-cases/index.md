@@ -8,6 +8,9 @@ description: "The BA must turn a simple requirement into testable acceptance cri
 <div class="case-meta">
   <span>Requirements and backlog</span>
   <span>Requirements quality</span>
+  <span>Refinement</span>
+  <span>Core</span>
+  <span>Acceptance criteria matrix</span>
   <span>Project use case</span>
 </div>
 

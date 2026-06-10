@@ -8,6 +8,9 @@ description: "BA phải giúp tạo release readiness view tích hợp requireme
 <div class="case-meta">
   <span>Delivery and QA</span>
   <span>Release management</span>
+  <span>Delivery validation</span>
+  <span>Core</span>
+  <span>Readiness dashboard</span>
   <span>Use case dự án</span>
 </div>
 

@@ -97,6 +97,50 @@ Control thực tế không chỉ là yêu cầu AI cite source. BA phải kiểm
 | Rewrite unsupported AI claim thành requirement mượt hơn | Wording tốt làm evidence yếu khó phát hiện hơn. | Đưa unsupported claim vào open question có owner và validation method. |
 | Dùng cùng evidence threshold cho mọi requirement | Low-risk copy và regulated decision cần control khác nhau. | Định nghĩa evidence level theo risk tier và business impact. |
 
+## Stakeholder questions to ask
+
+| Stakeholder | Câu hỏi | Vì sao BA hỏi |
+| --- | --- | --- |
+| Product owner | Hallucination và source grounding cần cải thiện outcome nào, và trade-off nào có thể chấp nhận? | Ngăn output AI tối ưu cho mục tiêu mơ hồ. |
+| Engineering lead | Source, system, data hoặc constraint nào khiến Evidence Ladder khó implement? | Biến technical constraint ẩn thành requirement question visible. |
+| QA lead | Rule, exception hoặc user state nào phải test được trước khi tin artifact này? | Chuyển wording trôi chảy của AI thành behavior quan sát được. |
+| Operations hoặc support | Failure path nào tạo manual work nếu nguyên tắc "Grounding bảo vệ team khỏi false clarity" bị bỏ qua? | Làm rõ support load, exception handling và operating impact. |
+
+## Decision log entries
+
+| Decision item | Option cần capture | Owner | Evidence cần có |
+| --- | --- | --- | --- |
+| Scope boundary cho Evidence Ladder | Must-have, later, out of scope | Product owner | Business outcome và release constraint |
+| Authority cho problem fit, model boundary, data dependency và decision risk | Documented source, stakeholder decision, assumption cần validate | BA + stakeholder chịu trách nhiệm | Source ID, date và approval status |
+| Review gate trước handoff | Peer review, QA review, engineering review, formal approval | BA lead hoặc project lead | Risk level và receiving-team readiness |
+| Cách recover nếu Xem wording tự tin là evidence. | Rewrite, defer, escalate hoặc validation workshop | Decision owner | Impact lên scope, testability và release risk |
+
+## Definition of Ready / Done
+
+| Gate | Tín hiệu ready | Tín hiệu done |
+| --- | --- | --- |
+| Definition of Ready | Source cho problem fit, model boundary, data dependency và decision risk được label và còn hiệu lực. | Evidence Ladder có thể review mà không phải đoán missing context. |
+| Definition of Ready | Open assumption có owner và validation path. | Stakeholder có thể accept, reject hoặc defer từng assumption. |
+| Definition of Done | Artifact áp dụng control: yêu cầu model so sánh option AI và non-AI trước khi draft requirement. | Delivery, QA hoặc governance team có thể hành động dựa trên artifact. |
+| Definition of Done | Pattern yếu "Xem wording tự tin là evidence." đã được kiểm tra explicit. | Không unsupported AI claim nào bị xem như requirement đã approve. |
+
+## Before and after artifact example
+
+| Before | Risk trong draft AI | Revision của senior BA |
+| --- | --- | --- |
+| Prompt: "Create Evidence Ladder cho Hallucination và source grounding." | Model có thể tự bịa source fact, owner, threshold hoặc implementation rule. | Thêm source, scope boundary, source authority, output schema và instruction: Kiểm tra claim-to-source support và ghi evidence level trong requirement table. |
+| Draft statement: "Thêm cột evidence vào một requirement table." | Action hữu ích nhưng chưa gắn decision owner hoặc acceptance signal. | Rewrite thành project step có owner, expected artifact, review gate và evidence cần trước handoff. |
+| Paragraph nghe final về solution-shape decision | Tone có thể che uncertainty và approval còn thiếu. | Chuyển thành bảng fact, assumption, decision needed, risk và validation question. |
+
+## Manual verification after AI output
+
+| Lens kiểm tra | Manual check | Pass signal |
+| --- | --- | --- |
+| Evidence | Trace mọi statement quan trọng trong Evidence Ladder về source, decision hoặc assumption có label. | Không unsupported claim nào còn bị ẩn. |
+| Completeness | Check problem fit, model boundary, data dependency và decision risk theo intended audience và receiving team. | Artifact trả lời được điều product, engineering, QA và operations cần. |
+| Testability | Hỏi QA có tạo được positive, negative, boundary và exception scenario không. | Wording mơ hồ được rewrite hoặc log thành question. |
+| Accountability | Confirm ai approve, ai review và ai xử lý khi artifact sai. | Owner và escalation path explicit. |
+
 ## AI collaboration prompt
 
 ```text

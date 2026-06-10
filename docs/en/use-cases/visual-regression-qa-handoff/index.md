@@ -8,6 +8,9 @@ description: "The BA must help define what visual quality means in business term
 <div class="case-meta">
   <span>Frontend, UI, and UX</span>
   <span>Visual QA</span>
+  <span>Frontend/UI refinement</span>
+  <span>Practitioner</span>
+  <span>Visual QA matrix</span>
   <span>Project use case</span>
 </div>
 

@@ -8,6 +8,9 @@ description: "BA phải tách audit log cho accountability khỏi operational lo
 <div class="case-meta">
   <span>Backend and API</span>
   <span>Audit and observability</span>
+  <span>Backend/API refinement</span>
+  <span>Practitioner</span>
+  <span>Audit event catalog</span>
   <span>Use case dự án</span>
 </div>
 

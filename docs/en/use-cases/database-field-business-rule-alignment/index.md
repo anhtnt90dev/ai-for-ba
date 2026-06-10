@@ -8,6 +8,9 @@ description: "The BA must ensure data model fields represent business concepts a
 <div class="case-meta">
   <span>Data and Integration</span>
   <span>Data model alignment</span>
+  <span>Data and integration</span>
+  <span>Advanced</span>
+  <span>Field definition catalog</span>
   <span>Project use case</span>
 </div>
 

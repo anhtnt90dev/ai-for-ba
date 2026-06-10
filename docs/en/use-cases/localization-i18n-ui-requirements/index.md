@@ -8,6 +8,9 @@ description: "The BA must capture localization requirements before UI and backen
 <div class="case-meta">
   <span>Frontend, UI, and UX</span>
   <span>Localization</span>
+  <span>Frontend/UI refinement</span>
+  <span>Practitioner</span>
+  <span>Localization requirement matrix</span>
   <span>Project use case</span>
 </div>
 

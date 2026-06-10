@@ -8,6 +8,9 @@ description: "BA phải phát hiện functional gap giữa current behavior và 
 <div class="case-meta">
   <span>Discovery and alignment</span>
   <span>Legacy system modernization</span>
+  <span>Discovery</span>
+  <span>Core</span>
+  <span>Gap analysis matrix</span>
   <span>Use case dự án</span>
 </div>
 

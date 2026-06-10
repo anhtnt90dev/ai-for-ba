@@ -99,6 +99,50 @@ AI làm NFR phức tạp hơn vì behavior có tính xác suất và phụ thu�
 | Để privacy cho technical team | Decision của BA về data, user và workflow định hình privacy exposure. | Định nghĩa prohibited data, retention, consent, access và redaction requirement. |
 | Thêm NFR sau khi design feature xong | Control có thể trở nên đắt hoặc không retrofit được. | Elicit NFR đặc thù AI trong discovery và đưa vào acceptance criteria. |
 
+## Stakeholder questions to ask
+
+| Stakeholder | Câu hỏi | Vì sao BA hỏi |
+| --- | --- | --- |
+| Product owner | Non-functional requirement và rủi ro cần cải thiện outcome nào, và trade-off nào có thể chấp nhận? | Ngăn output AI tối ưu cho mục tiêu mơ hồ. |
+| Engineering lead | Source, system, data hoặc constraint nào khiến NFR Risk Matrix khó implement? | Biến technical constraint ẩn thành requirement question visible. |
+| QA lead | Rule, exception hoặc user state nào phải test được trước khi tin artifact này? | Chuyển wording trôi chảy của AI thành behavior quan sát được. |
+| Operations hoặc support | Failure path nào tạo manual work nếu nguyên tắc "NFR là risk control" bị bỏ qua? | Làm rõ support load, exception handling và operating impact. |
+
+## Decision log entries
+
+| Decision item | Option cần capture | Owner | Evidence cần có |
+| --- | --- | --- | --- |
+| Scope boundary cho NFR Risk Matrix | Must-have, later, out of scope | Product owner | Business outcome và release constraint |
+| Authority cho ambiguity, NFR risk, traceability, testability và rule ownership | Documented source, stakeholder decision, assumption cần validate | BA + stakeholder chịu trách nhiệm | Source ID, date và approval status |
+| Review gate trước handoff | Peer review, QA review, engineering review, formal approval | BA lead hoặc project lead | Risk level và receiving-team readiness |
+| Cách recover nếu Xem NFR là chuyện riêng của developer. | Rewrite, defer, escalate hoặc validation workshop | Decision owner | Impact lên scope, testability và release risk |
+
+## Definition of Ready / Done
+
+| Gate | Tín hiệu ready | Tín hiệu done |
+| --- | --- | --- |
+| Definition of Ready | Source cho ambiguity, NFR risk, traceability, testability và rule ownership được label và còn hiệu lực. | NFR Risk Matrix có thể review mà không phải đoán missing context. |
+| Definition of Ready | Open assumption có owner và validation path. | Stakeholder có thể accept, reject hoặc defer từng assumption. |
+| Definition of Done | Artifact áp dụng control: buộc mọi requirement statement lộ rõ actor, trigger, data, rule, exception và verification signal. | Delivery, QA hoặc governance team có thể hành động dựa trên artifact. |
+| Definition of Done | Pattern yếu "Xem NFR là chuyện riêng của developer." đã được kiểm tra explicit. | Không unsupported AI claim nào bị xem như requirement đã approve. |
+
+## Before and after artifact example
+
+| Before | Risk trong draft AI | Revision của senior BA |
+| --- | --- | --- |
+| Prompt: "Create NFR Risk Matrix cho Non-functional requirement và rủi ro." | Model có thể tự bịa source fact, owner, threshold hoặc implementation rule. | Thêm source, scope boundary, source authority, output schema và instruction: Đặc tả evaluation case, target metric, acceptable error và escalation behavior. |
+| Draft statement: "Chọn một feature và nhờ AI tìm NFR gap." | Action hữu ích nhưng chưa gắn decision owner hoặc acceptance signal. | Rewrite thành project step có owner, expected artifact, review gate và evidence cần trước handoff. |
+| Paragraph nghe final về delivery-ready requirement | Tone có thể che uncertainty và approval còn thiếu. | Chuyển thành bảng fact, assumption, decision needed, risk và validation question. |
+
+## Manual verification after AI output
+
+| Lens kiểm tra | Manual check | Pass signal |
+| --- | --- | --- |
+| Evidence | Trace mọi statement quan trọng trong NFR Risk Matrix về source, decision hoặc assumption có label. | Không unsupported claim nào còn bị ẩn. |
+| Completeness | Check ambiguity, NFR risk, traceability, testability và rule ownership theo intended audience và receiving team. | Artifact trả lời được điều product, engineering, QA và operations cần. |
+| Testability | Hỏi QA có tạo được positive, negative, boundary và exception scenario không. | Wording mơ hồ được rewrite hoặc log thành question. |
+| Accountability | Confirm ai approve, ai review và ai xử lý khi artifact sai. | Owner và escalation path explicit. |
+
 ## AI collaboration prompt
 
 ```text

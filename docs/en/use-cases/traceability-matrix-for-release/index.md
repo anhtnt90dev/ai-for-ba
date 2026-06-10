@@ -8,6 +8,9 @@ description: "The BA must create a traceability matrix that links business goals
 <div class="case-meta">
   <span>Requirements and backlog</span>
   <span>Release governance</span>
+  <span>Refinement</span>
+  <span>Core</span>
+  <span>Traceability matrix</span>
   <span>Project use case</span>
 </div>
 

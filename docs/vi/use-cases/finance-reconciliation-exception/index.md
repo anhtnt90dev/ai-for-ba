@@ -8,6 +8,9 @@ description: "BA phải đặc tả exception workflow classify mismatch type, c
 <div class="case-meta">
   <span>Domain project scenarios</span>
   <span>Finance operations</span>
+  <span>Domain workflow</span>
+  <span>Core</span>
+  <span>Exception taxonomy</span>
   <span>Use case dự án</span>
 </div>
 

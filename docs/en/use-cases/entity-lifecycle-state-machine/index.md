@@ -8,6 +8,9 @@ description: "The BA must specify lifecycle states and transitions so UI, backen
 <div class="case-meta">
   <span>Data and Integration</span>
   <span>Entity lifecycle</span>
+  <span>Data and integration</span>
+  <span>Advanced</span>
+  <span>State model</span>
   <span>Project use case</span>
 </div>
 

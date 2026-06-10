@@ -8,6 +8,9 @@ description: "BA phải specify fallback behavior business-safe khi integration 
 <div class="case-meta">
   <span>Backend and API</span>
   <span>Integration resilience</span>
+  <span>Backend/API refinement</span>
+  <span>Practitioner</span>
+  <span>Integration dependency map</span>
   <span>Use case dự án</span>
 </div>
 

@@ -8,6 +8,9 @@ description: "BA phải chuyển production evidence thành requirement update q
 <div class="case-meta">
   <span>Cross-functional BA Collaboration</span>
   <span>Production feedback</span>
+  <span>Cross-functional alignment</span>
+  <span>Practitioner</span>
+  <span>Issue-to-requirement analysis</span>
   <span>Use case dự án</span>
 </div>
 

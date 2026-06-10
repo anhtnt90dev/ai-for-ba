@@ -8,6 +8,9 @@ description: "BA phải define UI state ngoài happy path như functional requir
 <div class="case-meta">
   <span>Frontend, UI, and UX</span>
   <span>UI states</span>
+  <span>Frontend/UI refinement</span>
+  <span>Practitioner</span>
+  <span>UI state matrix</span>
   <span>Use case dự án</span>
 </div>
 

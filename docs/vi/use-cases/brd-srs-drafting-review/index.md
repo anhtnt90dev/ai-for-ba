@@ -8,6 +8,9 @@ description: "BA phải dùng AI để draft nhanh hơn nhưng không cho AI inv
 <div class="case-meta">
   <span>Requirements and backlog</span>
   <span>Formal requirements documentation</span>
+  <span>Refinement</span>
+  <span>Core</span>
+  <span>BRD hoặc SRS outline</span>
   <span>Use case dự án</span>
 </div>
 

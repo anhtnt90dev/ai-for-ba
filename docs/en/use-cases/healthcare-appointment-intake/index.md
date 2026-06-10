@@ -8,6 +8,9 @@ description: "The BA must specify intake support without turning AI into a medic
 <div class="case-meta">
   <span>Domain project scenarios</span>
   <span>Healthcare operations</span>
+  <span>Domain workflow</span>
+  <span>Core</span>
+  <span>Intake field schema</span>
   <span>Project use case</span>
 </div>
 

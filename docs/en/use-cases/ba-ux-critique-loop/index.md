@@ -8,6 +8,9 @@ description: "The BA must critique designs constructively without turning UX rev
 <div class="case-meta">
   <span>Cross-functional BA Collaboration</span>
   <span>BA and UX</span>
+  <span>Cross-functional alignment</span>
+  <span>Practitioner</span>
+  <span>BA-UX critique checklist</span>
   <span>Project use case</span>
 </div>
 

@@ -8,6 +8,9 @@ description: "BA phải giúp define API behavior bằng business term để fro
 <div class="case-meta">
   <span>Backend and API</span>
   <span>API contracts</span>
+  <span>Backend/API refinement</span>
+  <span>Practitioner</span>
+  <span>API behavior spec</span>
   <span>Use case dự án</span>
 </div>
 

@@ -8,6 +8,9 @@ description: "The BA must translate user goals into navigation requirements, not
 <div class="case-meta">
   <span>Frontend, UI, and UX</span>
   <span>User flows</span>
+  <span>Frontend/UI refinement</span>
+  <span>Practitioner</span>
+  <span>Task-to-navigation map</span>
   <span>Project use case</span>
 </div>
 

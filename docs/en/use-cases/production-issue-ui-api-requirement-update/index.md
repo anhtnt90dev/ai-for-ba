@@ -8,6 +8,9 @@ description: "The BA must convert production evidence into updated requirements 
 <div class="case-meta">
   <span>Cross-functional BA Collaboration</span>
   <span>Production feedback</span>
+  <span>Cross-functional alignment</span>
+  <span>Practitioner</span>
+  <span>Issue-to-requirement analysis</span>
   <span>Project use case</span>
 </div>
 

@@ -8,6 +8,9 @@ description: "BA phải xây current-state process thể hiện actor, system, d
 <div class="case-meta">
   <span>Discovery and alignment</span>
   <span>Operations analysis</span>
+  <span>Discovery</span>
+  <span>Core</span>
+  <span>Current-state process map</span>
   <span>Use case dự án</span>
 </div>
 

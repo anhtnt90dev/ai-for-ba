@@ -102,6 +102,50 @@ Ambiguity analysis should distinguish missing information, conflicting rules, un
 | Treat all ambiguity as equal | A vague label and a missing compliance rule carry very different delivery risk. | Rank ambiguity by business impact, test impact, regulatory impact, and dependency. |
 | Accept AI rewrites that add new detail | The rewrite may invent thresholds, actors, or policy. | Only rewrite source-supported parts and mark the rest as clarification questions. |
 
+## Stakeholder questions to ask
+
+| Stakeholder | Question | Why the BA asks it |
+| --- | --- | --- |
+| Product owner | Which outcome should Ambiguity, Conflict, and Gap Analysis improve, and what trade-off are you willing to accept? | Prevents AI output from optimizing for a vague goal. |
+| Engineering lead | What source, system, data, or constraint would make Requirement Defect Taxonomy hard to implement? | Turns hidden technical constraints into visible requirement questions. |
+| QA lead | Which rule, exception, or user state must be testable before you trust this artifact? | Converts fluent AI wording into observable behavior. |
+| Operations or support | What failure path would create manual work if the lesson principle "Named defects make review faster" is ignored? | Surfaces support load, exception handling, and operating impact. |
+
+## Decision log entries
+
+| Decision item | Options to capture | Owner | Evidence needed |
+| --- | --- | --- | --- |
+| Scope boundary for Requirement Defect Taxonomy | Must-have, later, out of scope | Product owner | Business outcome and release constraint |
+| Authority for ambiguity, NFR risk, traceability, testability, and rule ownership | Documented source, stakeholder decision, assumption to validate | BA + accountable stakeholder | Source ID, date, and approval status |
+| Review gate before handoff | Peer review, QA review, engineering review, formal approval | BA lead or project lead | Risk level and receiving-team readiness |
+| Recovery if Saying 'unclear' without naming the defect. | Rewrite, defer, escalate, or run validation workshop | Decision owner | Impact on scope, testability, and release risk |
+
+## Definition of Ready / Done
+
+| Gate | Ready signal | Done signal |
+| --- | --- | --- |
+| Definition of Ready | Sources for ambiguity, NFR risk, traceability, testability, and rule ownership are labeled and current. | Requirement Defect Taxonomy can be reviewed without guessing missing context. |
+| Definition of Ready | Open assumptions have owners and validation paths. | Stakeholders can decide whether to accept, reject, or defer each assumption. |
+| Definition of Done | The artifact applies this control: force every requirement statement to expose actor, trigger, data, rule, exception, and verification signal. | Delivery, QA, or governance teams can act on the artifact. |
+| Definition of Done | The weak pattern "Saying 'unclear' without naming the defect." has been explicitly checked. | No unsupported AI claim is treated as an approved requirement. |
+
+## Before and after artifact example
+
+| Before | AI draft risk | Senior BA revision |
+| --- | --- | --- |
+| Prompt: "Create Requirement Defect Taxonomy for Ambiguity, Conflict, and Gap Analysis." | The model may invent source facts, owners, thresholds, or implementation rules. | Add sources, scope boundary, source authority, output schema, and the instruction: Classify the issue type, severity, evidence, and owner before rewriting. |
+| Draft statement: "Run taxonomy review on five backlog items." | Useful action, but not yet tied to a decision owner or acceptance signal. | Rewrite as a project step with owner, expected artifact, review gate, and evidence required before handoff. |
+| Final-looking paragraph about delivery-ready requirement | The tone may hide uncertainty and missing stakeholder approval. | Convert it into a table of fact, assumption, decision needed, risk, and validation question. |
+
+## Manual verification after AI output
+
+| Verification lens | Manual check | Pass signal |
+| --- | --- | --- |
+| Evidence | Trace every important statement in Requirement Defect Taxonomy to a source, decision, or labeled assumption. | No unsupported claim remains hidden. |
+| Completeness | Check ambiguity, NFR risk, traceability, testability, and rule ownership against the intended audience and receiving team. | The artifact answers what product, engineering, QA, and operations need. |
+| Testability | Ask whether QA can create positive, negative, boundary, and exception scenarios. | Ambiguous wording has been rewritten or logged as a question. |
+| Accountability | Confirm who approves, who reviews, and who acts when the artifact is wrong. | Owners and escalation path are explicit. |
+
 ## AI collaboration prompt
 
 ```text

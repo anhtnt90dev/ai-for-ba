@@ -99,6 +99,50 @@ AI governance should enable high-quality work, not freeze experimentation. Exper
 | Measure success by number of prompts or users | Activity does not prove better requirements or safer decisions. | Measure cycle time, defect reduction, evidence quality, rework, and stakeholder confidence. |
 | Let every project invent its own AI rules | Quality and compliance vary widely across teams. | Establish a BA AI operating model with governance roles, audits, and escalation. |
 
+## Stakeholder questions to ask
+
+| Stakeholder | Question | Why the BA asks it |
+| --- | --- | --- |
+| Product owner | Which outcome should AI Strategy, Governance, and Adoption improve, and what trade-off are you willing to accept? | Prevents AI output from optimizing for a vague goal. |
+| Engineering lead | What source, system, data, or constraint would make BA AI Adoption Scorecard hard to implement? | Turns hidden technical constraints into visible requirement questions. |
+| QA lead | Which rule, exception, or user state must be testable before you trust this artifact? | Converts fluent AI wording into observable behavior. |
+| Operations or support | What failure path would create manual work if the lesson principle "Adoption is an operating model" is ignored? | Surfaces support load, exception handling, and operating impact. |
+
+## Decision log entries
+
+| Decision item | Options to capture | Owner | Evidence needed |
+| --- | --- | --- | --- |
+| Scope boundary for BA AI Adoption Scorecard | Must-have, later, out of scope | Product owner | Business outcome and release constraint |
+| Authority for portfolio fit, policy, quality gates, adoption metrics, training, and escalation model | Documented source, stakeholder decision, assumption to validate | BA + accountable stakeholder | Source ID, date, and approval status |
+| Review gate before handoff | Peer review, QA review, engineering review, formal approval | BA lead or project lead | Risk level and receiving-team readiness |
+| Recovery if Buying tools before defining safe use cases. | Rewrite, defer, escalate, or run validation workshop | Decision owner | Impact on scope, testability, and release risk |
+
+## Definition of Ready / Done
+
+| Gate | Ready signal | Done signal |
+| --- | --- | --- |
+| Definition of Ready | Sources for portfolio fit, policy, quality gates, adoption metrics, training, and escalation model are labeled and current. | BA AI Adoption Scorecard can be reviewed without guessing missing context. |
+| Definition of Ready | Open assumptions have owners and validation paths. | Stakeholders can decide whether to accept, reject, or defer each assumption. |
+| Definition of Done | The artifact applies this control: tier AI use cases by sensitivity, decision impact, evidence quality, and human review requirement. | Delivery, QA, or governance teams can act on the artifact. |
+| Definition of Done | The weak pattern "Buying tools before defining safe use cases." has been explicitly checked. | No unsupported AI claim is treated as an approved requirement. |
+
+## Before and after artifact example
+
+| Before | AI draft risk | Senior BA revision |
+| --- | --- | --- |
+| Prompt: "Create BA AI Adoption Scorecard for AI Strategy, Governance, and Adoption." | The model may invent source facts, owners, thresholds, or implementation rules. | Add sources, scope boundary, source authority, output schema, and the instruction: Create risk-tiered workflows, approved tools, training, prompt library, and review gates. |
+| Draft statement: "Classify BA AI use cases into risk tiers." | Useful action, but not yet tied to a decision owner or acceptance signal. | Rewrite as a project step with owner, expected artifact, review gate, and evidence required before handoff. |
+| Final-looking paragraph about BA practice operating model | The tone may hide uncertainty and missing stakeholder approval. | Convert it into a table of fact, assumption, decision needed, risk, and validation question. |
+
+## Manual verification after AI output
+
+| Verification lens | Manual check | Pass signal |
+| --- | --- | --- |
+| Evidence | Trace every important statement in BA AI Adoption Scorecard to a source, decision, or labeled assumption. | No unsupported claim remains hidden. |
+| Completeness | Check portfolio fit, policy, quality gates, adoption metrics, training, and escalation model against the intended audience and receiving team. | The artifact answers what product, engineering, QA, and operations need. |
+| Testability | Ask whether QA can create positive, negative, boundary, and exception scenarios. | Ambiguous wording has been rewritten or logged as a question. |
+| Accountability | Confirm who approves, who reviews, and who acts when the artifact is wrong. | Owners and escalation path are explicit. |
+
 ## AI collaboration prompt
 
 ```text

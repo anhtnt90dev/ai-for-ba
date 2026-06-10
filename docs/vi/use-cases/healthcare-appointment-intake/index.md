@@ -8,6 +8,9 @@ description: "BA phải đặc tả intake support mà không biến AI thành m
 <div class="case-meta">
   <span>Domain project scenarios</span>
   <span>Healthcare operations</span>
+  <span>Domain workflow</span>
+  <span>Core</span>
+  <span>Intake field schema</span>
   <span>Use case dự án</span>
 </div>
 

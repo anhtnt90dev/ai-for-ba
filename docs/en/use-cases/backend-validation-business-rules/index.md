@@ -8,6 +8,9 @@ description: "The BA must separate user guidance from authoritative business rul
 <div class="case-meta">
   <span>Backend and API</span>
   <span>Business rules</span>
+  <span>Backend/API refinement</span>
+  <span>Practitioner</span>
+  <span>Backend rule matrix</span>
   <span>Project use case</span>
 </div>
 

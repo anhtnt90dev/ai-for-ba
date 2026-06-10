@@ -99,6 +99,50 @@ Expert AI use treats context as an analysis asset. Long-context models still suf
 | Mix old policy, draft notes, and approved decisions without labels | The model cannot reliably know what is current or authoritative. | Label source status, effective date, owner, and confidence before analysis. |
 | Use chat history as project memory | Important decisions become inaccessible, reordered, or invisible to other team members. | Create an explicit context pack with source map, decision log, and open questions. |
 
+## Stakeholder questions to ask
+
+| Stakeholder | Question | Why the BA asks it |
+| --- | --- | --- |
+| Product owner | Which outcome should Tokens, Context, and Memory improve, and what trade-off are you willing to accept? | Prevents AI output from optimizing for a vague goal. |
+| Engineering lead | What source, system, data, or constraint would make Context Pack Checklist hard to implement? | Turns hidden technical constraints into visible requirement questions. |
+| QA lead | Which rule, exception, or user state must be testable before you trust this artifact? | Converts fluent AI wording into observable behavior. |
+| Operations or support | What failure path would create manual work if the lesson principle "AI quality is bounded by visible context" is ignored? | Surfaces support load, exception handling, and operating impact. |
+
+## Decision log entries
+
+| Decision item | Options to capture | Owner | Evidence needed |
+| --- | --- | --- | --- |
+| Scope boundary for Context Pack Checklist | Must-have, later, out of scope | Product owner | Business outcome and release constraint |
+| Authority for problem fit, model boundary, data dependency, and decision risk | Documented source, stakeholder decision, assumption to validate | BA + accountable stakeholder | Source ID, date, and approval status |
+| Review gate before handoff | Peer review, QA review, engineering review, formal approval | BA lead or project lead | Risk level and receiving-team readiness |
+| Recovery if Uploading everything and asking one broad question. | Rewrite, defer, escalate, or run validation workshop | Decision owner | Impact on scope, testability, and release risk |
+
+## Definition of Ready / Done
+
+| Gate | Ready signal | Done signal |
+| --- | --- | --- |
+| Definition of Ready | Sources for problem fit, model boundary, data dependency, and decision risk are labeled and current. | Context Pack Checklist can be reviewed without guessing missing context. |
+| Definition of Ready | Open assumptions have owners and validation paths. | Stakeholders can decide whether to accept, reject, or defer each assumption. |
+| Definition of Done | The artifact applies this control: ask the model to compare AI and non-AI options before drafting requirements. | Delivery, QA, or governance teams can act on the artifact. |
+| Definition of Done | The weak pattern "Uploading everything and asking one broad question." has been explicitly checked. | No unsupported AI claim is treated as an approved requirement. |
+
+## Before and after artifact example
+
+| Before | AI draft risk | Senior BA revision |
+| --- | --- | --- |
+| Prompt: "Create Context Pack Checklist for Tokens, Context, and Memory." | The model may invent source facts, owners, thresholds, or implementation rules. | Add sources, scope boundary, source authority, output schema, and the instruction: Review by source ID and module, then run a reconciliation pass for conflicts and omissions. |
+| Draft statement: "Create source IDs for one document before using AI." | Useful action, but not yet tied to a decision owner or acceptance signal. | Rewrite as a project step with owner, expected artifact, review gate, and evidence required before handoff. |
+| Final-looking paragraph about solution-shape decision | The tone may hide uncertainty and missing stakeholder approval. | Convert it into a table of fact, assumption, decision needed, risk, and validation question. |
+
+## Manual verification after AI output
+
+| Verification lens | Manual check | Pass signal |
+| --- | --- | --- |
+| Evidence | Trace every important statement in Context Pack Checklist to a source, decision, or labeled assumption. | No unsupported claim remains hidden. |
+| Completeness | Check problem fit, model boundary, data dependency, and decision risk against the intended audience and receiving team. | The artifact answers what product, engineering, QA, and operations need. |
+| Testability | Ask whether QA can create positive, negative, boundary, and exception scenarios. | Ambiguous wording has been rewritten or logged as a question. |
+| Accountability | Confirm who approves, who reviews, and who acts when the artifact is wrong. | Owners and escalation path are explicit. |
+
 ## AI collaboration prompt
 
 ```text

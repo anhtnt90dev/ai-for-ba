@@ -8,6 +8,9 @@ description: "The BA must help QA generate scenarios without allowing AI to inve
 <div class="case-meta">
   <span>Delivery and QA</span>
   <span>QA collaboration</span>
+  <span>Delivery validation</span>
+  <span>Core</span>
+  <span>Scenario coverage matrix</span>
   <span>Project use case</span>
 </div>
 

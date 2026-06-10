@@ -8,6 +8,9 @@ description: "The BA must specify how permissions appear in UI without weakening
 <div class="case-meta">
   <span>Frontend, UI, and UX</span>
   <span>Permissioned UI</span>
+  <span>Frontend/UI refinement</span>
+  <span>Practitioner</span>
+  <span>Role-control visibility matrix</span>
   <span>Project use case</span>
 </div>
 

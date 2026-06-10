@@ -8,6 +8,9 @@ description: "BA phải đặc tả screen behavior theo lifecycle state để f
 <div class="case-meta">
   <span>Frontend, UI, and UX</span>
   <span>Screen behavior</span>
+  <span>Frontend/UI refinement</span>
+  <span>Practitioner</span>
+  <span>State-action matrix</span>
   <span>Use case dự án</span>
 </div>
 

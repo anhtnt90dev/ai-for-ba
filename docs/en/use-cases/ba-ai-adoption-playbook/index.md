@@ -8,6 +8,9 @@ description: "The BA lead must turn AI enthusiasm into a managed capability with
 <div class="case-meta">
   <span>Governance and adoption</span>
   <span>BA practice leadership</span>
+  <span>Governance</span>
+  <span>Advanced</span>
+  <span>Use-case portfolio</span>
   <span>Project use case</span>
 </div>
 

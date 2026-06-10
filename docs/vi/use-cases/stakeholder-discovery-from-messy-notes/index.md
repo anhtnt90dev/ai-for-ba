@@ -8,6 +8,9 @@ description: "BA phải giữ nuance nhưng vẫn biến raw notes thành theme,
 <div class="case-meta">
   <span>Discovery and alignment</span>
   <span>Cross-functional product discovery</span>
+  <span>Discovery</span>
+  <span>Core</span>
+  <span>Discovery synthesis pack</span>
   <span>Use case dự án</span>
 </div>
 

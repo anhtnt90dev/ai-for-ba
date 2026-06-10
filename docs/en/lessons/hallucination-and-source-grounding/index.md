@@ -97,6 +97,50 @@ The practical control is not simply asking AI to cite sources. The BA must verif
 | Rewrite unsupported AI claims into polished requirements | Better wording makes weak evidence harder to detect. | Move unsupported claims into open questions with owner and validation method. |
 | Use the same evidence threshold for all requirements | Low-risk copy and regulated decisions need different controls. | Define evidence levels by risk tier and business impact. |
 
+## Stakeholder questions to ask
+
+| Stakeholder | Question | Why the BA asks it |
+| --- | --- | --- |
+| Product owner | Which outcome should Hallucination and Source Grounding improve, and what trade-off are you willing to accept? | Prevents AI output from optimizing for a vague goal. |
+| Engineering lead | What source, system, data, or constraint would make Evidence Ladder hard to implement? | Turns hidden technical constraints into visible requirement questions. |
+| QA lead | Which rule, exception, or user state must be testable before you trust this artifact? | Converts fluent AI wording into observable behavior. |
+| Operations or support | What failure path would create manual work if the lesson principle "Grounding protects the team from false clarity" is ignored? | Surfaces support load, exception handling, and operating impact. |
+
+## Decision log entries
+
+| Decision item | Options to capture | Owner | Evidence needed |
+| --- | --- | --- | --- |
+| Scope boundary for Evidence Ladder | Must-have, later, out of scope | Product owner | Business outcome and release constraint |
+| Authority for problem fit, model boundary, data dependency, and decision risk | Documented source, stakeholder decision, assumption to validate | BA + accountable stakeholder | Source ID, date, and approval status |
+| Review gate before handoff | Peer review, QA review, engineering review, formal approval | BA lead or project lead | Risk level and receiving-team readiness |
+| Recovery if Accepting confident wording as evidence. | Rewrite, defer, escalate, or run validation workshop | Decision owner | Impact on scope, testability, and release risk |
+
+## Definition of Ready / Done
+
+| Gate | Ready signal | Done signal |
+| --- | --- | --- |
+| Definition of Ready | Sources for problem fit, model boundary, data dependency, and decision risk are labeled and current. | Evidence Ladder can be reviewed without guessing missing context. |
+| Definition of Ready | Open assumptions have owners and validation paths. | Stakeholders can decide whether to accept, reject, or defer each assumption. |
+| Definition of Done | The artifact applies this control: ask the model to compare AI and non-AI options before drafting requirements. | Delivery, QA, or governance teams can act on the artifact. |
+| Definition of Done | The weak pattern "Accepting confident wording as evidence." has been explicitly checked. | No unsupported AI claim is treated as an approved requirement. |
+
+## Before and after artifact example
+
+| Before | AI draft risk | Senior BA revision |
+| --- | --- | --- |
+| Prompt: "Create Evidence Ladder for Hallucination and Source Grounding." | The model may invent source facts, owners, thresholds, or implementation rules. | Add sources, scope boundary, source authority, output schema, and the instruction: Check claim-to-source support and record evidence level in the requirement table. |
+| Draft statement: "Add an evidence column to one requirement table." | Useful action, but not yet tied to a decision owner or acceptance signal. | Rewrite as a project step with owner, expected artifact, review gate, and evidence required before handoff. |
+| Final-looking paragraph about solution-shape decision | The tone may hide uncertainty and missing stakeholder approval. | Convert it into a table of fact, assumption, decision needed, risk, and validation question. |
+
+## Manual verification after AI output
+
+| Verification lens | Manual check | Pass signal |
+| --- | --- | --- |
+| Evidence | Trace every important statement in Evidence Ladder to a source, decision, or labeled assumption. | No unsupported claim remains hidden. |
+| Completeness | Check problem fit, model boundary, data dependency, and decision risk against the intended audience and receiving team. | The artifact answers what product, engineering, QA, and operations need. |
+| Testability | Ask whether QA can create positive, negative, boundary, and exception scenarios. | Ambiguous wording has been rewritten or logged as a question. |
+| Accountability | Confirm who approves, who reviews, and who acts when the artifact is wrong. | Owners and escalation path are explicit. |
+
 ## AI collaboration prompt
 
 ```text

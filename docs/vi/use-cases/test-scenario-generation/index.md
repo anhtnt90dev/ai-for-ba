@@ -8,6 +8,9 @@ description: "BA phải hỗ trợ QA generate scenario mà không để AI inve
 <div class="case-meta">
   <span>Delivery and QA</span>
   <span>QA collaboration</span>
+  <span>Delivery validation</span>
+  <span>Core</span>
+  <span>Scenario coverage matrix</span>
   <span>Use case dự án</span>
 </div>
 

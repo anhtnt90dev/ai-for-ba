@@ -8,6 +8,9 @@ description: "The BA must specify a RAG assistant beyond chatbot UX: source auth
 <div class="case-meta">
   <span>AI-enabled product use cases</span>
   <span>Knowledge assistant</span>
+  <span>AI product design</span>
+  <span>Advanced</span>
+  <span>Knowledge contract</span>
   <span>Project use case</span>
 </div>
 

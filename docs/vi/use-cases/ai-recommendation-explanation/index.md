@@ -8,6 +8,9 @@ description: "BA phải đặc tả recommendation behavior, explanation require
 <div class="case-meta">
   <span>AI-enabled product use cases</span>
   <span>Decision support</span>
+  <span>AI product design</span>
+  <span>Advanced</span>
+  <span>Recommendation canvas</span>
   <span>Use case dự án</span>
 </div>
 

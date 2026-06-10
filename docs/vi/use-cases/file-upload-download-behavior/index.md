@@ -8,6 +8,9 @@ description: "BA phải specify file behavior qua UI, backend, storage, security
 <div class="case-meta">
   <span>Data and Integration</span>
   <span>Files and documents</span>
+  <span>Data and integration</span>
+  <span>Advanced</span>
+  <span>File behavior matrix</span>
   <span>Use case dự án</span>
 </div>
 

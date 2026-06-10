@@ -8,6 +8,9 @@ description: "BA lead phải compare idea theo business value, feasibility, data
 <div class="case-meta">
   <span>Governance and adoption</span>
   <span>Portfolio management</span>
+  <span>Governance</span>
+  <span>Advanced</span>
+  <span>Use-case scoring matrix</span>
   <span>Use case dự án</span>
 </div>
 

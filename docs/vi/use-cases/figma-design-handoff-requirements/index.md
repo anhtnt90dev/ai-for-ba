@@ -8,6 +8,9 @@ description: "BA phải chuyển visual design thành requirement build được
 <div class="case-meta">
   <span>Frontend, UI, and UX</span>
   <span>Design handoff</span>
+  <span>Frontend/UI refinement</span>
+  <span>Practitioner</span>
+  <span>UI behavior matrix</span>
   <span>Use case dự án</span>
 </div>
 

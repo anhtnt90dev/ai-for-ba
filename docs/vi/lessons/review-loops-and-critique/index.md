@@ -99,6 +99,50 @@ Workflow AI hiệu quả nhất tách creation khỏi critique. BA chuyên gia t
 | Hỏi chung chung what is wrong with this | Critique có thể nông và miss dimension quality của BA. | Dùng rubric có required lens, severity, source reference và recommended fix. |
 | Để review comment ở dạng informal | Team không track được risk đã resolve hay chưa. | Chuyển critique finding thành defect register hoặc decision log có owner. |
 
+## Stakeholder questions to ask
+
+| Stakeholder | Câu hỏi | Vì sao BA hỏi |
+| --- | --- | --- |
+| Product owner | Review loop và critique cần cải thiện outcome nào, và trade-off nào có thể chấp nhận? | Ngăn output AI tối ưu cho mục tiêu mơ hồ. |
+| Engineering lead | Source, system, data hoặc constraint nào khiến Multi-Perspective Critique Grid khó implement? | Biến technical constraint ẩn thành requirement question visible. |
+| QA lead | Rule, exception hoặc user state nào phải test được trước khi tin artifact này? | Chuyển wording trôi chảy của AI thành behavior quan sát được. |
+| Operations hoặc support | Failure path nào tạo manual work nếu nguyên tắc "Critique thường là nơi AI tạo nhiều giá trị BA nhất" bị bỏ qua? | Làm rõ support load, exception handling và operating impact. |
+
+## Decision log entries
+
+| Decision item | Option cần capture | Owner | Evidence cần có |
+| --- | --- | --- | --- |
+| Scope boundary cho Multi-Perspective Critique Grid | Must-have, later, out of scope | Product owner | Business outcome và release constraint |
+| Authority cho context package quality, prompt reuse, critique loop và output contract | Documented source, stakeholder decision, assumption cần validate | BA + stakeholder chịu trách nhiệm | Source ID, date và approval status |
+| Review gate trước handoff | Peer review, QA review, engineering review, formal approval | BA lead hoặc project lead | Risk level và receiving-team readiness |
+| Cách recover nếu Yêu cầu AI improve draft mà không diagnose trước. | Rewrite, defer, escalate hoặc validation workshop | Decision owner | Impact lên scope, testability và release risk |
+
+## Definition of Ready / Done
+
+| Gate | Tín hiệu ready | Tín hiệu done |
+| --- | --- | --- |
+| Definition of Ready | Source cho context package quality, prompt reuse, critique loop và output contract được label và còn hiệu lực. | Multi-Perspective Critique Grid có thể review mà không phải đoán missing context. |
+| Definition of Ready | Open assumption có owner và validation path. | Stakeholder có thể accept, reject hoặc defer từng assumption. |
+| Definition of Done | Artifact áp dụng control: tách context preparation, generation, critique và human approval thành các bước visible. | Delivery, QA hoặc governance team có thể hành động dựa trên artifact. |
+| Definition of Done | Pattern yếu "Yêu cầu AI improve draft mà không diagnose trước." đã được kiểm tra explicit. | Không unsupported AI claim nào bị xem như requirement đã approve. |
+
+## Before and after artifact example
+
+| Before | Risk trong draft AI | Revision của senior BA |
+| --- | --- | --- |
+| Prompt: "Create Multi-Perspective Critique Grid cho Review loop và critique." | Model có thể tự bịa source fact, owner, threshold hoặc implementation rule. | Thêm source, scope boundary, source authority, output schema và instruction: Chạy critique pass cho evidence, specificity, testability và risk trước khi share. |
+| Draft statement: "Chạy một draft qua QA critique prompt." | Action hữu ích nhưng chưa gắn decision owner hoặc acceptance signal. | Rewrite thành project step có owner, expected artifact, review gate và evidence cần trước handoff. |
+| Paragraph nghe final về repeatable collaboration pattern | Tone có thể che uncertainty và approval còn thiếu. | Chuyển thành bảng fact, assumption, decision needed, risk và validation question. |
+
+## Manual verification after AI output
+
+| Lens kiểm tra | Manual check | Pass signal |
+| --- | --- | --- |
+| Evidence | Trace mọi statement quan trọng trong Multi-Perspective Critique Grid về source, decision hoặc assumption có label. | Không unsupported claim nào còn bị ẩn. |
+| Completeness | Check context package quality, prompt reuse, critique loop và output contract theo intended audience và receiving team. | Artifact trả lời được điều product, engineering, QA và operations cần. |
+| Testability | Hỏi QA có tạo được positive, negative, boundary và exception scenario không. | Wording mơ hồ được rewrite hoặc log thành question. |
+| Accountability | Confirm ai approve, ai review và ai xử lý khi artifact sai. | Owner và escalation path explicit. |
+
 ## AI collaboration prompt
 
 ```text

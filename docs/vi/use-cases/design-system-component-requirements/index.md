@@ -8,6 +8,9 @@ description: "BA phải tách reusable component requirement khỏi feature-spec
 <div class="case-meta">
   <span>Frontend, UI, and UX</span>
   <span>Design systems</span>
+  <span>Frontend/UI refinement</span>
+  <span>Practitioner</span>
+  <span>Component behavior spec</span>
   <span>Use case dự án</span>
 </div>
 

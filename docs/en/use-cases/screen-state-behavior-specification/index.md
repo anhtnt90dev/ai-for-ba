@@ -8,6 +8,9 @@ description: "The BA must specify screen behavior by lifecycle state so frontend
 <div class="case-meta">
   <span>Frontend, UI, and UX</span>
   <span>Screen behavior</span>
+  <span>Frontend/UI refinement</span>
+  <span>Practitioner</span>
+  <span>State-action matrix</span>
   <span>Project use case</span>
 </div>
 

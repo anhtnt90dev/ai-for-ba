@@ -8,6 +8,9 @@ description: "The BA must turn technical concerns into business-readable NFR dec
 <div class="case-meta">
   <span>Cross-functional BA Collaboration</span>
   <span>BA and architecture</span>
+  <span>Cross-functional alignment</span>
+  <span>Practitioner</span>
+  <span>NFR decision table</span>
   <span>Project use case</span>
 </div>
 

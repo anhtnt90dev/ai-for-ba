@@ -8,6 +8,9 @@ description: "The BA must use AI to prepare better refinement, not to replace de
 <div class="case-meta">
   <span>Cross-functional BA Collaboration</span>
   <span>BA and developers</span>
+  <span>Cross-functional alignment</span>
+  <span>Practitioner</span>
+  <span>Refinement prep pack</span>
   <span>Project use case</span>
 </div>
 

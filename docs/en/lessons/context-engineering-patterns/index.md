@@ -100,6 +100,50 @@ Context engineering is the BA equivalent of designing a controlled analysis envi
 | Give AI role and goal but no evidence rules | The model may blend provided facts with plausible external assumptions. | Specify allowed sources, unsupported-claim labels, and validation questions. |
 | Ask for a complete answer in one step | The model hides missing context while optimizing for fluency. | Use staged prompts: context pack, analysis, artifact draft, critique, and revision. |
 
+## Stakeholder questions to ask
+
+| Stakeholder | Question | Why the BA asks it |
+| --- | --- | --- |
+| Product owner | Which outcome should Context Engineering Patterns improve, and what trade-off are you willing to accept? | Prevents AI output from optimizing for a vague goal. |
+| Engineering lead | What source, system, data, or constraint would make BA Context Package hard to implement? | Turns hidden technical constraints into visible requirement questions. |
+| QA lead | Which rule, exception, or user state must be testable before you trust this artifact? | Converts fluent AI wording into observable behavior. |
+| Operations or support | What failure path would create manual work if the lesson principle "Context engineering makes AI work repeatable" is ignored? | Surfaces support load, exception handling, and operating impact. |
+
+## Decision log entries
+
+| Decision item | Options to capture | Owner | Evidence needed |
+| --- | --- | --- | --- |
+| Scope boundary for BA Context Package | Must-have, later, out of scope | Product owner | Business outcome and release constraint |
+| Authority for context package quality, prompt reuse, critique loop, and output contract | Documented source, stakeholder decision, assumption to validate | BA + accountable stakeholder | Source ID, date, and approval status |
+| Review gate before handoff | Peer review, QA review, engineering review, formal approval | BA lead or project lead | Risk level and receiving-team readiness |
+| Recovery if Calling a one-line instruction 'prompt engineering'. | Rewrite, defer, escalate, or run validation workshop | Decision owner | Impact on scope, testability, and release risk |
+
+## Definition of Ready / Done
+
+| Gate | Ready signal | Done signal |
+| --- | --- | --- |
+| Definition of Ready | Sources for context package quality, prompt reuse, critique loop, and output contract are labeled and current. | BA Context Package can be reviewed without guessing missing context. |
+| Definition of Ready | Open assumptions have owners and validation paths. | Stakeholders can decide whether to accept, reject, or defer each assumption. |
+| Definition of Done | The artifact applies this control: separate context preparation, generation, critique, and human approval into visible steps. | Delivery, QA, or governance teams can act on the artifact. |
+| Definition of Done | The weak pattern "Calling a one-line instruction 'prompt engineering'." has been explicitly checked. | No unsupported AI claim is treated as an approved requirement. |
+
+## Before and after artifact example
+
+| Before | AI draft risk | Senior BA revision |
+| --- | --- | --- |
+| Prompt: "Create BA Context Package for Context Engineering Patterns." | The model may invent source facts, owners, thresholds, or implementation rules. | Add sources, scope boundary, source authority, output schema, and the instruction: Create reusable prompt patterns with source rules, output contracts, and review gates. |
+| Draft statement: "Create a reusable context package for requirement review." | Useful action, but not yet tied to a decision owner or acceptance signal. | Rewrite as a project step with owner, expected artifact, review gate, and evidence required before handoff. |
+| Final-looking paragraph about repeatable collaboration pattern | The tone may hide uncertainty and missing stakeholder approval. | Convert it into a table of fact, assumption, decision needed, risk, and validation question. |
+
+## Manual verification after AI output
+
+| Verification lens | Manual check | Pass signal |
+| --- | --- | --- |
+| Evidence | Trace every important statement in BA Context Package to a source, decision, or labeled assumption. | No unsupported claim remains hidden. |
+| Completeness | Check context package quality, prompt reuse, critique loop, and output contract against the intended audience and receiving team. | The artifact answers what product, engineering, QA, and operations need. |
+| Testability | Ask whether QA can create positive, negative, boundary, and exception scenarios. | Ambiguous wording has been rewritten or logged as a question. |
+| Accountability | Confirm who approves, who reviews, and who acts when the artifact is wrong. | Owners and escalation path are explicit. |
+
 ## AI collaboration prompt
 
 ```text

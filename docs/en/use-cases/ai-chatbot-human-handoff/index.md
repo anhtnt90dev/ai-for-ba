@@ -8,6 +8,9 @@ description: "The BA must specify supported intents, knowledge sources, refusal 
 <div class="case-meta">
   <span>AI-enabled product use cases</span>
   <span>Customer support</span>
+  <span>AI product design</span>
+  <span>Advanced</span>
+  <span>Intent catalog</span>
   <span>Project use case</span>
 </div>
 

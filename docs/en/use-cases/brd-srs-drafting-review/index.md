@@ -8,6 +8,9 @@ description: "The BA must use AI to speed drafting without allowing AI to invent
 <div class="case-meta">
   <span>Requirements and backlog</span>
   <span>Formal requirements documentation</span>
+  <span>Refinement</span>
+  <span>Core</span>
+  <span>BRD or SRS outline</span>
   <span>Project use case</span>
 </div>
 

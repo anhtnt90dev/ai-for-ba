@@ -8,6 +8,9 @@ description: "The BA must define notification rules that connect event triggers,
 <div class="case-meta">
   <span>Data and Integration</span>
   <span>Notifications</span>
+  <span>Data and integration</span>
+  <span>Advanced</span>
+  <span>Notification rule matrix</span>
   <span>Project use case</span>
 </div>
 

@@ -8,6 +8,9 @@ description: "The BA must specify an intake flow that improves speed without mak
 <div class="case-meta">
   <span>Domain project scenarios</span>
   <span>Insurance</span>
+  <span>Domain workflow</span>
+  <span>Core</span>
+  <span>Claim intake flow</span>
   <span>Project use case</span>
 </div>
 

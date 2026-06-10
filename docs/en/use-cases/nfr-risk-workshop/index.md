@@ -8,6 +8,9 @@ description: "The BA must prepare an NFR workshop that helps stakeholders make q
 <div class="case-meta">
   <span>Requirements and backlog</span>
   <span>Quality attributes</span>
+  <span>Refinement</span>
+  <span>Core</span>
+  <span>NFR workshop pack</span>
   <span>Project use case</span>
 </div>
 

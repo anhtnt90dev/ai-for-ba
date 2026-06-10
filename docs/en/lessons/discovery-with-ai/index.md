@@ -98,6 +98,50 @@ AI is useful in discovery because it can generate alternative actors, edge cases
 | Use AI-generated stakeholder lists as final | Important internal owners, regulators, or operational users may be absent. | Validate actors against process maps, org roles, customer journeys, and decision rights. |
 | Prioritize questions that are easy to answer | The team may avoid the riskiest assumptions until delivery. | Rank hypotheses by business impact, evidence gap, and decision urgency. |
 
+## Stakeholder questions to ask
+
+| Stakeholder | Question | Why the BA asks it |
+| --- | --- | --- |
+| Product owner | Which outcome should Discovery With AI improve, and what trade-off are you willing to accept? | Prevents AI output from optimizing for a vague goal. |
+| Engineering lead | What source, system, data, or constraint would make Discovery Hypothesis Backlog hard to implement? | Turns hidden technical constraints into visible requirement questions. |
+| QA lead | Which rule, exception, or user state must be testable before you trust this artifact? | Converts fluent AI wording into observable behavior. |
+| Operations or support | What failure path would create manual work if the lesson principle "Discovery output is validated learning" is ignored? | Surfaces support load, exception handling, and operating impact. |
+
+## Decision log entries
+
+| Decision item | Options to capture | Owner | Evidence needed |
+| --- | --- | --- | --- |
+| Scope boundary for Discovery Hypothesis Backlog | Must-have, later, out of scope | Product owner | Business outcome and release constraint |
+| Authority for source attribution, conflict visibility, workshop decision flow, and backlog readiness | Documented source, stakeholder decision, assumption to validate | BA + accountable stakeholder | Source ID, date, and approval status |
+| Review gate before handoff | Peer review, QA review, engineering review, formal approval | BA lead or project lead | Risk level and receiving-team readiness |
+| Recovery if Asking AI to write requirements before uncertainty is mapped. | Rewrite, defer, escalate, or run validation workshop | Decision owner | Impact on scope, testability, and release risk |
+
+## Definition of Ready / Done
+
+| Gate | Ready signal | Done signal |
+| --- | --- | --- |
+| Definition of Ready | Sources for source attribution, conflict visibility, workshop decision flow, and backlog readiness are labeled and current. | Discovery Hypothesis Backlog can be reviewed without guessing missing context. |
+| Definition of Ready | Open assumptions have owners and validation paths. | Stakeholders can decide whether to accept, reject, or defer each assumption. |
+| Definition of Done | The artifact applies this control: keep speaker/source attribution visible until the responsible stakeholder confirms meaning. | Delivery, QA, or governance teams can act on the artifact. |
+| Definition of Done | The weak pattern "Asking AI to write requirements before uncertainty is mapped." has been explicitly checked. | No unsupported AI claim is treated as an approved requirement. |
+
+## Before and after artifact example
+
+| Before | AI draft risk | Senior BA revision |
+| --- | --- | --- |
+| Prompt: "Create Discovery Hypothesis Backlog for Discovery With AI." | The model may invent source facts, owners, thresholds, or implementation rules. | Add sources, scope boundary, source authority, output schema, and the instruction: Ask for hypotheses, assumptions, evidence needed, and workshop questions first. |
+| Draft statement: "Turn your next workshop agenda into hypotheses." | Useful action, but not yet tied to a decision owner or acceptance signal. | Rewrite as a project step with owner, expected artifact, review gate, and evidence required before handoff. |
+| Final-looking paragraph about validated working artifact | The tone may hide uncertainty and missing stakeholder approval. | Convert it into a table of fact, assumption, decision needed, risk, and validation question. |
+
+## Manual verification after AI output
+
+| Verification lens | Manual check | Pass signal |
+| --- | --- | --- |
+| Evidence | Trace every important statement in Discovery Hypothesis Backlog to a source, decision, or labeled assumption. | No unsupported claim remains hidden. |
+| Completeness | Check source attribution, conflict visibility, workshop decision flow, and backlog readiness against the intended audience and receiving team. | The artifact answers what product, engineering, QA, and operations need. |
+| Testability | Ask whether QA can create positive, negative, boundary, and exception scenarios. | Ambiguous wording has been rewritten or logged as a question. |
+| Accountability | Confirm who approves, who reviews, and who acts when the artifact is wrong. | Owners and escalation path are explicit. |
+
 ## AI collaboration prompt
 
 ```text

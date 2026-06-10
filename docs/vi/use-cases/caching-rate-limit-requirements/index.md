@@ -8,6 +8,9 @@ description: "BA phải dịch technical control thành business behavior: fresh
 <div class="case-meta">
   <span>Backend and API</span>
   <span>Performance controls</span>
+  <span>Backend/API refinement</span>
+  <span>Practitioner</span>
+  <span>Freshness requirement matrix</span>
   <span>Use case dự án</span>
 </div>
 

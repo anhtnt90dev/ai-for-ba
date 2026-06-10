@@ -8,6 +8,9 @@ description: "BA phải hỗ trợ UX và product đảm bảo copy phản ánh 
 <div class="case-meta">
   <span>Frontend, UI, and UX</span>
   <span>UX writing</span>
+  <span>Frontend/UI refinement</span>
+  <span>Practitioner</span>
+  <span>Message catalog</span>
   <span>Use case dự án</span>
 </div>
 

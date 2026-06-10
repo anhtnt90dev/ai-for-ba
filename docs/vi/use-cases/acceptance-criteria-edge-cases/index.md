@@ -8,6 +8,9 @@ description: "BA phải biến requirement đơn giản thành acceptance criter
 <div class="case-meta">
   <span>Requirements and backlog</span>
   <span>Requirements quality</span>
+  <span>Refinement</span>
+  <span>Core</span>
+  <span>Acceptance criteria matrix</span>
   <span>Use case dự án</span>
 </div>
 

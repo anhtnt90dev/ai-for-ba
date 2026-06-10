@@ -8,6 +8,9 @@ description: "The BA must specify reliability behavior in business terms: what c
 <div class="case-meta">
   <span>Backend and API</span>
   <span>Reliability behavior</span>
+  <span>Backend/API refinement</span>
+  <span>Practitioner</span>
+  <span>Reliability behavior matrix</span>
   <span>Project use case</span>
 </div>
 

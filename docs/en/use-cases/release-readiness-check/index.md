@@ -8,6 +8,9 @@ description: "The BA must help create a release readiness view that integrates r
 <div class="case-meta">
   <span>Delivery and QA</span>
   <span>Release management</span>
+  <span>Delivery validation</span>
+  <span>Core</span>
+  <span>Readiness dashboard</span>
   <span>Project use case</span>
 </div>
 

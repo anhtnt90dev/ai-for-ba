@@ -100,6 +100,21 @@ a.course-card {
   text-decoration: none;
 }
 
+.vp-doc a.course-card,
+.vp-doc a.group-card,
+.vp-doc a.case-card,
+.vp-doc a.template-card {
+  color: inherit;
+  text-decoration: none;
+}
+
+.vp-doc a.course-card:hover,
+.vp-doc a.group-card:hover,
+.vp-doc a.case-card:hover,
+.vp-doc a.template-card:hover {
+  text-decoration: none;
+}
+
 .course-card.game-entry-card {
   border: 2px solid var(--course-decision);
   background:
@@ -116,6 +131,53 @@ a.course-card {
   display: block;
   margin-bottom: 8px;
   color: var(--vp-c-text-1);
+}
+
+.learning-path-grid,
+.template-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+  margin: 18px 0 28px;
+}
+
+.learning-path-card,
+.template-card {
+  display: grid;
+  gap: 8px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  padding: 16px;
+  color: inherit;
+  background: var(--course-surface);
+  text-decoration: none;
+}
+
+.learning-path-card strong,
+.template-card strong {
+  color: var(--vp-c-text-1);
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.learning-path-card span,
+.template-card span {
+  color: var(--vp-c-text-2);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.learning-path-card em {
+  color: var(--course-decision);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.template-card:hover {
+  border-color: var(--course-accent);
+  text-decoration: none;
 }
 
 .lesson-completion-panel {
@@ -345,6 +407,50 @@ a.course-card {
   font-weight: 600;
 }
 
+.usecase-filter-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 12px;
+  margin: 16px 0 28px;
+  border: 1px solid color-mix(in srgb, var(--course-decision) 24%, var(--vp-c-divider));
+  border-radius: 8px;
+  padding: 14px;
+  background: color-mix(in srgb, var(--course-decision) 5%, var(--vp-c-bg-soft));
+}
+
+.usecase-filter-panel strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--vp-c-text-1);
+  font-size: 13px;
+}
+
+.filter-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.filter-chip-row a,
+.filter-chip-row span,
+.case-tags b {
+  border: 1px solid color-mix(in srgb, var(--course-decision) 30%, var(--vp-c-divider));
+  border-radius: 999px;
+  padding: 4px 8px;
+  color: var(--course-decision);
+  background: var(--vp-c-bg);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-decoration: none;
+}
+
+.filter-chip-row a:hover {
+  border-color: var(--course-accent);
+  color: var(--course-accent);
+  text-decoration: none;
+}
+
 .usecase-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -398,6 +504,19 @@ a.course-card {
   font-size: 13px;
   font-style: normal;
   line-height: 1.45;
+}
+
+.case-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.case-tags b {
+  color: var(--course-accent);
+  border-color: color-mix(in srgb, var(--course-accent) 30%, var(--vp-c-divider));
+  background: color-mix(in srgb, var(--course-accent) 7%, var(--vp-c-bg));
+  text-transform: none;
 }
 
 @media (max-width: 720px) {

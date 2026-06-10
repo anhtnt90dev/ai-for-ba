@@ -8,6 +8,9 @@ description: "BA phải define business rule thay đổi theo product type, orde
 <div class="case-meta">
   <span>Domain project scenarios</span>
   <span>E-commerce</span>
+  <span>Domain workflow</span>
+  <span>Core</span>
+  <span>Return eligibility matrix</span>
   <span>Use case dự án</span>
 </div>
 

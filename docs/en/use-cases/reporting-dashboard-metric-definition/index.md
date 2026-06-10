@@ -8,6 +8,9 @@ description: "The BA must define metrics so dashboards do not create false decis
 <div class="case-meta">
   <span>Data and Integration</span>
   <span>Reporting</span>
+  <span>Data and integration</span>
+  <span>Advanced</span>
+  <span>Metric definition catalog</span>
   <span>Project use case</span>
 </div>
 

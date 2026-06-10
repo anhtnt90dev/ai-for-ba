@@ -8,6 +8,9 @@ description: "The BA must distinguish reusable component requirements from featu
 <div class="case-meta">
   <span>Frontend, UI, and UX</span>
   <span>Design systems</span>
+  <span>Frontend/UI refinement</span>
+  <span>Practitioner</span>
+  <span>Component behavior spec</span>
   <span>Project use case</span>
 </div>
 

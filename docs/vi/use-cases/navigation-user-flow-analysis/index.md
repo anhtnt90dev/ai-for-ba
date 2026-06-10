@@ -8,6 +8,9 @@ description: "BA phải chuyển user goal thành navigation requirement, không
 <div class="case-meta">
   <span>Frontend, UI, and UX</span>
   <span>User flows</span>
+  <span>Frontend/UI refinement</span>
+  <span>Practitioner</span>
+  <span>Task-to-navigation map</span>
   <span>Use case dự án</span>
 </div>
 

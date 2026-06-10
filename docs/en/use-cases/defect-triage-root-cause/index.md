@@ -8,6 +8,9 @@ description: "The BA must help triage defects quickly without letting AI oversim
 <div class="case-meta">
   <span>Delivery and QA</span>
   <span>Defect management</span>
+  <span>Delivery validation</span>
+  <span>Core</span>
+  <span>Defect classification board</span>
   <span>Project use case</span>
 </div>
 

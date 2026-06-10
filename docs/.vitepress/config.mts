@@ -35,6 +35,24 @@ const labs = [
   ["AI Adoption Roadmap", "ai-adoption-roadmap", "Roadmap adoption AI"]
 ];
 
+const capstones = [
+  ["Discovery to Delivery AI BA Pack", "discovery-to-delivery-ai-ba-pack", "Discovery đến delivery AI BA pack"],
+  ["Frontend to Backend Contract Readiness", "frontend-backend-contract-readiness", "Frontend đến backend contract readiness"],
+  ["AI Assistant Requirement and Governance", "ai-assistant-requirement-and-governance", "Requirement và governance cho AI assistant"]
+];
+
+const resourceTemplates = [
+  ["AI Feature Requirement Template", "ai-feature-requirement-template", "Template requirement cho AI feature"],
+  ["Acceptance Criteria Quality Rubric", "acceptance-criteria-quality-rubric", "Rubric chất lượng acceptance criteria"],
+  ["UI State Requirement Template", "ui-state-requirement-template", "Template requirement cho UI state"],
+  ["API Contract Checklist", "api-contract-checklist", "Checklist API contract"],
+  ["RAG Knowledge Contract Canvas", "rag-knowledge-contract-canvas", "Canvas RAG knowledge contract"],
+  ["Prompt Review Checklist", "prompt-review-checklist", "Checklist review prompt"],
+  ["AI Risk and Human Review Matrix", "ai-risk-human-review-matrix", "Matrix AI risk và human review"],
+  ["Decision Log Template", "decision-log-template", "Template decision log"],
+  ["Definition of Ready and Done for AI-Augmented BA Work", "definition-of-ready-done-ai-ba", "Definition of Ready và Done cho AI-augmented BA work"]
+];
+
 const useCases = [
   ["Stakeholder Discovery From Messy Notes", "stakeholder-discovery-from-messy-notes", "Discovery stakeholder từ notes lộn xộn"],
   ["Project Kickoff Scope Framing", "project-kickoff-scope-framing", "Framing scope cho project kickoff"],
@@ -141,6 +159,20 @@ function labItems(locale: "en" | "vi") {
   }));
 }
 
+function capstoneItems(locale: "en" | "vi") {
+  return capstones.map(([enTitle, slug, viTitle], index) => ({
+    text: `${String(index + 1).padStart(2, "0")}. ${locale === "en" ? enTitle : viTitle}`,
+    link: `/${locale}/capstones/${slug}/`
+  }));
+}
+
+function resourceTemplateItems(locale: "en" | "vi") {
+  return resourceTemplates.map(([enTitle, slug, viTitle]) => ({
+    text: locale === "en" ? enTitle : viTitle,
+    link: `/${locale}/resources/${slug}`
+  }));
+}
+
 function useCaseGroupItems(locale: "en" | "vi") {
   return useCaseGroups.map((group) => ({
     text: `${locale === "en" ? group.en : group.vi} (${group.items.length})`,
@@ -155,8 +187,8 @@ function useCaseGroupItems(locale: "en" | "vi") {
 function sidebar(locale: "en" | "vi") {
   const labels =
     locale === "en"
-      ? { start: "Start", lessons: "Lessons", labs: "Labs", useCases: "Project Use Cases", resources: "Resources" }
-      : { start: "Bắt đầu", lessons: "Bài học", labs: "Thực hành", useCases: "Use case dự án", resources: "Tài nguyên" };
+      ? { start: "Start", lessons: "Lessons", labs: "Labs", capstones: "Capstones", useCases: "Project Use Cases", resources: "Resources" }
+      : { start: "Bắt đầu", lessons: "Bài học", labs: "Thực hành", capstones: "Capstone", useCases: "Use case dự án", resources: "Tài nguyên" };
 
   return [
     {
@@ -174,6 +206,13 @@ function sidebar(locale: "en" | "vi") {
       items: labItems(locale)
     },
     {
+      text: labels.capstones,
+      items: [
+        { text: locale === "en" ? "Capstone Overview" : "Tổng quan capstone", link: `/${locale}/capstones/` },
+        ...capstoneItems(locale)
+      ]
+    },
+    {
       text: labels.useCases,
       collapsed: true,
       items: [
@@ -187,7 +226,12 @@ function sidebar(locale: "en" | "vi") {
         { text: locale === "en" ? "Resource Library" : "Thư viện tài nguyên", link: `/${locale}/resources/` },
         { text: locale === "en" ? "Prompt Library" : "Thư viện prompt", link: `/${locale}/resources/prompt-library` },
         { text: locale === "en" ? "Checklists" : "Checklist", link: `/${locale}/resources/checklists` },
-        { text: locale === "en" ? "Glossary" : "Glossary", link: `/${locale}/resources/glossary` }
+        { text: locale === "en" ? "Glossary" : "Glossary", link: `/${locale}/resources/glossary` },
+        {
+          text: locale === "en" ? "Project Templates" : "Template dự án",
+          collapsed: true,
+          items: resourceTemplateItems(locale)
+        }
       ]
     }
   ];
@@ -227,6 +271,13 @@ export default withMermaid(
           items: [
             { text: "English Use Cases", link: "/en/use-cases/" },
             { text: "Use case tiếng Việt", link: "/vi/use-cases/" }
+          ]
+        },
+        {
+          text: "Capstones",
+          items: [
+            { text: "English Capstones", link: "/en/capstones/" },
+            { text: "Capstone tiếng Việt", link: "/vi/capstones/" }
           ]
         },
         {

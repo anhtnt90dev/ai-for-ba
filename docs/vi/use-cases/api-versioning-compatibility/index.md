@@ -8,6 +8,9 @@ description: "BA phải specify versioning và compatibility behavior bằng bus
 <div class="case-meta">
   <span>Backend and API</span>
   <span>API lifecycle</span>
+  <span>Backend/API refinement</span>
+  <span>Practitioner</span>
+  <span>Change impact matrix</span>
   <span>Use case dự án</span>
 </div>
 

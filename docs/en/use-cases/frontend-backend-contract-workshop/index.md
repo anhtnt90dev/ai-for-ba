@@ -8,6 +8,9 @@ description: "The BA must facilitate a contract workshop that aligns screen beha
 <div class="case-meta">
   <span>Cross-functional BA Collaboration</span>
   <span>Contract workshops</span>
+  <span>Cross-functional alignment</span>
+  <span>Practitioner</span>
+  <span>Workshop agenda</span>
   <span>Project use case</span>
 </div>
 

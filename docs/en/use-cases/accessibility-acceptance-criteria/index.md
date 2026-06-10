@@ -8,6 +8,9 @@ description: "The BA must convert accessibility expectations into acceptance cri
 <div class="case-meta">
   <span>Frontend, UI, and UX</span>
   <span>Accessibility</span>
+  <span>Frontend/UI refinement</span>
+  <span>Practitioner</span>
+  <span>Accessibility criteria set</span>
   <span>Project use case</span>
 </div>
 

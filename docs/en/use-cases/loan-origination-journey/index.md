@@ -8,6 +8,9 @@ description: "The BA must coordinate regulated requirements across customer expe
 <div class="case-meta">
   <span>Domain project scenarios</span>
   <span>Banking and lending</span>
+  <span>Domain workflow</span>
+  <span>Core</span>
+  <span>Loan journey map</span>
   <span>Project use case</span>
 </div>
 

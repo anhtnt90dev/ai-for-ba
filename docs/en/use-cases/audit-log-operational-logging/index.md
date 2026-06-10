@@ -8,6 +8,9 @@ description: "The BA must distinguish audit logs for accountability from operati
 <div class="case-meta">
   <span>Backend and API</span>
   <span>Audit and observability</span>
+  <span>Backend/API refinement</span>
+  <span>Practitioner</span>
+  <span>Audit event catalog</span>
   <span>Project use case</span>
 </div>
 

@@ -8,6 +8,9 @@ description: "The BA must specify validation in a way frontend and backend can i
 <div class="case-meta">
   <span>Frontend, UI, and UX</span>
   <span>Forms and validation</span>
+  <span>Frontend/UI refinement</span>
+  <span>Practitioner</span>
+  <span>Validation matrix</span>
   <span>Project use case</span>
 </div>
 

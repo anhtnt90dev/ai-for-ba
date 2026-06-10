@@ -8,6 +8,9 @@ description: "BA phải đặc tả AI-assisted document extraction và validati
 <div class="case-meta">
   <span>AI-enabled product use cases</span>
   <span>Document automation</span>
+  <span>AI product design</span>
+  <span>Advanced</span>
+  <span>Extraction schema</span>
   <span>Use case dự án</span>
 </div>
 

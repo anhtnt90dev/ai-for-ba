@@ -8,6 +8,9 @@ description: "BA phải biến market signal rộng thành product-relevant hypo
 <div class="case-meta">
   <span>Discovery and alignment</span>
   <span>Product strategy</span>
+  <span>Discovery</span>
+  <span>Core</span>
+  <span>Research synthesis memo</span>
   <span>Use case dự án</span>
 </div>
 

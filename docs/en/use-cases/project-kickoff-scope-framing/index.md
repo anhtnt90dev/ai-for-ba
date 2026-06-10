@@ -8,6 +8,9 @@ description: "The BA must convert a vague mandate into a shared problem statemen
 <div class="case-meta">
   <span>Discovery and alignment</span>
   <span>Project initiation</span>
+  <span>Discovery</span>
+  <span>Core</span>
+  <span>Scope framing canvas</span>
   <span>Project use case</span>
 </div>
 

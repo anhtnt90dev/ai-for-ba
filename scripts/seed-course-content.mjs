@@ -13,6 +13,37 @@ const sections = {
   lead: ["BA Lead and Expert Track", "BA lead và expert track"]
 };
 
+const sectionSummaries = {
+  foundation: {
+    en: "Understand AI patterns, LLM limits, grounding, RAG, source authority, and when a non-AI solution is better.",
+    vi: "Hiểu AI pattern, giới hạn LLM, grounding, RAG, source authority và khi nào non-AI solution phù hợp hơn."
+  },
+  workflow: {
+    en: "Use AI to synthesize discovery, interviews, stories, process models, and stakeholder decisions without losing evidence.",
+    vi: "Dùng AI để synthesize discovery, interview, story, process model và stakeholder decision mà không mất evidence."
+  },
+  collaboration: {
+    en: "Build reusable context packages, prompt patterns, critique loops, and structured outputs for BA team collaboration.",
+    vi: "Xây context package, prompt pattern, critique loop và structured output tái sử dụng cho BA team collaboration."
+  },
+  requirements: {
+    en: "Improve ambiguity analysis, NFRs, risk, traceability, testability, and backlog readiness before delivery commitment.",
+    vi: "Cải thiện ambiguity analysis, NFR, risk, traceability, testability và backlog readiness trước delivery commitment."
+  },
+  artifacts: {
+    en: "Create BRD, SRS, decision artifacts, diagrams, matrices, and handoff packs that delivery teams can inspect.",
+    vi: "Tạo BRD, SRS, decision artifact, diagram, matrix và handoff pack mà delivery team có thể inspect."
+  },
+  products: {
+    en: "Specify AI-enabled features with task boundary, output contract, evaluation, human review, fallback, and monitoring.",
+    vi: "Đặc tả AI-enabled feature với task boundary, output contract, evaluation, human review, fallback và monitoring."
+  },
+  lead: {
+    en: "Scale AI adoption with governance, risk tiers, tool policy, quality gates, coaching, metrics, and operating model.",
+    vi: "Scale AI adoption bằng governance, risk tier, tool policy, quality gate, coaching, metric và operating model."
+  }
+};
+
 const lessonIndex = [
   ["AI Landscape for BAs", "ai-landscape-for-ba", "Bức tranh AI cho BA"],
   ["LLM Mental Model", "llm-mental-model", "Mô hình tư duy về LLM"],
@@ -769,6 +800,84 @@ const labs = [
     viDeliverables: ["use-case portfolio", "risk-tier policy", "training plan", "governance scorecard"],
     enRubric: ["Risk controls match use-case sensitivity.", "Quality gates are practical.", "Metrics include quality and cycle time.", "Rollout has owners and phases."],
     viRubric: ["Risk control match sensitivity của use case.", "Quality gate thực tế.", "Metric gồm quality và cycle time.", "Rollout có owner và phase."]
+  }
+];
+
+const capstones = [
+  {
+    slug: "discovery-to-delivery-ai-ba-pack",
+    en: {
+      title: "Capstone 1: Discovery to Delivery AI BA Pack",
+      summary: "Turn messy stakeholder input into a delivery-ready analysis pack with evidence, decisions, stories, risks, and QA handoff.",
+      scenario: "A mid-size operations team wants to modernize its request intake flow. Sales wants faster submission, operations wants fewer manual corrections, compliance wants approval evidence, and engineering needs a scoped first release. The source material is inconsistent and several decisions are still open.",
+      role: "You are the senior BA accountable for shaping the first release without letting AI turn assumptions into approved scope.",
+      inputs: ["Stakeholder notes from sales, operations, compliance, support, and engineering", "Current-state process fragments", "Draft business goals and success metrics", "Known constraints about roles, audit, data, and timeline", "Three sample request tickets with exception cases"],
+      tasks: ["Create a source map and classify facts, assumptions, conflicts, and decisions needed.", "Draft current-state and target-state process diagrams with exception paths.", "Split first-release scope into epics, user stories, and acceptance criteria.", "Create a traceability matrix from business goal to story, rule, evidence, and test scenario.", "Prepare a decision log and workshop agenda for unresolved items.", "Run an AI-output review and mark unsupported claims before sharing."],
+      deliverables: [["Evidence-backed discovery synthesis", "Source map, themes, conflicts, decisions needed, and assumptions", "Protects the project from false consensus"], ["Process and exception model", "Current-state, target-state, decision points, exception loops, and handoffs", "Shows the actual operational complexity"], ["Release-ready backlog pack", "Epics, stories, acceptance criteria, NFRs, and negative scenarios", "Gives delivery teams testable work"], ["Traceability and QA handoff", "Goal-to-requirement-to-test map with owners", "Connects BA work to release readiness"]],
+      rubric: [["Evidence discipline", "Every material claim has a source, owner, or validation question."], ["Delivery readiness", "Stories are estimable, testable, and tied to business value."], ["Risk handling", "Compliance, audit, NFR, and exception risks are visible before sprint commitment."], ["AI control", "AI output is used as draft analysis, not as an approval mechanism."]],
+      prompt: "Act as my senior BA reviewer. Given the project source pack, create a delivery-ready AI BA pack. Start by asking for missing evidence. Then produce source map, fact-assumption-conflict table, current-state flow, target-state flow, release scope, user stories, acceptance criteria, traceability matrix, decision log, and QA handoff. Mark unsupported claims and stakeholder decisions separately."
+    },
+    vi: {
+      title: "Capstone 1: Discovery đến delivery AI BA pack",
+      summary: "Chuyển input stakeholder lộn xộn thành analysis pack sẵn sàng delivery có evidence, decision, story, risk và QA handoff.",
+      scenario: "Một team operations muốn modernize request intake flow. Sales muốn submit nhanh hơn, operations muốn giảm manual correction, compliance cần approval evidence, engineering cần scope rõ cho first release. Source material không nhất quán và nhiều decision còn mở.",
+      role: "Bạn là senior BA chịu trách nhiệm shape first release mà không để AI biến assumption thành scope đã approved.",
+      inputs: ["Stakeholder notes từ sales, operations, compliance, support và engineering", "Current-state process fragment", "Draft business goal và success metric", "Constraint đã biết về role, audit, data và timeline", "Ba sample request ticket có exception case"],
+      tasks: ["Tạo source map và classify fact, assumption, conflict, decision needed.", "Draft current-state và target-state process diagram có exception path.", "Split first-release scope thành epic, user story và acceptance criteria.", "Tạo traceability matrix từ business goal tới story, rule, evidence và test scenario.", "Chuẩn bị decision log và workshop agenda cho unresolved item.", "Review output AI và mark unsupported claim trước khi share."],
+      deliverables: [["Evidence-backed discovery synthesis", "Source map, theme, conflict, decision needed và assumption", "Bảo vệ project khỏi false consensus"], ["Process and exception model", "Current-state, target-state, decision point, exception loop và handoff", "Cho thấy operational complexity thật"], ["Release-ready backlog pack", "Epic, story, acceptance criteria, NFR và negative scenario", "Giúp delivery team có work test được"], ["Traceability and QA handoff", "Map goal-to-requirement-to-test có owner", "Kết nối BA work với release readiness"]],
+      rubric: [["Evidence discipline", "Mọi claim quan trọng có source, owner hoặc validation question."], ["Delivery readiness", "Story estimate/test được và gắn business value."], ["Risk handling", "Compliance, audit, NFR và exception risk visible trước sprint commitment."], ["AI control", "Output AI được dùng như draft analysis, không phải approval mechanism."]],
+      prompt: "Hãy đóng vai senior BA reviewer. Dựa trên project source pack, tạo delivery-ready AI BA pack. Bắt đầu bằng cách hỏi missing evidence. Sau đó tạo source map, bảng fact-assumption-conflict, current-state flow, target-state flow, release scope, user story, acceptance criteria, traceability matrix, decision log và QA handoff. Tách unsupported claim và stakeholder decision."
+    }
+  },
+  {
+    slug: "frontend-backend-contract-readiness",
+    en: {
+      title: "Capstone 2: Frontend to Backend Contract Readiness",
+      summary: "Translate a UI concept into screen behavior, API contract, data rules, error states, analytics, and test coverage.",
+      scenario: "A customer portal adds a reporting screen with filters, saved views, export, permissions, and partial data from three backend services. The Figma file shows the happy path but does not define loading, empty, error, partial failure, RBAC, analytics, or API edge cases.",
+      role: "You are the BA connecting UX intent, frontend behavior, backend contract, QA scenarios, and stakeholder decisions.",
+      inputs: ["Figma screen or wireframe notes", "User roles and permission rules", "Draft API descriptions", "Sample response payloads", "Reporting metrics and business definitions", "Known browser, mobile, and accessibility expectations"],
+      tasks: ["Create a screen-state behavior matrix for loading, empty, error, permission, partial data, and success states.", "Define field-level rules, filter behavior, sorting, pagination, export, and saved-view logic.", "Draft API contract requirements with request, response, validation, error codes, timeout, retry, and idempotency notes.", "Map UI controls to backend permissions and audit needs.", "Write analytics event requirements and QA test scenarios.", "Identify design, product, frontend, backend, data, and QA decisions still needed."],
+      deliverables: [["Screen-state matrix", "State, trigger, UI behavior, copy, action availability, and owner", "Prevents hidden frontend requirements"], ["API contract requirement pack", "Endpoint, schema, validation, errors, timeouts, retries, and examples", "Gives backend and frontend a shared contract"], ["Permission and audit trace map", "Role, control, API permission, audit event, and denial behavior", "Avoids UI-only security assumptions"], ["QA and analytics handoff", "Test scenarios, event names, payload rules, and acceptance signals", "Makes release behavior measurable"]],
+      rubric: [["UI completeness", "Non-happy-path screen states are fully specified."], ["Contract clarity", "Frontend and backend teams can build independently from the same behavior agreement."], ["Security and audit", "Visibility, authorization, and audit behavior are aligned."], ["Measurement", "Analytics and QA expectations prove whether the feature works after release."]],
+      prompt: "Act as a senior BA for a frontend-backend refinement workshop. From the supplied UI concept and API notes, create screen-state matrix, field behavior rules, API contract requirements, permission trace map, error taxonomy, analytics events, QA scenarios, open decisions, and acceptance criteria. Flag any assumption that needs UX, product, backend, security, or QA confirmation."
+    },
+    vi: {
+      title: "Capstone 2: Frontend đến backend contract readiness",
+      summary: "Chuyển UI concept thành screen behavior, API contract, data rule, error state, analytics và test coverage.",
+      scenario: "Customer portal thêm reporting screen có filter, saved view, export, permission và partial data từ ba backend service. Figma chỉ thể hiện happy path, chưa define loading, empty, error, partial failure, RBAC, analytics hoặc API edge case.",
+      role: "Bạn là BA kết nối UX intent, frontend behavior, backend contract, QA scenario và stakeholder decision.",
+      inputs: ["Figma screen hoặc wireframe note", "User role và permission rule", "Draft API description", "Sample response payload", "Reporting metric và business definition", "Expectation về browser, mobile và accessibility"],
+      tasks: ["Tạo screen-state behavior matrix cho loading, empty, error, permission, partial data và success state.", "Define field-level rule, filter behavior, sorting, pagination, export và saved-view logic.", "Draft API contract requirement có request, response, validation, error code, timeout, retry và idempotency note.", "Map UI control tới backend permission và audit need.", "Viết analytics event requirement và QA test scenario.", "Identify decision còn cần từ design, product, frontend, backend, data và QA."],
+      deliverables: [["Screen-state matrix", "State, trigger, UI behavior, copy, action availability và owner", "Tránh frontend requirement bị ẩn"], ["API contract requirement pack", "Endpoint, schema, validation, error, timeout, retry và example", "Tạo shared contract cho backend và frontend"], ["Permission and audit trace map", "Role, control, API permission, audit event và denial behavior", "Tránh assumption security chỉ nằm ở UI"], ["QA and analytics handoff", "Test scenario, event name, payload rule và acceptance signal", "Giúp release behavior đo được"]],
+      rubric: [["UI completeness", "Non-happy-path screen state được đặc tả đầy đủ."], ["Contract clarity", "Frontend và backend có thể build từ cùng behavior agreement."], ["Security and audit", "Visibility, authorization và audit behavior được align."], ["Measurement", "Analytics và QA expectation chứng minh feature hoạt động sau release."]],
+      prompt: "Hãy đóng vai senior BA cho workshop refinement frontend-backend. Từ UI concept và API note, tạo screen-state matrix, field behavior rule, API contract requirement, permission trace map, error taxonomy, analytics event, QA scenario, open decision và acceptance criteria. Flag mọi assumption cần UX, product, backend, security hoặc QA confirm."
+    }
+  },
+  {
+    slug: "ai-assistant-requirement-and-governance",
+    en: {
+      title: "Capstone 3: AI Assistant Requirement and Governance",
+      summary: "Specify an AI assistant from user goal to RAG knowledge contract, human review, safety controls, evaluation, and operating model.",
+      scenario: "A support organization wants an AI assistant that drafts ticket replies using product documentation, policy articles, and historical tickets. The business wants faster response time, but legal worries about incorrect advice, support leads worry about tone, and engineering needs clear retrieval, logging, and fallback requirements.",
+      role: "You are the AI-aware BA defining an assistant that is useful, governable, measurable, and safe enough for pilot release.",
+      inputs: ["Target user journeys and support personas", "Knowledge source inventory", "Sample tickets and approved replies", "Data sensitivity and PII policy", "Support QA scorecard", "Operational escalation and review rules"],
+      tasks: ["Classify the AI pattern and explain why RAG plus human review fits the scenario.", "Define source authority, freshness, chunking assumptions, citation behavior, access control, and conflict handling.", "Specify output contract, confidence behavior, refusal/fallback, human review trigger, correction capture, and audit log requirements.", "Create evaluation set design, answer-quality rubric, monitoring metrics, and pilot release gates.", "Write acceptance criteria for prompt injection, unsafe input, bias/fairness, privacy, and cost guardrails.", "Prepare stakeholder decision memo with risks, controls, and pilot scope."],
+      deliverables: [["AI feature operating contract", "Task boundary, allowed inputs, output contract, confidence, fallback, and human review", "Prevents uncontrolled AI behavior"], ["RAG knowledge contract", "Source inventory, authority, freshness, access, citations, conflict handling, and retrieval metrics", "Defines what the assistant can trust"], ["Evaluation and monitoring plan", "Test set, rubric, telemetry, correction capture, alerts, and release gates", "Makes quality measurable before and after release"], ["Governance decision memo", "Pilot scope, risk tier, controls, owners, and unresolved decisions", "Gives sponsors a responsible go/no-go artifact"]],
+      rubric: [["AI fit", "The selected AI pattern is justified against business outcome and risk."], ["Safety", "Human review, fallback, privacy, access, and injection controls are testable."], ["Evaluation", "The pilot has measurable quality, failure, and monitoring criteria."], ["Operating model", "Owners, review gates, escalation, and post-release learning are defined."]],
+      prompt: "Act as an expert AI product BA. Help me specify this support AI assistant. Create AI pattern fit, RAG knowledge contract, output contract, human review and fallback rules, privacy and prompt-injection requirements, evaluation set design, quality rubric, telemetry plan, pilot release gates, decision memo, and stakeholder questions. Separate facts, assumptions, unsupported claims, and decisions needed."
+    },
+    vi: {
+      title: "Capstone 3: Requirement và governance cho AI assistant",
+      summary: "Đặc tả AI assistant từ user goal tới RAG knowledge contract, human review, safety control, evaluation và operating model.",
+      scenario: "Support organization muốn AI assistant draft ticket reply dựa trên product documentation, policy article và historical ticket. Business muốn response nhanh hơn, legal lo advice sai, support lead lo tone, engineering cần requirement rõ về retrieval, logging và fallback.",
+      role: "Bạn là BA hiểu AI, chịu trách nhiệm define assistant hữu ích, govern được, đo được và đủ an toàn cho pilot release.",
+      inputs: ["Target user journey và support persona", "Knowledge source inventory", "Sample ticket và approved reply", "Data sensitivity và PII policy", "Support QA scorecard", "Operational escalation và review rule"],
+      tasks: ["Classify AI pattern và giải thích vì sao RAG + human review phù hợp.", "Define source authority, freshness, chunking assumption, citation behavior, access control và conflict handling.", "Specify output contract, confidence behavior, refusal/fallback, human review trigger, correction capture và audit log requirement.", "Tạo evaluation set design, answer-quality rubric, monitoring metric và pilot release gate.", "Viết acceptance criteria cho prompt injection, unsafe input, bias/fairness, privacy và cost guardrail.", "Chuẩn bị stakeholder decision memo có risk, control và pilot scope."],
+      deliverables: [["AI feature operating contract", "Task boundary, allowed input, output contract, confidence, fallback và human review", "Ngăn AI behavior không kiểm soát"], ["RAG knowledge contract", "Source inventory, authority, freshness, access, citation, conflict handling và retrieval metric", "Định nghĩa assistant được phép tin gì"], ["Evaluation and monitoring plan", "Test set, rubric, telemetry, correction capture, alert và release gate", "Làm quality đo được trước và sau release"], ["Governance decision memo", "Pilot scope, risk tier, control, owner và unresolved decision", "Cho sponsor artifact go/no-go có trách nhiệm"]],
+      rubric: [["AI fit", "AI pattern được justify theo business outcome và risk."], ["Safety", "Human review, fallback, privacy, access và injection control test được."], ["Evaluation", "Pilot có quality, failure và monitoring criteria đo được."], ["Operating model", "Owner, review gate, escalation và post-release learning được define."]],
+      prompt: "Hãy đóng vai expert AI product BA. Hỗ trợ đặc tả support AI assistant này. Tạo AI pattern fit, RAG knowledge contract, output contract, human review và fallback rule, privacy và prompt-injection requirement, evaluation set design, quality rubric, telemetry plan, pilot release gate, decision memo và stakeholder question. Tách fact, assumption, unsupported claim và decision needed."
+    }
   }
 ];
 
@@ -3440,6 +3549,120 @@ ${artifactTable(missingHeaders, missing)}`
   };
 }
 
+function seniorBaPracticePack(lesson, locale, upgrade) {
+  const item = lesson[locale];
+  const isEn = locale === "en";
+  const profile = lessonSectionProfile(lesson.section, locale);
+  const keyMistake = item.mistakes[0];
+  const keyAction = item.tomorrow[0];
+  const keyRemember = item.remember[0];
+  const keyRememberClause = cleanClause(keyRemember);
+  const strongerPattern = upgrade.badBetter[0]?.[2] ?? profile.control;
+
+  const questionHeaders = isEn
+    ? ["Stakeholder", "Question", "Why the BA asks it"]
+    : ["Stakeholder", "Câu hỏi", "Vì sao BA hỏi"];
+  const stakeholderRows = isEn
+    ? [
+        ["Product owner", `Which outcome should ${item.title} improve, and what trade-off are you willing to accept?`, "Prevents AI output from optimizing for a vague goal."],
+        ["Engineering lead", `What source, system, data, or constraint would make ${item.artifactTitle} hard to implement?`, "Turns hidden technical constraints into visible requirement questions."],
+        ["QA lead", `Which rule, exception, or user state must be testable before you trust this artifact?`, "Converts fluent AI wording into observable behavior."],
+        ["Operations or support", `What failure path would create manual work if the lesson principle "${keyRememberClause}" is ignored?`, "Surfaces support load, exception handling, and operating impact."]
+      ]
+    : [
+        ["Product owner", `${item.title} cần cải thiện outcome nào, và trade-off nào có thể chấp nhận?`, "Ngăn output AI tối ưu cho mục tiêu mơ hồ."],
+        ["Engineering lead", `Source, system, data hoặc constraint nào khiến ${item.artifactTitle} khó implement?`, "Biến technical constraint ẩn thành requirement question visible."],
+        ["QA lead", `Rule, exception hoặc user state nào phải test được trước khi tin artifact này?`, "Chuyển wording trôi chảy của AI thành behavior quan sát được."],
+        ["Operations hoặc support", `Failure path nào tạo manual work nếu nguyên tắc "${keyRememberClause}" bị bỏ qua?`, "Làm rõ support load, exception handling và operating impact."]
+      ];
+
+  const decisionHeaders = isEn
+    ? ["Decision item", "Options to capture", "Owner", "Evidence needed"]
+    : ["Decision item", "Option cần capture", "Owner", "Evidence cần có"];
+  const decisionRows = isEn
+    ? [
+        [`Scope boundary for ${item.artifactTitle}`, "Must-have, later, out of scope", "Product owner", "Business outcome and release constraint"],
+        [`Authority for ${profile.reviewLens}`, "Documented source, stakeholder decision, assumption to validate", "BA + accountable stakeholder", "Source ID, date, and approval status"],
+        [`Review gate before handoff`, "Peer review, QA review, engineering review, formal approval", "BA lead or project lead", "Risk level and receiving-team readiness"],
+        [`Recovery if ${keyMistake}`, "Rewrite, defer, escalate, or run validation workshop", "Decision owner", "Impact on scope, testability, and release risk"]
+      ]
+    : [
+        [`Scope boundary cho ${item.artifactTitle}`, "Must-have, later, out of scope", "Product owner", "Business outcome và release constraint"],
+        [`Authority cho ${profile.reviewLens}`, "Documented source, stakeholder decision, assumption cần validate", "BA + stakeholder chịu trách nhiệm", "Source ID, date và approval status"],
+        ["Review gate trước handoff", "Peer review, QA review, engineering review, formal approval", "BA lead hoặc project lead", "Risk level và receiving-team readiness"],
+        [`Cách recover nếu ${keyMistake}`, "Rewrite, defer, escalate hoặc validation workshop", "Decision owner", "Impact lên scope, testability và release risk"]
+      ];
+
+  const readyDoneHeaders = isEn
+    ? ["Gate", "Ready signal", "Done signal"]
+    : ["Gate", "Tín hiệu ready", "Tín hiệu done"];
+  const readyDoneRows = isEn
+    ? [
+        ["Definition of Ready", `Sources for ${profile.reviewLens} are labeled and current.`, `${item.artifactTitle} can be reviewed without guessing missing context.`],
+        ["Definition of Ready", "Open assumptions have owners and validation paths.", "Stakeholders can decide whether to accept, reject, or defer each assumption."],
+        ["Definition of Done", `The artifact applies this control: ${profile.control}.`, "Delivery, QA, or governance teams can act on the artifact."],
+        ["Definition of Done", `The weak pattern "${keyMistake}" has been explicitly checked.`, "No unsupported AI claim is treated as an approved requirement."]
+      ]
+    : [
+        ["Definition of Ready", `Source cho ${profile.reviewLens} được label và còn hiệu lực.`, `${item.artifactTitle} có thể review mà không phải đoán missing context.`],
+        ["Definition of Ready", "Open assumption có owner và validation path.", "Stakeholder có thể accept, reject hoặc defer từng assumption."],
+        ["Definition of Done", `Artifact áp dụng control: ${profile.control}.`, "Delivery, QA hoặc governance team có thể hành động dựa trên artifact."],
+        ["Definition of Done", `Pattern yếu "${keyMistake}" đã được kiểm tra explicit.`, "Không unsupported AI claim nào bị xem như requirement đã approve."]
+      ];
+
+  const beforeAfterHeaders = isEn
+    ? ["Before", "AI draft risk", "Senior BA revision"]
+    : ["Before", "Risk trong draft AI", "Revision của senior BA"];
+  const beforeAfterRows = isEn
+    ? [
+        [`Prompt: "Create ${item.artifactTitle} for ${item.title}."`, "The model may invent source facts, owners, thresholds, or implementation rules.", `Add sources, scope boundary, source authority, output schema, and the instruction: ${strongerPattern}`],
+        [`Draft statement: "${keyAction}"`, "Useful action, but not yet tied to a decision owner or acceptance signal.", `Rewrite as a project step with owner, expected artifact, review gate, and evidence required before handoff.`],
+        [`Final-looking paragraph about ${profile.artifactReady}`, "The tone may hide uncertainty and missing stakeholder approval.", "Convert it into a table of fact, assumption, decision needed, risk, and validation question."]
+      ]
+    : [
+        [`Prompt: "Create ${item.artifactTitle} cho ${item.title}."`, "Model có thể tự bịa source fact, owner, threshold hoặc implementation rule.", `Thêm source, scope boundary, source authority, output schema và instruction: ${strongerPattern}`],
+        [`Draft statement: "${keyAction}"`, "Action hữu ích nhưng chưa gắn decision owner hoặc acceptance signal.", "Rewrite thành project step có owner, expected artifact, review gate và evidence cần trước handoff."],
+        [`Paragraph nghe final về ${profile.artifactReady}`, "Tone có thể che uncertainty và approval còn thiếu.", "Chuyển thành bảng fact, assumption, decision needed, risk và validation question."]
+      ];
+
+  const verificationHeaders = isEn
+    ? ["Verification lens", "Manual check", "Pass signal"]
+    : ["Lens kiểm tra", "Manual check", "Pass signal"];
+  const verificationRows = isEn
+    ? [
+        ["Evidence", `Trace every important statement in ${item.artifactTitle} to a source, decision, or labeled assumption.`, "No unsupported claim remains hidden."],
+        ["Completeness", `Check ${profile.reviewLens} against the intended audience and receiving team.`, "The artifact answers what product, engineering, QA, and operations need."],
+        ["Testability", "Ask whether QA can create positive, negative, boundary, and exception scenarios.", "Ambiguous wording has been rewritten or logged as a question."],
+        ["Accountability", "Confirm who approves, who reviews, and who acts when the artifact is wrong.", "Owners and escalation path are explicit."]
+      ]
+    : [
+        ["Evidence", `Trace mọi statement quan trọng trong ${item.artifactTitle} về source, decision hoặc assumption có label.`, "Không unsupported claim nào còn bị ẩn."],
+        ["Completeness", `Check ${profile.reviewLens} theo intended audience và receiving team.`, "Artifact trả lời được điều product, engineering, QA và operations cần."],
+        ["Testability", "Hỏi QA có tạo được positive, negative, boundary và exception scenario không.", "Wording mơ hồ được rewrite hoặc log thành question."],
+        ["Accountability", "Confirm ai approve, ai review và ai xử lý khi artifact sai.", "Owner và escalation path explicit."]
+      ];
+
+  return `## Stakeholder questions to ask
+
+${artifactTable(questionHeaders, stakeholderRows)}
+
+## Decision log entries
+
+${artifactTable(decisionHeaders, decisionRows)}
+
+## Definition of Ready / Done
+
+${artifactTable(readyDoneHeaders, readyDoneRows)}
+
+## Before and after artifact example
+
+${artifactTable(beforeAfterHeaders, beforeAfterRows)}
+
+## Manual verification after AI output
+
+${artifactTable(verificationHeaders, verificationRows)}`;
+}
+
 function lessonPage(lesson, locale) {
   const item = lesson[locale];
   const upgrade = lessonUpgrade(lesson.slug, locale);
@@ -3516,6 +3739,8 @@ ${upgrade.expert}
 ## Bad vs better example
 
 ${artifactTable(badBetterHeaders, upgrade.badBetter)}
+
+${seniorBaPracticePack(lesson, locale, upgrade)}
 
 ## AI collaboration prompt
 
@@ -3664,6 +3889,173 @@ ${labPrompt}
 ## Review rubric
 
 ${list(rubric)}
+`;
+}
+
+function capstoneDiagram(capstone, locale) {
+  const isEn = locale === "en";
+  const diagrams = {
+    "discovery-to-delivery-ai-ba-pack": isEn
+      ? `flowchart LR
+    A["Messy stakeholder sources"] --> B["Evidence map"]
+    B --> C["Conflicts + decisions"]
+    C --> D["Process model"]
+    D --> E["Release backlog"]
+    E --> F["Traceability + QA handoff"]
+    F --> G["Validated delivery pack"]`
+      : `flowchart LR
+    A["Source stakeholder lộn xộn"] --> B["Evidence map"]
+    B --> C["Conflict + decision"]
+    C --> D["Process model"]
+    D --> E["Release backlog"]
+    E --> F["Traceability + QA handoff"]
+    F --> G["Validated delivery pack"]`,
+    "frontend-backend-contract-readiness": isEn
+      ? `flowchart TD
+    A["UI concept"] --> B["Screen-state matrix"]
+    B --> C["Field and action rules"]
+    C --> D["API contract"]
+    D --> E["Permission + audit trace"]
+    E --> F["QA + analytics handoff"]
+    F --> G["Contract-ready feature"]`
+      : `flowchart TD
+    A["UI concept"] --> B["Screen-state matrix"]
+    B --> C["Field và action rule"]
+    C --> D["API contract"]
+    D --> E["Permission + audit trace"]
+    E --> F["QA + analytics handoff"]
+    F --> G["Feature sẵn sàng contract"]`,
+    "ai-assistant-requirement-and-governance": isEn
+      ? `flowchart TD
+    A["User goal"] --> B["AI pattern fit"]
+    B --> C["RAG knowledge contract"]
+    C --> D["Output + review contract"]
+    D --> E["Safety requirements"]
+    E --> F["Evaluation + monitoring"]
+    F --> G["Pilot governance memo"]`
+      : `flowchart TD
+    A["User goal"] --> B["AI pattern fit"]
+    B --> C["RAG knowledge contract"]
+    C --> D["Output + review contract"]
+    D --> E["Safety requirement"]
+    E --> F["Evaluation + monitoring"]
+    F --> G["Pilot governance memo"]`
+  };
+
+  return diagrams[capstone.slug];
+}
+
+function capstonePage(capstone, locale) {
+  const isEn = locale === "en";
+  const item = capstone[locale];
+  const deliverableHeaders = isEn
+    ? ["Deliverable", "What it contains", "Why it matters"]
+    : ["Deliverable", "Nội dung", "Vì sao quan trọng"];
+  const rubricHeaders = isEn ? ["Review lens", "High-score signal"] : ["Lens review", "Tín hiệu đạt điểm cao"];
+
+  return `---
+title: ${yamlString(item.title)}
+description: ${yamlString(item.summary)}
+---
+
+# ${item.title}
+
+<div class="lesson-meta">
+  <span>${isEn ? "Capstone" : "Capstone"}</span>
+  <span>${isEn ? "Project simulation" : "Mô phỏng dự án"}</span>
+  <span>${isEn ? "Senior BA" : "Senior BA"}</span>
+</div>
+
+${item.summary}
+
+## Scenario
+
+${item.scenario}
+
+## Your role
+
+${item.role}
+
+## Inputs to prepare
+
+${list(item.inputs)}
+
+## Capstone workflow
+
+${numbered(item.tasks)}
+
+## Diagram
+
+\`\`\`mermaid
+${capstoneDiagram(capstone, locale)}
+\`\`\`
+
+## Expected deliverables
+
+${artifactTable(deliverableHeaders, item.deliverables)}
+
+## AI collaboration prompt
+
+\`\`\`text
+${item.prompt}
+\`\`\`
+
+## Scoring rubric
+
+${artifactTable(rubricHeaders, item.rubric)}
+
+## Submission checklist
+
+${list(
+  isEn
+    ? [
+        "Evidence labels are visible in every material artifact.",
+        "Assumptions are separated from decisions.",
+        "Frontend, backend, QA, operations, and governance handoffs are explicit where relevant.",
+        "AI output has been reviewed for unsupported claims, missing context, and unsafe shortcuts.",
+        "The final pack can drive a real refinement, workshop, or pilot decision."
+      ]
+    : [
+        "Evidence label visible trong mọi artifact quan trọng.",
+        "Assumption được tách khỏi decision.",
+        "Handoff cho frontend, backend, QA, operations và governance explicit khi liên quan.",
+        "Output AI đã được review unsupported claim, missing context và shortcut không an toàn.",
+        "Final pack có thể dùng cho refinement, workshop hoặc pilot decision thật."
+      ]
+)}
+`;
+}
+
+function capstoneIndex(locale) {
+  const isEn = locale === "en";
+  const cards = capstones
+    .map((capstone) => {
+      const item = capstone[locale];
+      return `<a class="template-card" href="./${capstone.slug}/"><strong>${item.title}</strong><span>${item.summary}</span></a>`;
+    })
+    .join("\n");
+
+  return `---
+title: ${yamlString(isEn ? "Capstone Project Simulations" : "Capstone mô phỏng dự án")}
+description: ${yamlString(isEn ? "Project-scale exercises for applying AI-aware BA skills." : "Bài tập quy mô dự án để áp dụng kỹ năng BA hiểu AI.")}
+---
+
+# ${isEn ? "Capstone Project Simulations" : "Capstone mô phỏng dự án"}
+
+${isEn ? "Use these capstones after the core lessons and project use cases. Each one asks you to produce artifacts a real delivery team could review." : "Dùng các capstone này sau bài học chính và use case dự án. Mỗi bài yêu cầu tạo artifact mà delivery team thật có thể review."}
+
+<div class="template-grid">
+${cards}
+</div>
+
+## Capstone progression
+
+\`\`\`mermaid
+flowchart LR
+    A["Discovery pack"] --> B["Frontend/backend contract"]
+    B --> C["AI assistant governance"]
+    C --> D["Senior BA portfolio evidence"]
+\`\`\`
 `;
 }
 
@@ -3939,8 +4331,74 @@ function useCaseSupportFrames(useCase, item, locale) {
   };
 }
 
+const useCasePhaseByGroup = {
+  "Discovery and alignment": { en: "Discovery", vi: "Discovery" },
+  "Requirements and backlog": { en: "Refinement", vi: "Refinement" },
+  "Delivery and QA": { en: "Delivery validation", vi: "Delivery validation" },
+  "AI-enabled product use cases": { en: "AI product design", vi: "AI product design" },
+  "Domain project scenarios": { en: "Domain workflow", vi: "Domain workflow" },
+  "Governance and adoption": { en: "Governance", vi: "Governance" },
+  "Frontend, UI, and UX": { en: "Frontend/UI refinement", vi: "Frontend/UI refinement" },
+  "Backend and API": { en: "Backend/API refinement", vi: "Backend/API refinement" },
+  "Data and Integration": { en: "Data and integration", vi: "Data and integration" },
+  "Cross-functional BA Collaboration": { en: "Cross-functional alignment", vi: "Cross-functional alignment" }
+};
+
+function useCaseDifficulty(useCase) {
+  if (["AI-enabled product use cases", "Governance and adoption", "Data and Integration"].includes(useCase.group)) {
+    return "Advanced";
+  }
+  if (["Backend and API", "Frontend, UI, and UX", "Cross-functional BA Collaboration"].includes(useCase.group)) {
+    return "Practitioner";
+  }
+  return "Core";
+}
+
+function useCaseMetadata(useCase, locale) {
+  const item = useCase[locale];
+  return {
+    phase: useCasePhaseByGroup[useCase.group]?.[locale] ?? useCase.group,
+    difficulty: useCaseDifficulty(useCase),
+    artifact: rowCell(item.deliverables, 0, 0, locale === "en" ? "BA artifact" : "BA artifact"),
+    risk: rowCell(item.risks, 0, 0, locale === "en" ? "AI risk" : "AI risk")
+  };
+}
+
+function useCaseFilterPanel(locale) {
+  const isEn = locale === "en";
+  const phases = [...new Set(useCases.map((useCase) => useCaseMetadata(useCase, locale).phase))];
+  const difficulties = [...new Set(useCases.map((useCase) => useCaseMetadata(useCase, locale).difficulty))];
+  const groups = [...new Set(useCases.map((useCase) => useCase.group))];
+  const phaseLinks = phases
+    .map((phase) => {
+      const group = useCases.find((useCase) => useCaseMetadata(useCase, locale).phase === phase)?.group ?? phase;
+      return `<a href="#${anchorSlug(group)}">${phase}</a>`;
+    })
+    .join("");
+  const difficultyChips = difficulties.map((difficulty) => `<span>${difficulty}</span>`).join("");
+  const groupLinks = groups
+    .map((group) => `<a href="#${anchorSlug(group)}">${useCaseGroupLabel(group, locale)}</a>`)
+    .join("");
+
+  return `<div class="usecase-filter-panel">
+  <div>
+    <strong>${isEn ? "By project phase" : "Theo phase dự án"}</strong>
+    <div class="filter-chip-row">${phaseLinks}</div>
+  </div>
+  <div>
+    <strong>${isEn ? "By difficulty" : "Theo độ khó"}</strong>
+    <div class="filter-chip-row">${difficultyChips}</div>
+  </div>
+  <div>
+    <strong>${isEn ? "By BA collaboration group" : "Theo nhóm collaboration của BA"}</strong>
+    <div class="filter-chip-row">${groupLinks}</div>
+  </div>
+</div>`;
+}
+
 function useCasePage(useCase, locale) {
   const item = useCase[locale];
+  const meta = useCaseMetadata(useCase, locale);
   const deliverableHeaders =
     locale === "en"
       ? ["Deliverable", "What it contains", "Owner", "Done signal"]
@@ -3974,6 +4432,9 @@ description: ${yamlString(item.challenge)}
 <div class="case-meta">
   <span>${useCase.group}</span>
   <span>${useCase.domain}</span>
+  <span>${meta.phase}</span>
+  <span>${meta.difficulty}</span>
+  <span>${meta.artifact}</span>
   <span>${isEn ? "Project use case" : "Use case dự án"}</span>
 </div>
 
@@ -4082,7 +4543,8 @@ function useCaseIndex(locale) {
         .filter((useCase) => useCase.group === group)
         .map((useCase) => {
           const item = useCase[locale];
-          return `<a class="case-card" href="./${useCase.slug}/"><span>${useCase.group}</span><strong>${item.title}</strong><small>${useCase.domain}</small><em>${item.metric}</em></a>`;
+          const meta = useCaseMetadata(useCase, locale);
+          return `<a class="case-card" data-phase="${anchorSlug(meta.phase)}" data-difficulty="${anchorSlug(meta.difficulty)}" data-artifact="${anchorSlug(meta.artifact)}" href="./${useCase.slug}/"><span>${useCase.group}</span><strong>${item.title}</strong><small>${useCase.domain}</small><div class="case-tags"><b>${meta.phase}</b><b>${meta.difficulty}</b><b>${meta.artifact}</b></div><em>${item.metric}</em></a>`;
         })
         .join("\n");
       return `<section class="usecase-section"><h2 id="${anchorSlug(group)}">${label}</h2><div class="usecase-grid">\n${groupCards}\n</div></section>`;
@@ -4107,6 +4569,10 @@ ${isEn ? "Use these pages as working playbooks. Pick a use case close to your pr
 <div class="usecase-group-summary">
 ${groupSummary}
 </div>
+
+## ${isEn ? "Filter by project context" : "Lọc theo bối cảnh dự án"}
+
+${useCaseFilterPanel(locale)}
 
 ## Use case map
 
@@ -4138,15 +4604,74 @@ aside: false
 `;
 }
 
+function roleLearningPaths(locale) {
+  const isEn = locale === "en";
+  const paths = isEn
+    ? [
+        ["New Software BA", "Start with AI foundations, then practice discovery and user stories.", "Lessons 01-08, Labs 01-03, Discovery and Requirements use cases"],
+        ["Senior Delivery BA", "Focus on ambiguity, NFRs, traceability, diagrams, and cross-team handoff.", "Lessons 09, 13-17, Capstone 1, Frontend/Backend use cases"],
+        ["BA Working With Frontend/UI", "Translate UX into behavior, state, permissions, analytics, accessibility, and QA coverage.", "Frontend/UI use cases, UI State Template, Capstone 2"],
+        ["BA Working With Backend/API", "Clarify API contracts, validation, errors, RBAC, idempotency, data mapping, and integration failure.", "Backend/API use cases, API Contract Checklist, Capstone 2"],
+        ["AI Product BA", "Specify RAG, AI output contracts, human review, fallback, evaluation, monitoring, and risk controls.", "Lessons 18-20, RAG Canvas, AI Feature Template, Capstone 3"],
+        ["BA Lead or Practice Lead", "Build governance, prompt library, quality gates, adoption metrics, and team operating model.", "Lesson 20, AI Risk Matrix, DoR/DoD Template, Adoption Lab"]
+      ]
+    : [
+        ["Software BA mới", "Bắt đầu với AI foundation, sau đó luyện discovery và user story.", "Bài 01-08, Lab 01-03, use case Discovery và Requirements"],
+        ["Senior Delivery BA", "Tập trung ambiguity, NFR, traceability, diagram và cross-team handoff.", "Bài 09, 13-17, Capstone 1, use case Frontend/Backend"],
+        ["BA làm với Frontend/UI", "Chuyển UX thành behavior, state, permission, analytics, accessibility và QA coverage.", "Use case Frontend/UI, UI State Template, Capstone 2"],
+        ["BA làm với Backend/API", "Clarify API contract, validation, error, RBAC, idempotency, data mapping và integration failure.", "Use case Backend/API, API Contract Checklist, Capstone 2"],
+        ["AI Product BA", "Đặc tả RAG, AI output contract, human review, fallback, evaluation, monitoring và risk control.", "Bài 18-20, RAG Canvas, AI Feature Template, Capstone 3"],
+        ["BA Lead hoặc Practice Lead", "Xây governance, prompt library, quality gate, adoption metric và team operating model.", "Bài 20, AI Risk Matrix, DoR/DoD Template, Adoption Lab"]
+      ];
+
+  return `<div class="learning-path-grid">
+${paths
+  .map(
+    ([role, goal, route]) => `<div class="learning-path-card"><strong>${role}</strong><span>${goal}</span><em>${route}</em></div>`
+  )
+  .join("\n")}
+</div>`;
+}
+
 function homePage(locale) {
   const isEn = locale === "en";
   const title = "AI for Business Analysts";
   const intro = isEn
     ? "A deep bilingual learning path for software Business Analysts who need to use AI responsibly, improve BA artifacts, and specify AI-enabled products with expert judgment."
     : "Learning path song ngữ chuyên sâu cho software Business Analyst muốn dùng AI có trách nhiệm, cải thiện artifact BA và đặc tả sản phẩm có AI bằng judgment của chuyên gia.";
-  const sectionCards = Object.values(sections)
-    .map(([en, vi]) => `<div class="course-card"><strong>${isEn ? en : vi}</strong>${isEn ? "Distinct lessons with diagrams, artifacts, prompts, and review controls." : "Bài học riêng biệt với diagram, artifact, prompt và review control."}</div>`)
+  const sectionCards = Object.entries(sections)
+    .map(([key, [en, vi]]) => `<div class="course-card"><strong>${isEn ? en : vi}</strong>${sectionSummaries[key][locale]}</div>`)
     .join("\n");
+  const abilityList = isEn
+    ? [
+        "Explain AI concepts without hype and without unnecessary ML math.",
+        "Use AI to improve discovery, synthesis, requirements, diagrams, and review.",
+        "Build reusable prompt/context patterns for a BA team.",
+        "Specify AI-enabled features with uncertainty, evaluation, human review, fallback, and monitoring.",
+        "Lead AI adoption with governance, quality gates, metrics, and operating model."
+      ]
+    : [
+        "Giải thích concept AI rõ ràng, không hype và không cần ML math quá sâu.",
+        "Dùng AI để cải thiện discovery, synthesis, requirement, diagram và review.",
+        "Xây prompt/context pattern tái sử dụng cho BA team.",
+        "Đặc tả AI-enabled feature có uncertainty, evaluation, human review, fallback và monitoring.",
+        "Dẫn dắt AI adoption bằng governance, quality gate, metric và operating model."
+      ];
+  const startSteps = isEn
+    ? [
+        "Read lessons 01-05 for AI foundations.",
+        "Practice lessons 06-17 to improve BA workflow and artifacts.",
+        "Study lessons 18-20 for AI-enabled product requirements and BA leadership.",
+        "Use the project use cases to adapt AI workflows to real delivery situations.",
+        "Use the labs and resource library on your real backlog."
+      ]
+    : [
+        "Đọc bài 01-05 để nắm nền tảng AI.",
+        "Thực hành bài 06-17 để cải thiện BA workflow và artifact.",
+        "Học bài 18-20 để đặc tả AI-enabled product và BA leadership.",
+        "Dùng project use case để áp dụng AI workflow vào tình huống delivery thật.",
+        "Dùng lab và resource library trên backlog thật của bạn."
+      ];
 
   return `---
 title: ${yamlString(title)}
@@ -4176,21 +4701,21 @@ flowchart LR
     F --> G["Governance and adoption"]
 \`\`\`
 
+## ${isEn ? "Role-based learning paths" : "Learning path theo vai trò"}
+
+${roleLearningPaths(locale)}
+
 ## What you will be able to do
 
-- Explain AI concepts without hype and without unnecessary ML math.
-- Use AI to improve discovery, synthesis, requirements, diagrams, and review.
-- Build reusable prompt/context patterns for a BA team.
-- Specify AI-enabled features with uncertainty, evaluation, human review, fallback, and monitoring.
-- Lead AI adoption with governance, quality gates, metrics, and operating model.
+${list(abilityList)}
 
 ## Start here
 
-1. Read lessons 01-05 for AI foundations.
-2. Practice lessons 06-17 to improve BA workflow and artifacts.
-3. Study lessons 18-20 for AI-enabled product requirements and BA leadership.
-4. Use the project use cases to adapt AI workflows to real delivery situations.
-5. Use the labs and resource library on your real backlog.
+${numbered(startSteps)}
+
+## ${isEn ? "Capstone project simulations" : "Capstone mô phỏng dự án"}
+
+${capstones.map((capstone) => `- [${capstone[locale].title}](./capstones/${capstone.slug}/) - ${capstone[locale].summary}`).join("\n")}
 `;
 }
 
@@ -4209,8 +4734,196 @@ ${isEn ? "Use this optional mode when you want to move through the course like a
 `;
 }
 
+const resourceTemplates = [
+  {
+    slug: "ai-feature-requirement-template",
+    en: {
+      title: "AI Feature Requirement Template",
+      purpose: "Use this when a feature contains model output, generated recommendations, classification, summarization, retrieval, or AI-assisted decisions.",
+      rows: [["User goal", "Who uses the AI output, for what decision, and what business outcome should improve?"], ["AI task boundary", "What the AI may do, what it must not do, and when deterministic rules are preferred."], ["Inputs and prohibited inputs", "Allowed sources, PII handling, sensitive fields, and data retention expectations."], ["Output contract", "Format, required fields, confidence behavior, explanation, citation, and unsupported-claim label."], ["Human review and fallback", "Triggers, reviewer role, escalation path, refusal message, correction capture, and audit."], ["Evaluation and monitoring", "Test set, quality rubric, telemetry, drift signal, alert threshold, and release gate."]],
+      prompt: "Create an AI feature requirement using the template. Ask for missing context first. Separate facts, assumptions, decisions needed, and unsupported claims."
+    },
+    vi: {
+      title: "Template requirement cho AI feature",
+      purpose: "Dùng khi feature có model output, recommendation, classification, summarization, retrieval hoặc AI-assisted decision.",
+      rows: [["User goal", "Ai dùng output AI, cho decision nào, và business outcome nào cần cải thiện?"], ["AI task boundary", "AI được làm gì, không được làm gì, khi nào nên dùng deterministic rule."], ["Input và prohibited input", "Allowed source, PII handling, sensitive field và data retention expectation."], ["Output contract", "Format, required field, confidence behavior, explanation, citation và unsupported-claim label."], ["Human review và fallback", "Trigger, reviewer role, escalation path, refusal message, correction capture và audit."], ["Evaluation và monitoring", "Test set, quality rubric, telemetry, drift signal, alert threshold và release gate."]],
+      prompt: "Tạo requirement cho AI feature theo template. Hỏi missing context trước. Tách fact, assumption, decision needed và unsupported claim."
+    }
+  },
+  {
+    slug: "acceptance-criteria-quality-rubric",
+    en: {
+      title: "Acceptance Criteria Quality Rubric",
+      purpose: "Use this to review AI-generated or human-written acceptance criteria before sprint refinement.",
+      rows: [["Actor and trigger", "The user, role, system event, or scheduled trigger is explicit."], ["Business rule", "Thresholds, permissions, calculations, and policy constraints are testable."], ["Data and state", "Required fields, lifecycle state, preconditions, and invalid data are covered."], ["Negative and edge cases", "Boundary, failure, exception, and permission scenarios are included."], ["NFR and observability", "Performance, security, audit, accessibility, localization, or analytics expectations are stated when relevant."], ["Evidence", "Each criterion traces to source, stakeholder decision, or labeled assumption."]],
+      prompt: "Review these acceptance criteria with the rubric. Return defects by severity, missing cases, testability gaps, and rewrite candidates without inventing policy."
+    },
+    vi: {
+      title: "Rubric chất lượng acceptance criteria",
+      purpose: "Dùng để review acceptance criteria do AI hoặc con người viết trước sprint refinement.",
+      rows: [["Actor và trigger", "User, role, system event hoặc scheduled trigger explicit."], ["Business rule", "Threshold, permission, calculation và policy constraint test được."], ["Data và state", "Required field, lifecycle state, precondition và invalid data được cover."], ["Negative và edge case", "Boundary, failure, exception và permission scenario được thêm."], ["NFR và observability", "Performance, security, audit, accessibility, localization hoặc analytics được nêu khi relevant."], ["Evidence", "Mỗi criterion trace về source, stakeholder decision hoặc assumption có label."]],
+      prompt: "Review acceptance criteria này bằng rubric. Trả về defect theo severity, missing case, testability gap và rewrite candidate mà không invent policy."
+    }
+  },
+  {
+    slug: "ui-state-requirement-template",
+    en: {
+      title: "UI State Requirement Template",
+      purpose: "Use this when translating Figma, wireframes, or a screen idea into implementable frontend requirements.",
+      rows: [["Screen purpose", "Primary user goal, entry point, and decision the screen supports."], ["State inventory", "Loading, empty, success, error, partial data, permission denied, offline, and validation states."], ["Control behavior", "Visible, hidden, disabled, read-only, default, tooltip, and confirmation behavior by role and state."], ["Copy and recovery", "Error message, empty-state guidance, support path, retry, and next best action."], ["Responsive and accessibility", "Mobile layout, keyboard behavior, focus order, labels, announcements, and contrast expectations."], ["Backend dependency", "API call, field source, cache, timeout, partial failure, and audit requirement."]],
+      prompt: "Convert this UI concept into a UI state requirement table. Include roles, states, controls, copy, backend dependency, acceptance criteria, and open questions for UX/product/frontend/backend/QA."
+    },
+    vi: {
+      title: "Template requirement cho UI state",
+      purpose: "Dùng khi chuyển Figma, wireframe hoặc screen idea thành frontend requirement implement được.",
+      rows: [["Screen purpose", "Primary user goal, entry point và decision mà screen hỗ trợ."], ["State inventory", "Loading, empty, success, error, partial data, permission denied, offline và validation state."], ["Control behavior", "Visible, hidden, disabled, read-only, default, tooltip và confirmation behavior theo role/state."], ["Copy và recovery", "Error message, empty-state guidance, support path, retry và next best action."], ["Responsive và accessibility", "Mobile layout, keyboard behavior, focus order, label, announcement và contrast expectation."], ["Backend dependency", "API call, field source, cache, timeout, partial failure và audit requirement."]],
+      prompt: "Chuyển UI concept này thành bảng UI state requirement. Bao gồm role, state, control, copy, backend dependency, acceptance criteria và open question cho UX/product/frontend/backend/QA."
+    }
+  },
+  {
+    slug: "api-contract-checklist",
+    en: {
+      title: "API Contract Checklist",
+      purpose: "Use this when a BA must align frontend needs, backend constraints, QA expectations, and business rules around an API.",
+      rows: [["Endpoint purpose", "Business action, consumer, producer, and user-facing outcome."], ["Request schema", "Required fields, optional fields, validation rules, enums, dates, IDs, and examples."], ["Response schema", "Success payload, partial success, empty result, pagination, sorting, and metadata."], ["Errors and recovery", "Error taxonomy, message ownership, retry, timeout, idempotency, and fallback behavior."], ["Security and audit", "Authentication, authorization, RBAC, PII, audit event, rate limit, and abuse cases."], ["Versioning and compatibility", "Backward compatibility, deprecation, feature flags, and migration expectations."]],
+      prompt: "Review this API contract from a BA perspective. Identify missing business rules, schema gaps, error cases, security requirements, QA scenarios, and frontend impact."
+    },
+    vi: {
+      title: "Checklist API contract",
+      purpose: "Dùng khi BA cần align frontend need, backend constraint, QA expectation và business rule quanh API.",
+      rows: [["Endpoint purpose", "Business action, consumer, producer và user-facing outcome."], ["Request schema", "Required field, optional field, validation rule, enum, date, ID và example."], ["Response schema", "Success payload, partial success, empty result, pagination, sorting và metadata."], ["Error và recovery", "Error taxonomy, message ownership, retry, timeout, idempotency và fallback behavior."], ["Security và audit", "Authentication, authorization, RBAC, PII, audit event, rate limit và abuse case."], ["Versioning và compatibility", "Backward compatibility, deprecation, feature flag và migration expectation."]],
+      prompt: "Review API contract này dưới góc BA. Identify missing business rule, schema gap, error case, security requirement, QA scenario và frontend impact."
+    }
+  },
+  {
+    slug: "rag-knowledge-contract-canvas",
+    en: {
+      title: "RAG Knowledge Contract Canvas",
+      purpose: "Use this before specifying a knowledge assistant, policy assistant, support assistant, or document Q&A feature.",
+      rows: [["Source inventory", "Approved sources, owners, update cadence, effective dates, and excluded sources."], ["Authority and conflicts", "Priority order, conflict warnings, policy override rules, and decision owner."], ["Access control", "Role-based retrieval, document sensitivity, tenant boundary, and no-leakage test cases."], ["Citation behavior", "Citation display, source snippet, confidence, unsupported answer, and freshness signal."], ["Fallback", "No-answer behavior, escalation path, human review trigger, and support handoff."], ["Retrieval evaluation", "Representative questions, expected source, wrong-source cases, and retrieval quality metric."]],
+      prompt: "Create a RAG knowledge contract for this assistant. Include source authority, freshness, access control, citation, conflict handling, fallback, retrieval metrics, and test questions."
+    },
+    vi: {
+      title: "Canvas RAG knowledge contract",
+      purpose: "Dùng trước khi đặc tả knowledge assistant, policy assistant, support assistant hoặc document Q&A feature.",
+      rows: [["Source inventory", "Approved source, owner, update cadence, effective date và excluded source."], ["Authority và conflict", "Priority order, conflict warning, policy override rule và decision owner."], ["Access control", "Role-based retrieval, document sensitivity, tenant boundary và no-leakage test case."], ["Citation behavior", "Citation display, source snippet, confidence, unsupported answer và freshness signal."], ["Fallback", "No-answer behavior, escalation path, human review trigger và support handoff."], ["Retrieval evaluation", "Representative question, expected source, wrong-source case và retrieval quality metric."]],
+      prompt: "Tạo RAG knowledge contract cho assistant này. Bao gồm source authority, freshness, access control, citation, conflict handling, fallback, retrieval metric và test question."
+    }
+  },
+  {
+    slug: "prompt-review-checklist",
+    en: {
+      title: "Prompt Review Checklist",
+      purpose: "Use this before turning a one-off prompt into a reusable team prompt or workflow.",
+      rows: [["Role and goal", "The prompt names the BA role, business goal, user, and decision context."], ["Source boundaries", "The prompt says which sources may be used and what to do when evidence is missing."], ["Output contract", "The result format, required columns, severity labels, and validation questions are defined."], ["Safety and privacy", "The prompt excludes confidential data, PII, unsafe instructions, and unsupported claims."], ["Critique step", "The model must review its own output for ambiguity, conflict, gaps, and hallucination."], ["Reuse notes", "Inputs, assumptions, examples, and known failure modes are documented for the BA team."]],
+      prompt: "Review this prompt for BA team reuse. Score role clarity, source boundaries, output contract, safety, critique step, and failure modes. Suggest a stronger version."
+    },
+    vi: {
+      title: "Checklist review prompt",
+      purpose: "Dùng trước khi biến prompt one-off thành reusable team prompt hoặc workflow.",
+      rows: [["Role và goal", "Prompt nêu BA role, business goal, user và decision context."], ["Source boundary", "Prompt nói source nào được dùng và làm gì khi thiếu evidence."], ["Output contract", "Result format, required column, severity label và validation question được define."], ["Safety và privacy", "Prompt exclude confidential data, PII, unsafe instruction và unsupported claim."], ["Critique step", "Model phải review output của nó về ambiguity, conflict, gap và hallucination."], ["Reuse note", "Input, assumption, example và known failure mode được document cho BA team."]],
+      prompt: "Review prompt này để BA team reuse. Chấm role clarity, source boundary, output contract, safety, critique step và failure mode. Đề xuất version tốt hơn."
+    }
+  },
+  {
+    slug: "ai-risk-human-review-matrix",
+    en: {
+      title: "AI Risk and Human Review Matrix",
+      purpose: "Use this to decide when AI output can proceed, when it needs review, and when it must fallback or escalate.",
+      rows: [["Low risk", "Drafting, summarization, formatting, or brainstorming from non-sensitive sources with BA review."], ["Medium risk", "Requirements, customer-facing text, support recommendations, or source-grounded answers with named reviewer."], ["High risk", "Legal, financial, medical, employment, access control, pricing, compliance, or irreversible decisions."], ["Review trigger", "Low confidence, missing citation, conflict, PII, sensitive user group, high-value transaction, or user harm risk."], ["Fallback", "Explain limitation, ask for more context, route to human, log reason, and avoid invented answers."], ["Audit", "Store source, output, reviewer decision, correction, timestamp, and unresolved risk."]],
+      prompt: "Classify this AI workflow by risk tier. Define human review triggers, fallback behavior, audit needs, owners, and acceptance criteria for each tier."
+    },
+    vi: {
+      title: "Matrix AI risk và human review",
+      purpose: "Dùng để quyết định khi nào output AI được đi tiếp, cần review, hoặc phải fallback/escalate.",
+      rows: [["Low risk", "Drafting, summarization, formatting hoặc brainstorming từ non-sensitive source có BA review."], ["Medium risk", "Requirement, customer-facing text, support recommendation hoặc source-grounded answer có reviewer rõ."], ["High risk", "Legal, financial, medical, employment, access control, pricing, compliance hoặc irreversible decision."], ["Review trigger", "Low confidence, missing citation, conflict, PII, sensitive user group, high-value transaction hoặc user harm risk."], ["Fallback", "Giải thích limitation, hỏi thêm context, route to human, log reason và tránh invented answer."], ["Audit", "Lưu source, output, reviewer decision, correction, timestamp và unresolved risk."]],
+      prompt: "Classify AI workflow này theo risk tier. Define human review trigger, fallback behavior, audit need, owner và acceptance criteria cho từng tier."
+    }
+  },
+  {
+    slug: "decision-log-template",
+    en: {
+      title: "Decision Log Template",
+      purpose: "Use this when AI-assisted analysis produces options, trade-offs, or open questions that require human accountability.",
+      rows: [["Decision", "The exact decision needed, not just a topic or discussion area."], ["Options", "Viable alternatives, including non-AI or lower-risk options."], ["Evidence", "Source IDs, data points, stakeholder statements, assumptions, and unsupported claims."], ["Impact", "Scope, cost, timeline, user experience, operations, risk, and downstream artifacts affected."], ["Owner and due date", "The accountable person and the date by which delivery needs the decision."], ["Outcome", "Approved choice, rationale, conditions, follow-up actions, and revisit trigger."]],
+      prompt: "Create a decision log from this analysis. Separate decisions, options, evidence, assumptions, impact, owner, due date, and follow-up actions."
+    },
+    vi: {
+      title: "Template decision log",
+      purpose: "Dùng khi AI-assisted analysis tạo option, trade-off hoặc open question cần human accountability.",
+      rows: [["Decision", "Decision chính xác cần có, không chỉ topic thảo luận."], ["Options", "Alternative khả thi, gồm non-AI hoặc option ít rủi ro hơn."], ["Evidence", "Source ID, data point, stakeholder statement, assumption và unsupported claim."], ["Impact", "Scope, cost, timeline, user experience, operations, risk và downstream artifact bị ảnh hưởng."], ["Owner và due date", "Người accountable và ngày delivery cần decision."], ["Outcome", "Approved choice, rationale, condition, follow-up action và revisit trigger."]],
+      prompt: "Tạo decision log từ analysis này. Tách decision, option, evidence, assumption, impact, owner, due date và follow-up action."
+    }
+  },
+  {
+    slug: "definition-of-ready-done-ai-ba",
+    en: {
+      title: "Definition of Ready and Done for AI-Augmented BA Work",
+      purpose: "Use this to define quality gates before AI-assisted BA artifacts enter refinement, build, test, or release decisions.",
+      rows: [["Ready: source pack", "Sources have IDs, owners, dates, approval status, and sensitivity labels."], ["Ready: task boundary", "The AI task, output format, constraints, and prohibited assumptions are explicit."], ["Ready: decision owner", "Open questions and approvals have owners and target dates."], ["Done: evidence review", "Facts, assumptions, unsupported claims, and decisions are separated."], ["Done: receiving-team fit", "Product, engineering, QA, UX, operations, or governance can act from the artifact."], ["Done: risk control", "NFR, privacy, access, monitoring, fallback, and human review controls are included when relevant."]],
+      prompt: "Evaluate this BA artifact against Definition of Ready and Done for AI-assisted work. Return pass/fail, gaps, remediation steps, and questions for stakeholders."
+    },
+    vi: {
+      title: "Definition of Ready và Done cho AI-augmented BA work",
+      purpose: "Dùng để định nghĩa quality gate trước khi AI-assisted BA artifact đi vào refinement, build, test hoặc release decision.",
+      rows: [["Ready: source pack", "Source có ID, owner, date, approval status và sensitivity label."], ["Ready: task boundary", "AI task, output format, constraint và prohibited assumption explicit."], ["Ready: decision owner", "Open question và approval có owner và target date."], ["Done: evidence review", "Fact, assumption, unsupported claim và decision được tách riêng."], ["Done: receiving-team fit", "Product, engineering, QA, UX, operations hoặc governance có thể hành động từ artifact."], ["Done: risk control", "NFR, privacy, access, monitoring, fallback và human review control được thêm khi relevant."]],
+      prompt: "Evaluate BA artifact này theo Definition of Ready và Done cho AI-assisted work. Trả về pass/fail, gap, remediation step và question cho stakeholder."
+    }
+  }
+];
+
+function resourceTemplatePage(template, locale) {
+  const isEn = locale === "en";
+  const item = template[locale];
+  const tableHeaders = isEn ? ["Section", "What to capture"] : ["Section", "Nội dung cần capture"];
+
+  return `---
+title: ${yamlString(item.title)}
+description: ${yamlString(item.purpose)}
+---
+
+# ${item.title}
+
+${item.purpose}
+
+## Template
+
+${artifactTable(tableHeaders, item.rows)}
+
+## How to use it
+
+${numbered(
+  isEn
+    ? [
+        "Prepare source evidence before asking AI to draft the artifact.",
+        "Ask AI to label facts, assumptions, unsupported claims, and decisions needed.",
+        "Review the result manually with the receiving team.",
+        "Convert open risks into validation questions, owner assignments, or backlog items."
+      ]
+    : [
+        "Chuẩn bị source evidence trước khi yêu cầu AI draft artifact.",
+        "Yêu cầu AI label fact, assumption, unsupported claim và decision needed.",
+        "Review result thủ công với receiving team.",
+        "Chuyển open risk thành validation question, owner assignment hoặc backlog item."
+      ]
+)}
+
+## AI prompt
+
+\`\`\`text
+${item.prompt}
+\`\`\`
+`;
+}
+
 function resourceIndex(locale) {
   const isEn = locale === "en";
+  const templateLinks = resourceTemplates
+    .map((template) => {
+      const item = template[locale];
+      return `<a class="template-card" href="./${template.slug}"><strong>${item.title}</strong><span>${item.purpose}</span></a>`;
+    })
+    .join("\n");
   return `---
 title: ${yamlString(isEn ? "Resource Library" : "Thư viện tài nguyên")}
 ---
@@ -4224,6 +4937,12 @@ ${isEn ? "Reusable playbooks for BA work with AI." : "Playbook tái sử dụng 
 - [${isEn ? "Prompt Playbook" : "Prompt playbook"}](./prompt-library)
 - [${isEn ? "Checklists and Rubrics" : "Checklist và rubric"}](./checklists)
 - [Glossary](./glossary)
+
+## ${isEn ? "Project-ready templates" : "Template dùng trong dự án"}
+
+<div class="template-grid">
+${templateLinks}
+</div>
 
 ## Resource map
 
@@ -4409,6 +5128,12 @@ function readme() {
   const syllabusRows = lessons
     .map((lesson, index) => `| ${String(index + 1).padStart(2, "0")} | ${lesson.en.title} | ${lesson.vi.title} |`)
     .join("\n");
+  const capstoneRows = capstones
+    .map((capstone, index) => `| ${index + 1} | ${capstone.en.title} | ${capstone.vi.title} |`)
+    .join("\n");
+  const templateRows = resourceTemplates
+    .map((template) => `| ${template.en.title} | ${template.vi.title} |`)
+    .join("\n");
 
   return `# AI for Business Analysts
 
@@ -4416,6 +5141,8 @@ function readme() {
 [![Tiếng Việt](https://img.shields.io/badge/lang-Ti%E1%BA%BFng%20Vi%E1%BB%87t-red)](https://anhtnt90dev.github.io/ai-for-ba/vi/)
 [![Lessons](https://img.shields.io/badge/lessons-20-0f766e)](#syllabus)
 [![Labs](https://img.shields.io/badge/labs-6-b45309)](#labs)
+[![Capstones](https://img.shields.io/badge/capstones-3-1d4ed8)](#capstones)
+[![Templates](https://img.shields.io/badge/templates-9-0f766e)](#resource-templates)
 [![GitHub Pages](https://img.shields.io/badge/docs-GitHub%20Pages-2562eb)](https://anhtnt90dev.github.io/ai-for-ba/)
 
 A bilingual, artifact-driven course for software Business Analysts who need to understand AI, use AI to improve BA work, and specify AI-enabled products responsibly.
@@ -4428,11 +5155,14 @@ A bilingual, artifact-driven course for software Business Analysts who need to u
 - Every lesson includes a concrete BA artifact: matrix, rubric, canvas, checklist, or specification table.
 - Every lesson now has a lesson-specific BA relevance section, expert AI review note, and bad-vs-better practice examples.
 - Every theory lesson explains common BA difficulties, real project application, and what breaks when the capability is missing.
+- Every theory lesson includes a senior BA practice pack: stakeholder questions, decision-log entries, Definition of Ready/Done, before/after artifact examples, and manual verification checks.
 - Lessons include mistakes to avoid and actions to apply tomorrow.
 - Labs include input samples, exercise steps, expected deliverables, and review rubrics.
+- The course overview now includes role-based learning paths for new BAs, senior delivery BAs, frontend/UI BAs, backend/API BAs, AI product BAs, and BA leads.
+- The course includes three capstone project simulations for discovery-to-delivery, frontend-backend contract readiness, and AI assistant governance.
 - Pixel Quest is now the fullscreen root landing experience; learners can click quest nodes to open lessons, with movement, XP, levels, and Pixel Agents MIT character sprites sourced from the public GitHub repository pixel-agents-hq/pixel-agents.
-- The site includes 70+ detailed project use cases across discovery, requirements, frontend/UI, backend/API, data integration, delivery, AI products, domain workflows, and governance.
-- Resources are upgraded into practical playbooks for prompts, quality review, AI feature specification, RAG, and governance.
+- The site includes 70+ detailed project use cases across discovery, requirements, frontend/UI, backend/API, data integration, delivery, AI products, domain workflows, and governance, now with project phase, difficulty, artifact, and risk metadata.
+- Resources are upgraded into practical playbooks and reusable project templates for prompts, UI states, API contracts, AI feature specs, RAG, risk review, decision logs, and Definition of Ready/Done.
 
 ## Learning Path
 
@@ -4461,6 +5191,12 @@ ${syllabusRows}
 5. RAG assistant requirements
 6. BA team AI adoption roadmap
 
+## Capstones
+
+| # | English | Tiếng Việt |
+| --- | --- | --- |
+${capstoneRows}
+
 ## Project Use Cases
 
 The use case library includes 70+ detailed, bilingual project scenarios with context, BA challenge, AI-fit boundary, workflow, diagram, deliverables, prompts, review checklist, and risk controls.
@@ -4474,6 +5210,12 @@ The use case library includes 70+ detailed, bilingual project scenarios with con
 - AI-enabled product use cases
 - Domain project scenarios
 - Governance and adoption
+
+## Resource Templates
+
+| English | Tiếng Việt |
+| --- | --- |
+${templateRows}
 
 ## Local Preview
 
@@ -4523,6 +5265,14 @@ for (const lab of labs) {
   write(`docs/vi/labs/${lab.slug}/index.md`, labPage(lab, "vi"));
 }
 
+write("docs/en/capstones/index.md", capstoneIndex("en"));
+write("docs/vi/capstones/index.md", capstoneIndex("vi"));
+
+for (const capstone of capstones) {
+  write(`docs/en/capstones/${capstone.slug}/index.md`, capstonePage(capstone, "en"));
+  write(`docs/vi/capstones/${capstone.slug}/index.md`, capstonePage(capstone, "vi"));
+}
+
 write("docs/en/use-cases/index.md", useCaseIndex("en"));
 write("docs/vi/use-cases/index.md", useCaseIndex("vi"));
 
@@ -4539,6 +5289,12 @@ write("docs/vi/resources/index.md", resourceIndex("vi"));
 write("docs/vi/resources/prompt-library.md", promptLibrary("vi"));
 write("docs/vi/resources/checklists.md", checklists("vi"));
 write("docs/vi/resources/glossary.md", glossary("vi"));
+
+for (const template of resourceTemplates) {
+  write(`docs/en/resources/${template.slug}.md`, resourceTemplatePage(template, "en"));
+  write(`docs/vi/resources/${template.slug}.md`, resourceTemplatePage(template, "vi"));
+}
+
 write("README.md", readme());
 
 console.log("Seeded deeper AI for BA course content with project use cases.");

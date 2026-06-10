@@ -8,6 +8,9 @@ description: "BA phải đảm bảo data model field represent đúng business 
 <div class="case-meta">
   <span>Data and Integration</span>
   <span>Data model alignment</span>
+  <span>Data and integration</span>
+  <span>Advanced</span>
+  <span>Field definition catalog</span>
   <span>Use case dự án</span>
 </div>
 

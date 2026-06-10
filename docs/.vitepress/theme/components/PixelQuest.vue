@@ -26,6 +26,8 @@ const text = computed(() =>
         completed: "đã hoàn thành",
         xpLabel: "XP",
         levelLabel: "Level",
+        currentLocation: "Đang đứng tại",
+        recommendedNext: "Quest nên học tiếp",
         nextQuest: "Quest kế tiếp",
         start: "Mở bài học",
         mark: "Đánh dấu hoàn thành",
@@ -42,6 +44,11 @@ const text = computed(() =>
         mentorLine: "Mỗi cổng là một quality gate. Bạn chỉ mở được vùng mới khi artifact ở vùng trước đã đủ rõ để team delivery dùng được.",
         fullGame: "Mở trang game đầy đủ",
         classicView: "Xem course truyền thống",
+        returned: "Đã quay lại map",
+        xpRecorded: "+120 XP đã được ghi nhận cho bài này.",
+        questReady: "Bạn đang ở đúng ô bài học. Bấm Space để vào lại bài.",
+        continueQuest: "Vào bài đang chọn",
+        questList: "Xem quest briefing",
         contact: "Liên hệ",
         source: "Sprite nhân vật: Pixel Agents, MIT, từ GitHub repo pixel-agents-hq/pixel-agents."
       }
@@ -53,6 +60,8 @@ const text = computed(() =>
         completed: "completed",
         xpLabel: "XP",
         levelLabel: "Level",
+        currentLocation: "Current location",
+        recommendedNext: "Recommended next",
         nextQuest: "Next quest",
         start: "Open lesson",
         mark: "Mark complete",
@@ -69,6 +78,11 @@ const text = computed(() =>
         mentorLine: "Each gate is a quality gate. You only open the next area when the previous BA artifact is clear enough for delivery teams to use.",
         fullGame: "Open full game page",
         classicView: "Classic course view",
+        returned: "Returned to map",
+        xpRecorded: "+120 XP has been recorded for this lesson.",
+        questReady: "You are back at the lesson tile. Press Space to enter it again.",
+        continueQuest: "Open selected lesson",
+        questList: "View quest briefing",
         contact: "Contact",
         source: "Hero sprite: Pixel Agents, MIT, from the pixel-agents-hq/pixel-agents GitHub repository."
       }
@@ -443,6 +457,8 @@ const playerPosition = ref({ x: quests[0].x, y: quests[0].y });
 const playerDirection = ref("down");
 const isMoving = ref(false);
 const mapRef = ref(null);
+const returnNotice = ref(false);
+const returnNoticeQuestSlug = ref("");
 let moveTimer;
 let animationFrame;
 
@@ -458,6 +474,11 @@ const selectedCopy = computed(() => selectedQuest.value[props.locale] || selecte
 const selectedZone = computed(() => zoneMeta[selectedQuest.value.zone]);
 const nextQuest = computed(() => quests.find((quest, index) => !isComplete(quest.slug) && isUnlocked(index)) || quests[quests.length - 1]);
 const nextQuestCopy = computed(() => nextQuest.value[props.locale] || nextQuest.value.en);
+const returnNoticeQuest = computed(() => questBySlug(returnNoticeQuestSlug.value) || selectedQuest.value);
+const returnNoticeCopy = computed(() => returnNoticeQuest.value[props.locale] || returnNoticeQuest.value.en);
+const returnNoticeMessage = computed(() =>
+  isComplete(returnNoticeQuest.value.slug) ? text.value.xpRecorded : text.value.questReady
+);
 const homeMode = computed(() => props.mode === "home");
 const landingMode = computed(() => props.mode === "landing");
 const questInteractionRadius = 8.5;
@@ -562,6 +583,10 @@ function applyRequestedQuestLocation() {
   }
 
   moveToQuestLocation(requested);
+  if (landingMode.value) {
+    returnNoticeQuestSlug.value = requested.slug;
+    returnNotice.value = true;
+  }
   return true;
 }
 
@@ -810,12 +835,23 @@ onBeforeUnmount(() => {
       <div class="pixel-progress-fill" :style="{ width: `${percent}%` }"></div>
     </div>
 
+    <div v-if="returnNotice" class="pixel-return-banner" role="status" aria-live="polite">
+      <strong>{{ text.returned }}</strong>
+      <span>{{ returnNoticeCopy.title }} · {{ returnNoticeMessage }}</span>
+    </div>
+
     <div class="pixel-layout">
       <div class="pixel-stage">
         <div class="pixel-map-toolbar">
-          <div>
-            <span>{{ text.nextQuest }}</span>
-            <strong>{{ nextQuestCopy.title }}</strong>
+          <div class="pixel-toolbar-info">
+            <div>
+              <span>{{ text.currentLocation }}</span>
+              <strong>{{ selectedCopy.title }}</strong>
+            </div>
+            <div>
+              <span>{{ text.recommendedNext }}</span>
+              <strong>{{ nextQuestCopy.title }}</strong>
+            </div>
           </div>
           <div class="pixel-control-copy">{{ text.controls }}: WASD + Space</div>
         </div>
@@ -888,9 +924,15 @@ onBeforeUnmount(() => {
           <button type="button" @click="movePlayer(0, 4)">S</button>
           <button type="button" @click="movePlayer(4, 0)">D</button>
         </div>
+        <div class="pixel-mobile-actions">
+          <a class="pixel-button primary" :class="{ disabled: !isQuestAccessible(selectedIndex) }" :href="isQuestAccessible(selectedIndex) ? gameLessonHref(selectedQuest.slug) : undefined">
+            {{ text.continueQuest }}
+          </a>
+          <a class="pixel-button subtle" href="#quest-panel">{{ text.questList }}</a>
+        </div>
       </div>
 
-      <aside class="quest-panel">
+      <aside id="quest-panel" class="quest-panel">
         <div class="mentor-card">
           <div class="mentor-avatar"></div>
           <div>
@@ -1093,6 +1135,30 @@ onBeforeUnmount(() => {
   background: repeating-linear-gradient(90deg, var(--pixel-green), var(--pixel-green) 10px, #73bd6f 10px, #73bd6f 20px);
 }
 
+.pixel-return-banner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  align-items: center;
+  margin: 14px 0 0;
+  border: 4px solid var(--pixel-border);
+  padding: 10px 12px;
+  color: var(--pixel-ink);
+  background: #fff8df;
+  box-shadow: 5px 5px 0 rgba(39, 49, 79, 0.16);
+}
+
+.pixel-return-banner strong {
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.pixel-return-banner span {
+  color: #3d4867;
+  font-size: 13px;
+  font-weight: 800;
+}
+
 .pixel-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 360px;
@@ -1116,7 +1182,8 @@ onBeforeUnmount(() => {
 }
 
 .pixel-map-toolbar {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 12px;
   align-items: center;
   justify-content: space-between;
@@ -1125,6 +1192,13 @@ onBeforeUnmount(() => {
   padding: 10px 12px;
   background: #fffaf0;
   box-shadow: 5px 5px 0 rgba(39, 49, 79, 0.14);
+}
+
+.pixel-toolbar-info {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  min-width: 0;
 }
 
 .pixel-map-toolbar span,
@@ -1519,6 +1593,12 @@ onBeforeUnmount(() => {
   font-weight: 900;
 }
 
+.pixel-mobile-actions {
+  display: none;
+  gap: 10px;
+  margin-top: 12px;
+}
+
 .quest-panel {
   padding: 18px;
   background: #fffaf0;
@@ -1708,11 +1788,21 @@ onBeforeUnmount(() => {
   }
 
   .pixel-map-toolbar {
-    display: block;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .pixel-toolbar-info {
+    grid-template-columns: 1fr;
   }
 
   .pixel-control-copy {
     margin-top: 8px;
+  }
+
+  .pixel-mobile-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .pixel-map {
@@ -1754,6 +1844,10 @@ onBeforeUnmount(() => {
   .pixel-avatar {
     transform: scale(0.82);
     transform-origin: center bottom;
+  }
+
+  .pixel-mobile-actions {
+    grid-template-columns: 1fr;
   }
 
   .pixel-npc small {

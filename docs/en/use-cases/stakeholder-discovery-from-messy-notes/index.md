@@ -8,6 +8,9 @@ description: "The BA must preserve nuance while turning raw notes into themes, c
 <div class="case-meta">
   <span>Discovery and alignment</span>
   <span>Cross-functional product discovery</span>
+  <span>Discovery</span>
+  <span>Core</span>
+  <span>Discovery synthesis pack</span>
   <span>Project use case</span>
 </div>
 

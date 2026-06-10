@@ -8,6 +8,9 @@ description: "The BA must specify AI-assisted document extraction and validation
 <div class="case-meta">
   <span>AI-enabled product use cases</span>
   <span>Document automation</span>
+  <span>AI product design</span>
+  <span>Advanced</span>
+  <span>Extraction schema</span>
   <span>Project use case</span>
 </div>
 

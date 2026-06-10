@@ -8,6 +8,9 @@ description: "The BA must turn broad market signals into product-relevant hypoth
 <div class="case-meta">
   <span>Discovery and alignment</span>
   <span>Product strategy</span>
+  <span>Discovery</span>
+  <span>Core</span>
+  <span>Research synthesis memo</span>
   <span>Project use case</span>
 </div>
 

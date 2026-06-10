@@ -8,6 +8,9 @@ description: "BA phải cung cấp cho QA behavior traceable, không chỉ story
 <div class="case-meta">
   <span>Cross-functional BA Collaboration</span>
   <span>BA and QA</span>
+  <span>Cross-functional alignment</span>
+  <span>Practitioner</span>
+  <span>QA handoff matrix</span>
   <span>Use case dự án</span>
 </div>
 

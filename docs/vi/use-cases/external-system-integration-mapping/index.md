@@ -8,6 +8,9 @@ description: "BA phải map integration behavior end to end để team biết da
 <div class="case-meta">
   <span>Data and Integration</span>
   <span>External integrations</span>
+  <span>Data and integration</span>
+  <span>Advanced</span>
+  <span>Integration inventory</span>
   <span>Use case dự án</span>
 </div>
 

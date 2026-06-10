@@ -8,6 +8,9 @@ description: "The BA must specify scheduled process behavior that users may neve
 <div class="case-meta">
   <span>Backend and API</span>
   <span>Scheduled processing</span>
+  <span>Backend/API refinement</span>
+  <span>Practitioner</span>
+  <span>Batch process spec</span>
   <span>Project use case</span>
 </div>
 

@@ -8,6 +8,9 @@ description: "BA phải đặc tả intake flow cải thiện speed nhưng khôn
 <div class="case-meta">
   <span>Domain project scenarios</span>
   <span>Insurance</span>
+  <span>Domain workflow</span>
+  <span>Core</span>
+  <span>Claim intake flow</span>
   <span>Use case dự án</span>
 </div>
 

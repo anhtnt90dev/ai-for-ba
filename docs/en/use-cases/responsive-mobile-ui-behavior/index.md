@@ -8,6 +8,9 @@ description: "The BA must specify responsive behavior as requirements, not leave
 <div class="case-meta">
   <span>Frontend, UI, and UX</span>
   <span>Responsive design</span>
+  <span>Frontend/UI refinement</span>
+  <span>Practitioner</span>
+  <span>Responsive behavior matrix</span>
   <span>Project use case</span>
 </div>
 

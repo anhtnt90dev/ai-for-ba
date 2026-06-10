@@ -8,6 +8,9 @@ description: "The BA must define service catalog, request forms, approval rules,
 <div class="case-meta">
   <span>Domain project scenarios</span>
   <span>HR service delivery</span>
+  <span>Domain workflow</span>
+  <span>Core</span>
+  <span>Service catalog</span>
   <span>Project use case</span>
 </div>
 

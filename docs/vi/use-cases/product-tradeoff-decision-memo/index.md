@@ -8,6 +8,9 @@ description: "BA phải present trade-off rõ qua user value, delivery cost, ris
 <div class="case-meta">
   <span>Cross-functional BA Collaboration</span>
   <span>Product decisions</span>
+  <span>Cross-functional alignment</span>
+  <span>Practitioner</span>
+  <span>Decision memo</span>
   <span>Use case dự án</span>
 </div>
 

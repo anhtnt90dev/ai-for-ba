@@ -8,6 +8,9 @@ description: "The BA must help define what data can be used with AI, what must b
 <div class="case-meta">
   <span>Governance and adoption</span>
   <span>Privacy and compliance</span>
+  <span>Governance</span>
+  <span>Advanced</span>
+  <span>AI data-use matrix</span>
   <span>Project use case</span>
 </div>
 

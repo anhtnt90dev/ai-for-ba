@@ -8,6 +8,9 @@ description: "BA phải specify search semantics, filter combination, sorting ru
 <div class="case-meta">
   <span>Data and Integration</span>
   <span>Search experience</span>
+  <span>Data and integration</span>
+  <span>Advanced</span>
+  <span>Search behavior spec</span>
   <span>Use case dự án</span>
 </div>
 

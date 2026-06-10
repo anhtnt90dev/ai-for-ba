@@ -145,6 +145,11 @@ const requiredLessonHeadings = [
   "## BA artifact",
   "## AI expert note",
   "## Bad vs better example",
+  "## Stakeholder questions to ask",
+  "## Decision log entries",
+  "## Definition of Ready / Done",
+  "## Before and after artifact example",
+  "## Manual verification after AI output",
   "## AI collaboration prompt",
   "## Mistakes to avoid",
   "## Apply this tomorrow",
@@ -157,6 +162,18 @@ const requiredLabHeadings = [
   "## Exercise steps",
   "## Deliverables",
   "## Review rubric"
+];
+
+const requiredCapstoneHeadings = [
+  "## Scenario",
+  "## Your role",
+  "## Inputs to prepare",
+  "## Capstone workflow",
+  "## Diagram",
+  "## Expected deliverables",
+  "## AI collaboration prompt",
+  "## Scoring rubric",
+  "## Submission checklist"
 ];
 
 const requiredUseCaseHeadings = [
@@ -198,6 +215,8 @@ assert(exists("docs/en/index.md"), "English course home is required");
 assert(exists("docs/vi/index.md"), "Vietnamese course home is required");
 assert(exists("docs/en/game/index.md"), "English Pixel Quest game page is required");
 assert(exists("docs/vi/game/index.md"), "Vietnamese Pixel Quest game page is required");
+assert(exists("docs/en/capstones/index.md"), "English capstone overview is required");
+assert(exists("docs/vi/capstones/index.md"), "Vietnamese capstone overview is required");
 assert(exists("docs/.vitepress/theme/components/PixelQuest.vue"), "PixelQuest Vue component is required");
 assert(exists("docs/.vitepress/theme/components/LessonCompletion.vue"), "Lesson completion component is required");
 for (let index = 0; index <= 5; index += 1) {
@@ -210,7 +229,11 @@ const vitePressConfig = read("docs/.vitepress/config.mts");
 const themeIndex = read("docs/.vitepress/theme/index.ts");
 const themeCss = read("docs/.vitepress/theme/custom.css");
 assert(vitePressConfig.includes("const useCaseGroups"), "VitePress sidebar must define grouped use case navigation");
+assert(vitePressConfig.includes("const capstones"), "VitePress sidebar must define capstone navigation");
+assert(vitePressConfig.includes("const resourceTemplates"), "VitePress sidebar must define resource template navigation");
 assert(vitePressConfig.includes("function useCaseGroupItems"), "VitePress sidebar must render grouped use case navigation");
+assert(vitePressConfig.includes("function capstoneItems"), "VitePress sidebar must render capstone navigation");
+assert(vitePressConfig.includes("function resourceTemplateItems"), "VitePress sidebar must render resource template navigation");
 assert(!vitePressConfig.includes("...useCaseItems(locale)"), "VitePress sidebar must not render use cases as one flat list");
 assert(vitePressConfig.includes("/en/game/"), "VitePress nav/sidebar must link to the English Pixel Quest game");
 assert(vitePressConfig.includes("/vi/game/"), "VitePress nav/sidebar must link to the Vietnamese Pixel Quest game");
@@ -251,6 +274,10 @@ assert(pixelQuestComponent.includes("landingMode"), "PixelQuest must include a d
 assert(pixelQuestComponent.includes("questHref"), "PixelQuest landing mode must expose quest nodes as lesson links");
 assert(pixelQuestComponent.includes("requestedQuestSlug"), "PixelQuest must restore the player to a requested quest on map return");
 assert(pixelQuestComponent.includes("contactEmail"), "PixelQuest homepage must expose the course contact email");
+assert(pixelQuestComponent.includes("currentLocation"), "PixelQuest must show the player's current lesson location");
+assert(pixelQuestComponent.includes("recommendedNext"), "PixelQuest must show the recommended next quest separately");
+assert(pixelQuestComponent.includes("returnNotice"), "PixelQuest must show a return-to-map notice after completing a lesson");
+assert(pixelQuestComponent.includes("pixel-mobile-actions"), "PixelQuest must include mobile quick actions");
 assert(!themeCss.includes(".game-lesson-mode"), "Theme CSS must not apply a game theme to normal lesson pages");
 assert(!themeCss.includes(".game-lesson-hud"), "Theme CSS must not include lesson HUD styles");
 assert(themeCss.includes(".lesson-completion-panel"), "Theme CSS must style the normal lesson completion panel");
@@ -263,6 +290,8 @@ const enLessons = listDirs("docs/en/lessons");
 const viLessons = listDirs("docs/vi/lessons");
 const enLabs = listDirs("docs/en/labs");
 const viLabs = listDirs("docs/vi/labs");
+const enCapstones = listDirs("docs/en/capstones");
+const viCapstones = listDirs("docs/vi/capstones");
 const enUseCases = listDirs("docs/en/use-cases").filter((slug) => slug !== "index.md");
 const viUseCases = listDirs("docs/vi/use-cases").filter((slug) => slug !== "index.md");
 
@@ -270,10 +299,13 @@ assertEqual(enLessons.length, 20, "English lesson count");
 assertEqual(viLessons.length, 20, "Vietnamese lesson count");
 assertEqual(enLabs.length, 6, "English lab count");
 assertEqual(viLabs.length, 6, "Vietnamese lab count");
+assertEqual(enCapstones.length, 3, "English capstone count");
+assertEqual(viCapstones.length, 3, "Vietnamese capstone count");
 assert(enUseCases.length >= 70, `English use case count must be at least 70, got ${enUseCases.length}`);
 assert(viUseCases.length >= 70, `Vietnamese use case count must be at least 70, got ${viUseCases.length}`);
 assertSameList(viLessons, enLessons, "Lesson slug parity");
 assertSameList(viLabs, enLabs, "Lab slug parity");
+assertSameList(viCapstones, enCapstones, "Capstone slug parity");
 assertSameList(viUseCases, enUseCases, "Use case slug parity");
 
 const enHome = read("docs/en/index.md");
@@ -283,6 +315,10 @@ assert(!enHome.includes("<PixelQuest"), "English course overview must not embed 
 assert(!viHome.includes("<PixelQuest"), "Vietnamese course overview must not embed Pixel Quest");
 assert(!enHome.includes("./game/"), "English course overview must not include a game card");
 assert(!viHome.includes("./game/"), "Vietnamese course overview must not include a game card");
+assert(enHome.includes("Role-based learning paths"), "English course overview must include role-based learning paths");
+assert(viHome.includes("Learning path theo vai trò"), "Vietnamese course overview must include role-based learning paths");
+assert(enHome.includes("/capstones/") || enHome.includes("./capstones/"), "English course overview must link to capstones");
+assert(viHome.includes("/capstones/") || viHome.includes("./capstones/"), "Vietnamese course overview must link to capstones");
 assert(rootHome.includes("pageClass: pixel-game-root"), "Root home page must use the fullscreen pixel-game page class");
 assert(rootHome.includes('<PixelQuest locale="en" mode="landing" />'), "Root home page must default to the English Pixel Quest landing mode");
 assert(pixelQuestComponent.indexOf('languageHref(\'en\')') < pixelQuestComponent.indexOf('languageHref(\'vi\')'), "Pixel Quest landing actions must show English before Vietnamese");
@@ -358,6 +394,23 @@ for (const locale of ["en", "vi"]) {
     assert(content.includes("```mermaid"), `${file} must include a Mermaid diagram`);
   }
 
+  for (const slug of listDirs(`docs/${locale}/capstones`)) {
+    const file = `docs/${locale}/capstones/${slug}/index.md`;
+    assert(exists(file), `${file} is required`);
+    if (!exists(file)) {
+      continue;
+    }
+
+    const content = read(file);
+    for (const heading of requiredCapstoneHeadings) {
+      assert(content.includes(heading), `${file} must include ${heading}`);
+    }
+    assert(wordCount(normalizedText(content)) >= 350, `${file} must contain substantial capstone detail`);
+    assert(content.includes("```mermaid"), `${file} must include a Mermaid workflow diagram`);
+    assert(sectionContent(content, "Expected deliverables").includes("| --- |"), `${file} must include a structured deliverables table`);
+    assert(sectionContent(content, "Scoring rubric").includes("| --- |"), `${file} must include a structured scoring rubric`);
+  }
+
   assert(exists(`docs/${locale}/use-cases/index.md`), `docs/${locale}/use-cases/index.md is required`);
   if (exists(`docs/${locale}/use-cases/index.md`)) {
     const index = read(`docs/${locale}/use-cases/index.md`);
@@ -370,6 +423,8 @@ for (const locale of ["en", "vi"]) {
       index.includes('class="usecase-group-summary"'),
       `docs/${locale}/use-cases/index.md must include a grouped summary navigation block`
     );
+    assert(index.includes('class="usecase-filter-panel"'), `docs/${locale}/use-cases/index.md must include the project context filter panel`);
+    assert(index.includes('class="case-tags"'), `docs/${locale}/use-cases/index.md must include metadata tags on use case cards`);
     for (const [group, minimumCount] of Object.entries(requiredUseCaseGroups)) {
       const escapedGroup = group.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
       const groupCount = (index.match(new RegExp(`<span>${escapedGroup}</span>`, "g"))?.length ?? 0);
@@ -441,12 +496,33 @@ for (const file of [
   assert(exists(file), `${file} is required`);
 }
 
+const resourceTemplateFiles = [
+  "ai-feature-requirement-template.md",
+  "acceptance-criteria-quality-rubric.md",
+  "ui-state-requirement-template.md",
+  "api-contract-checklist.md",
+  "rag-knowledge-contract-canvas.md",
+  "prompt-review-checklist.md",
+  "ai-risk-human-review-matrix.md",
+  "decision-log-template.md",
+  "definition-of-ready-done-ai-ba.md"
+];
+
 for (const locale of ["en", "vi"]) {
   const resourceText = normalizedText(
-    ["index.md", "prompt-library.md", "checklists.md", "glossary.md"]
+    ["index.md", "prompt-library.md", "checklists.md", "glossary.md", ...resourceTemplateFiles]
       .map((file) => (exists(`docs/${locale}/resources/${file}`) ? read(`docs/${locale}/resources/${file}`) : ""))
       .join("\n")
   );
+  for (const file of resourceTemplateFiles) {
+    assert(exists(`docs/${locale}/resources/${file}`), `docs/${locale}/resources/${file} is required`);
+    if (exists(`docs/${locale}/resources/${file}`)) {
+      const templateContent = read(`docs/${locale}/resources/${file}`);
+      assert(templateContent.includes("## Template"), `docs/${locale}/resources/${file} must include a Template section`);
+      assert(templateContent.includes("## AI prompt"), `docs/${locale}/resources/${file} must include an AI prompt section`);
+      assert(templateContent.includes("| --- |"), `docs/${locale}/resources/${file} must include a structured table`);
+    }
+  }
   for (const term of [
     "prompt injection",
     "bias",
@@ -462,7 +538,7 @@ for (const locale of ["en", "vi"]) {
 
 if (exists("docs/.vitepress/theme/custom.css")) {
   const css = read("docs/.vitepress/theme/custom.css");
-  for (const selector of [".usecase-grid", ".case-card", ".case-meta", ".ba-workbench-panel"]) {
+  for (const selector of [".usecase-grid", ".case-card", ".case-meta", ".ba-workbench-panel", ".learning-path-grid", ".template-grid", ".usecase-filter-panel", ".case-tags"]) {
     assert(css.includes(selector), `custom.css must include ${selector} for the BA workbench theme`);
   }
 }

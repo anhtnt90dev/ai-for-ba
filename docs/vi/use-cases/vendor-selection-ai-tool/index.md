@@ -8,6 +8,9 @@ description: "BA lead phải define evaluation criteria cover use-case fit, data
 <div class="case-meta">
   <span>Governance and adoption</span>
   <span>Vendor evaluation</span>
+  <span>Governance</span>
+  <span>Advanced</span>
+  <span>Vendor scorecard</span>
   <span>Use case dự án</span>
 </div>
 

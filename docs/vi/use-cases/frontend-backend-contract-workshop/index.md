@@ -8,6 +8,9 @@ description: "BA phải facilitate contract workshop align screen behavior, API 
 <div class="case-meta">
   <span>Cross-functional BA Collaboration</span>
   <span>Contract workshops</span>
+  <span>Cross-functional alignment</span>
+  <span>Practitioner</span>
+  <span>Workshop agenda</span>
   <span>Use case dự án</span>
 </div>
 

@@ -100,6 +100,50 @@ BA chuyên gia xem model là một component trong product system. Requirement n
 | Dùng demo example làm acceptance criteria | Demo case thường optimistic và không chứng minh production readiness. | Tạo curated evaluation case gồm common, edge, adversarial và fallback scenario. |
 | Bỏ qua monitoring sau launch | AI behavior có thể drift khi data, prompt, source hoặc user behavior thay đổi. | Đặc tả monitoring event, quality metric, review cadence và owner response. |
 
+## Stakeholder questions to ask
+
+| Stakeholder | Câu hỏi | Vì sao BA hỏi |
+| --- | --- | --- |
+| Product owner | Đặc tả tính năng có AI cần cải thiện outcome nào, và trade-off nào có thể chấp nhận? | Ngăn output AI tối ưu cho mục tiêu mơ hồ. |
+| Engineering lead | Source, system, data hoặc constraint nào khiến AI Feature Specification Canvas khó implement? | Biến technical constraint ẩn thành requirement question visible. |
+| QA lead | Rule, exception hoặc user state nào phải test được trước khi tin artifact này? | Chuyển wording trôi chảy của AI thành behavior quan sát được. |
+| Operations hoặc support | Failure path nào tạo manual work nếu nguyên tắc "AI requirement phải mô tả uncertainty" bị bỏ qua? | Làm rõ support load, exception handling và operating impact. |
+
+## Decision log entries
+
+| Decision item | Option cần capture | Owner | Evidence cần có |
+| --- | --- | --- | --- |
+| Scope boundary cho AI Feature Specification Canvas | Must-have, later, out of scope | Product owner | Business outcome và release constraint |
+| Authority cho AI task boundary, evaluation set, human review, fallback, telemetry và harm control | Documented source, stakeholder decision, assumption cần validate | BA + stakeholder chịu trách nhiệm | Source ID, date và approval status |
+| Review gate trước handoff | Peer review, QA review, engineering review, formal approval | BA lead hoặc project lead | Risk level và receiving-team readiness |
+| Cách recover nếu Viết acceptance criteria như thể output AI luôn deterministic. | Rewrite, defer, escalate hoặc validation workshop | Decision owner | Impact lên scope, testability và release risk |
+
+## Definition of Ready / Done
+
+| Gate | Tín hiệu ready | Tín hiệu done |
+| --- | --- | --- |
+| Definition of Ready | Source cho AI task boundary, evaluation set, human review, fallback, telemetry và harm control được label và còn hiệu lực. | AI Feature Specification Canvas có thể review mà không phải đoán missing context. |
+| Definition of Ready | Open assumption có owner và validation path. | Stakeholder có thể accept, reject hoặc defer từng assumption. |
+| Definition of Done | Artifact áp dụng control: đưa confidence, refusal, escalation, correction capture và monitoring vào requirement. | Delivery, QA hoặc governance team có thể hành động dựa trên artifact. |
+| Definition of Done | Pattern yếu "Viết acceptance criteria như thể output AI luôn deterministic." đã được kiểm tra explicit. | Không unsupported AI claim nào bị xem như requirement đã approve. |
+
+## Before and after artifact example
+
+| Before | Risk trong draft AI | Revision của senior BA |
+| --- | --- | --- |
+| Prompt: "Create AI Feature Specification Canvas cho Đặc tả tính năng có AI." | Model có thể tự bịa source fact, owner, threshold hoặc implementation rule. | Thêm source, scope boundary, source authority, output schema và instruction: Định nghĩa supported intent, source rule, output format, confidence threshold và unsupported-question handling. |
+| Draft statement: "Thêm câu hỏi confidence threshold cho một AI feature idea." | Action hữu ích nhưng chưa gắn decision owner hoặc acceptance signal. | Rewrite thành project step có owner, expected artifact, review gate và evidence cần trước handoff. |
+| Paragraph nghe final về AI feature operating contract | Tone có thể che uncertainty và approval còn thiếu. | Chuyển thành bảng fact, assumption, decision needed, risk và validation question. |
+
+## Manual verification after AI output
+
+| Lens kiểm tra | Manual check | Pass signal |
+| --- | --- | --- |
+| Evidence | Trace mọi statement quan trọng trong AI Feature Specification Canvas về source, decision hoặc assumption có label. | Không unsupported claim nào còn bị ẩn. |
+| Completeness | Check AI task boundary, evaluation set, human review, fallback, telemetry và harm control theo intended audience và receiving team. | Artifact trả lời được điều product, engineering, QA và operations cần. |
+| Testability | Hỏi QA có tạo được positive, negative, boundary và exception scenario không. | Wording mơ hồ được rewrite hoặc log thành question. |
+| Accountability | Confirm ai approve, ai review và ai xử lý khi artifact sai. | Owner và escalation path explicit. |
+
 ## AI collaboration prompt
 
 ```text

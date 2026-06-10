@@ -8,6 +8,9 @@ description: "The BA must analyze impact across requirements, processes, systems
 <div class="case-meta">
   <span>Delivery and QA</span>
   <span>Change control</span>
+  <span>Delivery validation</span>
+  <span>Core</span>
+  <span>Impact matrix</span>
   <span>Project use case</span>
 </div>
 

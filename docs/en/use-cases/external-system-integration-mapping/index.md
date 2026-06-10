@@ -8,6 +8,9 @@ description: "The BA must map integration behavior end to end so teams know what
 <div class="case-meta">
   <span>Data and Integration</span>
   <span>External integrations</span>
+  <span>Data and integration</span>
+  <span>Advanced</span>
+  <span>Integration inventory</span>
   <span>Project use case</span>
 </div>
 

@@ -8,6 +8,9 @@ description: "BA phải chuyển mandate mơ hồ thành problem statement chung
 <div class="case-meta">
   <span>Discovery and alignment</span>
   <span>Project initiation</span>
+  <span>Discovery</span>
+  <span>Core</span>
+  <span>Scope framing canvas</span>
   <span>Use case dự án</span>
 </div>
 

@@ -8,6 +8,9 @@ description: "The BA must build a current-state process that shows actors, syste
 <div class="case-meta">
   <span>Discovery and alignment</span>
   <span>Operations analysis</span>
+  <span>Discovery</span>
+  <span>Core</span>
+  <span>Current-state process map</span>
   <span>Project use case</span>
 </div>
 

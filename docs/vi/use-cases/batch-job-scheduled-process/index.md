@@ -8,6 +8,9 @@ description: "BA phải specify scheduled process behavior mà user có thể kh
 <div class="case-meta">
   <span>Backend and API</span>
   <span>Scheduled processing</span>
+  <span>Backend/API refinement</span>
+  <span>Practitioner</span>
+  <span>Batch process spec</span>
   <span>Use case dự án</span>
 </div>
 

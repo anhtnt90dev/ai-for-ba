@@ -8,6 +8,9 @@ description: "BA phải phân tích impact qua requirement, process, system, dat
 <div class="case-meta">
   <span>Delivery and QA</span>
   <span>Change control</span>
+  <span>Delivery validation</span>
+  <span>Core</span>
+  <span>Impact matrix</span>
   <span>Use case dự án</span>
 </div>
 

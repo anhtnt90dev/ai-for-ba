@@ -8,6 +8,9 @@ description: "BA phải đặc tả probabilistic triage behavior, confidence th
 <div class="case-meta">
   <span>AI-enabled product use cases</span>
   <span>Support automation</span>
+  <span>AI product design</span>
+  <span>Advanced</span>
+  <span>Triage taxonomy</span>
   <span>Use case dự án</span>
 </div>
 

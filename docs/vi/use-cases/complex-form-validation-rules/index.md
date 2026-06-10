@@ -8,6 +8,9 @@ description: "BA phải đặc tả validation để frontend và backend implem
 <div class="case-meta">
   <span>Frontend, UI, and UX</span>
   <span>Forms and validation</span>
+  <span>Frontend/UI refinement</span>
+  <span>Practitioner</span>
+  <span>Validation matrix</span>
   <span>Use case dự án</span>
 </div>
 

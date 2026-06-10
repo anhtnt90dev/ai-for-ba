@@ -8,6 +8,9 @@ description: "The BA must create RBAC requirements that are precise enough for b
 <div class="case-meta">
   <span>Backend and API</span>
   <span>Authorization</span>
+  <span>Backend/API refinement</span>
+  <span>Practitioner</span>
+  <span>RBAC matrix</span>
   <span>Project use case</span>
 </div>
 

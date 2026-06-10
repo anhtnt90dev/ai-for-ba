@@ -8,6 +8,9 @@ description: "The BA must provide QA with traceable behavior, not just story tex
 <div class="case-meta">
   <span>Cross-functional BA Collaboration</span>
   <span>BA and QA</span>
+  <span>Cross-functional alignment</span>
+  <span>Practitioner</span>
+  <span>QA handoff matrix</span>
   <span>Project use case</span>
 </div>
 

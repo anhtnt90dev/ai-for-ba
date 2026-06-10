@@ -8,6 +8,9 @@ description: "The BA must specify search semantics, filter combinations, sorting
 <div class="case-meta">
   <span>Data and Integration</span>
   <span>Search experience</span>
+  <span>Data and integration</span>
+  <span>Advanced</span>
+  <span>Search behavior spec</span>
   <span>Project use case</span>
 </div>
 

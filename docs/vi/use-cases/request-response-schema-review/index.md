@@ -8,6 +8,9 @@ description: "BA phải review schema semantics với business owner. Mục tiê
 <div class="case-meta">
   <span>Backend and API</span>
   <span>Schema design</span>
+  <span>Backend/API refinement</span>
+  <span>Practitioner</span>
+  <span>Schema review table</span>
   <span>Use case dự án</span>
 </div>
 

@@ -8,6 +8,9 @@ description: "BA phải chuyển production signal thành requirement learning. 
 <div class="case-meta">
   <span>Delivery and QA</span>
   <span>Continuous improvement</span>
+  <span>Delivery validation</span>
+  <span>Core</span>
+  <span>Incident synthesis</span>
   <span>Use case dự án</span>
 </div>
 

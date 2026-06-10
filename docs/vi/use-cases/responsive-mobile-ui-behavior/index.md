@@ -8,6 +8,9 @@ description: "BA phải đặc tả responsive behavior như requirement, không
 <div class="case-meta">
   <span>Frontend, UI, and UX</span>
   <span>Responsive design</span>
+  <span>Frontend/UI refinement</span>
+  <span>Practitioner</span>
+  <span>Responsive behavior matrix</span>
   <span>Use case dự án</span>
 </div>
 

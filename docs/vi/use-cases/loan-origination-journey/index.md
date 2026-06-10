@@ -8,6 +8,9 @@ description: "BA phải coordinate requirement regulated qua customer experience
 <div class="case-meta">
   <span>Domain project scenarios</span>
   <span>Banking and lending</span>
+  <span>Domain workflow</span>
+  <span>Core</span>
+  <span>Loan journey map</span>
   <span>Use case dự án</span>
 </div>
 

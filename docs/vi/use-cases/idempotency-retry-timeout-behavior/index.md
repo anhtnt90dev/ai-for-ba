@@ -8,6 +8,9 @@ description: "BA phải specify reliability behavior bằng business term: thế
 <div class="case-meta">
   <span>Backend and API</span>
   <span>Reliability behavior</span>
+  <span>Backend/API refinement</span>
+  <span>Practitioner</span>
+  <span>Reliability behavior matrix</span>
   <span>Use case dự án</span>
 </div>
 

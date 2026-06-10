@@ -101,6 +101,50 @@ AI-generated diagrams should be reviewed like requirements. Expert BAs check not
 | Accept diagram labels that are vague | Decision diamonds like valid or approved do not define business rules. | Replace vague labels with rule source, threshold, owner, or open question. |
 | Use diagrams only for presentation | The team misses the chance to find defects before build. | Run diagram review sessions to identify gaps, exceptions, and ownership issues. |
 
+## Stakeholder questions to ask
+
+| Stakeholder | Question | Why the BA asks it |
+| --- | --- | --- |
+| Product owner | Which outcome should Diagramming for BA improve, and what trade-off are you willing to accept? | Prevents AI output from optimizing for a vague goal. |
+| Engineering lead | What source, system, data, or constraint would make Diagram Selection Guide hard to implement? | Turns hidden technical constraints into visible requirement questions. |
+| QA lead | Which rule, exception, or user state must be testable before you trust this artifact? | Converts fluent AI wording into observable behavior. |
+| Operations or support | What failure path would create manual work if the lesson principle "Diagrams are analysis, not decoration" is ignored? | Surfaces support load, exception handling, and operating impact. |
+
+## Decision log entries
+
+| Decision item | Options to capture | Owner | Evidence needed |
+| --- | --- | --- | --- |
+| Scope boundary for Diagram Selection Guide | Must-have, later, out of scope | Product owner | Business outcome and release constraint |
+| Authority for artifact purpose, audience, diagram clarity, decision trace, and handoff quality | Documented source, stakeholder decision, assumption to validate | BA + accountable stakeholder | Source ID, date, and approval status |
+| Review gate before handoff | Peer review, QA review, engineering review, formal approval | BA lead or project lead | Risk level and receiving-team readiness |
+| Recovery if Using one diagram type for every problem. | Rewrite, defer, escalate, or run validation workshop | Decision owner | Impact on scope, testability, and release risk |
+
+## Definition of Ready / Done
+
+| Gate | Ready signal | Done signal |
+| --- | --- | --- |
+| Definition of Ready | Sources for artifact purpose, audience, diagram clarity, decision trace, and handoff quality are labeled and current. | Diagram Selection Guide can be reviewed without guessing missing context. |
+| Definition of Ready | Open assumptions have owners and validation paths. | Stakeholders can decide whether to accept, reject, or defer each assumption. |
+| Definition of Done | The artifact applies this control: review the artifact with the team that must build, test, or operate from it. | Delivery, QA, or governance teams can act on the artifact. |
+| Definition of Done | The weak pattern "Using one diagram type for every problem." has been explicitly checked. | No unsupported AI claim is treated as an approved requirement. |
+
+## Before and after artifact example
+
+| Before | AI draft risk | Senior BA revision |
+| --- | --- | --- |
+| Prompt: "Create Diagram Selection Guide for Diagramming for BA." | The model may invent source facts, owners, thresholds, or implementation rules. | Add sources, scope boundary, source authority, output schema, and the instruction: Create process, sequence, and state views when the problem crosses workflow and systems. |
+| Draft statement: "Convert one text-heavy requirement into a Mermaid diagram." | Useful action, but not yet tied to a decision owner or acceptance signal. | Rewrite as a project step with owner, expected artifact, review gate, and evidence required before handoff. |
+| Final-looking paragraph about cross-functional handoff artifact | The tone may hide uncertainty and missing stakeholder approval. | Convert it into a table of fact, assumption, decision needed, risk, and validation question. |
+
+## Manual verification after AI output
+
+| Verification lens | Manual check | Pass signal |
+| --- | --- | --- |
+| Evidence | Trace every important statement in Diagram Selection Guide to a source, decision, or labeled assumption. | No unsupported claim remains hidden. |
+| Completeness | Check artifact purpose, audience, diagram clarity, decision trace, and handoff quality against the intended audience and receiving team. | The artifact answers what product, engineering, QA, and operations need. |
+| Testability | Ask whether QA can create positive, negative, boundary, and exception scenarios. | Ambiguous wording has been rewritten or logged as a question. |
+| Accountability | Confirm who approves, who reviews, and who acts when the artifact is wrong. | Owners and escalation path are explicit. |
+
 ## AI collaboration prompt
 
 ```text

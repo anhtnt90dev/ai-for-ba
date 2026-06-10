@@ -4,6 +4,8 @@
 [![Tiếng Việt](https://img.shields.io/badge/lang-Ti%E1%BA%BFng%20Vi%E1%BB%87t-red)](https://anhtnt90dev.github.io/ai-for-ba/vi/)
 [![Lessons](https://img.shields.io/badge/lessons-20-0f766e)](#syllabus)
 [![Labs](https://img.shields.io/badge/labs-6-b45309)](#labs)
+[![Capstones](https://img.shields.io/badge/capstones-3-1d4ed8)](#capstones)
+[![Templates](https://img.shields.io/badge/templates-9-0f766e)](#resource-templates)
 [![GitHub Pages](https://img.shields.io/badge/docs-GitHub%20Pages-2562eb)](https://anhtnt90dev.github.io/ai-for-ba/)
 
 A bilingual, artifact-driven course for software Business Analysts who need to understand AI, use AI to improve BA work, and specify AI-enabled products responsibly.
@@ -16,11 +18,14 @@ A bilingual, artifact-driven course for software Business Analysts who need to u
 - Every lesson includes a concrete BA artifact: matrix, rubric, canvas, checklist, or specification table.
 - Every lesson now has a lesson-specific BA relevance section, expert AI review note, and bad-vs-better practice examples.
 - Every theory lesson explains common BA difficulties, real project application, and what breaks when the capability is missing.
+- Every theory lesson includes a senior BA practice pack: stakeholder questions, decision-log entries, Definition of Ready/Done, before/after artifact examples, and manual verification checks.
 - Lessons include mistakes to avoid and actions to apply tomorrow.
 - Labs include input samples, exercise steps, expected deliverables, and review rubrics.
+- The course overview now includes role-based learning paths for new BAs, senior delivery BAs, frontend/UI BAs, backend/API BAs, AI product BAs, and BA leads.
+- The course includes three capstone project simulations for discovery-to-delivery, frontend-backend contract readiness, and AI assistant governance.
 - Pixel Quest is now the fullscreen root landing experience; learners can click quest nodes to open lessons, with movement, XP, levels, and Pixel Agents MIT character sprites sourced from the public GitHub repository pixel-agents-hq/pixel-agents.
-- The site includes 70+ detailed project use cases across discovery, requirements, frontend/UI, backend/API, data integration, delivery, AI products, domain workflows, and governance.
-- Resources are upgraded into practical playbooks for prompts, quality review, AI feature specification, RAG, and governance.
+- The site includes 70+ detailed project use cases across discovery, requirements, frontend/UI, backend/API, data integration, delivery, AI products, domain workflows, and governance, now with project phase, difficulty, artifact, and risk metadata.
+- Resources are upgraded into practical playbooks and reusable project templates for prompts, UI states, API contracts, AI feature specs, RAG, risk review, decision logs, and Definition of Ready/Done.
 
 ## Learning Path
 
@@ -68,6 +73,14 @@ AI foundations
 5. RAG assistant requirements
 6. BA team AI adoption roadmap
 
+## Capstones
+
+| # | English | Tiếng Việt |
+| --- | --- | --- |
+| 1 | Capstone 1: Discovery to Delivery AI BA Pack | Capstone 1: Discovery đến delivery AI BA pack |
+| 2 | Capstone 2: Frontend to Backend Contract Readiness | Capstone 2: Frontend đến backend contract readiness |
+| 3 | Capstone 3: AI Assistant Requirement and Governance | Capstone 3: Requirement và governance cho AI assistant |
+
 ## Project Use Cases
 
 The use case library includes 70+ detailed, bilingual project scenarios with context, BA challenge, AI-fit boundary, workflow, diagram, deliverables, prompts, review checklist, and risk controls.
@@ -81,6 +94,20 @@ The use case library includes 70+ detailed, bilingual project scenarios with con
 - AI-enabled product use cases
 - Domain project scenarios
 - Governance and adoption
+
+## Resource Templates
+
+| English | Tiếng Việt |
+| --- | --- |
+| AI Feature Requirement Template | Template requirement cho AI feature |
+| Acceptance Criteria Quality Rubric | Rubric chất lượng acceptance criteria |
+| UI State Requirement Template | Template requirement cho UI state |
+| API Contract Checklist | Checklist API contract |
+| RAG Knowledge Contract Canvas | Canvas RAG knowledge contract |
+| Prompt Review Checklist | Checklist review prompt |
+| AI Risk and Human Review Matrix | Matrix AI risk và human review |
+| Decision Log Template | Template decision log |
+| Definition of Ready and Done for AI-Augmented BA Work | Definition of Ready và Done cho AI-augmented BA work |
 
 ## Local Preview
 

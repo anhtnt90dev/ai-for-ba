@@ -8,6 +8,9 @@ description: "BA phải split feature thành story theo user goal, có boundary,
 <div class="case-meta">
   <span>Requirements and backlog</span>
   <span>Agile delivery</span>
+  <span>Refinement</span>
+  <span>Core</span>
+  <span>Story split map</span>
   <span>Use case dự án</span>
 </div>
 

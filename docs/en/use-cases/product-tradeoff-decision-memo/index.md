@@ -8,6 +8,9 @@ description: "The BA must present trade-offs clearly across user value, delivery
 <div class="case-meta">
   <span>Cross-functional BA Collaboration</span>
   <span>Product decisions</span>
+  <span>Cross-functional alignment</span>
+  <span>Practitioner</span>
+  <span>Decision memo</span>
   <span>Project use case</span>
 </div>
 

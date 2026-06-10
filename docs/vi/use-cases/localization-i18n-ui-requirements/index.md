@@ -8,6 +8,9 @@ description: "BA phải capture localization requirement trước khi UI và bac
 <div class="case-meta">
   <span>Frontend, UI, and UX</span>
   <span>Localization</span>
+  <span>Frontend/UI refinement</span>
+  <span>Practitioner</span>
+  <span>Localization requirement matrix</span>
   <span>Use case dự án</span>
 </div>
 

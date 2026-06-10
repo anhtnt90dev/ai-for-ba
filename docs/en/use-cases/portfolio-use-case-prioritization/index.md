@@ -8,6 +8,9 @@ description: "The BA lead must compare ideas by business value, feasibility, dat
 <div class="case-meta">
   <span>Governance and adoption</span>
   <span>Portfolio management</span>
+  <span>Governance</span>
+  <span>Advanced</span>
+  <span>Use-case scoring matrix</span>
   <span>Project use case</span>
 </div>
 

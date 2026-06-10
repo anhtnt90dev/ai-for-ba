@@ -8,6 +8,9 @@ description: "The BA must specify versioning and compatibility behavior in busin
 <div class="case-meta">
   <span>Backend and API</span>
   <span>API lifecycle</span>
+  <span>Backend/API refinement</span>
+  <span>Practitioner</span>
+  <span>Change impact matrix</span>
   <span>Project use case</span>
 </div>
 

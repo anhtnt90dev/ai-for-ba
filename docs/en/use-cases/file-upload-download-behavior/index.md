@@ -8,6 +8,9 @@ description: "The BA must specify file behavior across UI, backend, storage, sec
 <div class="case-meta">
   <span>Data and Integration</span>
   <span>Files and documents</span>
+  <span>Data and integration</span>
+  <span>Advanced</span>
+  <span>File behavior matrix</span>
   <span>Project use case</span>
 </div>
 

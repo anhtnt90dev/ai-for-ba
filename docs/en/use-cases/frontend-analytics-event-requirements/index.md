@@ -8,6 +8,9 @@ description: "The BA must define analytics as part of requirements so product de
 <div class="case-meta">
   <span>Frontend, UI, and UX</span>
   <span>Product analytics</span>
+  <span>Frontend/UI refinement</span>
+  <span>Practitioner</span>
+  <span>Analytics event spec</span>
   <span>Project use case</span>
 </div>
 

@@ -8,6 +8,9 @@ description: "BA phải tạo traceability lightweight qua design, frontend beha
 <div class="case-meta">
   <span>Cross-functional BA Collaboration</span>
   <span>Traceability</span>
+  <span>Cross-functional alignment</span>
+  <span>Practitioner</span>
+  <span>End-to-end trace matrix</span>
   <span>Use case dự án</span>
 </div>
 

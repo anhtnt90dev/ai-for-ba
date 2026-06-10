@@ -8,6 +8,9 @@ description: "The BA must specify business-safe fallback behavior for integratio
 <div class="case-meta">
   <span>Backend and API</span>
   <span>Integration resilience</span>
+  <span>Backend/API refinement</span>
+  <span>Practitioner</span>
+  <span>Integration dependency map</span>
   <span>Project use case</span>
 </div>
 

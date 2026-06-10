@@ -8,6 +8,9 @@ description: "The BA must specify probabilistic triage behavior, confidence thre
 <div class="case-meta">
   <span>AI-enabled product use cases</span>
   <span>Support automation</span>
+  <span>AI product design</span>
+  <span>Advanced</span>
+  <span>Triage taxonomy</span>
   <span>Project use case</span>
 </div>
 

@@ -8,6 +8,9 @@ description: "BA phải tách user guidance khỏi authoritative business rule e
 <div class="case-meta">
   <span>Backend and API</span>
   <span>Business rules</span>
+  <span>Backend/API refinement</span>
+  <span>Practitioner</span>
+  <span>Backend rule matrix</span>
   <span>Use case dự án</span>
 </div>
 

@@ -8,6 +8,9 @@ description: "BA phải define service catalog, request form, approval rule, pri
 <div class="case-meta">
   <span>Domain project scenarios</span>
   <span>HR service delivery</span>
+  <span>Domain workflow</span>
+  <span>Core</span>
+  <span>Service catalog</span>
   <span>Use case dự án</span>
 </div>
 

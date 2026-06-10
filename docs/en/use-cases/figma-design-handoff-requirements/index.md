@@ -8,6 +8,9 @@ description: "The BA must translate visual design into buildable requirements wi
 <div class="case-meta">
   <span>Frontend, UI, and UX</span>
   <span>Design handoff</span>
+  <span>Frontend/UI refinement</span>
+  <span>Practitioner</span>
+  <span>UI behavior matrix</span>
   <span>Project use case</span>
 </div>
 

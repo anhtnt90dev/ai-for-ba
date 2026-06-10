@@ -8,6 +8,9 @@ description: "The BA must specify event behavior beyond naming events. Requireme
 <div class="case-meta">
   <span>Backend and API</span>
   <span>Event-driven integration</span>
+  <span>Backend/API refinement</span>
+  <span>Practitioner</span>
+  <span>Event catalog</span>
   <span>Project use case</span>
 </div>
 

@@ -8,6 +8,9 @@ description: "The BA must help UX and product ensure copy reflects business rule
 <div class="case-meta">
   <span>Frontend, UI, and UX</span>
   <span>UX writing</span>
+  <span>Frontend/UI refinement</span>
+  <span>Practitioner</span>
+  <span>Message catalog</span>
   <span>Project use case</span>
 </div>
 

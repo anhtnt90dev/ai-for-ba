@@ -8,6 +8,9 @@ description: "BA phải specify lifecycle state và transition để UI, backend
 <div class="case-meta">
   <span>Data and Integration</span>
   <span>Entity lifecycle</span>
+  <span>Data and integration</span>
+  <span>Advanced</span>
+  <span>State model</span>
   <span>Use case dự án</span>
 </div>
 

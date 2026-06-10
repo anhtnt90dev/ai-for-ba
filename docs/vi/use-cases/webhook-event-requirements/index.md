@@ -8,6 +8,9 @@ description: "BA phải specify event behavior vượt ngoài việc đặt tên
 <div class="case-meta">
   <span>Backend and API</span>
   <span>Event-driven integration</span>
+  <span>Backend/API refinement</span>
+  <span>Practitioner</span>
+  <span>Event catalog</span>
   <span>Use case dự án</span>
 </div>
 

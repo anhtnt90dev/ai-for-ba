@@ -8,6 +8,9 @@ description: "The BA must define error taxonomy as product behavior. Error codes
 <div class="case-meta">
   <span>Backend and API</span>
   <span>Error handling</span>
+  <span>Backend/API refinement</span>
+  <span>Practitioner</span>
+  <span>Error taxonomy</span>
   <span>Project use case</span>
 </div>
 

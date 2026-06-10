@@ -8,6 +8,9 @@ description: "BA phải giúp define data nào được dùng với AI, data nà
 <div class="case-meta">
   <span>Governance and adoption</span>
   <span>Privacy and compliance</span>
+  <span>Governance</span>
+  <span>Advanced</span>
+  <span>AI data-use matrix</span>
   <span>Use case dự án</span>
 </div>
 

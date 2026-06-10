@@ -8,6 +8,9 @@ description: "BA phải tạo traceability matrix link business goal, requiremen
 <div class="case-meta">
   <span>Requirements and backlog</span>
   <span>Release governance</span>
+  <span>Refinement</span>
+  <span>Core</span>
+  <span>Traceability matrix</span>
   <span>Use case dự án</span>
 </div>
 

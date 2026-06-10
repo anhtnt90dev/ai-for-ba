@@ -8,6 +8,9 @@ description: "The BA must define business rules that vary by product type, order
 <div class="case-meta">
   <span>Domain project scenarios</span>
   <span>E-commerce</span>
+  <span>Domain workflow</span>
+  <span>Core</span>
+  <span>Return eligibility matrix</span>
   <span>Project use case</span>
 </div>
 

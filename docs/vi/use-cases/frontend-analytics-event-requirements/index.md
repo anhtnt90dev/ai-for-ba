@@ -8,6 +8,9 @@ description: "BA phải define analytics như một phần requirement để pro
 <div class="case-meta">
   <span>Frontend, UI, and UX</span>
   <span>Product analytics</span>
+  <span>Frontend/UI refinement</span>
+  <span>Practitioner</span>
+  <span>Analytics event spec</span>
   <span>Use case dự án</span>
 </div>
 

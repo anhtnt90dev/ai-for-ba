@@ -8,6 +8,9 @@ description: "BA phải hỗ trợ triage defect nhanh nhưng không để AI ov
 <div class="case-meta">
   <span>Delivery and QA</span>
   <span>Defect management</span>
+  <span>Delivery validation</span>
+  <span>Core</span>
+  <span>Defect classification board</span>
   <span>Use case dự án</span>
 </div>
 

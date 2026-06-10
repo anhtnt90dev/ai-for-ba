@@ -8,6 +8,9 @@ description: "BA phải define data mapping theo business meaning, không theo f
 <div class="case-meta">
   <span>Data and Integration</span>
   <span>Data mapping</span>
+  <span>Data and integration</span>
+  <span>Advanced</span>
+  <span>Data mapping matrix</span>
   <span>Use case dự án</span>
 </div>
 

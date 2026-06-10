@@ -8,6 +8,9 @@ description: "BA phải đặc tả supported intent, knowledge source, refusal 
 <div class="case-meta">
   <span>AI-enabled product use cases</span>
   <span>Customer support</span>
+  <span>AI product design</span>
+  <span>Advanced</span>
+  <span>Intent catalog</span>
   <span>Use case dự án</span>
 </div>
 

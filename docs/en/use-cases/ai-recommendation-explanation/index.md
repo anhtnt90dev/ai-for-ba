@@ -8,6 +8,9 @@ description: "The BA must specify recommendation behavior, explanation requireme
 <div class="case-meta">
   <span>AI-enabled product use cases</span>
   <span>Decision support</span>
+  <span>AI product design</span>
+  <span>Advanced</span>
+  <span>Recommendation canvas</span>
   <span>Project use case</span>
 </div>
 

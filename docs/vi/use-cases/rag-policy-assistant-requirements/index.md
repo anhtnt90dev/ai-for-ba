@@ -8,6 +8,9 @@ description: "BA phải đặc tả RAG assistant vượt khỏi chatbot UX: sou
 <div class="case-meta">
   <span>AI-enabled product use cases</span>
   <span>Knowledge assistant</span>
+  <span>AI product design</span>
+  <span>Advanced</span>
+  <span>Knowledge contract</span>
   <span>Use case dự án</span>
 </div>
 

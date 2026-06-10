@@ -8,6 +8,9 @@ description: "BA phải giúp define visual quality theo business term: critical
 <div class="case-meta">
   <span>Frontend, UI, and UX</span>
   <span>Visual QA</span>
+  <span>Frontend/UI refinement</span>
+  <span>Practitioner</span>
+  <span>Visual QA matrix</span>
   <span>Use case dự án</span>
 </div>
 

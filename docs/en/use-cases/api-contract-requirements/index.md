@@ -8,6 +8,9 @@ description: "The BA must help define API behavior in business terms so frontend
 <div class="case-meta">
   <span>Backend and API</span>
   <span>API contracts</span>
+  <span>Backend/API refinement</span>
+  <span>Practitioner</span>
+  <span>API behavior spec</span>
   <span>Project use case</span>
 </div>
 

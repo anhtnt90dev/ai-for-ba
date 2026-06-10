@@ -8,6 +8,9 @@ description: "BA phải tạo RBAC requirement đủ precise cho backend enforce
 <div class="case-meta">
   <span>Backend and API</span>
   <span>Authorization</span>
+  <span>Backend/API refinement</span>
+  <span>Practitioner</span>
+  <span>RBAC matrix</span>
   <span>Use case dự án</span>
 </div>
 

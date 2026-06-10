@@ -8,6 +8,9 @@ description: "The BA must review schema semantics with business owners. The goal
 <div class="case-meta">
   <span>Backend and API</span>
   <span>Schema design</span>
+  <span>Backend/API refinement</span>
+  <span>Practitioner</span>
+  <span>Schema review table</span>
   <span>Project use case</span>
 </div>
 
