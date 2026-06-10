@@ -154,6 +154,7 @@ assert(exists("docs/vi/index.md"), "Vietnamese course home is required");
 assert(exists("docs/en/game/index.md"), "English Pixel Quest game page is required");
 assert(exists("docs/vi/game/index.md"), "Vietnamese Pixel Quest game page is required");
 assert(exists("docs/.vitepress/theme/components/PixelQuest.vue"), "PixelQuest Vue component is required");
+assert(exists("docs/.vitepress/theme/components/LessonCompletion.vue"), "Lesson completion component is required");
 for (let index = 0; index <= 5; index += 1) {
   assert(exists(`docs/public/assets/pixel-agents/char_${index}.png`), `Pixel Quest must include Pixel Agents character sprite char_${index}.png`);
 }
@@ -170,6 +171,7 @@ assert(vitePressConfig.includes("/en/game/"), "VitePress nav/sidebar must link t
 assert(vitePressConfig.includes("/vi/game/"), "VitePress nav/sidebar must link to the Vietnamese Pixel Quest game");
 assert(!vitePressConfig.includes("Pixel Quest Game\" : \"Game Pixel Quest\""), "VitePress lesson sidebar must not duplicate the home game entry");
 assert(themeIndex.includes("PixelQuest"), "VitePress theme must register the PixelQuest component");
+assert(themeIndex.includes("LessonCompletion"), "VitePress theme must mount lesson completion at the end of lessons");
 assert(!themeIndex.includes("GameLessonChrome"), "VitePress theme must not mount game lesson chrome on normal lesson pages");
 assert(themeCss.includes(".mermaid svg"), "Theme CSS must explicitly center Mermaid SVG diagrams");
 assert(
@@ -179,6 +181,9 @@ assert(
 
 const pixelQuestComponent = exists("docs/.vitepress/theme/components/PixelQuest.vue")
   ? read("docs/.vitepress/theme/components/PixelQuest.vue")
+  : "";
+const lessonCompletionComponent = exists("docs/.vitepress/theme/components/LessonCompletion.vue")
+  ? read("docs/.vitepress/theme/components/LessonCompletion.vue")
   : "";
 assert(pixelQuestComponent.includes("localStorage"), "PixelQuest must persist progress with localStorage");
 assert(pixelQuestComponent.includes("pixel-quest"), "PixelQuest must render the pixel quest game shell");
@@ -201,6 +206,10 @@ assert(pixelQuestComponent.includes("landingMode"), "PixelQuest must include a d
 assert(pixelQuestComponent.includes("questHref"), "PixelQuest landing mode must expose quest nodes as lesson links");
 assert(!themeCss.includes(".game-lesson-mode"), "Theme CSS must not apply a game theme to normal lesson pages");
 assert(!themeCss.includes(".game-lesson-hud"), "Theme CSS must not include lesson HUD styles");
+assert(themeCss.includes(".lesson-completion-panel"), "Theme CSS must style the normal lesson completion panel");
+assert(lessonCompletionComponent.includes("ai-for-ba-pixel-quest"), "Lesson completion must write to the Pixel Quest progress store");
+assert(lessonCompletionComponent.includes("+120 XP"), "Lesson completion must show the XP reward");
+assert(lessonCompletionComponent.includes('withBase("/")'), "Lesson completion map action must return to the root homepage map");
 
 const enLessons = listDirs("docs/en/lessons");
 const viLessons = listDirs("docs/vi/lessons");

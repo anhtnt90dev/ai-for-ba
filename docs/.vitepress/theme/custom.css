@@ -101,6 +101,109 @@ a.course-card {
   color: var(--vp-c-text-1);
 }
 
+.lesson-completion-panel {
+  display: grid;
+  gap: 16px;
+  margin: 32px 0 0;
+  border: 1px solid color-mix(in srgb, var(--course-accent) 28%, var(--vp-c-divider));
+  border-radius: 8px;
+  padding: 18px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--course-accent) 8%, transparent), transparent 48%),
+    var(--vp-c-bg-soft);
+}
+
+.lesson-completion-panel.saved {
+  border-color: color-mix(in srgb, var(--course-accent) 45%, var(--vp-c-divider));
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--course-accent) 12%, transparent), transparent 52%),
+    var(--vp-c-bg-soft);
+}
+
+.lesson-completion-copy span {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--course-accent);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.lesson-completion-copy h2 {
+  margin: 0 0 8px;
+  border: 0;
+  padding: 0;
+  color: var(--vp-c-text-1);
+  font-size: 22px;
+  line-height: 1.35;
+}
+
+.lesson-completion-copy p {
+  margin: 0;
+  color: var(--vp-c-text-2);
+}
+
+.lesson-completion-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.lesson-completion-stats span {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 999px;
+  padding: 6px 12px;
+  color: var(--vp-c-text-2);
+  font-size: 13px;
+  background: var(--vp-c-bg);
+}
+
+.lesson-completion-stats strong {
+  color: var(--vp-c-text-1);
+}
+
+.lesson-completion-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.lesson-completion-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  border: 1px solid color-mix(in srgb, var(--course-accent) 36%, var(--vp-c-divider));
+  border-radius: 8px;
+  padding: 8px 14px;
+  color: var(--course-accent);
+  background: var(--vp-c-bg);
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+}
+
+.lesson-completion-button:hover {
+  border-color: var(--course-accent);
+  text-decoration: none;
+}
+
+.lesson-completion-button.primary {
+  color: #fff;
+  background: var(--course-accent);
+}
+
+.lesson-completion-button:disabled {
+  cursor: default;
+  opacity: 0.68;
+}
+
+@media (max-width: 640px) {
+  .lesson-completion-button {
+    width: 100%;
+  }
+}
+
 .lesson-meta {
   display: flex;
   flex-wrap: wrap;
