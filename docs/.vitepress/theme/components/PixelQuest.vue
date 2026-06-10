@@ -900,10 +900,9 @@ onBeforeUnmount(() => {
 }
 
 .pixel-quest-landing {
-  width: 100vw;
+  width: 100%;
   min-height: calc(100vh - 64px);
   margin: 0 0 36px;
-  margin-left: calc(50% - 50vw);
   padding: 16px clamp(12px, 2vw, 28px) 28px;
   background:
     repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.06) 2px, transparent 2px, transparent 16px),
@@ -1591,7 +1590,6 @@ onBeforeUnmount(() => {
   .pixel-quest-landing {
     width: 100%;
     max-width: 100%;
-    margin-left: 0;
     overflow-x: hidden;
   }
 

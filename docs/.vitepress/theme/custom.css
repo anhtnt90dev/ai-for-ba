@@ -39,17 +39,30 @@
 
 .pixel-game-root .VPDoc {
   padding: 0;
-  overflow-x: clip;
+  overflow-x: hidden;
 }
 
 .pixel-game-root .VPDoc .container,
 .pixel-game-root .VPDoc .content,
 .pixel-game-root .VPDoc .content-container,
 .pixel-game-root .vp-doc {
-  width: 100%;
-  max-width: none;
+  width: 100% !important;
+  max-width: none !important;
   min-width: 0;
-  overflow-x: clip;
+}
+
+.pixel-game-root .VPDoc .container {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+.pixel-game-root .VPDoc .content {
+  flex: 1 1 100% !important;
+}
+
+.pixel-game-root .VPDoc .content-container,
+.pixel-game-root .vp-doc {
+  overflow-x: visible;
 }
 
 .pixel-game-root .VPDoc .content {
