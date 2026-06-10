@@ -249,12 +249,15 @@ assert(pixelQuestComponent.includes("gameLessonHref"), "PixelQuest must open les
 assert(!pixelQuestComponent.includes("?mode=game"), "PixelQuest must open normal lesson pages without game-mode query");
 assert(pixelQuestComponent.includes("landingMode"), "PixelQuest must include a dedicated fullscreen landing mode");
 assert(pixelQuestComponent.includes("questHref"), "PixelQuest landing mode must expose quest nodes as lesson links");
+assert(pixelQuestComponent.includes("requestedQuestSlug"), "PixelQuest must restore the player to a requested quest on map return");
+assert(pixelQuestComponent.includes("contactEmail"), "PixelQuest homepage must expose the course contact email");
 assert(!themeCss.includes(".game-lesson-mode"), "Theme CSS must not apply a game theme to normal lesson pages");
 assert(!themeCss.includes(".game-lesson-hud"), "Theme CSS must not include lesson HUD styles");
 assert(themeCss.includes(".lesson-completion-panel"), "Theme CSS must style the normal lesson completion panel");
 assert(lessonCompletionComponent.includes("ai-for-ba-pixel-quest"), "Lesson completion must write to the Pixel Quest progress store");
 assert(lessonCompletionComponent.includes("+120 XP"), "Lesson completion must show the XP reward");
 assert(lessonCompletionComponent.includes('withBase("/")'), "Lesson completion map action must return to the root homepage map");
+assert(lessonCompletionComponent.includes("encodeURIComponent(slug.value)"), "Lesson completion map action must preserve the completed lesson location");
 
 const enLessons = listDirs("docs/en/lessons");
 const viLessons = listDirs("docs/vi/lessons");
@@ -471,7 +474,10 @@ if (exists("README.md")) {
     "README.md must link to the GitHub Pages URL"
   );
   assert(readme.includes("AI for Business Analysts"), "README.md must name the course");
+  assert(readme.includes("anhtnt90dev@gmail.com"), "README.md must include the course contact email");
   assert(readme.includes("pixel-agents-hq/pixel-agents") && readme.includes("MIT"), "README.md must credit the Pixel Agents sprite source and MIT license");
+  assert(readme.includes("Attribution and Copyright Review"), "README.md must include the attribution and copyright review section");
+  assert(readme.includes("docs/public/assets/pixel-agents/LICENSE-MIT"), "README.md must reference the local Pixel Agents MIT license copy");
 }
 
 if (failures.length > 0) {

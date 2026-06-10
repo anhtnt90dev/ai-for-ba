@@ -12,7 +12,8 @@ const showPanel = computed(() => Boolean(slug.value));
 const storageKey = computed(() => `ai-for-ba-pixel-quest-${locale.value}`);
 const isComplete = computed(() => completed.value.includes(slug.value));
 const xp = computed(() => completed.value.length * 120);
-const mapHref = computed(() => withBase("/"));
+const rootMapHref = computed(() => withBase("/"));
+const mapHref = computed(() => (slug.value ? `${rootMapHref.value}?quest=${encodeURIComponent(slug.value)}` : rootMapHref.value));
 
 const copy = computed(() =>
   locale.value === "vi"

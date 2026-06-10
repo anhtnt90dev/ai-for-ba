@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "description": "Bilingual AI literacy and AI-enabled product analysis course for software Business Analysts.",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "docs:dev": "vitepress dev docs --host 127.0.0.1",

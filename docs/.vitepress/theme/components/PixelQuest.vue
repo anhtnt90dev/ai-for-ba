@@ -13,6 +13,9 @@ const props = defineProps({
   }
 });
 
+const contactEmail = "anhtnt90dev@gmail.com";
+const contactHref = computed(() => `mailto:${contactEmail}`);
+
 const text = computed(() =>
   props.locale === "vi"
     ? {
@@ -39,6 +42,7 @@ const text = computed(() =>
         mentorLine: "Mỗi cổng là một quality gate. Bạn chỉ mở được vùng mới khi artifact ở vùng trước đã đủ rõ để team delivery dùng được.",
         fullGame: "Mở trang game đầy đủ",
         classicView: "Xem course truyền thống",
+        contact: "Liên hệ",
         source: "Sprite nhân vật: Pixel Agents, MIT, từ GitHub repo pixel-agents-hq/pixel-agents."
       }
     : {
@@ -65,6 +69,7 @@ const text = computed(() =>
         mentorLine: "Each gate is a quality gate. You only open the next area when the previous BA artifact is clear enough for delivery teams to use.",
         fullGame: "Open full game page",
         classicView: "Classic course view",
+        contact: "Contact",
         source: "Hero sprite: Pixel Agents, MIT, from the pixel-agents-hq/pixel-agents GitHub repository."
       }
 );
@@ -509,6 +514,57 @@ function isComplete(slug) {
   return completed.value.includes(slug);
 }
 
+function questBySlug(slug) {
+  return quests.find((quest) => quest.slug === slug);
+}
+
+function requestedQuestSlug() {
+  if (typeof window === "undefined") {
+    return "";
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const querySlug = params.get("quest") || "";
+  if (querySlug) {
+    return querySlug;
+  }
+
+  const hash = window.location.hash || "";
+  if (!hash.startsWith("#quest-")) {
+    return "";
+  }
+
+  try {
+    return decodeURIComponent(hash.replace("#quest-", ""));
+  } catch {
+    return hash.replace("#quest-", "");
+  }
+}
+
+function initialMapQuest() {
+  const requested = questBySlug(requestedQuestSlug());
+  if (requested) {
+    return requested;
+  }
+
+  return quests.find((quest, index) => !isComplete(quest.slug) && isUnlocked(index)) || quests[quests.length - 1];
+}
+
+function moveToQuestLocation(quest) {
+  selectedSlug.value = quest.slug;
+  setPlayerPosition(quest.x, quest.y);
+}
+
+function applyRequestedQuestLocation() {
+  const requested = questBySlug(requestedQuestSlug());
+  if (!requested) {
+    return false;
+  }
+
+  moveToQuestLocation(requested);
+  return true;
+}
+
 function isUnlocked(index) {
   return index === 0 || isComplete(quests[index - 1].slug) || isComplete(quests[index].slug);
 }
@@ -694,13 +750,13 @@ onMounted(() => {
     if (Array.isArray(parsed)) {
       completed.value = parsed.filter((slug) => quests.some((quest) => quest.slug === slug));
     }
-    const unlockedNextQuest = quests.find((quest, index) => !isComplete(quest.slug) && isUnlocked(index));
-    const initialQuest = unlockedNextQuest || quests[quests.length - 1];
-    selectedSlug.value = initialQuest.slug;
-    setPlayerPosition(initialQuest.x, initialQuest.y);
+    moveToQuestLocation(initialMapQuest());
   } catch {
     completed.value = [];
   }
+
+  window.setTimeout(applyRequestedQuestLocation, 0);
+  window.setTimeout(applyRequestedQuestLocation, 250);
   window.addEventListener("keydown", handleKeyDown);
   const tick = (timestamp) => {
     animationClock.value = timestamp;
@@ -867,6 +923,9 @@ onBeforeUnmount(() => {
         <p class="asset-source">{{ text.source }}</p>
       </aside>
     </div>
+    <footer v-if="landingMode" class="pixel-contact-footer">
+      <a class="pixel-contact-link" :href="contactHref">{{ text.contact }}: {{ contactEmail }}</a>
+    </footer>
   </section>
 </template>
 
@@ -965,6 +1024,33 @@ onBeforeUnmount(() => {
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 16px;
+}
+
+.pixel-contact-footer {
+  display: flex;
+  justify-content: center;
+  padding: 18px 10px 8px;
+}
+
+.pixel-contact-link {
+  display: inline-flex;
+  max-width: 100%;
+  padding: 8px 12px;
+  color: #fff8df;
+  background: #27314f;
+  border: 3px solid #d8a73f;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.25);
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.4;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.pixel-contact-link:hover {
+  color: #fff8df;
+  background: #0f766e;
+  border-color: #fff8df;
 }
 
 .pixel-stats {

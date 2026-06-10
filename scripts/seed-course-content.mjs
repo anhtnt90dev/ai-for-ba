@@ -4487,9 +4487,23 @@ npm test
 
 GitHub Actions deploys the VitePress build to GitHub Pages after every push to \`main\`.
 
+## Attribution and Copyright Review
+
+This project was reviewed for external assets and references. No stock photos, commercial fonts, or third-party course text are embedded. The course text, Mermaid diagrams, SVG logo, layout, and game map UI are project-authored.
+
+- Pixel Agents character sprites: sourced from <https://github.com/pixel-agents-hq/pixel-agents>, path \`webview-ui/public/assets/characters/\`, MIT License. Local copies include \`docs/public/assets/pixel-agents/LICENSE-MIT\` and \`docs/public/assets/pixel-agents/SOURCE.md\`. Files used: \`char_0.png\` through \`char_5.png\`.
+- Upstream note: the Pixel Agents repository README says the characters are based on JIK-A-4, Metro City. This repository relies on the Pixel Agents MIT license and preserves the upstream MIT notice locally.
+- Documentation framework and diagram tooling: VitePress, Mermaid, and vitepress-plugin-mermaid are npm dependencies used to build and render the site. Dependency license metadata is tracked through \`package-lock.json\`; the current dependency set is permissive (\`MIT\`, \`Apache-2.0\`, \`BSD\`, \`ISC\`, \`CC0-1.0\`, \`Unlicense\`, and \`MPL-2.0 OR Apache-2.0\`). The transitive \`khroma\` package omits a license field in the lockfile but ships an MIT license file in its npm package.
+- Badges: README language, lesson, lab, and GitHub Pages badges use shields.io badge URLs and are not embedded site assets.
+- Repository and site links: GitHub Pages and GitHub repository URLs are project-owned navigation and deployment references.
+
 ## License
 
 MIT
+
+## Contact
+
+<anhtnt90dev@gmail.com>
 `;
 }
 
