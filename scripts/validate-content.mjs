@@ -225,6 +225,7 @@ assert(exists("docs/en/capstones/index.md"), "English capstone overview is requi
 assert(exists("docs/vi/capstones/index.md"), "Vietnamese capstone overview is required");
 assert(exists("docs/.vitepress/theme/components/PixelQuest.vue"), "PixelQuest Vue component is required");
 assert(exists("docs/.vitepress/theme/components/LessonCompletion.vue"), "Lesson completion component is required");
+assert(exists("docs/.vitepress/theme/components/DiagramZoom.vue"), "Diagram zoom component is required");
 for (let index = 0; index <= 5; index += 1) {
   assert(exists(`docs/public/assets/pixel-agents/char_${index}.png`), `Pixel Quest must include Pixel Agents character sprite char_${index}.png`);
 }
@@ -246,6 +247,7 @@ assert(vitePressConfig.includes("/vi/game/"), "VitePress nav/sidebar must link t
 assert(!vitePressConfig.includes("Pixel Quest Game\" : \"Game Pixel Quest\""), "VitePress lesson sidebar must not duplicate the home game entry");
 assert(themeIndex.includes("PixelQuest"), "VitePress theme must register the PixelQuest component");
 assert(themeIndex.includes("LessonCompletion"), "VitePress theme must mount lesson completion at the end of lessons");
+assert(themeIndex.includes("DiagramZoom"), "VitePress theme must mount the Mermaid diagram zoom component");
 assert(!themeIndex.includes("GameLessonChrome"), "VitePress theme must not mount game lesson chrome on normal lesson pages");
 assert(themeCss.includes(".mermaid svg"), "Theme CSS must explicitly center Mermaid SVG diagrams");
 assert(
@@ -258,6 +260,9 @@ const pixelQuestComponent = exists("docs/.vitepress/theme/components/PixelQuest.
   : "";
 const lessonCompletionComponent = exists("docs/.vitepress/theme/components/LessonCompletion.vue")
   ? read("docs/.vitepress/theme/components/LessonCompletion.vue")
+  : "";
+const diagramZoomComponent = exists("docs/.vitepress/theme/components/DiagramZoom.vue")
+  ? read("docs/.vitepress/theme/components/DiagramZoom.vue")
   : "";
 assert(pixelQuestComponent.includes("localStorage"), "PixelQuest must persist progress with localStorage");
 assert(pixelQuestComponent.includes("pixel-quest"), "PixelQuest must render the pixel quest game shell");
@@ -291,6 +296,10 @@ assert(lessonCompletionComponent.includes("ai-for-ba-pixel-quest"), "Lesson comp
 assert(lessonCompletionComponent.includes("+120 XP"), "Lesson completion must show the XP reward");
 assert(lessonCompletionComponent.includes('withBase("/")'), "Lesson completion map action must return to the root homepage map");
 assert(lessonCompletionComponent.includes("encodeURIComponent(slug.value)"), "Lesson completion map action must preserve the completed lesson location");
+assert(diagramZoomComponent.includes("MutationObserver"), "Diagram zoom must handle Mermaid diagrams rendered after page load");
+assert(diagramZoomComponent.includes(".vp-doc .mermaid"), "Diagram zoom must target Mermaid diagrams inside document content");
+assert(diagramZoomComponent.includes("diagram-zoom-trigger"), "Diagram zoom must add a visible zoom trigger to each diagram");
+assert(!diagramZoomComponent.includes("Page.captureScreenshot"), "Diagram zoom component must not depend on test-only browser APIs");
 
 const enLessons = listDirs("docs/en/lessons");
 const viLessons = listDirs("docs/vi/lessons");
@@ -565,7 +574,11 @@ if (exists("docs/.vitepress/theme/custom.css")) {
     ".story-scene-grid",
     ".fact-card-grid",
     ".visual-ba-map",
-    ".visual-takeaway-strip"
+    ".visual-takeaway-strip",
+    ".diagram-zoom-trigger",
+    ".diagram-zoom-modal",
+    ".diagram-zoom-stage",
+    ".diagram-zoom-content"
   ]) {
     assert(css.includes(selector), `custom.css must include ${selector} for the BA workbench theme`);
   }
