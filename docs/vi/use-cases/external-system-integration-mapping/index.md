@@ -13,16 +13,16 @@ description: "BA phải map integration behavior end to end để team biết da
 
 ## Project context
 
-Platform integrate với tax provider, CRM, payment gateway và document verification service. Mỗi system có data model, SLA, authentication và error behavior riêng. Trong môi trường delivery thật, tình huống này thường xuất hiện dưới áp lực thời gian: stakeholder cần clarity, delivery cần backlog, QA cần behavior test được, operations cần process chịu được exception. BA dùng AI để tăng tốc analysis và synthesis, nhưng BA vẫn chịu trách nhiệm về evidence, business meaning, stakeholder decisioning và artifact quality.
+Platform integrate với tax provider, CRM, payment gateway và document verification service. Mỗi system có data model, SLA, authentication và error behavior riêng. Trong External integrations, công việc này thường bắt đầu khi data movement, mapping, reconciliation, privacy và lineage decision ảnh hưởng nhiều system và owner. BA nên xem System context diagram và Provider docs là evidence cần organize, không phải raw material để AI trả lời không kiểm soát. Mục tiêu là làm decision tiếp theo rõ hơn cho người own outcome.
 
 ## BA challenge
 
-BA phải map integration behavior end to end để team biết data nào move, vì sao move, khi nào move, fail gì có thể xảy ra và ai own từng failure. Khó khăn thực tế là AI có thể làm material ban đầu trông hoàn chỉnh hơn mức thật sự. BA giỏi giữ output ở trạng thái reviewable bằng cách tách source-backed fact, assumption, unsupported claim, decision gap và recommended next action. Mục tiêu không phải làm document dài hơn; mục tiêu là làm project decision rõ hơn và an toàn hơn.
+BA phải map integration behavior end to end để team biết data nào move, vì sao move, khi nào move, fail gì có thể xảy ra và ai own từng failure. Với Mapping integration với external system, khó khăn thực tế là silent data loss và lineage yếu. AI có thể tăng tốc field mapping, rule comparison, reconciliation design, lineage review và exception analysis, nhưng BA vẫn phải làm rõ assumption, approval còn thiếu và điểm cần stakeholder judgment.
 
 ## Where AI fits
 
 <div class="ba-workbench-panel">
-AI hữu ích trong use case này khi được giới hạn vào analysis support, pattern detection, structured drafting và critique. AI không được approve scope, invent policy, quyết định business trade-off hoặc thay thế judgment của stakeholder chịu trách nhiệm.
+AI phù hợp với use case Data và Integration khi được giới hạn vào field mapping, rule comparison, reconciliation design, lineage review và exception analysis. AI task hữu ích đầu tiên là: Generate integration context diagram và dependency question. AI không được approve scope, invent policy, bỏ qua source schema, sample payload, mapping rule, data-quality report và ownership matrix, hoặc biến draft thành final decision.
 </div>
 
 - Generate integration context diagram và dependency question.
@@ -38,7 +38,7 @@ AI hữu ích trong use case này khi được giới hạn vào analysis suppor
 - SLA commitments
 - Support process
 
-BA nên label các input này trước khi dùng AI: source owner, source date, approval status, sensitivity level, và source đó là fact, opinion, policy, draft hay historical evidence. Việc chuẩn bị này ngăn model xem mọi input đều current và authoritative như nhau.
+Trước khi prompt cho Mapping integration với external system, hãy label từng input theo owner, date, approval status, sensitivity và vai trò trong decision. Evidence lens quan trọng nhất là source schema, sample payload, mapping rule, data-quality report và ownership matrix; nếu thiếu, AI có thể xem old note, draft design và approved rule có authority như nhau.
 
 ## BA workflow
 
@@ -49,7 +49,7 @@ BA nên label các input này trước khi dùng AI: source owner, source date, 
 5. Review data privacy và contractual obligation.
 6. Publish integration requirement và operational escalation path.
 
-Workflow hiệu quả nhất khi dùng AI theo từng stage: trước hết organize evidence, sau đó yêu cầu analysis, tiếp theo tạo artifact, rồi chạy critique pass. BA nên giữ decision log visible xuyên suốt để suggestion do AI sinh ra không âm thầm trở thành approved scope.
+Chạy workflow như data contract review trước integration build: bắt đầu với "Tạo system context map và integration inventory.", sau đó giữ decision log visible khi artifact tiến tới Integration inventory. Cách này ngăn suggestion của AI âm thầm trở thành backlog, design, release hoặc operational commitment.
 
 ## Diagram
 
@@ -73,7 +73,7 @@ flowchart LR
 | Data exchange map | Source, target, transform, frequency và privacy classification | Data owner | Data movement controlled |
 | Escalation playbook | Issue, owner, provider contact, SLA và support communication | Operations | Support escalate được |
 
-Các deliverable này nên được xem là artifact do BA own. AI có thể draft, nhưng BA phải validate source support, stakeholder meaning, traceability và artifact đã sẵn sàng handoff hay chưa.
+Hãy xem Integration inventory là data and integration control pack do BA own. AI có thể draft structure, nhưng BA phải validate "Mọi integration visible" có thật sự đúng không, artifact có trace được về evidence không và receiving team có hành động được không.
 
 ## Prompt to try
 
@@ -83,11 +83,11 @@ Hãy đóng vai senior Business Analyst hiểu AI. Hỗ trợ tôi áp dụng us
 
 ## Review checklist
 
-- Mọi statement do AI hỗ trợ đều gắn với source, assumption hoặc validation question.
-- BA đã tách drafting assistance khỏi business approval.
-- Workflow step có human owner cho decision, review và exception.
-- Deliverable trace được về project input và review được bởi QA, product hoặc operations.
-- Risk control đủ thực tế để dùng trong meeting dự án thật.
+- System context diagram được label owner, date, approval status và sensitivity.
+- Integration inventory trace được về source evidence và có human owner rõ.
+- AI task nằm trong boundary field mapping, rule comparison, reconciliation design, lineage review và exception analysis và không approve scope hoặc policy.
+- Risk "Dependency opacity" có control thực tế: Map dependency và owner.
+- Open assumption được chuyển thành validation question hoặc stakeholder decision.
 - Success metric: External integration có data, failure, ownership và escalation behavior rõ.
 
 ## Risks and controls
@@ -99,4 +99,4 @@ Hãy đóng vai senior Business Analyst hiểu AI. Hỗ trợ tôi áp dụng us
 | Data privacy issue | External system nhận sensitive data | Classify data và review contract |
 | Escalation delay | Incident stall vì không có owner | Define escalation playbook |
 
-Control quan trọng nhất là làm uncertainty visible. Nếu evidence yếu, output nên tạo validation question hoặc decision item, không phải final requirement. Nếu artifact ảnh hưởng delivery, release, compliance, customer experience hoặc operational workload, BA nên yêu cầu human review explicit trước khi handoff.
+Control chính cho risk "Dependency opacity" là human accountability explicit: Map dependency và owner. Nếu evidence yếu, output nên tạo validation question hoặc decision item, không phải final requirement.

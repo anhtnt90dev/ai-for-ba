@@ -27,33 +27,33 @@ This lesson matters because a hallucinated sentence can become a requirement, a 
 
 ## Common difficulties for BAs
 
-In real projects, this topic is difficult because the BA must turn messy evidence into decisions without letting AI hide uncertainty. Watch for these friction points before treating the output as ready.
+In AI Foundations for Business Analysts, Hallucination and Source Grounding becomes difficult when stakeholders expect a simple AI answer while the actual issue depends on model capability, data readiness, tool boundaries, and business decision risk. A BA should inspect the points below before treating an AI-supported artifact as ready for stakeholder decision or delivery handoff.
 
 | Difficulty | Why it is hard in BA work | How a BA should handle it |
 | --- | --- | --- |
-| Accepting confident wording as evidence. | This is hard because Hallucination and Source Grounding is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
-| Letting AI cite a source that does not actually support the claim. | This is hard because Hallucination and Source Grounding is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
-| Skipping stakeholder confirmation for inferred rules. | This is hard because Hallucination and Source Grounding is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
+| Accepting confident wording as evidence. | The mistake "Accepting confident wording as evidence." appears when the team discusses problem fit, model boundary, data dependency, and decision risk without agreeing which source is authoritative. AI can smooth over the disagreement, so the BA must keep uncertainty visible. | Apply this control: ask the model to compare AI and non-AI options before drafting requirements. Then use the stronger pattern "Check claim-to-source support and record evidence level in the requirement table." and ask who must approve the artifact before it affects scope, build, test, or release. |
+| Letting AI cite a source that does not actually support the claim. | For Hallucination and Source Grounding, the friction is that A BA must design evidence discipline into AI work so plausible text does not become false requirements. The weak pattern is tempting because AI can produce a fluent answer before the BA has checked ownership, source freshness, or decision rights. | Apply this control: ask the model to compare AI and non-AI options before drafting requirements. Then use the stronger pattern "Move unsupported claims into open questions with owner and validation method." and ask who must approve the artifact before it affects scope, build, test, or release. |
+| Skipping stakeholder confirmation for inferred rules. | This becomes hard when Evidence Ladder is expected to support the solution-shape decision. If the BA does not challenge the draft, unsupported assumptions may enter planning, testing, or stakeholder communication. | Apply this control: ask the model to compare AI and non-AI options before drafting requirements. Then use the stronger pattern "Define evidence levels by risk tier and business impact." and ask who must approve the artifact before it affects scope, build, test, or release. |
 
 ## Where this applies in real projects
 
-This lesson is useful when the BA needs to move from conversation, policy, design, or technical input into a shared artifact that the team can implement and test.
+Use this lesson when an AI idea first enters discovery, vendor discussion, roadmap planning, or feasibility analysis. The practical output is not a longer document; it is Evidence Ladder with enough evidence, ownership, and decision clarity for the next project conversation.
 
 | Project moment | How to apply this lesson | Concrete BA output |
 | --- | --- | --- |
-| Discovery | Add an evidence column to one requirement table. | Evidence Ladder: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
-| Refinement | Ask AI to mark unsupported claims in an existing draft. | Evidence Ladder: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
-| Delivery | Create a list of authoritative sources for one feature. | Evidence Ladder: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
+| Idea intake | Add an evidence column to one requirement table. | Evidence Ladder showing problem fit, model boundary, data dependency, and decision risk, with the action "Add an evidence column to one requirement table." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
+| Feasibility review | Ask AI to mark unsupported claims in an existing draft. | Evidence Ladder showing source evidence, with the action "Ask AI to mark unsupported claims in an existing draft." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
+| Solution framing | Create a list of authoritative sources for one feature. | Evidence Ladder showing decision owner, with the action "Create a list of authoritative sources for one feature." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
 
 ## If this is missing
 
-If this capability is missing, AI may still produce polished text, but the project loses reviewability. The result is usually rework, hidden assumptions, weak acceptance criteria, or business decisions made without enough evidence.
+If Hallucination and Source Grounding is missing, the team may choose a tool before understanding the problem shape, creating expensive automation that does not match the business outcome. The BA can still recover, but only by converting the polished AI draft back into explicit evidence, assumptions, owners, and testable decisions.
 
 | If missing | Project impact | Recovery action |
 | --- | --- | --- |
-| Accept a cited claim without opening the source | The citation may be adjacent, outdated, or unrelated to the specific claim. | Recover by using the stronger pattern: Check claim-to-source support and record evidence level in the requirement table. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
-| Rewrite unsupported AI claims into polished requirements | Better wording makes weak evidence harder to detect. | Recover by using the stronger pattern: Move unsupported claims into open questions with owner and validation method. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
-| Use the same evidence threshold for all requirements | Low-risk copy and regulated decisions need different controls. | Recover by using the stronger pattern: Define evidence levels by risk tier and business impact. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
+| Accept a cited claim without opening the source | The citation may be adjacent, outdated, or unrelated to the specific claim. | Recover by using the stronger pattern: Check claim-to-source support and record evidence level in the requirement table. Rework Evidence Ladder until it exposes problem fit, model boundary, data dependency, and decision risk, and do not share it as final until evidence, ownership, and validation path are explicit. |
+| Rewrite unsupported AI claims into polished requirements | Better wording makes weak evidence harder to detect. | Recover by using the stronger pattern: Move unsupported claims into open questions with owner and validation method. Rework Evidence Ladder until it exposes problem fit, model boundary, data dependency, and decision risk, and do not share it as final until evidence, ownership, and validation path are explicit. |
+| Use the same evidence threshold for all requirements | Low-risk copy and regulated decisions need different controls. | Recover by using the stronger pattern: Define evidence levels by risk tier and business impact. Rework Evidence Ladder until it exposes problem fit, model boundary, data dependency, and decision risk, and do not share it as final until evidence, ownership, and validation path are explicit. |
 
 ## Mental model or core concept
 

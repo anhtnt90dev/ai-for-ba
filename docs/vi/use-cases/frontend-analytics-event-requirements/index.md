@@ -13,16 +13,16 @@ description: "BA phải define analytics như một phần requirement để pro
 
 ## Project context
 
-Product muốn đo user có hoàn thành onboarding flow mới không. Team có screen và story, nhưng chưa có event taxonomy, property definition, funnel step hoặc privacy control rõ. Trong môi trường delivery thật, tình huống này thường xuất hiện dưới áp lực thời gian: stakeholder cần clarity, delivery cần backlog, QA cần behavior test được, operations cần process chịu được exception. BA dùng AI để tăng tốc analysis và synthesis, nhưng BA vẫn chịu trách nhiệm về evidence, business meaning, stakeholder decisioning và artifact quality.
+Product muốn đo user có hoàn thành onboarding flow mới không. Team có screen và story, nhưng chưa có event taxonomy, property definition, funnel step hoặc privacy control rõ. Trong Product analytics, công việc này thường bắt đầu khi screen behavior, accessibility, design state, analytics và user feedback phải thành requirement implement được. BA nên xem User flow và Business questions là evidence cần organize, không phải raw material để AI trả lời không kiểm soát. Mục tiêu là làm decision tiếp theo rõ hơn cho người own outcome.
 
 ## BA challenge
 
-BA phải define analytics như một phần requirement để product decision đo được sau release. Event phải meaningful, privacy-safe, technically feasible và aligned với business question. Khó khăn thực tế là AI có thể làm material ban đầu trông hoàn chỉnh hơn mức thật sự. BA giỏi giữ output ở trạng thái reviewable bằng cách tách source-backed fact, assumption, unsupported claim, decision gap và recommended next action. Mục tiêu không phải làm document dài hơn; mục tiêu là làm project decision rõ hơn và an toàn hơn.
+BA phải define analytics như một phần requirement để product decision đo được sau release. Event phải meaningful, privacy-safe, technically feasible và aligned với business question. Với Requirement cho frontend analytics event, khó khăn thực tế là missing state và UX không đo được. AI có thể tăng tốc UI-state analysis, content critique, accessibility review, event taxonomy và edge-case discovery, nhưng BA vẫn phải làm rõ assumption, approval còn thiếu và điểm cần stakeholder judgment.
 
 ## Where AI fits
 
 <div class="ba-workbench-panel">
-AI hữu ích trong use case này khi được giới hạn vào analysis support, pattern detection, structured drafting và critique. AI không được approve scope, invent policy, quyết định business trade-off hoặc thay thế judgment của stakeholder chịu trách nhiệm.
+AI phù hợp với use case Frontend, UI và UX khi được giới hạn vào UI-state analysis, content critique, accessibility review, event taxonomy và edge-case discovery. AI task hữu ích đầu tiên là: Generate event taxonomy từ user flow và product question. AI không được approve scope, invent policy, bỏ qua wireframe, design token, user journey, analytics question và accessibility expectation, hoặc biến draft thành final decision.
 </div>
 
 - Generate event taxonomy từ user flow và product question.
@@ -38,7 +38,7 @@ AI hữu ích trong use case này khi được giới hạn vào analysis suppor
 - Privacy rules
 - Screen behavior spec
 
-BA nên label các input này trước khi dùng AI: source owner, source date, approval status, sensitivity level, và source đó là fact, opinion, policy, draft hay historical evidence. Việc chuẩn bị này ngăn model xem mọi input đều current và authoritative như nhau.
+Trước khi prompt cho Requirement cho frontend analytics event, hãy label từng input theo owner, date, approval status, sensitivity và vai trò trong decision. Evidence lens quan trọng nhất là wireframe, design token, user journey, analytics question và accessibility expectation; nếu thiếu, AI có thể xem old note, draft design và approved rule có authority như nhau.
 
 ## BA workflow
 
@@ -49,7 +49,7 @@ BA nên label các input này trước khi dùng AI: source owner, source date, 
 5. Thêm acceptance criteria cho event trigger, payload và non-trigger case.
 6. Tạo QA và monitoring checklist cho analytics release.
 
-Workflow hiệu quả nhất khi dùng AI theo từng stage: trước hết organize evidence, sau đó yêu cầu analysis, tiếp theo tạo artifact, rồi chạy critique pass. BA nên giữ decision log visible xuyên suốt để suggestion do AI sinh ra không âm thầm trở thành approved scope.
+Chạy workflow như screen-state review trước frontend build: bắt đầu với "Bắt đầu từ product question và decision data cần support.", sau đó giữ decision log visible khi artifact tiến tới Analytics event spec. Cách này ngăn suggestion của AI âm thầm trở thành backlog, design, release hoặc operational commitment.
 
 ## Diagram
 
@@ -73,7 +73,7 @@ flowchart LR
 | Privacy review list | Sensitive property, redaction, consent và approval | Privacy owner | Event an toàn |
 | Analytics QA checklist | Trigger, payload, duplicate, non-trigger và environment test | QA | Instrumentation test được |
 
-Các deliverable này nên được xem là artifact do BA own. AI có thể draft, nhưng BA phải validate source support, stakeholder meaning, traceability và artifact đã sẵn sàng handoff hay chưa.
+Hãy xem Analytics event spec là frontend requirement specification do BA own. AI có thể draft structure, nhưng BA phải validate "Event trả lời business question" có thật sự đúng không, artifact có trace được về evidence không và receiving team có hành động được không.
 
 ## Prompt to try
 
@@ -83,11 +83,11 @@ Hãy đóng vai senior Business Analyst hiểu AI. Hỗ trợ tôi áp dụng us
 
 ## Review checklist
 
-- Mọi statement do AI hỗ trợ đều gắn với source, assumption hoặc validation question.
-- BA đã tách drafting assistance khỏi business approval.
-- Workflow step có human owner cho decision, review và exception.
-- Deliverable trace được về project input và review được bởi QA, product hoặc operations.
-- Risk control đủ thực tế để dùng trong meeting dự án thật.
+- User flow được label owner, date, approval status và sensitivity.
+- Analytics event spec trace được về source evidence và có human owner rõ.
+- AI task nằm trong boundary UI-state analysis, content critique, accessibility review, event taxonomy và edge-case discovery và không approve scope hoặc policy.
+- Risk "Vanity events" có control thực tế: Tie mọi event với product question.
+- Open assumption được chuyển thành validation question hoặc stakeholder decision.
 - Success metric: Frontend instrumentation tạo product data dùng được cho decision mà không vi phạm privacy.
 
 ## Risks and controls
@@ -99,4 +99,4 @@ Hãy đóng vai senior Business Analyst hiểu AI. Hỗ trợ tôi áp dụng us
 | Duplicate firing | Metric có thể inflate | Define exact trigger và QA check |
 | Missing funnel step | Không diagnose được drop-off | Map funnel trước implementation |
 
-Control quan trọng nhất là làm uncertainty visible. Nếu evidence yếu, output nên tạo validation question hoặc decision item, không phải final requirement. Nếu artifact ảnh hưởng delivery, release, compliance, customer experience hoặc operational workload, BA nên yêu cầu human review explicit trước khi handoff.
+Control chính cho risk "Vanity events" là human accountability explicit: Tie mọi event với product question. Nếu evidence yếu, output nên tạo validation question hoặc decision item, không phải final requirement.

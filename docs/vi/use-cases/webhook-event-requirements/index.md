@@ -13,16 +13,16 @@ description: "BA phải specify event behavior vượt ngoài việc đặt tên
 
 ## Project context
 
-Platform cần notify partner system khi invoice được created, paid, voided hoặc disputed. Partner cần webhook reliable, replay support và event payload rõ. Trong môi trường delivery thật, tình huống này thường xuất hiện dưới áp lực thời gian: stakeholder cần clarity, delivery cần backlog, QA cần behavior test được, operations cần process chịu được exception. BA dùng AI để tăng tốc analysis và synthesis, nhưng BA vẫn chịu trách nhiệm về evidence, business meaning, stakeholder decisioning và artifact quality.
+Platform cần notify partner system khi invoice được created, paid, voided hoặc disputed. Partner cần webhook reliable, replay support và event payload rõ. Trong Event-driven integration, công việc này thường bắt đầu khi API contract, permission, error, audit và operational behavior phải đủ explicit cho backend delivery. BA nên xem Entity lifecycle và Partner integration needs là evidence cần organize, không phải raw material để AI trả lời không kiểm soát. Mục tiêu là làm decision tiếp theo rõ hơn cho người own outcome.
 
 ## BA challenge
 
-BA phải specify event behavior vượt ngoài việc đặt tên event. Requirement cần cover trigger, payload, ordering, retry, replay, security, subscription management và partner-facing documentation. Khó khăn thực tế là AI có thể làm material ban đầu trông hoàn chỉnh hơn mức thật sự. BA giỏi giữ output ở trạng thái reviewable bằng cách tách source-backed fact, assumption, unsupported claim, decision gap và recommended next action. Mục tiêu không phải làm document dài hơn; mục tiêu là làm project decision rõ hơn và an toàn hơn.
+BA phải specify event behavior vượt ngoài việc đặt tên event. Requirement cần cover trigger, payload, ordering, retry, replay, security, subscription management và partner-facing documentation. Với Requirement webhook và event-driven, khó khăn thực tế là service behavior mơ hồ và security gap. AI có thể tăng tốc contract critique, rule extraction, error taxonomy, permission review và NFR gap detection, nhưng BA vẫn phải làm rõ assumption, approval còn thiếu và điểm cần stakeholder judgment.
 
 ## Where AI fits
 
 <div class="ba-workbench-panel">
-AI hữu ích trong use case này khi được giới hạn vào analysis support, pattern detection, structured drafting và critique. AI không được approve scope, invent policy, quyết định business trade-off hoặc thay thế judgment của stakeholder chịu trách nhiệm.
+AI phù hợp với use case Backend và API khi được giới hạn vào contract critique, rule extraction, error taxonomy, permission review và NFR gap detection. AI task hữu ích đầu tiên là: Generate event catalog và payload question từ lifecycle state. AI không được approve scope, invent policy, bỏ qua API draft, data model, auth rule, error sample, audit policy và integration need, hoặc biến draft thành final decision.
 </div>
 
 - Generate event catalog và payload question từ lifecycle state.
@@ -38,7 +38,7 @@ AI hữu ích trong use case này khi được giới hạn vào analysis suppor
 - Existing webhook examples
 - Operational support process
 
-BA nên label các input này trước khi dùng AI: source owner, source date, approval status, sensitivity level, và source đó là fact, opinion, policy, draft hay historical evidence. Việc chuẩn bị này ngăn model xem mọi input đều current và authoritative như nhau.
+Trước khi prompt cho Requirement webhook và event-driven, hãy label từng input theo owner, date, approval status, sensitivity và vai trò trong decision. Evidence lens quan trọng nhất là API draft, data model, auth rule, error sample, audit policy và integration need; nếu thiếu, AI có thể xem old note, draft design và approved rule có authority như nhau.
 
 ## BA workflow
 
@@ -49,7 +49,7 @@ BA nên label các input này trước khi dùng AI: source owner, source date, 
 5. Viết acceptance criteria cho success, failure, duplicate và replay case.
 6. Tạo operational monitoring và incident handling requirement.
 
-Workflow hiệu quả nhất khi dùng AI theo từng stage: trước hết organize evidence, sau đó yêu cầu analysis, tiếp theo tạo artifact, rồi chạy critique pass. BA nên giữ decision log visible xuyên suốt để suggestion do AI sinh ra không âm thầm trở thành approved scope.
+Chạy workflow như contract validation trước implementation: bắt đầu với "Map entity lifecycle transition tới event trigger.", sau đó giữ decision log visible khi artifact tiến tới Event catalog. Cách này ngăn suggestion của AI âm thầm trở thành backlog, design, release hoặc operational commitment.
 
 ## Diagram
 
@@ -73,7 +73,7 @@ flowchart LR
 | Partner documentation outline | Payload example, signing, retry, error handling và support | Developer relations | Partner integrate được |
 | Event QA scenarios | Success, retry, replay, duplicate, missing consumer và bad signature | QA | Integration behavior testable |
 
-Các deliverable này nên được xem là artifact do BA own. AI có thể draft, nhưng BA phải validate source support, stakeholder meaning, traceability và artifact đã sẵn sàng handoff hay chưa.
+Hãy xem Event catalog là backend behavior contract do BA own. AI có thể draft structure, nhưng BA phải validate "Event map với lifecycle" có thật sự đúng không, artifact có trace được về evidence không và receiving team có hành động được không.
 
 ## Prompt to try
 
@@ -83,11 +83,11 @@ Hãy đóng vai senior Business Analyst hiểu AI. Hỗ trợ tôi áp dụng us
 
 ## Review checklist
 
-- Mọi statement do AI hỗ trợ đều gắn với source, assumption hoặc validation question.
-- BA đã tách drafting assistance khỏi business approval.
-- Workflow step có human owner cho decision, review và exception.
-- Deliverable trace được về project input và review được bởi QA, product hoặc operations.
-- Risk control đủ thực tế để dùng trong meeting dự án thật.
+- Entity lifecycle được label owner, date, approval status và sensitivity.
+- Event catalog trace được về source evidence và có human owner rõ.
+- AI task nằm trong boundary contract critique, rule extraction, error taxonomy, permission review và NFR gap detection và không approve scope hoặc policy.
+- Risk "Event ambiguity" có control thực tế: Document business meaning và trigger.
+- Open assumption được chuyển thành validation question hoặc stakeholder decision.
 - Success metric: Event-driven integration có semantic rõ, reliability behavior và documentation sẵn cho partner.
 
 ## Risks and controls
@@ -99,4 +99,4 @@ Hãy đóng vai senior Business Analyst hiểu AI. Hỗ trợ tôi áp dụng us
 | Replay gap | Partner không recover được sau outage | Define replay và event history |
 | Security weakness | Webhook có thể bị spoof | Specify signing và authentication |
 
-Control quan trọng nhất là làm uncertainty visible. Nếu evidence yếu, output nên tạo validation question hoặc decision item, không phải final requirement. Nếu artifact ảnh hưởng delivery, release, compliance, customer experience hoặc operational workload, BA nên yêu cầu human review explicit trước khi handoff.
+Control chính cho risk "Event ambiguity" là human accountability explicit: Document business meaning và trigger. Nếu evidence yếu, output nên tạo validation question hoặc decision item, không phải final requirement.

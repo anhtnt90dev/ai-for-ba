@@ -27,33 +27,33 @@ Bài này quan trọng vì một câu hallucination có thể biến thành requ
 
 ## Common difficulties for BAs
 
-Trong dự án thật, chủ đề này khó vì BA phải biến evidence lộn xộn thành decision mà không để AI che mất uncertainty. Hãy chú ý các friction point này trước khi xem output là sẵn sàng.
+Trong Nền tảng AI cho Business Analyst, Hallucination và source grounding trở nên khó khi stakeholder muốn câu trả lời AI thật đơn giản trong khi vấn đề thật phụ thuộc vào capability của model, data readiness, boundary của tool và risk của business decision. BA nên kiểm tra các điểm dưới đây trước khi xem artifact có AI hỗ trợ là đủ sẵn sàng cho stakeholder decision hoặc handoff.
 
 | Khó khăn | Vì sao khó trong công việc BA | BA nên xử lý thế nào |
 | --- | --- | --- |
-| Xem wording tự tin là evidence. | Khó vì Hallucination và source grounding thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
-| Để AI cite source nhưng source không thật sự support claim. | Khó vì Hallucination và source grounding thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
-| Bỏ qua stakeholder confirmation cho rule suy luận. | Khó vì Hallucination và source grounding thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
+| Xem wording tự tin là evidence. | Lỗi "Xem wording tự tin là evidence." xuất hiện khi team bàn về problem fit, model boundary, data dependency và decision risk nhưng chưa thống nhất source nào authoritative. AI có thể làm disagreement nghe mượt hơn, nên BA phải giữ uncertainty visible. | Áp dụng control này: yêu cầu model so sánh option AI và non-AI trước khi draft requirement. Sau đó dùng pattern tốt hơn "Kiểm tra claim-to-source support và ghi evidence level trong requirement table." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
+| Để AI cite source nhưng source không thật sự support claim. | Với Hallucination và source grounding, điểm khó là BA phải đưa evidence discipline vào cách dùng AI để text nghe hợp lý không biến thành requirement sai. Pattern yếu rất dễ xảy ra vì AI có thể tạo câu trả lời trôi chảy trước khi BA check ownership, source freshness hoặc decision right. | Áp dụng control này: yêu cầu model so sánh option AI và non-AI trước khi draft requirement. Sau đó dùng pattern tốt hơn "Đưa unsupported claim vào open question có owner và validation method." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
+| Bỏ qua stakeholder confirmation cho rule suy luận. | Điểm này khó khi Evidence Ladder được kỳ vọng hỗ trợ solution-shape decision. Nếu BA không challenge draft, unsupported assumption có thể đi vào planning, testing hoặc stakeholder communication. | Áp dụng control này: yêu cầu model so sánh option AI và non-AI trước khi draft requirement. Sau đó dùng pattern tốt hơn "Định nghĩa evidence level theo risk tier và business impact." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
 
 ## Where this applies in real projects
 
-Bài này hữu ích khi BA cần chuyển conversation, policy, design hoặc technical input thành artifact chung để team implement và test được.
+Dùng bài này khi một AI idea mới đi vào discovery, vendor discussion, roadmap planning hoặc feasibility analysis. Output thực tế không phải document dài hơn; đó là Evidence Ladder có đủ evidence, ownership và decision clarity cho cuộc trao đổi tiếp theo của dự án.
 
 | Thời điểm trong dự án | Cách áp dụng bài học | Output cụ thể của BA |
 | --- | --- | --- |
-| Discovery | Thêm cột evidence vào một requirement table. | Evidence Ladder: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
-| Refinement | Yêu cầu AI mark unsupported claim trong một draft hiện có. | Evidence Ladder: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
-| Delivery | Tạo danh sách authoritative source cho một feature. | Evidence Ladder: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
+| Idea intake | Thêm cột evidence vào một requirement table. | Evidence Ladder thể hiện problem fit, model boundary, data dependency và decision risk, trong đó action "Thêm cột evidence vào một requirement table." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
+| Feasibility review | Yêu cầu AI mark unsupported claim trong một draft hiện có. | Evidence Ladder thể hiện source evidence, trong đó action "Yêu cầu AI mark unsupported claim trong một draft hiện có." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
+| Solution framing | Tạo danh sách authoritative source cho một feature. | Evidence Ladder thể hiện decision owner, trong đó action "Tạo danh sách authoritative source cho một feature." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
 
 ## If this is missing
 
-Nếu thiếu năng lực này, AI vẫn có thể tạo text rất bóng bẩy, nhưng project mất khả năng review. Kết quả thường là rework, assumption ẩn, acceptance criteria yếu hoặc business decision thiếu evidence.
+Nếu thiếu Hallucination và source grounding, team có thể chọn tool trước khi hiểu problem shape, tạo automation tốn kém nhưng không khớp business outcome. BA vẫn có thể khôi phục, nhưng phải chuyển draft AI bóng bẩy trở lại thành evidence, assumption, owner và decision test được.
 
 | Nếu thiếu | Ảnh hưởng tới dự án | Cách khôi phục |
 | --- | --- | --- |
-| Chấp nhận claim có citation mà không mở source | Citation có thể chỉ liên quan gần, đã cũ hoặc không support đúng claim. | Khôi phục bằng pattern tốt hơn: Kiểm tra claim-to-source support và ghi evidence level trong requirement table. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
-| Rewrite unsupported AI claim thành requirement mượt hơn | Wording tốt làm evidence yếu khó phát hiện hơn. | Khôi phục bằng pattern tốt hơn: Đưa unsupported claim vào open question có owner và validation method. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
-| Dùng cùng evidence threshold cho mọi requirement | Low-risk copy và regulated decision cần control khác nhau. | Khôi phục bằng pattern tốt hơn: Định nghĩa evidence level theo risk tier và business impact. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
+| Chấp nhận claim có citation mà không mở source | Citation có thể chỉ liên quan gần, đã cũ hoặc không support đúng claim. | Khôi phục bằng pattern tốt hơn: Kiểm tra claim-to-source support và ghi evidence level trong requirement table. Rework Evidence Ladder cho đến khi nó lộ rõ problem fit, model boundary, data dependency và decision risk, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
+| Rewrite unsupported AI claim thành requirement mượt hơn | Wording tốt làm evidence yếu khó phát hiện hơn. | Khôi phục bằng pattern tốt hơn: Đưa unsupported claim vào open question có owner và validation method. Rework Evidence Ladder cho đến khi nó lộ rõ problem fit, model boundary, data dependency và decision risk, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
+| Dùng cùng evidence threshold cho mọi requirement | Low-risk copy và regulated decision cần control khác nhau. | Khôi phục bằng pattern tốt hơn: Định nghĩa evidence level theo risk tier và business impact. Rework Evidence Ladder cho đến khi nó lộ rõ problem fit, model boundary, data dependency và decision risk, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
 
 ## Mental model or core concept
 

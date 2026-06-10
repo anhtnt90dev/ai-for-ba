@@ -13,16 +13,16 @@ description: "The BA must provide QA with traceable behavior, not just story tex
 
 ## Project context
 
-QA receives stories late and must create tests for UI states, API errors, permissions, and integration failures. BA wants to improve handoff quality before test design starts. In a real delivery environment, this work usually appears under time pressure: stakeholders want clarity, delivery needs a backlog, QA needs testable behavior, and operations needs a process that can survive exceptions. The BA uses AI here to accelerate analysis and synthesis, but the BA remains accountable for evidence, business meaning, stakeholder decisioning, and artifact quality.
+QA receives stories late and must create tests for UI states, API errors, permissions, and integration failures. BA wants to improve handoff quality before test design starts. In BA and QA, this work usually starts when different roles need different artifacts, but the BA must keep decisions consistent across product, design, engineering, QA, data, and operations. The BA should treat User stories and Acceptance criteria as evidence to organize, not as raw material for an unconstrained AI answer. The goal is to make the next decision clearer for the people who own the outcome.
 
 ## BA challenge
 
-The BA must provide QA with traceable behavior, not just story text. AI can generate test ideas, but the BA and QA must validate source support, risk, and expected results. The practical difficulty is that AI can make early material look more complete than it is. A strong BA keeps the output reviewable by separating source-backed facts, assumptions, unsupported claims, decision gaps, and recommended next actions. The objective is not to make the document longer; it is to make the project decision clearer and safer.
+The BA must provide QA with traceable behavior, not just story text. AI can generate test ideas, but the BA and QA must validate source support, risk, and expected results. For BA-QA Test Handoff With AI, the practical difficulty is role misalignment and hidden trade-offs. AI can accelerate role-specific synthesis, decision memo drafting, conflict surfacing, and shared artifact critique, but the BA must still expose assumptions, missing approvals, and the point where stakeholder judgment is required.
 
 ## Where AI fits
 
 <div class="ba-workbench-panel">
-AI is useful in this use case when it is constrained to analysis support, pattern detection, structured drafting, and critique. It should not approve scope, invent policy, decide business trade-offs, or replace accountable stakeholder judgment.
+AI fits this Cross-functional BA Collaboration use case when it is constrained to role-specific synthesis, decision memo drafting, conflict surfacing, and shared artifact critique. A useful first AI task is: Generate test scenarios from acceptance criteria and use case flow. AI should not approve scope, invent policy, bypass role feedback, decision log, design notes, technical constraints, test concerns, and support needs, or turn a draft into a final decision.
 </div>
 
 - Generate test scenarios from acceptance criteria and use case flow.
@@ -38,7 +38,7 @@ AI is useful in this use case when it is constrained to analysis support, patter
 - API contract
 - Permission matrix
 
-A BA should label these inputs before using AI: source owner, source date, approval status, sensitivity level, and whether the source is fact, opinion, policy, draft, or historical evidence. This preparation prevents the model from treating every input as equally current and authoritative.
+Before prompting for BA-QA Test Handoff With AI, label each input by owner, date, approval status, sensitivity, and role in the decision. The most important evidence lens is role feedback, decision log, design notes, technical constraints, test concerns, and support needs; without it, AI may rank old notes, draft designs, and approved rules as if they had equal authority.
 
 ## BA workflow
 
@@ -49,7 +49,7 @@ A BA should label these inputs before using AI: source owner, source date, appro
 5. Create handoff notes for automation and manual testing.
 6. Update stories if test generation reveals requirement gaps.
 
-The workflow works best as a staged AI collaboration: first organize the evidence, then ask for analysis, then create the artifact, then run a critique pass. The BA should keep a visible decision log throughout the process so that AI-generated suggestions do not silently become approved scope.
+Run the workflow as cross-role decision alignment before handoff: start with "Ask AI to derive scenarios from each acceptance criterion.", then keep a visible decision log as the artifact moves toward QA handoff matrix. This prevents AI suggestions from silently becoming backlog, design, release, or operational commitments.
 
 ## Diagram
 
@@ -73,7 +73,7 @@ flowchart LR
 | Gap list | Missing rule, missing criteria, unclear expected result, and owner | BA | Requirement gaps are resolved |
 | Automation candidate list | Stable scenarios, data needs, and automation value | QA lead | Automation scope is clear |
 
-These deliverables should be treated as BA-owned artifacts. AI can draft them, but the BA must validate source support, stakeholder meaning, traceability, and whether the artifact is ready for handoff.
+Treat QA handoff matrix as a BA-owned collaboration decision artifact. AI may draft structure, but the BA must validate whether "QA can design tests" is actually true, whether the artifact is traceable to source evidence, and whether the receiving team can act on it.
 
 ## Prompt to try
 
@@ -83,11 +83,11 @@ Act as a senior AI-aware Business Analyst. Help me apply the "BA-QA Test Handoff
 
 ## Review checklist
 
-- Every AI-produced statement is tied to a source, assumption, or validation question.
-- The BA has separated drafting assistance from business approval.
-- Workflow steps identify the human owner for decisions, review, and exceptions.
-- Deliverables are traceable to project inputs and can be reviewed by QA, product, or operations.
-- Risk controls are practical enough to be used in a real project meeting.
+- User stories is labeled with owner, date, approval status, and sensitivity.
+- QA handoff matrix traces to source evidence and has a named human owner.
+- The AI task stays inside role-specific synthesis, decision memo drafting, conflict surfacing, and shared artifact critique and does not approve scope or policy.
+- The "Invented test expectation" risk has a practical control: Tie scenarios to source and criteria.
+- Open assumptions are converted into validation questions or stakeholder decisions.
 - Success metric: QA receives source-backed, prioritized scenarios with expected results and test data needs.
 
 ## Risks and controls
@@ -99,4 +99,4 @@ Act as a senior AI-aware Business Analyst. Help me apply the "BA-QA Test Handoff
 | Missing data | QA cannot execute without data setup | Define test data early |
 | Late gap discovery | Requirement gaps found during testing are costly | Use AI scenario generation before sprint commitment |
 
-The key control is to make uncertainty visible. If evidence is weak, the output should create a validation question or decision item, not a final requirement. If the artifact influences delivery, release, compliance, customer experience, or operational workload, the BA should require explicit human review before handoff.
+The main control for the "Invented test expectation" risk is explicit human accountability: Tie scenarios to source and criteria. If evidence is weak, the output should create a validation question or decision item, not a final requirement.

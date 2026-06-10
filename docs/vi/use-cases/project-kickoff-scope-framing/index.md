@@ -13,16 +13,16 @@ description: "BA phải chuyển mandate mơ hồ thành problem statement chung
 
 ## Project context
 
-Một dự án internal platform bắt đầu với mandate rất rộng: hiện đại hóa trải nghiệm request intake. Executive muốn tiến độ nhanh, delivery team cần boundary rõ, operations lo các manual exception hiện tại bị bỏ qua. Trong môi trường delivery thật, tình huống này thường xuất hiện dưới áp lực thời gian: stakeholder cần clarity, delivery cần backlog, QA cần behavior test được, operations cần process chịu được exception. BA dùng AI để tăng tốc analysis và synthesis, nhưng BA vẫn chịu trách nhiệm về evidence, business meaning, stakeholder decisioning và artifact quality.
+Một dự án internal platform bắt đầu với mandate rất rộng: hiện đại hóa trải nghiệm request intake. Executive muốn tiến độ nhanh, delivery team cần boundary rõ, operations lo các manual exception hiện tại bị bỏ qua. Trong Project initiation, công việc này thường bắt đầu khi stakeholder mô tả cùng một vấn đề từ incentive và mức chi tiết khác nhau. BA nên xem Kickoff notes và Executive goals là evidence cần organize, không phải raw material để AI trả lời không kiểm soát. Mục tiêu là làm decision tiếp theo rõ hơn cho người own outcome.
 
 ## BA challenge
 
-BA phải chuyển mandate mơ hồ thành problem statement chung, outcome đo được, scope in, scope out, assumption, dependency và decision criteria cho release đầu. AI có thể giúp draft structure, nhưng BA phải ngăn AI tự bịa strategy. Khó khăn thực tế là AI có thể làm material ban đầu trông hoàn chỉnh hơn mức thật sự. BA giỏi giữ output ở trạng thái reviewable bằng cách tách source-backed fact, assumption, unsupported claim, decision gap và recommended next action. Mục tiêu không phải làm document dài hơn; mục tiêu là làm project decision rõ hơn và an toàn hơn.
+BA phải chuyển mandate mơ hồ thành problem statement chung, outcome đo được, scope in, scope out, assumption, dependency và decision criteria cho release đầu. AI có thể giúp draft structure, nhưng BA phải ngăn AI tự bịa strategy. Với Framing scope cho project kickoff, khó khăn thực tế là false consensus và invented scope. AI có thể tăng tốc sensemaking, contradiction detection, question generation và workshop preparation, nhưng BA vẫn phải làm rõ assumption, approval còn thiếu và điểm cần stakeholder judgment.
 
 ## Where AI fits
 
 <div class="ba-workbench-panel">
-AI hữu ích trong use case này khi được giới hạn vào analysis support, pattern detection, structured drafting và critique. AI không được approve scope, invent policy, quyết định business trade-off hoặc thay thế judgment của stakeholder chịu trách nhiệm.
+AI phù hợp với use case Discovery và alignment khi được giới hạn vào sensemaking, contradiction detection, question generation và workshop preparation. AI task hữu ích đầu tiên là: Tạo scope framing canvas từ kickoff notes. AI không được approve scope, invent policy, bỏ qua speaker attribution, decision authority và source freshness, hoặc biến draft thành final decision.
 </div>
 
 - Tạo scope framing canvas từ kickoff notes.
@@ -38,7 +38,7 @@ AI hữu ích trong use case này khi được giới hạn vào analysis suppor
 - Known constraints
 - Roadmap hoặc budget window ban đầu
 
-BA nên label các input này trước khi dùng AI: source owner, source date, approval status, sensitivity level, và source đó là fact, opinion, policy, draft hay historical evidence. Việc chuẩn bị này ngăn model xem mọi input đều current và authoritative như nhau.
+Trước khi prompt cho Framing scope cho project kickoff, hãy label từng input theo owner, date, approval status, sensitivity và vai trò trong decision. Evidence lens quan trọng nhất là speaker attribution, decision authority và source freshness; nếu thiếu, AI có thể xem old note, draft design và approved rule có authority như nhau.
 
 ## BA workflow
 
@@ -49,7 +49,7 @@ BA nên label các input này trước khi dùng AI: source owner, source date, 
 5. Tạo decision log cho item chưa thể chốt trong kickoff.
 6. Publish scope framing artifact một trang trước khi solution design bắt đầu.
 
-Workflow hiệu quả nhất khi dùng AI theo từng stage: trước hết organize evidence, sau đó yêu cầu analysis, tiếp theo tạo artifact, rồi chạy critique pass. BA nên giữ decision log visible xuyên suốt để suggestion do AI sinh ra không âm thầm trở thành approved scope.
+Chạy workflow như gom evidence trước khi bàn solution: bắt đầu với "Summarize mandate thành business outcome và user outcome.", sau đó giữ decision log visible khi artifact tiến tới Scope framing canvas. Cách này ngăn suggestion của AI âm thầm trở thành backlog, design, release hoặc operational commitment.
 
 ## Diagram
 
@@ -73,7 +73,7 @@ flowchart LR
 | Assumption backlog | Assumption chưa validate được rank theo risk và dependency | BA | High-risk assumption có validation action |
 | Decision log | Open decision, option, impact, owner và due date | Sponsor | Không major scope item nào thiếu owner |
 
-Các deliverable này nên được xem là artifact do BA own. AI có thể draft, nhưng BA phải validate source support, stakeholder meaning, traceability và artifact đã sẵn sàng handoff hay chưa.
+Hãy xem Scope framing canvas là alignment artifact do BA own. AI có thể draft structure, nhưng BA phải validate "Stakeholder hiểu rõ phần không included" có thật sự đúng không, artifact có trace được về evidence không và receiving team có hành động được không.
 
 ## Prompt to try
 
@@ -83,11 +83,11 @@ Hãy đóng vai senior Business Analyst hiểu AI. Hỗ trợ tôi áp dụng us
 
 ## Review checklist
 
-- Mọi statement do AI hỗ trợ đều gắn với source, assumption hoặc validation question.
-- BA đã tách drafting assistance khỏi business approval.
-- Workflow step có human owner cho decision, review và exception.
-- Deliverable trace được về project input và review được bởi QA, product hoặc operations.
-- Risk control đủ thực tế để dùng trong meeting dự án thật.
+- Kickoff notes được label owner, date, approval status và sensitivity.
+- Scope framing canvas trace được về source evidence và có human owner rõ.
+- AI task nằm trong boundary sensemaking, contradiction detection, question generation và workshop preparation và không approve scope hoặc policy.
+- Risk "Mandate biến thành solution" có control thực tế: Tách problem, outcome và solution section.
+- Open assumption được chuyển thành validation question hoặc stakeholder decision.
 - Success metric: Kickoff tạo được scope frame đã agreed để delivery, product và operations dùng cho prioritization.
 
 ## Risks and controls
@@ -99,4 +99,4 @@ Hãy đóng vai senior Business Analyst hiểu AI. Hỗ trợ tôi áp dụng us
 | Metric theater | Success measure nghe hay nhưng không đo được | Ghi baseline và data source cho từng metric |
 | Hidden dependency | Manual exception process có thể block launch | Dùng AI để sinh dependency discovery question |
 
-Control quan trọng nhất là làm uncertainty visible. Nếu evidence yếu, output nên tạo validation question hoặc decision item, không phải final requirement. Nếu artifact ảnh hưởng delivery, release, compliance, customer experience hoặc operational workload, BA nên yêu cầu human review explicit trước khi handoff.
+Control chính cho risk "Mandate biến thành solution" là human accountability explicit: Tách problem, outcome và solution section. Nếu evidence yếu, output nên tạo validation question hoặc decision item, không phải final requirement.

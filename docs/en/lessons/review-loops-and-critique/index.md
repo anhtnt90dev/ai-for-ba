@@ -27,33 +27,33 @@ This lesson matters because first AI drafts are optimized for fluency, not neces
 
 ## Common difficulties for BAs
 
-In real projects, this topic is difficult because the BA must turn messy evidence into decisions without letting AI hide uncertainty. Watch for these friction points before treating the output as ready.
+In AI Collaboration and Context Engineering, Review Loops and Critique becomes difficult when AI can draft quickly, but reviewers need repeatable context, structured output, and critique rules to trust the result. A BA should inspect the points below before treating an AI-supported artifact as ready for stakeholder decision or delivery handoff.
 
 | Difficulty | Why it is hard in BA work | How a BA should handle it |
 | --- | --- | --- |
-| Asking AI to improve the draft without first diagnosing it. | This is hard because Review Loops and Critique is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
-| Accepting all critique findings equally. | This is hard because Review Loops and Critique is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
-| Skipping evidence for critique. | This is hard because Review Loops and Critique is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
+| Asking AI to improve the draft without first diagnosing it. | The mistake "Asking AI to improve the draft without first diagnosing it." appears when the team discusses context package quality, prompt reuse, critique loop, and output contract without agreeing which source is authoritative. AI can smooth over the disagreement, so the BA must keep uncertainty visible. | Apply this control: separate context preparation, generation, critique, and human approval into visible steps. Then use the stronger pattern "Run critique passes for evidence, specificity, testability, and risk before sharing." and ask who must approve the artifact before it affects scope, build, test, or release. |
+| Accepting all critique findings equally. | For Review Loops and Critique, the friction is that The strongest BA use of AI is not drafting faster; it is creating disciplined critique loops before artifacts reach the team. The weak pattern is tempting because AI can produce a fluent answer before the BA has checked ownership, source freshness, or decision rights. | Apply this control: separate context preparation, generation, critique, and human approval into visible steps. Then use the stronger pattern "Use a rubric with required lenses, severity, source reference, and recommended fix." and ask who must approve the artifact before it affects scope, build, test, or release. |
+| Skipping evidence for critique. | This becomes hard when Multi-Perspective Critique Grid is expected to support the repeatable collaboration pattern. If the BA does not challenge the draft, unsupported assumptions may enter planning, testing, or stakeholder communication. | Apply this control: separate context preparation, generation, critique, and human approval into visible steps. Then use the stronger pattern "Convert critique findings into a defect register or decision log with owners." and ask who must approve the artifact before it affects scope, build, test, or release. |
 
 ## Where this applies in real projects
 
-This lesson is useful when the BA needs to move from conversation, policy, design, or technical input into a shared artifact that the team can implement and test.
+Use this lesson when a BA team wants reusable AI collaboration patterns instead of one-off prompts that depend on individual habit. The practical output is not a longer document; it is Multi-Perspective Critique Grid with enough evidence, ownership, and decision clarity for the next project conversation.
 
 | Project moment | How to apply this lesson | Concrete BA output |
 | --- | --- | --- |
-| Discovery | Run one draft through a QA critique prompt. | Multi-Perspective Critique Grid: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
-| Refinement | Ask AI to rank findings by delivery risk. | Multi-Perspective Critique Grid: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
-| Delivery | Convert critique into a revision backlog. | Multi-Perspective Critique Grid: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
+| Context setup | Run one draft through a QA critique prompt. | Multi-Perspective Critique Grid showing context package quality, prompt reuse, critique loop, and output contract, with the action "Run one draft through a QA critique prompt." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
+| Prompt reuse | Ask AI to rank findings by delivery risk. | Multi-Perspective Critique Grid showing source evidence, with the action "Ask AI to rank findings by delivery risk." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
+| Peer review | Convert critique into a revision backlog. | Multi-Perspective Critique Grid showing decision owner, with the action "Convert critique into a revision backlog." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
 
 ## If this is missing
 
-If this capability is missing, AI may still produce polished text, but the project loses reviewability. The result is usually rework, hidden assumptions, weak acceptance criteria, or business decisions made without enough evidence.
+If Review Loops and Critique is missing, outputs vary by person, assumptions stay hidden, and review quality depends on who happened to write the prompt. The BA can still recover, but only by converting the polished AI draft back into explicit evidence, assumptions, owners, and testable decisions.
 
 | If missing | Project impact | Recovery action |
 | --- | --- | --- |
-| Accept the first AI draft because it reads well | Fluency can hide ambiguity, false claims, and untestable wording. | Recover by using the stronger pattern: Run critique passes for evidence, specificity, testability, and risk before sharing. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
-| Ask a generic question like what is wrong with this | The critique may be shallow and miss the BA quality dimensions. | Recover by using the stronger pattern: Use a rubric with required lenses, severity, source reference, and recommended fix. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
-| Let review comments remain informal | The team cannot track whether risks were resolved. | Recover by using the stronger pattern: Convert critique findings into a defect register or decision log with owners. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
+| Accept the first AI draft because it reads well | Fluency can hide ambiguity, false claims, and untestable wording. | Recover by using the stronger pattern: Run critique passes for evidence, specificity, testability, and risk before sharing. Rework Multi-Perspective Critique Grid until it exposes context package quality, prompt reuse, critique loop, and output contract, and do not share it as final until evidence, ownership, and validation path are explicit. |
+| Ask a generic question like what is wrong with this | The critique may be shallow and miss the BA quality dimensions. | Recover by using the stronger pattern: Use a rubric with required lenses, severity, source reference, and recommended fix. Rework Multi-Perspective Critique Grid until it exposes context package quality, prompt reuse, critique loop, and output contract, and do not share it as final until evidence, ownership, and validation path are explicit. |
+| Let review comments remain informal | The team cannot track whether risks were resolved. | Recover by using the stronger pattern: Convert critique findings into a defect register or decision log with owners. Rework Multi-Perspective Critique Grid until it exposes context package quality, prompt reuse, critique loop, and output contract, and do not share it as final until evidence, ownership, and validation path are explicit. |
 
 ## Mental model or core concept
 

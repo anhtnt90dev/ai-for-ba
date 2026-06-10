@@ -27,33 +27,33 @@ Bài này quan trọng vì process model là nơi requirement ẩn thường l�
 
 ## Common difficulties for BAs
 
-Trong dự án thật, chủ đề này khó vì BA phải biến evidence lộn xộn thành decision mà không để AI che mất uncertainty. Hãy chú ý các friction point này trước khi xem output là sẵn sàng.
+Trong Quy trình BA được tăng cường bởi AI, Mô hình hóa quy trình với AI trở nên khó khi notes lộn xộn, decision mới validate một phần và stakeholder context chưa đầy đủ phải nhanh chóng thành artifact chung. BA nên kiểm tra các điểm dưới đây trước khi xem artifact có AI hỗ trợ là đủ sẵn sàng cho stakeholder decision hoặc handoff.
 
 | Khó khăn | Vì sao khó trong công việc BA | BA nên xử lý thế nào |
 | --- | --- | --- |
-| Chấp nhận diagram AI đầu tiên vì nhìn sạch. | Khó vì Mô hình hóa quy trình với AI thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
-| Bỏ exception và manual work. | Khó vì Mô hình hóa quy trình với AI thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
-| Dùng process box không có owner. | Khó vì Mô hình hóa quy trình với AI thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
+| Chấp nhận diagram AI đầu tiên vì nhìn sạch. | Lỗi "Chấp nhận diagram AI đầu tiên vì nhìn sạch." xuất hiện khi team bàn về source attribution, conflict visibility, workshop decision flow và backlog readiness nhưng chưa thống nhất source nào authoritative. AI có thể làm disagreement nghe mượt hơn, nên BA phải giữ uncertainty visible. | Áp dụng control này: giữ speaker/source attribution visible cho đến khi stakeholder chịu trách nhiệm xác nhận ý nghĩa. Sau đó dùng pattern tốt hơn "Dùng diagram như review object và challenge từng decision, handoff, alternate path." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
+| Bỏ exception và manual work. | Với Mô hình hóa quy trình với AI, điểm khó là AI có thể draft process flow, nhưng chất lượng BA nằm ở decision, exception, ownership và operational constraint. Pattern yếu rất dễ xảy ra vì AI có thể tạo câu trả lời trôi chảy trước khi BA check ownership, source freshness hoặc decision right. | Áp dụng control này: giữ speaker/source attribution visible cho đến khi stakeholder chịu trách nhiệm xác nhận ý nghĩa. Sau đó dùng pattern tốt hơn "Thêm path failure, cancellation, timeout, escalation và override." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
+| Dùng process box không có owner. | Điểm này khó khi Process Review Checklist được kỳ vọng hỗ trợ validated working artifact. Nếu BA không challenge draft, unsupported assumption có thể đi vào planning, testing hoặc stakeholder communication. | Áp dụng control này: giữ speaker/source attribution visible cho đến khi stakeholder chịu trách nhiệm xác nhận ý nghĩa. Sau đó dùng pattern tốt hơn "Tách actor, system, external service và human reviewer thành lane riêng." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
 
 ## Where this applies in real projects
 
-Bài này hữu ích khi BA cần chuyển conversation, policy, design hoặc technical input thành artifact chung để team implement và test được.
+Dùng bài này khi discovery hoặc refinement tạo nhiều raw input hơn mức BA có thể synthesize an toàn bằng tay trong thời gian có sẵn. Output thực tế không phải document dài hơn; đó là Process Review Checklist có đủ evidence, ownership và decision clarity cho cuộc trao đổi tiếp theo của dự án.
 
 | Thời điểm trong dự án | Cách áp dụng bài học | Output cụ thể của BA |
 | --- | --- | --- |
-| Discovery | Nhờ AI thêm exception path cho một flow hiện có. | Process Review Checklist: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
-| Refinement | Gắn business rule cho từng decision diamond. | Process Review Checklist: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
-| Delivery | Thêm owner label vào process step. | Process Review Checklist: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
+| Discovery | Nhờ AI thêm exception path cho một flow hiện có. | Process Review Checklist thể hiện source attribution, conflict visibility, workshop decision flow và backlog readiness, trong đó action "Nhờ AI thêm exception path cho một flow hiện có." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
+| Synthesis | Gắn business rule cho từng decision diamond. | Process Review Checklist thể hiện source evidence, trong đó action "Gắn business rule cho từng decision diamond." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
+| Refinement | Thêm owner label vào process step. | Process Review Checklist thể hiện decision owner, trong đó action "Thêm owner label vào process step." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
 
 ## If this is missing
 
-Nếu thiếu năng lực này, AI vẫn có thể tạo text rất bóng bẩy, nhưng project mất khả năng review. Kết quả thường là rework, assumption ẩn, acceptance criteria yếu hoặc business decision thiếu evidence.
+Nếu thiếu Mô hình hóa quy trình với AI, signal quan trọng từ interview, ticket, process note hoặc decision có thể mất trước khi đi vào backlog. BA vẫn có thể khôi phục, nhưng phải chuyển draft AI bóng bẩy trở lại thành evidence, assumption, owner và decision test được.
 
 | Nếu thiếu | Ảnh hưởng tới dự án | Cách khôi phục |
 | --- | --- | --- |
-| Yêu cầu AI vẽ process từ một đoạn và accept luôn | Flow sinh ra có thể omit exception, ownership, timing và integration constraint. | Khôi phục bằng pattern tốt hơn: Dùng diagram như review object và challenge từng decision, handoff, alternate path. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
-| Chỉ model happy path | Delivery team phát hiện queue, retry và manual work quá muộn. | Khôi phục bằng pattern tốt hơn: Thêm path failure, cancellation, timeout, escalation và override. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
-| Trộn user action và system action trong một lane | Responsibility và automation boundary trở nên mơ hồ. | Khôi phục bằng pattern tốt hơn: Tách actor, system, external service và human reviewer thành lane riêng. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
+| Yêu cầu AI vẽ process từ một đoạn và accept luôn | Flow sinh ra có thể omit exception, ownership, timing và integration constraint. | Khôi phục bằng pattern tốt hơn: Dùng diagram như review object và challenge từng decision, handoff, alternate path. Rework Process Review Checklist cho đến khi nó lộ rõ source attribution, conflict visibility, workshop decision flow và backlog readiness, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
+| Chỉ model happy path | Delivery team phát hiện queue, retry và manual work quá muộn. | Khôi phục bằng pattern tốt hơn: Thêm path failure, cancellation, timeout, escalation và override. Rework Process Review Checklist cho đến khi nó lộ rõ source attribution, conflict visibility, workshop decision flow và backlog readiness, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
+| Trộn user action và system action trong một lane | Responsibility và automation boundary trở nên mơ hồ. | Khôi phục bằng pattern tốt hơn: Tách actor, system, external service và human reviewer thành lane riêng. Rework Process Review Checklist cho đến khi nó lộ rõ source attribution, conflict visibility, workshop decision flow và backlog readiness, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
 
 ## Mental model or core concept
 

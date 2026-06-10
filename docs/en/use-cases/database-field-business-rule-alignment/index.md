@@ -13,16 +13,16 @@ description: "The BA must ensure data model fields represent business concepts a
 
 ## Project context
 
-A team adds new database fields for customer risk review. Business owners know the concepts, but database fields are being named and modeled before rules are fully understood. In a real delivery environment, this work usually appears under time pressure: stakeholders want clarity, delivery needs a backlog, QA needs testable behavior, and operations needs a process that can survive exceptions. The BA uses AI here to accelerate analysis and synthesis, but the BA remains accountable for evidence, business meaning, stakeholder decisioning, and artifact quality.
+A team adds new database fields for customer risk review. Business owners know the concepts, but database fields are being named and modeled before rules are fully understood. In Data model alignment, this work usually starts when data movement, mapping, reconciliation, privacy, and lineage decisions affect multiple systems and owners. The BA should treat Data model draft and Business glossary as evidence to organize, not as raw material for an unconstrained AI answer. The goal is to make the next decision clearer for the people who own the outcome.
 
 ## BA challenge
 
-The BA must ensure data model fields represent business concepts accurately, including source, lifecycle, ownership, sensitivity, allowed values, and update rules. The practical difficulty is that AI can make early material look more complete than it is. A strong BA keeps the output reviewable by separating source-backed facts, assumptions, unsupported claims, decision gaps, and recommended next actions. The objective is not to make the document longer; it is to make the project decision clearer and safer.
+The BA must ensure data model fields represent business concepts accurately, including source, lifecycle, ownership, sensitivity, allowed values, and update rules. For Database Field and Business Rule Alignment, the practical difficulty is silent data loss and weak lineage. AI can accelerate field mapping, rule comparison, reconciliation design, lineage review, and exception analysis, but the BA must still expose assumptions, missing approvals, and the point where stakeholder judgment is required.
 
 ## Where AI fits
 
 <div class="ba-workbench-panel">
-AI is useful in this use case when it is constrained to analysis support, pattern detection, structured drafting, and critique. It should not approve scope, invent policy, decide business trade-offs, or replace accountable stakeholder judgment.
+AI fits this Data and Integration use case when it is constrained to field mapping, rule comparison, reconciliation design, lineage review, and exception analysis. A useful first AI task is: Translate proposed database fields into business definitions. AI should not approve scope, invent policy, bypass source schemas, sample payloads, mapping rules, data-quality reports, and ownership matrix, or turn a draft into a final decision.
 </div>
 
 - Translate proposed database fields into business definitions.
@@ -38,7 +38,7 @@ AI is useful in this use case when it is constrained to analysis support, patter
 - Update workflows
 - Audit and privacy rules
 
-A BA should label these inputs before using AI: source owner, source date, approval status, sensitivity level, and whether the source is fact, opinion, policy, draft, or historical evidence. This preparation prevents the model from treating every input as equally current and authoritative.
+Before prompting for Database Field and Business Rule Alignment, label each input by owner, date, approval status, sensitivity, and role in the decision. The most important evidence lens is source schemas, sample payloads, mapping rules, data-quality reports, and ownership matrix; without it, AI may rank old notes, draft designs, and approved rules as if they had equal authority.
 
 ## BA workflow
 
@@ -49,7 +49,7 @@ A BA should label these inputs before using AI: source owner, source date, appro
 5. Map field behavior to UI, API, reporting, and audit.
 6. Create test examples and migration questions.
 
-The workflow works best as a staged AI collaboration: first organize the evidence, then ask for analysis, then create the artifact, then run a critique pass. The BA should keep a visible decision log throughout the process so that AI-generated suggestions do not silently become approved scope.
+Run the workflow as data contract review before integration build: start with "List proposed fields and business purpose.", then keep a visible decision log as the artifact moves toward Field definition catalog. This prevents AI suggestions from silently becoming backlog, design, release, or operational commitments.
 
 ## Diagram
 
@@ -73,7 +73,7 @@ flowchart LR
 | Downstream impact map | UI, API, report, integration, and audit use of field | BA | Field usage is visible |
 | Data migration questions | Existing values, defaults, cleanup, and validation | Data team | Migration risks are known |
 
-These deliverables should be treated as BA-owned artifacts. AI can draft them, but the BA must validate source support, stakeholder meaning, traceability, and whether the artifact is ready for handoff.
+Treat Field definition catalog as a BA-owned data and integration control pack. AI may draft structure, but the BA must validate whether "Fields have business meaning" is actually true, whether the artifact is traceable to source evidence, and whether the receiving team can act on it.
 
 ## Prompt to try
 
@@ -83,11 +83,11 @@ Act as a senior AI-aware Business Analyst. Help me apply the "Database Field and
 
 ## Review checklist
 
-- Every AI-produced statement is tied to a source, assumption, or validation question.
-- The BA has separated drafting assistance from business approval.
-- Workflow steps identify the human owner for decisions, review, and exceptions.
-- Deliverables are traceable to project inputs and can be reviewed by QA, product, or operations.
-- Risk controls are practical enough to be used in a real project meeting.
+- Data model draft is labeled with owner, date, approval status, and sensitivity.
+- Field definition catalog traces to source evidence and has a named human owner.
+- The AI task stays inside field mapping, rule comparison, reconciliation design, lineage review, and exception analysis and does not approve scope or policy.
+- The "Technical naming drift" risk has a practical control: Define business meaning and examples.
+- Open assumptions are converted into validation questions or stakeholder decisions.
 - Success metric: Database fields are tied to business rules before implementation and migration decisions are visible.
 
 ## Risks and controls
@@ -99,4 +99,4 @@ Act as a senior AI-aware Business Analyst. Help me apply the "Database Field and
 | Sensitivity miss | Risk fields may expose sensitive information | Classify sensitivity and access |
 | Migration surprise | Existing records may not fit new model | Plan defaults and cleanup |
 
-The key control is to make uncertainty visible. If evidence is weak, the output should create a validation question or decision item, not a final requirement. If the artifact influences delivery, release, compliance, customer experience, or operational workload, the BA should require explicit human review before handoff.
+The main control for the "Technical naming drift" risk is explicit human accountability: Define business meaning and examples. If evidence is weak, the output should create a validation question or decision item, not a final requirement.

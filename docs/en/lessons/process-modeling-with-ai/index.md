@@ -27,33 +27,33 @@ This lesson matters because process models are where hidden requirements usually
 
 ## Common difficulties for BAs
 
-In real projects, this topic is difficult because the BA must turn messy evidence into decisions without letting AI hide uncertainty. Watch for these friction points before treating the output as ready.
+In AI-Augmented BA Workflow, Process Modeling With AI becomes difficult when messy notes, half-validated decisions, and incomplete stakeholder context must become a shared artifact quickly. A BA should inspect the points below before treating an AI-supported artifact as ready for stakeholder decision or delivery handoff.
 
 | Difficulty | Why it is hard in BA work | How a BA should handle it |
 | --- | --- | --- |
-| Accepting the first AI diagram because it looks clean. | This is hard because Process Modeling With AI is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
-| Omitting exceptions and manual work. | This is hard because Process Modeling With AI is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
-| Using process boxes without owners. | This is hard because Process Modeling With AI is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
+| Accepting the first AI diagram because it looks clean. | The mistake "Accepting the first AI diagram because it looks clean." appears when the team discusses source attribution, conflict visibility, workshop decision flow, and backlog readiness without agreeing which source is authoritative. AI can smooth over the disagreement, so the BA must keep uncertainty visible. | Apply this control: keep speaker/source attribution visible until the responsible stakeholder confirms meaning. Then use the stronger pattern "Use the diagram as a review object and challenge every decision, handoff, and alternate path." and ask who must approve the artifact before it affects scope, build, test, or release. |
+| Omitting exceptions and manual work. | For Process Modeling With AI, the friction is that AI can draft process flows, but BA quality comes from decisions, exceptions, ownership, and operational constraints. The weak pattern is tempting because AI can produce a fluent answer before the BA has checked ownership, source freshness, or decision rights. | Apply this control: keep speaker/source attribution visible until the responsible stakeholder confirms meaning. Then use the stronger pattern "Add failure, cancellation, timeout, escalation, and override paths." and ask who must approve the artifact before it affects scope, build, test, or release. |
+| Using process boxes without owners. | This becomes hard when Process Review Checklist is expected to support the validated working artifact. If the BA does not challenge the draft, unsupported assumptions may enter planning, testing, or stakeholder communication. | Apply this control: keep speaker/source attribution visible until the responsible stakeholder confirms meaning. Then use the stronger pattern "Separate actors, systems, external services, and human reviewers into distinct lanes." and ask who must approve the artifact before it affects scope, build, test, or release. |
 
 ## Where this applies in real projects
 
-This lesson is useful when the BA needs to move from conversation, policy, design, or technical input into a shared artifact that the team can implement and test.
+Use this lesson when discovery or refinement produces more raw input than the BA can safely synthesize by hand in the available time. The practical output is not a longer document; it is Process Review Checklist with enough evidence, ownership, and decision clarity for the next project conversation.
 
 | Project moment | How to apply this lesson | Concrete BA output |
 | --- | --- | --- |
-| Discovery | Ask AI to add exception paths to one existing flow. | Process Review Checklist: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
-| Refinement | Mark every decision diamond with a business rule. | Process Review Checklist: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
-| Delivery | Add owner labels to process steps. | Process Review Checklist: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
+| Discovery | Ask AI to add exception paths to one existing flow. | Process Review Checklist showing source attribution, conflict visibility, workshop decision flow, and backlog readiness, with the action "Ask AI to add exception paths to one existing flow." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
+| Synthesis | Mark every decision diamond with a business rule. | Process Review Checklist showing source evidence, with the action "Mark every decision diamond with a business rule." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
+| Refinement | Add owner labels to process steps. | Process Review Checklist showing decision owner, with the action "Add owner labels to process steps." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
 
 ## If this is missing
 
-If this capability is missing, AI may still produce polished text, but the project loses reviewability. The result is usually rework, hidden assumptions, weak acceptance criteria, or business decisions made without enough evidence.
+If Process Modeling With AI is missing, important signals from interviews, tickets, process notes, or decisions may be lost before they reach the backlog. The BA can still recover, but only by converting the polished AI draft back into explicit evidence, assumptions, owners, and testable decisions.
 
 | If missing | Project impact | Recovery action |
 | --- | --- | --- |
-| Ask AI to draw a process from a paragraph and accept it | The generated flow may omit exceptions, ownership, timing, and integration constraints. | Recover by using the stronger pattern: Use the diagram as a review object and challenge every decision, handoff, and alternate path. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
-| Model only the happy path | Delivery teams discover queues, retries, and manual work too late. | Recover by using the stronger pattern: Add failure, cancellation, timeout, escalation, and override paths. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
-| Mix user actions and system actions in one lane | Responsibility and automation boundaries become unclear. | Recover by using the stronger pattern: Separate actors, systems, external services, and human reviewers into distinct lanes. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
+| Ask AI to draw a process from a paragraph and accept it | The generated flow may omit exceptions, ownership, timing, and integration constraints. | Recover by using the stronger pattern: Use the diagram as a review object and challenge every decision, handoff, and alternate path. Rework Process Review Checklist until it exposes source attribution, conflict visibility, workshop decision flow, and backlog readiness, and do not share it as final until evidence, ownership, and validation path are explicit. |
+| Model only the happy path | Delivery teams discover queues, retries, and manual work too late. | Recover by using the stronger pattern: Add failure, cancellation, timeout, escalation, and override paths. Rework Process Review Checklist until it exposes source attribution, conflict visibility, workshop decision flow, and backlog readiness, and do not share it as final until evidence, ownership, and validation path are explicit. |
+| Mix user actions and system actions in one lane | Responsibility and automation boundaries become unclear. | Recover by using the stronger pattern: Separate actors, systems, external services, and human reviewers into distinct lanes. Rework Process Review Checklist until it exposes source attribution, conflict visibility, workshop decision flow, and backlog readiness, and do not share it as final until evidence, ownership, and validation path are explicit. |
 
 ## Mental model or core concept
 

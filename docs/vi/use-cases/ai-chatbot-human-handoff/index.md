@@ -13,16 +13,16 @@ description: "BA phải đặc tả supported intent, knowledge source, refusal 
 
 ## Project context
 
-Customer support team muốn chatbot trả lời câu hỏi phổ biến và hand off case phức tạp cho agent. Business muốn giảm ticket, nhưng customer experience không được giảm khi bot uncertain. Trong môi trường delivery thật, tình huống này thường xuất hiện dưới áp lực thời gian: stakeholder cần clarity, delivery cần backlog, QA cần behavior test được, operations cần process chịu được exception. BA dùng AI để tăng tốc analysis và synthesis, nhưng BA vẫn chịu trách nhiệm về evidence, business meaning, stakeholder decisioning và artifact quality.
+Customer support team muốn chatbot trả lời câu hỏi phổ biến và hand off case phức tạp cho agent. Business muốn giảm ticket, nhưng customer experience không được giảm khi bot uncertain. Trong Customer support, công việc này thường bắt đầu khi hành vi AI ảnh hưởng trực tiếp tới user và phải có uncertainty, fallback, evaluation và human review. BA nên xem Support intent list và FAQ và policy sources là evidence cần organize, không phải raw material để AI trả lời không kiểm soát. Mục tiêu là làm decision tiếp theo rõ hơn cho người own outcome.
 
 ## BA challenge
 
-BA phải đặc tả supported intent, knowledge source, refusal behavior, handoff trigger, transcript transfer, agent context, SLA và monitoring. Handoff là workflow requirement, không phải fallback note. Khó khăn thực tế là AI có thể làm material ban đầu trông hoàn chỉnh hơn mức thật sự. BA giỏi giữ output ở trạng thái reviewable bằng cách tách source-backed fact, assumption, unsupported claim, decision gap và recommended next action. Mục tiêu không phải làm document dài hơn; mục tiêu là làm project decision rõ hơn và an toàn hơn.
+BA phải đặc tả supported intent, knowledge source, refusal behavior, handoff trigger, transcript transfer, agent context, SLA và monitoring. Handoff là workflow requirement, không phải fallback note. Với AI chatbot và human handoff, khó khăn thực tế là over-automation và confidence không an toàn. AI có thể tăng tốc AI task framing, output contract drafting, evaluation planning và safety-control critique, nhưng BA vẫn phải làm rõ assumption, approval còn thiếu và điểm cần stakeholder judgment.
 
 ## Where AI fits
 
 <div class="ba-workbench-panel">
-AI hữu ích trong use case này khi được giới hạn vào analysis support, pattern detection, structured drafting và critique. AI không được approve scope, invent policy, quyết định business trade-off hoặc thay thế judgment của stakeholder chịu trách nhiệm.
+AI phù hợp với use case AI-enabled product khi được giới hạn vào AI task framing, output contract drafting, evaluation planning và safety-control critique. AI task hữu ích đầu tiên là: Draft intent catalog và unsupported intent behavior. AI không được approve scope, invent policy, bỏ qua approved source, model limit, evaluation case và human decision trigger, hoặc biến draft thành final decision.
 </div>
 
 - Draft intent catalog và unsupported intent behavior.
@@ -38,7 +38,7 @@ AI hữu ích trong use case này khi được giới hạn vào analysis suppor
 - Agent workflow
 - Customer satisfaction data
 
-BA nên label các input này trước khi dùng AI: source owner, source date, approval status, sensitivity level, và source đó là fact, opinion, policy, draft hay historical evidence. Việc chuẩn bị này ngăn model xem mọi input đều current và authoritative như nhau.
+Trước khi prompt cho AI chatbot và human handoff, hãy label từng input theo owner, date, approval status, sensitivity và vai trò trong decision. Evidence lens quan trọng nhất là approved source, model limit, evaluation case và human decision trigger; nếu thiếu, AI có thể xem old note, draft design và approved rule có authority như nhau.
 
 ## BA workflow
 
@@ -49,7 +49,7 @@ BA nên label các input này trước khi dùng AI: source owner, source date, 
 5. Tạo monitoring metric cho containment, handoff quality và repeat contact.
 6. Review failure scenario với support agent trước launch.
 
-Workflow hiệu quả nhất khi dùng AI theo từng stage: trước hết organize evidence, sau đó yêu cầu analysis, tiếp theo tạo artifact, rồi chạy critique pass. BA nên giữ decision log visible xuyên suốt để suggestion do AI sinh ra không âm thầm trở thành approved scope.
+Chạy workflow như AI operating contract trước khi build: bắt đầu với "Define supported và unsupported intent có source evidence.", sau đó giữ decision log visible khi artifact tiến tới Intent catalog. Cách này ngăn suggestion của AI âm thầm trở thành backlog, design, release hoặc operational commitment.
 
 ## Diagram
 
@@ -73,7 +73,7 @@ flowchart LR
 | Agent context package | Conversation summary, user goal, attempted answer và source reference | BA | Agent nhận context hữu ích |
 | Monitoring dashboard spec | Containment, fallback, repeat contact, CSAT và escalation pattern | Operations | Quality được monitor beyond volume reduction |
 
-Các deliverable này nên được xem là artifact do BA own. AI có thể draft, nhưng BA phải validate source support, stakeholder meaning, traceability và artifact đã sẵn sàng handoff hay chưa.
+Hãy xem Intent catalog là AI behavior specification do BA own. AI có thể draft structure, nhưng BA phải validate "Intent boundary rõ" có thật sự đúng không, artifact có trace được về evidence không và receiving team có hành động được không.
 
 ## Prompt to try
 
@@ -83,11 +83,11 @@ Hãy đóng vai senior Business Analyst hiểu AI. Hỗ trợ tôi áp dụng us
 
 ## Review checklist
 
-- Mọi statement do AI hỗ trợ đều gắn với source, assumption hoặc validation question.
-- BA đã tách drafting assistance khỏi business approval.
-- Workflow step có human owner cho decision, review và exception.
-- Deliverable trace được về project input và review được bởi QA, product hoặc operations.
-- Risk control đủ thực tế để dùng trong meeting dự án thật.
+- Support intent list được label owner, date, approval status và sensitivity.
+- Intent catalog trace được về source evidence và có human owner rõ.
+- AI task nằm trong boundary AI task framing, output contract drafting, evaluation planning và safety-control critique và không approve scope hoặc policy.
+- Risk "Poor handoff" có control thực tế: Transfer transcript, summary và source context.
+- Open assumption được chuyển thành validation question hoặc stakeholder decision.
 - Success metric: Chatbot giảm workload đơn giản trong khi case phức tạp hoặc risky tới human có context và accountability.
 
 ## Risks and controls
@@ -99,4 +99,4 @@ Hãy đóng vai senior Business Analyst hiểu AI. Hỗ trợ tôi áp dụng us
 | Unsupported intent invention | Bot có thể answer topic ngoài scope | Define refusal và escalation behavior |
 | Agent workflow burden | Handoff có thể tạo thêm work cho agent | Design agent context package với support input |
 
-Control quan trọng nhất là làm uncertainty visible. Nếu evidence yếu, output nên tạo validation question hoặc decision item, không phải final requirement. Nếu artifact ảnh hưởng delivery, release, compliance, customer experience hoặc operational workload, BA nên yêu cầu human review explicit trước khi handoff.
+Control chính cho risk "Poor handoff" là human accountability explicit: Transfer transcript, summary và source context. Nếu evidence yếu, output nên tạo validation question hoặc decision item, không phải final requirement.

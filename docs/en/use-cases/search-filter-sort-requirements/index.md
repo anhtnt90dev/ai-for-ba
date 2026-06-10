@@ -13,16 +13,16 @@ description: "The BA must specify search semantics, filter combinations, sorting
 
 ## Project context
 
-Users need to find cases across thousands of records using keyword search, filters, saved views, and sorting. Current requirements say searchable and filterable without defining behavior. In a real delivery environment, this work usually appears under time pressure: stakeholders want clarity, delivery needs a backlog, QA needs testable behavior, and operations needs a process that can survive exceptions. The BA uses AI here to accelerate analysis and synthesis, but the BA remains accountable for evidence, business meaning, stakeholder decisioning, and artifact quality.
+Users need to find cases across thousands of records using keyword search, filters, saved views, and sorting. Current requirements say searchable and filterable without defining behavior. In Search experience, this work usually starts when data movement, mapping, reconciliation, privacy, and lineage decisions affect multiple systems and owners. The BA should treat Record field list and User tasks as evidence to organize, not as raw material for an unconstrained AI answer. The goal is to make the next decision clearer for the people who own the outcome.
 
 ## BA challenge
 
-The BA must specify search semantics, filter combinations, sorting rules, saved views, empty states, performance expectations, and data fields included in search. The practical difficulty is that AI can make early material look more complete than it is. A strong BA keeps the output reviewable by separating source-backed facts, assumptions, unsupported claims, decision gaps, and recommended next actions. The objective is not to make the document longer; it is to make the project decision clearer and safer.
+The BA must specify search semantics, filter combinations, sorting rules, saved views, empty states, performance expectations, and data fields included in search. For Search, Filter, and Sort Requirements, the practical difficulty is silent data loss and weak lineage. AI can accelerate field mapping, rule comparison, reconciliation design, lineage review, and exception analysis, but the BA must still expose assumptions, missing approvals, and the point where stakeholder judgment is required.
 
 ## Where AI fits
 
 <div class="ba-workbench-panel">
-AI is useful in this use case when it is constrained to analysis support, pattern detection, structured drafting, and critique. It should not approve scope, invent policy, decide business trade-offs, or replace accountable stakeholder judgment.
+AI fits this Data and Integration use case when it is constrained to field mapping, rule comparison, reconciliation design, lineage review, and exception analysis. A useful first AI task is: Generate search behavior questions from user tasks. AI should not approve scope, invent policy, bypass source schemas, sample payloads, mapping rules, data-quality reports, and ownership matrix, or turn a draft into a final decision.
 </div>
 
 - Generate search behavior questions from user tasks.
@@ -38,7 +38,7 @@ AI is useful in this use case when it is constrained to analysis support, patter
 - Data volume
 - Performance requirements
 
-A BA should label these inputs before using AI: source owner, source date, approval status, sensitivity level, and whether the source is fact, opinion, policy, draft, or historical evidence. This preparation prevents the model from treating every input as equally current and authoritative.
+Before prompting for Search, Filter, and Sort Requirements, label each input by owner, date, approval status, sensitivity, and role in the decision. The most important evidence lens is source schemas, sample payloads, mapping rules, data-quality reports, and ownership matrix; without it, AI may rank old notes, draft designs, and approved rules as if they had equal authority.
 
 ## BA workflow
 
@@ -49,7 +49,7 @@ A BA should label these inputs before using AI: source owner, source date, appro
 5. Write acceptance criteria for no results, partial matches, invalid filters, and permissions.
 6. Create QA data set with edge cases.
 
-The workflow works best as a staged AI collaboration: first organize the evidence, then ask for analysis, then create the artifact, then run a critique pass. The BA should keep a visible decision log throughout the process so that AI-generated suggestions do not silently become approved scope.
+Run the workflow as data contract review before integration build: start with "List user search tasks and fields users expect to search.", then keep a visible decision log as the artifact moves toward Search behavior spec. This prevents AI suggestions from silently becoming backlog, design, release, or operational commitments.
 
 ## Diagram
 
@@ -73,7 +73,7 @@ flowchart LR
 | Saved view requirement | Create, edit, share, default, permission, and deletion behavior | Product owner | Saved views have lifecycle |
 | Search QA data set | Records, expected matches, no-match cases, and permission cases | QA | Search can be verified |
 
-These deliverables should be treated as BA-owned artifacts. AI can draft them, but the BA must validate source support, stakeholder meaning, traceability, and whether the artifact is ready for handoff.
+Treat Search behavior spec as a BA-owned data and integration control pack. AI may draft structure, but the BA must validate whether "Search semantics are clear" is actually true, whether the artifact is traceable to source evidence, and whether the receiving team can act on it.
 
 ## Prompt to try
 
@@ -83,11 +83,11 @@ Act as a senior AI-aware Business Analyst. Help me apply the "Search, Filter, an
 
 ## Review checklist
 
-- Every AI-produced statement is tied to a source, assumption, or validation question.
-- The BA has separated drafting assistance from business approval.
-- Workflow steps identify the human owner for decisions, review, and exceptions.
-- Deliverables are traceable to project inputs and can be reviewed by QA, product, or operations.
-- Risk controls are practical enough to be used in a real project meeting.
+- Record field list is labeled with owner, date, approval status, and sensitivity.
+- Search behavior spec traces to source evidence and has a named human owner.
+- The AI task stays inside field mapping, rule comparison, reconciliation design, lineage review, and exception analysis and does not approve scope or policy.
+- The "Search ambiguity" risk has a practical control: Define match behavior and searchable fields.
+- Open assumptions are converted into validation questions or stakeholder decisions.
 - Success metric: Search and filtering behavior is precise enough to implement, test, and explain to users.
 
 ## Risks and controls
@@ -99,4 +99,4 @@ Act as a senior AI-aware Business Analyst. Help me apply the "Search, Filter, an
 | Permission leakage | Search may expose records user cannot see | Include permission filtering |
 | Performance gap | Search may be correct but too slow | Add performance expectations |
 
-The key control is to make uncertainty visible. If evidence is weak, the output should create a validation question or decision item, not a final requirement. If the artifact influences delivery, release, compliance, customer experience, or operational workload, the BA should require explicit human review before handoff.
+The main control for the "Search ambiguity" risk is explicit human accountability: Define match behavior and searchable fields. If evidence is weak, the output should create a validation question or decision item, not a final requirement.

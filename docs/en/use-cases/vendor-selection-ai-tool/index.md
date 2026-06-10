@@ -13,16 +13,16 @@ description: "The BA lead must define evaluation criteria that cover use-case fi
 
 ## Project context
 
-A BA practice evaluates AI tools for requirements drafting, meeting synthesis, document review, and internal knowledge search. Vendors promise productivity gains, but compliance and IT worry about data leakage and governance. In a real delivery environment, this work usually appears under time pressure: stakeholders want clarity, delivery needs a backlog, QA needs testable behavior, and operations needs a process that can survive exceptions. The BA uses AI here to accelerate analysis and synthesis, but the BA remains accountable for evidence, business meaning, stakeholder decisioning, and artifact quality.
+A BA practice evaluates AI tools for requirements drafting, meeting synthesis, document review, and internal knowledge search. Vendors promise productivity gains, but compliance and IT worry about data leakage and governance. In Vendor evaluation, this work usually starts when AI usage must scale across teams without leaking sensitive data or creating unreviewable decisions. The BA should treat BA use-case portfolio and Security requirements as evidence to organize, not as raw material for an unconstrained AI answer. The goal is to make the next decision clearer for the people who own the outcome.
 
 ## BA challenge
 
-The BA lead must define evaluation criteria that cover use-case fit, data handling, security, audit, model behavior, integrations, admin controls, cost, and adoption support. AI can help compare vendor claims, but claims must be verified. The practical difficulty is that AI can make early material look more complete than it is. A strong BA keeps the output reviewable by separating source-backed facts, assumptions, unsupported claims, decision gaps, and recommended next actions. The objective is not to make the document longer; it is to make the project decision clearer and safer.
+The BA lead must define evaluation criteria that cover use-case fit, data handling, security, audit, model behavior, integrations, admin controls, cost, and adoption support. AI can help compare vendor claims, but claims must be verified. For Vendor Selection for an AI Tool, the practical difficulty is shadow AI use and weak accountability. AI can accelerate portfolio analysis, policy drafting, risk-tiering, playbook creation, and adoption measurement, but the BA must still expose assumptions, missing approvals, and the point where stakeholder judgment is required.
 
 ## Where AI fits
 
 <div class="ba-workbench-panel">
-AI is useful in this use case when it is constrained to analysis support, pattern detection, structured drafting, and critique. It should not approve scope, invent policy, decide business trade-offs, or replace accountable stakeholder judgment.
+AI fits this Governance and adoption use case when it is constrained to portfolio analysis, policy drafting, risk-tiering, playbook creation, and adoption measurement. A useful first AI task is: Build a vendor scorecard from BA use cases and risk tiers. AI should not approve scope, invent policy, bypass data policy, approved tools, risk appetite, audit need, and team capability, or turn a draft into a final decision.
 </div>
 
 - Build a vendor scorecard from BA use cases and risk tiers.
@@ -38,7 +38,7 @@ AI is useful in this use case when it is constrained to analysis support, patter
 - Procurement criteria
 - Compliance policy
 
-A BA should label these inputs before using AI: source owner, source date, approval status, sensitivity level, and whether the source is fact, opinion, policy, draft, or historical evidence. This preparation prevents the model from treating every input as equally current and authoritative.
+Before prompting for Vendor Selection for an AI Tool, label each input by owner, date, approval status, sensitivity, and role in the decision. The most important evidence lens is data policy, approved tools, risk appetite, audit need, and team capability; without it, AI may rank old notes, draft designs, and approved rules as if they had equal authority.
 
 ## BA workflow
 
@@ -49,7 +49,7 @@ A BA should label these inputs before using AI: source owner, source date, appro
 5. Run pilot evaluation with quality, cycle time, and risk metrics.
 6. Prepare recommendation with conditions and rollout controls.
 
-The workflow works best as a staged AI collaboration: first organize the evidence, then ask for analysis, then create the artifact, then run a critique pass. The BA should keep a visible decision log throughout the process so that AI-generated suggestions do not silently become approved scope.
+Run the workflow as governance design before broad rollout: start with "Define approved BA use cases and prohibited data before vendor demos.", then keep a visible decision log as the artifact moves toward Vendor scorecard. This prevents AI suggestions from silently becoming backlog, design, release, or operational commitments.
 
 ## Diagram
 
@@ -73,7 +73,7 @@ flowchart LR
 | Security and governance checklist | Data, retention, audit, admin, access, and compliance controls | IT and compliance | Risks are reviewed |
 | Pilot success plan | Metrics, participants, use cases, quality gates, and decision criteria | Sponsor | Pilot can produce decision |
 
-These deliverables should be treated as BA-owned artifacts. AI can draft them, but the BA must validate source support, stakeholder meaning, traceability, and whether the artifact is ready for handoff.
+Treat Vendor scorecard as a BA-owned AI adoption control pack. AI may draft structure, but the BA must validate whether "Scores are evidence-based" is actually true, whether the artifact is traceable to source evidence, and whether the receiving team can act on it.
 
 ## Prompt to try
 
@@ -83,11 +83,11 @@ Act as a senior AI-aware Business Analyst. Help me apply the "Vendor Selection f
 
 ## Review checklist
 
-- Every AI-produced statement is tied to a source, assumption, or validation question.
-- The BA has separated drafting assistance from business approval.
-- Workflow steps identify the human owner for decisions, review, and exceptions.
-- Deliverables are traceable to project inputs and can be reviewed by QA, product, or operations.
-- Risk controls are practical enough to be used in a real project meeting.
+- BA use-case portfolio is labeled with owner, date, approval status, and sensitivity.
+- Vendor scorecard traces to source evidence and has a named human owner.
+- The AI task stays inside portfolio analysis, policy drafting, risk-tiering, playbook creation, and adoption measurement and does not approve scope or policy.
+- The "Vendor-led scope" risk has a practical control: Start from BA use cases and risk tiers.
+- Open assumptions are converted into validation questions or stakeholder decisions.
 - Success metric: Vendor selection is driven by BA workflow value, verified controls, and pilot evidence.
 
 ## Risks and controls
@@ -99,4 +99,4 @@ Act as a senior AI-aware Business Analyst. Help me apply the "Vendor Selection f
 | Data leakage | Tools may process confidential data unsafely | Review data handling and approved-use policy |
 | Adoption theater | Users may try tool without quality improvement | Measure artifact quality and rework, not only usage |
 
-The key control is to make uncertainty visible. If evidence is weak, the output should create a validation question or decision item, not a final requirement. If the artifact influences delivery, release, compliance, customer experience, or operational workload, the BA should require explicit human review before handoff.
+The main control for the "Vendor-led scope" risk is explicit human accountability: Start from BA use cases and risk tiers. If evidence is weak, the output should create a validation question or decision item, not a final requirement.

@@ -13,16 +13,16 @@ description: "The BA must create a traceability matrix that links business goals
 
 ## Project context
 
-A release includes changes across onboarding, notifications, permissions, reporting, and support workflows. Stakeholders ask whether all approved requirements are covered by development and testing before go-live. In a real delivery environment, this work usually appears under time pressure: stakeholders want clarity, delivery needs a backlog, QA needs testable behavior, and operations needs a process that can survive exceptions. The BA uses AI here to accelerate analysis and synthesis, but the BA remains accountable for evidence, business meaning, stakeholder decisioning, and artifact quality.
+A release includes changes across onboarding, notifications, permissions, reporting, and support workflows. Stakeholders ask whether all approved requirements are covered by development and testing before go-live. In Release governance, this work usually starts when stories must become testable without losing business rules, exceptions, data needs, or NFRs. The BA should treat BRD or requirement list and Decision log as evidence to organize, not as raw material for an unconstrained AI answer. The goal is to make the next decision clearer for the people who own the outcome.
 
 ## BA challenge
 
-The BA must create a traceability matrix that links business goals, requirements, decisions, source evidence, stories, acceptance criteria, test cases, defects, and release sign-off. AI can reconcile artifacts, but the BA must verify links and unresolved gaps. The practical difficulty is that AI can make early material look more complete than it is. A strong BA keeps the output reviewable by separating source-backed facts, assumptions, unsupported claims, decision gaps, and recommended next actions. The objective is not to make the document longer; it is to make the project decision clearer and safer.
+The BA must create a traceability matrix that links business goals, requirements, decisions, source evidence, stories, acceptance criteria, test cases, defects, and release sign-off. AI can reconcile artifacts, but the BA must verify links and unresolved gaps. For Traceability Matrix for Release Readiness, the practical difficulty is vague criteria and unowned assumptions. AI can accelerate gap finding, rewrite critique, edge-case expansion, and acceptance-criteria drafting, but the BA must still expose assumptions, missing approvals, and the point where stakeholder judgment is required.
 
 ## Where AI fits
 
 <div class="ba-workbench-panel">
-AI is useful in this use case when it is constrained to analysis support, pattern detection, structured drafting, and critique. It should not approve scope, invent policy, decide business trade-offs, or replace accountable stakeholder judgment.
+AI fits this Requirements and backlog use case when it is constrained to gap finding, rewrite critique, edge-case expansion, and acceptance-criteria drafting. A useful first AI task is: Extract requirement IDs and acceptance criteria from backlog items. AI should not approve scope, invent policy, bypass approved rules, examples, edge cases, and QA expectations, or turn a draft into a final decision.
 </div>
 
 - Extract requirement IDs and acceptance criteria from backlog items.
@@ -38,7 +38,7 @@ AI is useful in this use case when it is constrained to analysis support, patter
 - Test case list
 - Defect list
 
-A BA should label these inputs before using AI: source owner, source date, approval status, sensitivity level, and whether the source is fact, opinion, policy, draft, or historical evidence. This preparation prevents the model from treating every input as equally current and authoritative.
+Before prompting for Traceability Matrix for Release Readiness, label each input by owner, date, approval status, sensitivity, and role in the decision. The most important evidence lens is approved rules, examples, edge cases, and QA expectations; without it, AI may rank old notes, draft designs, and approved rules as if they had equal authority.
 
 ## BA workflow
 
@@ -49,7 +49,7 @@ A BA should label these inputs before using AI: source owner, source date, appro
 5. Review readiness with product, QA, engineering, and operations.
 6. Publish release traceability and sign-off exceptions.
 
-The workflow works best as a staged AI collaboration: first organize the evidence, then ask for analysis, then create the artifact, then run a critique pass. The BA should keep a visible decision log throughout the process so that AI-generated suggestions do not silently become approved scope.
+Run the workflow as requirement clarification before sprint commitment: start with "Normalize IDs across requirements, stories, tests, and defects.", then keep a visible decision log as the artifact moves toward Traceability matrix. This prevents AI suggestions from silently becoming backlog, design, release, or operational commitments.
 
 ## Diagram
 
@@ -73,7 +73,7 @@ flowchart LR
 | Release readiness summary | Coverage, exceptions, risks, and sign-off recommendation | Product owner | Stakeholders can make go-live decision |
 | Change impact notes | Requirements affected by late changes or defects | BA | Impact is visible before release |
 
-These deliverables should be treated as BA-owned artifacts. AI can draft them, but the BA must validate source support, stakeholder meaning, traceability, and whether the artifact is ready for handoff.
+Treat Traceability matrix as a BA-owned delivery-ready backlog artifact. AI may draft structure, but the BA must validate whether "Every approved requirement has coverage status" is actually true, whether the artifact is traceable to source evidence, and whether the receiving team can act on it.
 
 ## Prompt to try
 
@@ -83,11 +83,11 @@ Act as a senior AI-aware Business Analyst. Help me apply the "Traceability Matri
 
 ## Review checklist
 
-- Every AI-produced statement is tied to a source, assumption, or validation question.
-- The BA has separated drafting assistance from business approval.
-- Workflow steps identify the human owner for decisions, review, and exceptions.
-- Deliverables are traceable to project inputs and can be reviewed by QA, product, or operations.
-- Risk controls are practical enough to be used in a real project meeting.
+- BRD or requirement list is labeled with owner, date, approval status, and sensitivity.
+- Traceability matrix traces to source evidence and has a named human owner.
+- The AI task stays inside gap finding, rewrite critique, edge-case expansion, and acceptance-criteria drafting and does not approve scope or policy.
+- The "False match" risk has a practical control: Verify material links manually.
+- Open assumptions are converted into validation questions or stakeholder decisions.
 - Success metric: Release sign-off is based on visible coverage and accepted exceptions, not scattered artifact confidence.
 
 ## Risks and controls
@@ -99,4 +99,4 @@ Act as a senior AI-aware Business Analyst. Help me apply the "Traceability Matri
 | Late exception hiding | Open defects may be minimized in summaries | Keep exceptions explicit with owner and decision |
 | Matrix overload | Too much detail can hide release risks | Add summary by risk and readiness status |
 
-The key control is to make uncertainty visible. If evidence is weak, the output should create a validation question or decision item, not a final requirement. If the artifact influences delivery, release, compliance, customer experience, or operational workload, the BA should require explicit human review before handoff.
+The main control for the "False match" risk is explicit human accountability: Verify material links manually. If evidence is weak, the output should create a validation question or decision item, not a final requirement.

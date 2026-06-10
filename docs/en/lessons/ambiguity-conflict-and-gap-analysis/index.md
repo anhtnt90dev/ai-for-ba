@@ -27,33 +27,33 @@ This lesson matters because ambiguous requirements create the most expensive def
 
 ## Common difficulties for BAs
 
-In real projects, this topic is difficult because the BA must turn messy evidence into decisions without letting AI hide uncertainty. Watch for these friction points before treating the output as ready.
+In Requirements Engineering With AI, Ambiguity, Conflict, and Gap Analysis becomes difficult when business rules, edge cases, quality attributes, and testability constraints must survive the move from conversation into backlog. A BA should inspect the points below before treating an AI-supported artifact as ready for stakeholder decision or delivery handoff.
 
 | Difficulty | Why it is hard in BA work | How a BA should handle it |
 | --- | --- | --- |
-| Saying 'unclear' without naming the defect. | This is hard because Ambiguity, Conflict, and Gap Analysis is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
-| Fixing wording but not the underlying business rule. | This is hard because Ambiguity, Conflict, and Gap Analysis is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
-| Treating all defects as equal severity. | This is hard because Ambiguity, Conflict, and Gap Analysis is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
+| Saying 'unclear' without naming the defect. | The mistake "Saying 'unclear' without naming the defect." appears when the team discusses ambiguity, NFR risk, traceability, testability, and rule ownership without agreeing which source is authoritative. AI can smooth over the disagreement, so the BA must keep uncertainty visible. | Apply this control: force every requirement statement to expose actor, trigger, data, rule, exception, and verification signal. Then use the stronger pattern "Classify the issue type, severity, evidence, and owner before rewriting." and ask who must approve the artifact before it affects scope, build, test, or release. |
+| Fixing wording but not the underlying business rule. | For Ambiguity, Conflict, and Gap Analysis, the friction is that AI is useful for requirement defect detection when the BA provides a precise defect taxonomy and severity rubric. The weak pattern is tempting because AI can produce a fluent answer before the BA has checked ownership, source freshness, or decision rights. | Apply this control: force every requirement statement to expose actor, trigger, data, rule, exception, and verification signal. Then use the stronger pattern "Rank ambiguity by business impact, test impact, regulatory impact, and dependency." and ask who must approve the artifact before it affects scope, build, test, or release. |
+| Treating all defects as equal severity. | This becomes hard when Requirement Defect Taxonomy is expected to support the delivery-ready requirement. If the BA does not challenge the draft, unsupported assumptions may enter planning, testing, or stakeholder communication. | Apply this control: force every requirement statement to expose actor, trigger, data, rule, exception, and verification signal. Then use the stronger pattern "Only rewrite source-supported parts and mark the rest as clarification questions." and ask who must approve the artifact before it affects scope, build, test, or release. |
 
 ## Where this applies in real projects
 
-This lesson is useful when the BA needs to move from conversation, policy, design, or technical input into a shared artifact that the team can implement and test.
+Use this lesson when requirements are being refined, split, clarified, tested, or challenged by QA and delivery teams. The practical output is not a longer document; it is Requirement Defect Taxonomy with enough evidence, ownership, and decision clarity for the next project conversation.
 
 | Project moment | How to apply this lesson | Concrete BA output |
 | --- | --- | --- |
-| Discovery | Run taxonomy review on five backlog items. | Requirement Defect Taxonomy: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
-| Refinement | Add severity and clarification question to each finding. | Requirement Defect Taxonomy: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
-| Delivery | Rewrite one vague requirement into testable language. | Requirement Defect Taxonomy: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
+| Backlog refinement | Run taxonomy review on five backlog items. | Requirement Defect Taxonomy showing ambiguity, NFR risk, traceability, testability, and rule ownership, with the action "Run taxonomy review on five backlog items." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
+| QA alignment | Add severity and clarification question to each finding. | Requirement Defect Taxonomy showing source evidence, with the action "Add severity and clarification question to each finding." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
+| Release readiness | Rewrite one vague requirement into testable language. | Requirement Defect Taxonomy showing decision owner, with the action "Rewrite one vague requirement into testable language." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
 
 ## If this is missing
 
-If this capability is missing, AI may still produce polished text, but the project loses reviewability. The result is usually rework, hidden assumptions, weak acceptance criteria, or business decisions made without enough evidence.
+If Ambiguity, Conflict, and Gap Analysis is missing, requirements may look complete but still fail implementation, testing, release readiness, or operational support. The BA can still recover, but only by converting the polished AI draft back into explicit evidence, assumptions, owners, and testable decisions.
 
 | If missing | Project impact | Recovery action |
 | --- | --- | --- |
-| Ask AI to make the requirement clearer | The model may smooth over a missing decision instead of exposing it. | Recover by using the stronger pattern: Classify the issue type, severity, evidence, and owner before rewriting. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
-| Treat all ambiguity as equal | A vague label and a missing compliance rule carry very different delivery risk. | Recover by using the stronger pattern: Rank ambiguity by business impact, test impact, regulatory impact, and dependency. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
-| Accept AI rewrites that add new detail | The rewrite may invent thresholds, actors, or policy. | Recover by using the stronger pattern: Only rewrite source-supported parts and mark the rest as clarification questions. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
+| Ask AI to make the requirement clearer | The model may smooth over a missing decision instead of exposing it. | Recover by using the stronger pattern: Classify the issue type, severity, evidence, and owner before rewriting. Rework Requirement Defect Taxonomy until it exposes ambiguity, NFR risk, traceability, testability, and rule ownership, and do not share it as final until evidence, ownership, and validation path are explicit. |
+| Treat all ambiguity as equal | A vague label and a missing compliance rule carry very different delivery risk. | Recover by using the stronger pattern: Rank ambiguity by business impact, test impact, regulatory impact, and dependency. Rework Requirement Defect Taxonomy until it exposes ambiguity, NFR risk, traceability, testability, and rule ownership, and do not share it as final until evidence, ownership, and validation path are explicit. |
+| Accept AI rewrites that add new detail | The rewrite may invent thresholds, actors, or policy. | Recover by using the stronger pattern: Only rewrite source-supported parts and mark the rest as clarification questions. Rework Requirement Defect Taxonomy until it exposes ambiguity, NFR risk, traceability, testability, and rule ownership, and do not share it as final until evidence, ownership, and validation path are explicit. |
 
 ## Mental model or core concept
 

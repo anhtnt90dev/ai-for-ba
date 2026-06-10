@@ -27,33 +27,33 @@ Bài này quan trọng vì requirement mơ hồ tạo defect đắt nhất khi s
 
 ## Common difficulties for BAs
 
-Trong dự án thật, chủ đề này khó vì BA phải biến evidence lộn xộn thành decision mà không để AI che mất uncertainty. Hãy chú ý các friction point này trước khi xem output là sẵn sàng.
+Trong Requirements engineering với AI, Phân tích mơ hồ, xung đột và khoảng trống trở nên khó khi business rule, edge case, quality attribute và testability constraint phải sống sót khi chuyển từ conversation sang backlog. BA nên kiểm tra các điểm dưới đây trước khi xem artifact có AI hỗ trợ là đủ sẵn sàng cho stakeholder decision hoặc handoff.
 
 | Khó khăn | Vì sao khó trong công việc BA | BA nên xử lý thế nào |
 | --- | --- | --- |
-| Nói 'unclear' mà không gọi tên defect. | Khó vì Phân tích mơ hồ, xung đột và khoảng trống thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
-| Sửa wording nhưng không sửa business rule gốc. | Khó vì Phân tích mơ hồ, xung đột và khoảng trống thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
-| Xem mọi defect cùng severity. | Khó vì Phân tích mơ hồ, xung đột và khoảng trống thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
+| Nói 'unclear' mà không gọi tên defect. | Lỗi "Nói 'unclear' mà không gọi tên defect." xuất hiện khi team bàn về ambiguity, NFR risk, traceability, testability và rule ownership nhưng chưa thống nhất source nào authoritative. AI có thể làm disagreement nghe mượt hơn, nên BA phải giữ uncertainty visible. | Áp dụng control này: buộc mọi requirement statement lộ rõ actor, trigger, data, rule, exception và verification signal. Sau đó dùng pattern tốt hơn "Classify issue type, severity, evidence và owner trước khi rewrite." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
+| Sửa wording nhưng không sửa business rule gốc. | Với Phân tích mơ hồ, xung đột và khoảng trống, điểm khó là AI hữu ích để detect defect trong requirement khi BA cung cấp defect taxonomy và severity rubric rõ. Pattern yếu rất dễ xảy ra vì AI có thể tạo câu trả lời trôi chảy trước khi BA check ownership, source freshness hoặc decision right. | Áp dụng control này: buộc mọi requirement statement lộ rõ actor, trigger, data, rule, exception và verification signal. Sau đó dùng pattern tốt hơn "Rank ambiguity theo business impact, test impact, regulatory impact và dependency." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
+| Xem mọi defect cùng severity. | Điểm này khó khi Requirement Defect Taxonomy được kỳ vọng hỗ trợ delivery-ready requirement. Nếu BA không challenge draft, unsupported assumption có thể đi vào planning, testing hoặc stakeholder communication. | Áp dụng control này: buộc mọi requirement statement lộ rõ actor, trigger, data, rule, exception và verification signal. Sau đó dùng pattern tốt hơn "Chỉ rewrite phần source-supported và mark phần còn lại thành clarification question." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
 
 ## Where this applies in real projects
 
-Bài này hữu ích khi BA cần chuyển conversation, policy, design hoặc technical input thành artifact chung để team implement và test được.
+Dùng bài này khi requirement đang được refine, split, clarify, test hoặc bị QA và delivery team challenge. Output thực tế không phải document dài hơn; đó là Requirement Defect Taxonomy có đủ evidence, ownership và decision clarity cho cuộc trao đổi tiếp theo của dự án.
 
 | Thời điểm trong dự án | Cách áp dụng bài học | Output cụ thể của BA |
 | --- | --- | --- |
-| Discovery | Chạy taxonomy review trên năm backlog item. | Requirement Defect Taxonomy: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
-| Refinement | Thêm severity và clarification question cho mỗi finding. | Requirement Defect Taxonomy: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
-| Delivery | Rewrite một requirement mơ hồ thành language test được. | Requirement Defect Taxonomy: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
+| Backlog refinement | Chạy taxonomy review trên năm backlog item. | Requirement Defect Taxonomy thể hiện ambiguity, NFR risk, traceability, testability và rule ownership, trong đó action "Chạy taxonomy review trên năm backlog item." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
+| QA alignment | Thêm severity và clarification question cho mỗi finding. | Requirement Defect Taxonomy thể hiện source evidence, trong đó action "Thêm severity và clarification question cho mỗi finding." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
+| Release readiness | Rewrite một requirement mơ hồ thành language test được. | Requirement Defect Taxonomy thể hiện decision owner, trong đó action "Rewrite một requirement mơ hồ thành language test được." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
 
 ## If this is missing
 
-Nếu thiếu năng lực này, AI vẫn có thể tạo text rất bóng bẩy, nhưng project mất khả năng review. Kết quả thường là rework, assumption ẩn, acceptance criteria yếu hoặc business decision thiếu evidence.
+Nếu thiếu Phân tích mơ hồ, xung đột và khoảng trống, requirement nhìn có vẻ đầy đủ nhưng vẫn fail khi implement, test, release hoặc support operation. BA vẫn có thể khôi phục, nhưng phải chuyển draft AI bóng bẩy trở lại thành evidence, assumption, owner và decision test được.
 
 | Nếu thiếu | Ảnh hưởng tới dự án | Cách khôi phục |
 | --- | --- | --- |
-| Yêu cầu AI làm requirement rõ hơn | Model có thể làm mượt missing decision thay vì phơi bày nó. | Khôi phục bằng pattern tốt hơn: Classify issue type, severity, evidence và owner trước khi rewrite. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
-| Xem mọi ambiguity là như nhau | Một label mơ hồ và một missing compliance rule có delivery risk rất khác. | Khôi phục bằng pattern tốt hơn: Rank ambiguity theo business impact, test impact, regulatory impact và dependency. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
-| Accept rewrite AI có thêm detail mới | Rewrite có thể tự bịa threshold, actor hoặc policy. | Khôi phục bằng pattern tốt hơn: Chỉ rewrite phần source-supported và mark phần còn lại thành clarification question. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
+| Yêu cầu AI làm requirement rõ hơn | Model có thể làm mượt missing decision thay vì phơi bày nó. | Khôi phục bằng pattern tốt hơn: Classify issue type, severity, evidence và owner trước khi rewrite. Rework Requirement Defect Taxonomy cho đến khi nó lộ rõ ambiguity, NFR risk, traceability, testability và rule ownership, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
+| Xem mọi ambiguity là như nhau | Một label mơ hồ và một missing compliance rule có delivery risk rất khác. | Khôi phục bằng pattern tốt hơn: Rank ambiguity theo business impact, test impact, regulatory impact và dependency. Rework Requirement Defect Taxonomy cho đến khi nó lộ rõ ambiguity, NFR risk, traceability, testability và rule ownership, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
+| Accept rewrite AI có thêm detail mới | Rewrite có thể tự bịa threshold, actor hoặc policy. | Khôi phục bằng pattern tốt hơn: Chỉ rewrite phần source-supported và mark phần còn lại thành clarification question. Rework Requirement Defect Taxonomy cho đến khi nó lộ rõ ambiguity, NFR risk, traceability, testability và rule ownership, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
 
 ## Mental model or core concept
 

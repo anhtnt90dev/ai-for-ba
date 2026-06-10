@@ -27,33 +27,33 @@ Bài này quan trọng vì AI summarize interview rất nhanh, nhưng tốc đ�
 
 ## Common difficulties for BAs
 
-Trong dự án thật, chủ đề này khó vì BA phải biến evidence lộn xộn thành decision mà không để AI che mất uncertainty. Hãy chú ý các friction point này trước khi xem output là sẵn sàng.
+Trong Quy trình BA được tăng cường bởi AI, Phỏng vấn stakeholder và tổng hợp insight trở nên khó khi notes lộn xộn, decision mới validate một phần và stakeholder context chưa đầy đủ phải nhanh chóng thành artifact chung. BA nên kiểm tra các điểm dưới đây trước khi xem artifact có AI hỗ trợ là đủ sẵn sàng cho stakeholder decision hoặc handoff.
 
 | Khó khăn | Vì sao khó trong công việc BA | BA nên xử lý thế nào |
 | --- | --- | --- |
-| Tạo summary đẹp nhưng che giấu disagreement. | Khó vì Phỏng vấn stakeholder và tổng hợp insight thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
-| Xóa stakeholder attribution. | Khó vì Phỏng vấn stakeholder và tổng hợp insight thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
-| Chuyển mọi interview statement thành requirement. | Khó vì Phỏng vấn stakeholder và tổng hợp insight thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
+| Tạo summary đẹp nhưng che giấu disagreement. | Lỗi "Tạo summary đẹp nhưng che giấu disagreement." xuất hiện khi team bàn về source attribution, conflict visibility, workshop decision flow và backlog readiness nhưng chưa thống nhất source nào authoritative. AI có thể làm disagreement nghe mượt hơn, nên BA phải giữ uncertainty visible. | Áp dụng control này: giữ speaker/source attribution visible cho đến khi stakeholder chịu trách nhiệm xác nhận ý nghĩa. Sau đó dùng pattern tốt hơn "Yêu cầu theme có speaker attribution, conflict point, evidence strength và follow-up question." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
+| Xóa stakeholder attribution. | Với Phỏng vấn stakeholder và tổng hợp insight, điểm khó là AI có thể summarize interview rất nhanh, nhưng synthesis thật sự phải giữ contradiction, attribution và decision. Pattern yếu rất dễ xảy ra vì AI có thể tạo câu trả lời trôi chảy trước khi BA check ownership, source freshness hoặc decision right. | Áp dụng control này: giữ speaker/source attribution visible cho đến khi stakeholder chịu trách nhiệm xác nhận ý nghĩa. Sau đó dùng pattern tốt hơn "Giữ role, context, scenario và decision impact gắn với từng synthesized need." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
+| Chuyển mọi interview statement thành requirement. | Điểm này khó khi Interview Synthesis Board được kỳ vọng hỗ trợ validated working artifact. Nếu BA không challenge draft, unsupported assumption có thể đi vào planning, testing hoặc stakeholder communication. | Áp dụng control này: giữ speaker/source attribution visible cho đến khi stakeholder chịu trách nhiệm xác nhận ý nghĩa. Sau đó dùng pattern tốt hơn "Kết hợp sentiment với frequency, risk, revenue, compliance và decision ownership." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
 
 ## Where this applies in real projects
 
-Bài này hữu ích khi BA cần chuyển conversation, policy, design hoặc technical input thành artifact chung để team implement và test được.
+Dùng bài này khi discovery hoặc refinement tạo nhiều raw input hơn mức BA có thể synthesize an toàn bằng tay trong thời gian có sẵn. Output thực tế không phải document dài hơn; đó là Interview Synthesis Board có đủ evidence, ownership và decision clarity cho cuộc trao đổi tiếp theo của dự án.
 
 | Thời điểm trong dự án | Cách áp dụng bài học | Output cụ thể của BA |
 | --- | --- | --- |
-| Discovery | Thêm cột contradiction vào interview summary. | Interview Synthesis Board: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
-| Refinement | Yêu cầu AI identify false consensus trong notes. | Interview Synthesis Board: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
-| Delivery | Tag mỗi requirement candidate với speaker/source. | Interview Synthesis Board: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
+| Discovery | Thêm cột contradiction vào interview summary. | Interview Synthesis Board thể hiện source attribution, conflict visibility, workshop decision flow và backlog readiness, trong đó action "Thêm cột contradiction vào interview summary." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
+| Synthesis | Yêu cầu AI identify false consensus trong notes. | Interview Synthesis Board thể hiện source evidence, trong đó action "Yêu cầu AI identify false consensus trong notes." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
+| Refinement | Tag mỗi requirement candidate với speaker/source. | Interview Synthesis Board thể hiện decision owner, trong đó action "Tag mỗi requirement candidate với speaker/source." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
 
 ## If this is missing
 
-Nếu thiếu năng lực này, AI vẫn có thể tạo text rất bóng bẩy, nhưng project mất khả năng review. Kết quả thường là rework, assumption ẩn, acceptance criteria yếu hoặc business decision thiếu evidence.
+Nếu thiếu Phỏng vấn stakeholder và tổng hợp insight, signal quan trọng từ interview, ticket, process note hoặc decision có thể mất trước khi đi vào backlog. BA vẫn có thể khôi phục, nhưng phải chuyển draft AI bóng bẩy trở lại thành evidence, assumption, owner và decision test được.
 
 | Nếu thiếu | Ảnh hưởng tới dự án | Cách khôi phục |
 | --- | --- | --- |
-| Yêu cầu AI tạo clean summary của mọi interview | Summary quá gọn có thể xóa contradiction và concern ít người nói nhưng rất critical. | Khôi phục bằng pattern tốt hơn: Yêu cầu theme có speaker attribution, conflict point, evidence strength và follow-up question. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
-| Gộp statement giống nhau thành một need | Role khác nhau có thể dùng cùng từ nhưng nói về operational problem khác. | Khôi phục bằng pattern tốt hơn: Giữ role, context, scenario và decision impact gắn với từng synthesized need. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
-| Xem sentiment trong transcript là priority | Emotion báo hiệu importance nhưng không chứng minh business value hoặc feasibility. | Khôi phục bằng pattern tốt hơn: Kết hợp sentiment với frequency, risk, revenue, compliance và decision ownership. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
+| Yêu cầu AI tạo clean summary của mọi interview | Summary quá gọn có thể xóa contradiction và concern ít người nói nhưng rất critical. | Khôi phục bằng pattern tốt hơn: Yêu cầu theme có speaker attribution, conflict point, evidence strength và follow-up question. Rework Interview Synthesis Board cho đến khi nó lộ rõ source attribution, conflict visibility, workshop decision flow và backlog readiness, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
+| Gộp statement giống nhau thành một need | Role khác nhau có thể dùng cùng từ nhưng nói về operational problem khác. | Khôi phục bằng pattern tốt hơn: Giữ role, context, scenario và decision impact gắn với từng synthesized need. Rework Interview Synthesis Board cho đến khi nó lộ rõ source attribution, conflict visibility, workshop decision flow và backlog readiness, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
+| Xem sentiment trong transcript là priority | Emotion báo hiệu importance nhưng không chứng minh business value hoặc feasibility. | Khôi phục bằng pattern tốt hơn: Kết hợp sentiment với frequency, risk, revenue, compliance và decision ownership. Rework Interview Synthesis Board cho đến khi nó lộ rõ source attribution, conflict visibility, workshop decision flow và backlog readiness, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
 
 ## Mental model or core concept
 

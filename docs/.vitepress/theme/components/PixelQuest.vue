@@ -728,8 +728,8 @@ onBeforeUnmount(() => {
         <h2>{{ text.title }}</h2>
         <p>{{ text.subtitle }}</p>
         <div class="pixel-hero-actions">
-          <a v-if="landingMode" class="pixel-button primary" :href="languageHref('vi')">Tiếng Việt</a>
-          <a v-if="landingMode" class="pixel-button subtle" :href="languageHref('en')">English</a>
+          <a v-if="landingMode" class="pixel-button primary" :href="languageHref('en')">English</a>
+          <a v-if="landingMode" class="pixel-button subtle" :href="languageHref('vi')">Tiếng Việt</a>
           <a v-if="homeMode" class="pixel-button primary" :href="gameHref()">{{ text.fullGame }}</a>
           <a v-if="homeMode" class="pixel-button subtle" href="#classic-course-view">{{ text.classicView }}</a>
         </div>
@@ -1590,9 +1590,16 @@ onBeforeUnmount(() => {
 @media (max-width: 760px) {
   .pixel-quest-landing {
     width: 100%;
-    max-width: 100vw;
+    max-width: 100%;
     margin-left: 0;
     overflow-x: hidden;
+  }
+
+  .pixel-quest-landing .pixel-hero,
+  .pixel-quest-landing .pixel-layout,
+  .pixel-quest-landing .quest-panel,
+  .pixel-quest-landing .pixel-progress-track {
+    box-shadow: none;
   }
 
   .pixel-hero {

@@ -27,33 +27,33 @@ Bài này quan trọng vì artifact có AI hỗ trợ có thể nhân lên rất
 
 ## Common difficulties for BAs
 
-Trong dự án thật, chủ đề này khó vì BA phải biến evidence lộn xộn thành decision mà không để AI che mất uncertainty. Hãy chú ý các friction point này trước khi xem output là sẵn sàng.
+Trong Requirements engineering với AI, Traceability và testability trở nên khó khi business rule, edge case, quality attribute và testability constraint phải sống sót khi chuyển từ conversation sang backlog. BA nên kiểm tra các điểm dưới đây trước khi xem artifact có AI hỗ trợ là đủ sẵn sàng cho stakeholder decision hoặc handoff.
 
 | Khó khăn | Vì sao khó trong công việc BA | BA nên xử lý thế nào |
 | --- | --- | --- |
-| Xem traceability là documentation overhead. | Khó vì Traceability và testability thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
-| Link item máy móc mà không check meaning. | Khó vì Traceability và testability thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
-| Thiếu test scenario cho high-risk requirement. | Khó vì Traceability và testability thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
+| Xem traceability là documentation overhead. | Lỗi "Xem traceability là documentation overhead." xuất hiện khi team bàn về ambiguity, NFR risk, traceability, testability và rule ownership nhưng chưa thống nhất source nào authoritative. AI có thể làm disagreement nghe mượt hơn, nên BA phải giữ uncertainty visible. | Áp dụng control này: buộc mọi requirement statement lộ rõ actor, trigger, data, rule, exception và verification signal. Sau đó dùng pattern tốt hơn "Ghi source ID, prompt context, reviewer, decision owner và artifact version." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
+| Link item máy móc mà không check meaning. | Với Traceability và testability, điểm khó là Traceability làm requirement có accountability từ business goal đến test evidence. Pattern yếu rất dễ xảy ra vì AI có thể tạo câu trả lời trôi chảy trước khi BA check ownership, source freshness hoặc decision right. | Áp dụng control này: buộc mọi requirement statement lộ rõ actor, trigger, data, rule, exception và verification signal. Sau đó dùng pattern tốt hơn "Trace từng requirement tới positive, negative, fallback và monitoring test." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
+| Thiếu test scenario cho high-risk requirement. | Điểm này khó khi Traceability Chain được kỳ vọng hỗ trợ delivery-ready requirement. Nếu BA không challenge draft, unsupported assumption có thể đi vào planning, testing hoặc stakeholder communication. | Áp dụng control này: buộc mọi requirement statement lộ rõ actor, trigger, data, rule, exception và verification signal. Sau đó dùng pattern tốt hơn "Dùng trace link trong refinement, QA planning, change impact và release decision." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
 
 ## Where this applies in real projects
 
-Bài này hữu ích khi BA cần chuyển conversation, policy, design hoặc technical input thành artifact chung để team implement và test được.
+Dùng bài này khi requirement đang được refine, split, clarify, test hoặc bị QA và delivery team challenge. Output thực tế không phải document dài hơn; đó là Traceability Chain có đủ evidence, ownership và decision clarity cho cuộc trao đổi tiếp theo của dự án.
 
 | Thời điểm trong dự án | Cách áp dụng bài học | Output cụ thể của BA |
 | --- | --- | --- |
-| Discovery | Xây traceability chain cho một epic. | Traceability Chain: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
-| Refinement | Nhờ AI identify orphan story. | Traceability Chain: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
-| Delivery | Thêm source evidence cho high-risk requirement. | Traceability Chain: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
+| Backlog refinement | Xây traceability chain cho một epic. | Traceability Chain thể hiện ambiguity, NFR risk, traceability, testability và rule ownership, trong đó action "Xây traceability chain cho một epic." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
+| QA alignment | Nhờ AI identify orphan story. | Traceability Chain thể hiện source evidence, trong đó action "Nhờ AI identify orphan story." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
+| Release readiness | Thêm source evidence cho high-risk requirement. | Traceability Chain thể hiện decision owner, trong đó action "Thêm source evidence cho high-risk requirement." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
 
 ## If this is missing
 
-Nếu thiếu năng lực này, AI vẫn có thể tạo text rất bóng bẩy, nhưng project mất khả năng review. Kết quả thường là rework, assumption ẩn, acceptance criteria yếu hoặc business decision thiếu evidence.
+Nếu thiếu Traceability và testability, requirement nhìn có vẻ đầy đủ nhưng vẫn fail khi implement, test, release hoặc support operation. BA vẫn có thể khôi phục, nhưng phải chuyển draft AI bóng bẩy trở lại thành evidence, assumption, owner và decision test được.
 
 | Nếu thiếu | Ảnh hưởng tới dự án | Cách khôi phục |
 | --- | --- | --- |
-| Giữ draft AI trong chat và copy phần hay vào ticket | Source, assumption và review trail biến mất. | Khôi phục bằng pattern tốt hơn: Ghi source ID, prompt context, reviewer, decision owner và artifact version. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
-| Chỉ viết test cho happy path generated behavior | AI feature fail ở edge case, low confidence và unsupported input. | Khôi phục bằng pattern tốt hơn: Trace từng requirement tới positive, negative, fallback và monitoring test. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
-| Xem traceability là spreadsheet compliance | Team điền field nhưng không dùng để manage risk. | Khôi phục bằng pattern tốt hơn: Dùng trace link trong refinement, QA planning, change impact và release decision. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
+| Giữ draft AI trong chat và copy phần hay vào ticket | Source, assumption và review trail biến mất. | Khôi phục bằng pattern tốt hơn: Ghi source ID, prompt context, reviewer, decision owner và artifact version. Rework Traceability Chain cho đến khi nó lộ rõ ambiguity, NFR risk, traceability, testability và rule ownership, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
+| Chỉ viết test cho happy path generated behavior | AI feature fail ở edge case, low confidence và unsupported input. | Khôi phục bằng pattern tốt hơn: Trace từng requirement tới positive, negative, fallback và monitoring test. Rework Traceability Chain cho đến khi nó lộ rõ ambiguity, NFR risk, traceability, testability và rule ownership, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
+| Xem traceability là spreadsheet compliance | Team điền field nhưng không dùng để manage risk. | Khôi phục bằng pattern tốt hơn: Dùng trace link trong refinement, QA planning, change impact và release decision. Rework Traceability Chain cho đến khi nó lộ rõ ambiguity, NFR risk, traceability, testability và rule ownership, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
 
 ## Mental model or core concept
 

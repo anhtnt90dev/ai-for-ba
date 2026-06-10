@@ -27,33 +27,33 @@ Bài này quan trọng vì human review thường được viết như safeguard
 
 ## Common difficulties for BAs
 
-Trong dự án thật, chủ đề này khó vì BA phải biến evidence lộn xộn thành decision mà không để AI che mất uncertainty. Hãy chú ý các friction point này trước khi xem output là sẵn sàng.
+Trong Xây dựng sản phẩm có AI dưới góc nhìn BA, Human review, monitoring và fallback trở nên khó khi hành vi AI product có uncertainty, safety boundary, evaluation design, fallback, monitoring và user trust concern. BA nên kiểm tra các điểm dưới đây trước khi xem artifact có AI hỗ trợ là đủ sẵn sàng cho stakeholder decision hoặc handoff.
 
 | Khó khăn | Vì sao khó trong công việc BA | BA nên xử lý thế nào |
 | --- | --- | --- |
-| Viết 'human can review' mà thiếu workflow detail. | Khó vì Human review, monitoring và fallback thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
-| Không có SLA cho review queue. | Khó vì Human review, monitoring và fallback thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
-| Fallback message che giấu uncertainty. | Khó vì Human review, monitoring và fallback thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
+| Viết 'human can review' mà thiếu workflow detail. | Lỗi "Viết 'human can review' mà thiếu workflow detail." xuất hiện khi team bàn về AI task boundary, evaluation set, human review, fallback, telemetry và harm control nhưng chưa thống nhất source nào authoritative. AI có thể làm disagreement nghe mượt hơn, nên BA phải giữ uncertainty visible. | Áp dụng control này: đưa confidence, refusal, escalation, correction capture và monitoring vào requirement. Sau đó dùng pattern tốt hơn "Đặc tả review trigger, routing, reviewer action, SLA, audit record và owner." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
+| Không có SLA cho review queue. | Với Human review, monitoring và fallback, điểm khó là Sản phẩm AI có trách nhiệm cần path rõ cho uncertainty, escalation, correction và quality monitoring. Pattern yếu rất dễ xảy ra vì AI có thể tạo câu trả lời trôi chảy trước khi BA check ownership, source freshness hoặc decision right. | Áp dụng control này: đưa confidence, refusal, escalation, correction capture và monitoring vào requirement. Sau đó dùng pattern tốt hơn "Giải thích limitation, cung cấp next step an toàn và route sang support hoặc manual process." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
+| Fallback message che giấu uncertainty. | Điểm này khó khi Human-in-the-Loop Flow Requirements được kỳ vọng hỗ trợ AI feature operating contract. Nếu BA không challenge draft, unsupported assumption có thể đi vào planning, testing hoặc stakeholder communication. | Áp dụng control này: đưa confidence, refusal, escalation, correction capture và monitoring vào requirement. Sau đó dùng pattern tốt hơn "Track override rate, unsupported query, error category, drift signal và review outcome." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
 
 ## Where this applies in real projects
 
-Bài này hữu ích khi BA cần chuyển conversation, policy, design hoặc technical input thành artifact chung để team implement và test được.
+Dùng bài này khi BA đang đặc tả feature mà output AI làm thay đổi user action, operational workload hoặc customer experience. Output thực tế không phải document dài hơn; đó là Human-in-the-Loop Flow Requirements có đủ evidence, ownership và decision clarity cho cuộc trao đổi tiếp theo của dự án.
 
 | Thời điểm trong dự án | Cách áp dụng bài học | Output cụ thể của BA |
 | --- | --- | --- |
-| Discovery | Định nghĩa một low-confidence trigger. | Human-in-the-Loop Flow Requirements: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
-| Refinement | Viết fallback message trung thực và hữu ích. | Human-in-the-Loop Flow Requirements: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
-| Delivery | Thêm reason code cho human override. | Human-in-the-Loop Flow Requirements: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
+| AI behavior design | Định nghĩa một low-confidence trigger. | Human-in-the-Loop Flow Requirements thể hiện AI task boundary, evaluation set, human review, fallback, telemetry và harm control, trong đó action "Định nghĩa một low-confidence trigger." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
+| Evaluation planning | Viết fallback message trung thực và hữu ích. | Human-in-the-Loop Flow Requirements thể hiện source evidence, trong đó action "Viết fallback message trung thực và hữu ích." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
+| Operations handoff | Thêm reason code cho human override. | Human-in-the-Loop Flow Requirements thể hiện decision owner, trong đó action "Thêm reason code cho human override." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
 
 ## If this is missing
 
-Nếu thiếu năng lực này, AI vẫn có thể tạo text rất bóng bẩy, nhưng project mất khả năng review. Kết quả thường là rework, assumption ẩn, acceptance criteria yếu hoặc business decision thiếu evidence.
+Nếu thiếu Human review, monitoring và fallback, feature có thể release mà thiếu confidence rule, human review trigger, fallback path hoặc monitoring event rõ ràng. BA vẫn có thể khôi phục, nhưng phải chuyển draft AI bóng bẩy trở lại thành evidence, assumption, owner và decision test được.
 
 | Nếu thiếu | Ảnh hưởng tới dự án | Cách khôi phục |
 | --- | --- | --- |
-| Viết rằng human can review AI output | Không có trigger, queue, role, SLA hoặc decision authority. | Khôi phục bằng pattern tốt hơn: Đặc tả review trigger, routing, reviewer action, SLA, audit record và owner. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
-| Dùng fallback message nghe quá tự tin | User không hiểu uncertainty hoặc next safe action. | Khôi phục bằng pattern tốt hơn: Giải thích limitation, cung cấp next step an toàn và route sang support hoặc manual process. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
-| Chỉ monitor uptime và latency | System có thể available nhưng output vẫn low-quality hoặc risky. | Khôi phục bằng pattern tốt hơn: Track override rate, unsupported query, error category, drift signal và review outcome. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
+| Viết rằng human can review AI output | Không có trigger, queue, role, SLA hoặc decision authority. | Khôi phục bằng pattern tốt hơn: Đặc tả review trigger, routing, reviewer action, SLA, audit record và owner. Rework Human-in-the-Loop Flow Requirements cho đến khi nó lộ rõ AI task boundary, evaluation set, human review, fallback, telemetry và harm control, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
+| Dùng fallback message nghe quá tự tin | User không hiểu uncertainty hoặc next safe action. | Khôi phục bằng pattern tốt hơn: Giải thích limitation, cung cấp next step an toàn và route sang support hoặc manual process. Rework Human-in-the-Loop Flow Requirements cho đến khi nó lộ rõ AI task boundary, evaluation set, human review, fallback, telemetry và harm control, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
+| Chỉ monitor uptime và latency | System có thể available nhưng output vẫn low-quality hoặc risky. | Khôi phục bằng pattern tốt hơn: Track override rate, unsupported query, error category, drift signal và review outcome. Rework Human-in-the-Loop Flow Requirements cho đến khi nó lộ rõ AI task boundary, evaluation set, human review, fallback, telemetry và harm control, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
 
 ## Mental model or core concept
 

@@ -27,33 +27,33 @@ Bài này quan trọng vì artifact BA cần được compare, review, trace và
 
 ## Common difficulties for BAs
 
-Trong dự án thật, chủ đề này khó vì BA phải biến evidence lộn xộn thành decision mà không để AI che mất uncertainty. Hãy chú ý các friction point này trước khi xem output là sẵn sàng.
+Trong AI collaboration và context engineering, Structured output và prompt tái sử dụng trở nên khó khi AI có thể draft rất nhanh, nhưng reviewer cần context lặp lại được, structured output và critique rule để tin kết quả. BA nên kiểm tra các điểm dưới đây trước khi xem artifact có AI hỗ trợ là đủ sẵn sàng cho stakeholder decision hoặc handoff.
 
 | Khó khăn | Vì sao khó trong công việc BA | BA nên xử lý thế nào |
 | --- | --- | --- |
-| Dùng free-form output cho task cần comparison. | Khó vì Structured output và prompt tái sử dụng thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
-| Quên ID và source reference. | Khó vì Structured output và prompt tái sử dụng thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
-| Tạo prompt mà BA khác không reuse được. | Khó vì Structured output và prompt tái sử dụng thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
+| Dùng free-form output cho task cần comparison. | Lỗi "Dùng free-form output cho task cần comparison." xuất hiện khi team bàn về context package quality, prompt reuse, critique loop và output contract nhưng chưa thống nhất source nào authoritative. AI có thể làm disagreement nghe mượt hơn, nên BA phải giữ uncertainty visible. | Áp dụng control này: tách context preparation, generation, critique và human approval thành các bước visible. Sau đó dùng pattern tốt hơn "Dùng table hoặc JSON-like structure với column bắt buộc và cách xử lý missing value rõ." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
+| Quên ID và source reference. | Với Structured output và prompt tái sử dụng, điểm khó là Structured output biến AI từ chat response thành BA artifact có thể review. Pattern yếu rất dễ xảy ra vì AI có thể tạo câu trả lời trôi chảy trước khi BA check ownership, source freshness hoặc decision right. | Áp dụng control này: tách context preparation, generation, critique và human approval thành các bước visible. Sau đó dùng pattern tốt hơn "Định nghĩa output schema, acceptance criteria, review rubric và revision instruction." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
+| Tạo prompt mà BA khác không reuse được. | Điểm này khó khi Reusable Prompt Contract được kỳ vọng hỗ trợ repeatable collaboration pattern. Nếu BA không challenge draft, unsupported assumption có thể đi vào planning, testing hoặc stakeholder communication. | Áp dụng control này: tách context preparation, generation, critique và human approval thành các bước visible. Sau đó dùng pattern tốt hơn "Validate từng row theo source support, decision status và testability." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
 
 ## Where this applies in real projects
 
-Bài này hữu ích khi BA cần chuyển conversation, policy, design hoặc technical input thành artifact chung để team implement và test được.
+Dùng bài này khi BA team muốn pattern AI collaboration tái sử dụng thay vì prompt one-off phụ thuộc thói quen từng người. Output thực tế không phải document dài hơn; đó là Reusable Prompt Contract có đủ evidence, ownership và decision clarity cho cuộc trao đổi tiếp theo của dự án.
 
 | Thời điểm trong dự án | Cách áp dụng bài học | Output cụ thể của BA |
 | --- | --- | --- |
-| Discovery | Chuyển một prompt thường dùng thành reusable prompt contract. | Reusable Prompt Contract: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
-| Refinement | Thêm output column source, severity và owner. | Reusable Prompt Contract: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
-| Delivery | Yêu cầu AI self-check theo output schema. | Reusable Prompt Contract: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
+| Context setup | Chuyển một prompt thường dùng thành reusable prompt contract. | Reusable Prompt Contract thể hiện context package quality, prompt reuse, critique loop và output contract, trong đó action "Chuyển một prompt thường dùng thành reusable prompt contract." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
+| Prompt reuse | Thêm output column source, severity và owner. | Reusable Prompt Contract thể hiện source evidence, trong đó action "Thêm output column source, severity và owner." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
+| Peer review | Yêu cầu AI self-check theo output schema. | Reusable Prompt Contract thể hiện decision owner, trong đó action "Yêu cầu AI self-check theo output schema." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
 
 ## If this is missing
 
-Nếu thiếu năng lực này, AI vẫn có thể tạo text rất bóng bẩy, nhưng project mất khả năng review. Kết quả thường là rework, assumption ẩn, acceptance criteria yếu hoặc business decision thiếu evidence.
+Nếu thiếu Structured output và prompt tái sử dụng, output thay đổi theo từng người, assumption bị ẩn và chất lượng review phụ thuộc vào ai viết prompt. BA vẫn có thể khôi phục, nhưng phải chuyển draft AI bóng bẩy trở lại thành evidence, assumption, owner và decision test được.
 
 | Nếu thiếu | Ảnh hưởng tới dự án | Cách khôi phục |
 | --- | --- | --- |
-| Yêu cầu AI phân tích chi tiết bằng paragraph | Field quan trọng như owner, evidence, risk và action có thể biến mất. | Khôi phục bằng pattern tốt hơn: Dùng table hoặc JSON-like structure với column bắt buộc và cách xử lý missing value rõ. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
-| Reuse prompt nhưng không có quality contract | Cùng prompt có thể tạo artifact inconsistent giữa project. | Khôi phục bằng pattern tốt hơn: Định nghĩa output schema, acceptance criteria, review rubric và revision instruction. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
-| Xem structured output là tự động đúng | Bảng nhìn precise nhưng vẫn có thể chứa data unsupported. | Khôi phục bằng pattern tốt hơn: Validate từng row theo source support, decision status và testability. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
+| Yêu cầu AI phân tích chi tiết bằng paragraph | Field quan trọng như owner, evidence, risk và action có thể biến mất. | Khôi phục bằng pattern tốt hơn: Dùng table hoặc JSON-like structure với column bắt buộc và cách xử lý missing value rõ. Rework Reusable Prompt Contract cho đến khi nó lộ rõ context package quality, prompt reuse, critique loop và output contract, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
+| Reuse prompt nhưng không có quality contract | Cùng prompt có thể tạo artifact inconsistent giữa project. | Khôi phục bằng pattern tốt hơn: Định nghĩa output schema, acceptance criteria, review rubric và revision instruction. Rework Reusable Prompt Contract cho đến khi nó lộ rõ context package quality, prompt reuse, critique loop và output contract, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
+| Xem structured output là tự động đúng | Bảng nhìn precise nhưng vẫn có thể chứa data unsupported. | Khôi phục bằng pattern tốt hơn: Validate từng row theo source support, decision status và testability. Rework Reusable Prompt Contract cho đến khi nó lộ rõ context package quality, prompt reuse, critique loop và output contract, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
 
 ## Mental model or core concept
 

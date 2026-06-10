@@ -13,16 +13,16 @@ description: "The BA must specify event behavior beyond naming events. Requireme
 
 ## Project context
 
-A platform needs to notify partner systems when invoices are created, paid, voided, or disputed. Partners require reliable webhooks, replay support, and clear event payloads. In a real delivery environment, this work usually appears under time pressure: stakeholders want clarity, delivery needs a backlog, QA needs testable behavior, and operations needs a process that can survive exceptions. The BA uses AI here to accelerate analysis and synthesis, but the BA remains accountable for evidence, business meaning, stakeholder decisioning, and artifact quality.
+A platform needs to notify partner systems when invoices are created, paid, voided, or disputed. Partners require reliable webhooks, replay support, and clear event payloads. In Event-driven integration, this work usually starts when API contracts, permissions, errors, audit, and operational behavior must be explicit enough for backend delivery. The BA should treat Entity lifecycle and Partner integration needs as evidence to organize, not as raw material for an unconstrained AI answer. The goal is to make the next decision clearer for the people who own the outcome.
 
 ## BA challenge
 
-The BA must specify event behavior beyond naming events. Requirements must cover trigger, payload, ordering, retries, replay, security, subscription management, and partner-facing documentation. The practical difficulty is that AI can make early material look more complete than it is. A strong BA keeps the output reviewable by separating source-backed facts, assumptions, unsupported claims, decision gaps, and recommended next actions. The objective is not to make the document longer; it is to make the project decision clearer and safer.
+The BA must specify event behavior beyond naming events. Requirements must cover trigger, payload, ordering, retries, replay, security, subscription management, and partner-facing documentation. For Webhook and Event-Driven Requirements, the practical difficulty is ambiguous service behavior and security gaps. AI can accelerate contract critique, rule extraction, error taxonomy, permission review, and NFR gap detection, but the BA must still expose assumptions, missing approvals, and the point where stakeholder judgment is required.
 
 ## Where AI fits
 
 <div class="ba-workbench-panel">
-AI is useful in this use case when it is constrained to analysis support, pattern detection, structured drafting, and critique. It should not approve scope, invent policy, decide business trade-offs, or replace accountable stakeholder judgment.
+AI fits this Backend and API use case when it is constrained to contract critique, rule extraction, error taxonomy, permission review, and NFR gap detection. A useful first AI task is: Generate event catalog and payload questions from lifecycle states. AI should not approve scope, invent policy, bypass API draft, data model, auth rules, error samples, audit policy, and integration needs, or turn a draft into a final decision.
 </div>
 
 - Generate event catalog and payload questions from lifecycle states.
@@ -38,7 +38,7 @@ AI is useful in this use case when it is constrained to analysis support, patter
 - Existing webhook examples
 - Operational support process
 
-A BA should label these inputs before using AI: source owner, source date, approval status, sensitivity level, and whether the source is fact, opinion, policy, draft, or historical evidence. This preparation prevents the model from treating every input as equally current and authoritative.
+Before prompting for Webhook and Event-Driven Requirements, label each input by owner, date, approval status, sensitivity, and role in the decision. The most important evidence lens is API draft, data model, auth rules, error samples, audit policy, and integration needs; without it, AI may rank old notes, draft designs, and approved rules as if they had equal authority.
 
 ## BA workflow
 
@@ -49,7 +49,7 @@ A BA should label these inputs before using AI: source owner, source date, appro
 5. Write acceptance criteria for success, failure, duplicate, and replay cases.
 6. Create operational monitoring and incident handling requirements.
 
-The workflow works best as a staged AI collaboration: first organize the evidence, then ask for analysis, then create the artifact, then run a critique pass. The BA should keep a visible decision log throughout the process so that AI-generated suggestions do not silently become approved scope.
+Run the workflow as contract validation before implementation: start with "Map entity lifecycle transitions to event triggers.", then keep a visible decision log as the artifact moves toward Event catalog. This prevents AI suggestions from silently becoming backlog, design, release, or operational commitments.
 
 ## Diagram
 
@@ -73,7 +73,7 @@ flowchart LR
 | Partner documentation outline | Payload examples, signing, retries, error handling, and support | Developer relations | Partners can integrate |
 | Event QA scenarios | Success, retry, replay, duplicate, missing consumer, and bad signature | QA | Integration behavior is testable |
 
-These deliverables should be treated as BA-owned artifacts. AI can draft them, but the BA must validate source support, stakeholder meaning, traceability, and whether the artifact is ready for handoff.
+Treat Event catalog as a BA-owned backend behavior contract. AI may draft structure, but the BA must validate whether "Events map to lifecycle" is actually true, whether the artifact is traceable to source evidence, and whether the receiving team can act on it.
 
 ## Prompt to try
 
@@ -83,11 +83,11 @@ Act as a senior AI-aware Business Analyst. Help me apply the "Webhook and Event-
 
 ## Review checklist
 
-- Every AI-produced statement is tied to a source, assumption, or validation question.
-- The BA has separated drafting assistance from business approval.
-- Workflow steps identify the human owner for decisions, review, and exceptions.
-- Deliverables are traceable to project inputs and can be reviewed by QA, product, or operations.
-- Risk controls are practical enough to be used in a real project meeting.
+- Entity lifecycle is labeled with owner, date, approval status, and sensitivity.
+- Event catalog traces to source evidence and has a named human owner.
+- The AI task stays inside contract critique, rule extraction, error taxonomy, permission review, and NFR gap detection and does not approve scope or policy.
+- The "Event ambiguity" risk has a practical control: Document business meaning and trigger.
+- Open assumptions are converted into validation questions or stakeholder decisions.
 - Success metric: Event-driven integration has clear semantics, reliability behavior, and partner-ready documentation.
 
 ## Risks and controls
@@ -99,4 +99,4 @@ Act as a senior AI-aware Business Analyst. Help me apply the "Webhook and Event-
 | Replay gap | Partners cannot recover from outage | Define replay and event history |
 | Security weakness | Webhook may be spoofed | Specify signing and authentication |
 
-The key control is to make uncertainty visible. If evidence is weak, the output should create a validation question or decision item, not a final requirement. If the artifact influences delivery, release, compliance, customer experience, or operational workload, the BA should require explicit human review before handoff.
+The main control for the "Event ambiguity" risk is explicit human accountability: Document business meaning and trigger. If evidence is weak, the output should create a validation question or decision item, not a final requirement.

@@ -27,33 +27,33 @@ Bài này quan trọng vì draft AI đầu tiên tối ưu cho fluency, không n
 
 ## Common difficulties for BAs
 
-Trong dự án thật, chủ đề này khó vì BA phải biến evidence lộn xộn thành decision mà không để AI che mất uncertainty. Hãy chú ý các friction point này trước khi xem output là sẵn sàng.
+Trong AI collaboration và context engineering, Review loop và critique trở nên khó khi AI có thể draft rất nhanh, nhưng reviewer cần context lặp lại được, structured output và critique rule để tin kết quả. BA nên kiểm tra các điểm dưới đây trước khi xem artifact có AI hỗ trợ là đủ sẵn sàng cho stakeholder decision hoặc handoff.
 
 | Khó khăn | Vì sao khó trong công việc BA | BA nên xử lý thế nào |
 | --- | --- | --- |
-| Yêu cầu AI improve draft mà không diagnose trước. | Khó vì Review loop và critique thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
-| Xem mọi critique finding quan trọng như nhau. | Khó vì Review loop và critique thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
-| Bỏ evidence cho critique. | Khó vì Review loop và critique thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
+| Yêu cầu AI improve draft mà không diagnose trước. | Lỗi "Yêu cầu AI improve draft mà không diagnose trước." xuất hiện khi team bàn về context package quality, prompt reuse, critique loop và output contract nhưng chưa thống nhất source nào authoritative. AI có thể làm disagreement nghe mượt hơn, nên BA phải giữ uncertainty visible. | Áp dụng control này: tách context preparation, generation, critique và human approval thành các bước visible. Sau đó dùng pattern tốt hơn "Chạy critique pass cho evidence, specificity, testability và risk trước khi share." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
+| Xem mọi critique finding quan trọng như nhau. | Với Review loop và critique, điểm khó là Cách dùng AI mạnh nhất cho BA không chỉ là draft nhanh hơn; đó là tạo critique loop có kỷ luật trước khi artifact đến team. Pattern yếu rất dễ xảy ra vì AI có thể tạo câu trả lời trôi chảy trước khi BA check ownership, source freshness hoặc decision right. | Áp dụng control này: tách context preparation, generation, critique và human approval thành các bước visible. Sau đó dùng pattern tốt hơn "Dùng rubric có required lens, severity, source reference và recommended fix." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
+| Bỏ evidence cho critique. | Điểm này khó khi Multi-Perspective Critique Grid được kỳ vọng hỗ trợ repeatable collaboration pattern. Nếu BA không challenge draft, unsupported assumption có thể đi vào planning, testing hoặc stakeholder communication. | Áp dụng control này: tách context preparation, generation, critique và human approval thành các bước visible. Sau đó dùng pattern tốt hơn "Chuyển critique finding thành defect register hoặc decision log có owner." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
 
 ## Where this applies in real projects
 
-Bài này hữu ích khi BA cần chuyển conversation, policy, design hoặc technical input thành artifact chung để team implement và test được.
+Dùng bài này khi BA team muốn pattern AI collaboration tái sử dụng thay vì prompt one-off phụ thuộc thói quen từng người. Output thực tế không phải document dài hơn; đó là Multi-Perspective Critique Grid có đủ evidence, ownership và decision clarity cho cuộc trao đổi tiếp theo của dự án.
 
 | Thời điểm trong dự án | Cách áp dụng bài học | Output cụ thể của BA |
 | --- | --- | --- |
-| Discovery | Chạy một draft qua QA critique prompt. | Multi-Perspective Critique Grid: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
-| Refinement | Nhờ AI rank finding theo delivery risk. | Multi-Perspective Critique Grid: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
-| Delivery | Chuyển critique thành revision backlog. | Multi-Perspective Critique Grid: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
+| Context setup | Chạy một draft qua QA critique prompt. | Multi-Perspective Critique Grid thể hiện context package quality, prompt reuse, critique loop và output contract, trong đó action "Chạy một draft qua QA critique prompt." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
+| Prompt reuse | Nhờ AI rank finding theo delivery risk. | Multi-Perspective Critique Grid thể hiện source evidence, trong đó action "Nhờ AI rank finding theo delivery risk." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
+| Peer review | Chuyển critique thành revision backlog. | Multi-Perspective Critique Grid thể hiện decision owner, trong đó action "Chuyển critique thành revision backlog." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
 
 ## If this is missing
 
-Nếu thiếu năng lực này, AI vẫn có thể tạo text rất bóng bẩy, nhưng project mất khả năng review. Kết quả thường là rework, assumption ẩn, acceptance criteria yếu hoặc business decision thiếu evidence.
+Nếu thiếu Review loop và critique, output thay đổi theo từng người, assumption bị ẩn và chất lượng review phụ thuộc vào ai viết prompt. BA vẫn có thể khôi phục, nhưng phải chuyển draft AI bóng bẩy trở lại thành evidence, assumption, owner và decision test được.
 
 | Nếu thiếu | Ảnh hưởng tới dự án | Cách khôi phục |
 | --- | --- | --- |
-| Accept draft AI đầu tiên vì đọc rất mượt | Fluency có thể che ambiguity, false claim và wording không test được. | Khôi phục bằng pattern tốt hơn: Chạy critique pass cho evidence, specificity, testability và risk trước khi share. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
-| Hỏi chung chung what is wrong with this | Critique có thể nông và miss dimension quality của BA. | Khôi phục bằng pattern tốt hơn: Dùng rubric có required lens, severity, source reference và recommended fix. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
-| Để review comment ở dạng informal | Team không track được risk đã resolve hay chưa. | Khôi phục bằng pattern tốt hơn: Chuyển critique finding thành defect register hoặc decision log có owner. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
+| Accept draft AI đầu tiên vì đọc rất mượt | Fluency có thể che ambiguity, false claim và wording không test được. | Khôi phục bằng pattern tốt hơn: Chạy critique pass cho evidence, specificity, testability và risk trước khi share. Rework Multi-Perspective Critique Grid cho đến khi nó lộ rõ context package quality, prompt reuse, critique loop và output contract, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
+| Hỏi chung chung what is wrong with this | Critique có thể nông và miss dimension quality của BA. | Khôi phục bằng pattern tốt hơn: Dùng rubric có required lens, severity, source reference và recommended fix. Rework Multi-Perspective Critique Grid cho đến khi nó lộ rõ context package quality, prompt reuse, critique loop và output contract, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
+| Để review comment ở dạng informal | Team không track được risk đã resolve hay chưa. | Khôi phục bằng pattern tốt hơn: Chuyển critique finding thành defect register hoặc decision log có owner. Rework Multi-Perspective Critique Grid cho đến khi nó lộ rõ context package quality, prompt reuse, critique loop và output contract, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
 
 ## Mental model or core concept
 

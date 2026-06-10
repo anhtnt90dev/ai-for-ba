@@ -13,16 +13,16 @@ description: "BA phải dùng AI để chuẩn bị refinement tốt hơn, khôn
 
 ## Project context
 
-Squad chuẩn bị backlog refinement cho feature chạm UI, API, validation và permission. Developer cần behavior rõ hơn và BA muốn tìm gap trước meeting. Trong môi trường delivery thật, tình huống này thường xuất hiện dưới áp lực thời gian: stakeholder cần clarity, delivery cần backlog, QA cần behavior test được, operations cần process chịu được exception. BA dùng AI để tăng tốc analysis và synthesis, nhưng BA vẫn chịu trách nhiệm về evidence, business meaning, stakeholder decisioning và artifact quality.
+Squad chuẩn bị backlog refinement cho feature chạm UI, API, validation và permission. Developer cần behavior rõ hơn và BA muốn tìm gap trước meeting. Trong BA and developers, công việc này thường bắt đầu khi mỗi role cần artifact khác nhau, nhưng BA phải giữ decision nhất quán giữa product, design, engineering, QA, data và operations. BA nên xem User stories và Design notes là evidence cần organize, không phải raw material để AI trả lời không kiểm soát. Mục tiêu là làm decision tiếp theo rõ hơn cho người own outcome.
 
 ## BA challenge
 
-BA phải dùng AI để chuẩn bị refinement tốt hơn, không thay thế developer judgment. Output cần làm lộ assumption, technical question, API dependency, edge case và decision needed. Khó khăn thực tế là AI có thể làm material ban đầu trông hoàn chỉnh hơn mức thật sự. BA giỏi giữ output ở trạng thái reviewable bằng cách tách source-backed fact, assumption, unsupported claim, decision gap và recommended next action. Mục tiêu không phải làm document dài hơn; mục tiêu là làm project decision rõ hơn và an toàn hơn.
+BA phải dùng AI để chuẩn bị refinement tốt hơn, không thay thế developer judgment. Output cần làm lộ assumption, technical question, API dependency, edge case và decision needed. Với Refinement BA-developer với AI, khó khăn thực tế là role misalignment và hidden trade-off. AI có thể tăng tốc role-specific synthesis, decision memo drafting, conflict surfacing và shared artifact critique, nhưng BA vẫn phải làm rõ assumption, approval còn thiếu và điểm cần stakeholder judgment.
 
 ## Where AI fits
 
 <div class="ba-workbench-panel">
-AI hữu ích trong use case này khi được giới hạn vào analysis support, pattern detection, structured drafting và critique. AI không được approve scope, invent policy, quyết định business trade-off hoặc thay thế judgment của stakeholder chịu trách nhiệm.
+AI phù hợp với use case Collaboration cross-functional của BA khi được giới hạn vào role-specific synthesis, decision memo drafting, conflict surfacing và shared artifact critique. AI task hữu ích đầu tiên là: Critique story theo perspective developer, API, data và integration. AI không được approve scope, invent policy, bỏ qua role feedback, decision log, design note, technical constraint, test concern và support need, hoặc biến draft thành final decision.
 </div>
 
 - Critique story theo perspective developer, API, data và integration.
@@ -38,7 +38,7 @@ AI hữu ích trong use case này khi được giới hạn vào analysis suppor
 - Current architecture constraints
 - Open decisions
 
-BA nên label các input này trước khi dùng AI: source owner, source date, approval status, sensitivity level, và source đó là fact, opinion, policy, draft hay historical evidence. Việc chuẩn bị này ngăn model xem mọi input đều current và authoritative như nhau.
+Trước khi prompt cho Refinement BA-developer với AI, hãy label từng input theo owner, date, approval status, sensitivity và vai trò trong decision. Evidence lens quan trọng nhất là role feedback, decision log, design note, technical constraint, test concern và support need; nếu thiếu, AI có thể xem old note, draft design và approved rule có authority như nhau.
 
 ## BA workflow
 
@@ -49,7 +49,7 @@ BA nên label các input này trước khi dùng AI: source owner, source date, 
 5. Update story và acceptance criteria trước meeting.
 6. Dùng meeting để close decision và confirm dependency.
 
-Workflow hiệu quả nhất khi dùng AI theo từng stage: trước hết organize evidence, sau đó yêu cầu analysis, tiếp theo tạo artifact, rồi chạy critique pass. BA nên giữ decision log visible xuyên suốt để suggestion do AI sinh ra không âm thầm trở thành approved scope.
+Chạy workflow như cross-role decision alignment trước handoff: bắt đầu với "Package story context, design, known rule và constraint.", sau đó giữ decision log visible khi artifact tiến tới Refinement prep pack. Cách này ngăn suggestion của AI âm thầm trở thành backlog, design, release hoặc operational commitment.
 
 ## Diagram
 
@@ -73,7 +73,7 @@ flowchart LR
 | Updated acceptance criteria | Behavior, edge case, API dependency và test signal | BA | Story development-ready |
 | Decision summary | Decision, rationale, owner và impact backlog | Product owner | Outcome refinement captured |
 
-Các deliverable này nên được xem là artifact do BA own. AI có thể draft, nhưng BA phải validate source support, stakeholder meaning, traceability và artifact đã sẵn sàng handoff hay chưa.
+Hãy xem Refinement prep pack là collaboration decision artifact do BA own. AI có thể draft structure, nhưng BA phải validate "Meeting bắt đầu bằng decision" có thật sự đúng không, artifact có trace được về evidence không và receiving team có hành động được không.
 
 ## Prompt to try
 
@@ -83,11 +83,11 @@ Hãy đóng vai senior Business Analyst hiểu AI. Hỗ trợ tôi áp dụng us
 
 ## Review checklist
 
-- Mọi statement do AI hỗ trợ đều gắn với source, assumption hoặc validation question.
-- BA đã tách drafting assistance khỏi business approval.
-- Workflow step có human owner cho decision, review và exception.
-- Deliverable trace được về project input và review được bởi QA, product hoặc operations.
-- Risk control đủ thực tế để dùng trong meeting dự án thật.
+- User stories được label owner, date, approval status và sensitivity.
+- Refinement prep pack trace được về source evidence và có human owner rõ.
+- AI task nằm trong boundary role-specific synthesis, decision memo drafting, conflict surfacing và shared artifact critique và không approve scope hoặc policy.
+- Risk "AI oversteps technical design" có control thực tế: Dùng AI để hỏi question, không quyết architecture.
+- Open assumption được chuyển thành validation question hoặc stakeholder decision.
 - Success metric: Refinement meeting dành nhiều thời gian decision hơn và ít thời gian phát hiện thiếu requirement cơ bản.
 
 ## Risks and controls
@@ -99,4 +99,4 @@ Hãy đóng vai senior Business Analyst hiểu AI. Hỗ trợ tôi áp dụng us
 | Business/technical confusion | Team trộn decision type | Tách business decision và design question |
 | Untracked decisions | Conclusion refinement biến mất | Capture decision summary |
 
-Control quan trọng nhất là làm uncertainty visible. Nếu evidence yếu, output nên tạo validation question hoặc decision item, không phải final requirement. Nếu artifact ảnh hưởng delivery, release, compliance, customer experience hoặc operational workload, BA nên yêu cầu human review explicit trước khi handoff.
+Control chính cho risk "AI oversteps technical design" là human accountability explicit: Dùng AI để hỏi question, không quyết architecture. Nếu evidence yếu, output nên tạo validation question hoặc decision item, không phải final requirement.

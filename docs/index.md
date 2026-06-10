@@ -1,8 +1,8 @@
 ---
 title: "AI for Business Analysts"
-description: "Trang chủ course AI for Business Analysts với Pixel Quest game mode và lộ trình học song ngữ."
+description: "Default English landing page for the AI for Business Analysts course with Pixel Quest game mode and bilingual learning paths."
 pageClass: pixel-game-root
 aside: false
 ---
 
-<PixelQuest locale="vi" mode="landing" />
+<PixelQuest locale="en" mode="landing" />

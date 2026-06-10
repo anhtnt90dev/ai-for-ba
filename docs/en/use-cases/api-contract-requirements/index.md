@@ -13,16 +13,16 @@ description: "The BA must help define API behavior in business terms so frontend
 
 ## Project context
 
-Frontend and backend teams must integrate a new customer profile API. Stories describe the screen, but the request fields, response fields, validation behavior, error responses, and pagination rules are not agreed. In a real delivery environment, this work usually appears under time pressure: stakeholders want clarity, delivery needs a backlog, QA needs testable behavior, and operations needs a process that can survive exceptions. The BA uses AI here to accelerate analysis and synthesis, but the BA remains accountable for evidence, business meaning, stakeholder decisioning, and artifact quality.
+Frontend and backend teams must integrate a new customer profile API. Stories describe the screen, but the request fields, response fields, validation behavior, error responses, and pagination rules are not agreed. In API contracts, this work usually starts when API contracts, permissions, errors, audit, and operational behavior must be explicit enough for backend delivery. The BA should treat Screen behavior spec and Data field definitions as evidence to organize, not as raw material for an unconstrained AI answer. The goal is to make the next decision clearer for the people who own the outcome.
 
 ## BA challenge
 
-The BA must help define API behavior in business terms so frontend, backend, QA, and product align. API requirements should cover data meaning, not just technical schema. The practical difficulty is that AI can make early material look more complete than it is. A strong BA keeps the output reviewable by separating source-backed facts, assumptions, unsupported claims, decision gaps, and recommended next actions. The objective is not to make the document longer; it is to make the project decision clearer and safer.
+The BA must help define API behavior in business terms so frontend, backend, QA, and product align. API requirements should cover data meaning, not just technical schema. For API Contract Requirements, the practical difficulty is ambiguous service behavior and security gaps. AI can accelerate contract critique, rule extraction, error taxonomy, permission review, and NFR gap detection, but the BA must still expose assumptions, missing approvals, and the point where stakeholder judgment is required.
 
 ## Where AI fits
 
 <div class="ba-workbench-panel">
-AI is useful in this use case when it is constrained to analysis support, pattern detection, structured drafting, and critique. It should not approve scope, invent policy, decide business trade-offs, or replace accountable stakeholder judgment.
+AI fits this Backend and API use case when it is constrained to contract critique, rule extraction, error taxonomy, permission review, and NFR gap detection. A useful first AI task is: Draft an API contract checklist from screen requirements. AI should not approve scope, invent policy, bypass API draft, data model, auth rules, error samples, audit policy, and integration needs, or turn a draft into a final decision.
 </div>
 
 - Draft an API contract checklist from screen requirements.
@@ -38,7 +38,7 @@ AI is useful in this use case when it is constrained to analysis support, patter
 - Existing API examples
 - Validation rules
 
-A BA should label these inputs before using AI: source owner, source date, approval status, sensitivity level, and whether the source is fact, opinion, policy, draft, or historical evidence. This preparation prevents the model from treating every input as equally current and authoritative.
+Before prompting for API Contract Requirements, label each input by owner, date, approval status, sensitivity, and role in the decision. The most important evidence lens is API draft, data model, auth rules, error samples, audit policy, and integration needs; without it, AI may rank old notes, draft designs, and approved rules as if they had equal authority.
 
 ## BA workflow
 
@@ -49,7 +49,7 @@ A BA should label these inputs before using AI: source owner, source date, appro
 5. Add API acceptance criteria and contract test scenarios.
 6. Track unresolved contract decisions in a decision log.
 
-The workflow works best as a staged AI collaboration: first organize the evidence, then ask for analysis, then create the artifact, then run a critique pass. The BA should keep a visible decision log throughout the process so that AI-generated suggestions do not silently become approved scope.
+Run the workflow as contract validation before implementation: start with "Map UI behavior to required API operations.", then keep a visible decision log as the artifact moves toward API behavior spec. This prevents AI suggestions from silently becoming backlog, design, release, or operational commitments.
 
 ## Diagram
 
@@ -73,7 +73,7 @@ flowchart LR
 | Error behavior table | Condition, status, code, message, frontend action, and owner | Backend | Errors are actionable |
 | Contract test scenarios | Input, expected response, validation, and edge cases | QA | API can be tested before UI completion |
 
-These deliverables should be treated as BA-owned artifacts. AI can draft them, but the BA must validate source support, stakeholder meaning, traceability, and whether the artifact is ready for handoff.
+Treat API behavior spec as a BA-owned backend behavior contract. AI may draft structure, but the BA must validate whether "API behavior is business-readable" is actually true, whether the artifact is traceable to source evidence, and whether the receiving team can act on it.
 
 ## Prompt to try
 
@@ -83,11 +83,11 @@ Act as a senior AI-aware Business Analyst. Help me apply the "API Contract Requi
 
 ## Review checklist
 
-- Every AI-produced statement is tied to a source, assumption, or validation question.
-- The BA has separated drafting assistance from business approval.
-- Workflow steps identify the human owner for decisions, review, and exceptions.
-- Deliverables are traceable to project inputs and can be reviewed by QA, product, or operations.
-- Risk controls are practical enough to be used in a real project meeting.
+- Screen behavior spec is labeled with owner, date, approval status, and sensitivity.
+- API behavior spec traces to source evidence and has a named human owner.
+- The AI task stays inside contract critique, rule extraction, error taxonomy, permission review, and NFR gap detection and does not approve scope or policy.
+- The "Schema without meaning" risk has a practical control: Document field meaning and examples.
+- Open assumptions are converted into validation questions or stakeholder decisions.
 - Success metric: Frontend and backend integrate against a contract that is traceable to business behavior.
 
 ## Risks and controls
@@ -99,4 +99,4 @@ Act as a senior AI-aware Business Analyst. Help me apply the "API Contract Requi
 | Error ambiguity | Frontend cannot guide users from generic errors | Define error taxonomy and action |
 | Late contract decision | Integration is delayed by unresolved fields | Track contract decisions early |
 
-The key control is to make uncertainty visible. If evidence is weak, the output should create a validation question or decision item, not a final requirement. If the artifact influences delivery, release, compliance, customer experience, or operational workload, the BA should require explicit human review before handoff.
+The main control for the "Schema without meaning" risk is explicit human accountability: Document field meaning and examples. If evidence is weak, the output should create a validation question or decision item, not a final requirement.

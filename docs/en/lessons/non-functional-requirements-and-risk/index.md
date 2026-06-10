@@ -27,33 +27,33 @@ This lesson matters because AI features often fail in quality attributes that st
 
 ## Common difficulties for BAs
 
-In real projects, this topic is difficult because the BA must turn messy evidence into decisions without letting AI hide uncertainty. Watch for these friction points before treating the output as ready.
+In Requirements Engineering With AI, Non-Functional Requirements and Risk becomes difficult when business rules, edge cases, quality attributes, and testability constraints must survive the move from conversation into backlog. A BA should inspect the points below before treating an AI-supported artifact as ready for stakeholder decision or delivery handoff.
 
 | Difficulty | Why it is hard in BA work | How a BA should handle it |
 | --- | --- | --- |
-| Treating NFRs as developer-only concerns. | This is hard because Non-Functional Requirements and Risk is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
-| Writing NFRs without measurable signals. | This is hard because Non-Functional Requirements and Risk is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
-| Ignoring privacy and audit until late testing. | This is hard because Non-Functional Requirements and Risk is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
+| Treating NFRs as developer-only concerns. | The mistake "Treating NFRs as developer-only concerns." appears when the team discusses ambiguity, NFR risk, traceability, testability, and rule ownership without agreeing which source is authoritative. AI can smooth over the disagreement, so the BA must keep uncertainty visible. | Apply this control: force every requirement statement to expose actor, trigger, data, rule, exception, and verification signal. Then use the stronger pattern "Specify evaluation cases, target metric, acceptable error, and escalation behavior." and ask who must approve the artifact before it affects scope, build, test, or release. |
+| Writing NFRs without measurable signals. | For Non-Functional Requirements and Risk, the friction is that NFRs are business risk requirements, not technical extras. The weak pattern is tempting because AI can produce a fluent answer before the BA has checked ownership, source freshness, or decision rights. | Apply this control: force every requirement statement to expose actor, trigger, data, rule, exception, and verification signal. Then use the stronger pattern "Define prohibited data, retention, consent, access, and redaction requirements." and ask who must approve the artifact before it affects scope, build, test, or release. |
+| Ignoring privacy and audit until late testing. | This becomes hard when NFR Risk Matrix is expected to support the delivery-ready requirement. If the BA does not challenge the draft, unsupported assumptions may enter planning, testing, or stakeholder communication. | Apply this control: force every requirement statement to expose actor, trigger, data, rule, exception, and verification signal. Then use the stronger pattern "Elicit AI-specific NFRs during discovery and include them in acceptance criteria." and ask who must approve the artifact before it affects scope, build, test, or release. |
 
 ## Where this applies in real projects
 
-This lesson is useful when the BA needs to move from conversation, policy, design, or technical input into a shared artifact that the team can implement and test.
+Use this lesson when requirements are being refined, split, clarified, tested, or challenged by QA and delivery teams. The practical output is not a longer document; it is NFR Risk Matrix with enough evidence, ownership, and decision clarity for the next project conversation.
 
 | Project moment | How to apply this lesson | Concrete BA output |
 | --- | --- | --- |
-| Discovery | Pick one feature and ask AI for NFR gaps. | NFR Risk Matrix: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
-| Refinement | Rewrite one NFR with a measurable acceptance signal. | NFR Risk Matrix: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
-| Delivery | Review NFR priority with product and engineering. | NFR Risk Matrix: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
+| Backlog refinement | Pick one feature and ask AI for NFR gaps. | NFR Risk Matrix showing ambiguity, NFR risk, traceability, testability, and rule ownership, with the action "Pick one feature and ask AI for NFR gaps." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
+| QA alignment | Rewrite one NFR with a measurable acceptance signal. | NFR Risk Matrix showing source evidence, with the action "Rewrite one NFR with a measurable acceptance signal." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
+| Release readiness | Review NFR priority with product and engineering. | NFR Risk Matrix showing decision owner, with the action "Review NFR priority with product and engineering." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
 
 ## If this is missing
 
-If this capability is missing, AI may still produce polished text, but the project loses reviewability. The result is usually rework, hidden assumptions, weak acceptance criteria, or business decisions made without enough evidence.
+If Non-Functional Requirements and Risk is missing, requirements may look complete but still fail implementation, testing, release readiness, or operational support. The BA can still recover, but only by converting the polished AI draft back into explicit evidence, assumptions, owners, and testable decisions.
 
 | If missing | Project impact | Recovery action |
 | --- | --- | --- |
-| Write that AI output must be accurate | Accuracy is undefined without task, dataset, threshold, and failure cost. | Recover by using the stronger pattern: Specify evaluation cases, target metric, acceptable error, and escalation behavior. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
-| Leave privacy to the technical team | BA decisions about data, users, and workflow shape privacy exposure. | Recover by using the stronger pattern: Define prohibited data, retention, consent, access, and redaction requirements. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
-| Add NFRs after feature design is complete | Controls may become expensive or impossible to retrofit. | Recover by using the stronger pattern: Elicit AI-specific NFRs during discovery and include them in acceptance criteria. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
+| Write that AI output must be accurate | Accuracy is undefined without task, dataset, threshold, and failure cost. | Recover by using the stronger pattern: Specify evaluation cases, target metric, acceptable error, and escalation behavior. Rework NFR Risk Matrix until it exposes ambiguity, NFR risk, traceability, testability, and rule ownership, and do not share it as final until evidence, ownership, and validation path are explicit. |
+| Leave privacy to the technical team | BA decisions about data, users, and workflow shape privacy exposure. | Recover by using the stronger pattern: Define prohibited data, retention, consent, access, and redaction requirements. Rework NFR Risk Matrix until it exposes ambiguity, NFR risk, traceability, testability, and rule ownership, and do not share it as final until evidence, ownership, and validation path are explicit. |
+| Add NFRs after feature design is complete | Controls may become expensive or impossible to retrofit. | Recover by using the stronger pattern: Elicit AI-specific NFRs during discovery and include them in acceptance criteria. Rework NFR Risk Matrix until it exposes ambiguity, NFR risk, traceability, testability, and rule ownership, and do not share it as final until evidence, ownership, and validation path are explicit. |
 
 ## Mental model or core concept
 

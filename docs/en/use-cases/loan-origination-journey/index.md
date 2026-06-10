@@ -13,16 +13,16 @@ description: "The BA must coordinate regulated requirements across customer expe
 
 ## Project context
 
-A bank modernizes loan origination for small business customers. The project covers eligibility, document upload, risk assessment, approval workflow, customer notifications, and audit evidence. In a real delivery environment, this work usually appears under time pressure: stakeholders want clarity, delivery needs a backlog, QA needs testable behavior, and operations needs a process that can survive exceptions. The BA uses AI here to accelerate analysis and synthesis, but the BA remains accountable for evidence, business meaning, stakeholder decisioning, and artifact quality.
+A bank modernizes loan origination for small business customers. The project covers eligibility, document upload, risk assessment, approval workflow, customer notifications, and audit evidence. In Banking and lending, this work usually starts when domain policies, operational exceptions, and regulatory expectations shape what the product can safely do. The BA should treat Credit policy and Loan application forms as evidence to organize, not as raw material for an unconstrained AI answer. The goal is to make the next decision clearer for the people who own the outcome.
 
 ## BA challenge
 
-The BA must coordinate regulated requirements across customer experience, credit policy, compliance, operations, and technology. AI can accelerate analysis, but every rule must be source-backed and every automated decision must have review and audit controls. The practical difficulty is that AI can make early material look more complete than it is. A strong BA keeps the output reviewable by separating source-backed facts, assumptions, unsupported claims, decision gaps, and recommended next actions. The objective is not to make the document longer; it is to make the project decision clearer and safer.
+The BA must coordinate regulated requirements across customer experience, credit policy, compliance, operations, and technology. AI can accelerate analysis, but every rule must be source-backed and every automated decision must have review and audit controls. For Loan Origination Journey Modernization, the practical difficulty is policy hallucination and exception blindness. AI can accelerate domain-rule extraction, exception mapping, safe-message drafting, and owner review, but the BA must still expose assumptions, missing approvals, and the point where stakeholder judgment is required.
 
 ## Where AI fits
 
 <div class="ba-workbench-panel">
-AI is useful in this use case when it is constrained to analysis support, pattern detection, structured drafting, and critique. It should not approve scope, invent policy, decide business trade-offs, or replace accountable stakeholder judgment.
+AI fits this Domain project scenarios use case when it is constrained to domain-rule extraction, exception mapping, safe-message drafting, and owner review. A useful first AI task is: Map the end-to-end customer and operations journey. AI should not approve scope, invent policy, bypass policy sources, operational samples, compliance constraints, and domain-owner decisions, or turn a draft into a final decision.
 </div>
 
 - Map the end-to-end customer and operations journey.
@@ -38,7 +38,7 @@ AI is useful in this use case when it is constrained to analysis support, patter
 - Regulatory guidance
 - Customer complaint themes
 
-A BA should label these inputs before using AI: source owner, source date, approval status, sensitivity level, and whether the source is fact, opinion, policy, draft, or historical evidence. This preparation prevents the model from treating every input as equally current and authoritative.
+Before prompting for Loan Origination Journey Modernization, label each input by owner, date, approval status, sensitivity, and role in the decision. The most important evidence lens is policy sources, operational samples, compliance constraints, and domain-owner decisions; without it, AI may rank old notes, draft designs, and approved rules as if they had equal authority.
 
 ## BA workflow
 
@@ -49,7 +49,7 @@ A BA should label these inputs before using AI: source owner, source date, appro
 5. Review policy and compliance claims with accountable owners.
 6. Create acceptance criteria and traceability for regulated decisions.
 
-The workflow works best as a staged AI collaboration: first organize the evidence, then ask for analysis, then create the artifact, then run a critique pass. The BA should keep a visible decision log throughout the process so that AI-generated suggestions do not silently become approved scope.
+Run the workflow as domain validation before implementation detail: start with "Build a journey map across customer, system, credit analyst, and operations roles.", then keep a visible decision log as the artifact moves toward Loan journey map. This prevents AI suggestions from silently becoming backlog, design, release, or operational commitments.
 
 ## Diagram
 
@@ -73,7 +73,7 @@ flowchart LR
 | Exception workflow | Manual review trigger, queue, SLA, and customer communication | Operations | Risky cases have human path |
 | Audit requirement set | Evidence captured, retention, reviewer, and decision trace | Compliance | Auditors can reconstruct decisions |
 
-These deliverables should be treated as BA-owned artifacts. AI can draft them, but the BA must validate source support, stakeholder meaning, traceability, and whether the artifact is ready for handoff.
+Treat Loan journey map as a BA-owned domain-specific requirement pack. AI may draft structure, but the BA must validate whether "All actors and handoffs are visible" is actually true, whether the artifact is traceable to source evidence, and whether the receiving team can act on it.
 
 ## Prompt to try
 
@@ -83,11 +83,11 @@ Act as a senior AI-aware Business Analyst. Help me apply the "Loan Origination J
 
 ## Review checklist
 
-- Every AI-produced statement is tied to a source, assumption, or validation question.
-- The BA has separated drafting assistance from business approval.
-- Workflow steps identify the human owner for decisions, review, and exceptions.
-- Deliverables are traceable to project inputs and can be reviewed by QA, product, or operations.
-- Risk controls are practical enough to be used in a real project meeting.
+- Credit policy is labeled with owner, date, approval status, and sensitivity.
+- Loan journey map traces to source evidence and has a named human owner.
+- The AI task stays inside domain-rule extraction, exception mapping, safe-message drafting, and owner review and does not approve scope or policy.
+- The "Regulatory misinterpretation" risk has a practical control: Use exact source references and compliance validation.
+- Open assumptions are converted into validation questions or stakeholder decisions.
 - Success metric: The modernized loan journey is faster for customers while credit decisions remain explainable and compliant.
 
 ## Risks and controls
@@ -99,4 +99,4 @@ Act as a senior AI-aware Business Analyst. Help me apply the "Loan Origination J
 | Document friction | Customers may fail due to unclear upload requirements | Specify guidance, status, and resubmission flow |
 | Audit gap | Decisions may not be explainable later | Capture evidence, source, and reviewer |
 
-The key control is to make uncertainty visible. If evidence is weak, the output should create a validation question or decision item, not a final requirement. If the artifact influences delivery, release, compliance, customer experience, or operational workload, the BA should require explicit human review before handoff.
+The main control for the "Regulatory misinterpretation" risk is explicit human accountability: Use exact source references and compliance validation. If evidence is weak, the output should create a validation question or decision item, not a final requirement.

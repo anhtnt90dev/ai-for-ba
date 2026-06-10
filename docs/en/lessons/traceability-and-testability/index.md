@@ -27,33 +27,33 @@ This lesson matters because AI-assisted artifacts can multiply quickly, making i
 
 ## Common difficulties for BAs
 
-In real projects, this topic is difficult because the BA must turn messy evidence into decisions without letting AI hide uncertainty. Watch for these friction points before treating the output as ready.
+In Requirements Engineering With AI, Traceability and Testability becomes difficult when business rules, edge cases, quality attributes, and testability constraints must survive the move from conversation into backlog. A BA should inspect the points below before treating an AI-supported artifact as ready for stakeholder decision or delivery handoff.
 
 | Difficulty | Why it is hard in BA work | How a BA should handle it |
 | --- | --- | --- |
-| Treating traceability as documentation overhead. | This is hard because Traceability and Testability is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
-| Linking items mechanically without checking meaning. | This is hard because Traceability and Testability is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
-| Missing test scenarios for high-risk requirements. | This is hard because Traceability and Testability is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
+| Treating traceability as documentation overhead. | The mistake "Treating traceability as documentation overhead." appears when the team discusses ambiguity, NFR risk, traceability, testability, and rule ownership without agreeing which source is authoritative. AI can smooth over the disagreement, so the BA must keep uncertainty visible. | Apply this control: force every requirement statement to expose actor, trigger, data, rule, exception, and verification signal. Then use the stronger pattern "Record source IDs, prompt context, reviewer, decision owner, and artifact version." and ask who must approve the artifact before it affects scope, build, test, or release. |
+| Linking items mechanically without checking meaning. | For Traceability and Testability, the friction is that Traceability makes AI-assisted requirements accountable from business goal to test evidence. The weak pattern is tempting because AI can produce a fluent answer before the BA has checked ownership, source freshness, or decision rights. | Apply this control: force every requirement statement to expose actor, trigger, data, rule, exception, and verification signal. Then use the stronger pattern "Trace each requirement to positive, negative, fallback, and monitoring tests." and ask who must approve the artifact before it affects scope, build, test, or release. |
+| Missing test scenarios for high-risk requirements. | This becomes hard when Traceability Chain is expected to support the delivery-ready requirement. If the BA does not challenge the draft, unsupported assumptions may enter planning, testing, or stakeholder communication. | Apply this control: force every requirement statement to expose actor, trigger, data, rule, exception, and verification signal. Then use the stronger pattern "Use trace links in refinement, QA planning, change impact, and release decisions." and ask who must approve the artifact before it affects scope, build, test, or release. |
 
 ## Where this applies in real projects
 
-This lesson is useful when the BA needs to move from conversation, policy, design, or technical input into a shared artifact that the team can implement and test.
+Use this lesson when requirements are being refined, split, clarified, tested, or challenged by QA and delivery teams. The practical output is not a longer document; it is Traceability Chain with enough evidence, ownership, and decision clarity for the next project conversation.
 
 | Project moment | How to apply this lesson | Concrete BA output |
 | --- | --- | --- |
-| Discovery | Build a traceability chain for one epic. | Traceability Chain: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
-| Refinement | Ask AI to identify orphan stories. | Traceability Chain: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
-| Delivery | Add source evidence to high-risk requirements. | Traceability Chain: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
+| Backlog refinement | Build a traceability chain for one epic. | Traceability Chain showing ambiguity, NFR risk, traceability, testability, and rule ownership, with the action "Build a traceability chain for one epic." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
+| QA alignment | Ask AI to identify orphan stories. | Traceability Chain showing source evidence, with the action "Ask AI to identify orphan stories." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
+| Release readiness | Add source evidence to high-risk requirements. | Traceability Chain showing decision owner, with the action "Add source evidence to high-risk requirements." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
 
 ## If this is missing
 
-If this capability is missing, AI may still produce polished text, but the project loses reviewability. The result is usually rework, hidden assumptions, weak acceptance criteria, or business decisions made without enough evidence.
+If Traceability and Testability is missing, requirements may look complete but still fail implementation, testing, release readiness, or operational support. The BA can still recover, but only by converting the polished AI draft back into explicit evidence, assumptions, owners, and testable decisions.
 
 | If missing | Project impact | Recovery action |
 | --- | --- | --- |
-| Keep AI drafts in chat and copy useful parts into tickets | The source, assumption, and review trail disappear. | Recover by using the stronger pattern: Record source IDs, prompt context, reviewer, decision owner, and artifact version. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
-| Write tests only for happy-path generated behavior | AI features fail in edge cases, low confidence, and unsupported input. | Recover by using the stronger pattern: Trace each requirement to positive, negative, fallback, and monitoring tests. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
-| Treat traceability as a compliance spreadsheet | The team fills fields without using them to manage risk. | Recover by using the stronger pattern: Use trace links in refinement, QA planning, change impact, and release decisions. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
+| Keep AI drafts in chat and copy useful parts into tickets | The source, assumption, and review trail disappear. | Recover by using the stronger pattern: Record source IDs, prompt context, reviewer, decision owner, and artifact version. Rework Traceability Chain until it exposes ambiguity, NFR risk, traceability, testability, and rule ownership, and do not share it as final until evidence, ownership, and validation path are explicit. |
+| Write tests only for happy-path generated behavior | AI features fail in edge cases, low confidence, and unsupported input. | Recover by using the stronger pattern: Trace each requirement to positive, negative, fallback, and monitoring tests. Rework Traceability Chain until it exposes ambiguity, NFR risk, traceability, testability, and rule ownership, and do not share it as final until evidence, ownership, and validation path are explicit. |
+| Treat traceability as a compliance spreadsheet | The team fills fields without using them to manage risk. | Recover by using the stronger pattern: Use trace links in refinement, QA planning, change impact, and release decisions. Rework Traceability Chain until it exposes ambiguity, NFR risk, traceability, testability, and rule ownership, and do not share it as final until evidence, ownership, and validation path are explicit. |
 
 ## Mental model or core concept
 

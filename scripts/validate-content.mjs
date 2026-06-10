@@ -80,6 +80,51 @@ function wordCount(text) {
   return text.split(/\s+/).filter(Boolean).length;
 }
 
+function markdownParagraphs(markdown) {
+  return markdown
+    .replace(/```[\s\S]*?```/g, "")
+    .replace(/<[^>]+>/g, "")
+    .split(/\n\s*\n/g)
+    .map((paragraph) =>
+      paragraph
+        .split("\n")
+        .filter((line) => {
+          const trimmed = line.trim();
+          return trimmed && !trimmed.startsWith("|") && !trimmed.startsWith("#") && !trimmed.startsWith("- ");
+        })
+        .join(" ")
+        .replace(/\s+/g, " ")
+        .trim()
+    )
+    .filter((paragraph) => wordCount(normalizedText(paragraph)) >= 22);
+}
+
+function assertNoRepeatedLongParagraphs(files, label, allowedFileCount) {
+  const paragraphFiles = new Map();
+  for (const file of files) {
+    const uniqueParagraphs = new Set(markdownParagraphs(read(file)));
+    for (const paragraph of uniqueParagraphs) {
+      const normalized = normalizedText(paragraph);
+      if (!paragraphFiles.has(normalized)) {
+        paragraphFiles.set(normalized, []);
+      }
+      paragraphFiles.get(normalized).push(file);
+    }
+  }
+
+  const repeated = [...paragraphFiles.entries()]
+    .filter(([, paragraphFileList]) => paragraphFileList.length > allowedFileCount)
+    .sort((a, b) => b[1].length - a[1].length)
+    .slice(0, 3);
+
+  assert(
+    repeated.length === 0,
+    `${label} must not reuse long boilerplate paragraphs across many pages: ${repeated
+      .map(([paragraph, paragraphFileList]) => `"${paragraph.slice(0, 90)}..." in ${paragraphFileList.length} files`)
+      .join("; ")}`
+  );
+}
+
 function anchorSlug(text) {
   return text
     .toLowerCase()
@@ -236,7 +281,8 @@ assert(!viHome.includes("<PixelQuest"), "Vietnamese course overview must not emb
 assert(!enHome.includes("./game/"), "English course overview must not include a game card");
 assert(!viHome.includes("./game/"), "Vietnamese course overview must not include a game card");
 assert(rootHome.includes("pageClass: pixel-game-root"), "Root home page must use the fullscreen pixel-game page class");
-assert(rootHome.includes('<PixelQuest locale="vi" mode="landing" />'), "Root home page must embed Pixel Quest in fullscreen landing mode");
+assert(rootHome.includes('<PixelQuest locale="en" mode="landing" />'), "Root home page must default to the English Pixel Quest landing mode");
+assert(pixelQuestComponent.indexOf('languageHref(\'en\')') < pixelQuestComponent.indexOf('languageHref(\'vi\')'), "Pixel Quest landing actions must show English before Vietnamese");
 assert(themeCss.includes(".pixel-game-root"), "Theme CSS must include fullscreen root game page styling");
 
 const enGame = exists("docs/en/game/index.md") ? read("docs/en/game/index.md") : "";
@@ -353,6 +399,13 @@ for (const locale of ["en", "vi"]) {
   }
 }
 
+for (const locale of ["en", "vi"]) {
+  const lessonFiles = listDirs(`docs/${locale}/lessons`).map((slug) => `docs/${locale}/lessons/${slug}/index.md`);
+  const useCaseFiles = listDirs(`docs/${locale}/use-cases`).map((slug) => `docs/${locale}/use-cases/${slug}/index.md`);
+  assertNoRepeatedLongParagraphs(lessonFiles, `${locale} lessons`, 3);
+  assertNoRepeatedLongParagraphs(useCaseFiles, `${locale} use cases`, 4);
+}
+
 assert(
   diagramSignatures.size >= 30,
   `Lesson diagrams must be diverse across locales: expected at least 30 unique diagrams, got ${diagramSignatures.size}`
@@ -383,6 +436,25 @@ for (const file of [
   "docs/vi/resources/glossary.md"
 ]) {
   assert(exists(file), `${file} is required`);
+}
+
+for (const locale of ["en", "vi"]) {
+  const resourceText = normalizedText(
+    ["index.md", "prompt-library.md", "checklists.md", "glossary.md"]
+      .map((file) => (exists(`docs/${locale}/resources/${file}`) ? read(`docs/${locale}/resources/${file}`) : ""))
+      .join("\n")
+  );
+  for (const term of [
+    "prompt injection",
+    "bias",
+    "observability",
+    "model selection",
+    "access control",
+    "cost guardrail",
+    "pii"
+  ]) {
+    assert(resourceText.includes(term), `${locale} resources must cover ${term}`);
+  }
 }
 
 if (exists("docs/.vitepress/theme/custom.css")) {

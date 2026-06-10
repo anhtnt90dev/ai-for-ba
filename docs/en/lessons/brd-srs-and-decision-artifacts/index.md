@@ -27,33 +27,33 @@ This lesson matters because AI can draft BRD and SRS sections quickly, but forma
 
 ## Common difficulties for BAs
 
-In real projects, this topic is difficult because the BA must turn messy evidence into decisions without letting AI hide uncertainty. Watch for these friction points before treating the output as ready.
+In Analysis Artifacts and Diagramming, BRD, SRS, and Decision Artifacts becomes difficult when the BA must translate complex decisions into artifacts that product, engineering, QA, support, and compliance can all inspect. A BA should inspect the points below before treating an AI-supported artifact as ready for stakeholder decision or delivery handoff.
 
 | Difficulty | Why it is hard in BA work | How a BA should handle it |
 | --- | --- | --- |
-| Using AI to create polished documents before decisions are clear. | This is hard because BRD, SRS, and Decision Artifacts is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
-| Hiding assumptions in prose. | This is hard because BRD, SRS, and Decision Artifacts is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
-| Mixing current state, future state, and open questions. | This is hard because BRD, SRS, and Decision Artifacts is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible. | Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment. |
+| Using AI to create polished documents before decisions are clear. | The mistake "Using AI to create polished documents before decisions are clear." appears when the team discusses artifact purpose, audience, diagram clarity, decision trace, and handoff quality without agreeing which source is authoritative. AI can smooth over the disagreement, so the BA must keep uncertainty visible. | Apply this control: review the artifact with the team that must build, test, or operate from it. Then use the stronger pattern "Generate a document skeleton plus decision gaps, evidence map, and open approval items." and ask who must approve the artifact before it affects scope, build, test, or release. |
+| Hiding assumptions in prose. | For BRD, SRS, and Decision Artifacts, the friction is that AI can draft documents, but BA value comes from decision structure, evidence, scope control, and reviewability. The weak pattern is tempting because AI can produce a fluent answer before the BA has checked ownership, source freshness, or decision rights. | Apply this control: review the artifact with the team that must build, test, or operate from it. Then use the stronger pattern "Represent conflicts explicitly with options, impact, owner, and decision date." and ask who must approve the artifact before it affects scope, build, test, or release. |
+| Mixing current state, future state, and open questions. | This becomes hard when Decision Artifact Skeleton is expected to support the cross-functional handoff artifact. If the BA does not challenge the draft, unsupported assumptions may enter planning, testing, or stakeholder communication. | Apply this control: review the artifact with the team that must build, test, or operate from it. Then use the stronger pattern "Keep assumptions, dependencies, and open questions in governed sections." and ask who must approve the artifact before it affects scope, build, test, or release. |
 
 ## Where this applies in real projects
 
-This lesson is useful when the BA needs to move from conversation, policy, design, or technical input into a shared artifact that the team can implement and test.
+Use this lesson when BRD, SRS, decision memo, flow, sequence, or integration artifact must carry decisions across roles. The practical output is not a longer document; it is Decision Artifact Skeleton with enough evidence, ownership, and decision clarity for the next project conversation.
 
 | Project moment | How to apply this lesson | Concrete BA output |
 | --- | --- | --- |
-| Discovery | Add a decision log to one document. | Decision Artifact Skeleton: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
-| Refinement | Ask AI to extract assumptions from your draft. | Decision Artifact Skeleton: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
-| Delivery | Move unresolved items into an open-question table. | Decision Artifact Skeleton: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment. |
+| Artifact drafting | Add a decision log to one document. | Decision Artifact Skeleton showing artifact purpose, audience, diagram clarity, decision trace, and handoff quality, with the action "Add a decision log to one document." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
+| Diagram review | Ask AI to extract assumptions from your draft. | Decision Artifact Skeleton showing source evidence, with the action "Ask AI to extract assumptions from your draft." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
+| Handoff | Move unresolved items into an open-question table. | Decision Artifact Skeleton showing decision owner, with the action "Move unresolved items into an open-question table." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
 
 ## If this is missing
 
-If this capability is missing, AI may still produce polished text, but the project loses reviewability. The result is usually rework, hidden assumptions, weak acceptance criteria, or business decisions made without enough evidence.
+If BRD, SRS, and Decision Artifacts is missing, handoffs become interpretation exercises, and teams re-argue decisions that should have been captured in the artifact. The BA can still recover, but only by converting the polished AI draft back into explicit evidence, assumptions, owners, and testable decisions.
 
 | If missing | Project impact | Recovery action |
 | --- | --- | --- |
-| Ask AI to create a complete BRD from notes | The draft may invent decisions and make unresolved areas look approved. | Recover by using the stronger pattern: Generate a document skeleton plus decision gaps, evidence map, and open approval items. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
-| Use polished wording to resolve stakeholder conflict | Good prose can mask disagreement instead of escalating it. | Recover by using the stronger pattern: Represent conflicts explicitly with options, impact, owner, and decision date. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
-| Remove assumptions to make the document cleaner | Stakeholders lose visibility into what still needs validation. | Recover by using the stronger pattern: Keep assumptions, dependencies, and open questions in governed sections. Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it. |
+| Ask AI to create a complete BRD from notes | The draft may invent decisions and make unresolved areas look approved. | Recover by using the stronger pattern: Generate a document skeleton plus decision gaps, evidence map, and open approval items. Rework Decision Artifact Skeleton until it exposes artifact purpose, audience, diagram clarity, decision trace, and handoff quality, and do not share it as final until evidence, ownership, and validation path are explicit. |
+| Use polished wording to resolve stakeholder conflict | Good prose can mask disagreement instead of escalating it. | Recover by using the stronger pattern: Represent conflicts explicitly with options, impact, owner, and decision date. Rework Decision Artifact Skeleton until it exposes artifact purpose, audience, diagram clarity, decision trace, and handoff quality, and do not share it as final until evidence, ownership, and validation path are explicit. |
+| Remove assumptions to make the document cleaner | Stakeholders lose visibility into what still needs validation. | Recover by using the stronger pattern: Keep assumptions, dependencies, and open questions in governed sections. Rework Decision Artifact Skeleton until it exposes artifact purpose, audience, diagram clarity, decision trace, and handoff quality, and do not share it as final until evidence, ownership, and validation path are explicit. |
 
 ## Mental model or core concept
 

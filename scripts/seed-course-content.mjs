@@ -3212,9 +3212,193 @@ function diagram(slug, locale) {
   return diagrams[slug];
 }
 
+const lessonSectionProfiles = {
+  foundation: {
+    en: {
+      evidencePressure: "stakeholders expect a simple AI answer while the actual issue depends on model capability, data readiness, tool boundaries, and business decision risk",
+      applicationMoment: "an AI idea first enters discovery, vendor discussion, roadmap planning, or feasibility analysis",
+      missingImpact: "the team may choose a tool before understanding the problem shape, creating expensive automation that does not match the business outcome",
+      reviewLens: "problem fit, model boundary, data dependency, and decision risk",
+      artifactReady: "solution-shape decision",
+      control: "ask the model to compare AI and non-AI options before drafting requirements"
+    },
+    vi: {
+      evidencePressure: "stakeholder muốn câu trả lời AI thật đơn giản trong khi vấn đề thật phụ thuộc vào capability của model, data readiness, boundary của tool và risk của business decision",
+      applicationMoment: "một AI idea mới đi vào discovery, vendor discussion, roadmap planning hoặc feasibility analysis",
+      missingImpact: "team có thể chọn tool trước khi hiểu problem shape, tạo automation tốn kém nhưng không khớp business outcome",
+      reviewLens: "problem fit, model boundary, data dependency và decision risk",
+      artifactReady: "solution-shape decision",
+      control: "yêu cầu model so sánh option AI và non-AI trước khi draft requirement"
+    }
+  },
+  workflow: {
+    en: {
+      evidencePressure: "messy notes, half-validated decisions, and incomplete stakeholder context must become a shared artifact quickly",
+      applicationMoment: "discovery or refinement produces more raw input than the BA can safely synthesize by hand in the available time",
+      missingImpact: "important signals from interviews, tickets, process notes, or decisions may be lost before they reach the backlog",
+      reviewLens: "source attribution, conflict visibility, workshop decision flow, and backlog readiness",
+      artifactReady: "validated working artifact",
+      control: "keep speaker/source attribution visible until the responsible stakeholder confirms meaning"
+    },
+    vi: {
+      evidencePressure: "notes lộn xộn, decision mới validate một phần và stakeholder context chưa đầy đủ phải nhanh chóng thành artifact chung",
+      applicationMoment: "discovery hoặc refinement tạo nhiều raw input hơn mức BA có thể synthesize an toàn bằng tay trong thời gian có sẵn",
+      missingImpact: "signal quan trọng từ interview, ticket, process note hoặc decision có thể mất trước khi đi vào backlog",
+      reviewLens: "source attribution, conflict visibility, workshop decision flow và backlog readiness",
+      artifactReady: "validated working artifact",
+      control: "giữ speaker/source attribution visible cho đến khi stakeholder chịu trách nhiệm xác nhận ý nghĩa"
+    }
+  },
+  collaboration: {
+    en: {
+      evidencePressure: "AI can draft quickly, but reviewers need repeatable context, structured output, and critique rules to trust the result",
+      applicationMoment: "a BA team wants reusable AI collaboration patterns instead of one-off prompts that depend on individual habit",
+      missingImpact: "outputs vary by person, assumptions stay hidden, and review quality depends on who happened to write the prompt",
+      reviewLens: "context package quality, prompt reuse, critique loop, and output contract",
+      artifactReady: "repeatable collaboration pattern",
+      control: "separate context preparation, generation, critique, and human approval into visible steps"
+    },
+    vi: {
+      evidencePressure: "AI có thể draft rất nhanh, nhưng reviewer cần context lặp lại được, structured output và critique rule để tin kết quả",
+      applicationMoment: "BA team muốn pattern AI collaboration tái sử dụng thay vì prompt one-off phụ thuộc thói quen từng người",
+      missingImpact: "output thay đổi theo từng người, assumption bị ẩn và chất lượng review phụ thuộc vào ai viết prompt",
+      reviewLens: "context package quality, prompt reuse, critique loop và output contract",
+      artifactReady: "repeatable collaboration pattern",
+      control: "tách context preparation, generation, critique và human approval thành các bước visible"
+    }
+  },
+  requirements: {
+    en: {
+      evidencePressure: "business rules, edge cases, quality attributes, and testability constraints must survive the move from conversation into backlog",
+      applicationMoment: "requirements are being refined, split, clarified, tested, or challenged by QA and delivery teams",
+      missingImpact: "requirements may look complete but still fail implementation, testing, release readiness, or operational support",
+      reviewLens: "ambiguity, NFR risk, traceability, testability, and rule ownership",
+      artifactReady: "delivery-ready requirement",
+      control: "force every requirement statement to expose actor, trigger, data, rule, exception, and verification signal"
+    },
+    vi: {
+      evidencePressure: "business rule, edge case, quality attribute và testability constraint phải sống sót khi chuyển từ conversation sang backlog",
+      applicationMoment: "requirement đang được refine, split, clarify, test hoặc bị QA và delivery team challenge",
+      missingImpact: "requirement nhìn có vẻ đầy đủ nhưng vẫn fail khi implement, test, release hoặc support operation",
+      reviewLens: "ambiguity, NFR risk, traceability, testability và rule ownership",
+      artifactReady: "delivery-ready requirement",
+      control: "buộc mọi requirement statement lộ rõ actor, trigger, data, rule, exception và verification signal"
+    }
+  },
+  artifacts: {
+    en: {
+      evidencePressure: "the BA must translate complex decisions into artifacts that product, engineering, QA, support, and compliance can all inspect",
+      applicationMoment: "BRD, SRS, decision memo, flow, sequence, or integration artifact must carry decisions across roles",
+      missingImpact: "handoffs become interpretation exercises, and teams re-argue decisions that should have been captured in the artifact",
+      reviewLens: "artifact purpose, audience, diagram clarity, decision trace, and handoff quality",
+      artifactReady: "cross-functional handoff artifact",
+      control: "review the artifact with the team that must build, test, or operate from it"
+    },
+    vi: {
+      evidencePressure: "BA phải chuyển decision phức tạp thành artifact mà product, engineering, QA, support và compliance đều inspect được",
+      applicationMoment: "BRD, SRS, decision memo, flow, sequence hoặc integration artifact phải carry decision qua nhiều role",
+      missingImpact: "handoff biến thành bài tập diễn giải, và các team tranh luận lại decision lẽ ra đã được capture trong artifact",
+      reviewLens: "artifact purpose, audience, diagram clarity, decision trace và handoff quality",
+      artifactReady: "cross-functional handoff artifact",
+      control: "review artifact với team phải build, test hoặc operate dựa trên artifact đó"
+    }
+  },
+  products: {
+    en: {
+      evidencePressure: "AI product behavior contains uncertainty, safety boundaries, evaluation design, fallback, monitoring, and user trust concerns",
+      applicationMoment: "the BA is specifying a feature where AI output changes user action, operational workload, or customer experience",
+      missingImpact: "the feature may ship without clear confidence rules, human review triggers, fallback paths, or monitoring events",
+      reviewLens: "AI task boundary, evaluation set, human review, fallback, telemetry, and harm controls",
+      artifactReady: "AI feature operating contract",
+      control: "make confidence, refusal, escalation, correction capture, and monitoring part of the requirement"
+    },
+    vi: {
+      evidencePressure: "hành vi AI product có uncertainty, safety boundary, evaluation design, fallback, monitoring và user trust concern",
+      applicationMoment: "BA đang đặc tả feature mà output AI làm thay đổi user action, operational workload hoặc customer experience",
+      missingImpact: "feature có thể release mà thiếu confidence rule, human review trigger, fallback path hoặc monitoring event rõ ràng",
+      reviewLens: "AI task boundary, evaluation set, human review, fallback, telemetry và harm control",
+      artifactReady: "AI feature operating contract",
+      control: "đưa confidence, refusal, escalation, correction capture và monitoring vào requirement"
+    }
+  },
+  lead: {
+    en: {
+      evidencePressure: "individual productivity gains must become a team operating model with governance, adoption metrics, and practical risk controls",
+      applicationMoment: "BA leaders need to scale AI use across people, tools, project types, and governance expectations",
+      missingImpact: "AI usage becomes inconsistent, risky, hard to audit, and difficult to improve across the BA practice",
+      reviewLens: "portfolio fit, policy, quality gates, adoption metrics, training, and escalation model",
+      artifactReady: "BA practice operating model",
+      control: "tier AI use cases by sensitivity, decision impact, evidence quality, and human review requirement"
+    },
+    vi: {
+      evidencePressure: "productivity gain của từng cá nhân phải trở thành operating model của team với governance, adoption metric và risk control thực tế",
+      applicationMoment: "BA lead cần scale cách dùng AI qua nhiều người, tool, loại project và expectation governance",
+      missingImpact: "việc dùng AI trở nên thiếu nhất quán, rủi ro, khó audit và khó cải tiến ở cấp BA practice",
+      reviewLens: "portfolio fit, policy, quality gate, adoption metric, training và escalation model",
+      artifactReady: "BA practice operating model",
+      control: "tier use case AI theo sensitivity, decision impact, evidence quality và human review requirement"
+    }
+  }
+};
+
+function lessonSectionProfile(section, locale) {
+  return lessonSectionProfiles[section]?.[locale] ?? lessonSectionProfiles.foundation[locale];
+}
+
+function lessonProjectMoment(index, section, isEn) {
+  const moments = {
+    foundation: isEn ? ["Idea intake", "Feasibility review", "Solution framing"] : ["Idea intake", "Feasibility review", "Solution framing"],
+    workflow: isEn ? ["Discovery", "Synthesis", "Refinement"] : ["Discovery", "Synthesis", "Refinement"],
+    collaboration: isEn ? ["Context setup", "Prompt reuse", "Peer review"] : ["Context setup", "Prompt reuse", "Peer review"],
+    requirements: isEn ? ["Backlog refinement", "QA alignment", "Release readiness"] : ["Backlog refinement", "QA alignment", "Release readiness"],
+    artifacts: isEn ? ["Artifact drafting", "Diagram review", "Handoff"] : ["Artifact drafting", "Diagram review", "Handoff"],
+    products: isEn ? ["AI behavior design", "Evaluation planning", "Operations handoff"] : ["AI behavior design", "Evaluation planning", "Operations handoff"],
+    lead: isEn ? ["Portfolio review", "Governance design", "Practice rollout"] : ["Portfolio review", "Governance design", "Practice rollout"]
+  };
+  return moments[section]?.[index] ?? (isEn ? "Delivery" : "Delivery");
+}
+
+function lessonDifficultyReason(item, profile, mistake, index, isEn) {
+  const options = isEn
+    ? [
+        `The mistake "${mistake}" appears when the team discusses ${profile.reviewLens} without agreeing which source is authoritative. AI can smooth over the disagreement, so the BA must keep uncertainty visible.`,
+        `For ${item.title}, the friction is that ${item.focus.replace(/\.$/, "")}. The weak pattern is tempting because AI can produce a fluent answer before the BA has checked ownership, source freshness, or decision rights.`,
+        `This becomes hard when ${item.artifactTitle} is expected to support the ${profile.artifactReady}. If the BA does not challenge the draft, unsupported assumptions may enter planning, testing, or stakeholder communication.`
+      ]
+    : [
+        `Lỗi "${mistake}" xuất hiện khi team bàn về ${profile.reviewLens} nhưng chưa thống nhất source nào authoritative. AI có thể làm disagreement nghe mượt hơn, nên BA phải giữ uncertainty visible.`,
+        `Với ${item.title}, điểm khó là ${item.focus.replace(/\.$/, "")}. Pattern yếu rất dễ xảy ra vì AI có thể tạo câu trả lời trôi chảy trước khi BA check ownership, source freshness hoặc decision right.`,
+        `Điểm này khó khi ${item.artifactTitle} được kỳ vọng hỗ trợ ${profile.artifactReady}. Nếu BA không challenge draft, unsupported assumption có thể đi vào planning, testing hoặc stakeholder communication.`
+      ];
+  return options[index % options.length];
+}
+
+function lessonDifficultyControl(item, profile, upgrade, index, isEn) {
+  const strongerPattern = upgrade.badBetter[index]?.[2] ?? item.tomorrow[index] ?? profile.control;
+  return isEn
+    ? `Apply this control: ${profile.control}. Then use the stronger pattern "${strongerPattern}" and ask who must approve the artifact before it affects scope, build, test, or release.`
+    : `Áp dụng control này: ${profile.control}. Sau đó dùng pattern tốt hơn "${strongerPattern}" và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release.`;
+}
+
+function lessonConcreteOutput(item, profile, action, index, isEn) {
+  const reviewTarget = [profile.reviewLens, "source evidence", "decision owner"][index] ?? profile.reviewLens;
+  return isEn
+    ? `${item.artifactTitle} showing ${reviewTarget}, with the action "${action}" translated into a reviewable decision, requirement, checklist, or question for the next meeting.`
+    : `${item.artifactTitle} thể hiện ${reviewTarget}, trong đó action "${action}" được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo.`;
+}
+
+function lessonRecoveryAction(item, profile, better, isEn) {
+  return isEn
+    ? `Recover by using the stronger pattern: ${better} Rework ${item.artifactTitle} until it exposes ${profile.reviewLens}, and do not share it as final until evidence, ownership, and validation path are explicit.`
+    : `Khôi phục bằng pattern tốt hơn: ${better} Rework ${item.artifactTitle} cho đến khi nó lộ rõ ${profile.reviewLens}, và không share như bản final cho tới khi evidence, ownership và validation path explicit.`;
+}
+
 function lessonPracticalSections(lesson, locale, upgrade) {
   const item = lesson[locale];
   const isEn = locale === "en";
+  const [sectionEn, sectionVi] = sections[lesson.section];
+  const sectionName = isEn ? sectionEn : sectionVi;
+  const profile = lessonSectionProfile(lesson.section, locale);
   const difficultyHeaders = isEn
     ? ["Difficulty", "Why it is hard in BA work", "How a BA should handle it"]
     : ["Khó khăn", "Vì sao khó trong công việc BA", "BA nên xử lý thế nào"];
@@ -3227,38 +3411,30 @@ function lessonPracticalSections(lesson, locale, upgrade) {
 
   const difficulties = item.mistakes.slice(0, 3).map((mistake, index) => [
     mistake,
-    isEn
-      ? `This is hard because ${item.title} is usually applied under deadline pressure, incomplete evidence, and stakeholder disagreement. A fluent AI draft can make the gap less visible.`
-      : `Khó vì ${item.title} thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn.`,
-    isEn
-      ? `Use source labels, explicit assumptions, and a named review owner before turning this into backlog, specification, or delivery commitment.`
-      : `Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment.`
+    lessonDifficultyReason(item, profile, mistake, index, isEn),
+    lessonDifficultyControl(item, profile, upgrade, index, isEn)
   ]);
 
   const applications = item.tomorrow.slice(0, 3).map((action, index) => [
-    isEn ? ["Discovery", "Refinement", "Delivery"][index] ?? "Delivery" : ["Discovery", "Refinement", "Delivery"][index] ?? "Delivery",
+    lessonProjectMoment(index, lesson.section, isEn),
     action,
-    isEn
-      ? `${item.artifactTitle}: a reviewable artifact that connects the learned concept to decisions, acceptance criteria, risks, or stakeholder alignment.`
-      : `${item.artifactTitle}: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment.`
+    lessonConcreteOutput(item, profile, action, index, isEn)
   ]);
 
   const missing = upgrade.badBetter.map(([weak, why, better]) => [
     weak,
     why,
-    isEn
-      ? `Recover by using the stronger pattern: ${better} Then re-check the artifact against evidence, testability, ownership, and business impact before sharing it.`
-      : `Khôi phục bằng pattern tốt hơn: ${better} Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share.`
+    lessonRecoveryAction(item, profile, better, isEn)
   ]);
 
   return {
-    difficulties: `${isEn ? "In real projects, this topic is difficult because the BA must turn messy evidence into decisions without letting AI hide uncertainty. Watch for these friction points before treating the output as ready." : "Trong dự án thật, chủ đề này khó vì BA phải biến evidence lộn xộn thành decision mà không để AI che mất uncertainty. Hãy chú ý các friction point này trước khi xem output là sẵn sàng."}
+    difficulties: `${isEn ? `In ${sectionName}, ${item.title} becomes difficult when ${profile.evidencePressure}. A BA should inspect the points below before treating an AI-supported artifact as ready for stakeholder decision or delivery handoff.` : `Trong ${sectionName}, ${item.title} trở nên khó khi ${profile.evidencePressure}. BA nên kiểm tra các điểm dưới đây trước khi xem artifact có AI hỗ trợ là đủ sẵn sàng cho stakeholder decision hoặc handoff.`}
 
 ${artifactTable(difficultyHeaders, difficulties)}`,
-    applications: `${isEn ? "This lesson is useful when the BA needs to move from conversation, policy, design, or technical input into a shared artifact that the team can implement and test." : "Bài này hữu ích khi BA cần chuyển conversation, policy, design hoặc technical input thành artifact chung để team implement và test được."}
+    applications: `${isEn ? `Use this lesson when ${profile.applicationMoment}. The practical output is not a longer document; it is ${item.artifactTitle} with enough evidence, ownership, and decision clarity for the next project conversation.` : `Dùng bài này khi ${profile.applicationMoment}. Output thực tế không phải document dài hơn; đó là ${item.artifactTitle} có đủ evidence, ownership và decision clarity cho cuộc trao đổi tiếp theo của dự án.`}
 
 ${artifactTable(applicationHeaders, applications)}`,
-    missing: `${isEn ? "If this capability is missing, AI may still produce polished text, but the project loses reviewability. The result is usually rework, hidden assumptions, weak acceptance criteria, or business decisions made without enough evidence." : "Nếu thiếu năng lực này, AI vẫn có thể tạo text rất bóng bẩy, nhưng project mất khả năng review. Kết quả thường là rework, assumption ẩn, acceptance criteria yếu hoặc business decision thiếu evidence."}
+    missing: `${isEn ? `If ${item.title} is missing, ${profile.missingImpact}. The BA can still recover, but only by converting the polished AI draft back into explicit evidence, assumptions, owners, and testable decisions.` : `Nếu thiếu ${item.title}, ${profile.missingImpact}. BA vẫn có thể khôi phục, nhưng phải chuyển draft AI bóng bẩy trở lại thành evidence, assumption, owner và decision test được.`}
 
 ${artifactTable(missingHeaders, missing)}`
   };
@@ -3509,6 +3685,260 @@ function useCaseDiagram(useCase, locale) {
     G --> A`;
 }
 
+const useCaseGroupProfiles = {
+  "Discovery and alignment": {
+    en: {
+      pressure: "stakeholders describe the same problem from different incentives and levels of detail",
+      boundary: "sensemaking, contradiction detection, question generation, and workshop preparation",
+      evidence: "speaker attribution, decision authority, and source freshness",
+      workflow: "evidence grouping before solution discussion",
+      artifact: "alignment artifact",
+      risk: "false consensus and invented scope"
+    },
+    vi: {
+      pressure: "stakeholder mô tả cùng một vấn đề từ incentive và mức chi tiết khác nhau",
+      boundary: "sensemaking, contradiction detection, question generation và workshop preparation",
+      evidence: "speaker attribution, decision authority và source freshness",
+      workflow: "gom evidence trước khi bàn solution",
+      artifact: "alignment artifact",
+      risk: "false consensus và invented scope"
+    }
+  },
+  "Requirements and backlog": {
+    en: {
+      pressure: "stories must become testable without losing business rules, exceptions, data needs, or NFRs",
+      boundary: "gap finding, rewrite critique, edge-case expansion, and acceptance-criteria drafting",
+      evidence: "approved rules, examples, edge cases, and QA expectations",
+      workflow: "requirement clarification before sprint commitment",
+      artifact: "delivery-ready backlog artifact",
+      risk: "vague criteria and unowned assumptions"
+    },
+    vi: {
+      pressure: "story phải test được mà không mất business rule, exception, data need hoặc NFR",
+      boundary: "gap finding, rewrite critique, edge-case expansion và acceptance-criteria drafting",
+      evidence: "rule đã approve, example, edge case và expectation của QA",
+      workflow: "clarify requirement trước khi commit sprint",
+      artifact: "delivery-ready backlog artifact",
+      risk: "criteria mơ hồ và assumption không owner"
+    }
+  },
+  "Delivery and QA": {
+    en: {
+      pressure: "delivery decisions, test evidence, and release readiness need to stay connected to original intent",
+      boundary: "scenario generation, defect triage support, readiness synthesis, and risk surfacing",
+      evidence: "requirement baseline, test results, defect history, and release decisions",
+      workflow: "quality review before release or rework decision",
+      artifact: "QA and delivery handoff artifact",
+      risk: "optimistic status and late requirement discovery"
+    },
+    vi: {
+      pressure: "delivery decision, test evidence và release readiness phải còn nối với intent ban đầu",
+      boundary: "scenario generation, defect triage support, readiness synthesis và risk surfacing",
+      evidence: "requirement baseline, test result, defect history và release decision",
+      workflow: "quality review trước release hoặc rework decision",
+      artifact: "QA và delivery handoff artifact",
+      risk: "optimistic status và late requirement discovery"
+    }
+  },
+  "AI-enabled product use cases": {
+    en: {
+      pressure: "AI behavior affects users directly and must include uncertainty, fallback, evaluation, and human review",
+      boundary: "AI task framing, output contract drafting, evaluation planning, and safety-control critique",
+      evidence: "approved sources, model limits, evaluation cases, and human decision triggers",
+      workflow: "AI operating contract before build",
+      artifact: "AI behavior specification",
+      risk: "over-automation and unsafe confidence"
+    },
+    vi: {
+      pressure: "hành vi AI ảnh hưởng trực tiếp tới user và phải có uncertainty, fallback, evaluation và human review",
+      boundary: "AI task framing, output contract drafting, evaluation planning và safety-control critique",
+      evidence: "approved source, model limit, evaluation case và human decision trigger",
+      workflow: "AI operating contract trước khi build",
+      artifact: "AI behavior specification",
+      risk: "over-automation và confidence không an toàn"
+    }
+  },
+  "Domain project scenarios": {
+    en: {
+      pressure: "domain policies, operational exceptions, and regulatory expectations shape what the product can safely do",
+      boundary: "domain-rule extraction, exception mapping, safe-message drafting, and owner review",
+      evidence: "policy sources, operational samples, compliance constraints, and domain-owner decisions",
+      workflow: "domain validation before implementation detail",
+      artifact: "domain-specific requirement pack",
+      risk: "policy hallucination and exception blindness"
+    },
+    vi: {
+      pressure: "domain policy, operational exception và regulatory expectation quyết định product có thể làm gì an toàn",
+      boundary: "domain-rule extraction, exception mapping, safe-message drafting và owner review",
+      evidence: "policy source, operational sample, compliance constraint và domain-owner decision",
+      workflow: "domain validation trước implementation detail",
+      artifact: "domain-specific requirement pack",
+      risk: "policy hallucination và exception blindness"
+    }
+  },
+  "Governance and adoption": {
+    en: {
+      pressure: "AI usage must scale across teams without leaking sensitive data or creating unreviewable decisions",
+      boundary: "portfolio analysis, policy drafting, risk-tiering, playbook creation, and adoption measurement",
+      evidence: "data policy, approved tools, risk appetite, audit need, and team capability",
+      workflow: "governance design before broad rollout",
+      artifact: "AI adoption control pack",
+      risk: "shadow AI use and weak accountability"
+    },
+    vi: {
+      pressure: "cách dùng AI phải scale qua nhiều team mà không leak sensitive data hoặc tạo decision không review được",
+      boundary: "portfolio analysis, policy drafting, risk-tiering, playbook creation và adoption measurement",
+      evidence: "data policy, approved tool, risk appetite, audit need và capability của team",
+      workflow: "governance design trước rollout rộng",
+      artifact: "AI adoption control pack",
+      risk: "shadow AI use và accountability yếu"
+    }
+  },
+  "Frontend, UI, and UX": {
+    en: {
+      pressure: "screen behavior, accessibility, design states, analytics, and user feedback must become implementable requirements",
+      boundary: "UI-state analysis, content critique, accessibility review, event taxonomy, and edge-case discovery",
+      evidence: "wireframes, design tokens, user journeys, analytics questions, and accessibility expectations",
+      workflow: "screen-state review before frontend build",
+      artifact: "frontend requirement specification",
+      risk: "missing states and unmeasurable UX"
+    },
+    vi: {
+      pressure: "screen behavior, accessibility, design state, analytics và user feedback phải thành requirement implement được",
+      boundary: "UI-state analysis, content critique, accessibility review, event taxonomy và edge-case discovery",
+      evidence: "wireframe, design token, user journey, analytics question và accessibility expectation",
+      workflow: "screen-state review trước frontend build",
+      artifact: "frontend requirement specification",
+      risk: "missing state và UX không đo được"
+    }
+  },
+  "Backend and API": {
+    en: {
+      pressure: "API contracts, permissions, errors, audit, and operational behavior must be explicit enough for backend delivery",
+      boundary: "contract critique, rule extraction, error taxonomy, permission review, and NFR gap detection",
+      evidence: "API draft, data model, auth rules, error samples, audit policy, and integration needs",
+      workflow: "contract validation before implementation",
+      artifact: "backend behavior contract",
+      risk: "ambiguous service behavior and security gaps"
+    },
+    vi: {
+      pressure: "API contract, permission, error, audit và operational behavior phải đủ explicit cho backend delivery",
+      boundary: "contract critique, rule extraction, error taxonomy, permission review và NFR gap detection",
+      evidence: "API draft, data model, auth rule, error sample, audit policy và integration need",
+      workflow: "contract validation trước implementation",
+      artifact: "backend behavior contract",
+      risk: "service behavior mơ hồ và security gap"
+    }
+  },
+  "Data and Integration": {
+    en: {
+      pressure: "data movement, mapping, reconciliation, privacy, and lineage decisions affect multiple systems and owners",
+      boundary: "field mapping, rule comparison, reconciliation design, lineage review, and exception analysis",
+      evidence: "source schemas, sample payloads, mapping rules, data-quality reports, and ownership matrix",
+      workflow: "data contract review before integration build",
+      artifact: "data and integration control pack",
+      risk: "silent data loss and weak lineage"
+    },
+    vi: {
+      pressure: "data movement, mapping, reconciliation, privacy và lineage decision ảnh hưởng nhiều system và owner",
+      boundary: "field mapping, rule comparison, reconciliation design, lineage review và exception analysis",
+      evidence: "source schema, sample payload, mapping rule, data-quality report và ownership matrix",
+      workflow: "data contract review trước integration build",
+      artifact: "data and integration control pack",
+      risk: "silent data loss và lineage yếu"
+    }
+  },
+  "Cross-functional BA Collaboration": {
+    en: {
+      pressure: "different roles need different artifacts, but the BA must keep decisions consistent across product, design, engineering, QA, data, and operations",
+      boundary: "role-specific synthesis, decision memo drafting, conflict surfacing, and shared artifact critique",
+      evidence: "role feedback, decision log, design notes, technical constraints, test concerns, and support needs",
+      workflow: "cross-role decision alignment before handoff",
+      artifact: "collaboration decision artifact",
+      risk: "role misalignment and hidden trade-offs"
+    },
+    vi: {
+      pressure: "mỗi role cần artifact khác nhau, nhưng BA phải giữ decision nhất quán giữa product, design, engineering, QA, data và operations",
+      boundary: "role-specific synthesis, decision memo drafting, conflict surfacing và shared artifact critique",
+      evidence: "role feedback, decision log, design note, technical constraint, test concern và support need",
+      workflow: "cross-role decision alignment trước handoff",
+      artifact: "collaboration decision artifact",
+      risk: "role misalignment và hidden trade-off"
+    }
+  }
+};
+
+function useCaseProfile(group, locale) {
+  return useCaseGroupProfiles[group]?.[locale] ?? useCaseGroupProfiles["Discovery and alignment"][locale];
+}
+
+function listItem(list, index, fallback) {
+  return list[index] ?? list[0] ?? fallback;
+}
+
+function rowCell(rows, rowIndex, cellIndex, fallback) {
+  return rows[rowIndex]?.[cellIndex] ?? rows[0]?.[cellIndex] ?? fallback;
+}
+
+function cleanClause(text) {
+  return String(text ?? "").replace(/[.!?]+$/, "");
+}
+
+function useCaseSupportFrames(useCase, item, locale) {
+  const isEn = locale === "en";
+  const profile = useCaseProfile(useCase.group, locale);
+  const primaryInput = listItem(item.inputs, 0, isEn ? "source material" : "source material");
+  const secondaryInput = listItem(item.inputs, 1, primaryInput);
+  const aiUse = cleanClause(listItem(item.aiUse, 0, isEn ? "structured analysis" : "structured analysis"));
+  const firstWorkflow = listItem(item.workflow, 0, isEn ? "Prepare source evidence." : "Chuẩn bị source evidence.");
+  const keyDeliverable = rowCell(item.deliverables, 0, 0, isEn ? "BA artifact" : "BA artifact");
+  const deliverableSignal = rowCell(item.deliverables, 0, 3, isEn ? "ready for review" : "ready for review");
+  const keyRisk = rowCell(item.risks, 0, 0, isEn ? "uncontrolled AI output" : "uncontrolled AI output");
+  const keyControl = rowCell(item.risks, 0, 2, isEn ? "Require human review." : "Yêu cầu human review.");
+  const groupLabel = useCaseGroupLabel(useCase.group, locale);
+
+  return {
+    contextFrame: isEn
+      ? `In ${useCase.domain}, this work usually starts when ${profile.pressure}. The BA should treat ${primaryInput} and ${secondaryInput} as evidence to organize, not as raw material for an unconstrained AI answer. The goal is to make the next decision clearer for the people who own the outcome.`
+      : `Trong ${useCase.domain}, công việc này thường bắt đầu khi ${profile.pressure}. BA nên xem ${primaryInput} và ${secondaryInput} là evidence cần organize, không phải raw material để AI trả lời không kiểm soát. Mục tiêu là làm decision tiếp theo rõ hơn cho người own outcome.`,
+    challengeFrame: isEn
+      ? `For ${item.title}, the practical difficulty is ${profile.risk}. AI can accelerate ${profile.boundary}, but the BA must still expose assumptions, missing approvals, and the point where stakeholder judgment is required.`
+      : `Với ${item.title}, khó khăn thực tế là ${profile.risk}. AI có thể tăng tốc ${profile.boundary}, nhưng BA vẫn phải làm rõ assumption, approval còn thiếu và điểm cần stakeholder judgment.`,
+    aiFitFrame: isEn
+      ? `AI fits this ${groupLabel} use case when it is constrained to ${profile.boundary}. A useful first AI task is: ${aiUse}. AI should not approve scope, invent policy, bypass ${profile.evidence}, or turn a draft into a final decision.`
+      : `AI phù hợp với use case ${groupLabel} khi được giới hạn vào ${profile.boundary}. AI task hữu ích đầu tiên là: ${aiUse}. AI không được approve scope, invent policy, bỏ qua ${profile.evidence}, hoặc biến draft thành final decision.`,
+    inputFrame: isEn
+      ? `Before prompting for ${item.title}, label each input by owner, date, approval status, sensitivity, and role in the decision. The most important evidence lens is ${profile.evidence}; without it, AI may rank old notes, draft designs, and approved rules as if they had equal authority.`
+      : `Trước khi prompt cho ${item.title}, hãy label từng input theo owner, date, approval status, sensitivity và vai trò trong decision. Evidence lens quan trọng nhất là ${profile.evidence}; nếu thiếu, AI có thể xem old note, draft design và approved rule có authority như nhau.`,
+    workflowFrame: isEn
+      ? `Run the workflow as ${profile.workflow}: start with "${firstWorkflow}", then keep a visible decision log as the artifact moves toward ${keyDeliverable}. This prevents AI suggestions from silently becoming backlog, design, release, or operational commitments.`
+      : `Chạy workflow như ${profile.workflow}: bắt đầu với "${firstWorkflow}", sau đó giữ decision log visible khi artifact tiến tới ${keyDeliverable}. Cách này ngăn suggestion của AI âm thầm trở thành backlog, design, release hoặc operational commitment.`,
+    deliverableFrame: isEn
+      ? `Treat ${keyDeliverable} as a BA-owned ${profile.artifact}. AI may draft structure, but the BA must validate whether "${deliverableSignal}" is actually true, whether the artifact is traceable to source evidence, and whether the receiving team can act on it.`
+      : `Hãy xem ${keyDeliverable} là ${profile.artifact} do BA own. AI có thể draft structure, nhưng BA phải validate "${deliverableSignal}" có thật sự đúng không, artifact có trace được về evidence không và receiving team có hành động được không.`,
+    riskFrame: isEn
+      ? `The main control for the "${keyRisk}" risk is explicit human accountability: ${keyControl}. If evidence is weak, the output should create a validation question or decision item, not a final requirement.`
+      : `Control chính cho risk "${keyRisk}" là human accountability explicit: ${keyControl}. Nếu evidence yếu, output nên tạo validation question hoặc decision item, không phải final requirement.`,
+    checklist: isEn
+      ? [
+          `${primaryInput} is labeled with owner, date, approval status, and sensitivity.`,
+          `${keyDeliverable} traces to source evidence and has a named human owner.`,
+          `The AI task stays inside ${profile.boundary} and does not approve scope or policy.`,
+          `The "${keyRisk}" risk has a practical control: ${keyControl}.`,
+          `Open assumptions are converted into validation questions or stakeholder decisions.`,
+          `Success metric: ${item.metric}`
+        ]
+      : [
+          `${primaryInput} được label owner, date, approval status và sensitivity.`,
+          `${keyDeliverable} trace được về source evidence và có human owner rõ.`,
+          `AI task nằm trong boundary ${profile.boundary} và không approve scope hoặc policy.`,
+          `Risk "${keyRisk}" có control thực tế: ${keyControl}.`,
+          `Open assumption được chuyển thành validation question hoặc stakeholder decision.`,
+          `Success metric: ${item.metric}`
+        ]
+  };
+}
+
 function useCasePage(useCase, locale) {
   const item = useCase[locale];
   const deliverableHeaders =
@@ -3523,44 +3953,16 @@ function useCasePage(useCase, locale) {
   const prompt = isEn
     ? `Act as a senior AI-aware Business Analyst. Help me apply the "${item.title}" use case to my project. First ask for source evidence and constraints. Then create a structured analysis with project context, assumptions, AI-fit boundary, workflow steps, deliverables, risks, controls, open questions, and stakeholder decisions. Do not invent policy, thresholds, or approvals.`
     : `Hãy đóng vai senior Business Analyst hiểu AI. Hỗ trợ tôi áp dụng use case "${item.title}" vào dự án. Trước hết hỏi source evidence và constraint. Sau đó tạo structured analysis gồm project context, assumption, AI-fit boundary, workflow step, deliverable, risk, control, open question và stakeholder decision. Không tự bịa policy, threshold hoặc approval.`;
-  const contextFrame = isEn
-    ? "In a real delivery environment, this work usually appears under time pressure: stakeholders want clarity, delivery needs a backlog, QA needs testable behavior, and operations needs a process that can survive exceptions. The BA uses AI here to accelerate analysis and synthesis, but the BA remains accountable for evidence, business meaning, stakeholder decisioning, and artifact quality."
-    : "Trong môi trường delivery thật, tình huống này thường xuất hiện dưới áp lực thời gian: stakeholder cần clarity, delivery cần backlog, QA cần behavior test được, operations cần process chịu được exception. BA dùng AI để tăng tốc analysis và synthesis, nhưng BA vẫn chịu trách nhiệm về evidence, business meaning, stakeholder decisioning và artifact quality.";
-  const challengeFrame = isEn
-    ? "The practical difficulty is that AI can make early material look more complete than it is. A strong BA keeps the output reviewable by separating source-backed facts, assumptions, unsupported claims, decision gaps, and recommended next actions. The objective is not to make the document longer; it is to make the project decision clearer and safer."
-    : "Khó khăn thực tế là AI có thể làm material ban đầu trông hoàn chỉnh hơn mức thật sự. BA giỏi giữ output ở trạng thái reviewable bằng cách tách source-backed fact, assumption, unsupported claim, decision gap và recommended next action. Mục tiêu không phải làm document dài hơn; mục tiêu là làm project decision rõ hơn và an toàn hơn.";
-  const aiFitFrame = isEn
-    ? "AI is useful in this use case when it is constrained to analysis support, pattern detection, structured drafting, and critique. It should not approve scope, invent policy, decide business trade-offs, or replace accountable stakeholder judgment."
-    : "AI hữu ích trong use case này khi được giới hạn vào analysis support, pattern detection, structured drafting và critique. AI không được approve scope, invent policy, quyết định business trade-off hoặc thay thế judgment của stakeholder chịu trách nhiệm.";
-  const inputFrame = isEn
-    ? "A BA should label these inputs before using AI: source owner, source date, approval status, sensitivity level, and whether the source is fact, opinion, policy, draft, or historical evidence. This preparation prevents the model from treating every input as equally current and authoritative."
-    : "BA nên label các input này trước khi dùng AI: source owner, source date, approval status, sensitivity level, và source đó là fact, opinion, policy, draft hay historical evidence. Việc chuẩn bị này ngăn model xem mọi input đều current và authoritative như nhau.";
-  const workflowFrame = isEn
-    ? "The workflow works best as a staged AI collaboration: first organize the evidence, then ask for analysis, then create the artifact, then run a critique pass. The BA should keep a visible decision log throughout the process so that AI-generated suggestions do not silently become approved scope."
-    : "Workflow hiệu quả nhất khi dùng AI theo từng stage: trước hết organize evidence, sau đó yêu cầu analysis, tiếp theo tạo artifact, rồi chạy critique pass. BA nên giữ decision log visible xuyên suốt để suggestion do AI sinh ra không âm thầm trở thành approved scope.";
-  const deliverableFrame = isEn
-    ? "These deliverables should be treated as BA-owned artifacts. AI can draft them, but the BA must validate source support, stakeholder meaning, traceability, and whether the artifact is ready for handoff."
-    : "Các deliverable này nên được xem là artifact do BA own. AI có thể draft, nhưng BA phải validate source support, stakeholder meaning, traceability và artifact đã sẵn sàng handoff hay chưa.";
-  const riskFrame = isEn
-    ? "The key control is to make uncertainty visible. If evidence is weak, the output should create a validation question or decision item, not a final requirement. If the artifact influences delivery, release, compliance, customer experience, or operational workload, the BA should require explicit human review before handoff."
-    : "Control quan trọng nhất là làm uncertainty visible. Nếu evidence yếu, output nên tạo validation question hoặc decision item, không phải final requirement. Nếu artifact ảnh hưởng delivery, release, compliance, customer experience hoặc operational workload, BA nên yêu cầu human review explicit trước khi handoff.";
-  const checklist = isEn
-    ? [
-        "Every AI-produced statement is tied to a source, assumption, or validation question.",
-        "The BA has separated drafting assistance from business approval.",
-        "Workflow steps identify the human owner for decisions, review, and exceptions.",
-        "Deliverables are traceable to project inputs and can be reviewed by QA, product, or operations.",
-        "Risk controls are practical enough to be used in a real project meeting.",
-        `Success metric: ${item.metric}`
-      ]
-    : [
-        "Mọi statement do AI hỗ trợ đều gắn với source, assumption hoặc validation question.",
-        "BA đã tách drafting assistance khỏi business approval.",
-        "Workflow step có human owner cho decision, review và exception.",
-        "Deliverable trace được về project input và review được bởi QA, product hoặc operations.",
-        "Risk control đủ thực tế để dùng trong meeting dự án thật.",
-        `Success metric: ${item.metric}`
-      ];
+  const {
+    contextFrame,
+    challengeFrame,
+    aiFitFrame,
+    inputFrame,
+    workflowFrame,
+    deliverableFrame,
+    riskFrame,
+    checklist
+  } = useCaseSupportFrames(useCase, item, locale);
 
   return `---
 title: ${yamlString(item.title)}
@@ -3727,12 +4129,12 @@ ${cards}
 function rootPage() {
   return `---
 title: "AI for Business Analysts"
-description: "Trang chủ course AI for Business Analysts với Pixel Quest game mode và lộ trình học song ngữ."
+description: "Default English landing page for the AI for Business Analysts course with Pixel Quest game mode and bilingual learning paths."
 pageClass: pixel-game-root
 aside: false
 ---
 
-<PixelQuest locale="vi" mode="landing" />
+<PixelQuest locale="en" mode="landing" />
 `;
 }
 
@@ -3882,6 +4284,30 @@ ${isEn ? "Specify this AI-enabled feature with user goal, AI task, allowed input
 \`\`\`text
 ${isEn ? "Create a RAG knowledge contract: source inventory, authority, freshness, access control, chunking assumptions, citation behavior, conflict handling, fallback, retrieval metrics, answer-quality metrics, and test questions." : "Tạo RAG knowledge contract: source inventory, authority, freshness, access control, chunking assumption, citation behavior, conflict handling, fallback, retrieval metric, answer-quality metric và test question."}
 \`\`\`
+
+## Prompt injection and unsafe input review
+
+\`\`\`text
+${isEn ? "Review this AI-enabled workflow for prompt injection and unsafe input risk. Identify user-controlled fields, retrieved content, tool actions, data exposure paths, and instructions that could override system rules. Return risks, likely attack examples, BA requirements, acceptance criteria, logging needs, and human escalation triggers." : "Review workflow AI-enabled này cho prompt injection và unsafe input risk. Identify user-controlled field, retrieved content, tool action, data exposure path và instruction có thể override system rule. Trả về risk, ví dụ attack có khả năng xảy ra, BA requirement, acceptance criteria, logging need và human escalation trigger."}
+\`\`\`
+
+## Bias and fairness review prompt
+
+\`\`\`text
+${isEn ? "Assess this AI use case for bias and fairness risk. Identify affected user groups, sensitive attributes, proxy variables, historical data bias, harmful outcomes, explainability needs, review controls, appeal paths, and metrics the BA should request before release." : "Assess use case AI này cho bias và fairness risk. Identify affected user group, sensitive attribute, proxy variable, historical data bias, harmful outcome, explainability need, review control, appeal path và metric BA nên yêu cầu trước release."}
+\`\`\`
+
+## Observability and evaluation plan prompt
+
+\`\`\`text
+${isEn ? "Create an observability and evaluation plan for this AI feature. Include success metric, failure metric, quality rubric, evaluation set design, model output logging, user feedback capture, human correction capture, drift signals, alert thresholds, dashboard users, and release decision gates." : "Tạo observability và evaluation plan cho AI feature này. Bao gồm success metric, failure metric, quality rubric, evaluation set design, model output logging, user feedback capture, human correction capture, drift signal, alert threshold, dashboard user và release decision gate."}
+\`\`\`
+
+## Model selection and cost trade-off prompt
+
+\`\`\`text
+${isEn ? "Compare model options for this use case. Evaluate task fit, latency, accuracy need, context size, privacy, access control, integration complexity, unit cost, token budget, fallback option, and when a smaller model or deterministic rule is enough. Return a BA decision matrix with recommendation and assumptions." : "Compare model option cho use case này. Evaluate task fit, latency, accuracy need, context size, privacy, access control, integration complexity, unit cost, token budget, fallback option và khi nào smaller model hoặc deterministic rule là đủ. Trả về BA decision matrix có recommendation và assumption."}
+\`\`\`
 `;
 }
 
@@ -3893,6 +4319,10 @@ function checklists(locale) {
         ["AI output review", "Facts, assumptions, unsupported claims, missing context, severity, owner"],
         ["AI feature spec", "Task, input, output, confidence, fallback, human review, evaluation, monitoring"],
         ["RAG governance", "Source authority, freshness, access control, citation, conflict handling, fallback"],
+        ["Prompt injection", "User-controlled input, retrieved content, tool action, instruction hierarchy, refusal, escalation, logging"],
+        ["Bias and fairness", "Affected groups, proxy variables, historical bias, explainability, appeal path, fairness metric"],
+        ["Observability", "Evaluation set, output logs, correction capture, drift signal, alert threshold, dashboard owner"],
+        ["Model selection", "Task fit, context need, latency, quality bar, privacy, access control, cost guardrail, fallback model"],
         ["BA team adoption", "Use-case tier, approved tools, data policy, quality gate, metric, escalation"]
       ]
     : [
@@ -3900,6 +4330,10 @@ function checklists(locale) {
         ["AI output review", "Fact, assumption, unsupported claim, missing context, severity, owner"],
         ["AI feature spec", "Task, input, output, confidence, fallback, human review, evaluation, monitoring"],
         ["RAG governance", "Source authority, freshness, access control, citation, conflict handling, fallback"],
+        ["Prompt injection", "User-controlled input, retrieved content, tool action, instruction hierarchy, refusal, escalation, logging"],
+        ["Bias and fairness", "Affected group, proxy variable, historical bias, explainability, appeal path, fairness metric"],
+        ["Observability", "Evaluation set, output log, correction capture, drift signal, alert threshold, dashboard owner"],
+        ["Model selection", "Task fit, context need, latency, quality bar, privacy, access control, cost guardrail, fallback model"],
         ["BA team adoption", "Use-case tier, approved tool, data policy, quality gate, metric, escalation"]
       ];
 
@@ -3929,6 +4363,14 @@ flowchart LR
 - 1 means the artifact is risky or unclear.
 - 2 means the artifact is usable with known gaps.
 - 3 means the artifact is delivery-ready and evidence-backed.
+
+## ${isEn ? "AI risk controls BAs should request" : "AI risk control BA nên yêu cầu"}
+
+- ${isEn ? "Prompt injection: define what user input, retrieved documents, and tool outputs are allowed to influence." : "Prompt injection: định nghĩa user input, retrieved document và tool output được phép ảnh hưởng điều gì."}
+- ${isEn ? "Bias: require representative evaluation cases and a way for users or operators to challenge harmful outcomes." : "Bias: yêu cầu evaluation case đại diện và cách để user hoặc operator challenge harmful outcome."}
+- ${isEn ? "Observability: log enough model input, output, confidence, fallback, and correction data to learn after release." : "Observability: log đủ model input, output, confidence, fallback và correction data để học sau release."}
+- ${isEn ? "Access control: verify that the AI cannot retrieve or reveal information beyond the user's permission." : "Access control: verify AI không retrieve hoặc reveal thông tin vượt quá permission của user."}
+- ${isEn ? "Cost guardrail: define token budget, volume assumptions, escalation rules, and lower-cost fallback for routine tasks." : "Cost guardrail: định nghĩa token budget, volume assumption, escalation rule và fallback rẻ hơn cho routine task."}
 `;
 }
 
@@ -3952,6 +4394,14 @@ title: Glossary
 | Human-in-the-loop | ${isEn ? "A designed workflow where a human reviews, corrects, approves, or rejects AI output under clear triggers." : "Workflow được thiết kế để con người review, sửa, approve hoặc reject output AI theo trigger rõ."} |
 | Evaluation | ${isEn ? "Systematic measurement of AI output against expected behavior, often using curated test cases." : "Đo có hệ thống output AI so với behavior mong muốn, thường bằng curated test case."} |
 | Governance | ${isEn ? "Rules, roles, controls, metrics, and review gates that make AI use safe and useful at team scale." : "Rule, role, control, metric và review gate giúp dùng AI an toàn và hữu ích ở scale team."} |
+| Prompt injection | ${isEn ? "A user, document, or external input tries to override the intended AI instructions; BA requirements should define boundaries, refusal, escalation, and logging." : "User, document hoặc external input cố override instruction dự kiến của AI; requirement của BA nên định nghĩa boundary, refusal, escalation và logging."} |
+| Bias | ${isEn ? "A systematic pattern where AI outcomes disadvantage a group or reflect unfair historical data; BA work should include fairness questions, test cases, and appeal paths." : "Pattern có hệ thống khiến outcome AI bất lợi cho một nhóm hoặc phản ánh historical data không công bằng; BA nên có fairness question, test case và appeal path."} |
+| Observability | ${isEn ? "The ability to see how an AI feature behaves after release through logs, metrics, feedback, corrections, alerts, and dashboards." : "Khả năng nhìn thấy AI feature behave ra sao sau release qua log, metric, feedback, correction, alert và dashboard."} |
+| Model selection | ${isEn ? "Choosing the right model or non-AI method by task fit, quality need, latency, context, privacy, access control, and cost." : "Chọn model hoặc phương án non-AI phù hợp theo task fit, quality need, latency, context, privacy, access control và cost."} |
+| PII | ${isEn ? "Personally identifiable information; BA prompts, data flows, and AI feature requirements should define redaction, retention, and access rules." : "Personally identifiable information; prompt, data flow và requirement AI của BA nên định nghĩa redaction, retention và access rule."} |
+| Access control | ${isEn ? "Rules that ensure users and AI retrieval can only access information they are allowed to see." : "Rule đảm bảo user và AI retrieval chỉ access thông tin được phép xem."} |
+| Evaluation set | ${isEn ? "A curated collection of representative, edge, failure, and safety cases used to judge whether AI behavior is good enough." : "Bộ case được curate gồm representative, edge, failure và safety case để đánh giá behavior AI đã đủ tốt chưa."} |
+| Cost guardrail | ${isEn ? "A requirement that limits AI spend through token budget, model choice, caching, volume assumptions, fallback paths, and monitoring." : "Requirement giới hạn chi phí AI qua token budget, model choice, caching, volume assumption, fallback path và monitoring."} |
 `;
 }
 

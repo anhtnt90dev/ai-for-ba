@@ -27,33 +27,33 @@ Bài này quan trọng vì AI adoption ở scale BA team có thể cải thiện
 
 ## Common difficulties for BAs
 
-Trong dự án thật, chủ đề này khó vì BA phải biến evidence lộn xộn thành decision mà không để AI che mất uncertainty. Hãy chú ý các friction point này trước khi xem output là sẵn sàng.
+Trong BA lead và expert track, AI strategy, governance và adoption trở nên khó khi productivity gain của từng cá nhân phải trở thành operating model của team với governance, adoption metric và risk control thực tế. BA nên kiểm tra các điểm dưới đây trước khi xem artifact có AI hỗ trợ là đủ sẵn sàng cho stakeholder decision hoặc handoff.
 
 | Khó khăn | Vì sao khó trong công việc BA | BA nên xử lý thế nào |
 | --- | --- | --- |
-| Mua tool trước khi định nghĩa safe use case. | Khó vì AI strategy, governance và adoption thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
-| Bỏ qua confidential data và PII rule. | Khó vì AI strategy, governance và adoption thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
-| Đo adoption chỉ bằng số user. | Khó vì AI strategy, governance và adoption thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
+| Mua tool trước khi định nghĩa safe use case. | Lỗi "Mua tool trước khi định nghĩa safe use case." xuất hiện khi team bàn về portfolio fit, policy, quality gate, adoption metric, training và escalation model nhưng chưa thống nhất source nào authoritative. AI có thể làm disagreement nghe mượt hơn, nên BA phải giữ uncertainty visible. | Áp dụng control này: tier use case AI theo sensitivity, decision impact, evidence quality và human review requirement. Sau đó dùng pattern tốt hơn "Tạo workflow theo risk tier, approved tool, training, prompt library và review gate." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
+| Bỏ qua confidential data và PII rule. | Với AI strategy, governance và adoption, điểm khó là BA lead nên scale AI adoption bằng use-case selection, risk tier, quality gate và operating model, không phải tool enthusiasm. Pattern yếu rất dễ xảy ra vì AI có thể tạo câu trả lời trôi chảy trước khi BA check ownership, source freshness hoặc decision right. | Áp dụng control này: tier use case AI theo sensitivity, decision impact, evidence quality và human review requirement. Sau đó dùng pattern tốt hơn "Đo cycle time, defect reduction, evidence quality, rework và stakeholder confidence." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
+| Đo adoption chỉ bằng số user. | Điểm này khó khi BA AI Adoption Scorecard được kỳ vọng hỗ trợ BA practice operating model. Nếu BA không challenge draft, unsupported assumption có thể đi vào planning, testing hoặc stakeholder communication. | Áp dụng control này: tier use case AI theo sensitivity, decision impact, evidence quality và human review requirement. Sau đó dùng pattern tốt hơn "Thiết lập BA AI operating model có governance role, audit và escalation." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
 
 ## Where this applies in real projects
 
-Bài này hữu ích khi BA cần chuyển conversation, policy, design hoặc technical input thành artifact chung để team implement và test được.
+Dùng bài này khi BA lead cần scale cách dùng AI qua nhiều người, tool, loại project và expectation governance. Output thực tế không phải document dài hơn; đó là BA AI Adoption Scorecard có đủ evidence, ownership và decision clarity cho cuộc trao đổi tiếp theo của dự án.
 
 | Thời điểm trong dự án | Cách áp dụng bài học | Output cụ thể của BA |
 | --- | --- | --- |
-| Discovery | Phân loại BA AI use case theo risk tier. | BA AI Adoption Scorecard: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
-| Refinement | Định nghĩa một approved workflow và một prohibited use. | BA AI Adoption Scorecard: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
-| Delivery | Tạo quality gate cho AI-assisted requirement. | BA AI Adoption Scorecard: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
+| Portfolio review | Phân loại BA AI use case theo risk tier. | BA AI Adoption Scorecard thể hiện portfolio fit, policy, quality gate, adoption metric, training và escalation model, trong đó action "Phân loại BA AI use case theo risk tier." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
+| Governance design | Định nghĩa một approved workflow và một prohibited use. | BA AI Adoption Scorecard thể hiện source evidence, trong đó action "Định nghĩa một approved workflow và một prohibited use." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
+| Practice rollout | Tạo quality gate cho AI-assisted requirement. | BA AI Adoption Scorecard thể hiện decision owner, trong đó action "Tạo quality gate cho AI-assisted requirement." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
 
 ## If this is missing
 
-Nếu thiếu năng lực này, AI vẫn có thể tạo text rất bóng bẩy, nhưng project mất khả năng review. Kết quả thường là rework, assumption ẩn, acceptance criteria yếu hoặc business decision thiếu evidence.
+Nếu thiếu AI strategy, governance và adoption, việc dùng AI trở nên thiếu nhất quán, rủi ro, khó audit và khó cải tiến ở cấp BA practice. BA vẫn có thể khôi phục, nhưng phải chuyển draft AI bóng bẩy trở lại thành evidence, assumption, owner và decision test được.
 
 | Nếu thiếu | Ảnh hưởng tới dự án | Cách khôi phục |
 | --- | --- | --- |
-| Roll out tool AI cho mọi BA rồi gọi là adoption | Usage tăng nhưng thiếu standard chung, safety rule và quality evidence. | Khôi phục bằng pattern tốt hơn: Tạo workflow theo risk tier, approved tool, training, prompt library và review gate. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
-| Đo success bằng số prompt hoặc số user | Activity không chứng minh requirement tốt hơn hoặc decision an toàn hơn. | Khôi phục bằng pattern tốt hơn: Đo cycle time, defect reduction, evidence quality, rework và stakeholder confidence. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
-| Để mỗi project tự invent AI rule | Quality và compliance biến động lớn giữa team. | Khôi phục bằng pattern tốt hơn: Thiết lập BA AI operating model có governance role, audit và escalation. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
+| Roll out tool AI cho mọi BA rồi gọi là adoption | Usage tăng nhưng thiếu standard chung, safety rule và quality evidence. | Khôi phục bằng pattern tốt hơn: Tạo workflow theo risk tier, approved tool, training, prompt library và review gate. Rework BA AI Adoption Scorecard cho đến khi nó lộ rõ portfolio fit, policy, quality gate, adoption metric, training và escalation model, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
+| Đo success bằng số prompt hoặc số user | Activity không chứng minh requirement tốt hơn hoặc decision an toàn hơn. | Khôi phục bằng pattern tốt hơn: Đo cycle time, defect reduction, evidence quality, rework và stakeholder confidence. Rework BA AI Adoption Scorecard cho đến khi nó lộ rõ portfolio fit, policy, quality gate, adoption metric, training và escalation model, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
+| Để mỗi project tự invent AI rule | Quality và compliance biến động lớn giữa team. | Khôi phục bằng pattern tốt hơn: Thiết lập BA AI operating model có governance role, audit và escalation. Rework BA AI Adoption Scorecard cho đến khi nó lộ rõ portfolio fit, policy, quality gate, adoption metric, training và escalation model, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
 
 ## Mental model or core concept
 

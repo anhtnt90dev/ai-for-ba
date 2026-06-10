@@ -13,16 +13,16 @@ description: "The BA must build a current-state process that shows actors, syste
 
 ## Project context
 
-An operations team wants to reduce request turnaround time, but the current process lives across emails, spreadsheets, ticket comments, and tribal knowledge. Different teams describe the same process differently. In a real delivery environment, this work usually appears under time pressure: stakeholders want clarity, delivery needs a backlog, QA needs testable behavior, and operations needs a process that can survive exceptions. The BA uses AI here to accelerate analysis and synthesis, but the BA remains accountable for evidence, business meaning, stakeholder decisioning, and artifact quality.
+An operations team wants to reduce request turnaround time, but the current process lives across emails, spreadsheets, ticket comments, and tribal knowledge. Different teams describe the same process differently. In Operations analysis, this work usually starts when stakeholders describe the same problem from different incentives and levels of detail. The BA should treat SOPs and Interview notes as evidence to organize, not as raw material for an unconstrained AI answer. The goal is to make the next decision clearer for the people who own the outcome.
 
 ## BA challenge
 
-The BA must build a current-state process that shows actors, systems, decisions, queues, exception paths, handoffs, and pain points. AI can transform text into draft diagrams, but the BA must validate operational reality with people doing the work. The practical difficulty is that AI can make early material look more complete than it is. A strong BA keeps the output reviewable by separating source-backed facts, assumptions, unsupported claims, decision gaps, and recommended next actions. The objective is not to make the document longer; it is to make the project decision clearer and safer.
+The BA must build a current-state process that shows actors, systems, decisions, queues, exception paths, handoffs, and pain points. AI can transform text into draft diagrams, but the BA must validate operational reality with people doing the work. For Current-State Process Mapping, the practical difficulty is false consensus and invented scope. AI can accelerate sensemaking, contradiction detection, question generation, and workshop preparation, but the BA must still expose assumptions, missing approvals, and the point where stakeholder judgment is required.
 
 ## Where AI fits
 
 <div class="ba-workbench-panel">
-AI is useful in this use case when it is constrained to analysis support, pattern detection, structured drafting, and critique. It should not approve scope, invent policy, decide business trade-offs, or replace accountable stakeholder judgment.
+AI fits this Discovery and alignment use case when it is constrained to sensemaking, contradiction detection, question generation, and workshop preparation. A useful first AI task is: Extract process steps from interviews and SOPs. AI should not approve scope, invent policy, bypass speaker attribution, decision authority, and source freshness, or turn a draft into a final decision.
 </div>
 
 - Extract process steps from interviews and SOPs.
@@ -38,7 +38,7 @@ AI is useful in this use case when it is constrained to analysis support, patter
 - Spreadsheet trackers
 - System screenshots
 
-A BA should label these inputs before using AI: source owner, source date, approval status, sensitivity level, and whether the source is fact, opinion, policy, draft, or historical evidence. This preparation prevents the model from treating every input as equally current and authoritative.
+Before prompting for Current-State Process Mapping, label each input by owner, date, approval status, sensitivity, and role in the decision. The most important evidence lens is speaker attribution, decision authority, and source freshness; without it, AI may rank old notes, draft designs, and approved rules as if they had equal authority.
 
 ## BA workflow
 
@@ -49,7 +49,7 @@ A BA should label these inputs before using AI: source owner, source date, appro
 5. Separate current-state facts from improvement ideas.
 6. Publish a validated process map with pain points and rule gaps.
 
-The workflow works best as a staged AI collaboration: first organize the evidence, then ask for analysis, then create the artifact, then run a critique pass. The BA should keep a visible decision log throughout the process so that AI-generated suggestions do not silently become approved scope.
+Run the workflow as evidence grouping before solution discussion: start with "Create source IDs for every process description.", then keep a visible decision log as the artifact moves toward Current-state process map. This prevents AI suggestions from silently becoming backlog, design, release, or operational commitments.
 
 ## Diagram
 
@@ -73,7 +73,7 @@ flowchart LR
 | Pain point heatmap | Delay, rework, handoff, and user-friction points | BA | Pain points are linked to process steps |
 | Future-state questions | Questions needed before redesign | Product owner | Questions are prioritized by impact |
 
-These deliverables should be treated as BA-owned artifacts. AI can draft them, but the BA must validate source support, stakeholder meaning, traceability, and whether the artifact is ready for handoff.
+Treat Current-state process map as a BA-owned alignment artifact. AI may draft structure, but the BA must validate whether "Frontline users confirm it matches reality" is actually true, whether the artifact is traceable to source evidence, and whether the receiving team can act on it.
 
 ## Prompt to try
 
@@ -83,11 +83,11 @@ Act as a senior AI-aware Business Analyst. Help me apply the "Current-State Proc
 
 ## Review checklist
 
-- Every AI-produced statement is tied to a source, assumption, or validation question.
-- The BA has separated drafting assistance from business approval.
-- Workflow steps identify the human owner for decisions, review, and exceptions.
-- Deliverables are traceable to project inputs and can be reviewed by QA, product, or operations.
-- Risk controls are practical enough to be used in a real project meeting.
+- SOPs is labeled with owner, date, approval status, and sensitivity.
+- Current-state process map traces to source evidence and has a named human owner.
+- The AI task stays inside sensemaking, contradiction detection, question generation, and workshop preparation and does not approve scope or policy.
+- The "Idealized process" risk has a practical control: Use ticket samples and frontline validation.
+- Open assumptions are converted into validation questions or stakeholder decisions.
 - Success metric: The validated process map identifies delay points and decision gaps that can be prioritized for redesign.
 
 ## Risks and controls
@@ -99,4 +99,4 @@ Act as a senior AI-aware Business Analyst. Help me apply the "Current-State Proc
 | Diagram overconfidence | A neat diagram may hide uncertainty | Label unvalidated steps and assumptions |
 | Solution bias | Improvement ideas may mix with current-state facts | Separate current-state and future-state artifacts |
 
-The key control is to make uncertainty visible. If evidence is weak, the output should create a validation question or decision item, not a final requirement. If the artifact influences delivery, release, compliance, customer experience, or operational workload, the BA should require explicit human review before handoff.
+The main control for the "Idealized process" risk is explicit human accountability: Use ticket samples and frontline validation. If evidence is weak, the output should create a validation question or decision item, not a final requirement.

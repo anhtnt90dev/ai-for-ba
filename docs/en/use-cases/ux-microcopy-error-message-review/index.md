@@ -13,16 +13,16 @@ description: "The BA must help UX and product ensure copy reflects business rule
 
 ## Project context
 
-A signup flow has multiple validation errors, consent messages, confirmation dialogs, and success states. The wording is inconsistent and some messages blame users or hide next steps. In a real delivery environment, this work usually appears under time pressure: stakeholders want clarity, delivery needs a backlog, QA needs testable behavior, and operations needs a process that can survive exceptions. The BA uses AI here to accelerate analysis and synthesis, but the BA remains accountable for evidence, business meaning, stakeholder decisioning, and artifact quality.
+A signup flow has multiple validation errors, consent messages, confirmation dialogs, and success states. The wording is inconsistent and some messages blame users or hide next steps. In UX writing, this work usually starts when screen behavior, accessibility, design states, analytics, and user feedback must become implementable requirements. The BA should treat UI copy list and Validation rules as evidence to organize, not as raw material for an unconstrained AI answer. The goal is to make the next decision clearer for the people who own the outcome.
 
 ## BA challenge
 
-The BA must help UX and product ensure copy reflects business rules, compliance, user recovery, and system truth. AI can draft copy options, but the BA must validate accuracy and decision implications. The practical difficulty is that AI can make early material look more complete than it is. A strong BA keeps the output reviewable by separating source-backed facts, assumptions, unsupported claims, decision gaps, and recommended next actions. The objective is not to make the document longer; it is to make the project decision clearer and safer.
+The BA must help UX and product ensure copy reflects business rules, compliance, user recovery, and system truth. AI can draft copy options, but the BA must validate accuracy and decision implications. For UX Microcopy and Error Message Review, the practical difficulty is missing states and unmeasurable UX. AI can accelerate UI-state analysis, content critique, accessibility review, event taxonomy, and edge-case discovery, but the BA must still expose assumptions, missing approvals, and the point where stakeholder judgment is required.
 
 ## Where AI fits
 
 <div class="ba-workbench-panel">
-AI is useful in this use case when it is constrained to analysis support, pattern detection, structured drafting, and critique. It should not approve scope, invent policy, decide business trade-offs, or replace accountable stakeholder judgment.
+AI fits this Frontend, UI, and UX use case when it is constrained to UI-state analysis, content critique, accessibility review, event taxonomy, and edge-case discovery. A useful first AI task is: Generate copy variants for errors, confirmations, empty states, and success messages. AI should not approve scope, invent policy, bypass wireframes, design tokens, user journeys, analytics questions, and accessibility expectations, or turn a draft into a final decision.
 </div>
 
 - Generate copy variants for errors, confirmations, empty states, and success messages.
@@ -38,7 +38,7 @@ AI is useful in this use case when it is constrained to analysis support, patter
 - Brand voice guide
 - User research notes
 
-A BA should label these inputs before using AI: source owner, source date, approval status, sensitivity level, and whether the source is fact, opinion, policy, draft, or historical evidence. This preparation prevents the model from treating every input as equally current and authoritative.
+Before prompting for UX Microcopy and Error Message Review, label each input by owner, date, approval status, sensitivity, and role in the decision. The most important evidence lens is wireframes, design tokens, user journeys, analytics questions, and accessibility expectations; without it, AI may rank old notes, draft designs, and approved rules as if they had equal authority.
 
 ## BA workflow
 
@@ -49,7 +49,7 @@ A BA should label these inputs before using AI: source owner, source date, appro
 5. Map each message to rule, source, and acceptance criteria.
 6. Prepare copy handoff for frontend and localization.
 
-The workflow works best as a staged AI collaboration: first organize the evidence, then ask for analysis, then create the artifact, then run a critique pass. The BA should keep a visible decision log throughout the process so that AI-generated suggestions do not silently become approved scope.
+Run the workflow as screen-state review before frontend build: start with "Inventory messages by screen, trigger, and user state.", then keep a visible decision log as the artifact moves toward Message catalog. This prevents AI suggestions from silently becoming backlog, design, release, or operational commitments.
 
 ## Diagram
 
@@ -73,7 +73,7 @@ flowchart LR
 | Compliance copy review | Sensitive message, constraint, reviewer, and approval status | Compliance | Regulated copy is approved |
 | Localization notes | Variable, tone, length, and translation risk | Localization owner | Copy can be localized safely |
 
-These deliverables should be treated as BA-owned artifacts. AI can draft them, but the BA must validate source support, stakeholder meaning, traceability, and whether the artifact is ready for handoff.
+Treat Message catalog as a BA-owned frontend requirement specification. AI may draft structure, but the BA must validate whether "Every message has trigger and source" is actually true, whether the artifact is traceable to source evidence, and whether the receiving team can act on it.
 
 ## Prompt to try
 
@@ -83,11 +83,11 @@ Act as a senior AI-aware Business Analyst. Help me apply the "UX Microcopy and E
 
 ## Review checklist
 
-- Every AI-produced statement is tied to a source, assumption, or validation question.
-- The BA has separated drafting assistance from business approval.
-- Workflow steps identify the human owner for decisions, review, and exceptions.
-- Deliverables are traceable to project inputs and can be reviewed by QA, product, or operations.
-- Risk controls are practical enough to be used in a real project meeting.
+- UI copy list is labeled with owner, date, approval status, and sensitivity.
+- Message catalog traces to source evidence and has a named human owner.
+- The AI task stays inside UI-state analysis, content critique, accessibility review, event taxonomy, and edge-case discovery and does not approve scope or policy.
+- The "Misleading copy" risk has a practical control: Map copy to source rule.
+- Open assumptions are converted into validation questions or stakeholder decisions.
 - Success metric: UI copy becomes accurate, recoverable, testable, and ready for localization.
 
 ## Risks and controls
@@ -99,4 +99,4 @@ Act as a senior AI-aware Business Analyst. Help me apply the "UX Microcopy and E
 | Compliance drift | AI may rewrite regulated wording incorrectly | Require compliance approval |
 | Localization breakage | Copy may not fit translated UI | Track variables and length constraints |
 
-The key control is to make uncertainty visible. If evidence is weak, the output should create a validation question or decision item, not a final requirement. If the artifact influences delivery, release, compliance, customer experience, or operational workload, the BA should require explicit human review before handoff.
+The main control for the "Misleading copy" risk is explicit human accountability: Map copy to source rule. If evidence is weak, the output should create a validation question or decision item, not a final requirement.

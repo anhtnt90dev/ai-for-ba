@@ -13,16 +13,16 @@ description: "The BA must create lightweight traceability across design, fronten
 
 ## Project context
 
-A feature spans Figma frames, user stories, API contracts, database fields, analytics events, and QA tests. During delivery, teams lose track of which artifact owns which behavior. In a real delivery environment, this work usually appears under time pressure: stakeholders want clarity, delivery needs a backlog, QA needs testable behavior, and operations needs a process that can survive exceptions. The BA uses AI here to accelerate analysis and synthesis, but the BA remains accountable for evidence, business meaning, stakeholder decisioning, and artifact quality.
+A feature spans Figma frames, user stories, API contracts, database fields, analytics events, and QA tests. During delivery, teams lose track of which artifact owns which behavior. In Traceability, this work usually starts when different roles need different artifacts, but the BA must keep decisions consistent across product, design, engineering, QA, data, and operations. The BA should treat Figma frame list and User stories as evidence to organize, not as raw material for an unconstrained AI answer. The goal is to make the next decision clearer for the people who own the outcome.
 
 ## BA challenge
 
-The BA must create lightweight traceability across design, frontend behavior, backend contracts, data fields, analytics, and tests. The goal is delivery clarity, not documentation overhead. The practical difficulty is that AI can make early material look more complete than it is. A strong BA keeps the output reviewable by separating source-backed facts, assumptions, unsupported claims, decision gaps, and recommended next actions. The objective is not to make the document longer; it is to make the project decision clearer and safer.
+The BA must create lightweight traceability across design, frontend behavior, backend contracts, data fields, analytics, and tests. The goal is delivery clarity, not documentation overhead. For Design-to-API End-to-End Traceability, the practical difficulty is role misalignment and hidden trade-offs. AI can accelerate role-specific synthesis, decision memo drafting, conflict surfacing, and shared artifact critique, but the BA must still expose assumptions, missing approvals, and the point where stakeholder judgment is required.
 
 ## Where AI fits
 
 <div class="ba-workbench-panel">
-AI is useful in this use case when it is constrained to analysis support, pattern detection, structured drafting, and critique. It should not approve scope, invent policy, decide business trade-offs, or replace accountable stakeholder judgment.
+AI fits this Cross-functional BA Collaboration use case when it is constrained to role-specific synthesis, decision memo drafting, conflict surfacing, and shared artifact critique. A useful first AI task is: Generate trace links between design frames, stories, API operations, and tests. AI should not approve scope, invent policy, bypass role feedback, decision log, design notes, technical constraints, test concerns, and support needs, or turn a draft into a final decision.
 </div>
 
 - Generate trace links between design frames, stories, API operations, and tests.
@@ -38,7 +38,7 @@ AI is useful in this use case when it is constrained to analysis support, patter
 - Data mapping
 - Test scenarios
 
-A BA should label these inputs before using AI: source owner, source date, approval status, sensitivity level, and whether the source is fact, opinion, policy, draft, or historical evidence. This preparation prevents the model from treating every input as equally current and authoritative.
+Before prompting for Design-to-API End-to-End Traceability, label each input by owner, date, approval status, sensitivity, and role in the decision. The most important evidence lens is role feedback, decision log, design notes, technical constraints, test concerns, and support needs; without it, AI may rank old notes, draft designs, and approved rules as if they had equal authority.
 
 ## BA workflow
 
@@ -49,7 +49,7 @@ A BA should label these inputs before using AI: source owner, source date, appro
 5. Update artifacts and decision log.
 6. Use traceability for change impact and release readiness.
 
-The workflow works best as a staged AI collaboration: first organize the evidence, then ask for analysis, then create the artifact, then run a critique pass. The BA should keep a visible decision log throughout the process so that AI-generated suggestions do not silently become approved scope.
+Run the workflow as cross-role decision alignment before handoff: start with "Define trace dimensions: design, story, UI behavior, API, data, analytics, and test.", then keep a visible decision log as the artifact moves toward End-to-end trace matrix. This prevents AI suggestions from silently becoming backlog, design, release, or operational commitments.
 
 ## Diagram
 
@@ -73,7 +73,7 @@ flowchart LR
 | Change impact checklist | Artifact changed, affected links, owner, and update needed | BA | Late changes are controlled |
 | Release trace summary | Coverage, exceptions, accepted risks, and sign-off notes | Product owner | Release decision has evidence |
 
-These deliverables should be treated as BA-owned artifacts. AI can draft them, but the BA must validate source support, stakeholder meaning, traceability, and whether the artifact is ready for handoff.
+Treat End-to-end trace matrix as a BA-owned collaboration decision artifact. AI may draft structure, but the BA must validate whether "Behavior has trace coverage" is actually true, whether the artifact is traceable to source evidence, and whether the receiving team can act on it.
 
 ## Prompt to try
 
@@ -83,11 +83,11 @@ Act as a senior AI-aware Business Analyst. Help me apply the "Design-to-API End-
 
 ## Review checklist
 
-- Every AI-produced statement is tied to a source, assumption, or validation question.
-- The BA has separated drafting assistance from business approval.
-- Workflow steps identify the human owner for decisions, review, and exceptions.
-- Deliverables are traceable to project inputs and can be reviewed by QA, product, or operations.
-- Risk controls are practical enough to be used in a real project meeting.
+- Figma frame list is labeled with owner, date, approval status, and sensitivity.
+- End-to-end trace matrix traces to source evidence and has a named human owner.
+- The AI task stays inside role-specific synthesis, decision memo drafting, conflict surfacing, and shared artifact critique and does not approve scope or policy.
+- The "Traceability overhead" risk has a practical control: Trace only material behavior and high-risk items.
+- Open assumptions are converted into validation questions or stakeholder decisions.
 - Success metric: Critical feature behavior is traceable from design through API, data, analytics, and tests.
 
 ## Risks and controls
@@ -99,4 +99,4 @@ Act as a senior AI-aware Business Analyst. Help me apply the "Design-to-API End-
 | Orphan design behavior | A design interaction may not be in story or API | Identify orphan elements |
 | Release blind spot | Untested backend behavior may ship | Use trace summary for readiness |
 
-The key control is to make uncertainty visible. If evidence is weak, the output should create a validation question or decision item, not a final requirement. If the artifact influences delivery, release, compliance, customer experience, or operational workload, the BA should require explicit human review before handoff.
+The main control for the "Traceability overhead" risk is explicit human accountability: Trace only material behavior and high-risk items. If evidence is weak, the output should create a validation question or decision item, not a final requirement.

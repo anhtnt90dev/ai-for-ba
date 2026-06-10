@@ -27,33 +27,33 @@ Bài này quan trọng vì AI có thể tạo rất nhiều story nhanh, nhưng 
 
 ## Common difficulties for BAs
 
-Trong dự án thật, chủ đề này khó vì BA phải biến evidence lộn xộn thành decision mà không để AI che mất uncertainty. Hãy chú ý các friction point này trước khi xem output là sẵn sàng.
+Trong Quy trình BA được tăng cường bởi AI, User story và acceptance criteria trở nên khó khi notes lộn xộn, decision mới validate một phần và stakeholder context chưa đầy đủ phải nhanh chóng thành artifact chung. BA nên kiểm tra các điểm dưới đây trước khi xem artifact có AI hỗ trợ là đủ sẵn sàng cho stakeholder decision hoặc handoff.
 
 | Khó khăn | Vì sao khó trong công việc BA | BA nên xử lý thế nào |
 | --- | --- | --- |
-| Generate nhiều story nhưng thiếu business value. | Khó vì User story và acceptance criteria thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
-| Acceptance criteria chỉ lặp lại story. | Khó vì User story và acceptance criteria thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
-| Thiếu permission và audit. | Khó vì User story và acceptance criteria thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
+| Generate nhiều story nhưng thiếu business value. | Lỗi "Generate nhiều story nhưng thiếu business value." xuất hiện khi team bàn về source attribution, conflict visibility, workshop decision flow và backlog readiness nhưng chưa thống nhất source nào authoritative. AI có thể làm disagreement nghe mượt hơn, nên BA phải giữ uncertainty visible. | Áp dụng control này: giữ speaker/source attribution visible cho đến khi stakeholder chịu trách nhiệm xác nhận ý nghĩa. Sau đó dùng pattern tốt hơn "Bắt đầu từ user goal, split theo permission, workflow step, exception và business value." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
+| Acceptance criteria chỉ lặp lại story. | Với User story và acceptance criteria, điểm khó là AI có thể draft story nhanh, nhưng BA phải giữ business rule, negative path, permission và testability. Pattern yếu rất dễ xảy ra vì AI có thể tạo câu trả lời trôi chảy trước khi BA check ownership, source freshness hoặc decision right. | Áp dụng control này: giữ speaker/source attribution visible cho đến khi stakeholder chịu trách nhiệm xác nhận ý nghĩa. Sau đó dùng pattern tốt hơn "Viết Given-When-Then có data, state, actor, boundary và expected result." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
+| Thiếu permission và audit. | Điểm này khó khi Story Quality Rubric được kỳ vọng hỗ trợ validated working artifact. Nếu BA không challenge draft, unsupported assumption có thể đi vào planning, testing hoặc stakeholder communication. | Áp dụng control này: giữ speaker/source attribution visible cho đến khi stakeholder chịu trách nhiệm xác nhận ý nghĩa. Sau đó dùng pattern tốt hơn "Yêu cầu negative, boundary, audit và role-based criteria trước refinement." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
 
 ## Where this applies in real projects
 
-Bài này hữu ích khi BA cần chuyển conversation, policy, design hoặc technical input thành artifact chung để team implement và test được.
+Dùng bài này khi discovery hoặc refinement tạo nhiều raw input hơn mức BA có thể synthesize an toàn bằng tay trong thời gian có sẵn. Output thực tế không phải document dài hơn; đó là Story Quality Rubric có đủ evidence, ownership và decision clarity cho cuộc trao đổi tiếp theo của dự án.
 
 | Thời điểm trong dự án | Cách áp dụng bài học | Output cụ thể của BA |
 | --- | --- | --- |
-| Discovery | Chọn một story mơ hồ và nhờ AI tìm missing business rule. | Story Quality Rubric: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
-| Refinement | Thêm hai negative acceptance criteria. | Story Quality Rubric: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
-| Delivery | Nhờ QA review testability trước refinement. | Story Quality Rubric: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
+| Discovery | Chọn một story mơ hồ và nhờ AI tìm missing business rule. | Story Quality Rubric thể hiện source attribution, conflict visibility, workshop decision flow và backlog readiness, trong đó action "Chọn một story mơ hồ và nhờ AI tìm missing business rule." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
+| Synthesis | Thêm hai negative acceptance criteria. | Story Quality Rubric thể hiện source evidence, trong đó action "Thêm hai negative acceptance criteria." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
+| Refinement | Nhờ QA review testability trước refinement. | Story Quality Rubric thể hiện decision owner, trong đó action "Nhờ QA review testability trước refinement." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
 
 ## If this is missing
 
-Nếu thiếu năng lực này, AI vẫn có thể tạo text rất bóng bẩy, nhưng project mất khả năng review. Kết quả thường là rework, assumption ẩn, acceptance criteria yếu hoặc business decision thiếu evidence.
+Nếu thiếu User story và acceptance criteria, signal quan trọng từ interview, ticket, process note hoặc decision có thể mất trước khi đi vào backlog. BA vẫn có thể khôi phục, nhưng phải chuyển draft AI bóng bẩy trở lại thành evidence, assumption, owner và decision test được.
 
 | Nếu thiếu | Ảnh hưởng tới dự án | Cách khôi phục |
 | --- | --- | --- |
-| Generate mười user story cho feature | Backlog phình to nhưng chưa chứng minh story nào có value hoặc releasable. | Khôi phục bằng pattern tốt hơn: Bắt đầu từ user goal, split theo permission, workflow step, exception và business value. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
-| Acceptance criteria ghi system works correctly | QA và developer không quan sát hoặc automate được success mơ hồ. | Khôi phục bằng pattern tốt hơn: Viết Given-When-Then có data, state, actor, boundary và expected result. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
-| Bỏ qua negative và permission case | Happy path che giấu production defect và security issue. | Khôi phục bằng pattern tốt hơn: Yêu cầu negative, boundary, audit và role-based criteria trước refinement. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
+| Generate mười user story cho feature | Backlog phình to nhưng chưa chứng minh story nào có value hoặc releasable. | Khôi phục bằng pattern tốt hơn: Bắt đầu từ user goal, split theo permission, workflow step, exception và business value. Rework Story Quality Rubric cho đến khi nó lộ rõ source attribution, conflict visibility, workshop decision flow và backlog readiness, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
+| Acceptance criteria ghi system works correctly | QA và developer không quan sát hoặc automate được success mơ hồ. | Khôi phục bằng pattern tốt hơn: Viết Given-When-Then có data, state, actor, boundary và expected result. Rework Story Quality Rubric cho đến khi nó lộ rõ source attribution, conflict visibility, workshop decision flow và backlog readiness, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
+| Bỏ qua negative và permission case | Happy path che giấu production defect và security issue. | Khôi phục bằng pattern tốt hơn: Yêu cầu negative, boundary, audit và role-based criteria trước refinement. Rework Story Quality Rubric cho đến khi nó lộ rõ source attribution, conflict visibility, workshop decision flow và backlog readiness, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
 
 ## Mental model or core concept
 

@@ -13,16 +13,16 @@ description: "The BA must present trade-offs clearly across user value, delivery
 
 ## Project context
 
-A product owner must choose between faster release with manual review, delayed release with full automation, or partial rollout to a smaller user segment. In a real delivery environment, this work usually appears under time pressure: stakeholders want clarity, delivery needs a backlog, QA needs testable behavior, and operations needs a process that can survive exceptions. The BA uses AI here to accelerate analysis and synthesis, but the BA remains accountable for evidence, business meaning, stakeholder decisioning, and artifact quality.
+A product owner must choose between faster release with manual review, delayed release with full automation, or partial rollout to a smaller user segment. In Product decisions, this work usually starts when different roles need different artifacts, but the BA must keep decisions consistent across product, design, engineering, QA, data, and operations. The BA should treat Decision options and Delivery estimates as evidence to organize, not as raw material for an unconstrained AI answer. The goal is to make the next decision clearer for the people who own the outcome.
 
 ## BA challenge
 
-The BA must present trade-offs clearly across user value, delivery cost, risk, operational effort, compliance, and learning value. AI can structure options, but the decision belongs to accountable stakeholders. The practical difficulty is that AI can make early material look more complete than it is. A strong BA keeps the output reviewable by separating source-backed facts, assumptions, unsupported claims, decision gaps, and recommended next actions. The objective is not to make the document longer; it is to make the project decision clearer and safer.
+The BA must present trade-offs clearly across user value, delivery cost, risk, operational effort, compliance, and learning value. AI can structure options, but the decision belongs to accountable stakeholders. For Product Trade-off Decision Memo, the practical difficulty is role misalignment and hidden trade-offs. AI can accelerate role-specific synthesis, decision memo drafting, conflict surfacing, and shared artifact critique, but the BA must still expose assumptions, missing approvals, and the point where stakeholder judgment is required.
 
 ## Where AI fits
 
 <div class="ba-workbench-panel">
-AI is useful in this use case when it is constrained to analysis support, pattern detection, structured drafting, and critique. It should not approve scope, invent policy, decide business trade-offs, or replace accountable stakeholder judgment.
+AI fits this Cross-functional BA Collaboration use case when it is constrained to role-specific synthesis, decision memo drafting, conflict surfacing, and shared artifact critique. A useful first AI task is: Generate decision options and trade-off dimensions. AI should not approve scope, invent policy, bypass role feedback, decision log, design notes, technical constraints, test concerns, and support needs, or turn a draft into a final decision.
 </div>
 
 - Generate decision options and trade-off dimensions.
@@ -38,7 +38,7 @@ AI is useful in this use case when it is constrained to analysis support, patter
 - User impact notes
 - Operational constraints
 
-A BA should label these inputs before using AI: source owner, source date, approval status, sensitivity level, and whether the source is fact, opinion, policy, draft, or historical evidence. This preparation prevents the model from treating every input as equally current and authoritative.
+Before prompting for Product Trade-off Decision Memo, label each input by owner, date, approval status, sensitivity, and role in the decision. The most important evidence lens is role feedback, decision log, design notes, technical constraints, test concerns, and support needs; without it, AI may rank old notes, draft designs, and approved rules as if they had equal authority.
 
 ## BA workflow
 
@@ -49,7 +49,7 @@ A BA should label these inputs before using AI: source owner, source date, appro
 5. Draft recommendation and rejected alternatives.
 6. Record decision, rationale, owner, and follow-up measures.
 
-The workflow works best as a staged AI collaboration: first organize the evidence, then ask for analysis, then create the artifact, then run a critique pass. The BA should keep a visible decision log throughout the process so that AI-generated suggestions do not silently become approved scope.
+Run the workflow as cross-role decision alignment before handoff: start with "Define the decision and options in neutral language.", then keep a visible decision log as the artifact moves toward Decision memo. This prevents AI suggestions from silently becoming backlog, design, release, or operational commitments.
 
 ## Diagram
 
@@ -73,7 +73,7 @@ flowchart LR
 | Assumption list | Assumption, confidence, validation action, and owner | BA | Uncertainty is visible |
 | Decision log update | Chosen option, rationale, date, owner, and follow-up metric | Product owner | Decision can be traced |
 
-These deliverables should be treated as BA-owned artifacts. AI can draft them, but the BA must validate source support, stakeholder meaning, traceability, and whether the artifact is ready for handoff.
+Treat Decision memo as a BA-owned collaboration decision artifact. AI may draft structure, but the BA must validate whether "Decision is clear" is actually true, whether the artifact is traceable to source evidence, and whether the receiving team can act on it.
 
 ## Prompt to try
 
@@ -83,11 +83,11 @@ Act as a senior AI-aware Business Analyst. Help me apply the "Product Trade-off 
 
 ## Review checklist
 
-- Every AI-produced statement is tied to a source, assumption, or validation question.
-- The BA has separated drafting assistance from business approval.
-- Workflow steps identify the human owner for decisions, review, and exceptions.
-- Deliverables are traceable to project inputs and can be reviewed by QA, product, or operations.
-- Risk controls are practical enough to be used in a real project meeting.
+- Decision options is labeled with owner, date, approval status, and sensitivity.
+- Decision memo traces to source evidence and has a named human owner.
+- The AI task stays inside role-specific synthesis, decision memo drafting, conflict surfacing, and shared artifact critique and does not approve scope or policy.
+- The "Biased recommendation" risk has a practical control: Separate evidence and assumption.
+- Open assumptions are converted into validation questions or stakeholder decisions.
 - Success metric: Product trade-offs become explicit, evidence-backed, and traceable to follow-up metrics.
 
 ## Risks and controls
@@ -99,4 +99,4 @@ Act as a senior AI-aware Business Analyst. Help me apply the "Product Trade-off 
 | Compliance blind spot | Fast release may create control gaps | Review with compliance owner |
 | Decision drift | Teams may forget why option was chosen | Record rationale and metric |
 
-The key control is to make uncertainty visible. If evidence is weak, the output should create a validation question or decision item, not a final requirement. If the artifact influences delivery, release, compliance, customer experience, or operational workload, the BA should require explicit human review before handoff.
+The main control for the "Biased recommendation" risk is explicit human accountability: Separate evidence and assumption. If evidence is weak, the output should create a validation question or decision item, not a final requirement.

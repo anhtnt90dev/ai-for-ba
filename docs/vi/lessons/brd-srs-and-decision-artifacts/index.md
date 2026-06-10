@@ -27,33 +27,33 @@ Bài này quan trọng vì AI có thể draft BRD và SRS rất nhanh, nhưng fo
 
 ## Common difficulties for BAs
 
-Trong dự án thật, chủ đề này khó vì BA phải biến evidence lộn xộn thành decision mà không để AI che mất uncertainty. Hãy chú ý các friction point này trước khi xem output là sẵn sàng.
+Trong Artifact phân tích và diagramming, BRD, SRS và artifact quyết định trở nên khó khi BA phải chuyển decision phức tạp thành artifact mà product, engineering, QA, support và compliance đều inspect được. BA nên kiểm tra các điểm dưới đây trước khi xem artifact có AI hỗ trợ là đủ sẵn sàng cho stakeholder decision hoặc handoff.
 
 | Khó khăn | Vì sao khó trong công việc BA | BA nên xử lý thế nào |
 | --- | --- | --- |
-| Dùng AI tạo document polished trước khi decision rõ. | Khó vì BRD, SRS và artifact quyết định thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
-| Giấu assumption trong prose. | Khó vì BRD, SRS và artifact quyết định thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
-| Trộn current state, future state và open question. | Khó vì BRD, SRS và artifact quyết định thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
+| Dùng AI tạo document polished trước khi decision rõ. | Lỗi "Dùng AI tạo document polished trước khi decision rõ." xuất hiện khi team bàn về artifact purpose, audience, diagram clarity, decision trace và handoff quality nhưng chưa thống nhất source nào authoritative. AI có thể làm disagreement nghe mượt hơn, nên BA phải giữ uncertainty visible. | Áp dụng control này: review artifact với team phải build, test hoặc operate dựa trên artifact đó. Sau đó dùng pattern tốt hơn "Generate document skeleton kèm decision gap, evidence map và open approval item." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
+| Giấu assumption trong prose. | Với BRD, SRS và artifact quyết định, điểm khó là AI có thể draft tài liệu, nhưng giá trị BA nằm ở decision structure, evidence, scope control và reviewability. Pattern yếu rất dễ xảy ra vì AI có thể tạo câu trả lời trôi chảy trước khi BA check ownership, source freshness hoặc decision right. | Áp dụng control này: review artifact với team phải build, test hoặc operate dựa trên artifact đó. Sau đó dùng pattern tốt hơn "Represent conflict explicit với option, impact, owner và decision date." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
+| Trộn current state, future state và open question. | Điểm này khó khi Decision Artifact Skeleton được kỳ vọng hỗ trợ cross-functional handoff artifact. Nếu BA không challenge draft, unsupported assumption có thể đi vào planning, testing hoặc stakeholder communication. | Áp dụng control này: review artifact với team phải build, test hoặc operate dựa trên artifact đó. Sau đó dùng pattern tốt hơn "Giữ assumption, dependency và open question trong section được governance." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
 
 ## Where this applies in real projects
 
-Bài này hữu ích khi BA cần chuyển conversation, policy, design hoặc technical input thành artifact chung để team implement và test được.
+Dùng bài này khi BRD, SRS, decision memo, flow, sequence hoặc integration artifact phải carry decision qua nhiều role. Output thực tế không phải document dài hơn; đó là Decision Artifact Skeleton có đủ evidence, ownership và decision clarity cho cuộc trao đổi tiếp theo của dự án.
 
 | Thời điểm trong dự án | Cách áp dụng bài học | Output cụ thể của BA |
 | --- | --- | --- |
-| Discovery | Thêm decision log vào một document. | Decision Artifact Skeleton: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
-| Refinement | Nhờ AI extract assumption từ draft. | Decision Artifact Skeleton: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
-| Delivery | Chuyển unresolved item vào open-question table. | Decision Artifact Skeleton: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
+| Artifact drafting | Thêm decision log vào một document. | Decision Artifact Skeleton thể hiện artifact purpose, audience, diagram clarity, decision trace và handoff quality, trong đó action "Thêm decision log vào một document." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
+| Diagram review | Nhờ AI extract assumption từ draft. | Decision Artifact Skeleton thể hiện source evidence, trong đó action "Nhờ AI extract assumption từ draft." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
+| Handoff | Chuyển unresolved item vào open-question table. | Decision Artifact Skeleton thể hiện decision owner, trong đó action "Chuyển unresolved item vào open-question table." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
 
 ## If this is missing
 
-Nếu thiếu năng lực này, AI vẫn có thể tạo text rất bóng bẩy, nhưng project mất khả năng review. Kết quả thường là rework, assumption ẩn, acceptance criteria yếu hoặc business decision thiếu evidence.
+Nếu thiếu BRD, SRS và artifact quyết định, handoff biến thành bài tập diễn giải, và các team tranh luận lại decision lẽ ra đã được capture trong artifact. BA vẫn có thể khôi phục, nhưng phải chuyển draft AI bóng bẩy trở lại thành evidence, assumption, owner và decision test được.
 
 | Nếu thiếu | Ảnh hưởng tới dự án | Cách khôi phục |
 | --- | --- | --- |
-| Yêu cầu AI tạo complete BRD từ notes | Draft có thể invent decision và làm unresolved area trông như đã approve. | Khôi phục bằng pattern tốt hơn: Generate document skeleton kèm decision gap, evidence map và open approval item. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
-| Dùng wording bóng bẩy để resolve stakeholder conflict | Prose tốt có thể che disagreement thay vì escalate. | Khôi phục bằng pattern tốt hơn: Represent conflict explicit với option, impact, owner và decision date. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
-| Xóa assumption để document sạch hơn | Stakeholder mất visibility vào phần còn cần validation. | Khôi phục bằng pattern tốt hơn: Giữ assumption, dependency và open question trong section được governance. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
+| Yêu cầu AI tạo complete BRD từ notes | Draft có thể invent decision và làm unresolved area trông như đã approve. | Khôi phục bằng pattern tốt hơn: Generate document skeleton kèm decision gap, evidence map và open approval item. Rework Decision Artifact Skeleton cho đến khi nó lộ rõ artifact purpose, audience, diagram clarity, decision trace và handoff quality, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
+| Dùng wording bóng bẩy để resolve stakeholder conflict | Prose tốt có thể che disagreement thay vì escalate. | Khôi phục bằng pattern tốt hơn: Represent conflict explicit với option, impact, owner và decision date. Rework Decision Artifact Skeleton cho đến khi nó lộ rõ artifact purpose, audience, diagram clarity, decision trace và handoff quality, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
+| Xóa assumption để document sạch hơn | Stakeholder mất visibility vào phần còn cần validation. | Khôi phục bằng pattern tốt hơn: Giữ assumption, dependency và open question trong section được governance. Rework Decision Artifact Skeleton cho đến khi nó lộ rõ artifact purpose, audience, diagram clarity, decision trace và handoff quality, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
 
 ## Mental model or core concept
 

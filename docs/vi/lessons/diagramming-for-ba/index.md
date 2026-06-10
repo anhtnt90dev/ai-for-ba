@@ -27,33 +27,33 @@ Bài này quan trọng vì diagram phơi bày reasoning mà prose có thể che 
 
 ## Common difficulties for BAs
 
-Trong dự án thật, chủ đề này khó vì BA phải biến evidence lộn xộn thành decision mà không để AI che mất uncertainty. Hãy chú ý các friction point này trước khi xem output là sẵn sàng.
+Trong Artifact phân tích và diagramming, Diagramming cho BA trở nên khó khi BA phải chuyển decision phức tạp thành artifact mà product, engineering, QA, support và compliance đều inspect được. BA nên kiểm tra các điểm dưới đây trước khi xem artifact có AI hỗ trợ là đủ sẵn sàng cho stakeholder decision hoặc handoff.
 
 | Khó khăn | Vì sao khó trong công việc BA | BA nên xử lý thế nào |
 | --- | --- | --- |
-| Dùng một diagram type cho mọi problem. | Khó vì Diagramming cho BA thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
-| Để AI vẽ diagram mà không check business meaning. | Khó vì Diagramming cho BA thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
-| Bỏ failure path. | Khó vì Diagramming cho BA thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
+| Dùng một diagram type cho mọi problem. | Lỗi "Dùng một diagram type cho mọi problem." xuất hiện khi team bàn về artifact purpose, audience, diagram clarity, decision trace và handoff quality nhưng chưa thống nhất source nào authoritative. AI có thể làm disagreement nghe mượt hơn, nên BA phải giữ uncertainty visible. | Áp dụng control này: review artifact với team phải build, test hoặc operate dựa trên artifact đó. Sau đó dùng pattern tốt hơn "Tạo process, sequence và state view khi problem đi qua cả workflow và system." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
+| Để AI vẽ diagram mà không check business meaning. | Với Diagramming cho BA, điểm khó là Diagram tốt thay đổi cuộc trao đổi; nó làm lộ decision, boundary và gap mà text che mất. Pattern yếu rất dễ xảy ra vì AI có thể tạo câu trả lời trôi chảy trước khi BA check ownership, source freshness hoặc decision right. | Áp dụng control này: review artifact với team phải build, test hoặc operate dựa trên artifact đó. Sau đó dùng pattern tốt hơn "Thay label mơ hồ bằng rule source, threshold, owner hoặc open question." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
+| Bỏ failure path. | Điểm này khó khi Diagram Selection Guide được kỳ vọng hỗ trợ cross-functional handoff artifact. Nếu BA không challenge draft, unsupported assumption có thể đi vào planning, testing hoặc stakeholder communication. | Áp dụng control này: review artifact với team phải build, test hoặc operate dựa trên artifact đó. Sau đó dùng pattern tốt hơn "Chạy diagram review session để identify gap, exception và ownership issue." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
 
 ## Where this applies in real projects
 
-Bài này hữu ích khi BA cần chuyển conversation, policy, design hoặc technical input thành artifact chung để team implement và test được.
+Dùng bài này khi BRD, SRS, decision memo, flow, sequence hoặc integration artifact phải carry decision qua nhiều role. Output thực tế không phải document dài hơn; đó là Diagram Selection Guide có đủ evidence, ownership và decision clarity cho cuộc trao đổi tiếp theo của dự án.
 
 | Thời điểm trong dự án | Cách áp dụng bài học | Output cụ thể của BA |
 | --- | --- | --- |
-| Discovery | Chuyển một requirement nhiều text thành Mermaid diagram. | Diagram Selection Guide: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
-| Refinement | Nhờ AI chọn diagram type phù hợp. | Diagram Selection Guide: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
-| Delivery | Review diagram với developer để tìm boundary gap. | Diagram Selection Guide: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
+| Artifact drafting | Chuyển một requirement nhiều text thành Mermaid diagram. | Diagram Selection Guide thể hiện artifact purpose, audience, diagram clarity, decision trace và handoff quality, trong đó action "Chuyển một requirement nhiều text thành Mermaid diagram." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
+| Diagram review | Nhờ AI chọn diagram type phù hợp. | Diagram Selection Guide thể hiện source evidence, trong đó action "Nhờ AI chọn diagram type phù hợp." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
+| Handoff | Review diagram với developer để tìm boundary gap. | Diagram Selection Guide thể hiện decision owner, trong đó action "Review diagram với developer để tìm boundary gap." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
 
 ## If this is missing
 
-Nếu thiếu năng lực này, AI vẫn có thể tạo text rất bóng bẩy, nhưng project mất khả năng review. Kết quả thường là rework, assumption ẩn, acceptance criteria yếu hoặc business decision thiếu evidence.
+Nếu thiếu Diagramming cho BA, handoff biến thành bài tập diễn giải, và các team tranh luận lại decision lẽ ra đã được capture trong artifact. BA vẫn có thể khôi phục, nhưng phải chuyển draft AI bóng bẩy trở lại thành evidence, assumption, owner và decision test được.
 
 | Nếu thiếu | Ảnh hưởng tới dự án | Cách khôi phục |
 | --- | --- | --- |
-| Generate một diagram rồi thêm vào document | Một view duy nhất có thể che timing, data hoặc responsibility issue. | Khôi phục bằng pattern tốt hơn: Tạo process, sequence và state view khi problem đi qua cả workflow và system. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
-| Accept label diagram mơ hồ | Decision diamond như valid hoặc approved không định nghĩa business rule. | Khôi phục bằng pattern tốt hơn: Thay label mơ hồ bằng rule source, threshold, owner hoặc open question. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
-| Chỉ dùng diagram để presentation | Team bỏ lỡ cơ hội tìm defect trước build. | Khôi phục bằng pattern tốt hơn: Chạy diagram review session để identify gap, exception và ownership issue. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
+| Generate một diagram rồi thêm vào document | Một view duy nhất có thể che timing, data hoặc responsibility issue. | Khôi phục bằng pattern tốt hơn: Tạo process, sequence và state view khi problem đi qua cả workflow và system. Rework Diagram Selection Guide cho đến khi nó lộ rõ artifact purpose, audience, diagram clarity, decision trace và handoff quality, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
+| Accept label diagram mơ hồ | Decision diamond như valid hoặc approved không định nghĩa business rule. | Khôi phục bằng pattern tốt hơn: Thay label mơ hồ bằng rule source, threshold, owner hoặc open question. Rework Diagram Selection Guide cho đến khi nó lộ rõ artifact purpose, audience, diagram clarity, decision trace và handoff quality, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
+| Chỉ dùng diagram để presentation | Team bỏ lỡ cơ hội tìm defect trước build. | Khôi phục bằng pattern tốt hơn: Chạy diagram review session để identify gap, exception và ownership issue. Rework Diagram Selection Guide cho đến khi nó lộ rõ artifact purpose, audience, diagram clarity, decision trace và handoff quality, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
 
 ## Mental model or core concept
 

@@ -13,16 +13,16 @@ description: "The BA must specify reliability behavior in business terms: what c
 
 ## Project context
 
-A payment initiation API can be called multiple times because users double-click, browsers retry, and network requests time out. Duplicate processing would create financial and support risk. In a real delivery environment, this work usually appears under time pressure: stakeholders want clarity, delivery needs a backlog, QA needs testable behavior, and operations needs a process that can survive exceptions. The BA uses AI here to accelerate analysis and synthesis, but the BA remains accountable for evidence, business meaning, stakeholder decisioning, and artifact quality.
+A payment initiation API can be called multiple times because users double-click, browsers retry, and network requests time out. Duplicate processing would create financial and support risk. In Reliability behavior, this work usually starts when API contracts, permissions, errors, audit, and operational behavior must be explicit enough for backend delivery. The BA should treat Payment workflow and API contract as evidence to organize, not as raw material for an unconstrained AI answer. The goal is to make the next decision clearer for the people who own the outcome.
 
 ## BA challenge
 
-The BA must specify reliability behavior in business terms: what counts as duplicate, when retry is safe, what users see during timeout, and how operations reconcile uncertain outcomes. The practical difficulty is that AI can make early material look more complete than it is. A strong BA keeps the output reviewable by separating source-backed facts, assumptions, unsupported claims, decision gaps, and recommended next actions. The objective is not to make the document longer; it is to make the project decision clearer and safer.
+The BA must specify reliability behavior in business terms: what counts as duplicate, when retry is safe, what users see during timeout, and how operations reconcile uncertain outcomes. For Idempotency, Retry, and Timeout Behavior, the practical difficulty is ambiguous service behavior and security gaps. AI can accelerate contract critique, rule extraction, error taxonomy, permission review, and NFR gap detection, but the BA must still expose assumptions, missing approvals, and the point where stakeholder judgment is required.
 
 ## Where AI fits
 
 <div class="ba-workbench-panel">
-AI is useful in this use case when it is constrained to analysis support, pattern detection, structured drafting, and critique. It should not approve scope, invent policy, decide business trade-offs, or replace accountable stakeholder judgment.
+AI fits this Backend and API use case when it is constrained to contract critique, rule extraction, error taxonomy, permission review, and NFR gap detection. A useful first AI task is: Generate duplicate and timeout scenarios. AI should not approve scope, invent policy, bypass API draft, data model, auth rules, error samples, audit policy, and integration needs, or turn a draft into a final decision.
 </div>
 
 - Generate duplicate and timeout scenarios.
@@ -38,7 +38,7 @@ AI is useful in this use case when it is constrained to analysis support, patter
 - Support process
 - Audit and reconciliation requirements
 
-A BA should label these inputs before using AI: source owner, source date, approval status, sensitivity level, and whether the source is fact, opinion, policy, draft, or historical evidence. This preparation prevents the model from treating every input as equally current and authoritative.
+Before prompting for Idempotency, Retry, and Timeout Behavior, label each input by owner, date, approval status, sensitivity, and role in the decision. The most important evidence lens is API draft, data model, auth rules, error samples, audit policy, and integration needs; without it, AI may rank old notes, draft designs, and approved rules as if they had equal authority.
 
 ## BA workflow
 
@@ -49,7 +49,7 @@ A BA should label these inputs before using AI: source owner, source date, appro
 5. Review reconciliation and support process with operations.
 6. Add API and UI acceptance criteria for retry behavior.
 
-The workflow works best as a staged AI collaboration: first organize the evidence, then ask for analysis, then create the artifact, then run a critique pass. The BA should keep a visible decision log throughout the process so that AI-generated suggestions do not silently become approved scope.
+Run the workflow as contract validation before implementation: start with "Define business consequences of duplicate, delayed, and unknown outcomes.", then keep a visible decision log as the artifact moves toward Reliability behavior matrix. This prevents AI suggestions from silently becoming backlog, design, release, or operational commitments.
 
 ## Diagram
 
@@ -73,7 +73,7 @@ flowchart LR
 | Timeout messaging spec | User state, message, next action, and support path | UX and BA | Users understand uncertain outcomes |
 | Reconciliation playbook | Unknown state, investigation, owner, SLA, and correction path | Operations | Operations can resolve exceptions |
 
-These deliverables should be treated as BA-owned artifacts. AI can draft them, but the BA must validate source support, stakeholder meaning, traceability, and whether the artifact is ready for handoff.
+Treat Reliability behavior matrix as a BA-owned backend behavior contract. AI may draft structure, but the BA must validate whether "Retry outcomes are clear" is actually true, whether the artifact is traceable to source evidence, and whether the receiving team can act on it.
 
 ## Prompt to try
 
@@ -83,11 +83,11 @@ Act as a senior AI-aware Business Analyst. Help me apply the "Idempotency, Retry
 
 ## Review checklist
 
-- Every AI-produced statement is tied to a source, assumption, or validation question.
-- The BA has separated drafting assistance from business approval.
-- Workflow steps identify the human owner for decisions, review, and exceptions.
-- Deliverables are traceable to project inputs and can be reviewed by QA, product, or operations.
-- Risk controls are practical enough to be used in a real project meeting.
+- Payment workflow is labeled with owner, date, approval status, and sensitivity.
+- Reliability behavior matrix traces to source evidence and has a named human owner.
+- The AI task stays inside contract critique, rule extraction, error taxonomy, permission review, and NFR gap detection and does not approve scope or policy.
+- The "Duplicate transaction" risk has a practical control: Define idempotency and duplicate response.
+- Open assumptions are converted into validation questions or stakeholder decisions.
 - Success metric: Duplicate and uncertain outcomes are prevented or handled through defined API, UI, and operations behavior.
 
 ## Risks and controls
@@ -99,4 +99,4 @@ Act as a senior AI-aware Business Analyst. Help me apply the "Idempotency, Retry
 | Retry storm | Aggressive retry can overload services | Specify retry limits and ownership |
 | Support confusion | Agents may not know transaction truth | Provide audit and reconciliation playbook |
 
-The key control is to make uncertainty visible. If evidence is weak, the output should create a validation question or decision item, not a final requirement. If the artifact influences delivery, release, compliance, customer experience, or operational workload, the BA should require explicit human review before handoff.
+The main control for the "Duplicate transaction" risk is explicit human accountability: Define idempotency and duplicate response. If evidence is weak, the output should create a validation question or decision item, not a final requirement.

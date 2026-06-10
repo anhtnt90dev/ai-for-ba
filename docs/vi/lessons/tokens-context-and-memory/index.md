@@ -27,33 +27,33 @@ Bài này quan trọng vì hầu hết artifact BA phụ thuộc vào lịch s�
 
 ## Common difficulties for BAs
 
-Trong dự án thật, chủ đề này khó vì BA phải biến evidence lộn xộn thành decision mà không để AI che mất uncertainty. Hãy chú ý các friction point này trước khi xem output là sẵn sàng.
+Trong Nền tảng AI cho Business Analyst, Token, context và trí nhớ trở nên khó khi stakeholder muốn câu trả lời AI thật đơn giản trong khi vấn đề thật phụ thuộc vào capability của model, data readiness, boundary của tool và risk của business decision. BA nên kiểm tra các điểm dưới đây trước khi xem artifact có AI hỗ trợ là đủ sẵn sàng cho stakeholder decision hoặc handoff.
 
 | Khó khăn | Vì sao khó trong công việc BA | BA nên xử lý thế nào |
 | --- | --- | --- |
-| Upload mọi thứ rồi hỏi một câu quá rộng. | Khó vì Token, context và trí nhớ thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
-| Trộn policy cũ và mới mà không label freshness. | Khó vì Token, context và trí nhớ thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
-| Để model summarize mất edge case. | Khó vì Token, context và trí nhớ thường được áp dụng khi deadline gấp, evidence chưa đủ và stakeholder chưa thống nhất. Draft AI nghe trôi chảy có thể làm gap ít visible hơn. | Dùng source label, assumption rõ và review owner cụ thể trước khi chuyển thành backlog, specification hoặc delivery commitment. |
+| Upload mọi thứ rồi hỏi một câu quá rộng. | Lỗi "Upload mọi thứ rồi hỏi một câu quá rộng." xuất hiện khi team bàn về problem fit, model boundary, data dependency và decision risk nhưng chưa thống nhất source nào authoritative. AI có thể làm disagreement nghe mượt hơn, nên BA phải giữ uncertainty visible. | Áp dụng control này: yêu cầu model so sánh option AI và non-AI trước khi draft requirement. Sau đó dùng pattern tốt hơn "Review theo source ID và module, sau đó chạy pass reconcile conflict và omission." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
+| Trộn policy cũ và mới mà không label freshness. | Với Token, context và trí nhớ, điểm khó là Context là bề mặt làm việc của AI analysis; context design kém tạo ra artifact nhìn tự tin nhưng thiếu. Pattern yếu rất dễ xảy ra vì AI có thể tạo câu trả lời trôi chảy trước khi BA check ownership, source freshness hoặc decision right. | Áp dụng control này: yêu cầu model so sánh option AI và non-AI trước khi draft requirement. Sau đó dùng pattern tốt hơn "Label source status, effective date, owner và confidence trước khi analysis." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
+| Để model summarize mất edge case. | Điểm này khó khi Context Pack Checklist được kỳ vọng hỗ trợ solution-shape decision. Nếu BA không challenge draft, unsupported assumption có thể đi vào planning, testing hoặc stakeholder communication. | Áp dụng control này: yêu cầu model so sánh option AI và non-AI trước khi draft requirement. Sau đó dùng pattern tốt hơn "Tạo context pack explicit gồm source map, decision log và open question." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
 
 ## Where this applies in real projects
 
-Bài này hữu ích khi BA cần chuyển conversation, policy, design hoặc technical input thành artifact chung để team implement và test được.
+Dùng bài này khi một AI idea mới đi vào discovery, vendor discussion, roadmap planning hoặc feasibility analysis. Output thực tế không phải document dài hơn; đó là Context Pack Checklist có đủ evidence, ownership và decision clarity cho cuộc trao đổi tiếp theo của dự án.
 
 | Thời điểm trong dự án | Cách áp dụng bài học | Output cụ thể của BA |
 | --- | --- | --- |
-| Discovery | Tạo source ID cho một tài liệu trước khi dùng AI. | Context Pack Checklist: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
-| Refinement | Yêu cầu AI summarize từng section, không summarize cả document một lần. | Context Pack Checklist: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
-| Delivery | Label source old, current và draft riêng. | Context Pack Checklist: artifact review được, nối nội dung học với decision, acceptance criteria, risk hoặc stakeholder alignment. |
+| Idea intake | Tạo source ID cho một tài liệu trước khi dùng AI. | Context Pack Checklist thể hiện problem fit, model boundary, data dependency và decision risk, trong đó action "Tạo source ID cho một tài liệu trước khi dùng AI." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
+| Feasibility review | Yêu cầu AI summarize từng section, không summarize cả document một lần. | Context Pack Checklist thể hiện source evidence, trong đó action "Yêu cầu AI summarize từng section, không summarize cả document một lần." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
+| Solution framing | Label source old, current và draft riêng. | Context Pack Checklist thể hiện decision owner, trong đó action "Label source old, current và draft riêng." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
 
 ## If this is missing
 
-Nếu thiếu năng lực này, AI vẫn có thể tạo text rất bóng bẩy, nhưng project mất khả năng review. Kết quả thường là rework, assumption ẩn, acceptance criteria yếu hoặc business decision thiếu evidence.
+Nếu thiếu Token, context và trí nhớ, team có thể chọn tool trước khi hiểu problem shape, tạo automation tốn kém nhưng không khớp business outcome. BA vẫn có thể khôi phục, nhưng phải chuyển draft AI bóng bẩy trở lại thành evidence, assumption, owner và decision test được.
 
 | Nếu thiếu | Ảnh hưởng tới dự án | Cách khôi phục |
 | --- | --- | --- |
-| Upload toàn bộ tài liệu rồi hỏi tất cả gap | Model có thể summarize rộng và bỏ sót constraint ở phần sau, hiếm gặp hoặc nằm giữa nhiều document. | Khôi phục bằng pattern tốt hơn: Review theo source ID và module, sau đó chạy pass reconcile conflict và omission. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
-| Trộn policy cũ, draft note và decision đã approve không label | Model không thể chắc đâu là current hoặc authoritative. | Khôi phục bằng pattern tốt hơn: Label source status, effective date, owner và confidence trước khi analysis. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
-| Dùng chat history như project memory | Decision quan trọng có thể bị ẩn, đổi thứ tự hoặc người khác không truy cập được. | Khôi phục bằng pattern tốt hơn: Tạo context pack explicit gồm source map, decision log và open question. Sau đó check lại artifact theo evidence, testability, ownership và business impact trước khi share. |
+| Upload toàn bộ tài liệu rồi hỏi tất cả gap | Model có thể summarize rộng và bỏ sót constraint ở phần sau, hiếm gặp hoặc nằm giữa nhiều document. | Khôi phục bằng pattern tốt hơn: Review theo source ID và module, sau đó chạy pass reconcile conflict và omission. Rework Context Pack Checklist cho đến khi nó lộ rõ problem fit, model boundary, data dependency và decision risk, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
+| Trộn policy cũ, draft note và decision đã approve không label | Model không thể chắc đâu là current hoặc authoritative. | Khôi phục bằng pattern tốt hơn: Label source status, effective date, owner và confidence trước khi analysis. Rework Context Pack Checklist cho đến khi nó lộ rõ problem fit, model boundary, data dependency và decision risk, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
+| Dùng chat history như project memory | Decision quan trọng có thể bị ẩn, đổi thứ tự hoặc người khác không truy cập được. | Khôi phục bằng pattern tốt hơn: Tạo context pack explicit gồm source map, decision log và open question. Rework Context Pack Checklist cho đến khi nó lộ rõ problem fit, model boundary, data dependency và decision risk, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
 
 ## Mental model or core concept
 
