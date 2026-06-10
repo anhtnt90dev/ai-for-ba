@@ -16,6 +16,7 @@ let observer = null;
 let debounceTimer = null;
 let retryTimers = [];
 let pendingSvg = null;
+let cloneCounter = 0;
 let panStartX = 0;
 let panStartY = 0;
 let panScrollLeft = 0;
@@ -90,15 +91,76 @@ function getSvgSize(svg) {
   return { width: Math.round(width), height: Math.round(height) };
 }
 
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function replaceIdReferences(value, idMap) {
+  if (!value) {
+    return value;
+  }
+
+  let nextValue = value;
+  idMap.forEach((newId, oldId) => {
+    const escapedOldId = escapeRegExp(oldId);
+    nextValue = nextValue
+      .replace(new RegExp(`url\\(#${escapedOldId}\\)`, "g"), `url(#${newId})`)
+      .replace(new RegExp(`href="#${escapedOldId}"`, "g"), `href="#${newId}"`)
+      .replace(new RegExp(`xlink:href="#${escapedOldId}"`, "g"), `xlink:href="#${newId}"`)
+      .replace(new RegExp(`#${escapedOldId}\\b`, "g"), `#${newId}`);
+  });
+
+  return nextValue;
+}
+
+function namespaceSvgIds(svg) {
+  const prefix = `diagram-zoom-${Date.now()}-${cloneCounter++}-`;
+  const idMap = new Map();
+  const elementsWithIds = [svg, ...svg.querySelectorAll("[id]")];
+
+  elementsWithIds.forEach((element) => {
+    const oldId = element.getAttribute("id");
+    if (!oldId) {
+      return;
+    }
+
+    idMap.set(oldId, `${prefix}${oldId}`);
+  });
+
+  idMap.forEach((newId, oldId) => {
+    elementsWithIds
+      .filter((element) => element.getAttribute("id") === oldId)
+      .forEach((element) => {
+        element.setAttribute("id", newId);
+      });
+  });
+
+  svg.querySelectorAll("*").forEach((element) => {
+    for (const attribute of Array.from(element.attributes)) {
+      const nextValue = replaceIdReferences(attribute.value, idMap);
+      if (nextValue !== attribute.value) {
+        element.setAttribute(attribute.name, nextValue);
+      }
+    }
+  });
+
+  svg.querySelectorAll("style").forEach((styleElement) => {
+    styleElement.textContent = replaceIdReferences(styleElement.textContent || "", idMap);
+  });
+
+  return svg;
+}
+
 function openDiagram(diagram) {
   const svg = diagram.querySelector("svg");
   if (!svg) {
     return;
   }
 
-  const clone = svg.cloneNode(true);
+  const clone = namespaceSvgIds(svg.cloneNode(true));
   const size = getSvgSize(svg);
   clone.removeAttribute("style");
+  clone.removeAttribute("class");
   clone.setAttribute("width", String(size.width));
   clone.setAttribute("height", String(size.height));
   clone.setAttribute("preserveAspectRatio", "xMidYMid meet");
