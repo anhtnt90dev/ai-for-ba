@@ -50,6 +50,15 @@ description: "A BA does not need to be a machine learning engineer, but must kno
   </div>
 </div>
 
+## AI words in plain English
+
+| AI term | Simple meaning | BA use |
+| --- | --- | --- |
+| GenAI | AI that creates text, images, summaries, or drafts from instructions. | Use it for drafting and transformation, not as automatic truth. |
+| Predictive AI | AI that estimates what may happen from historical data. | Use it when the requirement depends on risk, score, or probability. |
+| RAG | AI answers using retrieved trusted documents instead of memory alone. | Use it when users need answers from policies, manuals, or knowledge bases. |
+| Agent | An AI workflow that can take steps across tools under rules. | Specify what it may do alone and when a human must approve. |
+
 ## Reality check: current facts for BAs
 
 <div class="fact-card-grid">

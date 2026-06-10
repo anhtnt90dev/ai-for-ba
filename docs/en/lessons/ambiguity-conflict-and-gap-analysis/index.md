@@ -1,173 +1,271 @@
 ---
 title: "Ambiguity, Conflict, and Gap Analysis"
-description: "AI is useful for requirement defect detection when the BA provides a precise defect taxonomy and severity rubric."
+description: "AI is useful for finding ambiguity only when the BA asks it to show evidence and decision questions."
 ---
 
 # Ambiguity, Conflict, and Gap Analysis
 
 <div class="lesson-meta">
-  <span>Requirements Engineering With AI</span>
+  <span>Requirement Quality</span>
   <span>Software BA</span>
   <span>Core</span>
 </div>
 
+## Story mode: project walkthrough
+
+<div class="story-mode-panel">
+  <p class="story-eyebrow">Story prototype</p>
+  <h3>Fast, flexible, and user friendly means nothing yet</h3>
+  <p class="story-intro">Maya receives a requirement that says the system should be fast, flexible, and user friendly. Instead of asking AI for a final answer, she uses the lesson pattern to make the situation visible, reviewable, and useful for the next project decision.</p>
+  <div class="story-scene-grid">
+<article class="story-scene">
+  <span>Scene 1</span>
+  <b>01</b>
+  <strong>The request is vague</strong>
+  <p>The team gives Maya a requirement that says the system should be fast, flexible, and user friendly and expects a clean answer by the end of the day.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 2</span>
+  <b>02</b>
+  <strong>AI creates a first draft</strong>
+  <p>The draft is helpful, but it hides uncertainty around Conflicting rule and Missing actor.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 3</span>
+  <b>03</b>
+  <strong>Maya turns it into BA evidence</strong>
+  <p>She adds source notes, owners, examples, and a focused Ambiguity Triage Board review table instead of forwarding the raw AI output.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 4</span>
+  <b>04</b>
+  <strong>The team can decide</strong>
+  <p>The final Ambiguity Triage Board shows what is ready, what is risky, and what needs a human decision.</p>
+</article>
+  </div>
+  <div class="visual-takeaway-strip">
+<span>Ambiguity needs context</span>
+<span>Conflict must be reviewable</span>
+<span>Gap becomes a BA question</span>
+  </div>
+</div>
+
+## AI words in plain English
+
+| AI term | Simple meaning | BA use |
+| --- | --- | --- |
+| Ambiguity | Wording that can be understood in more than one way. | Use it to name the work clearly before asking AI to help. |
+| Conflict | Two rules or expectations that cannot both be true. | Use it as a review lens, not as a decorative AI word. |
+| Gap | Missing information needed for a decision or build. | Turn it into a checklist item or stakeholder question. |
+| Decision question | A question that must be answered by an owner. | Define the rule before the team treats the output as ready. |
+
+## Reality check: how this shows up in projects
+
+<div class="fact-card-grid">
+<article class="fact-card">
+  <strong>A fast draft can hide weak thinking</strong>
+  <span>Ask what evidence, owner, and decision the draft depends on.</span>
+  <p>AI can produce Ambiguity Triage Board quickly, but speed does not prove quality.</p>
+</article>
+<article class="fact-card">
+  <strong>Stakeholders need simple language</strong>
+  <span>Explain the term in one sentence before using it in a requirement.</span>
+  <p>Terms like Ambiguity and Conflict can confuse people outside the AI conversation.</p>
+</article>
+<article class="fact-card">
+  <strong>The Ambiguity Triage Board must travel</strong>
+  <span>Make the next action visible for each receiving team.</span>
+  <p>Product, Engineering, QA, and Operations each read this Ambiguity Triage Board differently.</p>
+</article>
+</div>
+
+## Visual walkthrough
+
+```mermaid
+flowchart LR
+    A["Project input"]
+    B["AI first draft"]
+    A --> B
+    C["BA review lenses"]
+    B --> C
+    D["Ambiguity Triage Board"]
+    C --> D
+    E["Team decision"]
+    D --> E
+```
+
+## Visual decision map
+
+<div class="visual-ba-map">
+  <h3>Ambiguity Triage Board: what the BA should look for</h3>
+<div>
+  <strong>Vague word</strong>
+  <span>What the BA must make explicit first.</span>
+  <em>Write it in plain language.</em>
+</div>
+<div>
+  <strong>Conflicting rule</strong>
+  <span>Where AI can help but may also hide uncertainty.</span>
+  <em>Add review criteria.</em>
+</div>
+<div>
+  <strong>Missing actor</strong>
+  <span>What can break if the team skips validation.</span>
+  <em>Create a decision question.</em>
+</div>
+<div>
+  <strong>Decision needed</strong>
+  <span>What makes the artifact safe to hand off.</span>
+  <em>Name owner, evidence, and next step.</em>
+</div>
+</div>
+
 ## Learning outcomes
 
-- Detect ambiguity, conflict, missing rules, and non-testable language.
-- Use severity to prioritize clarification.
-- Rewrite weak requirements into testable alternatives.
+- Explain Ambiguity in simple BA language.
+- Use AI to draft a better Ambiguity Triage Board.
+- Review the output before it becomes scope, test, or delivery work.
 
 ## Why this matters for BA work
 
 <div class="ba-callout">
-AI is useful for requirement defect detection when the BA provides a precise defect taxonomy and severity rubric.
+AI is useful for finding ambiguity only when the BA asks it to show evidence and decision questions.
 </div>
 
-This lesson matters because ambiguous requirements create the most expensive defects when they survive into design, build, and testing. AI can help scan for vague language and contradictions, but the BA must turn findings into a disciplined defect taxonomy. The goal is not better wording; it is earlier decision clarity.
+Ambiguity analysis matters because vague words can survive meetings and become expensive rework later. AI can highlight unclear language, but the BA must convert each unclear phrase into a decision question, example, or measurable rule.
 
 ## Common difficulties for BAs
 
-In Requirements Engineering With AI, Ambiguity, Conflict, and Gap Analysis becomes difficult when business rules, edge cases, quality attributes, and testability constraints must survive the move from conversation into backlog. A BA should inspect the points below before treating an AI-supported artifact as ready for stakeholder decision or delivery handoff.
-
-| Difficulty | Why it is hard in BA work | How a BA should handle it |
+| Difficulty | Why it is hard in BA work | How a BA handles it |
 | --- | --- | --- |
-| Saying 'unclear' without naming the defect. | The mistake "Saying 'unclear' without naming the defect." appears when the team discusses ambiguity, NFR risk, traceability, testability, and rule ownership without agreeing which source is authoritative. AI can smooth over the disagreement, so the BA must keep uncertainty visible. | Apply this control: force every requirement statement to expose actor, trigger, data, rule, exception, and verification signal. Then use the stronger pattern "Classify the issue type, severity, evidence, and owner before rewriting." and ask who must approve the artifact before it affects scope, build, test, or release. |
-| Fixing wording but not the underlying business rule. | For Ambiguity, Conflict, and Gap Analysis, the friction is that AI is useful for requirement defect detection when the BA provides a precise defect taxonomy and severity rubric. The weak pattern is tempting because AI can produce a fluent answer before the BA has checked ownership, source freshness, or decision rights. | Apply this control: force every requirement statement to expose actor, trigger, data, rule, exception, and verification signal. Then use the stronger pattern "Rank ambiguity by business impact, test impact, regulatory impact, and dependency." and ask who must approve the artifact before it affects scope, build, test, or release. |
-| Treating all defects as equal severity. | This becomes hard when Requirement Defect Taxonomy is expected to support the delivery-ready requirement. If the BA does not challenge the draft, unsupported assumptions may enter planning, testing, or stakeholder communication. | Apply this control: force every requirement statement to expose actor, trigger, data, rule, exception, and verification signal. Then use the stronger pattern "Only rewrite source-supported parts and mark the rest as clarification questions." and ask who must approve the artifact before it affects scope, build, test, or release. |
+| The team uses Ambiguity without a shared meaning. | People nod in meetings while imagining different outcomes. | Start with a one-sentence definition and show how it changes the Ambiguity Triage Board. |
+| AI output looks more complete than the input deserves. | A fluent draft can hide missing examples, owners, or edge cases. | Ask AI to list assumptions and missing evidence before drafting the final artifact. |
+| Reviewers need different details. | Product cares about value, Engineering about constraints, QA about testability, and Ops about support. | Add columns or sections for each receiving team instead of writing one generic paragraph. |
 
 ## Where this applies in real projects
 
-Use this lesson when requirements are being refined, split, clarified, tested, or challenged by QA and delivery teams. The practical output is not a longer document; it is Requirement Defect Taxonomy with enough evidence, ownership, and decision clarity for the next project conversation.
-
-| Project moment | How to apply this lesson | Concrete BA output |
+| Project moment | BA move | Concrete output |
 | --- | --- | --- |
-| Backlog refinement | Run taxonomy review on five backlog items. | Requirement Defect Taxonomy showing ambiguity, NFR risk, traceability, testability, and rule ownership, with the action "Run taxonomy review on five backlog items." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
-| QA alignment | Add severity and clarification question to each finding. | Requirement Defect Taxonomy showing source evidence, with the action "Add severity and clarification question to each finding." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
-| Release readiness | Rewrite one vague requirement into testable language. | Requirement Defect Taxonomy showing decision owner, with the action "Rewrite one vague requirement into testable language." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
+| Discovery workshop | Use AI to organize notes into vague word, risks, and open questions. | Ambiguity Triage Board with source notes and owners. |
+| Backlog refinement | Convert AI suggestions into small, testable decisions. | Story, rule, or checklist item with acceptance signal. |
+| Handoff review | Ask AI to critique the artifact from Product, Dev, QA, and Ops viewpoints. | Review table with action owner and status. |
 
 ## If this is missing
 
-If Ambiguity, Conflict, and Gap Analysis is missing, requirements may look complete but still fail implementation, testing, release readiness, or operational support. The BA can still recover, but only by converting the polished AI draft back into explicit evidence, assumptions, owners, and testable decisions.
+If Ambiguity, Conflict, and Gap Analysis is missing, the team may still produce documents, but they will be harder to trust, test, and maintain.
 
 | If missing | Project impact | Recovery action |
 | --- | --- | --- |
-| Ask AI to make the requirement clearer | The model may smooth over a missing decision instead of exposing it. | Recover by using the stronger pattern: Classify the issue type, severity, evidence, and owner before rewriting. Rework Requirement Defect Taxonomy until it exposes ambiguity, NFR risk, traceability, testability, and rule ownership, and do not share it as final until evidence, ownership, and validation path are explicit. |
-| Treat all ambiguity as equal | A vague label and a missing compliance rule carry very different delivery risk. | Recover by using the stronger pattern: Rank ambiguity by business impact, test impact, regulatory impact, and dependency. Rework Requirement Defect Taxonomy until it exposes ambiguity, NFR risk, traceability, testability, and rule ownership, and do not share it as final until evidence, ownership, and validation path are explicit. |
-| Accept AI rewrites that add new detail | The rewrite may invent thresholds, actors, or policy. | Recover by using the stronger pattern: Only rewrite source-supported parts and mark the rest as clarification questions. Rework Requirement Defect Taxonomy until it exposes ambiguity, NFR risk, traceability, testability, and rule ownership, and do not share it as final until evidence, ownership, and validation path are explicit. |
+| No shared explanation for Ambiguity | Stakeholders agree verbally but expect different behavior later. | Add a plain-language definition and example. |
+| No review of AI assumptions | Unsupported ideas become scope. | Move assumptions into an owner-based validation list. |
+| No concrete Ambiguity Triage Board | The learning stays abstract and does not help delivery. | Produce the artifact as a small table, not a long essay. |
 
 ## Mental model or core concept
 
-Requirement review improves when defects have names. Ambiguity, conflict, missing actor, missing data, hidden assumption, and non-testable wording are different problems. AI can scan for these categories quickly, but the BA must decide severity and ask the right clarification question.
+Ambiguity, Conflict, and Gap Analysis is easiest to understand as a BA control: make the messy thing visible, let AI help structure it, then review it with humans before it becomes delivery work.
 
 ## Practical BA example
 
-A requirement says, 'The system should notify users quickly when important changes happen.' AI flags quickly, users, important, channel, retry, opt-out, audit, and SLA as gaps. The BA rewrites it into measurable notification scenarios.
+A requirement says search should be fast and flexible. Maya asks AI to find vague words, then turns them into latency targets, filter behavior, and open questions about result ranking.
 
 ## Diagram
 
 ```mermaid
 flowchart TD
-    A["Requirement text"] --> B{"Defect type"}
-    B --> C["Ambiguity"]
-    B --> D["Conflict"]
-    B --> E["Missing rule"]
-    B --> F["Non-testable"]
-    C --> G["Clarification question"]
-    D --> G
-    E --> G
-    F --> G
-    G --> H["Testable rewrite"]
+    A["Ambiguity Triage Board"]
+    A --> B["Vague word"]
+    A --> C["Conflicting rule"]
+    A --> D["Missing actor"]
+    A --> E["Decision needed"]
 ```
 
 ## BA artifact
 
-### Requirement Defect Taxonomy
+### Ambiguity Triage Board
 
-| Defect type | Signal | Clarification question | Example rewrite |
+| Artifact line | What the BA writes | Ready signal | Risk signal |
 | --- | --- | --- | --- |
-| Ambiguity | Vague terms or undefined actors. | What exact term or actor applies? | Notify account owner within 10 minutes. |
-| Conflict | Two rules cannot both be true. | Which rule wins and when? | VIP SLA overrides standard SLA. |
-| Missing rule | Decision branch lacks condition. | What business rule selects this path? | Reject if KYC status is expired. |
-| Non-testable | No observable expected result. | How will QA verify success? | Email status is logged as sent or failed. |
+| Vague word | Write the concrete vague word in project language. | A stakeholder can confirm it. | It is still a slogan. |
+| Conflicting rule | Describe how AI helps and where it may be wrong. | Review criteria are visible. | The draft hides uncertainty. |
+| Missing actor | Capture the gap, conflict, edge case, or risk. | Owner and next action are named. | The issue is buried in prose. |
+| Decision needed | Define the handoff rule or completion signal. | QA or Engineering can act on it. | No receiving team knows what to do. |
 
 ## AI expert note
 
-Ambiguity analysis should distinguish missing information, conflicting rules, undefined terms, non-testable adjectives, actor confusion, and decision gaps. AI is strong at pattern detection, but expert BA work assigns severity, evidence, owner, and clarification path. A rewrite without decision support is still an assumption.
+As an AI reviewer, I would check whether Ambiguity, Conflict, and Gap Analysis changes the BA artifact in a practical way. Good AI use should expose missing context, create structure, and make review easier. If it only produces nicer wording, the BA has not captured enough value yet.
 
 ## Bad vs better example
 
-| Weak pattern | Why it fails | Stronger BA pattern |
+| Weak pattern | Why it fails | Better BA pattern |
 | --- | --- | --- |
-| Ask AI to make the requirement clearer | The model may smooth over a missing decision instead of exposing it. | Classify the issue type, severity, evidence, and owner before rewriting. |
-| Treat all ambiguity as equal | A vague label and a missing compliance rule carry very different delivery risk. | Rank ambiguity by business impact, test impact, regulatory impact, and dependency. |
-| Accept AI rewrites that add new detail | The rewrite may invent thresholds, actors, or policy. | Only rewrite source-supported parts and mark the rest as clarification questions. |
+| Ask AI to "do Ambiguity, Conflict, and Gap Analysis" with no source context. | The model fills gaps with plausible wording. | Provide source notes, examples, boundaries, and review criteria. |
+| Share the first answer as final. | The team cannot see assumptions or weak evidence. | Run a critique pass and label open decisions. |
+| Use AI terms with no explanation. | Business stakeholders disengage or misunderstand. | Explain each term in plain language before using it in scope. |
 
 ## Stakeholder questions to ask
 
-| Stakeholder | Question | Why the BA asks it |
+| Stakeholder | Question | Why the BA asks |
 | --- | --- | --- |
-| Product owner | Which outcome should Ambiguity, Conflict, and Gap Analysis improve, and what trade-off are you willing to accept? | Prevents AI output from optimizing for a vague goal. |
-| Engineering lead | What source, system, data, or constraint would make Requirement Defect Taxonomy hard to implement? | Turns hidden technical constraints into visible requirement questions. |
-| QA lead | Which rule, exception, or user state must be testable before you trust this artifact? | Converts fluent AI wording into observable behavior. |
-| Operations or support | What failure path would create manual work if the lesson principle "Named defects make review faster" is ignored? | Surfaces support load, exception handling, and operating impact. |
+| Product owner | Which outcome should Ambiguity, Conflict, and Gap Analysis improve first? | Keeps AI work tied to business value. |
+| Engineering lead | Which source, system, or constraint could make Ambiguity Triage Board hard to implement? | Turns hidden technical constraints into requirement questions. |
+| QA lead | Which behavior must be testable before we trust this artifact? | Converts fluent AI text into observable checks. |
+| Operations or support | What failure path creates manual work after release? | Surfaces support load and fallback needs. |
 
 ## Decision log entries
 
 | Decision item | Options to capture | Owner | Evidence needed |
 | --- | --- | --- | --- |
-| Scope boundary for Requirement Defect Taxonomy | Must-have, later, out of scope | Product owner | Business outcome and release constraint |
-| Authority for ambiguity, NFR risk, traceability, testability, and rule ownership | Documented source, stakeholder decision, assumption to validate | BA + accountable stakeholder | Source ID, date, and approval status |
+| Scope boundary for Ambiguity Triage Board | Must-have, later, out of scope | Product owner | Business outcome and release constraint |
+| Authority for Vague word and Conflicting rule | Documented source, stakeholder decision, assumption to validate | BA + accountable stakeholder | Source ID, date, and approval status |
 | Review gate before handoff | Peer review, QA review, engineering review, formal approval | BA lead or project lead | Risk level and receiving-team readiness |
-| Recovery if Saying 'unclear' without naming the defect. | Rewrite, defer, escalate, or run validation workshop | Decision owner | Impact on scope, testability, and release risk |
+| Recovery if Using Ambiguity as jargon instead of a project decision. | Rewrite, defer, escalate, or run validation workshop | Decision owner | Impact on scope, testability, and release risk |
 
 ## Definition of Ready / Done
 
 | Gate | Ready signal | Done signal |
 | --- | --- | --- |
-| Definition of Ready | Sources for ambiguity, NFR risk, traceability, testability, and rule ownership are labeled and current. | Requirement Defect Taxonomy can be reviewed without guessing missing context. |
-| Definition of Ready | Open assumptions have owners and validation paths. | Stakeholders can decide whether to accept, reject, or defer each assumption. |
-| Definition of Done | The artifact applies this control: force every requirement statement to expose actor, trigger, data, rule, exception, and verification signal. | Delivery, QA, or governance teams can act on the artifact. |
-| Definition of Done | The weak pattern "Saying 'unclear' without naming the defect." has been explicitly checked. | No unsupported AI claim is treated as an approved requirement. |
+| Definition of Ready | Sources for Vague word are named. | Ambiguity Triage Board can be reviewed without guessing context. |
+| Definition of Ready | Open assumptions have owners and validation paths. | Stakeholders can accept, reject, or defer each assumption. |
+| Definition of Done | The artifact applies this principle: AI is useful for finding ambiguity only when the BA asks it to show evidence and decision questions. | Delivery, QA, or governance teams can act on it. |
+| Definition of Done | The weak pattern "Ask AI to "do Ambiguity, Conflict, and Gap Analysis" with no source context." has been checked. | No unsupported AI claim is treated as approved scope. |
 
 ## Before and after artifact example
 
 | Before | AI draft risk | Senior BA revision |
 | --- | --- | --- |
-| Prompt: "Create Requirement Defect Taxonomy for Ambiguity, Conflict, and Gap Analysis." | The model may invent source facts, owners, thresholds, or implementation rules. | Add sources, scope boundary, source authority, output schema, and the instruction: Classify the issue type, severity, evidence, and owner before rewriting. |
-| Draft statement: "Run taxonomy review on five backlog items." | Useful action, but not yet tied to a decision owner or acceptance signal. | Rewrite as a project step with owner, expected artifact, review gate, and evidence required before handoff. |
-| Final-looking paragraph about delivery-ready requirement | The tone may hide uncertainty and missing stakeholder approval. | Convert it into a table of fact, assumption, decision needed, risk, and validation question. |
+| Prompt: "Create Ambiguity Triage Board." | The model may invent source facts, owners, or thresholds. | Add sources, scope boundary, output schema, and review criteria. |
+| Draft statement: "Use AI to organize notes into vague word, risks, and open questions." | Useful, but not tied to owner or acceptance signal. | Rewrite as a project step with owner, expected artifact, and review gate. |
+| Final-looking paragraph | Tone may hide uncertainty or missing stakeholder approval. | Convert into fact, assumption, decision needed, risk, and validation question. |
 
 ## Manual verification after AI output
 
 | Verification lens | Manual check | Pass signal |
 | --- | --- | --- |
-| Evidence | Trace every important statement in Requirement Defect Taxonomy to a source, decision, or labeled assumption. | No unsupported claim remains hidden. |
-| Completeness | Check ambiguity, NFR risk, traceability, testability, and rule ownership against the intended audience and receiving team. | The artifact answers what product, engineering, QA, and operations need. |
-| Testability | Ask whether QA can create positive, negative, boundary, and exception scenarios. | Ambiguous wording has been rewritten or logged as a question. |
-| Accountability | Confirm who approves, who reviews, and who acts when the artifact is wrong. | Owners and escalation path are explicit. |
+| Evidence | Trace important statements in Ambiguity Triage Board to a source, decision, or labeled assumption. | No unsupported claim remains hidden. |
+| Completeness | Check Vague word, Conflicting rule, Missing actor, Decision needed against the intended audience. | Product, Engineering, QA, and Operations have what they need. |
+| Testability | Ask whether QA can create positive, negative, boundary, and exception scenarios. | Ambiguous wording is rewritten or logged as a question. |
+| Accountability | Confirm who approves, who reviews, and who acts when output is wrong. | Owners and escalation path are explicit. |
 
 ## AI collaboration prompt
 
 ```text
-Review these requirements using the defect taxonomy. Return defect type, severity, affected text, why it matters, clarification question, and a testable rewrite candidate. Keep unsupported rewrites labeled as assumptions.
+Use the supplied project notes to create a Ambiguity Triage Board. First explain the key terms in simple language. Then produce a table with evidence, assumption, risk, owner question, and recommended next action. Do not invent facts that are not in the notes.
 ```
 
 ## Mistakes to avoid
 
-- Saying 'unclear' without naming the defect.
-- Fixing wording but not the underlying business rule.
-- Treating all defects as equal severity.
-- Letting AI rewrite requirements without source validation.
+- Using Ambiguity as jargon instead of a project decision.
+- Letting AI write around missing evidence.
+- Sending output to another team without owner, status, or next action.
 
 ## Apply this tomorrow
 
-1. Run taxonomy review on five backlog items.
-2. Add severity and clarification question to each finding.
-3. Rewrite one vague requirement into testable language.
-4. Ask a stakeholder to approve the rewritten rule.
+1. Take one current project note and ask AI for a Ambiguity Triage Board.
+2. Add a plain-language definition for Ambiguity.
+3. Run one critique pass from QA or Engineering viewpoint.
 
 ## What a BA should remember
 
-- Named defects make review faster.
-- Clarification questions are as valuable as rewrites.
-- AI can find likely defects; BA confirms business meaning.
+- Ambiguity should help the project move, not sound impressive.
+- AI drafts; BA validates.
+- A small reviewable artifact beats a long generic explanation.

@@ -50,6 +50,15 @@ description: "Context is the working surface of AI analysis; poor context design
   </div>
 </div>
 
+## AI words in plain English
+
+| AI term | Simple meaning | BA use |
+| --- | --- | --- |
+| Token | A small piece of text the model reads or writes. | Long documents consume tokens, so BA must plan source coverage. |
+| Context | The visible working material the model can use now. | Provide source IDs, rules, examples, and the exact question. |
+| Memory | Information kept across interactions, if the tool supports it. | Do not rely on chat memory as the project source of truth. |
+| Chunking | Splitting long material into useful review parts. | Review per module, then reconcile across modules. |
+
 ## Reality check: current facts for BAs
 
 <div class="fact-card-grid">

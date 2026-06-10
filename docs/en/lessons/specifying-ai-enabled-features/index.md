@@ -1,171 +1,271 @@
 ---
 title: "Specifying AI-Enabled Features"
-description: "AI-enabled features require requirements for data, output quality, uncertainty, user control, and monitoring."
+description: "AI-enabled features need requirements for model behavior, uncertainty, UX, data, and human control."
 ---
 
 # Specifying AI-Enabled Features
 
 <div class="lesson-meta">
-  <span>Building AI-Enabled Products as a BA</span>
+  <span>Advanced AI BA Practice</span>
   <span>Software BA</span>
-  <span>Advanced</span>
+  <span>Core</span>
+</div>
+
+## Story mode: project walkthrough
+
+<div class="story-mode-panel">
+  <p class="story-eyebrow">Story prototype</p>
+  <h3>Smart recommendation is not a requirement yet</h3>
+  <p class="story-intro">Maya receives a product manager asking for a smart recommendation widget. Instead of asking AI for a final answer, she uses the lesson pattern to make the situation visible, reviewable, and useful for the next project decision.</p>
+  <div class="story-scene-grid">
+<article class="story-scene">
+  <span>Scene 1</span>
+  <b>01</b>
+  <strong>The request is vague</strong>
+  <p>The team gives Maya a product manager asking for a smart recommendation widget and expects a clean answer by the end of the day.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 2</span>
+  <b>02</b>
+  <strong>AI creates a first draft</strong>
+  <p>The draft is helpful, but it hides uncertainty around AI behavior and Uncertainty.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 3</span>
+  <b>03</b>
+  <strong>Maya turns it into BA evidence</strong>
+  <p>She adds source notes, owners, examples, and a focused AI Feature Requirement Card review table instead of forwarding the raw AI output.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 4</span>
+  <b>04</b>
+  <strong>The team can decide</strong>
+  <p>The final AI Feature Requirement Card shows what is ready, what is risky, and what needs a human decision.</p>
+</article>
+  </div>
+  <div class="visual-takeaway-strip">
+<span>Confidence needs context</span>
+<span>Model boundary must be reviewable</span>
+<span>Human-in-the-loop becomes a BA question</span>
+  </div>
+</div>
+
+## AI words in plain English
+
+| AI term | Simple meaning | BA use |
+| --- | --- | --- |
+| Confidence | A signal of how certain an AI system says it is. | Use it to name the work clearly before asking AI to help. |
+| Model boundary | What the AI should and should not do. | Use it as a review lens, not as a decorative AI word. |
+| Human-in-the-loop | A design where a person reviews or approves AI output. | Turn it into a checklist item or stakeholder question. |
+| Fallback | The safe path when AI cannot answer or act well. | Define the rule before the team treats the output as ready. |
+
+## Reality check: how this shows up in projects
+
+<div class="fact-card-grid">
+<article class="fact-card">
+  <strong>A fast draft can hide weak thinking</strong>
+  <span>Ask what evidence, owner, and decision the draft depends on.</span>
+  <p>AI can produce AI Feature Requirement Card quickly, but speed does not prove quality.</p>
+</article>
+<article class="fact-card">
+  <strong>Stakeholders need simple language</strong>
+  <span>Explain the term in one sentence before using it in a requirement.</span>
+  <p>Terms like Confidence and Model boundary can confuse people outside the AI conversation.</p>
+</article>
+<article class="fact-card">
+  <strong>The AI Feature Requirement Card must travel</strong>
+  <span>Make the next action visible for each receiving team.</span>
+  <p>Product, Engineering, QA, and Operations each read this AI Feature Requirement Card differently.</p>
+</article>
+</div>
+
+## Visual walkthrough
+
+```mermaid
+flowchart LR
+    A["Project input"]
+    B["AI first draft"]
+    A --> B
+    C["BA review lenses"]
+    B --> C
+    D["AI Feature Requirement Card"]
+    C --> D
+    E["Team decision"]
+    D --> E
+```
+
+## Visual decision map
+
+<div class="visual-ba-map">
+  <h3>AI Feature Requirement Card: what the BA should look for</h3>
+<div>
+  <strong>User value</strong>
+  <span>What the BA must make explicit first.</span>
+  <em>Write it in plain language.</em>
+</div>
+<div>
+  <strong>AI behavior</strong>
+  <span>Where AI can help but may also hide uncertainty.</span>
+  <em>Add review criteria.</em>
+</div>
+<div>
+  <strong>Uncertainty</strong>
+  <span>What can break if the team skips validation.</span>
+  <em>Create a decision question.</em>
+</div>
+<div>
+  <strong>Fallback</strong>
+  <span>What makes the artifact safe to hand off.</span>
+  <em>Name owner, evidence, and next step.</em>
+</div>
 </div>
 
 ## Learning outcomes
 
-- Write requirements for probabilistic AI behavior.
-- Specify input, output, confidence, fallback, and evaluation.
-- Avoid deterministic acceptance criteria for non-deterministic systems.
+- Explain Confidence in simple BA language.
+- Use AI to draft a better AI Feature Requirement Card.
+- Review the output before it becomes scope, test, or delivery work.
 
 ## Why this matters for BA work
 
 <div class="ba-callout">
-AI-enabled features require requirements for data, output quality, uncertainty, user control, and monitoring.
+AI-enabled features need requirements for model behavior, uncertainty, UX, data, and human control.
 </div>
 
-This lesson matters because specifying an AI-enabled feature is different from specifying a deterministic screen or workflow. The BA must define task boundary, allowed input, output contract, confidence behavior, evaluation, human review, fallback, monitoring, and user messaging. Without those controls, the feature cannot be tested, trusted, or operated.
+AI-enabled feature specification matters because words like smart, personalized, or automated hide many product decisions. The BA must define model boundaries, confidence behavior, user explanation, fallback, data use, and human control before Engineering can build safely.
 
 ## Common difficulties for BAs
 
-In Building AI-Enabled Products as a BA, Specifying AI-Enabled Features becomes difficult when AI product behavior contains uncertainty, safety boundaries, evaluation design, fallback, monitoring, and user trust concerns. A BA should inspect the points below before treating an AI-supported artifact as ready for stakeholder decision or delivery handoff.
-
-| Difficulty | Why it is hard in BA work | How a BA should handle it |
+| Difficulty | Why it is hard in BA work | How a BA handles it |
 | --- | --- | --- |
-| Writing acceptance criteria as if AI output is always deterministic. | The mistake "Writing acceptance criteria as if AI output is always deterministic." appears when the team discusses AI task boundary, evaluation set, human review, fallback, telemetry, and harm controls without agreeing which source is authoritative. AI can smooth over the disagreement, so the BA must keep uncertainty visible. | Apply this control: make confidence, refusal, escalation, correction capture, and monitoring part of the requirement. Then use the stronger pattern "Define supported intents, source rules, output format, confidence thresholds, and unsupported-question handling." and ask who must approve the artifact before it affects scope, build, test, or release. |
-| Ignoring low-confidence behavior. | For Specifying AI-Enabled Features, the friction is that AI-enabled features require requirements for data, output quality, uncertainty, user control, and monitoring. The weak pattern is tempting because AI can produce a fluent answer before the BA has checked ownership, source freshness, or decision rights. | Apply this control: make confidence, refusal, escalation, correction capture, and monitoring part of the requirement. Then use the stronger pattern "Create curated evaluation cases covering common, edge, adversarial, and fallback scenarios." and ask who must approve the artifact before it affects scope, build, test, or release. |
-| Not specifying correction and feedback loops. | This becomes hard when AI Feature Specification Canvas is expected to support the AI feature operating contract. If the BA does not challenge the draft, unsupported assumptions may enter planning, testing, or stakeholder communication. | Apply this control: make confidence, refusal, escalation, correction capture, and monitoring part of the requirement. Then use the stronger pattern "Specify monitoring events, quality metrics, review cadence, and owner response." and ask who must approve the artifact before it affects scope, build, test, or release. |
+| The team uses Confidence without a shared meaning. | People nod in meetings while imagining different outcomes. | Start with a one-sentence definition and show how it changes the AI Feature Requirement Card. |
+| AI output looks more complete than the input deserves. | A fluent draft can hide missing examples, owners, or edge cases. | Ask AI to list assumptions and missing evidence before drafting the final artifact. |
+| Reviewers need different details. | Product cares about value, Engineering about constraints, QA about testability, and Ops about support. | Add columns or sections for each receiving team instead of writing one generic paragraph. |
 
 ## Where this applies in real projects
 
-Use this lesson when the BA is specifying a feature where AI output changes user action, operational workload, or customer experience. The practical output is not a longer document; it is AI Feature Specification Canvas with enough evidence, ownership, and decision clarity for the next project conversation.
-
-| Project moment | How to apply this lesson | Concrete BA output |
+| Project moment | BA move | Concrete output |
 | --- | --- | --- |
-| AI behavior design | Add a confidence threshold question to one AI feature idea. | AI Feature Specification Canvas showing AI task boundary, evaluation set, human review, fallback, telemetry, and harm controls, with the action "Add a confidence threshold question to one AI feature idea." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
-| Evaluation planning | Define the output contract before UI design. | AI Feature Specification Canvas showing source evidence, with the action "Define the output contract before UI design." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
-| Operations handoff | Write one fallback scenario. | AI Feature Specification Canvas showing decision owner, with the action "Write one fallback scenario." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
+| Discovery workshop | Use AI to organize notes into user value, risks, and open questions. | AI Feature Requirement Card with source notes and owners. |
+| Backlog refinement | Convert AI suggestions into small, testable decisions. | Story, rule, or checklist item with acceptance signal. |
+| Handoff review | Ask AI to critique the artifact from Product, Dev, QA, and Ops viewpoints. | Review table with action owner and status. |
 
 ## If this is missing
 
-If Specifying AI-Enabled Features is missing, the feature may ship without clear confidence rules, human review triggers, fallback paths, or monitoring events. The BA can still recover, but only by converting the polished AI draft back into explicit evidence, assumptions, owners, and testable decisions.
+If Specifying AI-Enabled Features is missing, the team may still produce documents, but they will be harder to trust, test, and maintain.
 
 | If missing | Project impact | Recovery action |
 | --- | --- | --- |
-| Specify that the AI assistant should answer user questions | The task boundary, allowed sources, refusal behavior, and quality bar are undefined. | Recover by using the stronger pattern: Define supported intents, source rules, output format, confidence thresholds, and unsupported-question handling. Rework AI Feature Specification Canvas until it exposes AI task boundary, evaluation set, human review, fallback, telemetry, and harm controls, and do not share it as final until evidence, ownership, and validation path are explicit. |
-| Use demo examples as acceptance criteria | Demo cases are usually optimistic and do not prove production readiness. | Recover by using the stronger pattern: Create curated evaluation cases covering common, edge, adversarial, and fallback scenarios. Rework AI Feature Specification Canvas until it exposes AI task boundary, evaluation set, human review, fallback, telemetry, and harm controls, and do not share it as final until evidence, ownership, and validation path are explicit. |
-| Ignore post-launch monitoring | AI behavior can drift as data, prompts, sources, or user behavior change. | Recover by using the stronger pattern: Specify monitoring events, quality metrics, review cadence, and owner response. Rework AI Feature Specification Canvas until it exposes AI task boundary, evaluation set, human review, fallback, telemetry, and harm controls, and do not share it as final until evidence, ownership, and validation path are explicit. |
+| No shared explanation for Confidence | Stakeholders agree verbally but expect different behavior later. | Add a plain-language definition and example. |
+| No review of AI assumptions | Unsupported ideas become scope. | Move assumptions into an owner-based validation list. |
+| No concrete AI Feature Requirement Card | The learning stays abstract and does not help delivery. | Produce the artifact as a small table, not a long essay. |
 
 ## Mental model or core concept
 
-AI features do not behave like ordinary deterministic features. The BA must specify what task the model performs, what data it can use, what output contract it must follow, what confidence threshold matters, how users correct it, when humans review it, and how quality is monitored after release.
+Specifying AI-Enabled Features is easiest to understand as a BA control: make the messy thing visible, let AI help structure it, then review it with humans before it becomes delivery work.
 
 ## Practical BA example
 
-A support triage assistant classifies tickets into billing, technical, and policy categories. The BA specifies training examples, output labels, confidence thresholds, escalation to human review, correction capture, audit record, and evaluation metrics such as precision on high-risk categories.
+For a recommendation widget, Maya specifies when recommendations appear, why an item is shown, how users can dismiss it, what happens when confidence is low, and which data is not allowed.
 
 ## Diagram
 
 ```mermaid
-flowchart LR
-    A["User goal"] --> B["Allowed inputs"]
-    B --> C["AI task"]
-    C --> D["Output contract"]
-    D --> E{"Confidence threshold"}
-    E -->|High| F["User action"]
-    E -->|Low| G["Human review / fallback"]
-    F --> H["Monitoring"]
-    G --> H
+flowchart TD
+    A["AI Feature Requirement Card"]
+    A --> B["User value"]
+    A --> C["AI behavior"]
+    A --> D["Uncertainty"]
+    A --> E["Fallback"]
 ```
 
 ## BA artifact
 
-### AI Feature Specification Canvas
+### AI Feature Requirement Card
 
-| Area | Requirement question | Example requirement | Acceptance signal |
+| Artifact line | What the BA writes | Ready signal | Risk signal |
 | --- | --- | --- | --- |
-| Model task | What does AI decide or generate? | Classify ticket into approved category list. | Output category is one of defined labels. |
-| Input data | What context is allowed? | Use ticket text, account tier, and product area. | No restricted PII included. |
-| Uncertainty | What happens below confidence threshold? | Below 0.75 route to human triage. | Low-confidence cases enter review queue. |
-| Evaluation | How is quality measured? | Precision for billing category >= 90%. | Evaluation set passes threshold. |
+| User value | Write the concrete user value in project language. | A stakeholder can confirm it. | It is still a slogan. |
+| AI behavior | Describe how AI helps and where it may be wrong. | Review criteria are visible. | The draft hides uncertainty. |
+| Uncertainty | Capture the gap, conflict, edge case, or risk. | Owner and next action are named. | The issue is buried in prose. |
+| Fallback | Define the handoff rule or completion signal. | QA or Engineering can act on it. | No receiving team knows what to do. |
 
 ## AI expert note
 
-The expert BA treats the model as one component inside a product system. Requirements should cover data flow, prompt or retrieval context, model behavior constraints, evaluation dataset, acceptance thresholds, misuse cases, audit logs, and operational ownership. The user experience must communicate uncertainty honestly without creating unnecessary friction.
+As an AI reviewer, I would check whether Specifying AI-Enabled Features changes the BA artifact in a practical way. Good AI use should expose missing context, create structure, and make review easier. If it only produces nicer wording, the BA has not captured enough value yet.
 
 ## Bad vs better example
 
-| Weak pattern | Why it fails | Stronger BA pattern |
+| Weak pattern | Why it fails | Better BA pattern |
 | --- | --- | --- |
-| Specify that the AI assistant should answer user questions | The task boundary, allowed sources, refusal behavior, and quality bar are undefined. | Define supported intents, source rules, output format, confidence thresholds, and unsupported-question handling. |
-| Use demo examples as acceptance criteria | Demo cases are usually optimistic and do not prove production readiness. | Create curated evaluation cases covering common, edge, adversarial, and fallback scenarios. |
-| Ignore post-launch monitoring | AI behavior can drift as data, prompts, sources, or user behavior change. | Specify monitoring events, quality metrics, review cadence, and owner response. |
+| Ask AI to "do Specifying AI-Enabled Features" with no source context. | The model fills gaps with plausible wording. | Provide source notes, examples, boundaries, and review criteria. |
+| Share the first answer as final. | The team cannot see assumptions or weak evidence. | Run a critique pass and label open decisions. |
+| Use AI terms with no explanation. | Business stakeholders disengage or misunderstand. | Explain each term in plain language before using it in scope. |
 
 ## Stakeholder questions to ask
 
-| Stakeholder | Question | Why the BA asks it |
+| Stakeholder | Question | Why the BA asks |
 | --- | --- | --- |
-| Product owner | Which outcome should Specifying AI-Enabled Features improve, and what trade-off are you willing to accept? | Prevents AI output from optimizing for a vague goal. |
-| Engineering lead | What source, system, data, or constraint would make AI Feature Specification Canvas hard to implement? | Turns hidden technical constraints into visible requirement questions. |
-| QA lead | Which rule, exception, or user state must be testable before you trust this artifact? | Converts fluent AI wording into observable behavior. |
-| Operations or support | What failure path would create manual work if the lesson principle "AI requirements must describe uncertainty" is ignored? | Surfaces support load, exception handling, and operating impact. |
+| Product owner | Which outcome should Specifying AI-Enabled Features improve first? | Keeps AI work tied to business value. |
+| Engineering lead | Which source, system, or constraint could make AI Feature Requirement Card hard to implement? | Turns hidden technical constraints into requirement questions. |
+| QA lead | Which behavior must be testable before we trust this artifact? | Converts fluent AI text into observable checks. |
+| Operations or support | What failure path creates manual work after release? | Surfaces support load and fallback needs. |
 
 ## Decision log entries
 
 | Decision item | Options to capture | Owner | Evidence needed |
 | --- | --- | --- | --- |
-| Scope boundary for AI Feature Specification Canvas | Must-have, later, out of scope | Product owner | Business outcome and release constraint |
-| Authority for AI task boundary, evaluation set, human review, fallback, telemetry, and harm controls | Documented source, stakeholder decision, assumption to validate | BA + accountable stakeholder | Source ID, date, and approval status |
+| Scope boundary for AI Feature Requirement Card | Must-have, later, out of scope | Product owner | Business outcome and release constraint |
+| Authority for User value and AI behavior | Documented source, stakeholder decision, assumption to validate | BA + accountable stakeholder | Source ID, date, and approval status |
 | Review gate before handoff | Peer review, QA review, engineering review, formal approval | BA lead or project lead | Risk level and receiving-team readiness |
-| Recovery if Writing acceptance criteria as if AI output is always deterministic. | Rewrite, defer, escalate, or run validation workshop | Decision owner | Impact on scope, testability, and release risk |
+| Recovery if Using Confidence as jargon instead of a project decision. | Rewrite, defer, escalate, or run validation workshop | Decision owner | Impact on scope, testability, and release risk |
 
 ## Definition of Ready / Done
 
 | Gate | Ready signal | Done signal |
 | --- | --- | --- |
-| Definition of Ready | Sources for AI task boundary, evaluation set, human review, fallback, telemetry, and harm controls are labeled and current. | AI Feature Specification Canvas can be reviewed without guessing missing context. |
-| Definition of Ready | Open assumptions have owners and validation paths. | Stakeholders can decide whether to accept, reject, or defer each assumption. |
-| Definition of Done | The artifact applies this control: make confidence, refusal, escalation, correction capture, and monitoring part of the requirement. | Delivery, QA, or governance teams can act on the artifact. |
-| Definition of Done | The weak pattern "Writing acceptance criteria as if AI output is always deterministic." has been explicitly checked. | No unsupported AI claim is treated as an approved requirement. |
+| Definition of Ready | Sources for User value are named. | AI Feature Requirement Card can be reviewed without guessing context. |
+| Definition of Ready | Open assumptions have owners and validation paths. | Stakeholders can accept, reject, or defer each assumption. |
+| Definition of Done | The artifact applies this principle: AI-enabled features need requirements for model behavior, uncertainty, UX, data, and human control. | Delivery, QA, or governance teams can act on it. |
+| Definition of Done | The weak pattern "Ask AI to "do Specifying AI-Enabled Features" with no source context." has been checked. | No unsupported AI claim is treated as approved scope. |
 
 ## Before and after artifact example
 
 | Before | AI draft risk | Senior BA revision |
 | --- | --- | --- |
-| Prompt: "Create AI Feature Specification Canvas for Specifying AI-Enabled Features." | The model may invent source facts, owners, thresholds, or implementation rules. | Add sources, scope boundary, source authority, output schema, and the instruction: Define supported intents, source rules, output format, confidence thresholds, and unsupported-question handling. |
-| Draft statement: "Add a confidence threshold question to one AI feature idea." | Useful action, but not yet tied to a decision owner or acceptance signal. | Rewrite as a project step with owner, expected artifact, review gate, and evidence required before handoff. |
-| Final-looking paragraph about AI feature operating contract | The tone may hide uncertainty and missing stakeholder approval. | Convert it into a table of fact, assumption, decision needed, risk, and validation question. |
+| Prompt: "Create AI Feature Requirement Card." | The model may invent source facts, owners, or thresholds. | Add sources, scope boundary, output schema, and review criteria. |
+| Draft statement: "Use AI to organize notes into user value, risks, and open questions." | Useful, but not tied to owner or acceptance signal. | Rewrite as a project step with owner, expected artifact, and review gate. |
+| Final-looking paragraph | Tone may hide uncertainty or missing stakeholder approval. | Convert into fact, assumption, decision needed, risk, and validation question. |
 
 ## Manual verification after AI output
 
 | Verification lens | Manual check | Pass signal |
 | --- | --- | --- |
-| Evidence | Trace every important statement in AI Feature Specification Canvas to a source, decision, or labeled assumption. | No unsupported claim remains hidden. |
-| Completeness | Check AI task boundary, evaluation set, human review, fallback, telemetry, and harm controls against the intended audience and receiving team. | The artifact answers what product, engineering, QA, and operations need. |
-| Testability | Ask whether QA can create positive, negative, boundary, and exception scenarios. | Ambiguous wording has been rewritten or logged as a question. |
-| Accountability | Confirm who approves, who reviews, and who acts when the artifact is wrong. | Owners and escalation path are explicit. |
+| Evidence | Trace important statements in AI Feature Requirement Card to a source, decision, or labeled assumption. | No unsupported claim remains hidden. |
+| Completeness | Check User value, AI behavior, Uncertainty, Fallback against the intended audience. | Product, Engineering, QA, and Operations have what they need. |
+| Testability | Ask whether QA can create positive, negative, boundary, and exception scenarios. | Ambiguous wording is rewritten or logged as a question. |
+| Accountability | Confirm who approves, who reviews, and who acts when output is wrong. | Owners and escalation path are explicit. |
 
 ## AI collaboration prompt
 
 ```text
-Specify this AI-enabled feature using: user goal, AI task, allowed inputs, prohibited inputs, output contract, confidence threshold, human review trigger, fallback behavior, user correction, audit needs, safety constraints, evaluation metrics, and monitoring events.
+Use the supplied project notes to create a AI Feature Requirement Card. First explain the key terms in simple language. Then produce a table with evidence, assumption, risk, owner question, and recommended next action. Do not invent facts that are not in the notes.
 ```
 
 ## Mistakes to avoid
 
-- Writing acceptance criteria as if AI output is always deterministic.
-- Ignoring low-confidence behavior.
-- Not specifying correction and feedback loops.
-- Measuring only user satisfaction without output quality metrics.
+- Using Confidence as jargon instead of a project decision.
+- Letting AI write around missing evidence.
+- Sending output to another team without owner, status, or next action.
 
 ## Apply this tomorrow
 
-1. Add a confidence threshold question to one AI feature idea.
-2. Define the output contract before UI design.
-3. Write one fallback scenario.
-4. Ask data or engineering what evaluation set is available.
+1. Take one current project note and ask AI for a AI Feature Requirement Card.
+2. Add a plain-language definition for Confidence.
+3. Run one critique pass from QA or Engineering viewpoint.
 
 ## What a BA should remember
 
-- AI requirements must describe uncertainty.
-- Output quality is part of functional behavior.
-- Human review and fallback are product features, not afterthoughts.
+- Confidence should help the project move, not sound impressive.
+- AI drafts; BA validates.
+- A small reviewable artifact beats a long generic explanation.

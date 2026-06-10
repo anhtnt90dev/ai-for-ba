@@ -1,169 +1,271 @@
 ---
 title: "Discovery With AI"
-description: "AI can widen discovery, but the BA must still decide what needs validation with real stakeholders."
+description: "AI helps discovery when the BA uses it to organize evidence, not replace stakeholder learning."
 ---
 
 # Discovery With AI
 
 <div class="lesson-meta">
-  <span>AI-Augmented BA Workflow</span>
+  <span>AI-Augmented Discovery</span>
   <span>Software BA</span>
   <span>Core</span>
 </div>
 
+## Story mode: project walkthrough
+
+<div class="story-mode-panel">
+  <p class="story-eyebrow">Story prototype</p>
+  <h3>Maya turns messy discovery notes into a decision board</h3>
+  <p class="story-intro">Maya receives messy interview notes, workshop photos, and support tickets. Instead of asking AI for a final answer, she uses the lesson pattern to make the situation visible, reviewable, and useful for the next project decision.</p>
+  <div class="story-scene-grid">
+<article class="story-scene">
+  <span>Scene 1</span>
+  <b>01</b>
+  <strong>The request is vague</strong>
+  <p>The team gives Maya messy interview notes, workshop photos, and support tickets and expects a clean answer by the end of the day.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 2</span>
+  <b>02</b>
+  <strong>AI creates a first draft</strong>
+  <p>The draft is helpful, but it hides uncertainty around Evidence theme and Open assumption.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 3</span>
+  <b>03</b>
+  <strong>Maya turns it into BA evidence</strong>
+  <p>She adds source notes, owners, examples, and a focused Discovery Evidence Board review table instead of forwarding the raw AI output.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 4</span>
+  <b>04</b>
+  <strong>The team can decide</strong>
+  <p>The final Discovery Evidence Board shows what is ready, what is risky, and what needs a human decision.</p>
+</article>
+  </div>
+  <div class="visual-takeaway-strip">
+<span>Discovery needs context</span>
+<span>Synthesis must be reviewable</span>
+<span>Cluster becomes a BA question</span>
+  </div>
+</div>
+
+## AI words in plain English
+
+| AI term | Simple meaning | BA use |
+| --- | --- | --- |
+| Discovery | Early project learning about users, problems, goals, and constraints. | Use it to name the work clearly before asking AI to help. |
+| Synthesis | Turning messy notes into themes, questions, and decisions. | Use it as a review lens, not as a decorative AI word. |
+| Cluster | Grouping similar notes so patterns become easier to see. | Turn it into a checklist item or stakeholder question. |
+| Hypothesis | A possible explanation that still needs validation. | Define the rule before the team treats the output as ready. |
+
+## Reality check: how this shows up in projects
+
+<div class="fact-card-grid">
+<article class="fact-card">
+  <strong>A fast draft can hide weak thinking</strong>
+  <span>Ask what evidence, owner, and decision the draft depends on.</span>
+  <p>AI can produce Discovery Evidence Board quickly, but speed does not prove quality.</p>
+</article>
+<article class="fact-card">
+  <strong>Stakeholders need simple language</strong>
+  <span>Explain the term in one sentence before using it in a requirement.</span>
+  <p>Terms like Discovery and Synthesis can confuse people outside the AI conversation.</p>
+</article>
+<article class="fact-card">
+  <strong>The Discovery Evidence Board must travel</strong>
+  <span>Make the next action visible for each receiving team.</span>
+  <p>Product, Engineering, QA, and Operations each read this Discovery Evidence Board differently.</p>
+</article>
+</div>
+
+## Visual walkthrough
+
+```mermaid
+flowchart LR
+    A["Project input"]
+    B["AI first draft"]
+    A --> B
+    C["BA review lenses"]
+    B --> C
+    D["Discovery Evidence Board"]
+    C --> D
+    E["Team decision"]
+    D --> E
+```
+
+## Visual decision map
+
+<div class="visual-ba-map">
+  <h3>Discovery Evidence Board: what the BA should look for</h3>
+<div>
+  <strong>Stakeholder pain</strong>
+  <span>What the BA must make explicit first.</span>
+  <em>Write it in plain language.</em>
+</div>
+<div>
+  <strong>Evidence theme</strong>
+  <span>Where AI can help but may also hide uncertainty.</span>
+  <em>Add review criteria.</em>
+</div>
+<div>
+  <strong>Open assumption</strong>
+  <span>What can break if the team skips validation.</span>
+  <em>Create a decision question.</em>
+</div>
+<div>
+  <strong>Next interview</strong>
+  <span>What makes the artifact safe to hand off.</span>
+  <em>Name owner, evidence, and next step.</em>
+</div>
+</div>
+
 ## Learning outcomes
 
-- Use AI to generate hypotheses and interview plans.
-- Separate assumptions, evidence, and decisions before workshops.
-- Turn AI output into a better discovery agenda.
+- Explain Discovery in simple BA language.
+- Use AI to draft a better Discovery Evidence Board.
+- Review the output before it becomes scope, test, or delivery work.
 
 ## Why this matters for BA work
 
 <div class="ba-callout">
-AI can widen discovery, but the BA must still decide what needs validation with real stakeholders.
+AI helps discovery when the BA uses it to organize evidence, not replace stakeholder learning.
 </div>
 
-This lesson matters because AI can make discovery feel faster while silently replacing uncertainty with invented completeness. The BA's value is to turn AI suggestions into hypotheses, not conclusions. A good discovery workflow uses AI to widen the question space, then uses evidence, workshops, interviews, and data to decide what is true.
+Discovery with AI matters because early project notes are usually messy, partial, and politically sensitive. AI can help sort the mess, but the BA still decides which theme is evidence, which is only a hypothesis, and which question must go back to a stakeholder.
 
 ## Common difficulties for BAs
 
-In AI-Augmented BA Workflow, Discovery With AI becomes difficult when messy notes, half-validated decisions, and incomplete stakeholder context must become a shared artifact quickly. A BA should inspect the points below before treating an AI-supported artifact as ready for stakeholder decision or delivery handoff.
-
-| Difficulty | Why it is hard in BA work | How a BA should handle it |
+| Difficulty | Why it is hard in BA work | How a BA handles it |
 | --- | --- | --- |
-| Asking AI to write requirements before uncertainty is mapped. | The mistake "Asking AI to write requirements before uncertainty is mapped." appears when the team discusses source attribution, conflict visibility, workshop decision flow, and backlog readiness without agreeing which source is authoritative. AI can smooth over the disagreement, so the BA must keep uncertainty visible. | Apply this control: keep speaker/source attribution visible until the responsible stakeholder confirms meaning. Then use the stronger pattern "Ask for hypotheses, assumptions, evidence needed, and workshop questions first." and ask who must approve the artifact before it affects scope, build, test, or release. |
-| Treating generated questions as complete discovery. | For Discovery With AI, the friction is that AI can widen discovery, but the BA must still decide what needs validation with real stakeholders. The weak pattern is tempting because AI can produce a fluent answer before the BA has checked ownership, source freshness, or decision rights. | Apply this control: keep speaker/source attribution visible until the responsible stakeholder confirms meaning. Then use the stronger pattern "Validate actors against process maps, org roles, customer journeys, and decision rights." and ask who must approve the artifact before it affects scope, build, test, or release. |
-| Ignoring decision owners. | This becomes hard when Discovery Hypothesis Backlog is expected to support the validated working artifact. If the BA does not challenge the draft, unsupported assumptions may enter planning, testing, or stakeholder communication. | Apply this control: keep speaker/source attribution visible until the responsible stakeholder confirms meaning. Then use the stronger pattern "Rank hypotheses by business impact, evidence gap, and decision urgency." and ask who must approve the artifact before it affects scope, build, test, or release. |
+| The team uses Discovery without a shared meaning. | People nod in meetings while imagining different outcomes. | Start with a one-sentence definition and show how it changes the Discovery Evidence Board. |
+| AI output looks more complete than the input deserves. | A fluent draft can hide missing examples, owners, or edge cases. | Ask AI to list assumptions and missing evidence before drafting the final artifact. |
+| Reviewers need different details. | Product cares about value, Engineering about constraints, QA about testability, and Ops about support. | Add columns or sections for each receiving team instead of writing one generic paragraph. |
 
 ## Where this applies in real projects
 
-Use this lesson when discovery or refinement produces more raw input than the BA can safely synthesize by hand in the available time. The practical output is not a longer document; it is Discovery Hypothesis Backlog with enough evidence, ownership, and decision clarity for the next project conversation.
-
-| Project moment | How to apply this lesson | Concrete BA output |
+| Project moment | BA move | Concrete output |
 | --- | --- | --- |
-| Discovery | Turn your next workshop agenda into hypotheses. | Discovery Hypothesis Backlog showing source attribution, conflict visibility, workshop decision flow, and backlog readiness, with the action "Turn your next workshop agenda into hypotheses." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
-| Synthesis | Ask AI for missing stakeholder groups. | Discovery Hypothesis Backlog showing source evidence, with the action "Ask AI for missing stakeholder groups." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
-| Refinement | Add evidence needed next to every assumption. | Discovery Hypothesis Backlog showing decision owner, with the action "Add evidence needed next to every assumption." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
+| Discovery workshop | Use AI to organize notes into stakeholder pain, risks, and open questions. | Discovery Evidence Board with source notes and owners. |
+| Backlog refinement | Convert AI suggestions into small, testable decisions. | Story, rule, or checklist item with acceptance signal. |
+| Handoff review | Ask AI to critique the artifact from Product, Dev, QA, and Ops viewpoints. | Review table with action owner and status. |
 
 ## If this is missing
 
-If Discovery With AI is missing, important signals from interviews, tickets, process notes, or decisions may be lost before they reach the backlog. The BA can still recover, but only by converting the polished AI draft back into explicit evidence, assumptions, owners, and testable decisions.
+If Discovery With AI is missing, the team may still produce documents, but they will be harder to trust, test, and maintain.
 
 | If missing | Project impact | Recovery action |
 | --- | --- | --- |
-| Ask AI to write requirements from a business problem | The model will collapse discovery uncertainty into premature scope. | Recover by using the stronger pattern: Ask for hypotheses, assumptions, evidence needed, and workshop questions first. Rework Discovery Hypothesis Backlog until it exposes source attribution, conflict visibility, workshop decision flow, and backlog readiness, and do not share it as final until evidence, ownership, and validation path are explicit. |
-| Use AI-generated stakeholder lists as final | Important internal owners, regulators, or operational users may be absent. | Recover by using the stronger pattern: Validate actors against process maps, org roles, customer journeys, and decision rights. Rework Discovery Hypothesis Backlog until it exposes source attribution, conflict visibility, workshop decision flow, and backlog readiness, and do not share it as final until evidence, ownership, and validation path are explicit. |
-| Prioritize questions that are easy to answer | The team may avoid the riskiest assumptions until delivery. | Recover by using the stronger pattern: Rank hypotheses by business impact, evidence gap, and decision urgency. Rework Discovery Hypothesis Backlog until it exposes source attribution, conflict visibility, workshop decision flow, and backlog readiness, and do not share it as final until evidence, ownership, and validation path are explicit. |
+| No shared explanation for Discovery | Stakeholders agree verbally but expect different behavior later. | Add a plain-language definition and example. |
+| No review of AI assumptions | Unsupported ideas become scope. | Move assumptions into an owner-based validation list. |
+| No concrete Discovery Evidence Board | The learning stays abstract and does not help delivery. | Produce the artifact as a small table, not a long essay. |
 
 ## Mental model or core concept
 
-Discovery is about reducing uncertainty, not producing documents. AI helps by proposing actors, constraints, risks, and questions, but its output should become a hypothesis backlog. The BA then validates or rejects those hypotheses with users, data, policy, and stakeholder decisions.
+Discovery With AI is easiest to understand as a BA control: make the messy thing visible, let AI help structure it, then review it with humans before it becomes delivery work.
 
 ## Practical BA example
 
-For claim approval automation, AI suggests fraud checks, SLA tiers, escalation paths, and missing document scenarios. The BA converts these into workshop questions and prioritizes the riskiest assumptions: who can override, what policy applies, and what counts as a valid exception.
+After three workshops, Maya has sticky notes, ticket exports, and two conflicting manager opinions. She asks AI to cluster pains, then manually adds source IDs and follow-up questions before turning the output into a Discovery Evidence Board.
 
 ## Diagram
 
 ```mermaid
 flowchart TD
-    A["Business problem"] --> B["AI expands hypotheses"]
-    B --> C["BA groups assumptions"]
-    C --> D{"Risky or unknown?"}
-    D -->|Yes| E["Validate in workshop"]
-    D -->|No| F["Defer or document"]
-    E --> G["Decision-ready insight"]
+    A["Discovery Evidence Board"]
+    A --> B["Stakeholder pain"]
+    A --> C["Evidence theme"]
+    A --> D["Open assumption"]
+    A --> E["Next interview"]
 ```
 
 ## BA artifact
 
-### Discovery Hypothesis Backlog
+### Discovery Evidence Board
 
-| Hypothesis | Evidence needed | Validation method | Decision owner |
+| Artifact line | What the BA writes | Ready signal | Risk signal |
 | --- | --- | --- | --- |
-| High-value claims need manager review. | Policy threshold and historical claim data. | Policy review plus data sample. | Claims operations lead |
-| Missing documents trigger customer notification. | Current support script and customer journey. | Interview support agents. | Customer service manager |
-| Fraud risk changes SLA. | Fraud rules and compliance constraints. | Compliance workshop. | Risk owner |
-| Manual override must be audited. | Audit policy and regulator expectation. | Security review. | Compliance lead |
+| Stakeholder pain | Write the concrete stakeholder pain in project language. | A stakeholder can confirm it. | It is still a slogan. |
+| Evidence theme | Describe how AI helps and where it may be wrong. | Review criteria are visible. | The draft hides uncertainty. |
+| Open assumption | Capture the gap, conflict, edge case, or risk. | Owner and next action are named. | The issue is buried in prose. |
+| Next interview | Define the handoff rule or completion signal. | QA or Engineering can act on it. | No receiving team knows what to do. |
 
 ## AI expert note
 
-AI is useful in discovery because it can generate alternative actors, edge cases, risks, and interview angles quickly. The danger is anchoring: once a fluent list exists, stakeholders may stop exploring. The BA should explicitly label hypothesis, evidence needed, validation method, and decision owner before converting anything into requirements.
+As an AI reviewer, I would check whether Discovery With AI changes the BA artifact in a practical way. Good AI use should expose missing context, create structure, and make review easier. If it only produces nicer wording, the BA has not captured enough value yet.
 
 ## Bad vs better example
 
-| Weak pattern | Why it fails | Stronger BA pattern |
+| Weak pattern | Why it fails | Better BA pattern |
 | --- | --- | --- |
-| Ask AI to write requirements from a business problem | The model will collapse discovery uncertainty into premature scope. | Ask for hypotheses, assumptions, evidence needed, and workshop questions first. |
-| Use AI-generated stakeholder lists as final | Important internal owners, regulators, or operational users may be absent. | Validate actors against process maps, org roles, customer journeys, and decision rights. |
-| Prioritize questions that are easy to answer | The team may avoid the riskiest assumptions until delivery. | Rank hypotheses by business impact, evidence gap, and decision urgency. |
+| Ask AI to "do Discovery With AI" with no source context. | The model fills gaps with plausible wording. | Provide source notes, examples, boundaries, and review criteria. |
+| Share the first answer as final. | The team cannot see assumptions or weak evidence. | Run a critique pass and label open decisions. |
+| Use AI terms with no explanation. | Business stakeholders disengage or misunderstand. | Explain each term in plain language before using it in scope. |
 
 ## Stakeholder questions to ask
 
-| Stakeholder | Question | Why the BA asks it |
+| Stakeholder | Question | Why the BA asks |
 | --- | --- | --- |
-| Product owner | Which outcome should Discovery With AI improve, and what trade-off are you willing to accept? | Prevents AI output from optimizing for a vague goal. |
-| Engineering lead | What source, system, data, or constraint would make Discovery Hypothesis Backlog hard to implement? | Turns hidden technical constraints into visible requirement questions. |
-| QA lead | Which rule, exception, or user state must be testable before you trust this artifact? | Converts fluent AI wording into observable behavior. |
-| Operations or support | What failure path would create manual work if the lesson principle "Discovery output is validated learning" is ignored? | Surfaces support load, exception handling, and operating impact. |
+| Product owner | Which outcome should Discovery With AI improve first? | Keeps AI work tied to business value. |
+| Engineering lead | Which source, system, or constraint could make Discovery Evidence Board hard to implement? | Turns hidden technical constraints into requirement questions. |
+| QA lead | Which behavior must be testable before we trust this artifact? | Converts fluent AI text into observable checks. |
+| Operations or support | What failure path creates manual work after release? | Surfaces support load and fallback needs. |
 
 ## Decision log entries
 
 | Decision item | Options to capture | Owner | Evidence needed |
 | --- | --- | --- | --- |
-| Scope boundary for Discovery Hypothesis Backlog | Must-have, later, out of scope | Product owner | Business outcome and release constraint |
-| Authority for source attribution, conflict visibility, workshop decision flow, and backlog readiness | Documented source, stakeholder decision, assumption to validate | BA + accountable stakeholder | Source ID, date, and approval status |
+| Scope boundary for Discovery Evidence Board | Must-have, later, out of scope | Product owner | Business outcome and release constraint |
+| Authority for Stakeholder pain and Evidence theme | Documented source, stakeholder decision, assumption to validate | BA + accountable stakeholder | Source ID, date, and approval status |
 | Review gate before handoff | Peer review, QA review, engineering review, formal approval | BA lead or project lead | Risk level and receiving-team readiness |
-| Recovery if Asking AI to write requirements before uncertainty is mapped. | Rewrite, defer, escalate, or run validation workshop | Decision owner | Impact on scope, testability, and release risk |
+| Recovery if Using Discovery as jargon instead of a project decision. | Rewrite, defer, escalate, or run validation workshop | Decision owner | Impact on scope, testability, and release risk |
 
 ## Definition of Ready / Done
 
 | Gate | Ready signal | Done signal |
 | --- | --- | --- |
-| Definition of Ready | Sources for source attribution, conflict visibility, workshop decision flow, and backlog readiness are labeled and current. | Discovery Hypothesis Backlog can be reviewed without guessing missing context. |
-| Definition of Ready | Open assumptions have owners and validation paths. | Stakeholders can decide whether to accept, reject, or defer each assumption. |
-| Definition of Done | The artifact applies this control: keep speaker/source attribution visible until the responsible stakeholder confirms meaning. | Delivery, QA, or governance teams can act on the artifact. |
-| Definition of Done | The weak pattern "Asking AI to write requirements before uncertainty is mapped." has been explicitly checked. | No unsupported AI claim is treated as an approved requirement. |
+| Definition of Ready | Sources for Stakeholder pain are named. | Discovery Evidence Board can be reviewed without guessing context. |
+| Definition of Ready | Open assumptions have owners and validation paths. | Stakeholders can accept, reject, or defer each assumption. |
+| Definition of Done | The artifact applies this principle: AI helps discovery when the BA uses it to organize evidence, not replace stakeholder learning. | Delivery, QA, or governance teams can act on it. |
+| Definition of Done | The weak pattern "Ask AI to "do Discovery With AI" with no source context." has been checked. | No unsupported AI claim is treated as approved scope. |
 
 ## Before and after artifact example
 
 | Before | AI draft risk | Senior BA revision |
 | --- | --- | --- |
-| Prompt: "Create Discovery Hypothesis Backlog for Discovery With AI." | The model may invent source facts, owners, thresholds, or implementation rules. | Add sources, scope boundary, source authority, output schema, and the instruction: Ask for hypotheses, assumptions, evidence needed, and workshop questions first. |
-| Draft statement: "Turn your next workshop agenda into hypotheses." | Useful action, but not yet tied to a decision owner or acceptance signal. | Rewrite as a project step with owner, expected artifact, review gate, and evidence required before handoff. |
-| Final-looking paragraph about validated working artifact | The tone may hide uncertainty and missing stakeholder approval. | Convert it into a table of fact, assumption, decision needed, risk, and validation question. |
+| Prompt: "Create Discovery Evidence Board." | The model may invent source facts, owners, or thresholds. | Add sources, scope boundary, output schema, and review criteria. |
+| Draft statement: "Use AI to organize notes into stakeholder pain, risks, and open questions." | Useful, but not tied to owner or acceptance signal. | Rewrite as a project step with owner, expected artifact, and review gate. |
+| Final-looking paragraph | Tone may hide uncertainty or missing stakeholder approval. | Convert into fact, assumption, decision needed, risk, and validation question. |
 
 ## Manual verification after AI output
 
 | Verification lens | Manual check | Pass signal |
 | --- | --- | --- |
-| Evidence | Trace every important statement in Discovery Hypothesis Backlog to a source, decision, or labeled assumption. | No unsupported claim remains hidden. |
-| Completeness | Check source attribution, conflict visibility, workshop decision flow, and backlog readiness against the intended audience and receiving team. | The artifact answers what product, engineering, QA, and operations need. |
-| Testability | Ask whether QA can create positive, negative, boundary, and exception scenarios. | Ambiguous wording has been rewritten or logged as a question. |
-| Accountability | Confirm who approves, who reviews, and who acts when the artifact is wrong. | Owners and escalation path are explicit. |
+| Evidence | Trace important statements in Discovery Evidence Board to a source, decision, or labeled assumption. | No unsupported claim remains hidden. |
+| Completeness | Check Stakeholder pain, Evidence theme, Open assumption, Next interview against the intended audience. | Product, Engineering, QA, and Operations have what they need. |
+| Testability | Ask whether QA can create positive, negative, boundary, and exception scenarios. | Ambiguous wording is rewritten or logged as a question. |
+| Accountability | Confirm who approves, who reviews, and who acts when output is wrong. | Owners and escalation path are explicit. |
 
 ## AI collaboration prompt
 
 ```text
-Create a discovery hypothesis backlog for this business problem. Include actors, assumptions, evidence needed, validation method, decision owner, risk level, and workshop questions. Do not write final requirements yet.
+Use the supplied project notes to create a Discovery Evidence Board. First explain the key terms in simple language. Then produce a table with evidence, assumption, risk, owner question, and recommended next action. Do not invent facts that are not in the notes.
 ```
 
 ## Mistakes to avoid
 
-- Asking AI to write requirements before uncertainty is mapped.
-- Treating generated questions as complete discovery.
-- Ignoring decision owners.
-- Prioritizing easy questions instead of risky assumptions.
+- Using Discovery as jargon instead of a project decision.
+- Letting AI write around missing evidence.
+- Sending output to another team without owner, status, or next action.
 
 ## Apply this tomorrow
 
-1. Turn your next workshop agenda into hypotheses.
-2. Ask AI for missing stakeholder groups.
-3. Add evidence needed next to every assumption.
-4. Open the workshop with decisions required, not only topics.
+1. Take one current project note and ask AI for a Discovery Evidence Board.
+2. Add a plain-language definition for Discovery.
+3. Run one critique pass from QA or Engineering viewpoint.
 
 ## What a BA should remember
 
-- Discovery output is validated learning.
-- AI expands your question space; stakeholders validate it.
-- A good discovery artifact shows what is unknown.
+- Discovery should help the project move, not sound impressive.
+- AI drafts; BA validates.
+- A small reviewable artifact beats a long generic explanation.

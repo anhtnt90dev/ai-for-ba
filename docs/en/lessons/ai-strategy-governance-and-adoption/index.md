@@ -1,170 +1,271 @@
 ---
 title: "AI Strategy, Governance, and Adoption"
-description: "BA leads should scale AI adoption through use-case selection, risk tiers, quality gates, and operating model, not tool enthusiasm."
+description: "BA leaders help AI adoption by connecting use cases, risk, workflow change, and measurable outcomes."
 ---
 
 # AI Strategy, Governance, and Adoption
 
 <div class="lesson-meta">
-  <span>BA Lead and Expert Track</span>
+  <span>Advanced AI BA Practice</span>
   <span>Software BA</span>
-  <span>Expert</span>
+  <span>Core</span>
+</div>
+
+## Story mode: project walkthrough
+
+<div class="story-mode-panel">
+  <p class="story-eyebrow">Story prototype</p>
+  <h3>Leadership wants AI everywhere; Maya asks where value starts</h3>
+  <p class="story-intro">Maya receives leadership asking for AI everywhere without a clear adoption path. Instead of asking AI for a final answer, she uses the lesson pattern to make the situation visible, reviewable, and useful for the next project decision.</p>
+  <div class="story-scene-grid">
+<article class="story-scene">
+  <span>Scene 1</span>
+  <b>01</b>
+  <strong>The request is vague</strong>
+  <p>The team gives Maya leadership asking for AI everywhere without a clear adoption path and expects a clean answer by the end of the day.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 2</span>
+  <b>02</b>
+  <strong>AI creates a first draft</strong>
+  <p>The draft is helpful, but it hides uncertainty around Risk tier and Owner.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 3</span>
+  <b>03</b>
+  <strong>Maya turns it into BA evidence</strong>
+  <p>She adds source notes, owners, examples, and a focused AI Adoption Roadmap review table instead of forwarding the raw AI output.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 4</span>
+  <b>04</b>
+  <strong>The team can decide</strong>
+  <p>The final AI Adoption Roadmap shows what is ready, what is risky, and what needs a human decision.</p>
+</article>
+  </div>
+  <div class="visual-takeaway-strip">
+<span>Governance needs context</span>
+<span>Adoption must be reviewable</span>
+<span>Use case portfolio becomes a BA question</span>
+  </div>
+</div>
+
+## AI words in plain English
+
+| AI term | Simple meaning | BA use |
+| --- | --- | --- |
+| Governance | Rules for responsible ownership, risk, and approval. | Use it to name the work clearly before asking AI to help. |
+| Adoption | How people actually start using a new way of working. | Use it as a review lens, not as a decorative AI word. |
+| Use case portfolio | A managed list of candidate AI opportunities. | Turn it into a checklist item or stakeholder question. |
+| Guardrail | A limit or control that keeps AI use safe. | Define the rule before the team treats the output as ready. |
+
+## Reality check: how this shows up in projects
+
+<div class="fact-card-grid">
+<article class="fact-card">
+  <strong>A fast draft can hide weak thinking</strong>
+  <span>Ask what evidence, owner, and decision the draft depends on.</span>
+  <p>AI can produce AI Adoption Roadmap quickly, but speed does not prove quality.</p>
+</article>
+<article class="fact-card">
+  <strong>Stakeholders need simple language</strong>
+  <span>Explain the term in one sentence before using it in a requirement.</span>
+  <p>Terms like Governance and Adoption can confuse people outside the AI conversation.</p>
+</article>
+<article class="fact-card">
+  <strong>The AI Adoption Roadmap must travel</strong>
+  <span>Make the next action visible for each receiving team.</span>
+  <p>Product, Engineering, QA, and Operations each read this AI Adoption Roadmap differently.</p>
+</article>
+</div>
+
+## Visual walkthrough
+
+```mermaid
+flowchart LR
+    A["Project input"]
+    B["AI first draft"]
+    A --> B
+    C["BA review lenses"]
+    B --> C
+    D["AI Adoption Roadmap"]
+    C --> D
+    E["Team decision"]
+    D --> E
+```
+
+## Visual decision map
+
+<div class="visual-ba-map">
+  <h3>AI Adoption Roadmap: what the BA should look for</h3>
+<div>
+  <strong>Use case</strong>
+  <span>What the BA must make explicit first.</span>
+  <em>Write it in plain language.</em>
+</div>
+<div>
+  <strong>Risk tier</strong>
+  <span>Where AI can help but may also hide uncertainty.</span>
+  <em>Add review criteria.</em>
+</div>
+<div>
+  <strong>Owner</strong>
+  <span>What can break if the team skips validation.</span>
+  <em>Create a decision question.</em>
+</div>
+<div>
+  <strong>Adoption metric</strong>
+  <span>What makes the artifact safe to hand off.</span>
+  <em>Name owner, evidence, and next step.</em>
+</div>
 </div>
 
 ## Learning outcomes
 
-- Create an AI adoption roadmap for BA teams.
-- Define governance controls for AI use in analysis work.
-- Measure adoption by quality, cycle time, and risk reduction.
+- Explain Governance in simple BA language.
+- Use AI to draft a better AI Adoption Roadmap.
+- Review the output before it becomes scope, test, or delivery work.
 
 ## Why this matters for BA work
 
 <div class="ba-callout">
-BA leads should scale AI adoption through use-case selection, risk tiers, quality gates, and operating model, not tool enthusiasm.
+BA leaders help AI adoption by connecting use cases, risk, workflow change, and measurable outcomes.
 </div>
 
-This lesson matters because AI adoption at BA-team scale can improve quality and cycle time, but it can also spread inconsistent artifacts, data leakage, and false confidence. A BA lead needs an operating model: approved use cases, risk tiers, tool policy, prompt library, quality gates, training, metrics, and escalation paths.
+AI strategy and governance matter because scattered experiments can create cost, risk, and disappointment even when individual demos look impressive. BA leaders help teams choose use cases, define guardrails, measure adoption, and connect AI work to workflow change.
 
 ## Common difficulties for BAs
 
-In BA Lead and Expert Track, AI Strategy, Governance, and Adoption becomes difficult when individual productivity gains must become a team operating model with governance, adoption metrics, and practical risk controls. A BA should inspect the points below before treating an AI-supported artifact as ready for stakeholder decision or delivery handoff.
-
-| Difficulty | Why it is hard in BA work | How a BA should handle it |
+| Difficulty | Why it is hard in BA work | How a BA handles it |
 | --- | --- | --- |
-| Buying tools before defining safe use cases. | The mistake "Buying tools before defining safe use cases." appears when the team discusses portfolio fit, policy, quality gates, adoption metrics, training, and escalation model without agreeing which source is authoritative. AI can smooth over the disagreement, so the BA must keep uncertainty visible. | Apply this control: tier AI use cases by sensitivity, decision impact, evidence quality, and human review requirement. Then use the stronger pattern "Create risk-tiered workflows, approved tools, training, prompt library, and review gates." and ask who must approve the artifact before it affects scope, build, test, or release. |
-| Ignoring confidential data and PII rules. | For AI Strategy, Governance, and Adoption, the friction is that BA leads should scale AI adoption through use-case selection, risk tiers, quality gates, and operating model, not tool enthusiasm. The weak pattern is tempting because AI can produce a fluent answer before the BA has checked ownership, source freshness, or decision rights. | Apply this control: tier AI use cases by sensitivity, decision impact, evidence quality, and human review requirement. Then use the stronger pattern "Measure cycle time, defect reduction, evidence quality, rework, and stakeholder confidence." and ask who must approve the artifact before it affects scope, build, test, or release. |
-| Measuring adoption only by number of users. | This becomes hard when BA AI Adoption Scorecard is expected to support the BA practice operating model. If the BA does not challenge the draft, unsupported assumptions may enter planning, testing, or stakeholder communication. | Apply this control: tier AI use cases by sensitivity, decision impact, evidence quality, and human review requirement. Then use the stronger pattern "Establish a BA AI operating model with governance roles, audits, and escalation." and ask who must approve the artifact before it affects scope, build, test, or release. |
+| The team uses Governance without a shared meaning. | People nod in meetings while imagining different outcomes. | Start with a one-sentence definition and show how it changes the AI Adoption Roadmap. |
+| AI output looks more complete than the input deserves. | A fluent draft can hide missing examples, owners, or edge cases. | Ask AI to list assumptions and missing evidence before drafting the final artifact. |
+| Reviewers need different details. | Product cares about value, Engineering about constraints, QA about testability, and Ops about support. | Add columns or sections for each receiving team instead of writing one generic paragraph. |
 
 ## Where this applies in real projects
 
-Use this lesson when BA leaders need to scale AI use across people, tools, project types, and governance expectations. The practical output is not a longer document; it is BA AI Adoption Scorecard with enough evidence, ownership, and decision clarity for the next project conversation.
-
-| Project moment | How to apply this lesson | Concrete BA output |
+| Project moment | BA move | Concrete output |
 | --- | --- | --- |
-| Portfolio review | Classify BA AI use cases into risk tiers. | BA AI Adoption Scorecard showing portfolio fit, policy, quality gates, adoption metrics, training, and escalation model, with the action "Classify BA AI use cases into risk tiers." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
-| Governance design | Define one approved workflow and one prohibited use. | BA AI Adoption Scorecard showing source evidence, with the action "Define one approved workflow and one prohibited use." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
-| Practice rollout | Create a quality gate for AI-assisted requirements. | BA AI Adoption Scorecard showing decision owner, with the action "Create a quality gate for AI-assisted requirements." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
+| Discovery workshop | Use AI to organize notes into use case, risks, and open questions. | AI Adoption Roadmap with source notes and owners. |
+| Backlog refinement | Convert AI suggestions into small, testable decisions. | Story, rule, or checklist item with acceptance signal. |
+| Handoff review | Ask AI to critique the artifact from Product, Dev, QA, and Ops viewpoints. | Review table with action owner and status. |
 
 ## If this is missing
 
-If AI Strategy, Governance, and Adoption is missing, AI usage becomes inconsistent, risky, hard to audit, and difficult to improve across the BA practice. The BA can still recover, but only by converting the polished AI draft back into explicit evidence, assumptions, owners, and testable decisions.
+If AI Strategy, Governance, and Adoption is missing, the team may still produce documents, but they will be harder to trust, test, and maintain.
 
 | If missing | Project impact | Recovery action |
 | --- | --- | --- |
-| Roll out an AI tool to all BAs and call it adoption | Usage increases without shared standards, safety rules, or quality evidence. | Recover by using the stronger pattern: Create risk-tiered workflows, approved tools, training, prompt library, and review gates. Rework BA AI Adoption Scorecard until it exposes portfolio fit, policy, quality gates, adoption metrics, training, and escalation model, and do not share it as final until evidence, ownership, and validation path are explicit. |
-| Measure success by number of prompts or users | Activity does not prove better requirements or safer decisions. | Recover by using the stronger pattern: Measure cycle time, defect reduction, evidence quality, rework, and stakeholder confidence. Rework BA AI Adoption Scorecard until it exposes portfolio fit, policy, quality gates, adoption metrics, training, and escalation model, and do not share it as final until evidence, ownership, and validation path are explicit. |
-| Let every project invent its own AI rules | Quality and compliance vary widely across teams. | Recover by using the stronger pattern: Establish a BA AI operating model with governance roles, audits, and escalation. Rework BA AI Adoption Scorecard until it exposes portfolio fit, policy, quality gates, adoption metrics, training, and escalation model, and do not share it as final until evidence, ownership, and validation path are explicit. |
+| No shared explanation for Governance | Stakeholders agree verbally but expect different behavior later. | Add a plain-language definition and example. |
+| No review of AI assumptions | Unsupported ideas become scope. | Move assumptions into an owner-based validation list. |
+| No concrete AI Adoption Roadmap | The learning stays abstract and does not help delivery. | Produce the artifact as a small table, not a long essay. |
 
 ## Mental model or core concept
 
-AI adoption fails when it starts with tools instead of operating model. A BA lead should define safe use cases, prohibited data, approved tools, prompt patterns, quality gates, training, review rituals, metrics, and escalation paths. Governance should enable useful work while preventing data leakage and low-quality artifacts.
+AI Strategy, Governance, and Adoption is easiest to understand as a BA control: make the messy thing visible, let AI help structure it, then review it with humans before it becomes delivery work.
 
 ## Practical BA example
 
-A BA practice wants everyone to use AI. The lead creates risk tiers: low-risk drafting, medium-risk requirement review, high-risk AI product decisions. Each tier has allowed tools, data rules, review gates, and measurement. Adoption becomes managed capability, not random experimentation.
+Leadership lists twenty AI ideas. Maya groups them by value, risk, data readiness, and workflow impact, then proposes a roadmap that starts with low-risk internal analysis before customer-facing automation.
 
 ## Diagram
 
 ```mermaid
 flowchart TD
-    A["Use-case portfolio"] --> B["Risk tiers"]
-    B --> C["Approved tools + data rules"]
-    C --> D["Prompt library + playbooks"]
-    D --> E["Quality gates"]
-    E --> F["Metrics"]
-    F --> G["Adoption roadmap"]
-    B --> H["Escalation path"]
+    A["AI Adoption Roadmap"]
+    A --> B["Use case"]
+    A --> C["Risk tier"]
+    A --> D["Owner"]
+    A --> E["Adoption metric"]
 ```
 
 ## BA artifact
 
-### BA AI Adoption Scorecard
+### AI Adoption Roadmap
 
-| Dimension | Level 1 | Level 2 | Level 3 |
+| Artifact line | What the BA writes | Ready signal | Risk signal |
 | --- | --- | --- | --- |
-| Use cases | Ad hoc personal use. | Approved BA workflows. | Measured portfolio by value and risk. |
-| Governance | No shared rules. | Data and review policy defined. | Risk-tier controls and audit. |
-| Quality | AI output shared directly. | Peer review for AI-assisted artifacts. | Quality gates and rubric metrics. |
-| Capability | Individual tips. | Team prompt library. | Coaching, playbooks, and communities of practice. |
+| Use case | Write the concrete use case in project language. | A stakeholder can confirm it. | It is still a slogan. |
+| Risk tier | Describe how AI helps and where it may be wrong. | Review criteria are visible. | The draft hides uncertainty. |
+| Owner | Capture the gap, conflict, edge case, or risk. | Owner and next action are named. | The issue is buried in prose. |
+| Adoption metric | Define the handoff rule or completion signal. | QA or Engineering can act on it. | No receiving team knows what to do. |
 
 ## AI expert note
 
-AI governance should enable high-quality work, not freeze experimentation. Expert BA leadership defines low-risk workflows for productivity, medium-risk workflows with review gates, and high-risk workflows requiring formal approval. Adoption metrics should measure artifact quality, review defects, cycle time, stakeholder satisfaction, and avoided risk, not just tool usage.
+As an AI reviewer, I would check whether AI Strategy, Governance, and Adoption changes the BA artifact in a practical way. Good AI use should expose missing context, create structure, and make review easier. If it only produces nicer wording, the BA has not captured enough value yet.
 
 ## Bad vs better example
 
-| Weak pattern | Why it fails | Stronger BA pattern |
+| Weak pattern | Why it fails | Better BA pattern |
 | --- | --- | --- |
-| Roll out an AI tool to all BAs and call it adoption | Usage increases without shared standards, safety rules, or quality evidence. | Create risk-tiered workflows, approved tools, training, prompt library, and review gates. |
-| Measure success by number of prompts or users | Activity does not prove better requirements or safer decisions. | Measure cycle time, defect reduction, evidence quality, rework, and stakeholder confidence. |
-| Let every project invent its own AI rules | Quality and compliance vary widely across teams. | Establish a BA AI operating model with governance roles, audits, and escalation. |
+| Ask AI to "do AI Strategy, Governance, and Adoption" with no source context. | The model fills gaps with plausible wording. | Provide source notes, examples, boundaries, and review criteria. |
+| Share the first answer as final. | The team cannot see assumptions or weak evidence. | Run a critique pass and label open decisions. |
+| Use AI terms with no explanation. | Business stakeholders disengage or misunderstand. | Explain each term in plain language before using it in scope. |
 
 ## Stakeholder questions to ask
 
-| Stakeholder | Question | Why the BA asks it |
+| Stakeholder | Question | Why the BA asks |
 | --- | --- | --- |
-| Product owner | Which outcome should AI Strategy, Governance, and Adoption improve, and what trade-off are you willing to accept? | Prevents AI output from optimizing for a vague goal. |
-| Engineering lead | What source, system, data, or constraint would make BA AI Adoption Scorecard hard to implement? | Turns hidden technical constraints into visible requirement questions. |
-| QA lead | Which rule, exception, or user state must be testable before you trust this artifact? | Converts fluent AI wording into observable behavior. |
-| Operations or support | What failure path would create manual work if the lesson principle "Adoption is an operating model" is ignored? | Surfaces support load, exception handling, and operating impact. |
+| Product owner | Which outcome should AI Strategy, Governance, and Adoption improve first? | Keeps AI work tied to business value. |
+| Engineering lead | Which source, system, or constraint could make AI Adoption Roadmap hard to implement? | Turns hidden technical constraints into requirement questions. |
+| QA lead | Which behavior must be testable before we trust this artifact? | Converts fluent AI text into observable checks. |
+| Operations or support | What failure path creates manual work after release? | Surfaces support load and fallback needs. |
 
 ## Decision log entries
 
 | Decision item | Options to capture | Owner | Evidence needed |
 | --- | --- | --- | --- |
-| Scope boundary for BA AI Adoption Scorecard | Must-have, later, out of scope | Product owner | Business outcome and release constraint |
-| Authority for portfolio fit, policy, quality gates, adoption metrics, training, and escalation model | Documented source, stakeholder decision, assumption to validate | BA + accountable stakeholder | Source ID, date, and approval status |
+| Scope boundary for AI Adoption Roadmap | Must-have, later, out of scope | Product owner | Business outcome and release constraint |
+| Authority for Use case and Risk tier | Documented source, stakeholder decision, assumption to validate | BA + accountable stakeholder | Source ID, date, and approval status |
 | Review gate before handoff | Peer review, QA review, engineering review, formal approval | BA lead or project lead | Risk level and receiving-team readiness |
-| Recovery if Buying tools before defining safe use cases. | Rewrite, defer, escalate, or run validation workshop | Decision owner | Impact on scope, testability, and release risk |
+| Recovery if Using Governance as jargon instead of a project decision. | Rewrite, defer, escalate, or run validation workshop | Decision owner | Impact on scope, testability, and release risk |
 
 ## Definition of Ready / Done
 
 | Gate | Ready signal | Done signal |
 | --- | --- | --- |
-| Definition of Ready | Sources for portfolio fit, policy, quality gates, adoption metrics, training, and escalation model are labeled and current. | BA AI Adoption Scorecard can be reviewed without guessing missing context. |
-| Definition of Ready | Open assumptions have owners and validation paths. | Stakeholders can decide whether to accept, reject, or defer each assumption. |
-| Definition of Done | The artifact applies this control: tier AI use cases by sensitivity, decision impact, evidence quality, and human review requirement. | Delivery, QA, or governance teams can act on the artifact. |
-| Definition of Done | The weak pattern "Buying tools before defining safe use cases." has been explicitly checked. | No unsupported AI claim is treated as an approved requirement. |
+| Definition of Ready | Sources for Use case are named. | AI Adoption Roadmap can be reviewed without guessing context. |
+| Definition of Ready | Open assumptions have owners and validation paths. | Stakeholders can accept, reject, or defer each assumption. |
+| Definition of Done | The artifact applies this principle: BA leaders help AI adoption by connecting use cases, risk, workflow change, and measurable outcomes. | Delivery, QA, or governance teams can act on it. |
+| Definition of Done | The weak pattern "Ask AI to "do AI Strategy, Governance, and Adoption" with no source context." has been checked. | No unsupported AI claim is treated as approved scope. |
 
 ## Before and after artifact example
 
 | Before | AI draft risk | Senior BA revision |
 | --- | --- | --- |
-| Prompt: "Create BA AI Adoption Scorecard for AI Strategy, Governance, and Adoption." | The model may invent source facts, owners, thresholds, or implementation rules. | Add sources, scope boundary, source authority, output schema, and the instruction: Create risk-tiered workflows, approved tools, training, prompt library, and review gates. |
-| Draft statement: "Classify BA AI use cases into risk tiers." | Useful action, but not yet tied to a decision owner or acceptance signal. | Rewrite as a project step with owner, expected artifact, review gate, and evidence required before handoff. |
-| Final-looking paragraph about BA practice operating model | The tone may hide uncertainty and missing stakeholder approval. | Convert it into a table of fact, assumption, decision needed, risk, and validation question. |
+| Prompt: "Create AI Adoption Roadmap." | The model may invent source facts, owners, or thresholds. | Add sources, scope boundary, output schema, and review criteria. |
+| Draft statement: "Use AI to organize notes into use case, risks, and open questions." | Useful, but not tied to owner or acceptance signal. | Rewrite as a project step with owner, expected artifact, and review gate. |
+| Final-looking paragraph | Tone may hide uncertainty or missing stakeholder approval. | Convert into fact, assumption, decision needed, risk, and validation question. |
 
 ## Manual verification after AI output
 
 | Verification lens | Manual check | Pass signal |
 | --- | --- | --- |
-| Evidence | Trace every important statement in BA AI Adoption Scorecard to a source, decision, or labeled assumption. | No unsupported claim remains hidden. |
-| Completeness | Check portfolio fit, policy, quality gates, adoption metrics, training, and escalation model against the intended audience and receiving team. | The artifact answers what product, engineering, QA, and operations need. |
-| Testability | Ask whether QA can create positive, negative, boundary, and exception scenarios. | Ambiguous wording has been rewritten or logged as a question. |
-| Accountability | Confirm who approves, who reviews, and who acts when the artifact is wrong. | Owners and escalation path are explicit. |
+| Evidence | Trace important statements in AI Adoption Roadmap to a source, decision, or labeled assumption. | No unsupported claim remains hidden. |
+| Completeness | Check Use case, Risk tier, Owner, Adoption metric against the intended audience. | Product, Engineering, QA, and Operations have what they need. |
+| Testability | Ask whether QA can create positive, negative, boundary, and exception scenarios. | Ambiguous wording is rewritten or logged as a question. |
+| Accountability | Confirm who approves, who reviews, and who acts when output is wrong. | Owners and escalation path are explicit. |
 
 ## AI collaboration prompt
 
 ```text
-Create a BA team AI adoption roadmap. Include use-case portfolio, risk tiers, approved tools, prohibited data, review gates, prompt library, training plan, governance roles, success metrics, rollout phases, and escalation process.
+Use the supplied project notes to create a AI Adoption Roadmap. First explain the key terms in simple language. Then produce a table with evidence, assumption, risk, owner question, and recommended next action. Do not invent facts that are not in the notes.
 ```
 
 ## Mistakes to avoid
 
-- Buying tools before defining safe use cases.
-- Ignoring confidential data and PII rules.
-- Measuring adoption only by number of users.
-- Letting every BA invent their own quality standard.
+- Using Governance as jargon instead of a project decision.
+- Letting AI write around missing evidence.
+- Sending output to another team without owner, status, or next action.
 
 ## Apply this tomorrow
 
-1. Classify BA AI use cases into risk tiers.
-2. Define one approved workflow and one prohibited use.
-3. Create a quality gate for AI-assisted requirements.
-4. Measure cycle time and defect reduction for one pilot.
+1. Take one current project note and ask AI for a AI Adoption Roadmap.
+2. Add a plain-language definition for Governance.
+3. Run one critique pass from QA or Engineering viewpoint.
 
 ## What a BA should remember
 
-- Adoption is an operating model.
-- Governance should make good AI use easier.
-- BA leads scale quality through shared patterns and review gates.
+- Governance should help the project move, not sound impressive.
+- AI drafts; BA validates.
+- A small reviewable artifact beats a long generic explanation.

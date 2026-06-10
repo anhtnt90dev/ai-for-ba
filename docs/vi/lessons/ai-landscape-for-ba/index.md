@@ -50,6 +50,15 @@ description: "BA không cần trở thành kỹ sư machine learning, nhưng ph�
   </div>
 </div>
 
+## AI words in plain English
+
+| Thuật ngữ AI | Hiểu đơn giản | BA dùng để làm gì |
+| --- | --- | --- |
+| GenAI | AI tạo text, hình, summary hoặc draft từ instruction. | Dùng để draft và chuyển đổi nội dung, không xem là sự thật tự động. |
+| Predictive AI | AI dự đoán khả năng xảy ra dựa trên dữ liệu lịch sử. | Dùng khi requirement liên quan risk, score hoặc probability. |
+| RAG | AI trả lời bằng cách lấy thông tin từ tài liệu tin cậy. | Dùng khi user cần câu trả lời từ policy, manual hoặc knowledge base. |
+| Agent | Workflow AI có thể thực hiện nhiều bước qua tool theo rule. | BA cần đặc tả bước nào tự động, bước nào phải human approve. |
+
 ## Reality check: số liệu hiện tại cho BA
 
 <div class="fact-card-grid">

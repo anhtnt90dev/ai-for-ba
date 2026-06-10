@@ -50,6 +50,15 @@ description: "Context là bề mặt làm việc của AI analysis; context desi
   </div>
 </div>
 
+## AI words in plain English
+
+| Thuật ngữ AI | Hiểu đơn giản | BA dùng để làm gì |
+| --- | --- | --- |
+| Token | Mảnh text nhỏ mà model đọc hoặc viết. | Document dài tốn token, nên BA phải plan source coverage. |
+| Context | Phần thông tin model đang nhìn thấy và dùng được. | Cung cấp source ID, rule, example và câu hỏi cụ thể. |
+| Memory | Thông tin được giữ qua nhiều lần trao đổi nếu tool hỗ trợ. | Không dùng chat memory làm source of truth của dự án. |
+| Chunking | Chia tài liệu dài thành phần nhỏ để review. | Review theo module rồi reconcile giữa các module. |
+
 ## Reality check: số liệu hiện tại cho BA
 
 <div class="fact-card-grid">

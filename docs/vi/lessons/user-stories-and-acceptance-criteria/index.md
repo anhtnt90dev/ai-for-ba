@@ -1,169 +1,271 @@
 ---
 title: "User story và acceptance criteria"
-description: "AI có thể draft story nhanh, nhưng BA phải giữ business rule, negative path, permission và testability."
+description: "AI có thể draft story rất nhanh, nhưng BA làm nó có giá trị bằng context, example và boundary test được."
 ---
 
 # User story và acceptance criteria
 
 <div class="lesson-meta">
-  <span>Quy trình BA được tăng cường bởi AI</span>
+  <span>Requirements và delivery</span>
   <span>Software BA</span>
   <span>Core</span>
 </div>
 
+## Story mode: project walkthrough
+
+<div class="story-mode-panel">
+  <p class="story-eyebrow">Story prototype</p>
+  <h3>User story nhìn gọn vẫn fail QA nếu thiếu example</h3>
+  <p class="story-intro">Maya nhận ý tưởng feature chỉ ghi cho user quản lý notification. Thay vì nhờ AI trả lời final, cô dùng pattern của bài này để làm tình huống rõ hơn, review được hơn và hữu ích hơn cho decision tiếp theo.</p>
+  <div class="story-scene-grid">
+<article class="story-scene">
+  <span>Scene 1</span>
+  <b>01</b>
+  <strong>Yêu cầu còn mơ hồ</strong>
+  <p>Team đưa cho Maya ý tưởng feature chỉ ghi cho user quản lý notification và mong có câu trả lời gọn trong ngày.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 2</span>
+  <b>02</b>
+  <strong>AI tạo draft đầu tiên</strong>
+  <p>Draft khá hữu ích, nhưng che uncertainty quanh Business outcome và Rule boundary.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 3</span>
+  <b>03</b>
+  <strong>Maya biến nó thành evidence của BA</strong>
+  <p>Cô thêm source note, owner, example và review table tập trung cho Story Quality Card thay vì gửi thẳng raw AI output.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 4</span>
+  <b>04</b>
+  <strong>Team có thể ra decision</strong>
+  <p>Story Quality Card cuối cùng cho thấy phần nào ready, phần nào rủi ro và phần nào cần human decision.</p>
+</article>
+  </div>
+  <div class="visual-takeaway-strip">
+<span>User story cần context</span>
+<span>Acceptance criteria phải review được</span>
+<span>Edge case trở thành câu hỏi của BA</span>
+  </div>
+</div>
+
+## AI words in plain English
+
+| Thuật ngữ AI | Hiểu đơn giản | BA dùng để làm gì |
+| --- | --- | --- |
+| User story | Câu ngắn mô tả nhu cầu user và value mong muốn. | Dùng để gọi đúng loại việc trước khi nhờ AI hỗ trợ. |
+| Acceptance criteria | Điều kiện cho thấy story đã done. | Dùng như lens review, không dùng như từ trang trí. |
+| Edge case | Tình huống ít gặp nhưng vẫn có thể làm experience lỗi. | Biến nó thành checklist item hoặc câu hỏi stakeholder. |
+| Testability | Mức độ QA hoặc reviewer có thể verify behavior. | Định nghĩa rule trước khi team xem output là ready. |
+
+## Reality check: tình huống thường gặp trong dự án
+
+<div class="fact-card-grid">
+<article class="fact-card">
+  <strong>Draft nhanh có thể che tư duy yếu</strong>
+  <span>Hỏi draft phụ thuộc evidence, owner và decision nào.</span>
+  <p>AI có thể tạo Story Quality Card rất nhanh, nhưng tốc độ không chứng minh quality.</p>
+</article>
+<article class="fact-card">
+  <strong>Stakeholder cần ngôn ngữ đơn giản</strong>
+  <span>Giải thích term bằng một câu trước khi đưa vào requirement.</span>
+  <p>Term như User story và Acceptance criteria dễ làm người ngoài cuộc trao đổi AI bị rối.</p>
+</article>
+<article class="fact-card">
+  <strong>Story Quality Card phải đi qua nhiều team</strong>
+  <span>Làm next action visible cho từng receiving team.</span>
+  <p>Product, Engineering, QA và Operations đọc Story Quality Card theo góc nhìn khác nhau.</p>
+</article>
+</div>
+
+## Visual walkthrough
+
+```mermaid
+flowchart LR
+    A["Project input"]
+    B["AI draft đầu"]
+    A --> B
+    C["Lens review của BA"]
+    B --> C
+    D["Story Quality Card"]
+    C --> D
+    E["Team decision"]
+    D --> E
+```
+
+## Visual decision map
+
+<div class="visual-ba-map">
+  <h3>Story Quality Card: what the BA should look for</h3>
+<div>
+  <strong>Actor</strong>
+  <span>Điều BA phải làm rõ trước tiên.</span>
+  <em>Viết bằng ngôn ngữ dự án.</em>
+</div>
+<div>
+  <strong>Business outcome</strong>
+  <span>Nơi AI có thể giúp nhưng cũng có thể che uncertainty.</span>
+  <em>Thêm review criteria.</em>
+</div>
+<div>
+  <strong>Rule boundary</strong>
+  <span>Điều có thể hỏng nếu team bỏ validation.</span>
+  <em>Tạo decision question.</em>
+</div>
+<div>
+  <strong>QA example</strong>
+  <span>Điều làm artifact đủ an toàn để handoff.</span>
+  <em>Ghi owner, evidence và next step.</em>
+</div>
+</div>
+
 ## Learning outcomes
 
-- Chuyển request mơ hồ thành user story test được.
-- Dùng AI generate edge case mà không mất business intent.
-- Viết acceptance criteria để dev và QA inspect được.
+- Giải thích User story bằng ngôn ngữ BA đơn giản.
+- Dùng AI để draft Story Quality Card tốt hơn.
+- Review output trước khi nó trở thành scope, test hoặc delivery work.
 
 ## Why this matters for BA work
 
 <div class="ba-callout">
-AI có thể draft story nhanh, nhưng BA phải giữ business rule, negative path, permission và testability.
+AI có thể draft story rất nhanh, nhưng BA làm nó có giá trị bằng context, example và boundary test được.
 </div>
 
-Bài này quan trọng vì AI có thể tạo rất nhiều story nhanh, nhưng số lượng không phải readiness. BA artifact sẵn sàng cho development cần rõ actor, business value, observable behavior, boundary, negative case, permission và release decision. Nếu BA không kiểm soát structure, story do AI sinh sẽ trở thành backlog noise nhìn hấp dẫn.
+User story và acceptance criteria quan trọng vì AI tạo Given-When-Then rất nhanh, nhưng chất lượng delivery phụ thuộc actor, rule, example và edge case cụ thể. BA biến story dễ đọc thành thứ Product approve được và QA test được.
 
 ## Common difficulties for BAs
 
-Trong Quy trình BA được tăng cường bởi AI, User story và acceptance criteria trở nên khó khi notes lộn xộn, decision mới validate một phần và stakeholder context chưa đầy đủ phải nhanh chóng thành artifact chung. BA nên kiểm tra các điểm dưới đây trước khi xem artifact có AI hỗ trợ là đủ sẵn sàng cho stakeholder decision hoặc handoff.
-
-| Khó khăn | Vì sao khó trong công việc BA | BA nên xử lý thế nào |
+| Khó khăn | Vì sao khó với BA | BA xử lý thế nào |
 | --- | --- | --- |
-| Generate nhiều story nhưng thiếu business value. | Lỗi "Generate nhiều story nhưng thiếu business value." xuất hiện khi team bàn về source attribution, conflict visibility, workshop decision flow và backlog readiness nhưng chưa thống nhất source nào authoritative. AI có thể làm disagreement nghe mượt hơn, nên BA phải giữ uncertainty visible. | Áp dụng control này: giữ speaker/source attribution visible cho đến khi stakeholder chịu trách nhiệm xác nhận ý nghĩa. Sau đó dùng pattern tốt hơn "Bắt đầu từ user goal, split theo permission, workflow step, exception và business value." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
-| Acceptance criteria chỉ lặp lại story. | Với User story và acceptance criteria, điểm khó là AI có thể draft story nhanh, nhưng BA phải giữ business rule, negative path, permission và testability. Pattern yếu rất dễ xảy ra vì AI có thể tạo câu trả lời trôi chảy trước khi BA check ownership, source freshness hoặc decision right. | Áp dụng control này: giữ speaker/source attribution visible cho đến khi stakeholder chịu trách nhiệm xác nhận ý nghĩa. Sau đó dùng pattern tốt hơn "Viết Given-When-Then có data, state, actor, boundary và expected result." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
-| Thiếu permission và audit. | Điểm này khó khi Story Quality Rubric được kỳ vọng hỗ trợ validated working artifact. Nếu BA không challenge draft, unsupported assumption có thể đi vào planning, testing hoặc stakeholder communication. | Áp dụng control này: giữ speaker/source attribution visible cho đến khi stakeholder chịu trách nhiệm xác nhận ý nghĩa. Sau đó dùng pattern tốt hơn "Yêu cầu negative, boundary, audit và role-based criteria trước refinement." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
+| Team dùng User story nhưng không có cùng cách hiểu. | Mọi người gật đầu trong meeting nhưng tưởng tượng outcome khác nhau. | Bắt đầu bằng định nghĩa một câu và cho thấy nó làm thay đổi Story Quality Card thế nào. |
+| AI output trông hoàn chỉnh hơn input thực tế. | Draft trôi chảy có thể che missing example, owner hoặc edge case. | Yêu cầu AI liệt kê assumption và missing evidence trước khi draft bản cuối. |
+| Reviewer cần detail khác nhau. | Product quan tâm value, Engineering quan tâm constraint, QA quan tâm testability, Ops quan tâm support. | Thêm column hoặc section cho từng receiving team thay vì một paragraph chung. |
 
 ## Where this applies in real projects
 
-Dùng bài này khi discovery hoặc refinement tạo nhiều raw input hơn mức BA có thể synthesize an toàn bằng tay trong thời gian có sẵn. Output thực tế không phải document dài hơn; đó là Story Quality Rubric có đủ evidence, ownership và decision clarity cho cuộc trao đổi tiếp theo của dự án.
-
-| Thời điểm trong dự án | Cách áp dụng bài học | Output cụ thể của BA |
+| Thời điểm dự án | Việc BA làm | Output cụ thể |
 | --- | --- | --- |
-| Discovery | Chọn một story mơ hồ và nhờ AI tìm missing business rule. | Story Quality Rubric thể hiện source attribution, conflict visibility, workshop decision flow và backlog readiness, trong đó action "Chọn một story mơ hồ và nhờ AI tìm missing business rule." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
-| Synthesis | Thêm hai negative acceptance criteria. | Story Quality Rubric thể hiện source evidence, trong đó action "Thêm hai negative acceptance criteria." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
-| Refinement | Nhờ QA review testability trước refinement. | Story Quality Rubric thể hiện decision owner, trong đó action "Nhờ QA review testability trước refinement." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
+| Discovery workshop | Dùng AI để gom note thành actor, risk và open question. | Story Quality Card có source note và owner. |
+| Backlog refinement | Chuyển AI suggestion thành decision nhỏ và test được. | Story, rule hoặc checklist item có acceptance signal. |
+| Handoff review | Nhờ AI critique artifact từ góc Product, Dev, QA và Ops. | Review table có action owner và status. |
 
 ## If this is missing
 
-Nếu thiếu User story và acceptance criteria, signal quan trọng từ interview, ticket, process note hoặc decision có thể mất trước khi đi vào backlog. BA vẫn có thể khôi phục, nhưng phải chuyển draft AI bóng bẩy trở lại thành evidence, assumption, owner và decision test được.
+Nếu thiếu User story và acceptance criteria, team vẫn có thể tạo document, nhưng document khó trust, khó test và khó maintain hơn.
 
-| Nếu thiếu | Ảnh hưởng tới dự án | Cách khôi phục |
+| Nếu thiếu | Ảnh hưởng dự án | Cách khôi phục |
 | --- | --- | --- |
-| Generate mười user story cho feature | Backlog phình to nhưng chưa chứng minh story nào có value hoặc releasable. | Khôi phục bằng pattern tốt hơn: Bắt đầu từ user goal, split theo permission, workflow step, exception và business value. Rework Story Quality Rubric cho đến khi nó lộ rõ source attribution, conflict visibility, workshop decision flow và backlog readiness, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
-| Acceptance criteria ghi system works correctly | QA và developer không quan sát hoặc automate được success mơ hồ. | Khôi phục bằng pattern tốt hơn: Viết Given-When-Then có data, state, actor, boundary và expected result. Rework Story Quality Rubric cho đến khi nó lộ rõ source attribution, conflict visibility, workshop decision flow và backlog readiness, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
-| Bỏ qua negative và permission case | Happy path che giấu production defect và security issue. | Khôi phục bằng pattern tốt hơn: Yêu cầu negative, boundary, audit và role-based criteria trước refinement. Rework Story Quality Rubric cho đến khi nó lộ rõ source attribution, conflict visibility, workshop decision flow và backlog readiness, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
+| Không có giải thích chung cho User story | Stakeholder đồng ý bằng lời nhưng kỳ vọng behavior khác nhau. | Thêm định nghĩa plain-language và example. |
+| Không review AI assumption | Ý tưởng chưa có evidence trở thành scope. | Đưa assumption vào validation list có owner. |
+| Không có Story Quality Card cụ thể | Bài học vẫn trừu tượng và không giúp delivery. | Tạo artifact bằng table nhỏ, không viết essay dài. |
 
 ## Mental model or core concept
 
-User story thể hiện actor, goal và value; acceptance criteria định nghĩa điều kiện observable của done. AI hữu ích khi expand alternative path, validation rule, permission và negative case. BA phải tránh criteria chung chung bằng cách cung cấp business rule và yêu cầu scenario test được.
+User story và acceptance criteria dễ hiểu nhất như một control của BA: làm phần lộn xộn visible, để AI hỗ trợ structure, rồi review với con người trước khi thành delivery work.
 
 ## Practical BA example
 
-Request 'users can update profiles' được tách thành nhiều story: sửa contact info, verify email change, restrict sensitive field, audit admin change và handle failed validation. AI giúp draft scenario, nhưng BA validate rule với product, security và support.
+Với notification settings, AI draft một story chung chung. Maya thêm role user, quiet-hour rule, channel preference, opt-out behavior và negative scenario để QA test được điều nên và không nên xảy ra.
 
 ## Diagram
 
 ```mermaid
-flowchart LR
-    A["Request mơ hồ"] --> B["Actor + goal + value"]
-    B --> C["Business rules"]
-    C --> D["User stories"]
-    D --> E["Acceptance criteria"]
-    E --> F["Negative + boundary cases"]
-    F --> G["Story sẵn sàng dev"]
+flowchart TD
+    A["Story Quality Card"]
+    A --> B["Actor"]
+    A --> C["Business outcome"]
+    A --> D["Rule boundary"]
+    A --> E["QA example"]
 ```
 
 ## BA artifact
 
-### Story Quality Rubric
+### Story Quality Card
 
-| Criterion | Good signal | Weak signal | Hành động BA |
+| Dòng artifact | BA cần viết gì | Dấu hiệu sẵn sàng | Dấu hiệu rủi ro |
 | --- | --- | --- | --- |
-| Actor và value | Actor và business value rõ. | Story chỉ ghi system shall. | Rewrite từ user goal. |
-| Business rule | Rule và threshold có tên. | Rule ẩn trong wording mơ hồ. | Thêm source rule hoặc open question. |
-| Acceptance criteria | Given-When-Then cover success và failure. | Chỉ có happy path. | Thêm negative và boundary case. |
-| Testability | QA verify được expected result. | Dùng từ chủ quan. | Thay vague term bằng outcome observable. |
+| Actor | Viết actor cụ thể bằng ngôn ngữ dự án. | Stakeholder confirm được. | Vẫn chỉ là slogan. |
+| Business outcome | Mô tả AI giúp gì và có thể sai ở đâu. | Review criteria visible. | Draft che uncertainty. |
+| Rule boundary | Capture gap, conflict, edge case hoặc risk. | Owner và next action rõ. | Issue bị chôn trong prose. |
+| QA example | Định nghĩa handoff rule hoặc completion signal. | QA hoặc Engineering hành động được. | Receiving team không biết làm gì. |
 
 ## AI expert note
 
-User story là decision container, không chỉ là sentence template. AI hữu ích để tạo variation, edge case và draft Given-When-Then, nhưng nó thường overgeneralize. BA cần evaluate từng story theo một user goal, outcome test được, rule source explicit và ranh giới rõ với behavior lân cận.
+Ở góc nhìn AI reviewer, tôi sẽ kiểm tra User story và acceptance criteria có làm artifact của BA thực tế hơn không. AI tốt phải làm lộ missing context, tạo structure và giúp review dễ hơn. Nếu chỉ làm câu chữ đẹp hơn, BA chưa lấy được đủ value.
 
 ## Bad vs better example
 
-| Cách làm yếu | Vì sao fail | Cách làm BA tốt hơn |
+| Cách làm yếu | Vì sao fail | Cách BA làm tốt hơn |
 | --- | --- | --- |
-| Generate mười user story cho feature | Backlog phình to nhưng chưa chứng minh story nào có value hoặc releasable. | Bắt đầu từ user goal, split theo permission, workflow step, exception và business value. |
-| Acceptance criteria ghi system works correctly | QA và developer không quan sát hoặc automate được success mơ hồ. | Viết Given-When-Then có data, state, actor, boundary và expected result. |
-| Bỏ qua negative và permission case | Happy path che giấu production defect và security issue. | Yêu cầu negative, boundary, audit và role-based criteria trước refinement. |
+| Yêu cầu AI "làm User story và acceptance criteria" mà không có source context. | Model tự lấp khoảng trống bằng wording nghe hợp lý. | Cung cấp source note, example, boundary và review criteria. |
+| Gửi answer đầu tiên như final. | Team không thấy assumption hoặc evidence yếu. | Chạy critique pass và gắn nhãn open decision. |
+| Dùng thuật ngữ AI mà không giải thích. | Business stakeholder mất tập trung hoặc hiểu sai. | Giải thích mỗi term bằng ngôn ngữ đơn giản trước khi đưa vào scope. |
 
 ## Stakeholder questions to ask
 
 | Stakeholder | Câu hỏi | Vì sao BA hỏi |
 | --- | --- | --- |
-| Product owner | User story và acceptance criteria cần cải thiện outcome nào, và trade-off nào có thể chấp nhận? | Ngăn output AI tối ưu cho mục tiêu mơ hồ. |
-| Engineering lead | Source, system, data hoặc constraint nào khiến Story Quality Rubric khó implement? | Biến technical constraint ẩn thành requirement question visible. |
-| QA lead | Rule, exception hoặc user state nào phải test được trước khi tin artifact này? | Chuyển wording trôi chảy của AI thành behavior quan sát được. |
-| Operations hoặc support | Failure path nào tạo manual work nếu nguyên tắc "AI giúp expand scenario, nhưng BA sở hữu business intent" bị bỏ qua? | Làm rõ support load, exception handling và operating impact. |
+| Product owner | Which outcome should User story và acceptance criteria improve first? | Keeps AI work tied to business value. |
+| Engineering lead | Which source, system, or constraint could make Story Quality Card hard to implement? | Turns hidden technical constraints into requirement questions. |
+| QA lead | Which behavior must be testable before we trust this artifact? | Converts fluent AI text into observable checks. |
+| Operations or support | What failure path creates manual work after release? | Surfaces support load and fallback needs. |
 
 ## Decision log entries
 
 | Decision item | Option cần capture | Owner | Evidence cần có |
 | --- | --- | --- | --- |
-| Scope boundary cho Story Quality Rubric | Must-have, later, out of scope | Product owner | Business outcome và release constraint |
-| Authority cho source attribution, conflict visibility, workshop decision flow và backlog readiness | Documented source, stakeholder decision, assumption cần validate | BA + stakeholder chịu trách nhiệm | Source ID, date và approval status |
-| Review gate trước handoff | Peer review, QA review, engineering review, formal approval | BA lead hoặc project lead | Risk level và receiving-team readiness |
-| Cách recover nếu Generate nhiều story nhưng thiếu business value. | Rewrite, defer, escalate hoặc validation workshop | Decision owner | Impact lên scope, testability và release risk |
+| Scope boundary for Story Quality Card | Must-have, later, out of scope | Product owner | Business outcome and release constraint |
+| Authority for Actor and Business outcome | Documented source, stakeholder decision, assumption to validate | BA + accountable stakeholder | Source ID, date, and approval status |
+| Review gate before handoff | Peer review, QA review, engineering review, formal approval | BA lead or project lead | Risk level and receiving-team readiness |
+| Recovery if Dùng User story như jargon thay vì project decision. | Rewrite, defer, escalate, or run validation workshop | Decision owner | Impact on scope, testability, and release risk |
 
 ## Definition of Ready / Done
 
-| Gate | Tín hiệu ready | Tín hiệu done |
+| Gate | Ready signal | Done signal |
 | --- | --- | --- |
-| Definition of Ready | Source cho source attribution, conflict visibility, workshop decision flow và backlog readiness được label và còn hiệu lực. | Story Quality Rubric có thể review mà không phải đoán missing context. |
-| Definition of Ready | Open assumption có owner và validation path. | Stakeholder có thể accept, reject hoặc defer từng assumption. |
-| Definition of Done | Artifact áp dụng control: giữ speaker/source attribution visible cho đến khi stakeholder chịu trách nhiệm xác nhận ý nghĩa. | Delivery, QA hoặc governance team có thể hành động dựa trên artifact. |
-| Definition of Done | Pattern yếu "Generate nhiều story nhưng thiếu business value." đã được kiểm tra explicit. | Không unsupported AI claim nào bị xem như requirement đã approve. |
+| Definition of Ready | Sources for Actor are named. | Story Quality Card can be reviewed without guessing context. |
+| Definition of Ready | Open assumptions have owners and validation paths. | Stakeholders can accept, reject, or defer each assumption. |
+| Definition of Done | The artifact applies this principle: AI có thể draft story rất nhanh, nhưng BA làm nó có giá trị bằng context, example và boundary test được. | Delivery, QA, or governance teams can act on it. |
+| Definition of Done | The weak pattern "Yêu cầu AI "làm User story và acceptance criteria" mà không có source context." has been checked. | No unsupported AI claim is treated as approved scope. |
 
 ## Before and after artifact example
 
-| Before | Risk trong draft AI | Revision của senior BA |
+| Before | Rủi ro từ AI draft | Senior BA revision |
 | --- | --- | --- |
-| Prompt: "Create Story Quality Rubric cho User story và acceptance criteria." | Model có thể tự bịa source fact, owner, threshold hoặc implementation rule. | Thêm source, scope boundary, source authority, output schema và instruction: Bắt đầu từ user goal, split theo permission, workflow step, exception và business value. |
-| Draft statement: "Chọn một story mơ hồ và nhờ AI tìm missing business rule." | Action hữu ích nhưng chưa gắn decision owner hoặc acceptance signal. | Rewrite thành project step có owner, expected artifact, review gate và evidence cần trước handoff. |
-| Paragraph nghe final về validated working artifact | Tone có thể che uncertainty và approval còn thiếu. | Chuyển thành bảng fact, assumption, decision needed, risk và validation question. |
+| Prompt: "Create Story Quality Card." | The model may invent source facts, owners, or thresholds. | Add sources, scope boundary, output schema, and review criteria. |
+| Draft statement: "Dùng AI để gom note thành actor, risk và open question." | Useful, but not tied to owner or acceptance signal. | Rewrite as a project step with owner, expected artifact, and review gate. |
+| Final-looking paragraph | Tone may hide uncertainty or missing stakeholder approval. | Convert into fact, assumption, decision needed, risk, and validation question. |
 
 ## Manual verification after AI output
 
-| Lens kiểm tra | Manual check | Pass signal |
+| Verification lens | Manual check | Pass signal |
 | --- | --- | --- |
-| Evidence | Trace mọi statement quan trọng trong Story Quality Rubric về source, decision hoặc assumption có label. | Không unsupported claim nào còn bị ẩn. |
-| Completeness | Check source attribution, conflict visibility, workshop decision flow và backlog readiness theo intended audience và receiving team. | Artifact trả lời được điều product, engineering, QA và operations cần. |
-| Testability | Hỏi QA có tạo được positive, negative, boundary và exception scenario không. | Wording mơ hồ được rewrite hoặc log thành question. |
-| Accountability | Confirm ai approve, ai review và ai xử lý khi artifact sai. | Owner và escalation path explicit. |
+| Evidence | Trace important statements in Story Quality Card to a source, decision, or labeled assumption. | No unsupported claim remains hidden. |
+| Completeness | Check Actor, Business outcome, Rule boundary, QA example against the intended audience. | Product, Engineering, QA, and Operations have what they need. |
+| Testability | Ask whether QA can create positive, negative, boundary, and exception scenarios. | Ambiguous wording is rewritten or logged as a question. |
+| Accountability | Confirm who approves, who reviews, and who acts when output is wrong. | Owners and escalation path are explicit. |
 
 ## AI collaboration prompt
 
 ```text
-Chuyển request này thành user story và acceptance criteria dạng Given-When-Then. Bao gồm actor, goal, business value, business rule, permission, negative case, boundary case, audit need và unresolved question. Flag criteria nào không test được.
+Dùng project notes được cung cấp để tạo Story Quality Card. Trước hết giải thích key term bằng ngôn ngữ đơn giản. Sau đó tạo table gồm evidence, assumption, risk, owner question và recommended next action. Không invent fact không nằm trong notes.
 ```
 
 ## Mistakes to avoid
 
-- Generate nhiều story nhưng thiếu business value.
-- Acceptance criteria chỉ lặp lại story.
-- Thiếu permission và audit.
-- Bỏ negative path vì happy path nhìn đơn giản.
+- Dùng User story như jargon thay vì project decision.
+- Để AI viết lấp missing evidence.
+- Gửi output cho team khác khi chưa có owner, status hoặc next action.
 
 ## Apply this tomorrow
 
-1. Chọn một story mơ hồ và nhờ AI tìm missing business rule.
-2. Thêm hai negative acceptance criteria.
-3. Nhờ QA review testability trước refinement.
-4. Tag mỗi criterion với source hoặc assumption.
+1. Lấy một project note hiện tại và nhờ AI tạo Story Quality Card.
+2. Thêm định nghĩa plain-language cho User story.
+3. Chạy một critique pass từ góc QA hoặc Engineering.
 
 ## What a BA should remember
 
-- AI giúp expand scenario, nhưng BA sở hữu business intent.
-- Acceptance criteria là contract về behavior.
-- Negative path làm lộ hidden requirement.
+- User story phải giúp project đi tiếp, không phải nghe cho hay.
+- AI draft; BA validate.
+- Artifact nhỏ review được tốt hơn giải thích dài chung chung.

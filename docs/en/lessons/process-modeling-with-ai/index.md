@@ -1,171 +1,271 @@
 ---
 title: "Process Modeling With AI"
-description: "AI can draft process flows, but BA quality comes from decisions, exceptions, ownership, and operational constraints."
+description: "AI can turn messy notes into a process draft, but the BA must verify handoffs, exceptions, and ownership."
 ---
 
 # Process Modeling With AI
 
 <div class="lesson-meta">
-  <span>AI-Augmented BA Workflow</span>
+  <span>Requirements and Delivery</span>
   <span>Software BA</span>
   <span>Core</span>
 </div>
 
+## Story mode: project walkthrough
+
+<div class="story-mode-panel">
+  <p class="story-eyebrow">Story prototype</p>
+  <h3>The clean process map hides the painful exception</h3>
+  <p class="story-intro">Maya receives a support process where every team thinks another team owns the exception. Instead of asking AI for a final answer, she uses the lesson pattern to make the situation visible, reviewable, and useful for the next project decision.</p>
+  <div class="story-scene-grid">
+<article class="story-scene">
+  <span>Scene 1</span>
+  <b>01</b>
+  <strong>The request is vague</strong>
+  <p>The team gives Maya a support process where every team thinks another team owns the exception and expects a clean answer by the end of the day.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 2</span>
+  <b>02</b>
+  <strong>AI creates a first draft</strong>
+  <p>The draft is helpful, but it hides uncertainty around Owner and Exception.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 3</span>
+  <b>03</b>
+  <strong>Maya turns it into BA evidence</strong>
+  <p>She adds source notes, owners, examples, and a focused Process Review Sheet review table instead of forwarding the raw AI output.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 4</span>
+  <b>04</b>
+  <strong>The team can decide</strong>
+  <p>The final Process Review Sheet shows what is ready, what is risky, and what needs a human decision.</p>
+</article>
+  </div>
+  <div class="visual-takeaway-strip">
+<span>Process model needs context</span>
+<span>Handoff must be reviewable</span>
+<span>Swimlane becomes a BA question</span>
+  </div>
+</div>
+
+## AI words in plain English
+
+| AI term | Simple meaning | BA use |
+| --- | --- | --- |
+| Process model | A picture of work steps, owners, and handoffs. | Use it to name the work clearly before asking AI to help. |
+| Handoff | The point where work moves from one role or system to another. | Use it as a review lens, not as a decorative AI word. |
+| Swimlane | A diagram lane showing who owns each step. | Turn it into a checklist item or stakeholder question. |
+| Exception path | What happens when the normal flow cannot continue. | Define the rule before the team treats the output as ready. |
+
+## Reality check: how this shows up in projects
+
+<div class="fact-card-grid">
+<article class="fact-card">
+  <strong>A fast draft can hide weak thinking</strong>
+  <span>Ask what evidence, owner, and decision the draft depends on.</span>
+  <p>AI can produce Process Review Sheet quickly, but speed does not prove quality.</p>
+</article>
+<article class="fact-card">
+  <strong>Stakeholders need simple language</strong>
+  <span>Explain the term in one sentence before using it in a requirement.</span>
+  <p>Terms like Process model and Handoff can confuse people outside the AI conversation.</p>
+</article>
+<article class="fact-card">
+  <strong>The Process Review Sheet must travel</strong>
+  <span>Make the next action visible for each receiving team.</span>
+  <p>Product, Engineering, QA, and Operations each read this Process Review Sheet differently.</p>
+</article>
+</div>
+
+## Visual walkthrough
+
+```mermaid
+flowchart LR
+    A["Project input"]
+    B["AI first draft"]
+    A --> B
+    C["BA review lenses"]
+    B --> C
+    D["Process Review Sheet"]
+    C --> D
+    E["Team decision"]
+    D --> E
+```
+
+## Visual decision map
+
+<div class="visual-ba-map">
+  <h3>Process Review Sheet: what the BA should look for</h3>
+<div>
+  <strong>Step</strong>
+  <span>What the BA must make explicit first.</span>
+  <em>Write it in plain language.</em>
+</div>
+<div>
+  <strong>Owner</strong>
+  <span>Where AI can help but may also hide uncertainty.</span>
+  <em>Add review criteria.</em>
+</div>
+<div>
+  <strong>Exception</strong>
+  <span>What can break if the team skips validation.</span>
+  <em>Create a decision question.</em>
+</div>
+<div>
+  <strong>Control</strong>
+  <span>What makes the artifact safe to hand off.</span>
+  <em>Name owner, evidence, and next step.</em>
+</div>
+</div>
+
 ## Learning outcomes
 
-- Use AI to create first-pass process maps.
-- Add exception paths, roles, SLAs, and controls.
-- Review process diagrams for missing ownership and policy decisions.
+- Explain Process model in simple BA language.
+- Use AI to draft a better Process Review Sheet.
+- Review the output before it becomes scope, test, or delivery work.
 
 ## Why this matters for BA work
 
 <div class="ba-callout">
-AI can draft process flows, but BA quality comes from decisions, exceptions, ownership, and operational constraints.
+AI can turn messy notes into a process draft, but the BA must verify handoffs, exceptions, and ownership.
 </div>
 
-This lesson matters because process models are where hidden requirements usually surface: handoffs, exception paths, timing, ownership, and system boundaries. AI can convert text into diagrams, but the BA must test whether the diagram exposes operational truth. A beautiful flow that misses escalation or manual override is dangerous.
+Process modeling with AI matters because a pretty flow can hide the handoffs where real work breaks. The BA uses AI to draft the first map, then checks owners, wait states, exception paths, and system touchpoints before the team uses the diagram for scope.
 
 ## Common difficulties for BAs
 
-In AI-Augmented BA Workflow, Process Modeling With AI becomes difficult when messy notes, half-validated decisions, and incomplete stakeholder context must become a shared artifact quickly. A BA should inspect the points below before treating an AI-supported artifact as ready for stakeholder decision or delivery handoff.
-
-| Difficulty | Why it is hard in BA work | How a BA should handle it |
+| Difficulty | Why it is hard in BA work | How a BA handles it |
 | --- | --- | --- |
-| Accepting the first AI diagram because it looks clean. | The mistake "Accepting the first AI diagram because it looks clean." appears when the team discusses source attribution, conflict visibility, workshop decision flow, and backlog readiness without agreeing which source is authoritative. AI can smooth over the disagreement, so the BA must keep uncertainty visible. | Apply this control: keep speaker/source attribution visible until the responsible stakeholder confirms meaning. Then use the stronger pattern "Use the diagram as a review object and challenge every decision, handoff, and alternate path." and ask who must approve the artifact before it affects scope, build, test, or release. |
-| Omitting exceptions and manual work. | For Process Modeling With AI, the friction is that AI can draft process flows, but BA quality comes from decisions, exceptions, ownership, and operational constraints. The weak pattern is tempting because AI can produce a fluent answer before the BA has checked ownership, source freshness, or decision rights. | Apply this control: keep speaker/source attribution visible until the responsible stakeholder confirms meaning. Then use the stronger pattern "Add failure, cancellation, timeout, escalation, and override paths." and ask who must approve the artifact before it affects scope, build, test, or release. |
-| Using process boxes without owners. | This becomes hard when Process Review Checklist is expected to support the validated working artifact. If the BA does not challenge the draft, unsupported assumptions may enter planning, testing, or stakeholder communication. | Apply this control: keep speaker/source attribution visible until the responsible stakeholder confirms meaning. Then use the stronger pattern "Separate actors, systems, external services, and human reviewers into distinct lanes." and ask who must approve the artifact before it affects scope, build, test, or release. |
+| The team uses Process model without a shared meaning. | People nod in meetings while imagining different outcomes. | Start with a one-sentence definition and show how it changes the Process Review Sheet. |
+| AI output looks more complete than the input deserves. | A fluent draft can hide missing examples, owners, or edge cases. | Ask AI to list assumptions and missing evidence before drafting the final artifact. |
+| Reviewers need different details. | Product cares about value, Engineering about constraints, QA about testability, and Ops about support. | Add columns or sections for each receiving team instead of writing one generic paragraph. |
 
 ## Where this applies in real projects
 
-Use this lesson when discovery or refinement produces more raw input than the BA can safely synthesize by hand in the available time. The practical output is not a longer document; it is Process Review Checklist with enough evidence, ownership, and decision clarity for the next project conversation.
-
-| Project moment | How to apply this lesson | Concrete BA output |
+| Project moment | BA move | Concrete output |
 | --- | --- | --- |
-| Discovery | Ask AI to add exception paths to one existing flow. | Process Review Checklist showing source attribution, conflict visibility, workshop decision flow, and backlog readiness, with the action "Ask AI to add exception paths to one existing flow." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
-| Synthesis | Mark every decision diamond with a business rule. | Process Review Checklist showing source evidence, with the action "Mark every decision diamond with a business rule." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
-| Refinement | Add owner labels to process steps. | Process Review Checklist showing decision owner, with the action "Add owner labels to process steps." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
+| Discovery workshop | Use AI to organize notes into step, risks, and open questions. | Process Review Sheet with source notes and owners. |
+| Backlog refinement | Convert AI suggestions into small, testable decisions. | Story, rule, or checklist item with acceptance signal. |
+| Handoff review | Ask AI to critique the artifact from Product, Dev, QA, and Ops viewpoints. | Review table with action owner and status. |
 
 ## If this is missing
 
-If Process Modeling With AI is missing, important signals from interviews, tickets, process notes, or decisions may be lost before they reach the backlog. The BA can still recover, but only by converting the polished AI draft back into explicit evidence, assumptions, owners, and testable decisions.
+If Process Modeling With AI is missing, the team may still produce documents, but they will be harder to trust, test, and maintain.
 
 | If missing | Project impact | Recovery action |
 | --- | --- | --- |
-| Ask AI to draw a process from a paragraph and accept it | The generated flow may omit exceptions, ownership, timing, and integration constraints. | Recover by using the stronger pattern: Use the diagram as a review object and challenge every decision, handoff, and alternate path. Rework Process Review Checklist until it exposes source attribution, conflict visibility, workshop decision flow, and backlog readiness, and do not share it as final until evidence, ownership, and validation path are explicit. |
-| Model only the happy path | Delivery teams discover queues, retries, and manual work too late. | Recover by using the stronger pattern: Add failure, cancellation, timeout, escalation, and override paths. Rework Process Review Checklist until it exposes source attribution, conflict visibility, workshop decision flow, and backlog readiness, and do not share it as final until evidence, ownership, and validation path are explicit. |
-| Mix user actions and system actions in one lane | Responsibility and automation boundaries become unclear. | Recover by using the stronger pattern: Separate actors, systems, external services, and human reviewers into distinct lanes. Rework Process Review Checklist until it exposes source attribution, conflict visibility, workshop decision flow, and backlog readiness, and do not share it as final until evidence, ownership, and validation path are explicit. |
+| No shared explanation for Process model | Stakeholders agree verbally but expect different behavior later. | Add a plain-language definition and example. |
+| No review of AI assumptions | Unsupported ideas become scope. | Move assumptions into an owner-based validation list. |
+| No concrete Process Review Sheet | The learning stays abstract and does not help delivery. | Produce the artifact as a small table, not a long essay. |
 
 ## Mental model or core concept
 
-Process modeling is not drawing boxes; it is clarifying work, decision rights, handoffs, and failure handling. AI can convert text into a flow, but the BA should challenge the draft: who owns each step, what triggers the next step, what happens when data is missing, and which controls are required.
+Process Modeling With AI is easiest to understand as a BA control: make the messy thing visible, let AI help structure it, then review it with humans before it becomes delivery work.
 
 ## Practical BA example
 
-AI drafts a clean onboarding flow: submit documents, verify, approve. The BA adds missing-document loop, duplicate customer check, risk review, SLA timer, manual override, and customer notification rules. The diagram becomes a decision tool, not decoration.
+AI turns workshop notes into a support flow. Maya asks who owns blocked tickets, what happens after three failed contact attempts, and which system records the handoff before accepting the diagram.
 
 ## Diagram
 
 ```mermaid
 flowchart TD
-    A["Customer submits request"] --> B{"Documents complete?"}
-    B -->|No| C["Request missing documents"]
-    C --> A
-    B -->|Yes| D{"Risk threshold exceeded?"}
-    D -->|Yes| E["Manager review"]
-    D -->|No| F["Auto approve"]
-    E --> G["Notify customer"]
-    F --> G
+    A["Process Review Sheet"]
+    A --> B["Step"]
+    A --> C["Owner"]
+    A --> D["Exception"]
+    A --> E["Control"]
 ```
 
 ## BA artifact
 
-### Process Review Checklist
+### Process Review Sheet
 
-| Flow element | BA review question | Evidence needed | Common gap |
+| Artifact line | What the BA writes | Ready signal | Risk signal |
 | --- | --- | --- | --- |
-| Actor | Who performs or owns the step? | Role matrix or SOP. | System step with no owner. |
-| Decision | What rule chooses the branch? | Policy or business rule. | Diamond with vague condition. |
-| Exception | What happens when input is invalid? | Support scripts and error logs. | Happy path only. |
-| SLA/control | What timing or audit control applies? | Operational metric or compliance rule. | No escalation or audit. |
+| Step | Write the concrete step in project language. | A stakeholder can confirm it. | It is still a slogan. |
+| Owner | Describe how AI helps and where it may be wrong. | Review criteria are visible. | The draft hides uncertainty. |
+| Exception | Capture the gap, conflict, edge case, or risk. | Owner and next action are named. | The issue is buried in prose. |
+| Control | Define the handoff rule or completion signal. | QA or Engineering can act on it. | No receiving team knows what to do. |
 
 ## AI expert note
 
-AI-assisted process modeling should be treated as a hypothesis of the workflow. The expert BA asks whether every decision has a rule, every exception has an owner, every system interaction has a boundary, and every loop has a stopping condition. Diagrams should trigger better questions, not decorate requirements.
+As an AI reviewer, I would check whether Process Modeling With AI changes the BA artifact in a practical way. Good AI use should expose missing context, create structure, and make review easier. If it only produces nicer wording, the BA has not captured enough value yet.
 
 ## Bad vs better example
 
-| Weak pattern | Why it fails | Stronger BA pattern |
+| Weak pattern | Why it fails | Better BA pattern |
 | --- | --- | --- |
-| Ask AI to draw a process from a paragraph and accept it | The generated flow may omit exceptions, ownership, timing, and integration constraints. | Use the diagram as a review object and challenge every decision, handoff, and alternate path. |
-| Model only the happy path | Delivery teams discover queues, retries, and manual work too late. | Add failure, cancellation, timeout, escalation, and override paths. |
-| Mix user actions and system actions in one lane | Responsibility and automation boundaries become unclear. | Separate actors, systems, external services, and human reviewers into distinct lanes. |
+| Ask AI to "do Process Modeling With AI" with no source context. | The model fills gaps with plausible wording. | Provide source notes, examples, boundaries, and review criteria. |
+| Share the first answer as final. | The team cannot see assumptions or weak evidence. | Run a critique pass and label open decisions. |
+| Use AI terms with no explanation. | Business stakeholders disengage or misunderstand. | Explain each term in plain language before using it in scope. |
 
 ## Stakeholder questions to ask
 
-| Stakeholder | Question | Why the BA asks it |
+| Stakeholder | Question | Why the BA asks |
 | --- | --- | --- |
-| Product owner | Which outcome should Process Modeling With AI improve, and what trade-off are you willing to accept? | Prevents AI output from optimizing for a vague goal. |
-| Engineering lead | What source, system, data, or constraint would make Process Review Checklist hard to implement? | Turns hidden technical constraints into visible requirement questions. |
-| QA lead | Which rule, exception, or user state must be testable before you trust this artifact? | Converts fluent AI wording into observable behavior. |
-| Operations or support | What failure path would create manual work if the lesson principle "A useful process diagram exposes decisions and handoffs" is ignored? | Surfaces support load, exception handling, and operating impact. |
+| Product owner | Which outcome should Process Modeling With AI improve first? | Keeps AI work tied to business value. |
+| Engineering lead | Which source, system, or constraint could make Process Review Sheet hard to implement? | Turns hidden technical constraints into requirement questions. |
+| QA lead | Which behavior must be testable before we trust this artifact? | Converts fluent AI text into observable checks. |
+| Operations or support | What failure path creates manual work after release? | Surfaces support load and fallback needs. |
 
 ## Decision log entries
 
 | Decision item | Options to capture | Owner | Evidence needed |
 | --- | --- | --- | --- |
-| Scope boundary for Process Review Checklist | Must-have, later, out of scope | Product owner | Business outcome and release constraint |
-| Authority for source attribution, conflict visibility, workshop decision flow, and backlog readiness | Documented source, stakeholder decision, assumption to validate | BA + accountable stakeholder | Source ID, date, and approval status |
+| Scope boundary for Process Review Sheet | Must-have, later, out of scope | Product owner | Business outcome and release constraint |
+| Authority for Step and Owner | Documented source, stakeholder decision, assumption to validate | BA + accountable stakeholder | Source ID, date, and approval status |
 | Review gate before handoff | Peer review, QA review, engineering review, formal approval | BA lead or project lead | Risk level and receiving-team readiness |
-| Recovery if Accepting the first AI diagram because it looks clean. | Rewrite, defer, escalate, or run validation workshop | Decision owner | Impact on scope, testability, and release risk |
+| Recovery if Using Process model as jargon instead of a project decision. | Rewrite, defer, escalate, or run validation workshop | Decision owner | Impact on scope, testability, and release risk |
 
 ## Definition of Ready / Done
 
 | Gate | Ready signal | Done signal |
 | --- | --- | --- |
-| Definition of Ready | Sources for source attribution, conflict visibility, workshop decision flow, and backlog readiness are labeled and current. | Process Review Checklist can be reviewed without guessing missing context. |
-| Definition of Ready | Open assumptions have owners and validation paths. | Stakeholders can decide whether to accept, reject, or defer each assumption. |
-| Definition of Done | The artifact applies this control: keep speaker/source attribution visible until the responsible stakeholder confirms meaning. | Delivery, QA, or governance teams can act on the artifact. |
-| Definition of Done | The weak pattern "Accepting the first AI diagram because it looks clean." has been explicitly checked. | No unsupported AI claim is treated as an approved requirement. |
+| Definition of Ready | Sources for Step are named. | Process Review Sheet can be reviewed without guessing context. |
+| Definition of Ready | Open assumptions have owners and validation paths. | Stakeholders can accept, reject, or defer each assumption. |
+| Definition of Done | The artifact applies this principle: AI can turn messy notes into a process draft, but the BA must verify handoffs, exceptions, and ownership. | Delivery, QA, or governance teams can act on it. |
+| Definition of Done | The weak pattern "Ask AI to "do Process Modeling With AI" with no source context." has been checked. | No unsupported AI claim is treated as approved scope. |
 
 ## Before and after artifact example
 
 | Before | AI draft risk | Senior BA revision |
 | --- | --- | --- |
-| Prompt: "Create Process Review Checklist for Process Modeling With AI." | The model may invent source facts, owners, thresholds, or implementation rules. | Add sources, scope boundary, source authority, output schema, and the instruction: Use the diagram as a review object and challenge every decision, handoff, and alternate path. |
-| Draft statement: "Ask AI to add exception paths to one existing flow." | Useful action, but not yet tied to a decision owner or acceptance signal. | Rewrite as a project step with owner, expected artifact, review gate, and evidence required before handoff. |
-| Final-looking paragraph about validated working artifact | The tone may hide uncertainty and missing stakeholder approval. | Convert it into a table of fact, assumption, decision needed, risk, and validation question. |
+| Prompt: "Create Process Review Sheet." | The model may invent source facts, owners, or thresholds. | Add sources, scope boundary, output schema, and review criteria. |
+| Draft statement: "Use AI to organize notes into step, risks, and open questions." | Useful, but not tied to owner or acceptance signal. | Rewrite as a project step with owner, expected artifact, and review gate. |
+| Final-looking paragraph | Tone may hide uncertainty or missing stakeholder approval. | Convert into fact, assumption, decision needed, risk, and validation question. |
 
 ## Manual verification after AI output
 
 | Verification lens | Manual check | Pass signal |
 | --- | --- | --- |
-| Evidence | Trace every important statement in Process Review Checklist to a source, decision, or labeled assumption. | No unsupported claim remains hidden. |
-| Completeness | Check source attribution, conflict visibility, workshop decision flow, and backlog readiness against the intended audience and receiving team. | The artifact answers what product, engineering, QA, and operations need. |
-| Testability | Ask whether QA can create positive, negative, boundary, and exception scenarios. | Ambiguous wording has been rewritten or logged as a question. |
-| Accountability | Confirm who approves, who reviews, and who acts when the artifact is wrong. | Owners and escalation path are explicit. |
+| Evidence | Trace important statements in Process Review Sheet to a source, decision, or labeled assumption. | No unsupported claim remains hidden. |
+| Completeness | Check Step, Owner, Exception, Control against the intended audience. | Product, Engineering, QA, and Operations have what they need. |
+| Testability | Ask whether QA can create positive, negative, boundary, and exception scenarios. | Ambiguous wording is rewritten or logged as a question. |
+| Accountability | Confirm who approves, who reviews, and who acts when output is wrong. | Owners and escalation path are explicit. |
 
 ## AI collaboration prompt
 
 ```text
-Convert this process description into a Mermaid flowchart. Include actors, decision rules, exception paths, SLAs, handoffs, inputs, outputs, controls, and unresolved policy questions. After the diagram, list missing ownership or rule gaps.
+Use the supplied project notes to create a Process Review Sheet. First explain the key terms in simple language. Then produce a table with evidence, assumption, risk, owner question, and recommended next action. Do not invent facts that are not in the notes.
 ```
 
 ## Mistakes to avoid
 
-- Accepting the first AI diagram because it looks clean.
-- Omitting exceptions and manual work.
-- Using process boxes without owners.
-- Drawing decisions without decision rules.
+- Using Process model as jargon instead of a project decision.
+- Letting AI write around missing evidence.
+- Sending output to another team without owner, status, or next action.
 
 ## Apply this tomorrow
 
-1. Ask AI to add exception paths to one existing flow.
-2. Mark every decision diamond with a business rule.
-3. Add owner labels to process steps.
-4. Review the diagram with support or operations, not only product.
+1. Take one current project note and ask AI for a Process Review Sheet.
+2. Add a plain-language definition for Process model.
+3. Run one critique pass from QA or Engineering viewpoint.
 
 ## What a BA should remember
 
-- A useful process diagram exposes decisions and handoffs.
-- Exceptions often contain the real requirements.
-- AI drafts flow; BA validates operation.
+- Process model should help the project move, not sound impressive.
+- AI drafts; BA validates.
+- A small reviewable artifact beats a long generic explanation.

@@ -1,6 +1,6 @@
 ---
 title: "Structured output và prompt tái sử dụng"
-description: "Structured output biến AI từ chat response thành BA artifact có thể review."
+description: "Structured output biến AI từ chat answer thành BA artifact có thể review."
 ---
 
 # Structured output và prompt tái sử dụng
@@ -11,161 +11,261 @@ description: "Structured output biến AI từ chat response thành BA artifact 
   <span>Core</span>
 </div>
 
+## Story mode: project walkthrough
+
+<div class="story-mode-panel">
+  <p class="story-eyebrow">Story prototype</p>
+  <h3>Trong backlog review, table thắng paragraph đẹp</h3>
+  <p class="story-intro">Maya nhận nhiều BA tạo format gap analysis khác nhau từ cùng input. Thay vì nhờ AI trả lời final, cô dùng pattern của bài này để làm tình huống rõ hơn, review được hơn và hữu ích hơn cho decision tiếp theo.</p>
+  <div class="story-scene-grid">
+<article class="story-scene">
+  <span>Scene 1</span>
+  <b>01</b>
+  <strong>Yêu cầu còn mơ hồ</strong>
+  <p>Team đưa cho Maya nhiều BA tạo format gap analysis khác nhau từ cùng input và mong có câu trả lời gọn trong ngày.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 2</span>
+  <b>02</b>
+  <strong>AI tạo draft đầu tiên</strong>
+  <p>Draft khá hữu ích, nhưng che uncertainty quanh Output columns và Validation rule.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 3</span>
+  <b>03</b>
+  <strong>Maya biến nó thành evidence của BA</strong>
+  <p>Cô thêm source note, owner, example và review table tập trung cho Reusable Prompt Contract thay vì gửi thẳng raw AI output.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 4</span>
+  <b>04</b>
+  <strong>Team có thể ra decision</strong>
+  <p>Reusable Prompt Contract cuối cùng cho thấy phần nào ready, phần nào rủi ro và phần nào cần human decision.</p>
+</article>
+  </div>
+  <div class="visual-takeaway-strip">
+<span>Structured output cần context</span>
+<span>Schema phải review được</span>
+<span>Reusable prompt trở thành câu hỏi của BA</span>
+  </div>
+</div>
+
+## AI words in plain English
+
+| Thuật ngữ AI | Hiểu đơn giản | BA dùng để làm gì |
+| --- | --- | --- |
+| Structured output | Câu trả lời AI theo table, JSON hoặc template rõ. | Dùng để gọi đúng loại việc trước khi nhờ AI hỗ trợ. |
+| Schema | Các field và shape bắt buộc của output. | Dùng như lens review, không dùng như từ trang trí. |
+| Reusable prompt | Prompt pattern dùng nhất quán cho nhiều task. | Biến nó thành checklist item hoặc câu hỏi stakeholder. |
+| Validation | Kiểm tra output có đạt rule và evidence không. | Định nghĩa rule trước khi team xem output là ready. |
+
+## Reality check: tình huống thường gặp trong dự án
+
+<div class="fact-card-grid">
+<article class="fact-card">
+  <strong>Draft nhanh có thể che tư duy yếu</strong>
+  <span>Hỏi draft phụ thuộc evidence, owner và decision nào.</span>
+  <p>AI có thể tạo Reusable Prompt Contract rất nhanh, nhưng tốc độ không chứng minh quality.</p>
+</article>
+<article class="fact-card">
+  <strong>Stakeholder cần ngôn ngữ đơn giản</strong>
+  <span>Giải thích term bằng một câu trước khi đưa vào requirement.</span>
+  <p>Term như Structured output và Schema dễ làm người ngoài cuộc trao đổi AI bị rối.</p>
+</article>
+<article class="fact-card">
+  <strong>Reusable Prompt Contract phải đi qua nhiều team</strong>
+  <span>Làm next action visible cho từng receiving team.</span>
+  <p>Product, Engineering, QA và Operations đọc Reusable Prompt Contract theo góc nhìn khác nhau.</p>
+</article>
+</div>
+
+## Visual walkthrough
+
+```mermaid
+flowchart LR
+    A["Project input"]
+    B["AI draft đầu"]
+    A --> B
+    C["Lens review của BA"]
+    B --> C
+    D["Reusable Prompt Contract"]
+    C --> D
+    E["Team decision"]
+    D --> E
+```
+
+## Visual decision map
+
+<div class="visual-ba-map">
+  <h3>Reusable Prompt Contract: what the BA should look for</h3>
+<div>
+  <strong>Input</strong>
+  <span>Điều BA phải làm rõ trước tiên.</span>
+  <em>Viết bằng ngôn ngữ dự án.</em>
+</div>
+<div>
+  <strong>Output columns</strong>
+  <span>Nơi AI có thể giúp nhưng cũng có thể che uncertainty.</span>
+  <em>Thêm review criteria.</em>
+</div>
+<div>
+  <strong>Validation rule</strong>
+  <span>Điều có thể hỏng nếu team bỏ validation.</span>
+  <em>Tạo decision question.</em>
+</div>
+<div>
+  <strong>Reuse note</strong>
+  <span>Điều làm artifact đủ an toàn để handoff.</span>
+  <em>Ghi owner, evidence và next step.</em>
+</div>
+</div>
+
 ## Learning outcomes
 
-- Thiết kế output table và schema cho task BA.
-- Tạo reusable prompt cho work phân tích lặp lại.
-- Làm output AI dễ review, compare và trace hơn.
+- Giải thích Structured output bằng ngôn ngữ BA đơn giản.
+- Dùng AI để draft Reusable Prompt Contract tốt hơn.
+- Review output trước khi nó trở thành scope, test hoặc delivery work.
 
 ## Why this matters for BA work
 
 <div class="ba-callout">
-Structured output biến AI từ chat response thành BA artifact có thể review.
+Structured output biến AI từ chat answer thành BA artifact có thể review.
 </div>
 
-Bài này quan trọng vì artifact BA cần được compare, review, trace và handoff. Prose tự do của AI rất khó validate ở scale. Structured output làm missing field visible, enforce evidence discipline và giúp team reuse prompt cho story, risk, requirement, decision và review finding mà không phải bắt đầu lại.
+Structured output quan trọng vì công việc BA cần so sánh, review và reuse. Table, schema hoặc checklist làm AI output dễ validate hơn paragraph dài, đặc biệt khi nhiều BA cần cùng standard trên nhiều project.
 
 ## Common difficulties for BAs
 
-Trong AI collaboration và context engineering, Structured output và prompt tái sử dụng trở nên khó khi AI có thể draft rất nhanh, nhưng reviewer cần context lặp lại được, structured output và critique rule để tin kết quả. BA nên kiểm tra các điểm dưới đây trước khi xem artifact có AI hỗ trợ là đủ sẵn sàng cho stakeholder decision hoặc handoff.
-
-| Khó khăn | Vì sao khó trong công việc BA | BA nên xử lý thế nào |
+| Khó khăn | Vì sao khó với BA | BA xử lý thế nào |
 | --- | --- | --- |
-| Dùng free-form output cho task cần comparison. | Lỗi "Dùng free-form output cho task cần comparison." xuất hiện khi team bàn về context package quality, prompt reuse, critique loop và output contract nhưng chưa thống nhất source nào authoritative. AI có thể làm disagreement nghe mượt hơn, nên BA phải giữ uncertainty visible. | Áp dụng control này: tách context preparation, generation, critique và human approval thành các bước visible. Sau đó dùng pattern tốt hơn "Dùng table hoặc JSON-like structure với column bắt buộc và cách xử lý missing value rõ." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
-| Quên ID và source reference. | Với Structured output và prompt tái sử dụng, điểm khó là Structured output biến AI từ chat response thành BA artifact có thể review. Pattern yếu rất dễ xảy ra vì AI có thể tạo câu trả lời trôi chảy trước khi BA check ownership, source freshness hoặc decision right. | Áp dụng control này: tách context preparation, generation, critique và human approval thành các bước visible. Sau đó dùng pattern tốt hơn "Định nghĩa output schema, acceptance criteria, review rubric và revision instruction." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
-| Tạo prompt mà BA khác không reuse được. | Điểm này khó khi Reusable Prompt Contract được kỳ vọng hỗ trợ repeatable collaboration pattern. Nếu BA không challenge draft, unsupported assumption có thể đi vào planning, testing hoặc stakeholder communication. | Áp dụng control này: tách context preparation, generation, critique và human approval thành các bước visible. Sau đó dùng pattern tốt hơn "Validate từng row theo source support, decision status và testability." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
+| Team dùng Structured output nhưng không có cùng cách hiểu. | Mọi người gật đầu trong meeting nhưng tưởng tượng outcome khác nhau. | Bắt đầu bằng định nghĩa một câu và cho thấy nó làm thay đổi Reusable Prompt Contract thế nào. |
+| AI output trông hoàn chỉnh hơn input thực tế. | Draft trôi chảy có thể che missing example, owner hoặc edge case. | Yêu cầu AI liệt kê assumption và missing evidence trước khi draft bản cuối. |
+| Reviewer cần detail khác nhau. | Product quan tâm value, Engineering quan tâm constraint, QA quan tâm testability, Ops quan tâm support. | Thêm column hoặc section cho từng receiving team thay vì một paragraph chung. |
 
 ## Where this applies in real projects
 
-Dùng bài này khi BA team muốn pattern AI collaboration tái sử dụng thay vì prompt one-off phụ thuộc thói quen từng người. Output thực tế không phải document dài hơn; đó là Reusable Prompt Contract có đủ evidence, ownership và decision clarity cho cuộc trao đổi tiếp theo của dự án.
-
-| Thời điểm trong dự án | Cách áp dụng bài học | Output cụ thể của BA |
+| Thời điểm dự án | Việc BA làm | Output cụ thể |
 | --- | --- | --- |
-| Context setup | Chuyển một prompt thường dùng thành reusable prompt contract. | Reusable Prompt Contract thể hiện context package quality, prompt reuse, critique loop và output contract, trong đó action "Chuyển một prompt thường dùng thành reusable prompt contract." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
-| Prompt reuse | Thêm output column source, severity và owner. | Reusable Prompt Contract thể hiện source evidence, trong đó action "Thêm output column source, severity và owner." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
-| Peer review | Yêu cầu AI self-check theo output schema. | Reusable Prompt Contract thể hiện decision owner, trong đó action "Yêu cầu AI self-check theo output schema." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
+| Discovery workshop | Dùng AI để gom note thành input, risk và open question. | Reusable Prompt Contract có source note và owner. |
+| Backlog refinement | Chuyển AI suggestion thành decision nhỏ và test được. | Story, rule hoặc checklist item có acceptance signal. |
+| Handoff review | Nhờ AI critique artifact từ góc Product, Dev, QA và Ops. | Review table có action owner và status. |
 
 ## If this is missing
 
-Nếu thiếu Structured output và prompt tái sử dụng, output thay đổi theo từng người, assumption bị ẩn và chất lượng review phụ thuộc vào ai viết prompt. BA vẫn có thể khôi phục, nhưng phải chuyển draft AI bóng bẩy trở lại thành evidence, assumption, owner và decision test được.
+Nếu thiếu Structured output và prompt tái sử dụng, team vẫn có thể tạo document, nhưng document khó trust, khó test và khó maintain hơn.
 
-| Nếu thiếu | Ảnh hưởng tới dự án | Cách khôi phục |
+| Nếu thiếu | Ảnh hưởng dự án | Cách khôi phục |
 | --- | --- | --- |
-| Yêu cầu AI phân tích chi tiết bằng paragraph | Field quan trọng như owner, evidence, risk và action có thể biến mất. | Khôi phục bằng pattern tốt hơn: Dùng table hoặc JSON-like structure với column bắt buộc và cách xử lý missing value rõ. Rework Reusable Prompt Contract cho đến khi nó lộ rõ context package quality, prompt reuse, critique loop và output contract, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
-| Reuse prompt nhưng không có quality contract | Cùng prompt có thể tạo artifact inconsistent giữa project. | Khôi phục bằng pattern tốt hơn: Định nghĩa output schema, acceptance criteria, review rubric và revision instruction. Rework Reusable Prompt Contract cho đến khi nó lộ rõ context package quality, prompt reuse, critique loop và output contract, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
-| Xem structured output là tự động đúng | Bảng nhìn precise nhưng vẫn có thể chứa data unsupported. | Khôi phục bằng pattern tốt hơn: Validate từng row theo source support, decision status và testability. Rework Reusable Prompt Contract cho đến khi nó lộ rõ context package quality, prompt reuse, critique loop và output contract, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
+| Không có giải thích chung cho Structured output | Stakeholder đồng ý bằng lời nhưng kỳ vọng behavior khác nhau. | Thêm định nghĩa plain-language và example. |
+| Không review AI assumption | Ý tưởng chưa có evidence trở thành scope. | Đưa assumption vào validation list có owner. |
+| Không có Reusable Prompt Contract cụ thể | Bài học vẫn trừu tượng và không giúp delivery. | Tạo artifact bằng table nhỏ, không viết essay dài. |
 
 ## Mental model or core concept
 
-Answer không cấu trúc rất khó verify. Structured output cho BA column, ID, severity level, source reference và owner. Nhờ vậy product, dev, QA và stakeholder có thể inspect. Reusable prompt nên định nghĩa input, output contract, constraint và review rule.
+Structured output và prompt tái sử dụng dễ hiểu nhất như một control của BA: làm phần lộn xộn visible, để AI hỗ trợ structure, rồi review với con người trước khi thành delivery work.
 
 ## Practical BA example
 
-Thay vì hỏi 'summarize meeting này', BA yêu cầu bảng gồm decision, evidence, owner, impacted requirement, risk và open question. Output có thể chuyển thành Jira task, decision log và follow-up action.
+Thay vì yêu cầu paragraph gap analysis, Maya yêu cầu column: requirement, issue type, evidence, severity, owner question và suggested action. Team có thể sort, assign và review output.
 
 ## Diagram
 
 ```mermaid
 flowchart TD
-    A["Reusable prompt"] --> B["Input scope"]
-    A --> C["Output schema"]
-    A --> D["Constraint"]
-    A --> E["Review rule"]
-    B --> F["Traceable table"]
-    C --> F
-    D --> F
-    E --> F
+    A["Reusable Prompt Contract"]
+    A --> B["Input"]
+    A --> C["Output columns"]
+    A --> D["Validation rule"]
+    A --> E["Reuse note"]
 ```
 
 ## BA artifact
 
 ### Reusable Prompt Contract
 
-| Contract part | Content bắt buộc | Vì sao hữu ích | Ví dụ |
+| Dòng artifact | BA cần viết gì | Dấu hiệu sẵn sàng | Dấu hiệu rủi ro |
 | --- | --- | --- | --- |
-| Input scope | Source nào included và excluded. | Tránh context drift ẩn. | Chỉ dùng transcript T1 và policy P2. |
-| Output columns | Field artifact phải có. | Làm review systematic. | ID, issue, severity, evidence, question. |
-| Constraints | Rule AI phải tuân thủ. | Ngăn unsupported content. | Không tự bịa policy. |
-| Review rule | Cách đánh giá output. | Align với BA quality. | Mỗi row cần source hoặc assumption. |
+| Input | Viết input cụ thể bằng ngôn ngữ dự án. | Stakeholder confirm được. | Vẫn chỉ là slogan. |
+| Output columns | Mô tả AI giúp gì và có thể sai ở đâu. | Review criteria visible. | Draft che uncertainty. |
+| Validation rule | Capture gap, conflict, edge case hoặc risk. | Owner và next action rõ. | Issue bị chôn trong prose. |
+| Reuse note | Định nghĩa handoff rule hoặc completion signal. | QA hoặc Engineering hành động được. | Receiving team không biết làm gì. |
 
 ## AI expert note
 
-Structured output là một control surface. Schema nói cho model biết dimension nào quan trọng và nói cho reviewer biết phải check gì. BA chuyên gia thêm source ID, assumption flag, confidence, decision owner, testability, risk level và next action để output hỗ trợ governance, không chỉ readability.
+Ở góc nhìn AI reviewer, tôi sẽ kiểm tra Structured output và prompt tái sử dụng có làm artifact của BA thực tế hơn không. AI tốt phải làm lộ missing context, tạo structure và giúp review dễ hơn. Nếu chỉ làm câu chữ đẹp hơn, BA chưa lấy được đủ value.
 
 ## Bad vs better example
 
-| Cách làm yếu | Vì sao fail | Cách làm BA tốt hơn |
+| Cách làm yếu | Vì sao fail | Cách BA làm tốt hơn |
 | --- | --- | --- |
-| Yêu cầu AI phân tích chi tiết bằng paragraph | Field quan trọng như owner, evidence, risk và action có thể biến mất. | Dùng table hoặc JSON-like structure với column bắt buộc và cách xử lý missing value rõ. |
-| Reuse prompt nhưng không có quality contract | Cùng prompt có thể tạo artifact inconsistent giữa project. | Định nghĩa output schema, acceptance criteria, review rubric và revision instruction. |
-| Xem structured output là tự động đúng | Bảng nhìn precise nhưng vẫn có thể chứa data unsupported. | Validate từng row theo source support, decision status và testability. |
+| Yêu cầu AI "làm Structured output và prompt tái sử dụng" mà không có source context. | Model tự lấp khoảng trống bằng wording nghe hợp lý. | Cung cấp source note, example, boundary và review criteria. |
+| Gửi answer đầu tiên như final. | Team không thấy assumption hoặc evidence yếu. | Chạy critique pass và gắn nhãn open decision. |
+| Dùng thuật ngữ AI mà không giải thích. | Business stakeholder mất tập trung hoặc hiểu sai. | Giải thích mỗi term bằng ngôn ngữ đơn giản trước khi đưa vào scope. |
 
 ## Stakeholder questions to ask
 
 | Stakeholder | Câu hỏi | Vì sao BA hỏi |
 | --- | --- | --- |
-| Product owner | Structured output và prompt tái sử dụng cần cải thiện outcome nào, và trade-off nào có thể chấp nhận? | Ngăn output AI tối ưu cho mục tiêu mơ hồ. |
-| Engineering lead | Source, system, data hoặc constraint nào khiến Reusable Prompt Contract khó implement? | Biến technical constraint ẩn thành requirement question visible. |
-| QA lead | Rule, exception hoặc user state nào phải test được trước khi tin artifact này? | Chuyển wording trôi chảy của AI thành behavior quan sát được. |
-| Operations hoặc support | Failure path nào tạo manual work nếu nguyên tắc "Structure là quality control" bị bỏ qua? | Làm rõ support load, exception handling và operating impact. |
+| Product owner | Which outcome should Structured output và prompt tái sử dụng improve first? | Keeps AI work tied to business value. |
+| Engineering lead | Which source, system, or constraint could make Reusable Prompt Contract hard to implement? | Turns hidden technical constraints into requirement questions. |
+| QA lead | Which behavior must be testable before we trust this artifact? | Converts fluent AI text into observable checks. |
+| Operations or support | What failure path creates manual work after release? | Surfaces support load and fallback needs. |
 
 ## Decision log entries
 
 | Decision item | Option cần capture | Owner | Evidence cần có |
 | --- | --- | --- | --- |
-| Scope boundary cho Reusable Prompt Contract | Must-have, later, out of scope | Product owner | Business outcome và release constraint |
-| Authority cho context package quality, prompt reuse, critique loop và output contract | Documented source, stakeholder decision, assumption cần validate | BA + stakeholder chịu trách nhiệm | Source ID, date và approval status |
-| Review gate trước handoff | Peer review, QA review, engineering review, formal approval | BA lead hoặc project lead | Risk level và receiving-team readiness |
-| Cách recover nếu Dùng free-form output cho task cần comparison. | Rewrite, defer, escalate hoặc validation workshop | Decision owner | Impact lên scope, testability và release risk |
+| Scope boundary for Reusable Prompt Contract | Must-have, later, out of scope | Product owner | Business outcome and release constraint |
+| Authority for Input and Output columns | Documented source, stakeholder decision, assumption to validate | BA + accountable stakeholder | Source ID, date, and approval status |
+| Review gate before handoff | Peer review, QA review, engineering review, formal approval | BA lead or project lead | Risk level and receiving-team readiness |
+| Recovery if Dùng Structured output như jargon thay vì project decision. | Rewrite, defer, escalate, or run validation workshop | Decision owner | Impact on scope, testability, and release risk |
 
 ## Definition of Ready / Done
 
-| Gate | Tín hiệu ready | Tín hiệu done |
+| Gate | Ready signal | Done signal |
 | --- | --- | --- |
-| Definition of Ready | Source cho context package quality, prompt reuse, critique loop và output contract được label và còn hiệu lực. | Reusable Prompt Contract có thể review mà không phải đoán missing context. |
-| Definition of Ready | Open assumption có owner và validation path. | Stakeholder có thể accept, reject hoặc defer từng assumption. |
-| Definition of Done | Artifact áp dụng control: tách context preparation, generation, critique và human approval thành các bước visible. | Delivery, QA hoặc governance team có thể hành động dựa trên artifact. |
-| Definition of Done | Pattern yếu "Dùng free-form output cho task cần comparison." đã được kiểm tra explicit. | Không unsupported AI claim nào bị xem như requirement đã approve. |
+| Definition of Ready | Sources for Input are named. | Reusable Prompt Contract can be reviewed without guessing context. |
+| Definition of Ready | Open assumptions have owners and validation paths. | Stakeholders can accept, reject, or defer each assumption. |
+| Definition of Done | The artifact applies this principle: Structured output biến AI từ chat answer thành BA artifact có thể review. | Delivery, QA, or governance teams can act on it. |
+| Definition of Done | The weak pattern "Yêu cầu AI "làm Structured output và prompt tái sử dụng" mà không có source context." has been checked. | No unsupported AI claim is treated as approved scope. |
 
 ## Before and after artifact example
 
-| Before | Risk trong draft AI | Revision của senior BA |
+| Before | Rủi ro từ AI draft | Senior BA revision |
 | --- | --- | --- |
-| Prompt: "Create Reusable Prompt Contract cho Structured output và prompt tái sử dụng." | Model có thể tự bịa source fact, owner, threshold hoặc implementation rule. | Thêm source, scope boundary, source authority, output schema và instruction: Dùng table hoặc JSON-like structure với column bắt buộc và cách xử lý missing value rõ. |
-| Draft statement: "Chuyển một prompt thường dùng thành reusable prompt contract." | Action hữu ích nhưng chưa gắn decision owner hoặc acceptance signal. | Rewrite thành project step có owner, expected artifact, review gate và evidence cần trước handoff. |
-| Paragraph nghe final về repeatable collaboration pattern | Tone có thể che uncertainty và approval còn thiếu. | Chuyển thành bảng fact, assumption, decision needed, risk và validation question. |
+| Prompt: "Create Reusable Prompt Contract." | The model may invent source facts, owners, or thresholds. | Add sources, scope boundary, output schema, and review criteria. |
+| Draft statement: "Dùng AI để gom note thành input, risk và open question." | Useful, but not tied to owner or acceptance signal. | Rewrite as a project step with owner, expected artifact, and review gate. |
+| Final-looking paragraph | Tone may hide uncertainty or missing stakeholder approval. | Convert into fact, assumption, decision needed, risk, and validation question. |
 
 ## Manual verification after AI output
 
-| Lens kiểm tra | Manual check | Pass signal |
+| Verification lens | Manual check | Pass signal |
 | --- | --- | --- |
-| Evidence | Trace mọi statement quan trọng trong Reusable Prompt Contract về source, decision hoặc assumption có label. | Không unsupported claim nào còn bị ẩn. |
-| Completeness | Check context package quality, prompt reuse, critique loop và output contract theo intended audience và receiving team. | Artifact trả lời được điều product, engineering, QA và operations cần. |
-| Testability | Hỏi QA có tạo được positive, negative, boundary và exception scenario không. | Wording mơ hồ được rewrite hoặc log thành question. |
-| Accountability | Confirm ai approve, ai review và ai xử lý khi artifact sai. | Owner và escalation path explicit. |
+| Evidence | Trace important statements in Reusable Prompt Contract to a source, decision, or labeled assumption. | No unsupported claim remains hidden. |
+| Completeness | Check Input, Output columns, Validation rule, Reuse note against the intended audience. | Product, Engineering, QA, and Operations have what they need. |
+| Testability | Ask whether QA can create positive, negative, boundary, and exception scenarios. | Ambiguous wording is rewritten or logged as a question. |
+| Accountability | Confirm who approves, who reviews, and who acts when output is wrong. | Owners and escalation path are explicit. |
 
 ## AI collaboration prompt
 
 ```text
-Tạo reusable prompt cho BA task này. Bao gồm purpose, input assumption, required context, output schema, constraint, quality rubric và self-check section. Giữ đủ generic để reuse nhưng đủ specific để output review được.
+Dùng project notes được cung cấp để tạo Reusable Prompt Contract. Trước hết giải thích key term bằng ngôn ngữ đơn giản. Sau đó tạo table gồm evidence, assumption, risk, owner question và recommended next action. Không invent fact không nằm trong notes.
 ```
 
 ## Mistakes to avoid
 
-- Dùng free-form output cho task cần comparison.
-- Quên ID và source reference.
-- Tạo prompt mà BA khác không reuse được.
-- Không định nghĩa cách rank severity.
+- Dùng Structured output như jargon thay vì project decision.
+- Để AI viết lấp missing evidence.
+- Gửi output cho team khác khi chưa có owner, status hoặc next action.
 
 ## Apply this tomorrow
 
-1. Chuyển một prompt thường dùng thành reusable prompt contract.
-2. Thêm output column source, severity và owner.
-3. Yêu cầu AI self-check theo output schema.
-4. Lưu prompt vào team library.
+1. Lấy một project note hiện tại và nhờ AI tạo Reusable Prompt Contract.
+2. Thêm định nghĩa plain-language cho Structured output.
+3. Chạy một critique pass từ góc QA hoặc Engineering.
 
 ## What a BA should remember
 
-- Structure là quality control.
-- Prompt tốt định nghĩa output, không chỉ task.
-- Reusable prompt biến kỹ năng cá nhân thành capability của team.
+- Structured output phải giúp project đi tiếp, không phải nghe cho hay.
+- AI draft; BA validate.
+- Artifact nhỏ review được tốt hơn giải thích dài chung chung.

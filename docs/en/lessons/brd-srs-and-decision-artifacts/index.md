@@ -1,171 +1,271 @@
 ---
 title: "BRD, SRS, and Decision Artifacts"
-description: "AI can draft documents, but BA value comes from decision structure, evidence, scope control, and reviewability."
+description: "AI can draft documents, but BAs create value by making decisions, assumptions, and evidence clear."
 ---
 
 # BRD, SRS, and Decision Artifacts
 
 <div class="lesson-meta">
-  <span>Analysis Artifacts and Diagramming</span>
+  <span>Requirement Quality</span>
   <span>Software BA</span>
   <span>Core</span>
 </div>
 
+## Story mode: project walkthrough
+
+<div class="story-mode-panel">
+  <p class="story-eyebrow">Story prototype</p>
+  <h3>The 40-page SRS hides the five decisions that matter</h3>
+  <p class="story-intro">Maya receives a 40-page SRS that hides the decisions reviewers actually need. Instead of asking AI for a final answer, she uses the lesson pattern to make the situation visible, reviewable, and useful for the next project decision.</p>
+  <div class="story-scene-grid">
+<article class="story-scene">
+  <span>Scene 1</span>
+  <b>01</b>
+  <strong>The request is vague</strong>
+  <p>The team gives Maya a 40-page SRS that hides the decisions reviewers actually need and expects a clean answer by the end of the day.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 2</span>
+  <b>02</b>
+  <strong>AI creates a first draft</strong>
+  <p>The draft is helpful, but it hides uncertainty around Assumption and Evidence.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 3</span>
+  <b>03</b>
+  <strong>Maya turns it into BA evidence</strong>
+  <p>She adds source notes, owners, examples, and a focused Decision-Ready Document Map review table instead of forwarding the raw AI output.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 4</span>
+  <b>04</b>
+  <strong>The team can decide</strong>
+  <p>The final Decision-Ready Document Map shows what is ready, what is risky, and what needs a human decision.</p>
+</article>
+  </div>
+  <div class="visual-takeaway-strip">
+<span>BRD needs context</span>
+<span>SRS must be reviewable</span>
+<span>Decision log becomes a BA question</span>
+  </div>
+</div>
+
+## AI words in plain English
+
+| AI term | Simple meaning | BA use |
+| --- | --- | --- |
+| BRD | A business requirements document focused on business need and scope. | Use it to name the work clearly before asking AI to help. |
+| SRS | A software requirements specification focused on system behavior. | Use it as a review lens, not as a decorative AI word. |
+| Decision log | A record of decisions, owners, dates, and rationale. | Turn it into a checklist item or stakeholder question. |
+| Source of truth | The approved place where the team checks current information. | Define the rule before the team treats the output as ready. |
+
+## Reality check: how this shows up in projects
+
+<div class="fact-card-grid">
+<article class="fact-card">
+  <strong>A fast draft can hide weak thinking</strong>
+  <span>Ask what evidence, owner, and decision the draft depends on.</span>
+  <p>AI can produce Decision-Ready Document Map quickly, but speed does not prove quality.</p>
+</article>
+<article class="fact-card">
+  <strong>Stakeholders need simple language</strong>
+  <span>Explain the term in one sentence before using it in a requirement.</span>
+  <p>Terms like BRD and SRS can confuse people outside the AI conversation.</p>
+</article>
+<article class="fact-card">
+  <strong>The Decision-Ready Document Map must travel</strong>
+  <span>Make the next action visible for each receiving team.</span>
+  <p>Product, Engineering, QA, and Operations each read this Decision-Ready Document Map differently.</p>
+</article>
+</div>
+
+## Visual walkthrough
+
+```mermaid
+flowchart LR
+    A["Project input"]
+    B["AI first draft"]
+    A --> B
+    C["BA review lenses"]
+    B --> C
+    D["Decision-Ready Document Map"]
+    C --> D
+    E["Team decision"]
+    D --> E
+```
+
+## Visual decision map
+
+<div class="visual-ba-map">
+  <h3>Decision-Ready Document Map: what the BA should look for</h3>
+<div>
+  <strong>Decision</strong>
+  <span>What the BA must make explicit first.</span>
+  <em>Write it in plain language.</em>
+</div>
+<div>
+  <strong>Assumption</strong>
+  <span>Where AI can help but may also hide uncertainty.</span>
+  <em>Add review criteria.</em>
+</div>
+<div>
+  <strong>Evidence</strong>
+  <span>What can break if the team skips validation.</span>
+  <em>Create a decision question.</em>
+</div>
+<div>
+  <strong>Change note</strong>
+  <span>What makes the artifact safe to hand off.</span>
+  <em>Name owner, evidence, and next step.</em>
+</div>
+</div>
+
 ## Learning outcomes
 
-- Use AI to structure BRD and SRS sections without losing ownership.
-- Preserve decisions, assumptions, risks, and evidence.
-- Avoid document polish that hides unresolved scope.
+- Explain BRD in simple BA language.
+- Use AI to draft a better Decision-Ready Document Map.
+- Review the output before it becomes scope, test, or delivery work.
 
 ## Why this matters for BA work
 
 <div class="ba-callout">
-AI can draft documents, but BA value comes from decision structure, evidence, scope control, and reviewability.
+AI can draft documents, but BAs create value by making decisions, assumptions, and evidence clear.
 </div>
 
-This lesson matters because AI can draft BRD and SRS sections quickly, but formal documents are not just text. They are records of decisions, scope boundaries, evidence, ownership, and change control. A BA must ensure AI-assisted documents preserve decision logic instead of producing polished pages that hide unresolved commitments.
+BRD and SRS work matters because documents are only useful when readers can find the decisions, assumptions, and evidence inside them. AI can draft sections, but the BA must make decision ownership and change impact easy to inspect.
 
 ## Common difficulties for BAs
 
-In Analysis Artifacts and Diagramming, BRD, SRS, and Decision Artifacts becomes difficult when the BA must translate complex decisions into artifacts that product, engineering, QA, support, and compliance can all inspect. A BA should inspect the points below before treating an AI-supported artifact as ready for stakeholder decision or delivery handoff.
-
-| Difficulty | Why it is hard in BA work | How a BA should handle it |
+| Difficulty | Why it is hard in BA work | How a BA handles it |
 | --- | --- | --- |
-| Using AI to create polished documents before decisions are clear. | The mistake "Using AI to create polished documents before decisions are clear." appears when the team discusses artifact purpose, audience, diagram clarity, decision trace, and handoff quality without agreeing which source is authoritative. AI can smooth over the disagreement, so the BA must keep uncertainty visible. | Apply this control: review the artifact with the team that must build, test, or operate from it. Then use the stronger pattern "Generate a document skeleton plus decision gaps, evidence map, and open approval items." and ask who must approve the artifact before it affects scope, build, test, or release. |
-| Hiding assumptions in prose. | For BRD, SRS, and Decision Artifacts, the friction is that AI can draft documents, but BA value comes from decision structure, evidence, scope control, and reviewability. The weak pattern is tempting because AI can produce a fluent answer before the BA has checked ownership, source freshness, or decision rights. | Apply this control: review the artifact with the team that must build, test, or operate from it. Then use the stronger pattern "Represent conflicts explicitly with options, impact, owner, and decision date." and ask who must approve the artifact before it affects scope, build, test, or release. |
-| Mixing current state, future state, and open questions. | This becomes hard when Decision Artifact Skeleton is expected to support the cross-functional handoff artifact. If the BA does not challenge the draft, unsupported assumptions may enter planning, testing, or stakeholder communication. | Apply this control: review the artifact with the team that must build, test, or operate from it. Then use the stronger pattern "Keep assumptions, dependencies, and open questions in governed sections." and ask who must approve the artifact before it affects scope, build, test, or release. |
+| The team uses BRD without a shared meaning. | People nod in meetings while imagining different outcomes. | Start with a one-sentence definition and show how it changes the Decision-Ready Document Map. |
+| AI output looks more complete than the input deserves. | A fluent draft can hide missing examples, owners, or edge cases. | Ask AI to list assumptions and missing evidence before drafting the final artifact. |
+| Reviewers need different details. | Product cares about value, Engineering about constraints, QA about testability, and Ops about support. | Add columns or sections for each receiving team instead of writing one generic paragraph. |
 
 ## Where this applies in real projects
 
-Use this lesson when BRD, SRS, decision memo, flow, sequence, or integration artifact must carry decisions across roles. The practical output is not a longer document; it is Decision Artifact Skeleton with enough evidence, ownership, and decision clarity for the next project conversation.
-
-| Project moment | How to apply this lesson | Concrete BA output |
+| Project moment | BA move | Concrete output |
 | --- | --- | --- |
-| Artifact drafting | Add a decision log to one document. | Decision Artifact Skeleton showing artifact purpose, audience, diagram clarity, decision trace, and handoff quality, with the action "Add a decision log to one document." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
-| Diagram review | Ask AI to extract assumptions from your draft. | Decision Artifact Skeleton showing source evidence, with the action "Ask AI to extract assumptions from your draft." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
-| Handoff | Move unresolved items into an open-question table. | Decision Artifact Skeleton showing decision owner, with the action "Move unresolved items into an open-question table." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
+| Discovery workshop | Use AI to organize notes into decision, risks, and open questions. | Decision-Ready Document Map with source notes and owners. |
+| Backlog refinement | Convert AI suggestions into small, testable decisions. | Story, rule, or checklist item with acceptance signal. |
+| Handoff review | Ask AI to critique the artifact from Product, Dev, QA, and Ops viewpoints. | Review table with action owner and status. |
 
 ## If this is missing
 
-If BRD, SRS, and Decision Artifacts is missing, handoffs become interpretation exercises, and teams re-argue decisions that should have been captured in the artifact. The BA can still recover, but only by converting the polished AI draft back into explicit evidence, assumptions, owners, and testable decisions.
+If BRD, SRS, and Decision Artifacts is missing, the team may still produce documents, but they will be harder to trust, test, and maintain.
 
 | If missing | Project impact | Recovery action |
 | --- | --- | --- |
-| Ask AI to create a complete BRD from notes | The draft may invent decisions and make unresolved areas look approved. | Recover by using the stronger pattern: Generate a document skeleton plus decision gaps, evidence map, and open approval items. Rework Decision Artifact Skeleton until it exposes artifact purpose, audience, diagram clarity, decision trace, and handoff quality, and do not share it as final until evidence, ownership, and validation path are explicit. |
-| Use polished wording to resolve stakeholder conflict | Good prose can mask disagreement instead of escalating it. | Recover by using the stronger pattern: Represent conflicts explicitly with options, impact, owner, and decision date. Rework Decision Artifact Skeleton until it exposes artifact purpose, audience, diagram clarity, decision trace, and handoff quality, and do not share it as final until evidence, ownership, and validation path are explicit. |
-| Remove assumptions to make the document cleaner | Stakeholders lose visibility into what still needs validation. | Recover by using the stronger pattern: Keep assumptions, dependencies, and open questions in governed sections. Rework Decision Artifact Skeleton until it exposes artifact purpose, audience, diagram clarity, decision trace, and handoff quality, and do not share it as final until evidence, ownership, and validation path are explicit. |
+| No shared explanation for BRD | Stakeholders agree verbally but expect different behavior later. | Add a plain-language definition and example. |
+| No review of AI assumptions | Unsupported ideas become scope. | Move assumptions into an owner-based validation list. |
+| No concrete Decision-Ready Document Map | The learning stays abstract and does not help delivery. | Produce the artifact as a small table, not a long essay. |
 
 ## Mental model or core concept
 
-A BA document is not valuable because it is long; it is valuable because it makes decisions inspectable. AI can create first drafts, but the BA must maintain decision log, scope boundaries, source evidence, risks, assumptions, and open questions. A polished document with hidden uncertainty is dangerous.
+BRD, SRS, and Decision Artifacts is easiest to understand as a BA control: make the messy thing visible, let AI help structure it, then review it with humans before it becomes delivery work.
 
 ## Practical BA example
 
-Workshop notes become a BRD section. AI drafts a clean narrative, but the BA adds a decision table, explicit out-of-scope items, unresolved pricing rules, and stakeholder approval status before sharing.
+Maya asks AI to summarize an SRS, then restructures the output into decisions made, assumptions open, source evidence, impacted modules, and questions for approval.
 
 ## Diagram
 
 ```mermaid
 flowchart TD
-    A["Workshop notes"] --> B["Decision log"]
-    A --> C["Scope boundary"]
-    A --> D["Assumptions"]
-    A --> E["Open questions"]
-    B --> F["BRD / SRS section"]
-    C --> F
-    D --> F
-    E --> G["Follow-up plan"]
+    A["Decision-Ready Document Map"]
+    A --> B["Decision"]
+    A --> C["Assumption"]
+    A --> D["Evidence"]
+    A --> E["Change note"]
 ```
 
 ## BA artifact
 
-### Decision Artifact Skeleton
+### Decision-Ready Document Map
 
-| Section | Purpose | AI can help with | BA must own |
+| Artifact line | What the BA writes | Ready signal | Risk signal |
 | --- | --- | --- | --- |
-| Business objective | State why the work exists. | Summarize workshop notes. | Metric and priority tradeoff. |
-| Scope boundary | Prevent accidental expansion. | Draft in/out lists. | Final scope decision. |
-| Decision log | Show what is settled. | Format decisions. | Owner, date, rationale. |
-| Open questions | Keep uncertainty visible. | Cluster questions. | Resolution path and owner. |
+| Decision | Write the concrete decision in project language. | A stakeholder can confirm it. | It is still a slogan. |
+| Assumption | Describe how AI helps and where it may be wrong. | Review criteria are visible. | The draft hides uncertainty. |
+| Evidence | Capture the gap, conflict, edge case, or risk. | Owner and next action are named. | The issue is buried in prose. |
+| Change note | Define the handoff rule or completion signal. | QA or Engineering can act on it. | No receiving team knows what to do. |
 
 ## AI expert note
 
-Expert BA documentation separates narrative from decision artifacts. AI is useful for drafting, summarizing, and reorganizing, but it should not decide scope, acceptance, or policy. BRD and SRS outputs should include decision log references, source evidence, version history, open issues, and explicit approval checkpoints.
+As an AI reviewer, I would check whether BRD, SRS, and Decision Artifacts changes the BA artifact in a practical way. Good AI use should expose missing context, create structure, and make review easier. If it only produces nicer wording, the BA has not captured enough value yet.
 
 ## Bad vs better example
 
-| Weak pattern | Why it fails | Stronger BA pattern |
+| Weak pattern | Why it fails | Better BA pattern |
 | --- | --- | --- |
-| Ask AI to create a complete BRD from notes | The draft may invent decisions and make unresolved areas look approved. | Generate a document skeleton plus decision gaps, evidence map, and open approval items. |
-| Use polished wording to resolve stakeholder conflict | Good prose can mask disagreement instead of escalating it. | Represent conflicts explicitly with options, impact, owner, and decision date. |
-| Remove assumptions to make the document cleaner | Stakeholders lose visibility into what still needs validation. | Keep assumptions, dependencies, and open questions in governed sections. |
+| Ask AI to "do BRD, SRS, and Decision Artifacts" with no source context. | The model fills gaps with plausible wording. | Provide source notes, examples, boundaries, and review criteria. |
+| Share the first answer as final. | The team cannot see assumptions or weak evidence. | Run a critique pass and label open decisions. |
+| Use AI terms with no explanation. | Business stakeholders disengage or misunderstand. | Explain each term in plain language before using it in scope. |
 
 ## Stakeholder questions to ask
 
-| Stakeholder | Question | Why the BA asks it |
+| Stakeholder | Question | Why the BA asks |
 | --- | --- | --- |
-| Product owner | Which outcome should BRD, SRS, and Decision Artifacts improve, and what trade-off are you willing to accept? | Prevents AI output from optimizing for a vague goal. |
-| Engineering lead | What source, system, data, or constraint would make Decision Artifact Skeleton hard to implement? | Turns hidden technical constraints into visible requirement questions. |
-| QA lead | Which rule, exception, or user state must be testable before you trust this artifact? | Converts fluent AI wording into observable behavior. |
-| Operations or support | What failure path would create manual work if the lesson principle "Documents should make decisions visible" is ignored? | Surfaces support load, exception handling, and operating impact. |
+| Product owner | Which outcome should BRD, SRS, and Decision Artifacts improve first? | Keeps AI work tied to business value. |
+| Engineering lead | Which source, system, or constraint could make Decision-Ready Document Map hard to implement? | Turns hidden technical constraints into requirement questions. |
+| QA lead | Which behavior must be testable before we trust this artifact? | Converts fluent AI text into observable checks. |
+| Operations or support | What failure path creates manual work after release? | Surfaces support load and fallback needs. |
 
 ## Decision log entries
 
 | Decision item | Options to capture | Owner | Evidence needed |
 | --- | --- | --- | --- |
-| Scope boundary for Decision Artifact Skeleton | Must-have, later, out of scope | Product owner | Business outcome and release constraint |
-| Authority for artifact purpose, audience, diagram clarity, decision trace, and handoff quality | Documented source, stakeholder decision, assumption to validate | BA + accountable stakeholder | Source ID, date, and approval status |
+| Scope boundary for Decision-Ready Document Map | Must-have, later, out of scope | Product owner | Business outcome and release constraint |
+| Authority for Decision and Assumption | Documented source, stakeholder decision, assumption to validate | BA + accountable stakeholder | Source ID, date, and approval status |
 | Review gate before handoff | Peer review, QA review, engineering review, formal approval | BA lead or project lead | Risk level and receiving-team readiness |
-| Recovery if Using AI to create polished documents before decisions are clear. | Rewrite, defer, escalate, or run validation workshop | Decision owner | Impact on scope, testability, and release risk |
+| Recovery if Using BRD as jargon instead of a project decision. | Rewrite, defer, escalate, or run validation workshop | Decision owner | Impact on scope, testability, and release risk |
 
 ## Definition of Ready / Done
 
 | Gate | Ready signal | Done signal |
 | --- | --- | --- |
-| Definition of Ready | Sources for artifact purpose, audience, diagram clarity, decision trace, and handoff quality are labeled and current. | Decision Artifact Skeleton can be reviewed without guessing missing context. |
-| Definition of Ready | Open assumptions have owners and validation paths. | Stakeholders can decide whether to accept, reject, or defer each assumption. |
-| Definition of Done | The artifact applies this control: review the artifact with the team that must build, test, or operate from it. | Delivery, QA, or governance teams can act on the artifact. |
-| Definition of Done | The weak pattern "Using AI to create polished documents before decisions are clear." has been explicitly checked. | No unsupported AI claim is treated as an approved requirement. |
+| Definition of Ready | Sources for Decision are named. | Decision-Ready Document Map can be reviewed without guessing context. |
+| Definition of Ready | Open assumptions have owners and validation paths. | Stakeholders can accept, reject, or defer each assumption. |
+| Definition of Done | The artifact applies this principle: AI can draft documents, but BAs create value by making decisions, assumptions, and evidence clear. | Delivery, QA, or governance teams can act on it. |
+| Definition of Done | The weak pattern "Ask AI to "do BRD, SRS, and Decision Artifacts" with no source context." has been checked. | No unsupported AI claim is treated as approved scope. |
 
 ## Before and after artifact example
 
 | Before | AI draft risk | Senior BA revision |
 | --- | --- | --- |
-| Prompt: "Create Decision Artifact Skeleton for BRD, SRS, and Decision Artifacts." | The model may invent source facts, owners, thresholds, or implementation rules. | Add sources, scope boundary, source authority, output schema, and the instruction: Generate a document skeleton plus decision gaps, evidence map, and open approval items. |
-| Draft statement: "Add a decision log to one document." | Useful action, but not yet tied to a decision owner or acceptance signal. | Rewrite as a project step with owner, expected artifact, review gate, and evidence required before handoff. |
-| Final-looking paragraph about cross-functional handoff artifact | The tone may hide uncertainty and missing stakeholder approval. | Convert it into a table of fact, assumption, decision needed, risk, and validation question. |
+| Prompt: "Create Decision-Ready Document Map." | The model may invent source facts, owners, or thresholds. | Add sources, scope boundary, output schema, and review criteria. |
+| Draft statement: "Use AI to organize notes into decision, risks, and open questions." | Useful, but not tied to owner or acceptance signal. | Rewrite as a project step with owner, expected artifact, and review gate. |
+| Final-looking paragraph | Tone may hide uncertainty or missing stakeholder approval. | Convert into fact, assumption, decision needed, risk, and validation question. |
 
 ## Manual verification after AI output
 
 | Verification lens | Manual check | Pass signal |
 | --- | --- | --- |
-| Evidence | Trace every important statement in Decision Artifact Skeleton to a source, decision, or labeled assumption. | No unsupported claim remains hidden. |
-| Completeness | Check artifact purpose, audience, diagram clarity, decision trace, and handoff quality against the intended audience and receiving team. | The artifact answers what product, engineering, QA, and operations need. |
-| Testability | Ask whether QA can create positive, negative, boundary, and exception scenarios. | Ambiguous wording has been rewritten or logged as a question. |
-| Accountability | Confirm who approves, who reviews, and who acts when the artifact is wrong. | Owners and escalation path are explicit. |
+| Evidence | Trace important statements in Decision-Ready Document Map to a source, decision, or labeled assumption. | No unsupported claim remains hidden. |
+| Completeness | Check Decision, Assumption, Evidence, Change note against the intended audience. | Product, Engineering, QA, and Operations have what they need. |
+| Testability | Ask whether QA can create positive, negative, boundary, and exception scenarios. | Ambiguous wording is rewritten or logged as a question. |
+| Accountability | Confirm who approves, who reviews, and who acts when output is wrong. | Owners and escalation path are explicit. |
 
 ## AI collaboration prompt
 
 ```text
-Draft a BRD/SRS section from these notes. Include objective, scope, stakeholders, decisions, assumptions, requirements, risks, metrics, open questions, and source evidence. Label anything inferred, and keep unresolved items out of final requirements.
+Use the supplied project notes to create a Decision-Ready Document Map. First explain the key terms in simple language. Then produce a table with evidence, assumption, risk, owner question, and recommended next action. Do not invent facts that are not in the notes.
 ```
 
 ## Mistakes to avoid
 
-- Using AI to create polished documents before decisions are clear.
-- Hiding assumptions in prose.
-- Mixing current state, future state, and open questions.
-- Forgetting scope boundaries.
+- Using BRD as jargon instead of a project decision.
+- Letting AI write around missing evidence.
+- Sending output to another team without owner, status, or next action.
 
 ## Apply this tomorrow
 
-1. Add a decision log to one document.
-2. Ask AI to extract assumptions from your draft.
-3. Move unresolved items into an open-question table.
-4. Review out-of-scope items with stakeholders.
+1. Take one current project note and ask AI for a Decision-Ready Document Map.
+2. Add a plain-language definition for BRD.
+3. Run one critique pass from QA or Engineering viewpoint.
 
 ## What a BA should remember
 
-- Documents should make decisions visible.
-- Polish is not clarity.
-- AI drafts; BA controls scope and evidence.
+- BRD should help the project move, not sound impressive.
+- AI drafts; BA validates.
+- A small reviewable artifact beats a long generic explanation.

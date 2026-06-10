@@ -1,169 +1,271 @@
 ---
 title: "Discovery với AI"
-description: "AI có thể mở rộng discovery, nhưng BA vẫn phải quyết định điều gì cần validate với stakeholder thật."
+description: "AI hỗ trợ discovery khi BA dùng nó để sắp xếp evidence, không thay thế việc hiểu stakeholder."
 ---
 
 # Discovery với AI
 
 <div class="lesson-meta">
-  <span>Quy trình BA được tăng cường bởi AI</span>
+  <span>AI-augmented discovery</span>
   <span>Software BA</span>
   <span>Core</span>
 </div>
 
+## Story mode: project walkthrough
+
+<div class="story-mode-panel">
+  <p class="story-eyebrow">Story prototype</p>
+  <h3>Maya biến note discovery lộn xộn thành decision board</h3>
+  <p class="story-intro">Maya nhận notes phỏng vấn, ảnh workshop và support ticket lộn xộn. Thay vì nhờ AI trả lời final, cô dùng pattern của bài này để làm tình huống rõ hơn, review được hơn và hữu ích hơn cho decision tiếp theo.</p>
+  <div class="story-scene-grid">
+<article class="story-scene">
+  <span>Scene 1</span>
+  <b>01</b>
+  <strong>Yêu cầu còn mơ hồ</strong>
+  <p>Team đưa cho Maya notes phỏng vấn, ảnh workshop và support ticket lộn xộn và mong có câu trả lời gọn trong ngày.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 2</span>
+  <b>02</b>
+  <strong>AI tạo draft đầu tiên</strong>
+  <p>Draft khá hữu ích, nhưng che uncertainty quanh Evidence theme và Open assumption.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 3</span>
+  <b>03</b>
+  <strong>Maya biến nó thành evidence của BA</strong>
+  <p>Cô thêm source note, owner, example và review table tập trung cho Discovery Evidence Board thay vì gửi thẳng raw AI output.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 4</span>
+  <b>04</b>
+  <strong>Team có thể ra decision</strong>
+  <p>Discovery Evidence Board cuối cùng cho thấy phần nào ready, phần nào rủi ro và phần nào cần human decision.</p>
+</article>
+  </div>
+  <div class="visual-takeaway-strip">
+<span>Discovery cần context</span>
+<span>Synthesis phải review được</span>
+<span>Cluster trở thành câu hỏi của BA</span>
+  </div>
+</div>
+
+## AI words in plain English
+
+| Thuật ngữ AI | Hiểu đơn giản | BA dùng để làm gì |
+| --- | --- | --- |
+| Discovery | Giai đoạn học về user, problem, goal và constraint của dự án. | Dùng để gọi đúng loại việc trước khi nhờ AI hỗ trợ. |
+| Synthesis | Biến note lộn xộn thành theme, question và decision. | Dùng như lens review, không dùng như từ trang trí. |
+| Cluster | Nhóm các note giống nhau để thấy pattern dễ hơn. | Biến nó thành checklist item hoặc câu hỏi stakeholder. |
+| Hypothesis | Giả thuyết có thể đúng nhưng còn cần validate. | Định nghĩa rule trước khi team xem output là ready. |
+
+## Reality check: tình huống thường gặp trong dự án
+
+<div class="fact-card-grid">
+<article class="fact-card">
+  <strong>Draft nhanh có thể che tư duy yếu</strong>
+  <span>Hỏi draft phụ thuộc evidence, owner và decision nào.</span>
+  <p>AI có thể tạo Discovery Evidence Board rất nhanh, nhưng tốc độ không chứng minh quality.</p>
+</article>
+<article class="fact-card">
+  <strong>Stakeholder cần ngôn ngữ đơn giản</strong>
+  <span>Giải thích term bằng một câu trước khi đưa vào requirement.</span>
+  <p>Term như Discovery và Synthesis dễ làm người ngoài cuộc trao đổi AI bị rối.</p>
+</article>
+<article class="fact-card">
+  <strong>Discovery Evidence Board phải đi qua nhiều team</strong>
+  <span>Làm next action visible cho từng receiving team.</span>
+  <p>Product, Engineering, QA và Operations đọc Discovery Evidence Board theo góc nhìn khác nhau.</p>
+</article>
+</div>
+
+## Visual walkthrough
+
+```mermaid
+flowchart LR
+    A["Project input"]
+    B["AI draft đầu"]
+    A --> B
+    C["Lens review của BA"]
+    B --> C
+    D["Discovery Evidence Board"]
+    C --> D
+    E["Team decision"]
+    D --> E
+```
+
+## Visual decision map
+
+<div class="visual-ba-map">
+  <h3>Discovery Evidence Board: what the BA should look for</h3>
+<div>
+  <strong>Stakeholder pain</strong>
+  <span>Điều BA phải làm rõ trước tiên.</span>
+  <em>Viết bằng ngôn ngữ dự án.</em>
+</div>
+<div>
+  <strong>Evidence theme</strong>
+  <span>Nơi AI có thể giúp nhưng cũng có thể che uncertainty.</span>
+  <em>Thêm review criteria.</em>
+</div>
+<div>
+  <strong>Open assumption</strong>
+  <span>Điều có thể hỏng nếu team bỏ validation.</span>
+  <em>Tạo decision question.</em>
+</div>
+<div>
+  <strong>Next interview</strong>
+  <span>Điều làm artifact đủ an toàn để handoff.</span>
+  <em>Ghi owner, evidence và next step.</em>
+</div>
+</div>
+
 ## Learning outcomes
 
-- Dùng AI tạo hypothesis và interview plan.
-- Tách assumption, evidence và decision trước workshop.
-- Biến output AI thành discovery agenda tốt hơn.
+- Giải thích Discovery bằng ngôn ngữ BA đơn giản.
+- Dùng AI để draft Discovery Evidence Board tốt hơn.
+- Review output trước khi nó trở thành scope, test hoặc delivery work.
 
 ## Why this matters for BA work
 
 <div class="ba-callout">
-AI có thể mở rộng discovery, nhưng BA vẫn phải quyết định điều gì cần validate với stakeholder thật.
+AI hỗ trợ discovery khi BA dùng nó để sắp xếp evidence, không thay thế việc hiểu stakeholder.
 </div>
 
-Bài này quan trọng vì AI có thể làm discovery có vẻ nhanh hơn nhưng âm thầm thay uncertainty bằng completeness tự bịa. Giá trị của BA là biến suggestion của AI thành hypothesis, không phải conclusion. Workflow discovery tốt dùng AI để mở rộng question space, rồi dùng evidence, workshop, interview và data để quyết định điều gì đúng.
+Discovery với AI quan trọng vì note đầu dự án thường lộn xộn, thiếu ngữ cảnh và nhạy cảm về stakeholder. AI giúp sắp xếp, nhưng BA vẫn quyết định theme nào có evidence, hypothesis nào cần validate và câu hỏi nào phải quay lại stakeholder.
 
 ## Common difficulties for BAs
 
-Trong Quy trình BA được tăng cường bởi AI, Discovery với AI trở nên khó khi notes lộn xộn, decision mới validate một phần và stakeholder context chưa đầy đủ phải nhanh chóng thành artifact chung. BA nên kiểm tra các điểm dưới đây trước khi xem artifact có AI hỗ trợ là đủ sẵn sàng cho stakeholder decision hoặc handoff.
-
-| Khó khăn | Vì sao khó trong công việc BA | BA nên xử lý thế nào |
+| Khó khăn | Vì sao khó với BA | BA xử lý thế nào |
 | --- | --- | --- |
-| Yêu cầu AI viết requirement trước khi map uncertainty. | Lỗi "Yêu cầu AI viết requirement trước khi map uncertainty." xuất hiện khi team bàn về source attribution, conflict visibility, workshop decision flow và backlog readiness nhưng chưa thống nhất source nào authoritative. AI có thể làm disagreement nghe mượt hơn, nên BA phải giữ uncertainty visible. | Áp dụng control này: giữ speaker/source attribution visible cho đến khi stakeholder chịu trách nhiệm xác nhận ý nghĩa. Sau đó dùng pattern tốt hơn "Trước hết yêu cầu hypothesis, assumption, evidence needed và workshop question." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
-| Xem generated question là discovery đầy đủ. | Với Discovery với AI, điểm khó là AI có thể mở rộng discovery, nhưng BA vẫn phải quyết định điều gì cần validate với stakeholder thật. Pattern yếu rất dễ xảy ra vì AI có thể tạo câu trả lời trôi chảy trước khi BA check ownership, source freshness hoặc decision right. | Áp dụng control này: giữ speaker/source attribution visible cho đến khi stakeholder chịu trách nhiệm xác nhận ý nghĩa. Sau đó dùng pattern tốt hơn "Validate actor bằng process map, org role, customer journey và decision right." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
-| Bỏ qua decision owner. | Điểm này khó khi Discovery Hypothesis Backlog được kỳ vọng hỗ trợ validated working artifact. Nếu BA không challenge draft, unsupported assumption có thể đi vào planning, testing hoặc stakeholder communication. | Áp dụng control này: giữ speaker/source attribution visible cho đến khi stakeholder chịu trách nhiệm xác nhận ý nghĩa. Sau đó dùng pattern tốt hơn "Rank hypothesis theo business impact, evidence gap và decision urgency." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
+| Team dùng Discovery nhưng không có cùng cách hiểu. | Mọi người gật đầu trong meeting nhưng tưởng tượng outcome khác nhau. | Bắt đầu bằng định nghĩa một câu và cho thấy nó làm thay đổi Discovery Evidence Board thế nào. |
+| AI output trông hoàn chỉnh hơn input thực tế. | Draft trôi chảy có thể che missing example, owner hoặc edge case. | Yêu cầu AI liệt kê assumption và missing evidence trước khi draft bản cuối. |
+| Reviewer cần detail khác nhau. | Product quan tâm value, Engineering quan tâm constraint, QA quan tâm testability, Ops quan tâm support. | Thêm column hoặc section cho từng receiving team thay vì một paragraph chung. |
 
 ## Where this applies in real projects
 
-Dùng bài này khi discovery hoặc refinement tạo nhiều raw input hơn mức BA có thể synthesize an toàn bằng tay trong thời gian có sẵn. Output thực tế không phải document dài hơn; đó là Discovery Hypothesis Backlog có đủ evidence, ownership và decision clarity cho cuộc trao đổi tiếp theo của dự án.
-
-| Thời điểm trong dự án | Cách áp dụng bài học | Output cụ thể của BA |
+| Thời điểm dự án | Việc BA làm | Output cụ thể |
 | --- | --- | --- |
-| Discovery | Chuyển agenda workshop tiếp theo thành hypothesis. | Discovery Hypothesis Backlog thể hiện source attribution, conflict visibility, workshop decision flow và backlog readiness, trong đó action "Chuyển agenda workshop tiếp theo thành hypothesis." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
-| Synthesis | Nhờ AI tìm stakeholder group còn thiếu. | Discovery Hypothesis Backlog thể hiện source evidence, trong đó action "Nhờ AI tìm stakeholder group còn thiếu." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
-| Refinement | Thêm evidence needed cạnh mỗi assumption. | Discovery Hypothesis Backlog thể hiện decision owner, trong đó action "Thêm evidence needed cạnh mỗi assumption." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
+| Discovery workshop | Dùng AI để gom note thành stakeholder pain, risk và open question. | Discovery Evidence Board có source note và owner. |
+| Backlog refinement | Chuyển AI suggestion thành decision nhỏ và test được. | Story, rule hoặc checklist item có acceptance signal. |
+| Handoff review | Nhờ AI critique artifact từ góc Product, Dev, QA và Ops. | Review table có action owner và status. |
 
 ## If this is missing
 
-Nếu thiếu Discovery với AI, signal quan trọng từ interview, ticket, process note hoặc decision có thể mất trước khi đi vào backlog. BA vẫn có thể khôi phục, nhưng phải chuyển draft AI bóng bẩy trở lại thành evidence, assumption, owner và decision test được.
+Nếu thiếu Discovery với AI, team vẫn có thể tạo document, nhưng document khó trust, khó test và khó maintain hơn.
 
-| Nếu thiếu | Ảnh hưởng tới dự án | Cách khôi phục |
+| Nếu thiếu | Ảnh hưởng dự án | Cách khôi phục |
 | --- | --- | --- |
-| Yêu cầu AI viết requirement từ business problem | Model sẽ biến uncertainty của discovery thành scope quá sớm. | Khôi phục bằng pattern tốt hơn: Trước hết yêu cầu hypothesis, assumption, evidence needed và workshop question. Rework Discovery Hypothesis Backlog cho đến khi nó lộ rõ source attribution, conflict visibility, workshop decision flow và backlog readiness, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
-| Xem stakeholder list do AI tạo là final | Owner nội bộ, regulator hoặc operational user quan trọng có thể bị thiếu. | Khôi phục bằng pattern tốt hơn: Validate actor bằng process map, org role, customer journey và decision right. Rework Discovery Hypothesis Backlog cho đến khi nó lộ rõ source attribution, conflict visibility, workshop decision flow và backlog readiness, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
-| Ưu tiên câu hỏi dễ trả lời | Team có thể né assumption rủi ro nhất cho tới lúc delivery. | Khôi phục bằng pattern tốt hơn: Rank hypothesis theo business impact, evidence gap và decision urgency. Rework Discovery Hypothesis Backlog cho đến khi nó lộ rõ source attribution, conflict visibility, workshop decision flow và backlog readiness, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
+| Không có giải thích chung cho Discovery | Stakeholder đồng ý bằng lời nhưng kỳ vọng behavior khác nhau. | Thêm định nghĩa plain-language và example. |
+| Không review AI assumption | Ý tưởng chưa có evidence trở thành scope. | Đưa assumption vào validation list có owner. |
+| Không có Discovery Evidence Board cụ thể | Bài học vẫn trừu tượng và không giúp delivery. | Tạo artifact bằng table nhỏ, không viết essay dài. |
 
 ## Mental model or core concept
 
-Discovery là giảm uncertainty, không phải tạo tài liệu cho đủ. AI hỗ trợ đề xuất actor, constraint, risk và question, nhưng output nên trở thành hypothesis backlog. BA sau đó validate hoặc reject hypothesis bằng user, data, policy và stakeholder decision.
+Discovery với AI dễ hiểu nhất như một control của BA: làm phần lộn xộn visible, để AI hỗ trợ structure, rồi review với con người trước khi thành delivery work.
 
 ## Practical BA example
 
-Với claim approval automation, AI gợi ý fraud check, SLA tier, escalation path và missing document scenario. BA chuyển chúng thành workshop question và ưu tiên assumption rủi ro nhất: ai được override, policy nào áp dụng và exception hợp lệ là gì.
+Sau ba workshop, Maya có sticky note, export ticket và hai ý kiến manager mâu thuẫn. Cô nhờ AI cluster pain, rồi tự thêm source ID và follow-up question trước khi tạo Discovery Evidence Board.
 
 ## Diagram
 
 ```mermaid
 flowchart TD
-    A["Business problem"] --> B["AI mở rộng hypothesis"]
-    B --> C["BA group assumption"]
-    C --> D{"Rủi ro hoặc chưa biết?"}
-    D -->|Có| E["Validate trong workshop"]
-    D -->|Không| F["Defer hoặc document"]
-    E --> G["Insight sẵn sàng cho decision"]
+    A["Discovery Evidence Board"]
+    A --> B["Stakeholder pain"]
+    A --> C["Evidence theme"]
+    A --> D["Open assumption"]
+    A --> E["Next interview"]
 ```
 
 ## BA artifact
 
-### Discovery Hypothesis Backlog
+### Discovery Evidence Board
 
-| Hypothesis | Evidence cần có | Cách validate | Decision owner |
+| Dòng artifact | BA cần viết gì | Dấu hiệu sẵn sàng | Dấu hiệu rủi ro |
 | --- | --- | --- | --- |
-| Claim giá trị cao cần manager review. | Policy threshold và historical claim data. | Review policy và data sample. | Claims operations lead |
-| Missing document trigger customer notification. | Support script hiện tại và customer journey. | Interview support agent. | Customer service manager |
-| Fraud risk thay đổi SLA. | Fraud rule và compliance constraint. | Compliance workshop. | Risk owner |
-| Manual override phải audit. | Audit policy và regulator expectation. | Security review. | Compliance lead |
+| Stakeholder pain | Viết stakeholder pain cụ thể bằng ngôn ngữ dự án. | Stakeholder confirm được. | Vẫn chỉ là slogan. |
+| Evidence theme | Mô tả AI giúp gì và có thể sai ở đâu. | Review criteria visible. | Draft che uncertainty. |
+| Open assumption | Capture gap, conflict, edge case hoặc risk. | Owner và next action rõ. | Issue bị chôn trong prose. |
+| Next interview | Định nghĩa handoff rule hoặc completion signal. | QA hoặc Engineering hành động được. | Receiving team không biết làm gì. |
 
 ## AI expert note
 
-AI hữu ích trong discovery vì nó tạo alternative actor, edge case, risk và interview angle rất nhanh. Nguy hiểm là anchoring: khi đã có list trôi chảy, stakeholder có thể ngừng khám phá. BA phải label rõ hypothesis, evidence needed, validation method và decision owner trước khi chuyển bất kỳ phần nào thành requirement.
+Ở góc nhìn AI reviewer, tôi sẽ kiểm tra Discovery với AI có làm artifact của BA thực tế hơn không. AI tốt phải làm lộ missing context, tạo structure và giúp review dễ hơn. Nếu chỉ làm câu chữ đẹp hơn, BA chưa lấy được đủ value.
 
 ## Bad vs better example
 
-| Cách làm yếu | Vì sao fail | Cách làm BA tốt hơn |
+| Cách làm yếu | Vì sao fail | Cách BA làm tốt hơn |
 | --- | --- | --- |
-| Yêu cầu AI viết requirement từ business problem | Model sẽ biến uncertainty của discovery thành scope quá sớm. | Trước hết yêu cầu hypothesis, assumption, evidence needed và workshop question. |
-| Xem stakeholder list do AI tạo là final | Owner nội bộ, regulator hoặc operational user quan trọng có thể bị thiếu. | Validate actor bằng process map, org role, customer journey và decision right. |
-| Ưu tiên câu hỏi dễ trả lời | Team có thể né assumption rủi ro nhất cho tới lúc delivery. | Rank hypothesis theo business impact, evidence gap và decision urgency. |
+| Yêu cầu AI "làm Discovery với AI" mà không có source context. | Model tự lấp khoảng trống bằng wording nghe hợp lý. | Cung cấp source note, example, boundary và review criteria. |
+| Gửi answer đầu tiên như final. | Team không thấy assumption hoặc evidence yếu. | Chạy critique pass và gắn nhãn open decision. |
+| Dùng thuật ngữ AI mà không giải thích. | Business stakeholder mất tập trung hoặc hiểu sai. | Giải thích mỗi term bằng ngôn ngữ đơn giản trước khi đưa vào scope. |
 
 ## Stakeholder questions to ask
 
 | Stakeholder | Câu hỏi | Vì sao BA hỏi |
 | --- | --- | --- |
-| Product owner | Discovery với AI cần cải thiện outcome nào, và trade-off nào có thể chấp nhận? | Ngăn output AI tối ưu cho mục tiêu mơ hồ. |
-| Engineering lead | Source, system, data hoặc constraint nào khiến Discovery Hypothesis Backlog khó implement? | Biến technical constraint ẩn thành requirement question visible. |
-| QA lead | Rule, exception hoặc user state nào phải test được trước khi tin artifact này? | Chuyển wording trôi chảy của AI thành behavior quan sát được. |
-| Operations hoặc support | Failure path nào tạo manual work nếu nguyên tắc "Discovery output là validated learning" bị bỏ qua? | Làm rõ support load, exception handling và operating impact. |
+| Product owner | Which outcome should Discovery với AI improve first? | Keeps AI work tied to business value. |
+| Engineering lead | Which source, system, or constraint could make Discovery Evidence Board hard to implement? | Turns hidden technical constraints into requirement questions. |
+| QA lead | Which behavior must be testable before we trust this artifact? | Converts fluent AI text into observable checks. |
+| Operations or support | What failure path creates manual work after release? | Surfaces support load and fallback needs. |
 
 ## Decision log entries
 
 | Decision item | Option cần capture | Owner | Evidence cần có |
 | --- | --- | --- | --- |
-| Scope boundary cho Discovery Hypothesis Backlog | Must-have, later, out of scope | Product owner | Business outcome và release constraint |
-| Authority cho source attribution, conflict visibility, workshop decision flow và backlog readiness | Documented source, stakeholder decision, assumption cần validate | BA + stakeholder chịu trách nhiệm | Source ID, date và approval status |
-| Review gate trước handoff | Peer review, QA review, engineering review, formal approval | BA lead hoặc project lead | Risk level và receiving-team readiness |
-| Cách recover nếu Yêu cầu AI viết requirement trước khi map uncertainty. | Rewrite, defer, escalate hoặc validation workshop | Decision owner | Impact lên scope, testability và release risk |
+| Scope boundary for Discovery Evidence Board | Must-have, later, out of scope | Product owner | Business outcome and release constraint |
+| Authority for Stakeholder pain and Evidence theme | Documented source, stakeholder decision, assumption to validate | BA + accountable stakeholder | Source ID, date, and approval status |
+| Review gate before handoff | Peer review, QA review, engineering review, formal approval | BA lead or project lead | Risk level and receiving-team readiness |
+| Recovery if Dùng Discovery như jargon thay vì project decision. | Rewrite, defer, escalate, or run validation workshop | Decision owner | Impact on scope, testability, and release risk |
 
 ## Definition of Ready / Done
 
-| Gate | Tín hiệu ready | Tín hiệu done |
+| Gate | Ready signal | Done signal |
 | --- | --- | --- |
-| Definition of Ready | Source cho source attribution, conflict visibility, workshop decision flow và backlog readiness được label và còn hiệu lực. | Discovery Hypothesis Backlog có thể review mà không phải đoán missing context. |
-| Definition of Ready | Open assumption có owner và validation path. | Stakeholder có thể accept, reject hoặc defer từng assumption. |
-| Definition of Done | Artifact áp dụng control: giữ speaker/source attribution visible cho đến khi stakeholder chịu trách nhiệm xác nhận ý nghĩa. | Delivery, QA hoặc governance team có thể hành động dựa trên artifact. |
-| Definition of Done | Pattern yếu "Yêu cầu AI viết requirement trước khi map uncertainty." đã được kiểm tra explicit. | Không unsupported AI claim nào bị xem như requirement đã approve. |
+| Definition of Ready | Sources for Stakeholder pain are named. | Discovery Evidence Board can be reviewed without guessing context. |
+| Definition of Ready | Open assumptions have owners and validation paths. | Stakeholders can accept, reject, or defer each assumption. |
+| Definition of Done | The artifact applies this principle: AI hỗ trợ discovery khi BA dùng nó để sắp xếp evidence, không thay thế việc hiểu stakeholder. | Delivery, QA, or governance teams can act on it. |
+| Definition of Done | The weak pattern "Yêu cầu AI "làm Discovery với AI" mà không có source context." has been checked. | No unsupported AI claim is treated as approved scope. |
 
 ## Before and after artifact example
 
-| Before | Risk trong draft AI | Revision của senior BA |
+| Before | Rủi ro từ AI draft | Senior BA revision |
 | --- | --- | --- |
-| Prompt: "Create Discovery Hypothesis Backlog cho Discovery với AI." | Model có thể tự bịa source fact, owner, threshold hoặc implementation rule. | Thêm source, scope boundary, source authority, output schema và instruction: Trước hết yêu cầu hypothesis, assumption, evidence needed và workshop question. |
-| Draft statement: "Chuyển agenda workshop tiếp theo thành hypothesis." | Action hữu ích nhưng chưa gắn decision owner hoặc acceptance signal. | Rewrite thành project step có owner, expected artifact, review gate và evidence cần trước handoff. |
-| Paragraph nghe final về validated working artifact | Tone có thể che uncertainty và approval còn thiếu. | Chuyển thành bảng fact, assumption, decision needed, risk và validation question. |
+| Prompt: "Create Discovery Evidence Board." | The model may invent source facts, owners, or thresholds. | Add sources, scope boundary, output schema, and review criteria. |
+| Draft statement: "Dùng AI để gom note thành stakeholder pain, risk và open question." | Useful, but not tied to owner or acceptance signal. | Rewrite as a project step with owner, expected artifact, and review gate. |
+| Final-looking paragraph | Tone may hide uncertainty or missing stakeholder approval. | Convert into fact, assumption, decision needed, risk, and validation question. |
 
 ## Manual verification after AI output
 
-| Lens kiểm tra | Manual check | Pass signal |
+| Verification lens | Manual check | Pass signal |
 | --- | --- | --- |
-| Evidence | Trace mọi statement quan trọng trong Discovery Hypothesis Backlog về source, decision hoặc assumption có label. | Không unsupported claim nào còn bị ẩn. |
-| Completeness | Check source attribution, conflict visibility, workshop decision flow và backlog readiness theo intended audience và receiving team. | Artifact trả lời được điều product, engineering, QA và operations cần. |
-| Testability | Hỏi QA có tạo được positive, negative, boundary và exception scenario không. | Wording mơ hồ được rewrite hoặc log thành question. |
-| Accountability | Confirm ai approve, ai review và ai xử lý khi artifact sai. | Owner và escalation path explicit. |
+| Evidence | Trace important statements in Discovery Evidence Board to a source, decision, or labeled assumption. | No unsupported claim remains hidden. |
+| Completeness | Check Stakeholder pain, Evidence theme, Open assumption, Next interview against the intended audience. | Product, Engineering, QA, and Operations have what they need. |
+| Testability | Ask whether QA can create positive, negative, boundary, and exception scenarios. | Ambiguous wording is rewritten or logged as a question. |
+| Accountability | Confirm who approves, who reviews, and who acts when output is wrong. | Owners and escalation path are explicit. |
 
 ## AI collaboration prompt
 
 ```text
-Tạo discovery hypothesis backlog cho business problem này. Bao gồm actor, assumption, evidence needed, validation method, decision owner, risk level và workshop question. Chưa viết final requirement.
+Dùng project notes được cung cấp để tạo Discovery Evidence Board. Trước hết giải thích key term bằng ngôn ngữ đơn giản. Sau đó tạo table gồm evidence, assumption, risk, owner question và recommended next action. Không invent fact không nằm trong notes.
 ```
 
 ## Mistakes to avoid
 
-- Yêu cầu AI viết requirement trước khi map uncertainty.
-- Xem generated question là discovery đầy đủ.
-- Bỏ qua decision owner.
-- Ưu tiên câu hỏi dễ thay vì assumption rủi ro.
+- Dùng Discovery như jargon thay vì project decision.
+- Để AI viết lấp missing evidence.
+- Gửi output cho team khác khi chưa có owner, status hoặc next action.
 
 ## Apply this tomorrow
 
-1. Chuyển agenda workshop tiếp theo thành hypothesis.
-2. Nhờ AI tìm stakeholder group còn thiếu.
-3. Thêm evidence needed cạnh mỗi assumption.
-4. Mở workshop bằng decisions required, không chỉ topic.
+1. Lấy một project note hiện tại và nhờ AI tạo Discovery Evidence Board.
+2. Thêm định nghĩa plain-language cho Discovery.
+3. Chạy một critique pass từ góc QA hoặc Engineering.
 
 ## What a BA should remember
 
-- Discovery output là validated learning.
-- AI mở rộng question space; stakeholder validate nó.
-- Artifact discovery tốt cho thấy điều gì chưa biết.
+- Discovery phải giúp project đi tiếp, không phải nghe cho hay.
+- AI draft; BA validate.
+- Artifact nhỏ review được tốt hơn giải thích dài chung chung.

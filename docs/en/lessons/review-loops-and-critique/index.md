@@ -1,6 +1,6 @@
 ---
 title: "Review Loops and Critique"
-description: "The strongest BA use of AI is not drafting faster; it is creating disciplined critique loops before artifacts reach the team."
+description: "AI becomes safer when BAs use it in loops: draft, critique, revise, and approve."
 ---
 
 # Review Loops and Critique
@@ -11,160 +11,261 @@ description: "The strongest BA use of AI is not drafting faster; it is creating 
   <span>Core</span>
 </div>
 
+## Story mode: project walkthrough
+
+<div class="story-mode-panel">
+  <p class="story-eyebrow">Story prototype</p>
+  <h3>The best AI answer appears after the second question</h3>
+  <p class="story-intro">Maya receives a requirement draft that looks complete until AI is asked to attack it. Instead of asking AI for a final answer, she uses the lesson pattern to make the situation visible, reviewable, and useful for the next project decision.</p>
+  <div class="story-scene-grid">
+<article class="story-scene">
+  <span>Scene 1</span>
+  <b>01</b>
+  <strong>The request is vague</strong>
+  <p>The team gives Maya a requirement draft that looks complete until AI is asked to attack it and expects a clean answer by the end of the day.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 2</span>
+  <b>02</b>
+  <strong>AI creates a first draft</strong>
+  <p>The draft is helpful, but it hides uncertainty around Critique and Revision.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 3</span>
+  <b>03</b>
+  <strong>Maya turns it into BA evidence</strong>
+  <p>She adds source notes, owners, examples, and a focused AI Review Loop Card review table instead of forwarding the raw AI output.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 4</span>
+  <b>04</b>
+  <strong>The team can decide</strong>
+  <p>The final AI Review Loop Card shows what is ready, what is risky, and what needs a human decision.</p>
+</article>
+  </div>
+  <div class="visual-takeaway-strip">
+<span>Critique needs context</span>
+<span>Red team must be reviewable</span>
+<span>Reviewer becomes a BA question</span>
+  </div>
+</div>
+
+## AI words in plain English
+
+| AI term | Simple meaning | BA use |
+| --- | --- | --- |
+| Critique | A structured review that looks for weakness. | Use it to name the work clearly before asking AI to help. |
+| Red team | A review approach that actively tries to find failure points. | Use it as a review lens, not as a decorative AI word. |
+| Reviewer | The person or role that checks the output. | Turn it into a checklist item or stakeholder question. |
+| Revision loop | Draft, review, revise, and approve. | Define the rule before the team treats the output as ready. |
+
+## Reality check: how this shows up in projects
+
+<div class="fact-card-grid">
+<article class="fact-card">
+  <strong>A fast draft can hide weak thinking</strong>
+  <span>Ask what evidence, owner, and decision the draft depends on.</span>
+  <p>AI can produce AI Review Loop Card quickly, but speed does not prove quality.</p>
+</article>
+<article class="fact-card">
+  <strong>Stakeholders need simple language</strong>
+  <span>Explain the term in one sentence before using it in a requirement.</span>
+  <p>Terms like Critique and Red team can confuse people outside the AI conversation.</p>
+</article>
+<article class="fact-card">
+  <strong>The AI Review Loop Card must travel</strong>
+  <span>Make the next action visible for each receiving team.</span>
+  <p>Product, Engineering, QA, and Operations each read this AI Review Loop Card differently.</p>
+</article>
+</div>
+
+## Visual walkthrough
+
+```mermaid
+flowchart LR
+    A["Project input"]
+    B["AI first draft"]
+    A --> B
+    C["BA review lenses"]
+    B --> C
+    D["AI Review Loop Card"]
+    C --> D
+    E["Team decision"]
+    D --> E
+```
+
+## Visual decision map
+
+<div class="visual-ba-map">
+  <h3>AI Review Loop Card: what the BA should look for</h3>
+<div>
+  <strong>Draft</strong>
+  <span>What the BA must make explicit first.</span>
+  <em>Write it in plain language.</em>
+</div>
+<div>
+  <strong>Critique</strong>
+  <span>Where AI can help but may also hide uncertainty.</span>
+  <em>Add review criteria.</em>
+</div>
+<div>
+  <strong>Revision</strong>
+  <span>What can break if the team skips validation.</span>
+  <em>Create a decision question.</em>
+</div>
+<div>
+  <strong>Approval</strong>
+  <span>What makes the artifact safe to hand off.</span>
+  <em>Name owner, evidence, and next step.</em>
+</div>
+</div>
+
 ## Learning outcomes
 
-- Use AI as drafter, critic, counterparty, and gap finder.
-- Run multi-perspective reviews for BA artifacts.
-- Convert critique into prioritized revisions.
+- Explain Critique in simple BA language.
+- Use AI to draft a better AI Review Loop Card.
+- Review the output before it becomes scope, test, or delivery work.
 
 ## Why this matters for BA work
 
 <div class="ba-callout">
-The strongest BA use of AI is not drafting faster; it is creating disciplined critique loops before artifacts reach the team.
+AI becomes safer when BAs use it in loops: draft, critique, revise, and approve.
 </div>
 
-This lesson matters because first AI drafts are optimized for fluency, not necessarily for correctness, risk, or delivery readiness. Review loops turn AI from a drafting shortcut into a quality system. BAs can use critique passes to expose ambiguity, missing rules, unsupported claims, test gaps, and stakeholder decisions before artifacts move downstream.
+Review loops matter because the first AI answer is often optimized for fluency, not for risk. A BA who asks AI to critique, challenge, and revise the draft gets a more useful artifact and a clearer list of issues for human approval.
 
 ## Common difficulties for BAs
 
-In AI Collaboration and Context Engineering, Review Loops and Critique becomes difficult when AI can draft quickly, but reviewers need repeatable context, structured output, and critique rules to trust the result. A BA should inspect the points below before treating an AI-supported artifact as ready for stakeholder decision or delivery handoff.
-
-| Difficulty | Why it is hard in BA work | How a BA should handle it |
+| Difficulty | Why it is hard in BA work | How a BA handles it |
 | --- | --- | --- |
-| Asking AI to improve the draft without first diagnosing it. | The mistake "Asking AI to improve the draft without first diagnosing it." appears when the team discusses context package quality, prompt reuse, critique loop, and output contract without agreeing which source is authoritative. AI can smooth over the disagreement, so the BA must keep uncertainty visible. | Apply this control: separate context preparation, generation, critique, and human approval into visible steps. Then use the stronger pattern "Run critique passes for evidence, specificity, testability, and risk before sharing." and ask who must approve the artifact before it affects scope, build, test, or release. |
-| Accepting all critique findings equally. | For Review Loops and Critique, the friction is that The strongest BA use of AI is not drafting faster; it is creating disciplined critique loops before artifacts reach the team. The weak pattern is tempting because AI can produce a fluent answer before the BA has checked ownership, source freshness, or decision rights. | Apply this control: separate context preparation, generation, critique, and human approval into visible steps. Then use the stronger pattern "Use a rubric with required lenses, severity, source reference, and recommended fix." and ask who must approve the artifact before it affects scope, build, test, or release. |
-| Skipping evidence for critique. | This becomes hard when Multi-Perspective Critique Grid is expected to support the repeatable collaboration pattern. If the BA does not challenge the draft, unsupported assumptions may enter planning, testing, or stakeholder communication. | Apply this control: separate context preparation, generation, critique, and human approval into visible steps. Then use the stronger pattern "Convert critique findings into a defect register or decision log with owners." and ask who must approve the artifact before it affects scope, build, test, or release. |
+| The team uses Critique without a shared meaning. | People nod in meetings while imagining different outcomes. | Start with a one-sentence definition and show how it changes the AI Review Loop Card. |
+| AI output looks more complete than the input deserves. | A fluent draft can hide missing examples, owners, or edge cases. | Ask AI to list assumptions and missing evidence before drafting the final artifact. |
+| Reviewers need different details. | Product cares about value, Engineering about constraints, QA about testability, and Ops about support. | Add columns or sections for each receiving team instead of writing one generic paragraph. |
 
 ## Where this applies in real projects
 
-Use this lesson when a BA team wants reusable AI collaboration patterns instead of one-off prompts that depend on individual habit. The practical output is not a longer document; it is Multi-Perspective Critique Grid with enough evidence, ownership, and decision clarity for the next project conversation.
-
-| Project moment | How to apply this lesson | Concrete BA output |
+| Project moment | BA move | Concrete output |
 | --- | --- | --- |
-| Context setup | Run one draft through a QA critique prompt. | Multi-Perspective Critique Grid showing context package quality, prompt reuse, critique loop, and output contract, with the action "Run one draft through a QA critique prompt." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
-| Prompt reuse | Ask AI to rank findings by delivery risk. | Multi-Perspective Critique Grid showing source evidence, with the action "Ask AI to rank findings by delivery risk." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
-| Peer review | Convert critique into a revision backlog. | Multi-Perspective Critique Grid showing decision owner, with the action "Convert critique into a revision backlog." translated into a reviewable decision, requirement, checklist, or question for the next meeting. |
+| Discovery workshop | Use AI to organize notes into draft, risks, and open questions. | AI Review Loop Card with source notes and owners. |
+| Backlog refinement | Convert AI suggestions into small, testable decisions. | Story, rule, or checklist item with acceptance signal. |
+| Handoff review | Ask AI to critique the artifact from Product, Dev, QA, and Ops viewpoints. | Review table with action owner and status. |
 
 ## If this is missing
 
-If Review Loops and Critique is missing, outputs vary by person, assumptions stay hidden, and review quality depends on who happened to write the prompt. The BA can still recover, but only by converting the polished AI draft back into explicit evidence, assumptions, owners, and testable decisions.
+If Review Loops and Critique is missing, the team may still produce documents, but they will be harder to trust, test, and maintain.
 
 | If missing | Project impact | Recovery action |
 | --- | --- | --- |
-| Accept the first AI draft because it reads well | Fluency can hide ambiguity, false claims, and untestable wording. | Recover by using the stronger pattern: Run critique passes for evidence, specificity, testability, and risk before sharing. Rework Multi-Perspective Critique Grid until it exposes context package quality, prompt reuse, critique loop, and output contract, and do not share it as final until evidence, ownership, and validation path are explicit. |
-| Ask a generic question like what is wrong with this | The critique may be shallow and miss the BA quality dimensions. | Recover by using the stronger pattern: Use a rubric with required lenses, severity, source reference, and recommended fix. Rework Multi-Perspective Critique Grid until it exposes context package quality, prompt reuse, critique loop, and output contract, and do not share it as final until evidence, ownership, and validation path are explicit. |
-| Let review comments remain informal | The team cannot track whether risks were resolved. | Recover by using the stronger pattern: Convert critique findings into a defect register or decision log with owners. Rework Multi-Perspective Critique Grid until it exposes context package quality, prompt reuse, critique loop, and output contract, and do not share it as final until evidence, ownership, and validation path are explicit. |
+| No shared explanation for Critique | Stakeholders agree verbally but expect different behavior later. | Add a plain-language definition and example. |
+| No review of AI assumptions | Unsupported ideas become scope. | Move assumptions into an owner-based validation list. |
+| No concrete AI Review Loop Card | The learning stays abstract and does not help delivery. | Produce the artifact as a small table, not a long essay. |
 
 ## Mental model or core concept
 
-One-pass AI output is risky. A review loop makes AI work safer: draft, critique, revise, evidence-check, and stakeholder-validate. The BA can ask AI to review from product, QA, engineering, security, operations, and user perspectives, then decide which findings matter.
+Review Loops and Critique is easiest to understand as a BA control: make the messy thing visible, let AI help structure it, then review it with humans before it becomes delivery work.
 
 ## Practical BA example
 
-A generated SRS section looks complete. A critique pass finds that audit logging is missing, error states are vague, and a support workflow is not covered. The BA turns findings into revision tasks and validation questions instead of shipping the first draft.
+Maya asks AI to draft acceptance criteria, then asks another pass to attack ambiguity, missing NFRs, and exception paths. The revised artifact is shorter, sharper, and easier for QA to review.
 
 ## Diagram
 
 ```mermaid
-flowchart LR
-    A["Draft"] --> B["Critique by QA"]
-    B --> C["Critique by Dev"]
-    C --> D["Critique by Ops"]
-    D --> E["Evidence check"]
-    E --> F{"Revision needed?"}
-    F -->|Yes| A
-    F -->|No| G["Stakeholder validation"]
+flowchart TD
+    A["AI Review Loop Card"]
+    A --> B["Draft"]
+    A --> C["Critique"]
+    A --> D["Revision"]
+    A --> E["Approval"]
 ```
 
 ## BA artifact
 
-### Multi-Perspective Critique Grid
+### AI Review Loop Card
 
-| Perspective | What to inspect | Finding format | Revision action |
+| Artifact line | What the BA writes | Ready signal | Risk signal |
 | --- | --- | --- | --- |
-| QA | Testability, edge cases, expected results. | Defect plus test scenario. | Rewrite AC and add negative case. |
-| Developer | API, data, integration assumptions. | Implementation risk. | Clarify contract or dependency. |
-| Operations | Support, monitoring, failure handling. | Runbook gap. | Add support flow and alert rule. |
-| Compliance | Privacy, audit, policy constraints. | Control gap. | Add evidence and approval step. |
+| Draft | Write the concrete draft in project language. | A stakeholder can confirm it. | It is still a slogan. |
+| Critique | Describe how AI helps and where it may be wrong. | Review criteria are visible. | The draft hides uncertainty. |
+| Revision | Capture the gap, conflict, edge case, or risk. | Owner and next action are named. | The issue is buried in prose. |
+| Approval | Define the handoff rule or completion signal. | QA or Engineering can act on it. | No receiving team knows what to do. |
 
 ## AI expert note
 
-The most effective AI workflows separate creation from critique. Expert BAs design named review lenses: evidence, testability, risk, stakeholder conflict, operational feasibility, and compliance. Asking the same model to critique its own draft helps, but stronger practice uses explicit rubrics, source checks, and human review for high-risk decisions.
+As an AI reviewer, I would check whether Review Loops and Critique changes the BA artifact in a practical way. Good AI use should expose missing context, create structure, and make review easier. If it only produces nicer wording, the BA has not captured enough value yet.
 
 ## Bad vs better example
 
-| Weak pattern | Why it fails | Stronger BA pattern |
+| Weak pattern | Why it fails | Better BA pattern |
 | --- | --- | --- |
-| Accept the first AI draft because it reads well | Fluency can hide ambiguity, false claims, and untestable wording. | Run critique passes for evidence, specificity, testability, and risk before sharing. |
-| Ask a generic question like what is wrong with this | The critique may be shallow and miss the BA quality dimensions. | Use a rubric with required lenses, severity, source reference, and recommended fix. |
-| Let review comments remain informal | The team cannot track whether risks were resolved. | Convert critique findings into a defect register or decision log with owners. |
+| Ask AI to "do Review Loops and Critique" with no source context. | The model fills gaps with plausible wording. | Provide source notes, examples, boundaries, and review criteria. |
+| Share the first answer as final. | The team cannot see assumptions or weak evidence. | Run a critique pass and label open decisions. |
+| Use AI terms with no explanation. | Business stakeholders disengage or misunderstand. | Explain each term in plain language before using it in scope. |
 
 ## Stakeholder questions to ask
 
-| Stakeholder | Question | Why the BA asks it |
+| Stakeholder | Question | Why the BA asks |
 | --- | --- | --- |
-| Product owner | Which outcome should Review Loops and Critique improve, and what trade-off are you willing to accept? | Prevents AI output from optimizing for a vague goal. |
-| Engineering lead | What source, system, data, or constraint would make Multi-Perspective Critique Grid hard to implement? | Turns hidden technical constraints into visible requirement questions. |
-| QA lead | Which rule, exception, or user state must be testable before you trust this artifact? | Converts fluent AI wording into observable behavior. |
-| Operations or support | What failure path would create manual work if the lesson principle "Critique is where AI often creates the most BA value" is ignored? | Surfaces support load, exception handling, and operating impact. |
+| Product owner | Which outcome should Review Loops and Critique improve first? | Keeps AI work tied to business value. |
+| Engineering lead | Which source, system, or constraint could make AI Review Loop Card hard to implement? | Turns hidden technical constraints into requirement questions. |
+| QA lead | Which behavior must be testable before we trust this artifact? | Converts fluent AI text into observable checks. |
+| Operations or support | What failure path creates manual work after release? | Surfaces support load and fallback needs. |
 
 ## Decision log entries
 
 | Decision item | Options to capture | Owner | Evidence needed |
 | --- | --- | --- | --- |
-| Scope boundary for Multi-Perspective Critique Grid | Must-have, later, out of scope | Product owner | Business outcome and release constraint |
-| Authority for context package quality, prompt reuse, critique loop, and output contract | Documented source, stakeholder decision, assumption to validate | BA + accountable stakeholder | Source ID, date, and approval status |
+| Scope boundary for AI Review Loop Card | Must-have, later, out of scope | Product owner | Business outcome and release constraint |
+| Authority for Draft and Critique | Documented source, stakeholder decision, assumption to validate | BA + accountable stakeholder | Source ID, date, and approval status |
 | Review gate before handoff | Peer review, QA review, engineering review, formal approval | BA lead or project lead | Risk level and receiving-team readiness |
-| Recovery if Asking AI to improve the draft without first diagnosing it. | Rewrite, defer, escalate, or run validation workshop | Decision owner | Impact on scope, testability, and release risk |
+| Recovery if Using Critique as jargon instead of a project decision. | Rewrite, defer, escalate, or run validation workshop | Decision owner | Impact on scope, testability, and release risk |
 
 ## Definition of Ready / Done
 
 | Gate | Ready signal | Done signal |
 | --- | --- | --- |
-| Definition of Ready | Sources for context package quality, prompt reuse, critique loop, and output contract are labeled and current. | Multi-Perspective Critique Grid can be reviewed without guessing missing context. |
-| Definition of Ready | Open assumptions have owners and validation paths. | Stakeholders can decide whether to accept, reject, or defer each assumption. |
-| Definition of Done | The artifact applies this control: separate context preparation, generation, critique, and human approval into visible steps. | Delivery, QA, or governance teams can act on the artifact. |
-| Definition of Done | The weak pattern "Asking AI to improve the draft without first diagnosing it." has been explicitly checked. | No unsupported AI claim is treated as an approved requirement. |
+| Definition of Ready | Sources for Draft are named. | AI Review Loop Card can be reviewed without guessing context. |
+| Definition of Ready | Open assumptions have owners and validation paths. | Stakeholders can accept, reject, or defer each assumption. |
+| Definition of Done | The artifact applies this principle: AI becomes safer when BAs use it in loops: draft, critique, revise, and approve. | Delivery, QA, or governance teams can act on it. |
+| Definition of Done | The weak pattern "Ask AI to "do Review Loops and Critique" with no source context." has been checked. | No unsupported AI claim is treated as approved scope. |
 
 ## Before and after artifact example
 
 | Before | AI draft risk | Senior BA revision |
 | --- | --- | --- |
-| Prompt: "Create Multi-Perspective Critique Grid for Review Loops and Critique." | The model may invent source facts, owners, thresholds, or implementation rules. | Add sources, scope boundary, source authority, output schema, and the instruction: Run critique passes for evidence, specificity, testability, and risk before sharing. |
-| Draft statement: "Run one draft through a QA critique prompt." | Useful action, but not yet tied to a decision owner or acceptance signal. | Rewrite as a project step with owner, expected artifact, review gate, and evidence required before handoff. |
-| Final-looking paragraph about repeatable collaboration pattern | The tone may hide uncertainty and missing stakeholder approval. | Convert it into a table of fact, assumption, decision needed, risk, and validation question. |
+| Prompt: "Create AI Review Loop Card." | The model may invent source facts, owners, or thresholds. | Add sources, scope boundary, output schema, and review criteria. |
+| Draft statement: "Use AI to organize notes into draft, risks, and open questions." | Useful, but not tied to owner or acceptance signal. | Rewrite as a project step with owner, expected artifact, and review gate. |
+| Final-looking paragraph | Tone may hide uncertainty or missing stakeholder approval. | Convert into fact, assumption, decision needed, risk, and validation question. |
 
 ## Manual verification after AI output
 
 | Verification lens | Manual check | Pass signal |
 | --- | --- | --- |
-| Evidence | Trace every important statement in Multi-Perspective Critique Grid to a source, decision, or labeled assumption. | No unsupported claim remains hidden. |
-| Completeness | Check context package quality, prompt reuse, critique loop, and output contract against the intended audience and receiving team. | The artifact answers what product, engineering, QA, and operations need. |
-| Testability | Ask whether QA can create positive, negative, boundary, and exception scenarios. | Ambiguous wording has been rewritten or logged as a question. |
-| Accountability | Confirm who approves, who reviews, and who acts when the artifact is wrong. | Owners and escalation path are explicit. |
+| Evidence | Trace important statements in AI Review Loop Card to a source, decision, or labeled assumption. | No unsupported claim remains hidden. |
+| Completeness | Check Draft, Critique, Revision, Approval against the intended audience. | Product, Engineering, QA, and Operations have what they need. |
+| Testability | Ask whether QA can create positive, negative, boundary, and exception scenarios. | Ambiguous wording is rewritten or logged as a question. |
+| Accountability | Confirm who approves, who reviews, and who acts when output is wrong. | Owners and escalation path are explicit. |
 
 ## AI collaboration prompt
 
 ```text
-Review this artifact from QA, developer, operations, compliance, support, and end-user perspectives. Return findings with severity, evidence, affected section, revision recommendation, and validation question. Do not rewrite yet; critique first.
+Use the supplied project notes to create a AI Review Loop Card. First explain the key terms in simple language. Then produce a table with evidence, assumption, risk, owner question, and recommended next action. Do not invent facts that are not in the notes.
 ```
 
 ## Mistakes to avoid
 
-- Asking AI to improve the draft without first diagnosing it.
-- Accepting all critique findings equally.
-- Skipping evidence for critique.
-- Not preserving the revision decision trail.
+- Using Critique as jargon instead of a project decision.
+- Letting AI write around missing evidence.
+- Sending output to another team without owner, status, or next action.
 
 ## Apply this tomorrow
 
-1. Run one draft through a QA critique prompt.
-2. Ask AI to rank findings by delivery risk.
-3. Convert critique into a revision backlog.
-4. Share top three risks with the team before refinement.
+1. Take one current project note and ask AI for a AI Review Loop Card.
+2. Add a plain-language definition for Critique.
+3. Run one critique pass from QA or Engineering viewpoint.
 
 ## What a BA should remember
 
-- Critique is where AI often creates the most BA value.
-- Review loops make uncertainty visible.
-- The BA chooses which critique findings become changes.
+- Critique should help the project move, not sound impressive.
+- AI drafts; BA validates.
+- A small reviewable artifact beats a long generic explanation.

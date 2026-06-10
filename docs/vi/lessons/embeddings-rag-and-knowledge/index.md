@@ -1,171 +1,266 @@
 ---
-title: "Embeddings, RAG và product knowledge"
-description: "Với BA, RAG không chỉ là UI chatbot; trọng tâm là governance tri thức nào hệ thống được phép tin."
+title: "Embeddings, RAG và knowledge"
+description: "RAG chỉ hữu ích khi BA định nghĩa rõ knowledge tin cậy, retrieval boundary và behavior của answer."
 ---
 
-# Embeddings, RAG và product knowledge
+# Embeddings, RAG và knowledge
 
 <div class="lesson-meta">
-  <span>Nền tảng AI cho Business Analyst</span>
+  <span>AI foundations cho Business Analyst</span>
   <span>Software BA</span>
   <span>Core</span>
 </div>
 
+## Story mode: project walkthrough
+
+<div class="story-mode-panel">
+  <p class="story-eyebrow">Story prototype</p>
+  <h3>Policy assistant tìm policy sai nhanh hơn</h3>
+  <p class="story-intro">Team xây policy assistant cho support nội bộ. Demo trả lời rất nhanh, nhưng lại lấy travel policy đã hết hiệu lực vì chưa ai định nghĩa source authority.</p>
+  <div class="story-scene-grid">
+<article class="story-scene">
+  <span>Scene 1</span>
+  <b>01</b>
+  <strong>Demo làm cả phòng ấn tượng</strong>
+  <p>Assistant trả lời trong vài giây và cite document nhìn có vẻ liên quan.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 2</span>
+  <b>02</b>
+  <strong>Answer lấy từ thư viện sai</strong>
+  <p>Maya thấy policy được cite đã bị archive sáu tháng trước.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 3</span>
+  <b>03</b>
+  <strong>Knowledge trở thành requirement</strong>
+  <p>Cô viết rule cho allowed source, chunk ownership, freshness và fallback.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 4</span>
+  <b>04</b>
+  <strong>Assistant an toàn hơn</strong>
+  <p>Demo sau đó từ chối source cũ và yêu cầu human review khi confidence thấp.</p>
+</article>
+  </div>
+  <div class="visual-takeaway-strip">
+<span>RAG cần governance cho source</span>
+<span>Retrieval không phải approval</span>
+<span>Fallback là một phần của answer</span>
+  </div>
+</div>
+
+## AI words in plain English
+
+| Thuật ngữ AI | Hiểu đơn giản | BA dùng để làm gì |
+| --- | --- | --- |
+| Embedding | Cách biểu diễn ý nghĩa text bằng số. | Giúp hệ thống tìm nội dung liên quan, nhưng không chứng minh nội dung đúng. |
+| Vector search | Search theo ý nghĩa thay vì keyword y hệt. | Dùng cho policy, FAQ và knowledge base có wording khác nhau. |
+| RAG | Retrieve document trước, rồi generate answer dựa trên document đó. | BA đặc tả source, citation rule và xử lý khi retrieval yếu. |
+| Chunk | Một phần nhỏ của document dùng để retrieval. | Định nghĩa chunk size, owner, date và metadata section. |
+
+## Reality check: tình huống thường gặp trong dự án
+
+<div class="fact-card-grid">
+<article class="fact-card">
+  <strong>Search trả về cái liên quan, không chắc là đúng</strong>
+  <span>Định nghĩa source authority trước khi test answer quality.</span>
+  <p>Document gần nghĩa vẫn có thể cũ hoặc không được phép dùng.</p>
+</article>
+<article class="fact-card">
+  <strong>Citation tạo cảm giác yên tâm giả</strong>
+  <span>Review citation relevance, không chỉ citation presence.</span>
+  <p>Answer có citation nhưng cite sai section.</p>
+</article>
+<article class="fact-card">
+  <strong>Knowledge thay đổi liên tục</strong>
+  <span>Thêm freshness và ownership vào knowledge contract.</span>
+  <p>Policy, product limit và SOP có thể hết hiệu lực.</p>
+</article>
+</div>
+
+## Visual walkthrough
+
+```mermaid
+flowchart LR
+    A["User question"]
+    B["Retrieve chunk"]
+    A --> B
+    C["Check source rule"]
+    B --> C
+    D["Draft answer"]
+    C --> D
+    E["Cite hoặc escalate"]
+    D --> E
+```
+
+## Visual decision map
+
+<div class="visual-ba-map">
+  <h3>RAG Knowledge Contract: what the BA should look for</h3>
+<div>
+  <strong>Knowledge scope</strong>
+  <span>Document nào được phép dùng.</span>
+  <em>Loại draft, archive và personal note.</em>
+</div>
+<div>
+  <strong>Retrieval quality</strong>
+  <span>Chunk nào được trả về.</span>
+  <em>Check relevance, freshness và coverage.</em>
+</div>
+<div>
+  <strong>Answer behavior</strong>
+  <span>Assistant nói gì khi evidence yếu.</span>
+  <em>Dùng refusal, escalation hoặc clarification.</em>
+</div>
+</div>
+
 ## Learning outcomes
 
-- Giải thích RAG pipeline và các điểm quality có thể fail.
-- Viết requirement BA cho source authority, freshness, access và citation.
-- Định nghĩa retrieval quality metric cho AI assistant.
+- Giải thích RAG không quá kỹ thuật.
+- Viết requirement cho knowledge source và retrieval behavior.
+- Định nghĩa fallback khi evidence yếu hoặc conflict.
 
 ## Why this matters for BA work
 
 <div class="ba-callout">
-Với BA, RAG không chỉ là UI chatbot; trọng tâm là governance tri thức nào hệ thống được phép tin.
+RAG chỉ hữu ích khi BA định nghĩa rõ knowledge tin cậy, retrieval boundary và behavior của answer.
 </div>
 
-Bài này quan trọng vì nhiều tổ chức gọi tính năng là RAG trong khi requirement thật là governance tri thức đáng tin. Nếu BA chỉ đặc tả chat interface, assistant có thể retrieve material cũ, không được phép xem hoặc conflict. Định nghĩa source authority, freshness, permission, citation behavior và fallback mới biến RAG thành capability dùng được.
+Bài này quan trọng vì nhiều team nói muốn chatbot nhưng nhu cầu thật là truy cập knowledge tin cậy. BA phải định nghĩa knowledge contract: source nào được dùng, freshness được check ra sao, citation được review thế nào và khi nào assistant phải từ chối trả lời.
 
 ## Common difficulties for BAs
 
-Trong Nền tảng AI cho Business Analyst, Embeddings, RAG và product knowledge trở nên khó khi stakeholder muốn câu trả lời AI thật đơn giản trong khi vấn đề thật phụ thuộc vào capability của model, data readiness, boundary của tool và risk của business decision. BA nên kiểm tra các điểm dưới đây trước khi xem artifact có AI hỗ trợ là đủ sẵn sàng cho stakeholder decision hoặc handoff.
-
-| Khó khăn | Vì sao khó trong công việc BA | BA nên xử lý thế nào |
+| Khó khăn | Vì sao khó với BA | BA xử lý thế nào |
 | --- | --- | --- |
-| Xem RAG là magic accuracy. | Lỗi "Xem RAG là magic accuracy." xuất hiện khi team bàn về problem fit, model boundary, data dependency và decision risk nhưng chưa thống nhất source nào authoritative. AI có thể làm disagreement nghe mượt hơn, nên BA phải giữ uncertainty visible. | Áp dụng control này: yêu cầu model so sánh option AI và non-AI trước khi draft requirement. Sau đó dùng pattern tốt hơn "Tạo knowledge contract gồm source inventory, owner, effective date và access rule." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
-| Bỏ qua document ownership và freshness. | Với Embeddings, RAG và product knowledge, điểm khó là Với BA, RAG không chỉ là UI chatbot; trọng tâm là governance tri thức nào hệ thống được phép tin. Pattern yếu rất dễ xảy ra vì AI có thể tạo câu trả lời trôi chảy trước khi BA check ownership, source freshness hoặc decision right. | Áp dụng control này: yêu cầu model so sánh option AI và non-AI trước khi draft requirement. Sau đó dùng pattern tốt hơn "Đo retrieval precision, citation support, fallback rate và conflict detection." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
-| Quên access control trong retrieval. | Điểm này khó khi RAG Knowledge Contract được kỳ vọng hỗ trợ solution-shape decision. Nếu BA không challenge draft, unsupported assumption có thể đi vào planning, testing hoặc stakeholder communication. | Áp dụng control này: yêu cầu model so sánh option AI và non-AI trước khi draft requirement. Sau đó dùng pattern tốt hơn "Hiển thị conflict warning, cite cả hai source và route tới owner chịu trách nhiệm." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
+| Stakeholder nghĩ RAG nghĩa là assistant biết policy công ty. | RAG chỉ retrieve từ source và setup được cung cấp. | Định nghĩa allowed source, excluded source, metadata và review ownership. |
+| Citation nhìn rất thuyết phục. | Citation có thể trỏ tới paragraph liên quan nhưng không trả lời câu hỏi. | Test citation relevance bằng câu hỏi thật và edge case. |
+| Document lộn xộn. | File duplicate, archive và conflict làm giảm answer quality. | Tạo backlog cleanup knowledge trước khi hứa automation. |
 
 ## Where this applies in real projects
 
-Dùng bài này khi một AI idea mới đi vào discovery, vendor discussion, roadmap planning hoặc feasibility analysis. Output thực tế không phải document dài hơn; đó là RAG Knowledge Contract có đủ evidence, ownership và decision clarity cho cuộc trao đổi tiếp theo của dự án.
-
-| Thời điểm trong dự án | Cách áp dụng bài học | Output cụ thể của BA |
+| Thời điểm dự án | Việc BA làm | Output cụ thể |
 | --- | --- | --- |
-| Idea intake | Liệt kê authoritative source cho một AI assistant idea. | RAG Knowledge Contract thể hiện problem fit, model boundary, data dependency và decision risk, trong đó action "Liệt kê authoritative source cho một AI assistant idea." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
-| Feasibility review | Định nghĩa hệ thống làm gì khi hai source conflict. | RAG Knowledge Contract thể hiện source evidence, trong đó action "Định nghĩa hệ thống làm gì khi hai source conflict." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
-| Solution framing | Viết một test question bắt buộc trigger fallback. | RAG Knowledge Contract thể hiện decision owner, trong đó action "Viết một test question bắt buộc trigger fallback." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
+| Internal policy assistant | Định nghĩa source authority và fallback khi thiếu policy. | RAG Knowledge Contract. |
+| Support knowledge base | Map user question với approved answer source. | Question-source coverage matrix. |
+| Đánh giá vendor | Hỏi vendor xử lý document cũ, conflict và restricted thế nào. | RAG evaluation checklist. |
 
 ## If this is missing
 
-Nếu thiếu Embeddings, RAG và product knowledge, team có thể chọn tool trước khi hiểu problem shape, tạo automation tốn kém nhưng không khớp business outcome. BA vẫn có thể khôi phục, nhưng phải chuyển draft AI bóng bẩy trở lại thành evidence, assumption, owner và decision test được.
+Nếu thiếu requirement cho RAG, assistant có thể trả lời rất nhanh từ knowledge sai.
 
-| Nếu thiếu | Ảnh hưởng tới dự án | Cách khôi phục |
+| Nếu thiếu | Ảnh hưởng dự án | Cách khôi phục |
 | --- | --- | --- |
-| Đặc tả answer phải dùng company document | Câu này không nói document nào approved, current hoặc visible cho từng role. | Khôi phục bằng pattern tốt hơn: Tạo knowledge contract gồm source inventory, owner, effective date và access rule. Rework RAG Knowledge Contract cho đến khi nó lộ rõ problem fit, model boundary, data dependency và decision risk, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
-| Chỉ evaluate answer có nghe helpful không | Answer thân thiện vẫn có thể cite nhầm policy hoặc miss source tốt hơn. | Khôi phục bằng pattern tốt hơn: Đo retrieval precision, citation support, fallback rate và conflict detection. Rework RAG Knowledge Contract cho đến khi nó lộ rõ problem fit, model boundary, data dependency và decision risk, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
-| Để assistant trả lời khi source conflict | User có thể hành động theo rule sai trong khi hệ thống rất tự tin. | Khôi phục bằng pattern tốt hơn: Hiển thị conflict warning, cite cả hai source và route tới owner chịu trách nhiệm. Rework RAG Knowledge Contract cho đến khi nó lộ rõ problem fit, model boundary, data dependency và decision risk, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
+| Không có source authority | Assistant có thể retrieve archive hoặc draft content. | Tạo allowed-source register. |
+| Không review citation | User tin answer dù citation không liên quan. | Thêm citation relevance test. |
+| Không có fallback behavior | Assistant đoán khi evidence yếu. | Định nghĩa refusal và human handoff rule. |
 
 ## Mental model or core concept
 
-RAG retrieve tài liệu nguồn trước khi model generate answer. Nó chỉ tăng grounding khi source đúng được index, chunk, rank, permission và cite đúng. BA đặc tả RAG phải định nghĩa knowledge contract: tài liệu nào được tính, conflict xử lý ra sao và assistant làm gì khi evidence yếu.
+RAG không phải trí nhớ thần kỳ. Đó là pattern có kiểm soát: retrieve context tin cậy, generate answer và show evidence đủ để review.
 
 ## Practical BA example
 
-Một HR policy assistant trả lời câu hỏi maternity leave từ cả policy 2024 và handbook 2021 đã obsolete. BA bổ sung requirement về source priority, effective date, citation display, conflict warning và fallback sang HR khi hệ thống thấy policy conflict.
+Với câu hỏi HR policy, Maya định nghĩa chỉ article đã approve trên HR portal được dùng. Nếu hai article conflict, assistant phải show cả hai và route tới HR thay vì tự chọn.
 
 ## Diagram
 
 ```mermaid
-flowchart LR
-    A["Approved sources"] --> B["Ingestion"]
-    B --> C["Chunking + metadata"]
-    C --> D["Embedding index"]
-    Q["User question"] --> R["Retrieval"]
-    D --> R
-    R --> G["Generation"]
-    G --> H["Answer có citation"]
-    R --> F["Fallback khi evidence yếu"]
+flowchart TD
+    A["RAG Knowledge Contract"]
+    A --> B["Allowed source"]
+    A --> C["Metadata"]
+    A --> D["Retrieval test"]
+    A --> E["Answer fallback"]
 ```
 
 ## BA artifact
 
 ### RAG Knowledge Contract
 
-| Requirement area | Đặc tả BA | Quality metric | Failure mode |
+| Dòng artifact | BA cần viết gì | Dấu hiệu sẵn sàng | Dấu hiệu rủi ro |
 | --- | --- | --- | --- |
-| Source authority | Chỉ dùng approved policy repository và HR knowledge base. | 100% answer cite approved source. | Assistant cite stale PDF. |
-| Freshness | Effective date phải visible và source mới được rank cao hơn. | Freshness error dưới 1%. | Policy cũ override rule mới. |
-| Access control | Chỉ retrieve document user được phép xem. | Không leakage cross-role trong test. | Policy manager-only lộ cho employee. |
-| Fallback | Nếu citation không đủ confident, trả lời kèm escalation path. | Fallback được dùng cho unsupported question. | Assistant tự bịa policy. |
+| Source scope | Library được approve, content bị loại, owner. | Chỉ source tin cậy được index. | Archive xuất hiện trong answer. |
+| Metadata | Date, version, department, confidentiality. | Có thể filter freshness. | Rule cũ và mới bị trộn. |
+| Question coverage | User question đại diện và expected source. | Retrieval test được. | Demo chỉ dùng câu dễ. |
+| Fallback | Clarify, refuse hoặc hand off. | Evidence yếu có đường an toàn. | Assistant tự lấp khoảng trống. |
 
 ## AI expert note
 
-RAG quality thường fail ở retrieval trước khi fail ở generation. Spec BA mạnh phải cover ingestion ownership, metadata, chunking assumption, ranking priority, access control, source conflict handling và retrieval evaluation. Tone của answer là thứ yếu; test chính là hệ thống có tìm đúng evidence cho đúng user hay không.
+Requirement RAG tốt xem knowledge là product behavior, không chỉ là data ingestion. BA chuyên gia hỏi source được govern thế nào, retrieval được evaluate ra sao và assistant xử lý thế nào khi evidence thiếu, cũ, restricted hoặc mâu thuẫn.
 
 ## Bad vs better example
 
-| Cách làm yếu | Vì sao fail | Cách làm BA tốt hơn |
+| Cách làm yếu | Vì sao fail | Cách BA làm tốt hơn |
 | --- | --- | --- |
-| Đặc tả answer phải dùng company document | Câu này không nói document nào approved, current hoặc visible cho từng role. | Tạo knowledge contract gồm source inventory, owner, effective date và access rule. |
-| Chỉ evaluate answer có nghe helpful không | Answer thân thiện vẫn có thể cite nhầm policy hoặc miss source tốt hơn. | Đo retrieval precision, citation support, fallback rate và conflict detection. |
-| Để assistant trả lời khi source conflict | User có thể hành động theo rule sai trong khi hệ thống rất tự tin. | Hiển thị conflict warning, cite cả hai source và route tới owner chịu trách nhiệm. |
+| Upload mọi document và test ba câu dễ. | System có thể pass demo nhưng fail khi dùng thật. | Tạo question-source coverage test set. |
+| Nghĩ citation nghĩa là đúng. | Citation có thể không support answer. | Review passage được cite có thật sự trả lời question không. |
+| Bỏ qua restricted content. | User có thể thấy thông tin không được phép. | Thêm requirement access control và source filtering. |
 
 ## Stakeholder questions to ask
 
 | Stakeholder | Câu hỏi | Vì sao BA hỏi |
 | --- | --- | --- |
-| Product owner | Embeddings, RAG và product knowledge cần cải thiện outcome nào, và trade-off nào có thể chấp nhận? | Ngăn output AI tối ưu cho mục tiêu mơ hồ. |
-| Engineering lead | Source, system, data hoặc constraint nào khiến RAG Knowledge Contract khó implement? | Biến technical constraint ẩn thành requirement question visible. |
-| QA lead | Rule, exception hoặc user state nào phải test được trước khi tin artifact này? | Chuyển wording trôi chảy của AI thành behavior quan sát được. |
-| Operations hoặc support | Failure path nào tạo manual work nếu nguyên tắc "RAG quality bắt đầu từ knowledge governance" bị bỏ qua? | Làm rõ support load, exception handling và operating impact. |
+| Product owner | Which outcome should Embeddings, RAG và knowledge improve first? | Keeps AI work tied to business value. |
+| Engineering lead | Which source, system, or constraint could make RAG Knowledge Contract hard to implement? | Turns hidden technical constraints into requirement questions. |
+| QA lead | Which behavior must be testable before we trust this artifact? | Converts fluent AI text into observable checks. |
+| Operations or support | What failure path creates manual work after release? | Surfaces support load and fallback needs. |
 
 ## Decision log entries
 
 | Decision item | Option cần capture | Owner | Evidence cần có |
 | --- | --- | --- | --- |
-| Scope boundary cho RAG Knowledge Contract | Must-have, later, out of scope | Product owner | Business outcome và release constraint |
-| Authority cho problem fit, model boundary, data dependency và decision risk | Documented source, stakeholder decision, assumption cần validate | BA + stakeholder chịu trách nhiệm | Source ID, date và approval status |
-| Review gate trước handoff | Peer review, QA review, engineering review, formal approval | BA lead hoặc project lead | Risk level và receiving-team readiness |
-| Cách recover nếu Xem RAG là magic accuracy. | Rewrite, defer, escalate hoặc validation workshop | Decision owner | Impact lên scope, testability và release risk |
+| Scope boundary for RAG Knowledge Contract | Must-have, later, out of scope | Product owner | Business outcome and release constraint |
+| Authority for Allowed source and Metadata | Documented source, stakeholder decision, assumption to validate | BA + accountable stakeholder | Source ID, date, and approval status |
+| Review gate before handoff | Peer review, QA review, engineering review, formal approval | BA lead or project lead | Risk level and receiving-team readiness |
+| Recovery if Gọi mọi knowledge problem là chatbot. | Rewrite, defer, escalate, or run validation workshop | Decision owner | Impact on scope, testability, and release risk |
 
 ## Definition of Ready / Done
 
-| Gate | Tín hiệu ready | Tín hiệu done |
+| Gate | Ready signal | Done signal |
 | --- | --- | --- |
-| Definition of Ready | Source cho problem fit, model boundary, data dependency và decision risk được label và còn hiệu lực. | RAG Knowledge Contract có thể review mà không phải đoán missing context. |
-| Definition of Ready | Open assumption có owner và validation path. | Stakeholder có thể accept, reject hoặc defer từng assumption. |
-| Definition of Done | Artifact áp dụng control: yêu cầu model so sánh option AI và non-AI trước khi draft requirement. | Delivery, QA hoặc governance team có thể hành động dựa trên artifact. |
-| Definition of Done | Pattern yếu "Xem RAG là magic accuracy." đã được kiểm tra explicit. | Không unsupported AI claim nào bị xem như requirement đã approve. |
+| Definition of Ready | Sources for Allowed source are named. | RAG Knowledge Contract can be reviewed without guessing context. |
+| Definition of Ready | Open assumptions have owners and validation paths. | Stakeholders can accept, reject, or defer each assumption. |
+| Definition of Done | The artifact applies this principle: RAG chỉ hữu ích khi BA định nghĩa rõ knowledge tin cậy, retrieval boundary và behavior của answer. | Delivery, QA, or governance teams can act on it. |
+| Definition of Done | The weak pattern "Upload mọi document và test ba câu dễ." has been checked. | No unsupported AI claim is treated as approved scope. |
 
 ## Before and after artifact example
 
-| Before | Risk trong draft AI | Revision của senior BA |
+| Before | Rủi ro từ AI draft | Senior BA revision |
 | --- | --- | --- |
-| Prompt: "Create RAG Knowledge Contract cho Embeddings, RAG và product knowledge." | Model có thể tự bịa source fact, owner, threshold hoặc implementation rule. | Thêm source, scope boundary, source authority, output schema và instruction: Tạo knowledge contract gồm source inventory, owner, effective date và access rule. |
-| Draft statement: "Liệt kê authoritative source cho một AI assistant idea." | Action hữu ích nhưng chưa gắn decision owner hoặc acceptance signal. | Rewrite thành project step có owner, expected artifact, review gate và evidence cần trước handoff. |
-| Paragraph nghe final về solution-shape decision | Tone có thể che uncertainty và approval còn thiếu. | Chuyển thành bảng fact, assumption, decision needed, risk và validation question. |
+| Prompt: "Create RAG Knowledge Contract." | The model may invent source facts, owners, or thresholds. | Add sources, scope boundary, output schema, and review criteria. |
+| Draft statement: "Định nghĩa source authority và fallback khi thiếu policy." | Useful, but not tied to owner or acceptance signal. | Rewrite as a project step with owner, expected artifact, and review gate. |
+| Final-looking paragraph | Tone may hide uncertainty or missing stakeholder approval. | Convert into fact, assumption, decision needed, risk, and validation question. |
 
 ## Manual verification after AI output
 
-| Lens kiểm tra | Manual check | Pass signal |
+| Verification lens | Manual check | Pass signal |
 | --- | --- | --- |
-| Evidence | Trace mọi statement quan trọng trong RAG Knowledge Contract về source, decision hoặc assumption có label. | Không unsupported claim nào còn bị ẩn. |
-| Completeness | Check problem fit, model boundary, data dependency và decision risk theo intended audience và receiving team. | Artifact trả lời được điều product, engineering, QA và operations cần. |
-| Testability | Hỏi QA có tạo được positive, negative, boundary và exception scenario không. | Wording mơ hồ được rewrite hoặc log thành question. |
-| Accountability | Confirm ai approve, ai review và ai xử lý khi artifact sai. | Owner và escalation path explicit. |
+| Evidence | Trace important statements in RAG Knowledge Contract to a source, decision, or labeled assumption. | No unsupported claim remains hidden. |
+| Completeness | Check Allowed source, Metadata, Retrieval test, Answer fallback against the intended audience. | Product, Engineering, QA, and Operations have what they need. |
+| Testability | Ask whether QA can create positive, negative, boundary, and exception scenarios. | Ambiguous wording is rewritten or logged as a question. |
+| Accountability | Confirm who approves, who reviews, and who acts when output is wrong. | Owners and escalation path are explicit. |
 
 ## AI collaboration prompt
 
 ```text
-Draft requirement RAG cho assistant này. Bao gồm source inventory, chunking assumption, access control, citation behavior, conflict handling, fallback, retrieval metric và test scenario. Tách must-have control khỏi nice-to-have UX.
+Thiết kế RAG knowledge contract cho assistant này. Bao gồm allowed source, excluded source, metadata, freshness rule, access rule, sample question, citation behavior và fallback khi evidence yếu hoặc conflict.
 ```
 
 ## Mistakes to avoid
 
-- Xem RAG là magic accuracy.
-- Bỏ qua document ownership và freshness.
-- Quên access control trong retrieval.
-- Chỉ đo answer tone thay vì retrieval correctness.
+- Gọi mọi knowledge problem là chatbot.
+- Index document trước khi định nghĩa source authority.
+- Chỉ test happy path question.
 
 ## Apply this tomorrow
 
-1. Liệt kê authoritative source cho một AI assistant idea.
-2. Định nghĩa hệ thống làm gì khi hai source conflict.
-3. Viết một test question bắt buộc trigger fallback.
-4. Thêm citation requirement vào feature spec.
+1. Chọn một ý tưởng knowledge assistant và list allowed source.
+2. Viết năm câu hỏi thật và expected source ID.
+3. Định nghĩa answer khi không tìm thấy trusted source.
 
 ## What a BA should remember
 
-- RAG quality bắt đầu từ knowledge governance.
-- Cite source sai vẫn là sai.
-- BA requirement phải cover retrieval, không chỉ generated answer.
+- RAG quality bắt đầu từ knowledge quality.
+- Có citation chưa đủ.
+- Fallback là một phần của requirement.

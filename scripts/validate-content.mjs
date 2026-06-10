@@ -205,7 +205,24 @@ const requiredUseCaseGroups = {
 const visualStoryLessonSlugs = new Set([
   "ai-landscape-for-ba",
   "llm-mental-model",
-  "tokens-context-and-memory"
+  "tokens-context-and-memory",
+  "hallucination-and-source-grounding",
+  "embeddings-rag-and-knowledge",
+  "discovery-with-ai",
+  "stakeholder-interviews-and-synthesis",
+  "user-stories-and-acceptance-criteria",
+  "process-modeling-with-ai",
+  "context-engineering-patterns",
+  "review-loops-and-critique",
+  "structured-outputs-and-reusable-prompts",
+  "ambiguity-conflict-and-gap-analysis",
+  "non-functional-requirements-and-risk",
+  "traceability-and-testability",
+  "brd-srs-and-decision-artifacts",
+  "diagramming-for-ba",
+  "specifying-ai-enabled-features",
+  "human-in-the-loop-monitoring-and-fallback",
+  "ai-strategy-governance-and-adoption"
 ]);
 
 const diagramSignatures = new Set();

@@ -1,169 +1,271 @@
 ---
 title: "Traceability và testability"
-description: "Traceability làm requirement có accountability từ business goal đến test evidence."
+description: "AI có thể nối requirement nhanh hơn, nhưng BA phải verify coverage từ business goal tới test evidence."
 ---
 
 # Traceability và testability
 
 <div class="lesson-meta">
-  <span>Requirements engineering với AI</span>
+  <span>Requirement quality</span>
   <span>Software BA</span>
   <span>Core</span>
 </div>
 
+## Story mode: project walkthrough
+
+<div class="story-mode-panel">
+  <p class="story-eyebrow">Story prototype</p>
+  <h3>Release có nhiều story vẫn chưa chứng minh được value</h3>
+  <p class="story-intro">Maya nhận release có nhiều story nhưng không link rõ về business outcome ban đầu. Thay vì nhờ AI trả lời final, cô dùng pattern của bài này để làm tình huống rõ hơn, review được hơn và hữu ích hơn cho decision tiếp theo.</p>
+  <div class="story-scene-grid">
+<article class="story-scene">
+  <span>Scene 1</span>
+  <b>01</b>
+  <strong>Yêu cầu còn mơ hồ</strong>
+  <p>Team đưa cho Maya release có nhiều story nhưng không link rõ về business outcome ban đầu và mong có câu trả lời gọn trong ngày.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 2</span>
+  <b>02</b>
+  <strong>AI tạo draft đầu tiên</strong>
+  <p>Draft khá hữu ích, nhưng che uncertainty quanh Requirement và Test.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 3</span>
+  <b>03</b>
+  <strong>Maya biến nó thành evidence của BA</strong>
+  <p>Cô thêm source note, owner, example và review table tập trung cho Traceability Coverage Map thay vì gửi thẳng raw AI output.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 4</span>
+  <b>04</b>
+  <strong>Team có thể ra decision</strong>
+  <p>Traceability Coverage Map cuối cùng cho thấy phần nào ready, phần nào rủi ro và phần nào cần human decision.</p>
+</article>
+  </div>
+  <div class="visual-takeaway-strip">
+<span>Traceability cần context</span>
+<span>Coverage phải review được</span>
+<span>Test case trở thành câu hỏi của BA</span>
+  </div>
+</div>
+
+## AI words in plain English
+
+| Thuật ngữ AI | Hiểu đơn giản | BA dùng để làm gì |
+| --- | --- | --- |
+| Traceability | Link từ goal tới requirement, test và release decision. | Dùng để gọi đúng loại việc trước khi nhờ AI hỗ trợ. |
+| Coverage | Mức độ scope được thể hiện và check đầy đủ. | Dùng như lens review, không dùng như từ trang trí. |
+| Test case | Scenario QA dùng để verify behavior. | Biến nó thành checklist item hoặc câu hỏi stakeholder. |
+| Requirement ID | Nhãn ổn định để track requirement. | Định nghĩa rule trước khi team xem output là ready. |
+
+## Reality check: tình huống thường gặp trong dự án
+
+<div class="fact-card-grid">
+<article class="fact-card">
+  <strong>Draft nhanh có thể che tư duy yếu</strong>
+  <span>Hỏi draft phụ thuộc evidence, owner và decision nào.</span>
+  <p>AI có thể tạo Traceability Coverage Map rất nhanh, nhưng tốc độ không chứng minh quality.</p>
+</article>
+<article class="fact-card">
+  <strong>Stakeholder cần ngôn ngữ đơn giản</strong>
+  <span>Giải thích term bằng một câu trước khi đưa vào requirement.</span>
+  <p>Term như Traceability và Coverage dễ làm người ngoài cuộc trao đổi AI bị rối.</p>
+</article>
+<article class="fact-card">
+  <strong>Traceability Coverage Map phải đi qua nhiều team</strong>
+  <span>Làm next action visible cho từng receiving team.</span>
+  <p>Product, Engineering, QA và Operations đọc Traceability Coverage Map theo góc nhìn khác nhau.</p>
+</article>
+</div>
+
+## Visual walkthrough
+
+```mermaid
+flowchart LR
+    A["Project input"]
+    B["AI draft đầu"]
+    A --> B
+    C["Lens review của BA"]
+    B --> C
+    D["Traceability Coverage Map"]
+    C --> D
+    E["Team decision"]
+    D --> E
+```
+
+## Visual decision map
+
+<div class="visual-ba-map">
+  <h3>Traceability Coverage Map: what the BA should look for</h3>
+<div>
+  <strong>Goal</strong>
+  <span>Điều BA phải làm rõ trước tiên.</span>
+  <em>Viết bằng ngôn ngữ dự án.</em>
+</div>
+<div>
+  <strong>Requirement</strong>
+  <span>Nơi AI có thể giúp nhưng cũng có thể che uncertainty.</span>
+  <em>Thêm review criteria.</em>
+</div>
+<div>
+  <strong>Test</strong>
+  <span>Điều có thể hỏng nếu team bỏ validation.</span>
+  <em>Tạo decision question.</em>
+</div>
+<div>
+  <strong>Release decision</strong>
+  <span>Điều làm artifact đủ an toàn để handoff.</span>
+  <em>Ghi owner, evidence và next step.</em>
+</div>
+</div>
+
 ## Learning outcomes
 
-- Xây traceability chain giữa goal, requirement, criteria và test.
-- Dùng AI tìm orphan requirement và weak test link.
-- Cải thiện release decision bằng evidence.
+- Giải thích Traceability bằng ngôn ngữ BA đơn giản.
+- Dùng AI để draft Traceability Coverage Map tốt hơn.
+- Review output trước khi nó trở thành scope, test hoặc delivery work.
 
 ## Why this matters for BA work
 
 <div class="ba-callout">
-Traceability làm requirement có accountability từ business goal đến test evidence.
+AI có thể nối requirement nhanh hơn, nhưng BA phải verify coverage từ business goal tới test evidence.
 </div>
 
-Bài này quan trọng vì artifact có AI hỗ trợ có thể nhân lên rất nhanh, khiến team dễ mất chain từ business goal tới requirement, source, decision, test và release evidence. Traceability bảo vệ team khỏi requirement đẹp nhưng chưa chứng minh. Testability biến suggestion AI thành behavior mà delivery team verify được.
+Traceability quan trọng vì backlog bận rộn không chứng minh release giải quyết business problem ban đầu. AI có thể gợi ý link, nhưng BA phải verify coverage từ goal tới requirement, test evidence và release decision.
 
 ## Common difficulties for BAs
 
-Trong Requirements engineering với AI, Traceability và testability trở nên khó khi business rule, edge case, quality attribute và testability constraint phải sống sót khi chuyển từ conversation sang backlog. BA nên kiểm tra các điểm dưới đây trước khi xem artifact có AI hỗ trợ là đủ sẵn sàng cho stakeholder decision hoặc handoff.
-
-| Khó khăn | Vì sao khó trong công việc BA | BA nên xử lý thế nào |
+| Khó khăn | Vì sao khó với BA | BA xử lý thế nào |
 | --- | --- | --- |
-| Xem traceability là documentation overhead. | Lỗi "Xem traceability là documentation overhead." xuất hiện khi team bàn về ambiguity, NFR risk, traceability, testability và rule ownership nhưng chưa thống nhất source nào authoritative. AI có thể làm disagreement nghe mượt hơn, nên BA phải giữ uncertainty visible. | Áp dụng control này: buộc mọi requirement statement lộ rõ actor, trigger, data, rule, exception và verification signal. Sau đó dùng pattern tốt hơn "Ghi source ID, prompt context, reviewer, decision owner và artifact version." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
-| Link item máy móc mà không check meaning. | Với Traceability và testability, điểm khó là Traceability làm requirement có accountability từ business goal đến test evidence. Pattern yếu rất dễ xảy ra vì AI có thể tạo câu trả lời trôi chảy trước khi BA check ownership, source freshness hoặc decision right. | Áp dụng control này: buộc mọi requirement statement lộ rõ actor, trigger, data, rule, exception và verification signal. Sau đó dùng pattern tốt hơn "Trace từng requirement tới positive, negative, fallback và monitoring test." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
-| Thiếu test scenario cho high-risk requirement. | Điểm này khó khi Traceability Chain được kỳ vọng hỗ trợ delivery-ready requirement. Nếu BA không challenge draft, unsupported assumption có thể đi vào planning, testing hoặc stakeholder communication. | Áp dụng control này: buộc mọi requirement statement lộ rõ actor, trigger, data, rule, exception và verification signal. Sau đó dùng pattern tốt hơn "Dùng trace link trong refinement, QA planning, change impact và release decision." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
+| Team dùng Traceability nhưng không có cùng cách hiểu. | Mọi người gật đầu trong meeting nhưng tưởng tượng outcome khác nhau. | Bắt đầu bằng định nghĩa một câu và cho thấy nó làm thay đổi Traceability Coverage Map thế nào. |
+| AI output trông hoàn chỉnh hơn input thực tế. | Draft trôi chảy có thể che missing example, owner hoặc edge case. | Yêu cầu AI liệt kê assumption và missing evidence trước khi draft bản cuối. |
+| Reviewer cần detail khác nhau. | Product quan tâm value, Engineering quan tâm constraint, QA quan tâm testability, Ops quan tâm support. | Thêm column hoặc section cho từng receiving team thay vì một paragraph chung. |
 
 ## Where this applies in real projects
 
-Dùng bài này khi requirement đang được refine, split, clarify, test hoặc bị QA và delivery team challenge. Output thực tế không phải document dài hơn; đó là Traceability Chain có đủ evidence, ownership và decision clarity cho cuộc trao đổi tiếp theo của dự án.
-
-| Thời điểm trong dự án | Cách áp dụng bài học | Output cụ thể của BA |
+| Thời điểm dự án | Việc BA làm | Output cụ thể |
 | --- | --- | --- |
-| Backlog refinement | Xây traceability chain cho một epic. | Traceability Chain thể hiện ambiguity, NFR risk, traceability, testability và rule ownership, trong đó action "Xây traceability chain cho một epic." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
-| QA alignment | Nhờ AI identify orphan story. | Traceability Chain thể hiện source evidence, trong đó action "Nhờ AI identify orphan story." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
-| Release readiness | Thêm source evidence cho high-risk requirement. | Traceability Chain thể hiện decision owner, trong đó action "Thêm source evidence cho high-risk requirement." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
+| Discovery workshop | Dùng AI để gom note thành goal, risk và open question. | Traceability Coverage Map có source note và owner. |
+| Backlog refinement | Chuyển AI suggestion thành decision nhỏ và test được. | Story, rule hoặc checklist item có acceptance signal. |
+| Handoff review | Nhờ AI critique artifact từ góc Product, Dev, QA và Ops. | Review table có action owner và status. |
 
 ## If this is missing
 
-Nếu thiếu Traceability và testability, requirement nhìn có vẻ đầy đủ nhưng vẫn fail khi implement, test, release hoặc support operation. BA vẫn có thể khôi phục, nhưng phải chuyển draft AI bóng bẩy trở lại thành evidence, assumption, owner và decision test được.
+Nếu thiếu Traceability và testability, team vẫn có thể tạo document, nhưng document khó trust, khó test và khó maintain hơn.
 
-| Nếu thiếu | Ảnh hưởng tới dự án | Cách khôi phục |
+| Nếu thiếu | Ảnh hưởng dự án | Cách khôi phục |
 | --- | --- | --- |
-| Giữ draft AI trong chat và copy phần hay vào ticket | Source, assumption và review trail biến mất. | Khôi phục bằng pattern tốt hơn: Ghi source ID, prompt context, reviewer, decision owner và artifact version. Rework Traceability Chain cho đến khi nó lộ rõ ambiguity, NFR risk, traceability, testability và rule ownership, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
-| Chỉ viết test cho happy path generated behavior | AI feature fail ở edge case, low confidence và unsupported input. | Khôi phục bằng pattern tốt hơn: Trace từng requirement tới positive, negative, fallback và monitoring test. Rework Traceability Chain cho đến khi nó lộ rõ ambiguity, NFR risk, traceability, testability và rule ownership, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
-| Xem traceability là spreadsheet compliance | Team điền field nhưng không dùng để manage risk. | Khôi phục bằng pattern tốt hơn: Dùng trace link trong refinement, QA planning, change impact và release decision. Rework Traceability Chain cho đến khi nó lộ rõ ambiguity, NFR risk, traceability, testability và rule ownership, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
+| Không có giải thích chung cho Traceability | Stakeholder đồng ý bằng lời nhưng kỳ vọng behavior khác nhau. | Thêm định nghĩa plain-language và example. |
+| Không review AI assumption | Ý tưởng chưa có evidence trở thành scope. | Đưa assumption vào validation list có owner. |
+| Không có Traceability Coverage Map cụ thể | Bài học vẫn trừu tượng và không giúp delivery. | Tạo artifact bằng table nhỏ, không viết essay dài. |
 
 ## Mental model or core concept
 
-Traceability nối lý do requirement tồn tại với cách verify nó. AI có thể hỗ trợ tạo matrix và tìm gap, nhưng BA phải quyết định link nào thật. Traceability chain mạnh map business objective, stakeholder need, requirement, acceptance criteria, test scenario, metric và source evidence.
+Traceability và testability dễ hiểu nhất như một control của BA: làm phần lộn xộn visible, để AI hỗ trợ structure, rồi review với con người trước khi thành delivery work.
 
 ## Practical BA example
 
-Một release có 80 story. AI tìm 12 story không link business objective và 8 high-priority objective không có test scenario. BA dùng matrix để clean scope và giảm release risk.
+Trước release, Maya nhờ AI map story với business outcome và test case. Cô phát hiện ba story không link goal và hai goal không có test evidence, rồi đưa vào readiness review.
 
 ## Diagram
 
 ```mermaid
-flowchart LR
-    A["Business objective"] --> B["Stakeholder need"]
-    B --> C["Requirement"]
-    C --> D["Acceptance criteria"]
-    D --> E["Test scenario"]
-    E --> F["Metric"]
-    C --> G["Source evidence"]
+flowchart TD
+    A["Traceability Coverage Map"]
+    A --> B["Goal"]
+    A --> C["Requirement"]
+    A --> D["Test"]
+    A --> E["Release decision"]
 ```
 
 ## BA artifact
 
-### Traceability Chain
+### Traceability Coverage Map
 
-| Link | Question | Example | Gap signal |
+| Dòng artifact | BA cần viết gì | Dấu hiệu sẵn sàng | Dấu hiệu rủi ro |
 | --- | --- | --- | --- |
-| Objective to need | Giải quyết problem của ai? | Reduce onboarding drop-off for new customers. | Không có stakeholder named. |
-| Need to requirement | System behavior nào support? | Send missing-doc reminder within 24 hours. | Behavior không observable. |
-| Requirement to AC | Done được verify bằng gì? | Given missing doc, then reminder is sent. | Không có failure case. |
-| AC to metric | Impact đo thế nào? | Drop-off rate decreases by 10%. | Không có success metric. |
+| Goal | Viết goal cụ thể bằng ngôn ngữ dự án. | Stakeholder confirm được. | Vẫn chỉ là slogan. |
+| Requirement | Mô tả AI giúp gì và có thể sai ở đâu. | Review criteria visible. | Draft che uncertainty. |
+| Test | Capture gap, conflict, edge case hoặc risk. | Owner và next action rõ. | Issue bị chôn trong prose. |
+| Release decision | Định nghĩa handoff rule hoặc completion signal. | QA hoặc Engineering hành động được. | Receiving team không biết làm gì. |
 
 ## AI expert note
 
-Với AI work, traceability nên gồm evidence source, prompt hoặc context package, assumption có model hỗ trợ, reviewer, decision owner và evaluation case. BA chuyên gia xem traceability là risk control, không phải documentation overhead. Requirement không trace hoặc test được thì không nên thành delivery commitment.
+Ở góc nhìn AI reviewer, tôi sẽ kiểm tra Traceability và testability có làm artifact của BA thực tế hơn không. AI tốt phải làm lộ missing context, tạo structure và giúp review dễ hơn. Nếu chỉ làm câu chữ đẹp hơn, BA chưa lấy được đủ value.
 
 ## Bad vs better example
 
-| Cách làm yếu | Vì sao fail | Cách làm BA tốt hơn |
+| Cách làm yếu | Vì sao fail | Cách BA làm tốt hơn |
 | --- | --- | --- |
-| Giữ draft AI trong chat và copy phần hay vào ticket | Source, assumption và review trail biến mất. | Ghi source ID, prompt context, reviewer, decision owner và artifact version. |
-| Chỉ viết test cho happy path generated behavior | AI feature fail ở edge case, low confidence và unsupported input. | Trace từng requirement tới positive, negative, fallback và monitoring test. |
-| Xem traceability là spreadsheet compliance | Team điền field nhưng không dùng để manage risk. | Dùng trace link trong refinement, QA planning, change impact và release decision. |
+| Yêu cầu AI "làm Traceability và testability" mà không có source context. | Model tự lấp khoảng trống bằng wording nghe hợp lý. | Cung cấp source note, example, boundary và review criteria. |
+| Gửi answer đầu tiên như final. | Team không thấy assumption hoặc evidence yếu. | Chạy critique pass và gắn nhãn open decision. |
+| Dùng thuật ngữ AI mà không giải thích. | Business stakeholder mất tập trung hoặc hiểu sai. | Giải thích mỗi term bằng ngôn ngữ đơn giản trước khi đưa vào scope. |
 
 ## Stakeholder questions to ask
 
 | Stakeholder | Câu hỏi | Vì sao BA hỏi |
 | --- | --- | --- |
-| Product owner | Traceability và testability cần cải thiện outcome nào, và trade-off nào có thể chấp nhận? | Ngăn output AI tối ưu cho mục tiêu mơ hồ. |
-| Engineering lead | Source, system, data hoặc constraint nào khiến Traceability Chain khó implement? | Biến technical constraint ẩn thành requirement question visible. |
-| QA lead | Rule, exception hoặc user state nào phải test được trước khi tin artifact này? | Chuyển wording trôi chảy của AI thành behavior quan sát được. |
-| Operations hoặc support | Failure path nào tạo manual work nếu nguyên tắc "Traceability là accountability" bị bỏ qua? | Làm rõ support load, exception handling và operating impact. |
+| Product owner | Which outcome should Traceability và testability improve first? | Keeps AI work tied to business value. |
+| Engineering lead | Which source, system, or constraint could make Traceability Coverage Map hard to implement? | Turns hidden technical constraints into requirement questions. |
+| QA lead | Which behavior must be testable before we trust this artifact? | Converts fluent AI text into observable checks. |
+| Operations or support | What failure path creates manual work after release? | Surfaces support load and fallback needs. |
 
 ## Decision log entries
 
 | Decision item | Option cần capture | Owner | Evidence cần có |
 | --- | --- | --- | --- |
-| Scope boundary cho Traceability Chain | Must-have, later, out of scope | Product owner | Business outcome và release constraint |
-| Authority cho ambiguity, NFR risk, traceability, testability và rule ownership | Documented source, stakeholder decision, assumption cần validate | BA + stakeholder chịu trách nhiệm | Source ID, date và approval status |
-| Review gate trước handoff | Peer review, QA review, engineering review, formal approval | BA lead hoặc project lead | Risk level và receiving-team readiness |
-| Cách recover nếu Xem traceability là documentation overhead. | Rewrite, defer, escalate hoặc validation workshop | Decision owner | Impact lên scope, testability và release risk |
+| Scope boundary for Traceability Coverage Map | Must-have, later, out of scope | Product owner | Business outcome and release constraint |
+| Authority for Goal and Requirement | Documented source, stakeholder decision, assumption to validate | BA + accountable stakeholder | Source ID, date, and approval status |
+| Review gate before handoff | Peer review, QA review, engineering review, formal approval | BA lead or project lead | Risk level and receiving-team readiness |
+| Recovery if Dùng Traceability như jargon thay vì project decision. | Rewrite, defer, escalate, or run validation workshop | Decision owner | Impact on scope, testability, and release risk |
 
 ## Definition of Ready / Done
 
-| Gate | Tín hiệu ready | Tín hiệu done |
+| Gate | Ready signal | Done signal |
 | --- | --- | --- |
-| Definition of Ready | Source cho ambiguity, NFR risk, traceability, testability và rule ownership được label và còn hiệu lực. | Traceability Chain có thể review mà không phải đoán missing context. |
-| Definition of Ready | Open assumption có owner và validation path. | Stakeholder có thể accept, reject hoặc defer từng assumption. |
-| Definition of Done | Artifact áp dụng control: buộc mọi requirement statement lộ rõ actor, trigger, data, rule, exception và verification signal. | Delivery, QA hoặc governance team có thể hành động dựa trên artifact. |
-| Definition of Done | Pattern yếu "Xem traceability là documentation overhead." đã được kiểm tra explicit. | Không unsupported AI claim nào bị xem như requirement đã approve. |
+| Definition of Ready | Sources for Goal are named. | Traceability Coverage Map can be reviewed without guessing context. |
+| Definition of Ready | Open assumptions have owners and validation paths. | Stakeholders can accept, reject, or defer each assumption. |
+| Definition of Done | The artifact applies this principle: AI có thể nối requirement nhanh hơn, nhưng BA phải verify coverage từ business goal tới test evidence. | Delivery, QA, or governance teams can act on it. |
+| Definition of Done | The weak pattern "Yêu cầu AI "làm Traceability và testability" mà không có source context." has been checked. | No unsupported AI claim is treated as approved scope. |
 
 ## Before and after artifact example
 
-| Before | Risk trong draft AI | Revision của senior BA |
+| Before | Rủi ro từ AI draft | Senior BA revision |
 | --- | --- | --- |
-| Prompt: "Create Traceability Chain cho Traceability và testability." | Model có thể tự bịa source fact, owner, threshold hoặc implementation rule. | Thêm source, scope boundary, source authority, output schema và instruction: Ghi source ID, prompt context, reviewer, decision owner và artifact version. |
-| Draft statement: "Xây traceability chain cho một epic." | Action hữu ích nhưng chưa gắn decision owner hoặc acceptance signal. | Rewrite thành project step có owner, expected artifact, review gate và evidence cần trước handoff. |
-| Paragraph nghe final về delivery-ready requirement | Tone có thể che uncertainty và approval còn thiếu. | Chuyển thành bảng fact, assumption, decision needed, risk và validation question. |
+| Prompt: "Create Traceability Coverage Map." | The model may invent source facts, owners, or thresholds. | Add sources, scope boundary, output schema, and review criteria. |
+| Draft statement: "Dùng AI để gom note thành goal, risk và open question." | Useful, but not tied to owner or acceptance signal. | Rewrite as a project step with owner, expected artifact, and review gate. |
+| Final-looking paragraph | Tone may hide uncertainty or missing stakeholder approval. | Convert into fact, assumption, decision needed, risk, and validation question. |
 
 ## Manual verification after AI output
 
-| Lens kiểm tra | Manual check | Pass signal |
+| Verification lens | Manual check | Pass signal |
 | --- | --- | --- |
-| Evidence | Trace mọi statement quan trọng trong Traceability Chain về source, decision hoặc assumption có label. | Không unsupported claim nào còn bị ẩn. |
-| Completeness | Check ambiguity, NFR risk, traceability, testability và rule ownership theo intended audience và receiving team. | Artifact trả lời được điều product, engineering, QA và operations cần. |
-| Testability | Hỏi QA có tạo được positive, negative, boundary và exception scenario không. | Wording mơ hồ được rewrite hoặc log thành question. |
-| Accountability | Confirm ai approve, ai review và ai xử lý khi artifact sai. | Owner và escalation path explicit. |
+| Evidence | Trace important statements in Traceability Coverage Map to a source, decision, or labeled assumption. | No unsupported claim remains hidden. |
+| Completeness | Check Goal, Requirement, Test, Release decision against the intended audience. | Product, Engineering, QA, and Operations have what they need. |
+| Testability | Ask whether QA can create positive, negative, boundary, and exception scenarios. | Ambiguous wording is rewritten or logged as a question. |
+| Accountability | Confirm who approves, who reviews, and who acts when output is wrong. | Owners and escalation path are explicit. |
 
 ## AI collaboration prompt
 
 ```text
-Tạo traceability matrix từ các artifact này. Bao gồm business objective, stakeholder need, requirement ID, acceptance criteria, test scenario, metric, source evidence và gap. Flag orphan requirement và objective không có test.
+Dùng project notes được cung cấp để tạo Traceability Coverage Map. Trước hết giải thích key term bằng ngôn ngữ đơn giản. Sau đó tạo table gồm evidence, assumption, risk, owner question và recommended next action. Không invent fact không nằm trong notes.
 ```
 
 ## Mistakes to avoid
 
-- Xem traceability là documentation overhead.
-- Link item máy móc mà không check meaning.
-- Thiếu test scenario cho high-risk requirement.
-- Dùng AI-generated link mà không human review.
+- Dùng Traceability như jargon thay vì project decision.
+- Để AI viết lấp missing evidence.
+- Gửi output cho team khác khi chưa có owner, status hoặc next action.
 
 ## Apply this tomorrow
 
-1. Xây traceability chain cho một epic.
-2. Nhờ AI identify orphan story.
-3. Thêm source evidence cho high-risk requirement.
-4. Review metric alignment với product owner.
+1. Lấy một project note hiện tại và nhờ AI tạo Traceability Coverage Map.
+2. Thêm định nghĩa plain-language cho Traceability.
+3. Chạy một critique pass từ góc QA hoặc Engineering.
 
 ## What a BA should remember
 
-- Traceability là accountability.
-- Testability bắt đầu trước khi QA nhận story.
-- AI draft matrix; BA verify link.
+- Traceability phải giúp project đi tiếp, không phải nghe cho hay.
+- AI draft; BA validate.
+- Artifact nhỏ review được tốt hơn giải thích dài chung chung.

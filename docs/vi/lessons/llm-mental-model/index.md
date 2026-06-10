@@ -50,6 +50,15 @@ description: "LLM là engine xử lý và reasoning trên text rất mạnh, nh�
   </div>
 </div>
 
+## AI words in plain English
+
+| Thuật ngữ AI | Hiểu đơn giản | BA dùng để làm gì |
+| --- | --- | --- |
+| LLM | Model ngôn ngữ dự đoán và biến đổi text từ context nó nhìn thấy. | Xem output là draft cần review bằng source. |
+| Prompt | Instruction và context BA đưa cho model. | Viết rõ task, source rule, output format và review criteria. |
+| Assumption | Suy đoán nghe hợp lý nhưng chưa được approve. | Gắn nhãn trước khi nó biến thành scope. |
+| Grounding | Buộc câu trả lời quay về evidence đã cung cấp. | Yêu cầu source ID và nhãn unsupported claim. |
+
 ## Reality check: số liệu hiện tại cho BA
 
 <div class="fact-card-grid">

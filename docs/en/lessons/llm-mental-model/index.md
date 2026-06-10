@@ -50,6 +50,15 @@ description: "LLMs are powerful text reasoning engines, but they do not know you
   </div>
 </div>
 
+## AI words in plain English
+
+| AI term | Simple meaning | BA use |
+| --- | --- | --- |
+| LLM | A language model that predicts and transforms text from the context it sees. | Treat output as a draft that needs source review. |
+| Prompt | The instruction and context you give the model. | Write the task, source rules, output format, and review criteria. |
+| Assumption | A model guess that sounds reasonable but is not yet approved. | Label it before it becomes scope. |
+| Grounding | Tying an answer back to supplied evidence. | Ask for source IDs and unsupported-claim labels. |
+
 ## Reality check: current facts for BAs
 
 <div class="fact-card-grid">

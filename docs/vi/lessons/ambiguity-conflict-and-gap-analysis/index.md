@@ -1,173 +1,271 @@
 ---
-title: "Phân tích mơ hồ, xung đột và khoảng trống"
-description: "AI hữu ích để detect defect trong requirement khi BA cung cấp defect taxonomy và severity rubric rõ."
+title: "Mơ hồ, conflict và gap analysis"
+description: "AI hữu ích để tìm ambiguity khi BA yêu cầu nó show evidence và decision question."
 ---
 
-# Phân tích mơ hồ, xung đột và khoảng trống
+# Mơ hồ, conflict và gap analysis
 
 <div class="lesson-meta">
-  <span>Requirements engineering với AI</span>
+  <span>Requirement quality</span>
   <span>Software BA</span>
   <span>Core</span>
 </div>
 
+## Story mode: project walkthrough
+
+<div class="story-mode-panel">
+  <p class="story-eyebrow">Story prototype</p>
+  <h3>Fast, flexible, user friendly vẫn chưa nói được gì</h3>
+  <p class="story-intro">Maya nhận requirement ghi system phải fast, flexible và user friendly. Thay vì nhờ AI trả lời final, cô dùng pattern của bài này để làm tình huống rõ hơn, review được hơn và hữu ích hơn cho decision tiếp theo.</p>
+  <div class="story-scene-grid">
+<article class="story-scene">
+  <span>Scene 1</span>
+  <b>01</b>
+  <strong>Yêu cầu còn mơ hồ</strong>
+  <p>Team đưa cho Maya requirement ghi system phải fast, flexible và user friendly và mong có câu trả lời gọn trong ngày.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 2</span>
+  <b>02</b>
+  <strong>AI tạo draft đầu tiên</strong>
+  <p>Draft khá hữu ích, nhưng che uncertainty quanh Conflicting rule và Missing actor.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 3</span>
+  <b>03</b>
+  <strong>Maya biến nó thành evidence của BA</strong>
+  <p>Cô thêm source note, owner, example và review table tập trung cho Ambiguity Triage Board thay vì gửi thẳng raw AI output.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 4</span>
+  <b>04</b>
+  <strong>Team có thể ra decision</strong>
+  <p>Ambiguity Triage Board cuối cùng cho thấy phần nào ready, phần nào rủi ro và phần nào cần human decision.</p>
+</article>
+  </div>
+  <div class="visual-takeaway-strip">
+<span>Ambiguity cần context</span>
+<span>Conflict phải review được</span>
+<span>Gap trở thành câu hỏi của BA</span>
+  </div>
+</div>
+
+## AI words in plain English
+
+| Thuật ngữ AI | Hiểu đơn giản | BA dùng để làm gì |
+| --- | --- | --- |
+| Ambiguity | Câu chữ có thể hiểu theo nhiều cách. | Dùng để gọi đúng loại việc trước khi nhờ AI hỗ trợ. |
+| Conflict | Hai rule hoặc expectation không thể cùng đúng. | Dùng như lens review, không dùng như từ trang trí. |
+| Gap | Thông tin còn thiếu để ra decision hoặc build. | Biến nó thành checklist item hoặc câu hỏi stakeholder. |
+| Decision question | Câu hỏi cần owner trả lời. | Định nghĩa rule trước khi team xem output là ready. |
+
+## Reality check: tình huống thường gặp trong dự án
+
+<div class="fact-card-grid">
+<article class="fact-card">
+  <strong>Draft nhanh có thể che tư duy yếu</strong>
+  <span>Hỏi draft phụ thuộc evidence, owner và decision nào.</span>
+  <p>AI có thể tạo Ambiguity Triage Board rất nhanh, nhưng tốc độ không chứng minh quality.</p>
+</article>
+<article class="fact-card">
+  <strong>Stakeholder cần ngôn ngữ đơn giản</strong>
+  <span>Giải thích term bằng một câu trước khi đưa vào requirement.</span>
+  <p>Term như Ambiguity và Conflict dễ làm người ngoài cuộc trao đổi AI bị rối.</p>
+</article>
+<article class="fact-card">
+  <strong>Ambiguity Triage Board phải đi qua nhiều team</strong>
+  <span>Làm next action visible cho từng receiving team.</span>
+  <p>Product, Engineering, QA và Operations đọc Ambiguity Triage Board theo góc nhìn khác nhau.</p>
+</article>
+</div>
+
+## Visual walkthrough
+
+```mermaid
+flowchart LR
+    A["Project input"]
+    B["AI draft đầu"]
+    A --> B
+    C["Lens review của BA"]
+    B --> C
+    D["Ambiguity Triage Board"]
+    C --> D
+    E["Team decision"]
+    D --> E
+```
+
+## Visual decision map
+
+<div class="visual-ba-map">
+  <h3>Ambiguity Triage Board: what the BA should look for</h3>
+<div>
+  <strong>Vague word</strong>
+  <span>Điều BA phải làm rõ trước tiên.</span>
+  <em>Viết bằng ngôn ngữ dự án.</em>
+</div>
+<div>
+  <strong>Conflicting rule</strong>
+  <span>Nơi AI có thể giúp nhưng cũng có thể che uncertainty.</span>
+  <em>Thêm review criteria.</em>
+</div>
+<div>
+  <strong>Missing actor</strong>
+  <span>Điều có thể hỏng nếu team bỏ validation.</span>
+  <em>Tạo decision question.</em>
+</div>
+<div>
+  <strong>Decision needed</strong>
+  <span>Điều làm artifact đủ an toàn để handoff.</span>
+  <em>Ghi owner, evidence và next step.</em>
+</div>
+</div>
+
 ## Learning outcomes
 
-- Detect ambiguity, conflict, missing rule và non-testable language.
-- Dùng severity để ưu tiên clarification.
-- Rewrite requirement yếu thành alternative test được.
+- Giải thích Ambiguity bằng ngôn ngữ BA đơn giản.
+- Dùng AI để draft Ambiguity Triage Board tốt hơn.
+- Review output trước khi nó trở thành scope, test hoặc delivery work.
 
 ## Why this matters for BA work
 
 <div class="ba-callout">
-AI hữu ích để detect defect trong requirement khi BA cung cấp defect taxonomy và severity rubric rõ.
+AI hữu ích để tìm ambiguity khi BA yêu cầu nó show evidence và decision question.
 </div>
 
-Bài này quan trọng vì requirement mơ hồ tạo defect đắt nhất khi sống sót tới design, build và testing. AI có thể scan vague language và contradiction, nhưng BA phải biến finding thành defect taxonomy có kỷ luật. Mục tiêu không phải wording hay hơn; mục tiêu là decision clarity sớm hơn.
+Ambiguity analysis quan trọng vì từ mơ hồ có thể sống sót qua meeting và trở thành rework đắt sau này. AI có thể highlight câu chưa rõ, nhưng BA phải biến từng phrase thành decision question, example hoặc measurable rule.
 
 ## Common difficulties for BAs
 
-Trong Requirements engineering với AI, Phân tích mơ hồ, xung đột và khoảng trống trở nên khó khi business rule, edge case, quality attribute và testability constraint phải sống sót khi chuyển từ conversation sang backlog. BA nên kiểm tra các điểm dưới đây trước khi xem artifact có AI hỗ trợ là đủ sẵn sàng cho stakeholder decision hoặc handoff.
-
-| Khó khăn | Vì sao khó trong công việc BA | BA nên xử lý thế nào |
+| Khó khăn | Vì sao khó với BA | BA xử lý thế nào |
 | --- | --- | --- |
-| Nói 'unclear' mà không gọi tên defect. | Lỗi "Nói 'unclear' mà không gọi tên defect." xuất hiện khi team bàn về ambiguity, NFR risk, traceability, testability và rule ownership nhưng chưa thống nhất source nào authoritative. AI có thể làm disagreement nghe mượt hơn, nên BA phải giữ uncertainty visible. | Áp dụng control này: buộc mọi requirement statement lộ rõ actor, trigger, data, rule, exception và verification signal. Sau đó dùng pattern tốt hơn "Classify issue type, severity, evidence và owner trước khi rewrite." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
-| Sửa wording nhưng không sửa business rule gốc. | Với Phân tích mơ hồ, xung đột và khoảng trống, điểm khó là AI hữu ích để detect defect trong requirement khi BA cung cấp defect taxonomy và severity rubric rõ. Pattern yếu rất dễ xảy ra vì AI có thể tạo câu trả lời trôi chảy trước khi BA check ownership, source freshness hoặc decision right. | Áp dụng control này: buộc mọi requirement statement lộ rõ actor, trigger, data, rule, exception và verification signal. Sau đó dùng pattern tốt hơn "Rank ambiguity theo business impact, test impact, regulatory impact và dependency." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
-| Xem mọi defect cùng severity. | Điểm này khó khi Requirement Defect Taxonomy được kỳ vọng hỗ trợ delivery-ready requirement. Nếu BA không challenge draft, unsupported assumption có thể đi vào planning, testing hoặc stakeholder communication. | Áp dụng control này: buộc mọi requirement statement lộ rõ actor, trigger, data, rule, exception và verification signal. Sau đó dùng pattern tốt hơn "Chỉ rewrite phần source-supported và mark phần còn lại thành clarification question." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
+| Team dùng Ambiguity nhưng không có cùng cách hiểu. | Mọi người gật đầu trong meeting nhưng tưởng tượng outcome khác nhau. | Bắt đầu bằng định nghĩa một câu và cho thấy nó làm thay đổi Ambiguity Triage Board thế nào. |
+| AI output trông hoàn chỉnh hơn input thực tế. | Draft trôi chảy có thể che missing example, owner hoặc edge case. | Yêu cầu AI liệt kê assumption và missing evidence trước khi draft bản cuối. |
+| Reviewer cần detail khác nhau. | Product quan tâm value, Engineering quan tâm constraint, QA quan tâm testability, Ops quan tâm support. | Thêm column hoặc section cho từng receiving team thay vì một paragraph chung. |
 
 ## Where this applies in real projects
 
-Dùng bài này khi requirement đang được refine, split, clarify, test hoặc bị QA và delivery team challenge. Output thực tế không phải document dài hơn; đó là Requirement Defect Taxonomy có đủ evidence, ownership và decision clarity cho cuộc trao đổi tiếp theo của dự án.
-
-| Thời điểm trong dự án | Cách áp dụng bài học | Output cụ thể của BA |
+| Thời điểm dự án | Việc BA làm | Output cụ thể |
 | --- | --- | --- |
-| Backlog refinement | Chạy taxonomy review trên năm backlog item. | Requirement Defect Taxonomy thể hiện ambiguity, NFR risk, traceability, testability và rule ownership, trong đó action "Chạy taxonomy review trên năm backlog item." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
-| QA alignment | Thêm severity và clarification question cho mỗi finding. | Requirement Defect Taxonomy thể hiện source evidence, trong đó action "Thêm severity và clarification question cho mỗi finding." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
-| Release readiness | Rewrite một requirement mơ hồ thành language test được. | Requirement Defect Taxonomy thể hiện decision owner, trong đó action "Rewrite một requirement mơ hồ thành language test được." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
+| Discovery workshop | Dùng AI để gom note thành vague word, risk và open question. | Ambiguity Triage Board có source note và owner. |
+| Backlog refinement | Chuyển AI suggestion thành decision nhỏ và test được. | Story, rule hoặc checklist item có acceptance signal. |
+| Handoff review | Nhờ AI critique artifact từ góc Product, Dev, QA và Ops. | Review table có action owner và status. |
 
 ## If this is missing
 
-Nếu thiếu Phân tích mơ hồ, xung đột và khoảng trống, requirement nhìn có vẻ đầy đủ nhưng vẫn fail khi implement, test, release hoặc support operation. BA vẫn có thể khôi phục, nhưng phải chuyển draft AI bóng bẩy trở lại thành evidence, assumption, owner và decision test được.
+Nếu thiếu Mơ hồ, conflict và gap analysis, team vẫn có thể tạo document, nhưng document khó trust, khó test và khó maintain hơn.
 
-| Nếu thiếu | Ảnh hưởng tới dự án | Cách khôi phục |
+| Nếu thiếu | Ảnh hưởng dự án | Cách khôi phục |
 | --- | --- | --- |
-| Yêu cầu AI làm requirement rõ hơn | Model có thể làm mượt missing decision thay vì phơi bày nó. | Khôi phục bằng pattern tốt hơn: Classify issue type, severity, evidence và owner trước khi rewrite. Rework Requirement Defect Taxonomy cho đến khi nó lộ rõ ambiguity, NFR risk, traceability, testability và rule ownership, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
-| Xem mọi ambiguity là như nhau | Một label mơ hồ và một missing compliance rule có delivery risk rất khác. | Khôi phục bằng pattern tốt hơn: Rank ambiguity theo business impact, test impact, regulatory impact và dependency. Rework Requirement Defect Taxonomy cho đến khi nó lộ rõ ambiguity, NFR risk, traceability, testability và rule ownership, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
-| Accept rewrite AI có thêm detail mới | Rewrite có thể tự bịa threshold, actor hoặc policy. | Khôi phục bằng pattern tốt hơn: Chỉ rewrite phần source-supported và mark phần còn lại thành clarification question. Rework Requirement Defect Taxonomy cho đến khi nó lộ rõ ambiguity, NFR risk, traceability, testability và rule ownership, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
+| Không có giải thích chung cho Ambiguity | Stakeholder đồng ý bằng lời nhưng kỳ vọng behavior khác nhau. | Thêm định nghĩa plain-language và example. |
+| Không review AI assumption | Ý tưởng chưa có evidence trở thành scope. | Đưa assumption vào validation list có owner. |
+| Không có Ambiguity Triage Board cụ thể | Bài học vẫn trừu tượng và không giúp delivery. | Tạo artifact bằng table nhỏ, không viết essay dài. |
 
 ## Mental model or core concept
 
-Requirement review tốt hơn khi defect có tên. Ambiguity, conflict, missing actor, missing data, hidden assumption và non-testable wording là các vấn đề khác nhau. AI có thể scan nhanh các category này, nhưng BA phải quyết định severity và hỏi clarification question đúng.
+Mơ hồ, conflict và gap analysis dễ hiểu nhất như một control của BA: làm phần lộn xộn visible, để AI hỗ trợ structure, rồi review với con người trước khi thành delivery work.
 
 ## Practical BA example
 
-Requirement ghi: 'The system should notify users quickly when important changes happen.' AI flag quickly, users, important, channel, retry, opt-out, audit và SLA là gap. BA rewrite thành notification scenario đo được.
+Requirement ghi search phải fast và flexible. Maya nhờ AI tìm vague word, rồi chuyển thành latency target, filter behavior và open question về ranking result.
 
 ## Diagram
 
 ```mermaid
 flowchart TD
-    A["Requirement text"] --> B{"Defect type"}
-    B --> C["Ambiguity"]
-    B --> D["Conflict"]
-    B --> E["Missing rule"]
-    B --> F["Non-testable"]
-    C --> G["Clarification question"]
-    D --> G
-    E --> G
-    F --> G
-    G --> H["Rewrite test được"]
+    A["Ambiguity Triage Board"]
+    A --> B["Vague word"]
+    A --> C["Conflicting rule"]
+    A --> D["Missing actor"]
+    A --> E["Decision needed"]
 ```
 
 ## BA artifact
 
-### Requirement Defect Taxonomy
+### Ambiguity Triage Board
 
-| Defect type | Signal | Clarification question | Example rewrite |
+| Dòng artifact | BA cần viết gì | Dấu hiệu sẵn sàng | Dấu hiệu rủi ro |
 | --- | --- | --- | --- |
-| Ambiguity | Term mơ hồ hoặc actor undefined. | Term hoặc actor chính xác là gì? | Notify account owner within 10 minutes. |
-| Conflict | Hai rule không thể cùng đúng. | Rule nào thắng và khi nào? | VIP SLA overrides standard SLA. |
-| Missing rule | Decision branch thiếu condition. | Business rule nào chọn path này? | Reject if KYC status is expired. |
-| Non-testable | Không có expected result observable. | QA verify success bằng gì? | Email status is logged as sent or failed. |
+| Vague word | Viết vague word cụ thể bằng ngôn ngữ dự án. | Stakeholder confirm được. | Vẫn chỉ là slogan. |
+| Conflicting rule | Mô tả AI giúp gì và có thể sai ở đâu. | Review criteria visible. | Draft che uncertainty. |
+| Missing actor | Capture gap, conflict, edge case hoặc risk. | Owner và next action rõ. | Issue bị chôn trong prose. |
+| Decision needed | Định nghĩa handoff rule hoặc completion signal. | QA hoặc Engineering hành động được. | Receiving team không biết làm gì. |
 
 ## AI expert note
 
-Ambiguity analysis nên tách missing information, conflicting rule, undefined term, non-testable adjective, actor confusion và decision gap. AI mạnh ở pattern detection, nhưng BA chuyên gia gán severity, evidence, owner và clarification path. Rewrite không có decision support vẫn chỉ là assumption.
+Ở góc nhìn AI reviewer, tôi sẽ kiểm tra Mơ hồ, conflict và gap analysis có làm artifact của BA thực tế hơn không. AI tốt phải làm lộ missing context, tạo structure và giúp review dễ hơn. Nếu chỉ làm câu chữ đẹp hơn, BA chưa lấy được đủ value.
 
 ## Bad vs better example
 
-| Cách làm yếu | Vì sao fail | Cách làm BA tốt hơn |
+| Cách làm yếu | Vì sao fail | Cách BA làm tốt hơn |
 | --- | --- | --- |
-| Yêu cầu AI làm requirement rõ hơn | Model có thể làm mượt missing decision thay vì phơi bày nó. | Classify issue type, severity, evidence và owner trước khi rewrite. |
-| Xem mọi ambiguity là như nhau | Một label mơ hồ và một missing compliance rule có delivery risk rất khác. | Rank ambiguity theo business impact, test impact, regulatory impact và dependency. |
-| Accept rewrite AI có thêm detail mới | Rewrite có thể tự bịa threshold, actor hoặc policy. | Chỉ rewrite phần source-supported và mark phần còn lại thành clarification question. |
+| Yêu cầu AI "làm Mơ hồ, conflict và gap analysis" mà không có source context. | Model tự lấp khoảng trống bằng wording nghe hợp lý. | Cung cấp source note, example, boundary và review criteria. |
+| Gửi answer đầu tiên như final. | Team không thấy assumption hoặc evidence yếu. | Chạy critique pass và gắn nhãn open decision. |
+| Dùng thuật ngữ AI mà không giải thích. | Business stakeholder mất tập trung hoặc hiểu sai. | Giải thích mỗi term bằng ngôn ngữ đơn giản trước khi đưa vào scope. |
 
 ## Stakeholder questions to ask
 
 | Stakeholder | Câu hỏi | Vì sao BA hỏi |
 | --- | --- | --- |
-| Product owner | Phân tích mơ hồ, xung đột và khoảng trống cần cải thiện outcome nào, và trade-off nào có thể chấp nhận? | Ngăn output AI tối ưu cho mục tiêu mơ hồ. |
-| Engineering lead | Source, system, data hoặc constraint nào khiến Requirement Defect Taxonomy khó implement? | Biến technical constraint ẩn thành requirement question visible. |
-| QA lead | Rule, exception hoặc user state nào phải test được trước khi tin artifact này? | Chuyển wording trôi chảy của AI thành behavior quan sát được. |
-| Operations hoặc support | Failure path nào tạo manual work nếu nguyên tắc "Defect có tên làm review nhanh hơn" bị bỏ qua? | Làm rõ support load, exception handling và operating impact. |
+| Product owner | Which outcome should Mơ hồ, conflict và gap analysis improve first? | Keeps AI work tied to business value. |
+| Engineering lead | Which source, system, or constraint could make Ambiguity Triage Board hard to implement? | Turns hidden technical constraints into requirement questions. |
+| QA lead | Which behavior must be testable before we trust this artifact? | Converts fluent AI text into observable checks. |
+| Operations or support | What failure path creates manual work after release? | Surfaces support load and fallback needs. |
 
 ## Decision log entries
 
 | Decision item | Option cần capture | Owner | Evidence cần có |
 | --- | --- | --- | --- |
-| Scope boundary cho Requirement Defect Taxonomy | Must-have, later, out of scope | Product owner | Business outcome và release constraint |
-| Authority cho ambiguity, NFR risk, traceability, testability và rule ownership | Documented source, stakeholder decision, assumption cần validate | BA + stakeholder chịu trách nhiệm | Source ID, date và approval status |
-| Review gate trước handoff | Peer review, QA review, engineering review, formal approval | BA lead hoặc project lead | Risk level và receiving-team readiness |
-| Cách recover nếu Nói 'unclear' mà không gọi tên defect. | Rewrite, defer, escalate hoặc validation workshop | Decision owner | Impact lên scope, testability và release risk |
+| Scope boundary for Ambiguity Triage Board | Must-have, later, out of scope | Product owner | Business outcome and release constraint |
+| Authority for Vague word and Conflicting rule | Documented source, stakeholder decision, assumption to validate | BA + accountable stakeholder | Source ID, date, and approval status |
+| Review gate before handoff | Peer review, QA review, engineering review, formal approval | BA lead or project lead | Risk level and receiving-team readiness |
+| Recovery if Dùng Ambiguity như jargon thay vì project decision. | Rewrite, defer, escalate, or run validation workshop | Decision owner | Impact on scope, testability, and release risk |
 
 ## Definition of Ready / Done
 
-| Gate | Tín hiệu ready | Tín hiệu done |
+| Gate | Ready signal | Done signal |
 | --- | --- | --- |
-| Definition of Ready | Source cho ambiguity, NFR risk, traceability, testability và rule ownership được label và còn hiệu lực. | Requirement Defect Taxonomy có thể review mà không phải đoán missing context. |
-| Definition of Ready | Open assumption có owner và validation path. | Stakeholder có thể accept, reject hoặc defer từng assumption. |
-| Definition of Done | Artifact áp dụng control: buộc mọi requirement statement lộ rõ actor, trigger, data, rule, exception và verification signal. | Delivery, QA hoặc governance team có thể hành động dựa trên artifact. |
-| Definition of Done | Pattern yếu "Nói 'unclear' mà không gọi tên defect." đã được kiểm tra explicit. | Không unsupported AI claim nào bị xem như requirement đã approve. |
+| Definition of Ready | Sources for Vague word are named. | Ambiguity Triage Board can be reviewed without guessing context. |
+| Definition of Ready | Open assumptions have owners and validation paths. | Stakeholders can accept, reject, or defer each assumption. |
+| Definition of Done | The artifact applies this principle: AI hữu ích để tìm ambiguity khi BA yêu cầu nó show evidence và decision question. | Delivery, QA, or governance teams can act on it. |
+| Definition of Done | The weak pattern "Yêu cầu AI "làm Mơ hồ, conflict và gap analysis" mà không có source context." has been checked. | No unsupported AI claim is treated as approved scope. |
 
 ## Before and after artifact example
 
-| Before | Risk trong draft AI | Revision của senior BA |
+| Before | Rủi ro từ AI draft | Senior BA revision |
 | --- | --- | --- |
-| Prompt: "Create Requirement Defect Taxonomy cho Phân tích mơ hồ, xung đột và khoảng trống." | Model có thể tự bịa source fact, owner, threshold hoặc implementation rule. | Thêm source, scope boundary, source authority, output schema và instruction: Classify issue type, severity, evidence và owner trước khi rewrite. |
-| Draft statement: "Chạy taxonomy review trên năm backlog item." | Action hữu ích nhưng chưa gắn decision owner hoặc acceptance signal. | Rewrite thành project step có owner, expected artifact, review gate và evidence cần trước handoff. |
-| Paragraph nghe final về delivery-ready requirement | Tone có thể che uncertainty và approval còn thiếu. | Chuyển thành bảng fact, assumption, decision needed, risk và validation question. |
+| Prompt: "Create Ambiguity Triage Board." | The model may invent source facts, owners, or thresholds. | Add sources, scope boundary, output schema, and review criteria. |
+| Draft statement: "Dùng AI để gom note thành vague word, risk và open question." | Useful, but not tied to owner or acceptance signal. | Rewrite as a project step with owner, expected artifact, and review gate. |
+| Final-looking paragraph | Tone may hide uncertainty or missing stakeholder approval. | Convert into fact, assumption, decision needed, risk, and validation question. |
 
 ## Manual verification after AI output
 
-| Lens kiểm tra | Manual check | Pass signal |
+| Verification lens | Manual check | Pass signal |
 | --- | --- | --- |
-| Evidence | Trace mọi statement quan trọng trong Requirement Defect Taxonomy về source, decision hoặc assumption có label. | Không unsupported claim nào còn bị ẩn. |
-| Completeness | Check ambiguity, NFR risk, traceability, testability và rule ownership theo intended audience và receiving team. | Artifact trả lời được điều product, engineering, QA và operations cần. |
-| Testability | Hỏi QA có tạo được positive, negative, boundary và exception scenario không. | Wording mơ hồ được rewrite hoặc log thành question. |
-| Accountability | Confirm ai approve, ai review và ai xử lý khi artifact sai. | Owner và escalation path explicit. |
+| Evidence | Trace important statements in Ambiguity Triage Board to a source, decision, or labeled assumption. | No unsupported claim remains hidden. |
+| Completeness | Check Vague word, Conflicting rule, Missing actor, Decision needed against the intended audience. | Product, Engineering, QA, and Operations have what they need. |
+| Testability | Ask whether QA can create positive, negative, boundary, and exception scenarios. | Ambiguous wording is rewritten or logged as a question. |
+| Accountability | Confirm who approves, who reviews, and who acts when output is wrong. | Owners and escalation path are explicit. |
 
 ## AI collaboration prompt
 
 ```text
-Review requirement này bằng defect taxonomy. Trả về defect type, severity, affected text, why it matters, clarification question và candidate rewrite test được. Giữ unsupported rewrite với label assumption.
+Dùng project notes được cung cấp để tạo Ambiguity Triage Board. Trước hết giải thích key term bằng ngôn ngữ đơn giản. Sau đó tạo table gồm evidence, assumption, risk, owner question và recommended next action. Không invent fact không nằm trong notes.
 ```
 
 ## Mistakes to avoid
 
-- Nói 'unclear' mà không gọi tên defect.
-- Sửa wording nhưng không sửa business rule gốc.
-- Xem mọi defect cùng severity.
-- Để AI rewrite requirement mà không validate source.
+- Dùng Ambiguity như jargon thay vì project decision.
+- Để AI viết lấp missing evidence.
+- Gửi output cho team khác khi chưa có owner, status hoặc next action.
 
 ## Apply this tomorrow
 
-1. Chạy taxonomy review trên năm backlog item.
-2. Thêm severity và clarification question cho mỗi finding.
-3. Rewrite một requirement mơ hồ thành language test được.
-4. Nhờ stakeholder approve rewritten rule.
+1. Lấy một project note hiện tại và nhờ AI tạo Ambiguity Triage Board.
+2. Thêm định nghĩa plain-language cho Ambiguity.
+3. Chạy một critique pass từ góc QA hoặc Engineering.
 
 ## What a BA should remember
 
-- Defect có tên làm review nhanh hơn.
-- Clarification question có giá trị như rewrite.
-- AI tìm defect khả nghi; BA confirm business meaning.
+- Ambiguity phải giúp project đi tiếp, không phải nghe cho hay.
+- AI draft; BA validate.
+- Artifact nhỏ review được tốt hơn giải thích dài chung chung.

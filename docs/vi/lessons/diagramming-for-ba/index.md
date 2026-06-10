@@ -1,172 +1,271 @@
 ---
 title: "Diagramming cho BA"
-description: "Diagram tốt thay đổi cuộc trao đổi; nó làm lộ decision, boundary và gap mà text che mất."
+description: "AI có thể tạo diagram nhanh, nhưng BA phải dùng diagram để làm lộ decision, gap và handoff."
 ---
 
 # Diagramming cho BA
 
 <div class="lesson-meta">
-  <span>Artifact phân tích và diagramming</span>
+  <span>Visual communication</span>
   <span>Software BA</span>
   <span>Core</span>
 </div>
 
+## Story mode: project walkthrough
+
+<div class="story-mode-panel">
+  <p class="story-eyebrow">Story prototype</p>
+  <h3>Diagram nhìn đúng cho tới khi ai đó hỏi failure thì sao</h3>
+  <p class="story-intro">Maya nhận process diagram nhìn gọn nhưng che exception path. Thay vì nhờ AI trả lời final, cô dùng pattern của bài này để làm tình huống rõ hơn, review được hơn và hữu ích hơn cho decision tiếp theo.</p>
+  <div class="story-scene-grid">
+<article class="story-scene">
+  <span>Scene 1</span>
+  <b>01</b>
+  <strong>Yêu cầu còn mơ hồ</strong>
+  <p>Team đưa cho Maya process diagram nhìn gọn nhưng che exception path và mong có câu trả lời gọn trong ngày.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 2</span>
+  <b>02</b>
+  <strong>AI tạo draft đầu tiên</strong>
+  <p>Draft khá hữu ích, nhưng che uncertainty quanh Event và State.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 3</span>
+  <b>03</b>
+  <strong>Maya biến nó thành evidence của BA</strong>
+  <p>Cô thêm source note, owner, example và review table tập trung cho Diagram Review Checklist thay vì gửi thẳng raw AI output.</p>
+</article>
+<article class="story-scene">
+  <span>Scene 4</span>
+  <b>04</b>
+  <strong>Team có thể ra decision</strong>
+  <p>Diagram Review Checklist cuối cùng cho thấy phần nào ready, phần nào rủi ro và phần nào cần human decision.</p>
+</article>
+  </div>
+  <div class="visual-takeaway-strip">
+<span>Flowchart cần context</span>
+<span>Sequence diagram phải review được</span>
+<span>State machine trở thành câu hỏi của BA</span>
+  </div>
+</div>
+
+## AI words in plain English
+
+| Thuật ngữ AI | Hiểu đơn giản | BA dùng để làm gì |
+| --- | --- | --- |
+| Flowchart | Diagram đơn giản về step và decision. | Dùng để gọi đúng loại việc trước khi nhờ AI hỗ trợ. |
+| Sequence diagram | Diagram thể hiện message giữa actor/system theo thời gian. | Dùng như lens review, không dùng như từ trang trí. |
+| State machine | Diagram thể hiện state và transition. | Biến nó thành checklist item hoặc câu hỏi stakeholder. |
+| Swimlane | Lane trong diagram cho biết ai own từng step. | Định nghĩa rule trước khi team xem output là ready. |
+
+## Reality check: tình huống thường gặp trong dự án
+
+<div class="fact-card-grid">
+<article class="fact-card">
+  <strong>Draft nhanh có thể che tư duy yếu</strong>
+  <span>Hỏi draft phụ thuộc evidence, owner và decision nào.</span>
+  <p>AI có thể tạo Diagram Review Checklist rất nhanh, nhưng tốc độ không chứng minh quality.</p>
+</article>
+<article class="fact-card">
+  <strong>Stakeholder cần ngôn ngữ đơn giản</strong>
+  <span>Giải thích term bằng một câu trước khi đưa vào requirement.</span>
+  <p>Term như Flowchart và Sequence diagram dễ làm người ngoài cuộc trao đổi AI bị rối.</p>
+</article>
+<article class="fact-card">
+  <strong>Diagram Review Checklist phải đi qua nhiều team</strong>
+  <span>Làm next action visible cho từng receiving team.</span>
+  <p>Product, Engineering, QA và Operations đọc Diagram Review Checklist theo góc nhìn khác nhau.</p>
+</article>
+</div>
+
+## Visual walkthrough
+
+```mermaid
+flowchart LR
+    A["Project input"]
+    B["AI draft đầu"]
+    A --> B
+    C["Lens review của BA"]
+    B --> C
+    D["Diagram Review Checklist"]
+    C --> D
+    E["Team decision"]
+    D --> E
+```
+
+## Visual decision map
+
+<div class="visual-ba-map">
+  <h3>Diagram Review Checklist: what the BA should look for</h3>
+<div>
+  <strong>Actor</strong>
+  <span>Điều BA phải làm rõ trước tiên.</span>
+  <em>Viết bằng ngôn ngữ dự án.</em>
+</div>
+<div>
+  <strong>Event</strong>
+  <span>Nơi AI có thể giúp nhưng cũng có thể che uncertainty.</span>
+  <em>Thêm review criteria.</em>
+</div>
+<div>
+  <strong>State</strong>
+  <span>Điều có thể hỏng nếu team bỏ validation.</span>
+  <em>Tạo decision question.</em>
+</div>
+<div>
+  <strong>Exception</strong>
+  <span>Điều làm artifact đủ an toàn để handoff.</span>
+  <em>Ghi owner, evidence và next step.</em>
+</div>
+</div>
+
 ## Learning outcomes
 
-- Chọn đúng diagram type cho câu hỏi BA.
-- Dùng AI draft Mermaid diagram an toàn.
-- Review diagram để tìm actor, flow và exception thiếu.
+- Giải thích Flowchart bằng ngôn ngữ BA đơn giản.
+- Dùng AI để draft Diagram Review Checklist tốt hơn.
+- Review output trước khi nó trở thành scope, test hoặc delivery work.
 
 ## Why this matters for BA work
 
 <div class="ba-callout">
-Diagram tốt thay đổi cuộc trao đổi; nó làm lộ decision, boundary và gap mà text che mất.
+AI có thể tạo diagram nhanh, nhưng BA phải dùng diagram để làm lộ decision, gap và handoff.
 </div>
 
-Bài này quan trọng vì diagram phơi bày reasoning mà prose có thể che giấu. AI có thể tạo flowchart, sequence diagram và state model nhanh, nhưng diagram chỉ có giá trị khi nó làm lộ missing actor, unclear rule, system boundary và exception path. BA phải dùng diagram như analysis instrument, không phải visual decoration.
+Diagramming quan trọng vì nhiều hiểu nhầm dễ nhìn thấy hơn là đọc ra. AI có thể draft diagram nhanh, nhưng BA phải check actor, state, message, exception path và picture có match cách team build/test không.
 
 ## Common difficulties for BAs
 
-Trong Artifact phân tích và diagramming, Diagramming cho BA trở nên khó khi BA phải chuyển decision phức tạp thành artifact mà product, engineering, QA, support và compliance đều inspect được. BA nên kiểm tra các điểm dưới đây trước khi xem artifact có AI hỗ trợ là đủ sẵn sàng cho stakeholder decision hoặc handoff.
-
-| Khó khăn | Vì sao khó trong công việc BA | BA nên xử lý thế nào |
+| Khó khăn | Vì sao khó với BA | BA xử lý thế nào |
 | --- | --- | --- |
-| Dùng một diagram type cho mọi problem. | Lỗi "Dùng một diagram type cho mọi problem." xuất hiện khi team bàn về artifact purpose, audience, diagram clarity, decision trace và handoff quality nhưng chưa thống nhất source nào authoritative. AI có thể làm disagreement nghe mượt hơn, nên BA phải giữ uncertainty visible. | Áp dụng control này: review artifact với team phải build, test hoặc operate dựa trên artifact đó. Sau đó dùng pattern tốt hơn "Tạo process, sequence và state view khi problem đi qua cả workflow và system." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
-| Để AI vẽ diagram mà không check business meaning. | Với Diagramming cho BA, điểm khó là Diagram tốt thay đổi cuộc trao đổi; nó làm lộ decision, boundary và gap mà text che mất. Pattern yếu rất dễ xảy ra vì AI có thể tạo câu trả lời trôi chảy trước khi BA check ownership, source freshness hoặc decision right. | Áp dụng control này: review artifact với team phải build, test hoặc operate dựa trên artifact đó. Sau đó dùng pattern tốt hơn "Thay label mơ hồ bằng rule source, threshold, owner hoặc open question." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
-| Bỏ failure path. | Điểm này khó khi Diagram Selection Guide được kỳ vọng hỗ trợ cross-functional handoff artifact. Nếu BA không challenge draft, unsupported assumption có thể đi vào planning, testing hoặc stakeholder communication. | Áp dụng control này: review artifact với team phải build, test hoặc operate dựa trên artifact đó. Sau đó dùng pattern tốt hơn "Chạy diagram review session để identify gap, exception và ownership issue." và hỏi ai phải approve artifact trước khi nó ảnh hưởng scope, build, test hoặc release. |
+| Team dùng Flowchart nhưng không có cùng cách hiểu. | Mọi người gật đầu trong meeting nhưng tưởng tượng outcome khác nhau. | Bắt đầu bằng định nghĩa một câu và cho thấy nó làm thay đổi Diagram Review Checklist thế nào. |
+| AI output trông hoàn chỉnh hơn input thực tế. | Draft trôi chảy có thể che missing example, owner hoặc edge case. | Yêu cầu AI liệt kê assumption và missing evidence trước khi draft bản cuối. |
+| Reviewer cần detail khác nhau. | Product quan tâm value, Engineering quan tâm constraint, QA quan tâm testability, Ops quan tâm support. | Thêm column hoặc section cho từng receiving team thay vì một paragraph chung. |
 
 ## Where this applies in real projects
 
-Dùng bài này khi BRD, SRS, decision memo, flow, sequence hoặc integration artifact phải carry decision qua nhiều role. Output thực tế không phải document dài hơn; đó là Diagram Selection Guide có đủ evidence, ownership và decision clarity cho cuộc trao đổi tiếp theo của dự án.
-
-| Thời điểm trong dự án | Cách áp dụng bài học | Output cụ thể của BA |
+| Thời điểm dự án | Việc BA làm | Output cụ thể |
 | --- | --- | --- |
-| Artifact drafting | Chuyển một requirement nhiều text thành Mermaid diagram. | Diagram Selection Guide thể hiện artifact purpose, audience, diagram clarity, decision trace và handoff quality, trong đó action "Chuyển một requirement nhiều text thành Mermaid diagram." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
-| Diagram review | Nhờ AI chọn diagram type phù hợp. | Diagram Selection Guide thể hiện source evidence, trong đó action "Nhờ AI chọn diagram type phù hợp." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
-| Handoff | Review diagram với developer để tìm boundary gap. | Diagram Selection Guide thể hiện decision owner, trong đó action "Review diagram với developer để tìm boundary gap." được chuyển thành decision, requirement, checklist hoặc question có thể review ở meeting tiếp theo. |
+| Discovery workshop | Dùng AI để gom note thành actor, risk và open question. | Diagram Review Checklist có source note và owner. |
+| Backlog refinement | Chuyển AI suggestion thành decision nhỏ và test được. | Story, rule hoặc checklist item có acceptance signal. |
+| Handoff review | Nhờ AI critique artifact từ góc Product, Dev, QA và Ops. | Review table có action owner và status. |
 
 ## If this is missing
 
-Nếu thiếu Diagramming cho BA, handoff biến thành bài tập diễn giải, và các team tranh luận lại decision lẽ ra đã được capture trong artifact. BA vẫn có thể khôi phục, nhưng phải chuyển draft AI bóng bẩy trở lại thành evidence, assumption, owner và decision test được.
+Nếu thiếu Diagramming cho BA, team vẫn có thể tạo document, nhưng document khó trust, khó test và khó maintain hơn.
 
-| Nếu thiếu | Ảnh hưởng tới dự án | Cách khôi phục |
+| Nếu thiếu | Ảnh hưởng dự án | Cách khôi phục |
 | --- | --- | --- |
-| Generate một diagram rồi thêm vào document | Một view duy nhất có thể che timing, data hoặc responsibility issue. | Khôi phục bằng pattern tốt hơn: Tạo process, sequence và state view khi problem đi qua cả workflow và system. Rework Diagram Selection Guide cho đến khi nó lộ rõ artifact purpose, audience, diagram clarity, decision trace và handoff quality, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
-| Accept label diagram mơ hồ | Decision diamond như valid hoặc approved không định nghĩa business rule. | Khôi phục bằng pattern tốt hơn: Thay label mơ hồ bằng rule source, threshold, owner hoặc open question. Rework Diagram Selection Guide cho đến khi nó lộ rõ artifact purpose, audience, diagram clarity, decision trace và handoff quality, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
-| Chỉ dùng diagram để presentation | Team bỏ lỡ cơ hội tìm defect trước build. | Khôi phục bằng pattern tốt hơn: Chạy diagram review session để identify gap, exception và ownership issue. Rework Diagram Selection Guide cho đến khi nó lộ rõ artifact purpose, audience, diagram clarity, decision trace và handoff quality, và không share như bản final cho tới khi evidence, ownership và validation path explicit. |
+| Không có giải thích chung cho Flowchart | Stakeholder đồng ý bằng lời nhưng kỳ vọng behavior khác nhau. | Thêm định nghĩa plain-language và example. |
+| Không review AI assumption | Ý tưởng chưa có evidence trở thành scope. | Đưa assumption vào validation list có owner. |
+| Không có Diagram Review Checklist cụ thể | Bài học vẫn trừu tượng và không giúp delivery. | Tạo artifact bằng table nhỏ, không viết essay dài. |
 
 ## Mental model or core concept
 
-Diagram là thinking tool. Flowchart làm rõ process decision; sequence diagram làm rõ system interaction; state diagram làm rõ lifecycle; matrix làm rõ tổ hợp rule. AI có thể chuyển text sang Mermaid, nhưng BA phải validate system boundary, actor responsibility, exception path và business rule.
+Diagramming cho BA dễ hiểu nhất như một control của BA: làm phần lộn xộn visible, để AI hỗ trợ structure, rồi review với con người trước khi thành delivery work.
 
 ## Practical BA example
 
-Requirement ghi 'payment is verified before fulfillment.' Sequence diagram làm lộ responsibility thiếu giữa payment gateway, order service, warehouse và customer notification. BA hỏi tiếp ai handle payment failure và khi nào release inventory.
+AI tạo happy-path sequence diagram cho file upload. Maya thêm virus-scan failure, file-size rejection, retry và audit logging trước khi dùng diagram trong refinement.
 
 ## Diagram
 
 ```mermaid
 flowchart TD
-    A["Câu hỏi BA"] --> B{"Cần clarify gì?"}
-    B --> C["Workflow -> Flowchart"]
-    B --> D["System interaction -> Sequence"]
-    B --> E["Lifecycle -> State"]
-    B --> F["Rule combinations -> Decision table"]
-    C --> G["Review gap"]
-    D --> G
-    E --> G
-    F --> G
+    A["Diagram Review Checklist"]
+    A --> B["Actor"]
+    A --> C["Event"]
+    A --> D["State"]
+    A --> E["Exception"]
 ```
 
 ## BA artifact
 
-### Diagram Selection Guide
+### Diagram Review Checklist
 
-| Câu hỏi BA | Diagram type | Dùng khi | Review focus |
+| Dòng artifact | BA cần viết gì | Dấu hiệu sẵn sàng | Dấu hiệu rủi ro |
 | --- | --- | --- | --- |
-| Work flow ra sao? | Flowchart | Process và decision quan trọng. | Actor, decision rule, exception. |
-| System interact ra sao? | Sequence diagram | Có API/event involved. | System boundary và failure message. |
-| Entity có state nào? | State diagram | Lifecycle quan trọng. | Allowed transition và trigger. |
-| Rule nào apply? | Decision table | Tổ hợp rule quyết định outcome. | Rule complete và exclusive. |
+| Actor | Viết actor cụ thể bằng ngôn ngữ dự án. | Stakeholder confirm được. | Vẫn chỉ là slogan. |
+| Event | Mô tả AI giúp gì và có thể sai ở đâu. | Review criteria visible. | Draft che uncertainty. |
+| State | Capture gap, conflict, edge case hoặc risk. | Owner và next action rõ. | Issue bị chôn trong prose. |
+| Exception | Định nghĩa handoff rule hoặc completion signal. | QA hoặc Engineering hành động được. | Receiving team không biết làm gì. |
 
 ## AI expert note
 
-Diagram do AI sinh nên được review như requirement. BA chuyên gia check notation fit, tách actor-system, decision label, data movement, error path và diagram có trả lời câu hỏi stakeholder không. Diagramming mạnh nhất khi BA yêu cầu AI tạo nhiều view cạnh tranh rồi reconcile điểm khác nhau.
+Ở góc nhìn AI reviewer, tôi sẽ kiểm tra Diagramming cho BA có làm artifact của BA thực tế hơn không. AI tốt phải làm lộ missing context, tạo structure và giúp review dễ hơn. Nếu chỉ làm câu chữ đẹp hơn, BA chưa lấy được đủ value.
 
 ## Bad vs better example
 
-| Cách làm yếu | Vì sao fail | Cách làm BA tốt hơn |
+| Cách làm yếu | Vì sao fail | Cách BA làm tốt hơn |
 | --- | --- | --- |
-| Generate một diagram rồi thêm vào document | Một view duy nhất có thể che timing, data hoặc responsibility issue. | Tạo process, sequence và state view khi problem đi qua cả workflow và system. |
-| Accept label diagram mơ hồ | Decision diamond như valid hoặc approved không định nghĩa business rule. | Thay label mơ hồ bằng rule source, threshold, owner hoặc open question. |
-| Chỉ dùng diagram để presentation | Team bỏ lỡ cơ hội tìm defect trước build. | Chạy diagram review session để identify gap, exception và ownership issue. |
+| Yêu cầu AI "làm Diagramming cho BA" mà không có source context. | Model tự lấp khoảng trống bằng wording nghe hợp lý. | Cung cấp source note, example, boundary và review criteria. |
+| Gửi answer đầu tiên như final. | Team không thấy assumption hoặc evidence yếu. | Chạy critique pass và gắn nhãn open decision. |
+| Dùng thuật ngữ AI mà không giải thích. | Business stakeholder mất tập trung hoặc hiểu sai. | Giải thích mỗi term bằng ngôn ngữ đơn giản trước khi đưa vào scope. |
 
 ## Stakeholder questions to ask
 
 | Stakeholder | Câu hỏi | Vì sao BA hỏi |
 | --- | --- | --- |
-| Product owner | Diagramming cho BA cần cải thiện outcome nào, và trade-off nào có thể chấp nhận? | Ngăn output AI tối ưu cho mục tiêu mơ hồ. |
-| Engineering lead | Source, system, data hoặc constraint nào khiến Diagram Selection Guide khó implement? | Biến technical constraint ẩn thành requirement question visible. |
-| QA lead | Rule, exception hoặc user state nào phải test được trước khi tin artifact này? | Chuyển wording trôi chảy của AI thành behavior quan sát được. |
-| Operations hoặc support | Failure path nào tạo manual work nếu nguyên tắc "Diagram là analysis, không phải decoration" bị bỏ qua? | Làm rõ support load, exception handling và operating impact. |
+| Product owner | Which outcome should Diagramming cho BA improve first? | Keeps AI work tied to business value. |
+| Engineering lead | Which source, system, or constraint could make Diagram Review Checklist hard to implement? | Turns hidden technical constraints into requirement questions. |
+| QA lead | Which behavior must be testable before we trust this artifact? | Converts fluent AI text into observable checks. |
+| Operations or support | What failure path creates manual work after release? | Surfaces support load and fallback needs. |
 
 ## Decision log entries
 
 | Decision item | Option cần capture | Owner | Evidence cần có |
 | --- | --- | --- | --- |
-| Scope boundary cho Diagram Selection Guide | Must-have, later, out of scope | Product owner | Business outcome và release constraint |
-| Authority cho artifact purpose, audience, diagram clarity, decision trace và handoff quality | Documented source, stakeholder decision, assumption cần validate | BA + stakeholder chịu trách nhiệm | Source ID, date và approval status |
-| Review gate trước handoff | Peer review, QA review, engineering review, formal approval | BA lead hoặc project lead | Risk level và receiving-team readiness |
-| Cách recover nếu Dùng một diagram type cho mọi problem. | Rewrite, defer, escalate hoặc validation workshop | Decision owner | Impact lên scope, testability và release risk |
+| Scope boundary for Diagram Review Checklist | Must-have, later, out of scope | Product owner | Business outcome and release constraint |
+| Authority for Actor and Event | Documented source, stakeholder decision, assumption to validate | BA + accountable stakeholder | Source ID, date, and approval status |
+| Review gate before handoff | Peer review, QA review, engineering review, formal approval | BA lead or project lead | Risk level and receiving-team readiness |
+| Recovery if Dùng Flowchart như jargon thay vì project decision. | Rewrite, defer, escalate, or run validation workshop | Decision owner | Impact on scope, testability, and release risk |
 
 ## Definition of Ready / Done
 
-| Gate | Tín hiệu ready | Tín hiệu done |
+| Gate | Ready signal | Done signal |
 | --- | --- | --- |
-| Definition of Ready | Source cho artifact purpose, audience, diagram clarity, decision trace và handoff quality được label và còn hiệu lực. | Diagram Selection Guide có thể review mà không phải đoán missing context. |
-| Definition of Ready | Open assumption có owner và validation path. | Stakeholder có thể accept, reject hoặc defer từng assumption. |
-| Definition of Done | Artifact áp dụng control: review artifact với team phải build, test hoặc operate dựa trên artifact đó. | Delivery, QA hoặc governance team có thể hành động dựa trên artifact. |
-| Definition of Done | Pattern yếu "Dùng một diagram type cho mọi problem." đã được kiểm tra explicit. | Không unsupported AI claim nào bị xem như requirement đã approve. |
+| Definition of Ready | Sources for Actor are named. | Diagram Review Checklist can be reviewed without guessing context. |
+| Definition of Ready | Open assumptions have owners and validation paths. | Stakeholders can accept, reject, or defer each assumption. |
+| Definition of Done | The artifact applies this principle: AI có thể tạo diagram nhanh, nhưng BA phải dùng diagram để làm lộ decision, gap và handoff. | Delivery, QA, or governance teams can act on it. |
+| Definition of Done | The weak pattern "Yêu cầu AI "làm Diagramming cho BA" mà không có source context." has been checked. | No unsupported AI claim is treated as approved scope. |
 
 ## Before and after artifact example
 
-| Before | Risk trong draft AI | Revision của senior BA |
+| Before | Rủi ro từ AI draft | Senior BA revision |
 | --- | --- | --- |
-| Prompt: "Create Diagram Selection Guide cho Diagramming cho BA." | Model có thể tự bịa source fact, owner, threshold hoặc implementation rule. | Thêm source, scope boundary, source authority, output schema và instruction: Tạo process, sequence và state view khi problem đi qua cả workflow và system. |
-| Draft statement: "Chuyển một requirement nhiều text thành Mermaid diagram." | Action hữu ích nhưng chưa gắn decision owner hoặc acceptance signal. | Rewrite thành project step có owner, expected artifact, review gate và evidence cần trước handoff. |
-| Paragraph nghe final về cross-functional handoff artifact | Tone có thể che uncertainty và approval còn thiếu. | Chuyển thành bảng fact, assumption, decision needed, risk và validation question. |
+| Prompt: "Create Diagram Review Checklist." | The model may invent source facts, owners, or thresholds. | Add sources, scope boundary, output schema, and review criteria. |
+| Draft statement: "Dùng AI để gom note thành actor, risk và open question." | Useful, but not tied to owner or acceptance signal. | Rewrite as a project step with owner, expected artifact, and review gate. |
+| Final-looking paragraph | Tone may hide uncertainty or missing stakeholder approval. | Convert into fact, assumption, decision needed, risk, and validation question. |
 
 ## Manual verification after AI output
 
-| Lens kiểm tra | Manual check | Pass signal |
+| Verification lens | Manual check | Pass signal |
 | --- | --- | --- |
-| Evidence | Trace mọi statement quan trọng trong Diagram Selection Guide về source, decision hoặc assumption có label. | Không unsupported claim nào còn bị ẩn. |
-| Completeness | Check artifact purpose, audience, diagram clarity, decision trace và handoff quality theo intended audience và receiving team. | Artifact trả lời được điều product, engineering, QA và operations cần. |
-| Testability | Hỏi QA có tạo được positive, negative, boundary và exception scenario không. | Wording mơ hồ được rewrite hoặc log thành question. |
-| Accountability | Confirm ai approve, ai review và ai xử lý khi artifact sai. | Owner và escalation path explicit. |
+| Evidence | Trace important statements in Diagram Review Checklist to a source, decision, or labeled assumption. | No unsupported claim remains hidden. |
+| Completeness | Check Actor, Event, State, Exception against the intended audience. | Product, Engineering, QA, and Operations have what they need. |
+| Testability | Ask whether QA can create positive, negative, boundary, and exception scenarios. | Ambiguous wording is rewritten or logged as a question. |
+| Accountability | Confirm who approves, who reviews, and who acts when output is wrong. | Owners and escalation path are explicit. |
 
 ## AI collaboration prompt
 
 ```text
-Chọn diagram type phù hợp nhất cho requirement này và giải thích vì sao. Sau đó draft Mermaid diagram. Sau diagram, liệt kê missing actor, boundary chưa rõ, exception path và business rule cần validate.
+Dùng project notes được cung cấp để tạo Diagram Review Checklist. Trước hết giải thích key term bằng ngôn ngữ đơn giản. Sau đó tạo table gồm evidence, assumption, risk, owner question và recommended next action. Không invent fact không nằm trong notes.
 ```
 
 ## Mistakes to avoid
 
-- Dùng một diagram type cho mọi problem.
-- Để AI vẽ diagram mà không check business meaning.
-- Bỏ failure path.
-- Tạo diagram đẹp nhưng không giúp decision.
+- Dùng Flowchart như jargon thay vì project decision.
+- Để AI viết lấp missing evidence.
+- Gửi output cho team khác khi chưa có owner, status hoặc next action.
 
 ## Apply this tomorrow
 
-1. Chuyển một requirement nhiều text thành Mermaid diagram.
-2. Nhờ AI chọn diagram type phù hợp.
-3. Review diagram với developer để tìm boundary gap.
-4. Thêm exception path trước khi share.
+1. Lấy một project note hiện tại và nhờ AI tạo Diagram Review Checklist.
+2. Thêm định nghĩa plain-language cho Flowchart.
+3. Chạy một critique pass từ góc QA hoặc Engineering.
 
 ## What a BA should remember
 
-- Diagram là analysis, không phải decoration.
-- Diagram tốt nhất làm lộ decision tiếp theo.
-- AI vẽ nhanh; BA kiểm tra meaning.
+- Flowchart phải giúp project đi tiếp, không phải nghe cho hay.
+- AI draft; BA validate.
+- Artifact nhỏ review được tốt hơn giải thích dài chung chung.
